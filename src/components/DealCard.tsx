@@ -1,5 +1,6 @@
 "use client"
 
+import Image from "next/image"
 import { motion } from "framer-motion"
 import { ExternalLink, Clock, Zap } from "lucide-react"
 import type { Deal } from "@/data/deals"
@@ -39,22 +40,35 @@ export default function DealCard({ deal }: DealCardProps) {
         className={`relative h-44 bg-gradient-to-br ${deal.imageGradient} overflow-hidden`}
         aria-hidden="true"
       >
-        {/* Dot pattern */}
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
-            backgroundSize: "18px 18px",
-          }}
-        />
-
-        {/* Big discount */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center">
-          <span className="text-6xl font-black text-white opacity-20 leading-none select-none">
-            {deal.discount}%
-          </span>
-          <span className="text-sm text-white opacity-20 font-semibold -mt-1 select-none">OFF</span>
-        </div>
+        {deal.imageUrl ? (
+          /* Real product image */
+          <Image
+            src={deal.imageUrl}
+            alt={deal.title}
+            fill
+            className="object-contain p-3"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+            unoptimized
+          />
+        ) : (
+          <>
+            {/* Dot pattern fallback */}
+            <div
+              className="absolute inset-0 opacity-10"
+              style={{
+                backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
+                backgroundSize: "18px 18px",
+              }}
+            />
+            {/* Big discount text fallback */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <span className="text-6xl font-black text-white opacity-20 leading-none select-none">
+                {deal.discount}%
+              </span>
+              <span className="text-sm text-white opacity-20 font-semibold -mt-1 select-none">OFF</span>
+            </div>
+          </>
+        )}
 
         {/* Discount badge */}
         <div className="absolute top-3 left-3 flex items-center gap-1 bg-white/95 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm">

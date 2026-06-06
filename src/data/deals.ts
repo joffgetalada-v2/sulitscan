@@ -11,6 +11,7 @@ export interface Deal {
   sulitScore: number
   reason: string
   imageGradient: string
+  imageUrl?: string
   affiliateLink: string
   lastChecked: string
   isDemo: boolean
@@ -342,6 +343,7 @@ export const deals: Deal[] = [
     sulitScore: 9,
     reason: "30% off Benefit's cult full-coverage concealer — one of their bestsellers at Sephora PH. Hydrating formula that doesn't crease. Rare 30% discount verified live from the datafeed.",
     imageGradient: "from-fuchsia-400 to-pink-600",
+    imageUrl: "http://sephora.i.adx.io/images/product_images/26948_Benefit_WEB_e825041d8092d3cdc5309a16ef450782867b0a1f_1523778083.png",
     affiliateLink: "https://sephoraphilippines.pxf.io/c/363646/928167/12390?prodsku=26948&u=https%3A%2F%2Fwww.sephora.ph%2Fproducts%2Fbenefit-cosmetics-boi-ing-hydrating-concealer%2Fv%2F01-light&intsrc=CATF_7258",
     lastChecked: "Price verified from Sephora PH datafeed – June 6, 2026. Availability may change.",
     isDemo: false,
@@ -360,6 +362,7 @@ export const deals: Deal[] = [
     sulitScore: 9,
     reason: "Complete brow kit with pencil, gel, and stencils — 30% off. Benefit's brow products are consistently ranked #1 at Sephora PH. Shade 04 suits medium to deep Filipino skintones.",
     imageGradient: "from-amber-700 to-stone-900",
+    imageUrl: "http://sephora.i.adx.io/images/product_images/4_Product_205504-Benefit-The-Great-Brow-Basics-Shade-04_6c8354c6f66ad55d1e82f5fee1616aa20c6acff9_1560994400.png",
     affiliateLink: "https://sephoraphilippines.pxf.io/c/363646/928167/12390?prodsku=205504&u=https%3A%2F%2Fwww.sephora.ph%2Fproducts%2Fbenefit-cosmetics-the-great-brow-basics-kit%2Fv%2Fshade-04&intsrc=CATF_7258",
     lastChecked: "Price verified from Sephora PH datafeed – June 6, 2026. Availability may change.",
     isDemo: false,
@@ -378,6 +381,7 @@ export const deals: Deal[] = [
     sulitScore: 9,
     reason: "Full makeup starter kit from Benefit — mascara, primer, brow pencil, and more — bundled at 30% off. Excellent gift option. Verified live deal from the Sephora PH datafeed.",
     imageGradient: "from-pink-500 to-rose-700",
+    imageUrl: "http://sephora.i.adx.io/images/product_images/1_Product_602004126214-Benefit-Cosmetics-Talk-Beauty-to-Me-Makup-Default_d1238bd29c2b478b3b3943be571ccc083fb0ad83_1596123583.png",
     affiliateLink: "https://sephoraphilippines.pxf.io/c/363646/928167/12390?prodsku=224106&u=https%3A%2F%2Fwww.sephora.ph%2Fproducts%2Fbenefit-cosmetics-talk-beauty-to-me%2Fv%2Fdefault&intsrc=CATF_7258",
     lastChecked: "Price verified from Sephora PH datafeed – June 6, 2026. Availability may change.",
     isDemo: false,
@@ -396,6 +400,7 @@ export const deals: Deal[] = [
     sulitScore: 8,
     reason: "Three FRESH Sugar lip balms in a set — iconic tinted moisturizing formula. 20% off vs buying individually. Loved for its long-lasting hydration and subtle color payoff.",
     imageGradient: "from-red-400 to-rose-600",
+    imageUrl: "http://sephora.i.adx.io/images/product_images/1_Product_809280149481-FRESH-Sugar-Lip-Moisturizing-Trio---1-Default_a85a07955aba065fed5bd6b7ad3ed2bbd66b54f3_1596436850.png",
     affiliateLink: "https://sephoraphilippines.pxf.io/c/363646/928167/12390?prodsku=223001&u=https%3A%2F%2Fwww.sephora.ph%2Fproducts%2Ffresh-sugar-lip-moisturizing-trio%2Fv%2Fdefault&intsrc=CATF_7258",
     lastChecked: "Price verified from Sephora PH datafeed – June 6, 2026. Availability may change.",
     isDemo: false,
@@ -414,6 +419,7 @@ export const deals: Deal[] = [
     sulitScore: 8,
     reason: "Benefit's award-winning volumizing mascara — 36-hour wear with aerospace technology. 15% off the full-size 8.5g. Consistently rated one of the best mascaras at Sephora PH.",
     imageGradient: "from-slate-700 to-gray-900",
+    imageUrl: "http://sephora.i.adx.io/images/product_images/32090_BenefitCosmetics_WEB_1_e8ab152d9dbd11dda480c552dbfcbc1d631d61d2_1523778866.png",
     affiliateLink: "https://sephoraphilippines.pxf.io/c/363646/928167/12390?prodsku=32090&u=https%3A%2F%2Fwww.sephora.ph%2Fproducts%2Fbenefit-cosmetics-badgal-bang%2Fv%2F8-5g&intsrc=CATF_7258",
     lastChecked: "Price verified from Sephora PH datafeed – June 6, 2026. Availability may change.",
     isDemo: false,
