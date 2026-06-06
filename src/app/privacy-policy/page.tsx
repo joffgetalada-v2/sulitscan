@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
 import { siteConfig } from "@/lib/seo"
+import { Shield } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Privacy Policy | SulitScan PH",
@@ -13,42 +14,59 @@ export default function PrivacyPolicyPage() {
     <>
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: siteConfig.url },
+          { name: "Home",           url: siteConfig.url },
           { name: "Privacy Policy", url: `${siteConfig.url}/privacy-policy` },
         ]}
       />
 
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-3xl font-black text-slate-900 mb-2">Privacy Policy</h1>
-        <p className="text-sm text-slate-400 mb-8">Last updated: June 2025</p>
+      {/* Header */}
+      <div className="bg-gradient-to-b from-slate-50 to-white border-b border-slate-100">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center shrink-0">
+              <Shield className="w-6 h-6 text-blue-600" aria-hidden="true" />
+            </div>
+            <div>
+              <span className="inline-block mb-2 text-xs font-semibold tracking-widest uppercase text-blue-700">
+                Legal
+              </span>
+              <h1 className="text-3xl font-black text-slate-900 tracking-tight mb-1">Privacy Policy</h1>
+              <p className="text-sm text-slate-400">Last updated: June 2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="space-y-8 text-sm text-slate-600 leading-relaxed">
           <section>
             <h2 className="text-lg font-bold text-slate-900 mb-3">1. Information We Collect</h2>
-            <p className="mb-3">
-              SulitScan PH may collect the following types of information:
-            </p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>
-                <strong>Usage data:</strong> Pages visited, clicks, and navigation patterns (via
-                analytics tools).
+            <p className="mb-3">SulitScan PH may collect the following types of information:</p>
+            <ul className="space-y-2 pl-4">
+              <li className="flex items-start gap-2">
+                <span className="text-slate-400 shrink-0 mt-0.5">·</span>
+                <span><strong>Usage data:</strong> Pages visited, clicks, and navigation patterns (via analytics tools).</span>
               </li>
-              <li>
-                <strong>Contact information:</strong> Name and email if you contact us through our
-                contact form.
+              <li className="flex items-start gap-2">
+                <span className="text-slate-400 shrink-0 mt-0.5">·</span>
+                <span><strong>Contact information:</strong> Name and email if you contact us through our contact form.</span>
               </li>
-              <li>
-                <strong>Cookies:</strong> Basic session cookies and analytics cookies.
+              <li className="flex items-start gap-2">
+                <span className="text-slate-400 shrink-0 mt-0.5">·</span>
+                <span><strong>Cookies:</strong> Basic session cookies and analytics cookies.</span>
               </li>
             </ul>
           </section>
 
           <section>
             <h2 className="text-lg font-bold text-slate-900 mb-3">2. How We Use Information</h2>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>To improve the website and curate better deals</li>
-              <li>To respond to contact form submissions</li>
-              <li>To analyze site performance and user experience</li>
+            <ul className="space-y-2 pl-4">
+              {["To improve the website and curate better deals", "To respond to contact form submissions", "To analyze site performance and user experience"].map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="text-slate-400 shrink-0 mt-0.5">·</span>
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
           </section>
 
@@ -97,7 +115,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-lg font-bold text-slate-900 mb-3">8. Contact</h2>
             <p>
               For privacy questions, email us at{" "}
-              <a href="mailto:hello@sulitscan.com" className="text-green-600 underline">
+              <a href="mailto:hello@sulitscan.com" className="text-green-600 underline hover:text-green-700">
                 hello@sulitscan.com
               </a>
               .

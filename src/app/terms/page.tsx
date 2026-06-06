@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
 import { siteConfig } from "@/lib/seo"
+import { ScrollText } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Terms of Use | SulitScan PH",
@@ -13,15 +14,30 @@ export default function TermsPage() {
     <>
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: siteConfig.url },
+          { name: "Home",         url: siteConfig.url },
           { name: "Terms of Use", url: `${siteConfig.url}/terms` },
         ]}
       />
 
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-3xl font-black text-slate-900 mb-2">Terms of Use</h1>
-        <p className="text-sm text-slate-400 mb-8">Last updated: June 2025</p>
+      {/* Header */}
+      <div className="bg-gradient-to-b from-slate-50 to-white border-b border-slate-100">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-slate-100 flex items-center justify-center shrink-0">
+              <ScrollText className="w-6 h-6 text-slate-600" aria-hidden="true" />
+            </div>
+            <div>
+              <span className="inline-block mb-2 text-xs font-semibold tracking-widest uppercase text-slate-500">
+                Legal
+              </span>
+              <h1 className="text-3xl font-black text-slate-900 tracking-tight mb-1">Terms of Use</h1>
+              <p className="text-sm text-slate-400">Last updated: June 2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="space-y-8 text-sm text-slate-600 leading-relaxed">
           <section>
             <h2 className="text-lg font-bold text-slate-900 mb-3">1. Acceptance of Terms</h2>
@@ -46,7 +62,7 @@ export default function TermsPage() {
               Some links on this site are affiliate links. Clicking them and making a purchase may
               result in a commission being paid to SulitScan PH. This does not affect the price you
               pay. See our{" "}
-              <a href="/affiliate-disclosure" className="text-green-600 underline">
+              <a href="/affiliate-disclosure" className="text-green-600 underline hover:text-green-700">
                 Affiliate Disclosure
               </a>{" "}
               for more details.
@@ -59,16 +75,22 @@ export default function TermsPage() {
               All deals, prices, and information on SulitScan PH are provided for informational
               purposes only. We make no guarantees about:
             </p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>The accuracy or completeness of deal information</li>
-              <li>The availability of deals at the time you click</li>
-              <li>The quality of products or services offered by third-party sellers</li>
-              <li>The security or privacy practices of linked third-party sites</li>
+            <ul className="space-y-2 pl-4">
+              {[
+                "The accuracy or completeness of deal information",
+                "The availability of deals at the time you click",
+                "The quality of products or services offered by third-party sellers",
+                "The security or privacy practices of linked third-party sites",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2">
+                  <span className="text-slate-400 shrink-0 mt-0.5">·</span>
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
-            <p className="mt-3">
-              <strong>All prices shown on this site are sample/demo data.</strong> Always verify
-              prices and deal terms directly on the partner platform before purchasing.
-            </p>
+            <div className="mt-4 p-3 bg-amber-50 border border-amber-200 rounded-lg">
+              <p><strong>All prices shown on this site are sample/demo data.</strong> Always verify prices and deal terms directly on the partner platform before purchasing.</p>
+            </div>
           </section>
 
           <section>
@@ -97,16 +119,14 @@ export default function TermsPage() {
 
           <section>
             <h2 className="text-lg font-bold text-slate-900 mb-3">8. Governing Law</h2>
-            <p>
-              These terms are governed by the laws of the Republic of the Philippines.
-            </p>
+            <p>Republic of the Philippines law governs these terms.</p>
           </section>
 
           <section>
             <h2 className="text-lg font-bold text-slate-900 mb-3">9. Contact</h2>
             <p>
               Questions? Email us at{" "}
-              <a href="mailto:hello@sulitscan.com" className="text-green-600 underline">
+              <a href="mailto:hello@sulitscan.com" className="text-green-600 underline hover:text-green-700">
                 hello@sulitscan.com
               </a>
               .

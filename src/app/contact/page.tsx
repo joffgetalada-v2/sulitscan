@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
 import { siteConfig } from "@/lib/seo"
-import { Mail, MessageSquare } from "lucide-react"
+import { Mail, MessageSquare, Tag } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Contact SulitScan PH",
@@ -14,92 +14,108 @@ export default function ContactPage() {
     <>
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: siteConfig.url },
+          { name: "Home",    url: siteConfig.url },
           { name: "Contact", url: `${siteConfig.url}/contact` },
         ]}
       />
 
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="text-center mb-10">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-green-100 mb-4">
+      {/* Header */}
+      <div className="bg-gradient-to-b from-slate-50 to-white border-b border-slate-100">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 text-center">
+          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-green-50 mb-4">
             <MessageSquare className="w-6 h-6 text-green-600" aria-hidden="true" />
           </div>
-          <h1 className="text-3xl font-black text-slate-900 mb-3">Contact Us</h1>
+          <h1 className="text-3xl font-black text-slate-900 mb-3 tracking-tight">Contact Us</h1>
           <p className="text-slate-500 leading-relaxed">
             Have a deal suggestion, found a broken link, or interested in a partnership? We&apos;d love to hear from you.
           </p>
         </div>
+      </div>
 
+      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Contact options */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
-          <div className="p-5 bg-green-50 border border-green-200 rounded-2xl">
-            <Mail className="w-5 h-5 text-green-600 mb-2" aria-hidden="true" />
-            <h2 className="text-sm font-bold text-slate-900 mb-1">Email Us</h2>
-            <p className="text-xs text-slate-500 mb-2">
-              For partnerships, feedback, or general questions.
-            </p>
-            <a
-              href="mailto:hello@sulitscan.com"
-              className="text-sm font-medium text-green-600 hover:underline"
-            >
-              hello@sulitscan.com
-            </a>
-          </div>
-          <div className="p-5 bg-blue-50 border border-blue-200 rounded-2xl">
-            <MessageSquare className="w-5 h-5 text-blue-600 mb-2" aria-hidden="true" />
-            <h2 className="text-sm font-bold text-slate-900 mb-1">Suggest a Deal</h2>
-            <p className="text-xs text-slate-500 mb-2">
-              Found a sulit deal we missed? Let us know.
-            </p>
-            <a
-              href="mailto:deals@sulitscan.com"
-              className="text-sm font-medium text-blue-600 hover:underline"
-            >
-              deals@sulitscan.com
-            </a>
-          </div>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+          {[
+            {
+              icon: Mail,
+              color: "text-green-600",
+              bg: "bg-green-50",
+              border: "border-green-200",
+              title: "General Inquiries",
+              desc: "Partnerships, feedback, questions.",
+              email: "hello@sulitscan.com",
+            },
+            {
+              icon: Tag,
+              color: "text-blue-600",
+              bg: "bg-blue-50",
+              border: "border-blue-200",
+              title: "Suggest a Deal",
+              desc: "Found a sulit deal we missed?",
+              email: "deals@sulitscan.com",
+            },
+            {
+              icon: MessageSquare,
+              color: "text-purple-600",
+              bg: "bg-purple-50",
+              border: "border-purple-200",
+              title: "Partnerships",
+              desc: "Affiliate or store partnerships.",
+              email: "partners@sulitscan.com",
+            },
+          ].map((c) => (
+            <div key={c.title} className={`p-4 ${c.bg} border ${c.border} rounded-2xl`}>
+              <c.icon className={`w-5 h-5 ${c.color} mb-2`} aria-hidden="true" />
+              <h2 className="text-sm font-bold text-slate-900 mb-0.5">{c.title}</h2>
+              <p className="text-xs text-slate-500 mb-2">{c.desc}</p>
+              <a href={`mailto:${c.email}`} className={`text-xs font-semibold ${c.color} hover:underline`}>
+                {c.email}
+              </a>
+            </div>
+          ))}
         </div>
 
-        {/* Simple contact form */}
+        {/* Contact form */}
         <form
           className="space-y-5 bg-white border border-slate-100 rounded-2xl p-6 shadow-sm"
           aria-label="Contact form"
         >
           <h2 className="text-lg font-bold text-slate-900">Send a message</h2>
 
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1.5">
-              Name
-            </label>
-            <input
-              id="name"
-              name="name"
-              type="text"
-              autoComplete="name"
-              className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
-              placeholder="Your name"
-              required
-            />
-          </div>
-
-          <div>
-            <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1.5">
-              Email
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="email"
-              className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
-              placeholder="you@example.com"
-              required
-            />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1.5">
+                Name
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                autoComplete="name"
+                className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                placeholder="Your name"
+                required
+              />
+            </div>
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1.5">
+                Email
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autoComplete="email"
+                className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
+                placeholder="you@example.com"
+                required
+              />
+            </div>
           </div>
 
           <div>
             <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-1.5">
-              Subject
+              Topic
             </label>
             <select
               id="subject"
@@ -131,14 +147,17 @@ export default function ContactPage() {
 
           <button
             type="submit"
-            className="w-full py-3 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-semibold rounded-xl shadow-sm transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+            className="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           >
             Send Message
           </button>
 
           <p className="text-xs text-slate-400 text-center">
-            This form is for demonstration. We&apos;ll respond to{" "}
-            <a href="mailto:hello@sulitscan.com" className="underline">hello@sulitscan.com</a>.
+            Form is for demonstration purposes.{" "}
+            <a href="mailto:hello@sulitscan.com" className="underline hover:text-slate-600">
+              Email us directly
+            </a>{" "}
+            for a faster response.
           </p>
         </form>
       </div>

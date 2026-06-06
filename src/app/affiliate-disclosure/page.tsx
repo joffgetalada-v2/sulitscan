@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
 import { siteConfig } from "@/lib/seo"
+import { FileText } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Affiliate Disclosure | SulitScan PH",
@@ -8,21 +9,43 @@ export const metadata: Metadata = {
   alternates: { canonical: `${siteConfig.url}/affiliate-disclosure` },
 }
 
+const partners = [
+  "Shopee Philippines", "Lazada Philippines", "AliExpress", "Temu", "SHEIN",
+  "iHerb", "Trip.com", "Klook", "Zalora Philippines", "Canva",
+]
+
 export default function AffiliateDisclosurePage() {
   return (
     <>
       <BreadcrumbJsonLd
         items={[
-          { name: "Home", url: siteConfig.url },
+          { name: "Home",                 url: siteConfig.url },
           { name: "Affiliate Disclosure", url: `${siteConfig.url}/affiliate-disclosure` },
         ]}
       />
 
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-3xl font-black text-slate-900 mb-2">Affiliate Disclosure</h1>
-        <p className="text-sm text-slate-400 mb-8">Last updated: June 2025</p>
+      {/* Header */}
+      <div className="bg-gradient-to-b from-amber-50 to-white border-b border-slate-100">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="flex items-start gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-amber-100 flex items-center justify-center shrink-0">
+              <FileText className="w-6 h-6 text-amber-700" aria-hidden="true" />
+            </div>
+            <div>
+              <span className="inline-block mb-2 text-xs font-semibold tracking-widest uppercase text-amber-700">
+                Legal
+              </span>
+              <h1 className="text-3xl font-black text-slate-900 tracking-tight mb-1">
+                Affiliate Disclosure
+              </h1>
+              <p className="text-sm text-slate-400">Last updated: June 2025</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-        <div className="space-y-8 text-sm text-slate-600 leading-relaxed">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="space-y-10 text-sm text-slate-600 leading-relaxed">
           <section aria-labelledby="disclosure-intro">
             <h2 id="disclosure-intro" className="text-lg font-bold text-slate-900 mb-3">
               How SulitScan PH Earns Money
@@ -38,22 +61,16 @@ export default function AffiliateDisclosurePage() {
             <h2 id="disclosure-partners" className="text-lg font-bold text-slate-900 mb-3">
               Our Affiliate Partners
             </h2>
-            <p className="mb-3">
-              We currently maintain affiliate relationships with the following platforms (this list
-              may be updated as we add new partnerships):
+            <p className="mb-4">
+              We currently maintain affiliate relationships with the following platforms:
             </p>
-            <ul className="list-disc pl-5 space-y-1">
-              <li>Shopee Philippines</li>
-              <li>Lazada Philippines</li>
-              <li>AliExpress</li>
-              <li>Temu</li>
-              <li>SHEIN</li>
-              <li>iHerb</li>
-              <li>Trip.com</li>
-              <li>Klook</li>
-              <li>Zalora Philippines</li>
-              <li>Canva</li>
-            </ul>
+            <div className="flex flex-wrap gap-2">
+              {partners.map((p) => (
+                <span key={p} className="px-3 py-1 bg-slate-50 border border-slate-100 rounded-full text-xs font-medium text-slate-600">
+                  {p}
+                </span>
+              ))}
+            </div>
           </section>
 
           <section aria-labelledby="disclosure-links">
@@ -61,9 +78,9 @@ export default function AffiliateDisclosurePage() {
               How to Identify Affiliate Links
             </h2>
             <p>
-              All external affiliate links on SulitScan PH are labeled with the button text
-              &quot;View Deal on [Platform]&quot; or similar. External links use the attributes{" "}
-              <code className="bg-slate-100 px-1 rounded text-xs">rel=&quot;sponsored nofollow noopener noreferrer&quot;</code>{" "}
+              All external affiliate links on SulitScan PH are labeled with button text like
+              &quot;View Deal on [Platform]&quot;. External links use the attributes{" "}
+              <code className="bg-slate-100 px-1.5 py-0.5 rounded text-xs font-mono">rel=&quot;sponsored nofollow noopener noreferrer&quot;</code>{" "}
               and open in a new tab.
             </p>
           </section>
@@ -75,8 +92,7 @@ export default function AffiliateDisclosurePage() {
             <p>
               Our affiliate relationships do not influence which deals we feature. We only include
               deals that we believe offer genuine value to Filipino shoppers. Every deal card
-              includes a reason note and a SulitScan Score based on honest assessment of deal
-              quality.
+              includes a reason note and a SulitScan Score based on honest assessment of deal quality.
             </p>
           </section>
 
@@ -84,11 +100,13 @@ export default function AffiliateDisclosurePage() {
             <h2 id="disclosure-demo" className="text-lg font-bold text-slate-900 mb-3">
               Demo Data Notice
             </h2>
-            <p>
-              All deals currently displayed on SulitScan PH are sample/demo content. Prices shown
-              are illustrative only and may not reflect actual current prices. Always check the
-              partner store directly before making a purchase decision.
-            </p>
+            <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl">
+              <p>
+                All deals currently displayed on SulitScan PH are <strong>sample/demo content</strong>.
+                Prices shown are illustrative only and may not reflect actual current prices. Always
+                check the partner store directly before making a purchase decision.
+              </p>
+            </div>
           </section>
 
           <section aria-labelledby="disclosure-compliance">

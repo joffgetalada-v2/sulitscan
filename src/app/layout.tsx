@@ -25,6 +25,14 @@ export const metadata: Metadata = {
     default: "SulitScan PH | Verified Online Deals, Discounts, and Shopping Guides",
     template: "%s | SulitScan PH",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/logo-mark.svg", type: "image/svg+xml", sizes: "any" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/logo-mark.svg",
+  },
 }
 
 export default function RootLayout({
