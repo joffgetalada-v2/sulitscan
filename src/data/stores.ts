@@ -1,0 +1,161 @@
+export interface Store {
+  id: string
+  slug: string
+  name: string
+  description: string
+  country: string
+  categories: string[]
+  shipsToPhilippines: boolean
+  freeShippingMinimum: number | null
+  trustLevel: "high" | "medium" | "new"
+  gradient: string
+  affiliateLink: string
+  isDemo: boolean
+}
+
+export const stores: Store[] = [
+  {
+    id: "store-shopee",
+    slug: "shopee-ph",
+    name: "Shopee PH",
+    description: "Philippines' largest e-commerce platform. Huge seller base, frequent sales events, and ShopeePay cashback.",
+    country: "Philippines",
+    categories: ["Fashion", "Tech", "Home", "Beauty", "Food"],
+    shipsToPhilippines: true,
+    freeShippingMinimum: 0,
+    trustLevel: "high",
+    gradient: "from-orange-400 to-red-500",
+    affiliateLink: "https://shopee.ph/affiliate-demo",
+    isDemo: true,
+  },
+  {
+    id: "store-lazada",
+    slug: "lazada-ph",
+    name: "Lazada PH",
+    description: "Major marketplace with brand official stores. Reliable seller ratings and LazMall for authentic products.",
+    country: "Philippines",
+    categories: ["Tech", "Fashion", "Beauty", "Home", "Sports"],
+    shipsToPhilippines: true,
+    freeShippingMinimum: 0,
+    trustLevel: "high",
+    gradient: "from-blue-500 to-indigo-600",
+    affiliateLink: "https://lazada.com.ph/affiliate-demo",
+    isDemo: true,
+  },
+  {
+    id: "store-aliexpress",
+    slug: "aliexpress",
+    name: "AliExpress",
+    description: "Global marketplace with massive variety and competitive pricing. Buyer protection available. Shipping 10–25 days.",
+    country: "Global",
+    categories: ["Tech", "Home", "Fashion", "Tools", "Hobby"],
+    shipsToPhilippines: true,
+    freeShippingMinimum: null,
+    trustLevel: "medium",
+    gradient: "from-orange-500 to-amber-600",
+    affiliateLink: "https://aliexpress.com/affiliate-demo",
+    isDemo: true,
+  },
+  {
+    id: "store-temu",
+    slug: "temu",
+    name: "Temu",
+    description: "Ultra-low-price marketplace from Pinduoduo. Good for non-critical purchases. Check reviews carefully.",
+    country: "Global",
+    categories: ["Fashion", "Home", "Beauty", "Toys"],
+    shipsToPhilippines: true,
+    freeShippingMinimum: null,
+    trustLevel: "medium",
+    gradient: "from-orange-400 to-orange-600",
+    affiliateLink: "https://temu.com/affiliate-demo",
+    isDemo: true,
+  },
+  {
+    id: "store-shein",
+    slug: "shein",
+    name: "SHEIN",
+    description: "Fast fashion platform with deep discounts. Size up for Filipino sizing. Check material descriptions.",
+    country: "Global",
+    categories: ["Fashion", "Beauty", "Home"],
+    shipsToPhilippines: true,
+    freeShippingMinimum: 599,
+    trustLevel: "medium",
+    gradient: "from-gray-700 to-slate-900",
+    affiliateLink: "https://shein.com/affiliate-demo",
+    isDemo: true,
+  },
+  {
+    id: "store-iherb",
+    slug: "iherb",
+    name: "iHerb",
+    description: "Trusted health and wellness store. Vitamins, supplements, natural beauty. Ships from US with good pricing.",
+    country: "USA",
+    categories: ["Health", "Beauty", "Supplements"],
+    shipsToPhilippines: true,
+    freeShippingMinimum: 1500,
+    trustLevel: "high",
+    gradient: "from-green-500 to-lime-600",
+    affiliateLink: "https://iherb.com/affiliate-demo",
+    isDemo: true,
+  },
+  {
+    id: "store-tripcom",
+    slug: "trip-com",
+    name: "Trip.com",
+    description: "Global travel booking platform. Good for hotels, flights, and packages. Price comparison built in.",
+    country: "Global",
+    categories: ["Travel", "Hotels", "Flights"],
+    shipsToPhilippines: false,
+    freeShippingMinimum: null,
+    trustLevel: "high",
+    gradient: "from-sky-400 to-blue-600",
+    affiliateLink: "https://trip.com/affiliate-demo",
+    isDemo: true,
+  },
+  {
+    id: "store-klook",
+    slug: "klook",
+    name: "Klook",
+    description: "Activities, tours, and experiences across Asia and the Philippines. Instant booking and confirmation.",
+    country: "Global",
+    categories: ["Travel", "Activities", "Tours"],
+    shipsToPhilippines: false,
+    freeShippingMinimum: null,
+    trustLevel: "high",
+    gradient: "from-red-400 to-orange-500",
+    affiliateLink: "https://klook.com/affiliate-demo",
+    isDemo: true,
+  },
+  {
+    id: "store-zalora",
+    slug: "zalora-ph",
+    name: "Zalora PH",
+    description: "Fashion-focused marketplace with many official brand stores. Size guides available. Good return policy.",
+    country: "Philippines",
+    categories: ["Fashion", "Beauty", "Sports"],
+    shipsToPhilippines: true,
+    freeShippingMinimum: 1000,
+    trustLevel: "high",
+    gradient: "from-pink-400 to-rose-600",
+    affiliateLink: "https://zalora.com.ph/affiliate-demo",
+    isDemo: true,
+  },
+  {
+    id: "store-canva",
+    slug: "canva",
+    name: "Canva",
+    description: "Design tool with a generous free tier and powerful Pro plan. Ideal for freelancers and businesses.",
+    country: "Global",
+    categories: ["Digital Tools", "Design"],
+    shipsToPhilippines: false,
+    freeShippingMinimum: null,
+    trustLevel: "high",
+    gradient: "from-purple-400 to-fuchsia-600",
+    affiliateLink: "https://canva.com/affiliate-demo",
+    isDemo: true,
+  },
+]
+
+export function getStoreBySlug(slug: string): Store | undefined {
+  return stores.find((s) => s.slug === slug)
+}

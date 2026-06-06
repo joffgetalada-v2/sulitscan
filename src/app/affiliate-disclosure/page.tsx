@@ -1,0 +1,122 @@
+import type { Metadata } from "next"
+import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
+import { siteConfig } from "@/lib/seo"
+
+export const metadata: Metadata = {
+  title: "Affiliate Disclosure | SulitScan PH",
+  description: "SulitScan PH affiliate disclosure. Learn how we earn commissions and how that affects our deal recommendations.",
+  alternates: { canonical: `${siteConfig.url}/affiliate-disclosure` },
+}
+
+export default function AffiliateDisclosurePage() {
+  return (
+    <>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Home", url: siteConfig.url },
+          { name: "Affiliate Disclosure", url: `${siteConfig.url}/affiliate-disclosure` },
+        ]}
+      />
+
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <h1 className="text-3xl font-black text-slate-900 mb-2">Affiliate Disclosure</h1>
+        <p className="text-sm text-slate-400 mb-8">Last updated: June 2025</p>
+
+        <div className="space-y-8 text-sm text-slate-600 leading-relaxed">
+          <section aria-labelledby="disclosure-intro">
+            <h2 id="disclosure-intro" className="text-lg font-bold text-slate-900 mb-3">
+              How SulitScan PH Earns Money
+            </h2>
+            <p>
+              SulitScan PH participates in affiliate marketing programs. This means that when you
+              click certain links on this website and make a purchase, we may earn a commission at
+              no additional cost to you.
+            </p>
+          </section>
+
+          <section aria-labelledby="disclosure-partners">
+            <h2 id="disclosure-partners" className="text-lg font-bold text-slate-900 mb-3">
+              Our Affiliate Partners
+            </h2>
+            <p className="mb-3">
+              We currently maintain affiliate relationships with the following platforms (this list
+              may be updated as we add new partnerships):
+            </p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Shopee Philippines</li>
+              <li>Lazada Philippines</li>
+              <li>AliExpress</li>
+              <li>Temu</li>
+              <li>SHEIN</li>
+              <li>iHerb</li>
+              <li>Trip.com</li>
+              <li>Klook</li>
+              <li>Zalora Philippines</li>
+              <li>Canva</li>
+            </ul>
+          </section>
+
+          <section aria-labelledby="disclosure-links">
+            <h2 id="disclosure-links" className="text-lg font-bold text-slate-900 mb-3">
+              How to Identify Affiliate Links
+            </h2>
+            <p>
+              All external affiliate links on SulitScan PH are labeled with the button text
+              &quot;View Deal on [Platform]&quot; or similar. External links use the attributes{" "}
+              <code className="bg-slate-100 px-1 rounded text-xs">rel=&quot;sponsored nofollow noopener noreferrer&quot;</code>{" "}
+              and open in a new tab.
+            </p>
+          </section>
+
+          <section aria-labelledby="disclosure-integrity">
+            <h2 id="disclosure-integrity" className="text-lg font-bold text-slate-900 mb-3">
+              Editorial Integrity
+            </h2>
+            <p>
+              Our affiliate relationships do not influence which deals we feature. We only include
+              deals that we believe offer genuine value to Filipino shoppers. Every deal card
+              includes a reason note and a SulitScan Score based on honest assessment of deal
+              quality.
+            </p>
+          </section>
+
+          <section aria-labelledby="disclosure-demo">
+            <h2 id="disclosure-demo" className="text-lg font-bold text-slate-900 mb-3">
+              Demo Data Notice
+            </h2>
+            <p>
+              All deals currently displayed on SulitScan PH are sample/demo content. Prices shown
+              are illustrative only and may not reflect actual current prices. Always check the
+              partner store directly before making a purchase decision.
+            </p>
+          </section>
+
+          <section aria-labelledby="disclosure-compliance">
+            <h2 id="disclosure-compliance" className="text-lg font-bold text-slate-900 mb-3">
+              Compliance
+            </h2>
+            <p>
+              This disclosure is provided in accordance with the FTC&apos;s guidelines on endorsements
+              and testimonials, and similar regulations. We aim to be transparent about all
+              commercial relationships that may influence the content on this site.
+            </p>
+          </section>
+
+          <section aria-labelledby="disclosure-contact">
+            <h2 id="disclosure-contact" className="text-lg font-bold text-slate-900 mb-3">
+              Questions?
+            </h2>
+            <p>
+              If you have questions about our affiliate relationships or how we evaluate deals,
+              please{" "}
+              <a href="/contact" className="text-green-600 underline hover:text-green-700">
+                contact us
+              </a>
+              .
+            </p>
+          </section>
+        </div>
+      </div>
+    </>
+  )
+}
