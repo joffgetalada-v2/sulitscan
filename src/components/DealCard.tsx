@@ -10,22 +10,7 @@ interface DealCardProps {
   deal: Deal
 }
 
-const platformColors: Record<string, string> = {
-  Shopee:         "bg-orange-50  text-orange-600  border-orange-100",
-  Lazada:         "bg-blue-50    text-blue-700    border-blue-100",
-  AliExpress:     "bg-orange-50  text-orange-600  border-orange-100",
-  Temu:           "bg-amber-50   text-amber-700   border-amber-100",
-  SHEIN:          "bg-slate-100  text-slate-700   border-slate-200",
-  Canva:          "bg-purple-50  text-purple-700  border-purple-100",
-  iHerb:          "bg-green-50   text-green-700   border-green-100",
-  "Trip.com":     "bg-sky-50     text-sky-700     border-sky-100",
-  Klook:          "bg-red-50     text-red-600     border-red-100",
-  "Sephora PH":   "bg-rose-50    text-rose-700    border-rose-100",
-}
-
 export default function DealCard({ deal }: DealCardProps) {
-  const platColor = platformColors[deal.platform] ?? "bg-slate-50 text-slate-700 border-slate-100"
-
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
@@ -37,22 +22,20 @@ export default function DealCard({ deal }: DealCardProps) {
     >
       {/* Image / visual area */}
       <div
-        className={`relative h-44 bg-gradient-to-br ${deal.imageGradient} overflow-hidden`}
+        className={`relative h-56 bg-gradient-to-br ${deal.imageGradient} overflow-hidden`}
         aria-hidden="true"
       >
         {deal.imageUrl ? (
-          /* Real product image */
           <Image
             src={deal.imageUrl}
             alt={deal.title}
             fill
-            className="object-contain p-3"
+            className="object-cover"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             unoptimized
           />
         ) : (
           <>
-            {/* Dot pattern fallback */}
             <div
               className="absolute inset-0 opacity-10"
               style={{
@@ -60,7 +43,6 @@ export default function DealCard({ deal }: DealCardProps) {
                 backgroundSize: "18px 18px",
               }}
             />
-            {/* Big discount text fallback */}
             <div className="absolute inset-0 flex flex-col items-center justify-center">
               <span className="text-6xl font-black text-white opacity-20 leading-none select-none">
                 {deal.discount}%
@@ -74,11 +56,6 @@ export default function DealCard({ deal }: DealCardProps) {
         <div className="absolute top-3 left-3 flex items-center gap-1 bg-white/95 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm">
           <Zap className="w-3 h-3 text-green-600" aria-hidden="true" />
           <span className="text-xs font-bold text-green-700">−{deal.discount}%</span>
-        </div>
-
-        {/* Platform badge */}
-        <div className={`absolute top-3 right-3 px-2.5 py-1 rounded-full border text-xs font-semibold bg-white/95 backdrop-blur-sm shadow-sm ${platColor}`}>
-          {deal.platform}
         </div>
 
         {/* Category */}
