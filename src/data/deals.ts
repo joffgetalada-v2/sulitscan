@@ -19,13 +19,14 @@ export interface Deal {
 }
 
 export const deals: Deal[] = [
+  // ── Old demo deals (hidden from public — no active affiliate relationship) ──
   {
     id: "deal-001",
     slug: "xiaomi-smart-band-9-shopee",
     title: "Xiaomi Smart Band 9 – Activity Tracker with Heart Rate",
     platform: "Shopee",
     platformColor: "#ee4d2d",
-    category: "Tech Deals",
+    category: "Electronics",
     originalPrice: 2499,
     salePrice: 1899,
     discount: 24,
@@ -61,7 +62,7 @@ export const deals: Deal[] = [
     title: "USB Rechargeable Portable Mini Blender 400ml",
     platform: "Shopee",
     platformColor: "#ee4d2d",
-    category: "Home Finds",
+    category: "Home",
     originalPrice: 499,
     salePrice: 269,
     discount: 46,
@@ -75,18 +76,18 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-004",
-    slug: "linen-pants-temu",
+    slug: "linen-pants-temu-demo",
     title: "Wide-Leg Linen Blend Pants – Summer Casual (Multiple Colors)",
-    platform: "Temu",
-    platformColor: "#ff6d00",
+    platform: "Shopee",
+    platformColor: "#ee4d2d",
     category: "Fashion",
     originalPrice: 750,
     salePrice: 389,
     discount: 48,
     sulitScore: 7,
-    reason: "Lightweight and trendy. Temu shipping takes 7–15 days — check seller rating first.",
+    reason: "Lightweight and trendy. Check seller rating first.",
     imageGradient: "from-amber-300 to-orange-500",
-    affiliateLink: "https://temu.com/affiliate-demo-004",
+    affiliateLink: "https://shopee.ph/affiliate-demo-004",
     lastChecked: "Demo deal – Last checked sample, June 2025",
     isDemo: true,
     tags: ["fashion", "summer", "casual", "under-500"],
@@ -133,7 +134,7 @@ export const deals: Deal[] = [
     title: "7-in-1 USB-C Hub (4K HDMI, SD Card, 3x USB 3.0, PD 100W)",
     platform: "AliExpress",
     platformColor: "#ff6a00",
-    category: "Tech Deals",
+    category: "Electronics",
     originalPrice: 699,
     salePrice: 349,
     discount: 50,
@@ -205,7 +206,7 @@ export const deals: Deal[] = [
     title: "Digital Air Fryer 3L – Touch Panel with 8 Presets",
     platform: "Shopee",
     platformColor: "#ee4d2d",
-    category: "Home Finds",
+    category: "Home",
     originalPrice: 1999,
     salePrice: 1199,
     discount: 40,
@@ -235,24 +236,22 @@ export const deals: Deal[] = [
     isDemo: true,
     tags: ["travel", "cebu", "activity", "tour"],
   },
-  // ── Sephora PH deals (via Involve Asia affiliate program, 5.6% commission on new customers) ──
-  // TODO: Replace affiliateLink values with your real Involve Asia tracking links
+  // ── Old Sephora demo deals (replaced by live datafeed deals 018-022 below) ──
   {
     id: "deal-013",
     slug: "laneige-lip-sleeping-mask-sephora",
     title: "Laneige Lip Sleeping Mask Berry 20g – Overnight Lip Treatment",
-    platform: "Sephora PH",
-    platformColor: "#000000",
+    platform: "Shopee",
+    platformColor: "#ee4d2d",
     category: "Beauty",
     originalPrice: 990,
     salePrice: 742,
     discount: 25,
     sulitScore: 9,
-    reason: "Sephora PH's #1 bestselling lip treatment. Vitamin C + antioxidants for overnight repair. Genuine 25% off during Sephora sale events — price rarely dips this low.",
+    reason: "Sephora PH's #1 bestselling lip treatment. Vitamin C + antioxidants for overnight repair.",
     imageGradient: "from-rose-400 to-pink-600",
-    // Replace with your Involve Asia tracking link for Sephora PH
-    affiliateLink: "https://sephora.ph/laneige-lip-sleeping-mask-berry/P10000011/cat/lips",
-    lastChecked: "Demo deal – Verify price on Sephora PH before sharing. Replace link with your Involve Asia tracking URL.",
+    affiliateLink: "https://shopee.ph/affiliate-demo-013",
+    lastChecked: "Demo deal – verify price before sharing.",
     isDemo: true,
     tags: ["skincare", "lips", "k-beauty", "bestseller", "sephora", "laneige"],
   },
@@ -260,17 +259,17 @@ export const deals: Deal[] = [
     id: "deal-014",
     slug: "some-by-mi-aha-bha-pha-toner-sephora",
     title: "Some By Mi AHA BHA PHA 30 Days Miracle Toner 150ml",
-    platform: "Sephora PH",
-    platformColor: "#000000",
+    platform: "Shopee",
+    platformColor: "#ee4d2d",
     category: "Beauty",
     originalPrice: 995,
     salePrice: 746,
     discount: 25,
     sulitScore: 8,
-    reason: "Triple-acid toner beloved in the Filipino skincare community. Targets acne, dark spots, and uneven texture. Frequently discounted during Sephora Flash Sales.",
+    reason: "Triple-acid toner beloved in the Filipino skincare community.",
     imageGradient: "from-violet-400 to-purple-600",
-    affiliateLink: "https://sephora.ph/some-by-mi-aha-bha-pha-30-days-miracle-toner/P10000013/cat/toners",
-    lastChecked: "Demo deal – Verify price on Sephora PH before sharing. Replace link with your Involve Asia tracking URL.",
+    affiliateLink: "https://shopee.ph/affiliate-demo-014",
+    lastChecked: "Demo deal – verify price before sharing.",
     isDemo: true,
     tags: ["skincare", "toner", "k-beauty", "acne", "sephora", "some-by-mi"],
   },
@@ -278,17 +277,17 @@ export const deals: Deal[] = [
     id: "deal-015",
     slug: "cosrx-snail-96-mucin-essence-sephora",
     title: "COSRX Advanced Snail 96 Mucin Power Essence 100ml",
-    platform: "Sephora PH",
-    platformColor: "#000000",
+    platform: "Shopee",
+    platformColor: "#ee4d2d",
     category: "Beauty",
     originalPrice: 895,
     salePrice: 671,
     discount: 25,
     sulitScore: 9,
-    reason: "96% snail secretion filtrate — the highest concentration available. Holy grail for dry, sensitized skin. One of Sephora PH's all-time bestsellers across all skin types.",
+    reason: "96% snail secretion filtrate — the highest concentration available.",
     imageGradient: "from-amber-300 to-orange-400",
-    affiliateLink: "https://sephora.ph/cosrx-advanced-snail-96-mucin-power-essence/P10000015/cat/serums",
-    lastChecked: "Demo deal – Verify price on Sephora PH before sharing. Replace link with your Involve Asia tracking URL.",
+    affiliateLink: "https://shopee.ph/affiliate-demo-015",
+    lastChecked: "Demo deal – verify price before sharing.",
     isDemo: true,
     tags: ["skincare", "essence", "k-beauty", "hydrating", "sephora", "cosrx", "bestseller"],
   },
@@ -296,17 +295,17 @@ export const deals: Deal[] = [
     id: "deal-016",
     slug: "glow-recipe-watermelon-dew-drops-sephora",
     title: "Glow Recipe Watermelon Glow Niacinamide Dew Drops 15ml",
-    platform: "Sephora PH",
-    platformColor: "#000000",
+    platform: "Shopee",
+    platformColor: "#ee4d2d",
     category: "Beauty",
     originalPrice: 2600,
     salePrice: 2080,
     discount: 20,
     sulitScore: 8,
-    reason: "Viral brightening serum with 5% niacinamide + hyaluronic acid. Rare 20% off appears during Sephora sale events. Small bottle goes a long way — 2–3 drops per use.",
+    reason: "Viral brightening serum with 5% niacinamide + hyaluronic acid.",
     imageGradient: "from-pink-300 to-red-400",
-    affiliateLink: "https://sephora.ph/glow-recipe-watermelon-glow-niacinamide-dew-drops/P10000016/cat/serums",
-    lastChecked: "Demo deal – Verify price on Sephora PH before sharing. Replace link with your Involve Asia tracking URL.",
+    affiliateLink: "https://shopee.ph/affiliate-demo-016",
+    lastChecked: "Demo deal – verify price before sharing.",
     isDemo: true,
     tags: ["skincare", "serum", "brightening", "niacinamide", "sephora", "glow-recipe"],
   },
@@ -314,22 +313,23 @@ export const deals: Deal[] = [
     id: "deal-017",
     slug: "rare-beauty-soft-pinch-liquid-blush-sephora",
     title: "Rare Beauty Soft Pinch Liquid Blush 7.5ml – Buildable Coverage",
-    platform: "Sephora PH",
-    platformColor: "#000000",
+    platform: "Shopee",
+    platformColor: "#ee4d2d",
     category: "Beauty",
     originalPrice: 2100,
     salePrice: 1680,
     discount: 20,
     sulitScore: 9,
-    reason: "Selena Gomez's iconic liquid blush. A tiny dot gives full-day color — the bottle lasts 12–18 months. Sephora exclusive. Frequently sells out during sale events.",
+    reason: "Selena Gomez's iconic liquid blush. A tiny dot gives full-day color.",
     imageGradient: "from-rose-300 to-rose-500",
-    affiliateLink: "https://sephora.ph/rare-beauty-soft-pinch-liquid-blush/P10000017/cat/blush",
-    lastChecked: "Demo deal – Verify price on Sephora PH before sharing. Replace link with your Involve Asia tracking URL.",
+    affiliateLink: "https://shopee.ph/affiliate-demo-017",
+    lastChecked: "Demo deal – verify price before sharing.",
     isDemo: true,
     tags: ["makeup", "blush", "rare-beauty", "sephora", "bestseller", "gift"],
   },
-  // ── Live deals from Sephora PH datafeed (Involve Asia, publisher ID 363646) ──
-  // Prices and affiliate links verified from official datafeed – June 6, 2026
+
+  // ── Live deals — Sephora PH (Involve Asia affiliate, publisher ID 363646) ──
+  // Prices verified from official Sephora PH datafeed – June 6, 2026
   {
     id: "deal-018",
     slug: "benefit-boi-ing-hydrating-concealer-sephora",
@@ -425,25 +425,25 @@ export const deals: Deal[] = [
     isDemo: false,
     tags: ["makeup", "mascara", "benefit", "sephora", "bestseller", "sale"],
   },
-  // ── Temu PH Hot Items — Exclusive Deals (manually curated from affiliate dashboard) ──
-  // TODO: Replace affiliateLink values with your real Temu tracking links
-  // Go to Temu Affiliate → Hot Items → click "Share" to generate your tracking URL
+
+  // ── Live deals — curated collection (Temu affiliate, ge7hcjmmrb4) ──
+  // Click affiliate link to browse the full curated best-seller collection
   {
     id: "deal-023",
     slug: "kz-edx-pro-x-earphones-temu",
     title: "KZ EDX Pro X In-Ear Monitor Earphones – Hi-Fi Dual Driver",
     platform: "Temu",
     platformColor: "#ff6d00",
-    category: "Tech Deals",
+    category: "Electronics",
     originalPrice: 199,
     salePrice: 49,
     discount: 75,
     sulitScore: 9,
-    reason: "₱49 for hi-fi dual-driver earphones from KZ — a brand trusted by audiophiles. 9,150+ reviews, 100K+ sold. Temu Exclusive Deal. Sounds like earphones worth 5× the price.",
+    reason: "₱49 for hi-fi dual-driver earphones from KZ — a brand trusted by audiophiles. 9,150+ reviews, 100K+ sold. Exclusive Deal. Sounds like earphones worth 5× the price.",
     imageGradient: "from-slate-700 to-zinc-900",
-    affiliateLink: "https://temu.com/affiliate-demo-023",
-    lastChecked: "Demo deal – Get your real tracking link from Temu Affiliate → Hot Items → Share.",
-    isDemo: true,
+    affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
+    lastChecked: "Verified from Temu affiliate dashboard – June 6, 2026. Price may change.",
+    isDemo: false,
     tags: ["tech", "earphones", "audio", "under-500", "exclusive-deal"],
   },
   {
@@ -452,16 +452,16 @@ export const deals: Deal[] = [
     title: "Microfiber Car Wash Brush Mitt – Scratch-Free Cleaning",
     platform: "Temu",
     platformColor: "#ff6d00",
-    category: "Home Finds",
+    category: "Home",
     originalPrice: 149,
     salePrice: 65,
     discount: 56,
     sulitScore: 8,
-    reason: "Soft microfiber won't scratch your car's paint. 2,900+ reviews, 100K+ sold. At ₱65, it's cheaper than a car wash and lasts months. Temu Exclusive Deal.",
+    reason: "Soft microfiber won't scratch your car's paint. 2,900+ reviews, 100K+ sold. At ₱65, it's cheaper than a car wash and lasts months.",
     imageGradient: "from-sky-500 to-blue-700",
-    affiliateLink: "https://temu.com/affiliate-demo-024",
-    lastChecked: "Demo deal – Get your real tracking link from Temu Affiliate → Hot Items → Share.",
-    isDemo: true,
+    affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
+    lastChecked: "Verified from Temu affiliate dashboard – June 6, 2026. Price may change.",
+    isDemo: false,
     tags: ["home", "car", "cleaning", "under-500", "exclusive-deal"],
   },
   {
@@ -477,9 +477,9 @@ export const deals: Deal[] = [
     sulitScore: 8,
     reason: "Local warehouse — ships fast within the Philippines. Lightweight EVA sole, easy slip-on design. At ₱86, it's the best budget slide you'll find locally.",
     imageGradient: "from-stone-500 to-neutral-700",
-    affiliateLink: "https://temu.com/affiliate-demo-025",
-    lastChecked: "Demo deal – Get your real tracking link from Temu Affiliate → Hot Items → Share.",
-    isDemo: true,
+    affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
+    lastChecked: "Verified from Temu affiliate dashboard – June 6, 2026. Price may change.",
+    isDemo: false,
     tags: ["fashion", "shoes", "men", "under-500", "local-warehouse", "exclusive-deal"],
   },
   {
@@ -493,11 +493,11 @@ export const deals: Deal[] = [
     salePrice: 259,
     discount: 48,
     sulitScore: 7,
-    reason: "Trendy blade-sole design, breathable mesh upper. 100K+ sold with 4.5-star rating. Size up — Temu sizing runs small. Great daily trainer at ₱259.",
+    reason: "Trendy blade-sole design, breathable mesh upper. 100K+ sold with 4.5-star rating. Size up — sizing runs small. Great daily trainer at ₱259.",
     imageGradient: "from-gray-700 to-slate-900",
-    affiliateLink: "https://temu.com/affiliate-demo-026",
-    lastChecked: "Demo deal – Get your real tracking link from Temu Affiliate → Hot Items → Share.",
-    isDemo: true,
+    affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
+    lastChecked: "Verified from Temu affiliate dashboard – June 6, 2026. Price may change.",
+    isDemo: false,
     tags: ["fashion", "shoes", "men", "sneakers", "under-500", "exclusive-deal"],
   },
   {
@@ -506,28 +506,47 @@ export const deals: Deal[] = [
     title: "ANENG ST170 Digital Clamp Meter – 7000-Count AC/DC Multimeter",
     platform: "Temu",
     platformColor: "#ff6d00",
-    category: "Tech Deals",
+    category: "Electronics",
     originalPrice: 599,
     salePrice: 259,
     discount: 57,
     sulitScore: 7,
     reason: "Professional-grade 7000-count clamp meter with AC/DC voltage, NCV, diode test, and backlit display. At ₱259, it undercuts local hardware stores by 3–4×.",
     imageGradient: "from-red-600 to-gray-800",
-    affiliateLink: "https://temu.com/affiliate-demo-027",
-    lastChecked: "Demo deal – Get your real tracking link from Temu Affiliate → Hot Items → Share.",
-    isDemo: true,
+    affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
+    lastChecked: "Verified from Temu affiliate dashboard – June 6, 2026. Price may change.",
+    isDemo: false,
     tags: ["tech", "tools", "diy", "electronics", "exclusive-deal"],
   },
 ]
+
+// ─── Helper functions ──────────────────────────────────────────────────────────
 
 export function getDealBySlug(slug: string): Deal | undefined {
   return deals.find((d) => d.slug === slug)
 }
 
-export function getDealsByCategory(category: string): Deal[] {
-  return deals.filter((d) => d.category === category)
+// Platforms with active affiliate relationships — shown on public pages
+const ACTIVE_PLATFORMS = new Set(["Sephora PH", "Temu"])
+
+// All active deals sorted by discount % descending
+export function getActiveDeals(): Deal[] {
+  return deals
+    .filter(d => ACTIVE_PLATFORMS.has(d.platform))
+    .sort((a, b) => b.discount - a.discount)
 }
 
+// Top N active deals for homepage featured section
 export function getFeaturedDeals(count = 6): Deal[] {
-  return deals.slice(0, count)
+  return getActiveDeals().slice(0, count)
+}
+
+// All category labels present in active deals (for filter tabs)
+export function getActiveCategories(): string[] {
+  const cats = new Set(getActiveDeals().map(d => d.category))
+  return ["All", ...Array.from(cats).sort()]
+}
+
+export function getDealsByCategory(category: string): Deal[] {
+  return deals.filter((d) => d.category === category)
 }

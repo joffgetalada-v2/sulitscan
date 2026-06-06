@@ -125,23 +125,15 @@ export default function DealCard({ deal }: DealCardProps) {
           {deal.reason}
         </p>
 
-        {/* Demo notice */}
-        {deal.isDemo && (
-          <div className="flex items-center gap-1.5 mb-3 px-2.5 py-1.5 bg-amber-50 rounded-lg border border-amber-100">
-            <Clock className="w-3 h-3 text-amber-500 shrink-0" aria-hidden="true" />
-            <span className="text-xs text-amber-700 leading-tight">{deal.lastChecked}</span>
-          </div>
-        )}
-
         {/* CTA */}
         <a
           href={deal.affiliateLink}
           target="_blank"
           rel="sponsored nofollow noopener noreferrer"
           className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-xl transition-colors shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-          aria-label={`View deal for ${deal.title} on ${deal.platform} (opens in new tab)`}
+          aria-label={`Get this deal — ${deal.title} (opens in new tab)`}
         >
-          View Deal on {deal.platform}
+          Get This Deal
           <ExternalLink className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
         </a>
       </div>

@@ -3,13 +3,11 @@ import Link from "next/link"
 import Hero from "@/components/Hero"
 import DealCard from "@/components/DealCard"
 import CategoryCard from "@/components/CategoryCard"
-import StoreCard from "@/components/StoreCard"
 import BlogCard from "@/components/BlogCard"
 import SectionHeading from "@/components/SectionHeading"
 import { ItemListJsonLd, FAQJsonLd } from "@/components/SeoJsonLd"
-import { deals, getFeaturedDeals } from "@/data/deals"
+import { getFeaturedDeals, getActiveDeals } from "@/data/deals"
 import { categories } from "@/data/categories"
-import { stores } from "@/data/stores"
 import { getRecentPosts } from "@/data/posts"
 import { siteConfig } from "@/lib/seo"
 import {
@@ -40,11 +38,6 @@ export const metadata: Metadata = {
     url: siteConfig.url,
   },
 }
-
-const platforms = [
-  "Shopee PH", "Lazada PH", "AliExpress", "Temu", "SHEIN",
-  "iHerb", "Trip.com", "Klook", "Zalora PH", "Canva",
-]
 
 const intelligenceCards = [
   {
@@ -86,7 +79,7 @@ const howItWorks = [
     step: "01",
     icon: Search,
     title: "We find deals",
-    body: "We monitor Shopee, Lazada, AliExpress, Temu, iHerb, Klook, and more for genuine price drops.",
+    body: "We monitor top online stores and affiliate networks across the Philippines for genuine price drops.",
   },
   {
     step: "02",
@@ -153,7 +146,7 @@ const faqItems = [
   {
     question: "Are the deals on SulitScan real?",
     answer:
-      "We manually curate deals and check basic value signals. However, all deals shown are sample/demo data. Prices change — always verify before buying.",
+      "We manually curate deals and verify value signals against live affiliate datafeeds. Prices change frequently — always confirm the current price on the store's website before purchasing.",
   },
   {
     question: "What is the SulitScan Score?",
@@ -174,8 +167,8 @@ const faqItems = [
 
 export default function HomePage() {
   const featuredDeals  = getFeaturedDeals(6)
+  const activeDeals    = getActiveDeals()
   const recentPosts    = getRecentPosts(3)
-  const featuredStores = stores.slice(0, 4)
 
   return (
     <>
@@ -191,28 +184,6 @@ export default function HomePage() {
 
       {/* ─── Hero ─── */}
       <Hero />
-
-      {/* ─── Platform logos marquee ─── */}
-      <div className="bg-slate-950 py-5 border-b border-slate-800/60 overflow-hidden" aria-label="Partner platforms">
-        <p className="text-[10px] text-slate-500 text-center mb-3.5 uppercase tracking-[0.2em] font-semibold px-4">
-          Deals from trusted platforms
-        </p>
-        <div className="flex">
-          <div
-            className="flex gap-3 animate-marquee-rtl whitespace-nowrap"
-            aria-hidden="true"
-          >
-            {[...platforms, ...platforms].map((p, i) => (
-              <span
-                key={i}
-                className="inline-flex items-center px-4 py-1.5 border border-slate-700 rounded-full text-xs font-semibold text-slate-400 hover:text-slate-300 transition-colors"
-              >
-                {p}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
 
       {/* ─── Affiliate Disclosure strip ─── */}
       <div className="bg-amber-50 border-b border-amber-200 py-3 px-4 text-center">
@@ -237,7 +208,7 @@ export default function HomePage() {
             {[
               { value: "₱2.4M+", label: "Demo savings shown",  note: "Illustrative total" },
               { value: "50+",    label: "Deals curated",        note: "Manually verified" },
-              { value: "10",     label: "Partner platforms",    note: "Shopee, Lazada & more" },
+              { value: "30–75%", label: "Top discounts",          note: "Verified price drops" },
               { value: "100%",   label: "Free forever",         note: "No premium plan" },
             ].map(({ value, label, note }) => (
               <div key={label}>
@@ -293,14 +264,14 @@ export default function HomePage() {
                 Deals worth your click
               </h2>
               <p className="mt-2 text-slate-500 text-sm">
-                Manually checked. Demo prices — always verify before buying.
+                Verified price drops. Confirm price on the store before buying.
               </p>
             </div>
             <Link
               href="/deals"
               className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-green-600 hover:text-green-700 transition-colors"
             >
-              See all {deals.length} deals{" "}
+              See all {activeDeals.length} deals{" "}
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </div>
@@ -315,7 +286,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-700 font-semibold rounded-full border border-slate-200 hover:border-green-200 hover:text-green-700 transition-all shadow-sm"
             >
               <ShoppingBag className="w-4 h-4" aria-hidden="true" />
-              See All {deals.length} Deals
+              See All {activeDeals.length} Deals
             </Link>
           </div>
         </div>
@@ -343,36 +314,6 @@ export default function HomePage() {
               Browse All Categories
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Partner Stores ─── */}
-      <section className="py-20 bg-slate-50" aria-labelledby="stores-heading">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <span className="inline-block mb-3 px-3 py-1 text-xs font-semibold tracking-widest uppercase text-green-700 bg-green-50 border border-green-100 rounded-full">
-                Partner Stores
-              </span>
-              <h2
-                id="stores-heading"
-                className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight"
-              >
-                Where we find deals
-              </h2>
-            </div>
-            <Link
-              href="/stores"
-              className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-green-600 hover:text-green-700"
-            >
-              All stores <ArrowRight className="w-4 h-4" aria-hidden="true" />
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {featuredStores.map((store) => (
-              <StoreCard key={store.id} store={store} />
-            ))}
           </div>
         </div>
       </section>
@@ -669,8 +610,8 @@ export default function HomePage() {
             <span className="gradient-text">sulit</span> deal today.
           </h2>
           <p className="text-slate-400 mb-10 leading-relaxed text-base sm:text-lg">
-            Browse {deals.length}+ curated deals across Shopee, Lazada, AliExpress, Temu, and more.
-            No auto-redirect. No fake urgency. Just honest deals.
+            Browse {activeDeals.length}+ curated deals — verified price drops and exclusive discounts from top online stores.
+            No auto-redirect. No fake urgency. Just honest savings.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
