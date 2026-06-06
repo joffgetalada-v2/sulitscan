@@ -1,86 +1,172 @@
 /**
- * Temu Hot Items Scraper — run this manually after "npx playwright install chromium"
+ * Temu Hot Items Scraper
  *
- * Usage:
- *   1. Run: npx playwright install chromium
+ * Uses your EXISTING Chrome profile so you are already logged in to Temu —
+ * no need to log in again, and Google sign-in works normally.
+ *
+ * BEFORE RUNNING:
+ *   1. Close ALL Chrome windows (required — Chrome locks the profile folder)
  *   2. Run: node scripts/scrape-temu-hotitems.js
- *   3. A browser window opens — log in to your Temu affiliate account
- *   4. The script waits 60s for you to log in, then auto-scrapes Hot Items
- *   5. Results saved to scripts/temu-hotitems.json
+ *   3. Chrome opens, goes straight to Temu affiliate Hot Items (already logged in)
+ *   4. Scrapes automatically — results saved to scripts/temu-hotitems.json
+ *   5. Share that file in the chat so the deals can be updated
+ *
+ * If Chrome is still running when you start the script, it will fall back to
+ * opening a fresh browser window where you can log in manually.
  */
 
 const { chromium } = require("playwright")
 const fs = require("fs")
 const path = require("path")
+const os = require("os")
 
-async function scrapeTemu() {
-  const browser = await chromium.launch({ headless: false })
-  const page = await browser.newPage()
+// Your existing Chrome profile path (Windows default)
+const CHROME_PROFILE = path.join(
+  "C:\\Users", os.userInfo().username,
+  "AppData", "Local", "Google", "Chrome", "User Data"
+)
 
-  console.log("Opening Temu affiliate Hot Items page...")
-  await page.goto("https://www.temu.com/bg/affiliate/hot-items.html", {
-    waitUntil: "networkidle",
-    timeout: 30000,
+const TEMU_HOT_ITEMS_URL = "https://www.temu.com/bg/affiliate/hot-items.html"
+
+async function scrapeWithProfile() {
+  console.log(`Using Chrome profile: ${CHROME_PROFILE}`)
+  // launchPersistentContext uses your existing profile — already logged in
+  const context = await chromium.launchPersistentContext(CHROME_PROFILE, {
+    headless: false,
+    channel: "chrome",      // use the real installed Chrome, not "Chrome for Testing"
+    args: ["--start-maximized"],
+    viewport: null,
   })
+  return { context, page: await context.newPage(), usingProfile: true }
+}
 
-  console.log("⏳ You have 60 seconds to log in to your Temu affiliate account...")
-  await page.waitForTimeout(60000)
+async function scrapeWithFreshBrowser() {
+  console.log("Falling back to fresh Chrome window — you will need to log in manually.")
+  const browser = await chromium.launch({
+    headless: false,
+    channel: "chrome",     // still use real Chrome so Google sign-in works
+    args: ["--start-maximized"],
+  })
+  const context = await browser.newContext({ viewport: null })
+  return { browser, context, page: await context.newPage(), usingProfile: false }
+}
 
-  console.log("Scraping Hot Items...")
+async function scrapeProducts(page) {
+  console.log("Navigating to Temu affiliate Hot Items...")
+  await page.goto(TEMU_HOT_ITEMS_URL, { waitUntil: "domcontentloaded", timeout: 30000 })
 
-  // Wait for products to appear
-  await page.waitForSelector(".goods-item, [class*='goods'], [class*='item-card']", {
-    timeout: 15000,
-  }).catch(() => console.log("Selector not found — trying fallback..."))
+  // If not logged in, wait for the user to log in (max 90 seconds)
+  const isLoggedIn = await page.locator("text=Hot Items").count().catch(() => 0)
+  if (!isLoggedIn) {
+    console.log("⏳ Waiting up to 90 seconds for you to log in...")
+    await page.waitForSelector("text=Hot Items", { timeout: 90000 }).catch(() => {})
+  }
 
+  // Scroll to load more products
+  console.log("Scrolling to load products...")
+  for (let i = 0; i < 5; i++) {
+    await page.mouse.wheel(0, 1200)
+    await page.waitForTimeout(1000)
+  }
+
+  console.log("Extracting product data...")
   const products = await page.evaluate(() => {
-    const items = []
+    const results = []
 
-    // Try multiple selectors Temu uses for product cards
-    const cards = document.querySelectorAll(
-      ".goods-item, [class*='GoodsItem'], [class*='goods-card'], [class*='item-wrap']"
-    )
+    // Dump all images on the page with their surrounding context
+    const allImgs = Array.from(document.querySelectorAll("img"))
 
-    cards.forEach((card, idx) => {
-      if (idx >= 30) return // Limit to 30 items
+    allImgs.forEach((img) => {
+      const src = img.src || img.dataset?.src || img.dataset?.lazySrc || ""
+      if (!src || src.includes("logo") || src.includes("icon") || src.length < 30) return
 
-      const imgEl = card.querySelector("img")
-      const nameEl = card.querySelector("[class*='name'], [class*='title'], h3, h4")
-      const priceEl = card.querySelector("[class*='price'], [class*='Price']")
-      const commEl = card.querySelector("[class*='commission'], [class*='Commission']")
-      const linkEl = card.querySelector("a")
+      // Walk up the DOM to find the product card container
+      let card = img.parentElement
+      for (let depth = 0; depth < 6; depth++) {
+        if (!card) break
+        const text = card.innerText || ""
+        const hasPrice = /[₱$¥€£]|php|price/i.test(text)
+        const hasCommission = /commission|max/i.test(text)
+        if (hasPrice || hasCommission) break
+        card = card.parentElement
+      }
 
-      const img = imgEl?.src || imgEl?.dataset?.src || ""
+      const cardText = card?.innerText || ""
+      const priceMatch = cardText.match(/[₱$][\d,]+(?:\.\d+)?/)
+      const commMatch = cardText.match(/[₱$][\d,]+(?:\.\d+)?\s*(?:commission|max)/i)
+
+      // Get product name from nearest heading or title
+      const nameEl = card?.querySelector("h1,h2,h3,h4,[class*='name'],[class*='title'],[class*='goods-name']")
       const name = nameEl?.textContent?.trim() || ""
-      const price = priceEl?.textContent?.trim() || ""
-      const commission = commEl?.textContent?.trim() || ""
+
+      // Get link
+      const linkEl = card?.closest("a") || card?.querySelector("a")
       const link = linkEl?.href || ""
 
-      if (name && img) {
-        items.push({ name, img, price, commission, link, idx })
+      if (src && (name || priceMatch)) {
+        results.push({
+          name,
+          img: src,
+          price: priceMatch?.[0] || "",
+          commission: commMatch?.[0] || "",
+          link,
+        })
       }
     })
 
-    return items
+    // Deduplicate by image src
+    const seen = new Set()
+    return results.filter((p) => {
+      if (seen.has(p.img)) return false
+      seen.add(p.img)
+      return true
+    }).slice(0, 40)
   })
 
-  if (products.length === 0) {
-    // Take a screenshot to help debug
-    await page.screenshot({ path: "scripts/temu-debug.png", fullPage: true })
-    console.log("No products found. Screenshot saved to scripts/temu-debug.png")
-  } else {
-    console.log(`Found ${products.length} products!`)
-    const outPath = path.join(__dirname, "temu-hotitems.json")
-    fs.writeFileSync(outPath, JSON.stringify(products, null, 2))
-    console.log(`Saved to ${outPath}`)
-    console.log("\nTop products:")
-    products.slice(0, 10).forEach((p) => {
-      console.log(`  [${p.idx + 1}] ${p.name} — ${p.price} (commission: ${p.commission})`)
-      console.log(`       img: ${p.img.substring(0, 80)}...`)
-    })
-  }
-
-  await browser.close()
+  return products
 }
 
-scrapeTemu().catch(console.error)
+async function main() {
+  let handle = null
+
+  try {
+    handle = await scrapeWithProfile()
+  } catch (err) {
+    console.warn("Could not use existing Chrome profile:", err.message)
+    console.warn("Is Chrome still running? Please close all Chrome windows and try again.")
+    console.warn("Trying fresh browser as fallback...\n")
+    try {
+      handle = await scrapeWithFreshBrowser()
+    } catch (err2) {
+      console.error("Could not launch Chrome. Is Google Chrome installed?", err2.message)
+      process.exit(1)
+    }
+  }
+
+  const { context, page } = handle
+
+  try {
+    const products = await scrapeProducts(page)
+
+    if (products.length === 0) {
+      await page.screenshot({ path: path.join(__dirname, "temu-debug.png"), fullPage: true })
+      console.log("No products found. Screenshot saved to scripts/temu-debug.png")
+      console.log("Share that screenshot in the chat so we can debug the page structure.")
+    } else {
+      const outPath = path.join(__dirname, "temu-hotitems.json")
+      fs.writeFileSync(outPath, JSON.stringify(products, null, 2))
+      console.log(`\nFound ${products.length} products!`)
+      console.log(`Saved to ${outPath}`)
+      console.log("\nTop items:")
+      products.slice(0, 10).forEach((p, i) => {
+        console.log(`  [${i + 1}] ${p.name || "(no name)"} — ${p.price}`)
+        console.log(`       img: ${p.img.substring(0, 90)}`)
+      })
+      console.log("\nDone! Share scripts/temu-hotitems.json in the chat.")
+    }
+  } finally {
+    await context.close()
+  }
+}
+
+main().catch(console.error)
