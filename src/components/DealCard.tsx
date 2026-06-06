@@ -10,15 +10,16 @@ interface DealCardProps {
 }
 
 const platformColors: Record<string, string> = {
-  Shopee:      "bg-orange-50  text-orange-600  border-orange-100",
-  Lazada:      "bg-blue-50    text-blue-700    border-blue-100",
-  AliExpress:  "bg-orange-50  text-orange-600  border-orange-100",
-  Temu:        "bg-amber-50   text-amber-700   border-amber-100",
-  SHEIN:       "bg-slate-100  text-slate-700   border-slate-200",
-  Canva:       "bg-purple-50  text-purple-700  border-purple-100",
-  iHerb:       "bg-green-50   text-green-700   border-green-100",
-  "Trip.com":  "bg-sky-50     text-sky-700     border-sky-100",
-  Klook:       "bg-red-50     text-red-600     border-red-100",
+  Shopee:         "bg-orange-50  text-orange-600  border-orange-100",
+  Lazada:         "bg-blue-50    text-blue-700    border-blue-100",
+  AliExpress:     "bg-orange-50  text-orange-600  border-orange-100",
+  Temu:           "bg-amber-50   text-amber-700   border-amber-100",
+  SHEIN:          "bg-slate-100  text-slate-700   border-slate-200",
+  Canva:          "bg-purple-50  text-purple-700  border-purple-100",
+  iHerb:          "bg-green-50   text-green-700   border-green-100",
+  "Trip.com":     "bg-sky-50     text-sky-700     border-sky-100",
+  Klook:          "bg-red-50     text-red-600     border-red-100",
+  "Sephora PH":   "bg-rose-50    text-rose-700    border-rose-100",
 }
 
 export default function DealCard({ deal }: DealCardProps) {

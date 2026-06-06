@@ -154,6 +154,21 @@ export const stores: Store[] = [
     affiliateLink: "https://canva.com/affiliate-demo",
     isDemo: true,
   },
+  {
+    id: "store-sephora",
+    slug: "sephora-ph",
+    name: "Sephora PH",
+    description: "Premium beauty retailer carrying 300+ brands. Authentic skincare, makeup, fragrance, and hair care with expert-curated picks and a Beauty Rewards program.",
+    country: "Philippines",
+    categories: ["Beauty", "Skincare", "Makeup", "Fragrance", "Hair Care"],
+    shipsToPhilippines: true,
+    freeShippingMinimum: 1500,
+    trustLevel: "high",
+    gradient: "from-slate-800 to-slate-950",
+    // TODO: Replace with your Involve Asia tracking link from the dashboard
+    affiliateLink: "https://sephora.ph",
+    isDemo: true,
+  },
 ]
 
 export function getStoreBySlug(slug: string): Store | undefined {
