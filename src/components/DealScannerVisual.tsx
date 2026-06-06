@@ -4,28 +4,33 @@ import { motion } from "framer-motion"
 import { CheckCircle, ExternalLink, Shield, TrendingDown, Truck, Tag } from "lucide-react"
 
 const signals = [
-  { icon: TrendingDown, label: "Price Drop",    value: "₱600 below avg",   good: true },
-  { icon: Shield,       label: "Seller Trust",  value: "Official Store",    good: true },
-  { icon: Tag,          label: "Voucher Stack", value: "Up to ₱150 more",   good: true },
-  { icon: Truck,        label: "Free Shipping", value: "₱0 on this deal",   good: true },
+  { icon: TrendingDown, label: "Price Drop",    value: "₱600 below avg",  good: true },
+  { icon: Shield,       label: "Seller Trust",  value: "Official Store",   good: true },
+  { icon: Tag,          label: "Voucher Stack", value: "Up to ₱150 more",  good: true },
+  { icon: Truck,        label: "Free Shipping", value: "₱0 on this deal",  good: true },
 ]
 
 const cardVariants = {
-  hidden:  { opacity: 0, y: 12 },
-  visible: (i: number) => ({ opacity: 1, y: 0, transition: { delay: 0.4 + i * 0.08, duration: 0.35 } }),
+  hidden:  { opacity: 0, y: 10 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { delay: 0.45 + i * 0.09, duration: 0.32 },
+  }),
 }
 
 export default function DealScannerVisual() {
   return (
     <div className="relative w-full max-w-md mx-auto select-none">
-      {/* Glow behind card */}
+      {/* Glow halo behind card */}
       <div
-        className="absolute inset-0 -m-6 bg-gradient-to-br from-green-300/20 to-emerald-400/10 rounded-3xl blur-2xl pointer-events-none"
+        className="absolute -inset-6 bg-gradient-to-br from-green-300/20 via-emerald-200/10 to-transparent rounded-3xl blur-2xl pointer-events-none"
         aria-hidden="true"
       />
 
       {/* Main dashboard card */}
-      <div className="relative bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden">
+      <div className="relative bg-white rounded-2xl shadow-2xl shadow-slate-200/80 border border-slate-100 overflow-hidden">
+
         {/* Browser bar */}
         <div className="bg-slate-900 px-4 py-2.5 flex items-center gap-3">
           <div className="flex gap-1.5" aria-hidden="true">
@@ -37,27 +42,30 @@ export default function DealScannerVisual() {
             sulitscan.com/scan/xiaomi-band-9
           </div>
           <div className="flex items-center gap-1.5 shrink-0">
-            <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse-dot" aria-hidden="true" />
-            <span className="text-xs text-green-400 font-medium">Live</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse-dot" aria-hidden="true" />
+            <span className="text-xs text-green-400 font-semibold">Live</span>
           </div>
         </div>
 
-        {/* Product image area with scan line */}
-        <div className="relative bg-gradient-to-br from-blue-400 to-indigo-600 overflow-hidden" style={{ height: 120 }}>
-          <div className="scan-line" aria-hidden="true" />
-          {/* Pattern overlay */}
+        {/* Product image area with animated scan line */}
+        <div
+          className="relative bg-gradient-to-br from-blue-500 to-indigo-700 overflow-hidden"
+          style={{ height: 128 }}
+          aria-hidden="true"
+        >
+          <div className="scan-line" />
+          {/* Dot pattern */}
           <div
             className="absolute inset-0 opacity-10"
             style={{
               backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
               backgroundSize: "16px 16px",
             }}
-            aria-hidden="true"
           />
-          {/* Big discount text */}
-          <div className="absolute inset-0 flex flex-col items-center justify-center" aria-hidden="true">
-            <span className="text-5xl font-black text-white opacity-20">24%</span>
-            <span className="text-sm text-white opacity-20 -mt-1 font-semibold">OFF</span>
+          {/* Watermark discount */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center">
+            <span className="text-6xl font-black text-white/[0.15] leading-none">24%</span>
+            <span className="text-sm text-white/[0.15] -mt-1 font-bold">OFF</span>
           </div>
           {/* Platform badge */}
           <div className="absolute top-2.5 right-2.5 bg-white/90 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm">
@@ -70,19 +78,23 @@ export default function DealScannerVisual() {
         </div>
 
         {/* Product info */}
-        <div className="px-4 pt-3 pb-0">
-          <p className="text-xs text-slate-400 font-medium tracking-wide uppercase mb-0.5">Scanning deal</p>
-          <h3 className="text-sm font-bold text-slate-900 line-clamp-1 mb-1">
+        <div className="px-4 pt-3.5 pb-0">
+          <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-widest mb-0.5">
+            Scanning deal
+          </p>
+          <h3 className="text-sm font-bold text-slate-900 line-clamp-1 mb-1.5">
             Xiaomi Smart Band 9 – Activity Tracker
           </h3>
-          <div className="flex items-baseline gap-2">
+          <div className="flex items-baseline gap-2.5">
             <span className="text-2xl font-black text-slate-900">₱1,899</span>
             <span className="text-sm text-slate-400 line-through">₱2,499</span>
-            <span className="text-xs font-bold text-green-600 bg-green-50 px-1.5 py-0.5 rounded-md">Save ₱600</span>
+            <span className="ml-auto text-xs font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded-lg border border-green-100">
+              Save ₱600
+            </span>
           </div>
         </div>
 
-        {/* SulitScore bar */}
+        {/* SulitScore */}
         <div className="mx-4 my-3 p-3 bg-slate-50 rounded-xl border border-slate-100">
           <div className="flex items-center justify-between mb-2">
             <span className="text-xs font-semibold text-slate-500">SulitScore™</span>
@@ -111,43 +123,55 @@ export default function DealScannerVisual() {
             >
               <CheckCircle className="w-3.5 h-3.5 text-green-500 shrink-0 mt-0.5" aria-hidden="true" />
               <div className="min-w-0">
-                <div className="text-xs font-semibold text-slate-700 leading-tight">{sig.label}</div>
-                <div className="text-xs text-green-600 leading-tight">{sig.value}</div>
+                <div className="text-[11px] font-semibold text-slate-600 leading-tight">{sig.label}</div>
+                <div className="text-[11px] text-green-600 leading-tight font-medium">{sig.value}</div>
               </div>
             </motion.div>
           ))}
         </div>
 
-        {/* CTA */}
+        {/* CTA row */}
         <div className="px-4 pb-4">
-          <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl text-white text-sm font-semibold shadow-sm shadow-green-200">
+          <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl text-white text-sm font-bold shadow-sm shadow-green-200">
             <span>View Deal on Shopee</span>
             <ExternalLink className="w-4 h-4" aria-hidden="true" />
           </div>
-          <p className="text-center text-xs text-slate-400 mt-2">
+          <p className="text-center text-[11px] text-slate-400 mt-2 leading-snug">
             Affiliate link — clearly disclosed. You decide when to visit.
           </p>
         </div>
       </div>
 
-      {/* Floating discount pill */}
+      {/* Floating tag pill — top right */}
       <motion.div
-        className="absolute -top-4 -right-3 bg-white border border-amber-200 rounded-full px-3 py-1.5 shadow-lg z-20"
+        className="absolute -top-4 -right-3 bg-white border border-amber-200 rounded-full px-3 py-1.5 shadow-lg z-20 flex items-center gap-1.5"
         animate={{ y: [-4, 4, -4] }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         aria-hidden="true"
       >
-        <span className="text-xs font-bold text-amber-700">🏷 −48% OFF</span>
+        <Tag className="w-3 h-3 text-amber-600" />
+        <span className="text-xs font-bold text-amber-700">−48% OFF</span>
       </motion.div>
 
-      {/* Floating price pill */}
+      {/* Floating savings pill — bottom left */}
       <motion.div
-        className="absolute -bottom-3 -left-3 bg-amber-400 rounded-full px-3 py-1.5 shadow-lg z-20"
+        className="absolute -bottom-3 -left-3 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full px-3 py-1.5 shadow-lg z-20"
         animate={{ y: [4, -4, 4] }}
         transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
         aria-hidden="true"
       >
-        <span className="text-xs font-bold text-white">₱269 Sulit</span>
+        <span className="text-xs font-bold text-white">₱600 Saved</span>
+      </motion.div>
+
+      {/* Floating score pill — left middle */}
+      <motion.div
+        className="absolute top-1/2 -left-14 -translate-y-1/2 bg-white border border-green-200 rounded-xl px-2.5 py-1.5 shadow-lg z-20 hidden lg:flex flex-col items-center"
+        animate={{ x: [-2, 2, -2] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        aria-hidden="true"
+      >
+        <span className="text-base font-black text-green-600 leading-none">8</span>
+        <span className="text-[9px] text-slate-400 font-medium">Score</span>
       </motion.div>
     </div>
   )

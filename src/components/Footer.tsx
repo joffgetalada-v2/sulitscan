@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Logo from "@/components/Logo"
-import { Heart } from "lucide-react"
+import { Heart, Mail, MapPin } from "lucide-react"
 
 const footerLinks = {
   Discover: [
@@ -20,44 +20,102 @@ const footerLinks = {
   ],
 }
 
-const platforms = ["Shopee PH", "Lazada PH", "AliExpress", "Temu", "SHEIN", "iHerb", "Trip.com", "Klook"]
+const platforms = [
+  "Shopee PH", "Lazada PH", "AliExpress", "Temu",
+  "SHEIN", "iHerb", "Trip.com", "Klook",
+]
 
 export default function Footer() {
   return (
     <footer className="bg-slate-950 text-slate-400" role="contentinfo">
-      {/* Affiliate disclosure banner */}
+
+      {/* ── Affiliate disclosure banner ── */}
       <div className="bg-amber-50 border-b border-amber-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-center">
           <p className="text-xs text-amber-800">
-            <strong>Affiliate Disclosure:</strong> SulitScan PH earns a small commission when you click affiliate
-            links and make a purchase — at no extra cost to you. We only feature deals we believe offer genuine value.{" "}
-            <Link href="/affiliate-disclosure" className="underline hover:text-amber-900 font-medium">
+            <strong>Affiliate Disclosure:</strong> SulitScan PH earns a small commission when you
+            click affiliate links and make a purchase — at no extra cost to you. We only feature
+            deals we believe offer genuine value.{" "}
+            <Link
+              href="/affiliate-disclosure"
+              className="underline hover:text-amber-900 font-medium transition-colors"
+            >
               Full disclosure →
             </Link>
           </p>
         </div>
       </div>
 
+      {/* ── "Shop Smart" brand bar ── */}
+      <div className="border-b border-slate-800/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+            <div>
+              <p className="text-xs font-semibold text-slate-500 uppercase tracking-widest mb-1">
+                The smarter way to shop online
+              </p>
+              <p className="text-2xl font-black text-white leading-tight">
+                SulitScan PH — your deal intelligence layer.
+              </p>
+            </div>
+            <Link
+              href="/deals"
+              className="shrink-0 inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold rounded-2xl transition-all shadow-lg shadow-green-900/30 hover:-translate-y-0.5"
+            >
+              Browse Deals
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Main footer grid ── */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-5 gap-10 mb-12">
+
           {/* Brand column */}
           <div className="md:col-span-2">
             <Logo dark size="md" className="mb-4" />
-            <p className="text-sm text-slate-400 leading-relaxed max-w-xs">
+            <p className="text-sm text-slate-400 leading-relaxed max-w-xs mb-4">
               SulitScan PH helps Filipino shoppers find curated online deals, compare value,
               and shop smarter — without the fake urgency.
             </p>
-            <p className="mt-4 text-xs text-slate-600 leading-relaxed max-w-xs">
+
+            {/* Contact */}
+            <div className="space-y-2 mb-5">
+              <div className="flex items-center gap-2 text-xs text-slate-500">
+                <Mail className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                <a
+                  href="mailto:hello@sulitscan.com"
+                  className="hover:text-green-400 transition-colors"
+                >
+                  hello@sulitscan.com
+                </a>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-slate-500">
+                <MapPin className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                <span>Philippines 🇵🇭</span>
+              </div>
+            </div>
+
+            {/* Demo data notice */}
+            <p className="text-xs text-slate-600 leading-relaxed max-w-xs mb-5">
               All deals are sample/demo data. Always verify prices before buying.
               No cart, checkout, or payment features on this site.
             </p>
 
             {/* Platforms list */}
-            <div className="mt-5">
-              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Partner platforms</p>
+            <div>
+              <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mb-2.5">
+                Partner Platforms
+              </p>
               <div className="flex flex-wrap gap-1.5">
                 {platforms.map((p) => (
-                  <span key={p} className="text-xs px-2 py-0.5 bg-slate-800 text-slate-400 rounded-md">{p}</span>
+                  <span
+                    key={p}
+                    className="text-[11px] px-2 py-0.5 bg-slate-800 text-slate-400 rounded-md hover:bg-slate-700 hover:text-slate-300 transition-colors"
+                  >
+                    {p}
+                  </span>
                 ))}
               </div>
             </div>
@@ -66,7 +124,9 @@ export default function Footer() {
           {/* Link columns */}
           {Object.entries(footerLinks).map(([group, links]) => (
             <div key={group}>
-              <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-4">{group}</h3>
+              <h3 className="text-xs font-semibold text-slate-300 uppercase tracking-widest mb-4">
+                {group}
+              </h3>
               <ul className="space-y-2.5" role="list">
                 {links.map((link) => (
                   <li key={link.href}>
@@ -83,14 +143,17 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
+        {/* ── Bottom bar ── */}
         <div className="pt-6 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-slate-600">
             © {new Date().getFullYear()} SulitScan PH. All rights reserved.
           </p>
-          <p className="flex items-center gap-1 text-xs text-slate-600">
+          <p className="flex items-center gap-1.5 text-xs text-slate-600">
             Made with{" "}
-            <Heart className="w-3 h-3 text-rose-500 fill-rose-500 mx-0.5" aria-hidden="true" />{" "}
+            <Heart
+              className="w-3 h-3 text-rose-500 fill-rose-500 mx-0.5"
+              aria-hidden="true"
+            />{" "}
             for Filipino shoppers
           </p>
         </div>

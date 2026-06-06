@@ -10,7 +10,7 @@ const DealScannerVisual = dynamic(() => import("./DealScannerVisual"), {
   loading: () => (
     <div
       className="w-full max-w-md mx-auto rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 animate-pulse"
-      style={{ height: 460 }}
+      style={{ height: 480 }}
       aria-hidden="true"
     />
   ),
@@ -22,50 +22,52 @@ const trustItems = [
   "Made for Filipino shoppers",
 ]
 
+const stats = [
+  { value: "50+",  label: "Curated Deals",   color: "text-green-600" },
+  { value: "8",    label: "Categories",       color: "text-slate-900" },
+  { value: "10",   label: "Partner Stores",   color: "text-slate-900" },
+  { value: "₱0",   label: "Cost to You",      color: "text-amber-600" },
+]
+
 export default function Hero() {
   return (
     <section
-      className="relative overflow-hidden bg-white pt-12 pb-20 sm:pt-16 sm:pb-28"
+      className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28"
       aria-labelledby="hero-heading"
     >
-      {/* Background blobs */}
-      <div
-        className="absolute -top-32 -left-32 w-96 h-96 rounded-full bg-green-100/60 blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute top-0 -right-24 w-80 h-80 rounded-full bg-amber-100/40 blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-0 left-1/3 w-64 h-64 rounded-full bg-emerald-100/30 blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
+      {/* Grid line background */}
+      <div className="absolute inset-0 bg-grid" aria-hidden="true" />
 
-      {/* Dot grid background */}
+      {/* Gradient orbs */}
       <div
-        className="absolute inset-0 opacity-[0.025]"
-        style={{
-          backgroundImage: "radial-gradient(circle at 1px 1px, #16a34a 1px, transparent 0)",
-          backgroundSize: "28px 28px",
-        }}
+        className="absolute -top-48 -left-48 w-[700px] h-[700px] rounded-full bg-gradient-to-br from-green-100/80 to-emerald-200/40 blur-3xl pointer-events-none"
+        aria-hidden="true"
+      />
+      <div
+        className="absolute top-0 -right-32 w-[500px] h-[500px] rounded-full bg-amber-100/50 blur-3xl pointer-events-none"
+        aria-hidden="true"
+      />
+      {/* Bottom fade */}
+      <div
+        className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-white to-transparent pointer-events-none"
         aria-hidden="true"
       />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* Left — copy */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_480px] gap-12 lg:gap-16 items-center">
+
+          {/* ── Left: copy ── */}
           <div className="flex flex-col items-start">
-            {/* Eyebrow badge */}
+            {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.05 }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-green-50 border border-green-200 rounded-full mb-6"
+              transition={{ duration: 0.4, delay: 0.05 }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 bg-green-500/10 border border-green-500/20 rounded-full mb-7"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse-dot" aria-hidden="true" />
-              <span className="text-xs font-semibold text-green-700">
-                Curated deals for Filipino shoppers
+              <span className="text-xs font-semibold text-green-700 tracking-wide">
+                Philippines&apos; Deal Scanner
               </span>
             </motion.div>
 
@@ -74,99 +76,95 @@ export default function Hero() {
               id="hero-heading"
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.15 }}
-              className="text-4xl sm:text-5xl lg:text-[3.25rem] font-black text-slate-900 leading-[1.1] tracking-tight mb-5"
+              transition={{ duration: 0.6, delay: 0.12 }}
+              className="text-5xl sm:text-6xl lg:text-[4rem] xl:text-[4.5rem] font-black text-slate-900 leading-[1.0] tracking-tight mb-6"
             >
-              Find deals that are{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10 text-green-600">actually sulit.</span>
-                <span
-                  className="absolute -bottom-1 left-0 right-0 h-3 bg-green-100 rounded-full -z-10"
-                  aria-hidden="true"
-                />
-              </span>
+              Find deals that
+              <br className="hidden sm:block" />
+              {" "}are{" "}
+              <span className="gradient-text">actually sulit.</span>
             </motion.h1>
 
-            {/* Sub copy */}
+            {/* Subtext */}
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.25 }}
-              className="text-lg text-slate-500 leading-relaxed mb-8 max-w-lg"
+              transition={{ duration: 0.5, delay: 0.22 }}
+              className="text-lg sm:text-xl text-slate-500 leading-relaxed mb-9 max-w-lg"
             >
-              SulitScan PH helps Filipino shoppers discover curated discounts, value notes,
-              and shopping guides before buying from partner stores.
+              Stop guessing if a &quot;sale&quot; is real. SulitScan scores every deal so Filipino
+              shoppers can buy with confidence — not regret.
             </motion.p>
 
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.45, delay: 0.35 }}
-              className="flex flex-wrap gap-3 mb-8"
+              transition={{ duration: 0.45, delay: 0.32 }}
+              className="flex flex-wrap gap-3 mb-10"
             >
               <Link
                 href="/deals"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-full transition-colors shadow-md hover:shadow-green-200/60 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold text-base rounded-2xl transition-all shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/35 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
               >
-                <ShoppingBag className="w-4 h-4 shrink-0" aria-hidden="true" />
+                <ShoppingBag className="w-5 h-5 shrink-0" aria-hidden="true" />
                 Browse Latest Deals
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-white hover:bg-slate-50 text-slate-700 font-semibold rounded-full border border-slate-200 hover:border-slate-300 transition-all focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-white hover:bg-slate-50 text-slate-700 font-semibold text-base rounded-2xl border border-slate-200 hover:border-slate-300 transition-all hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2"
               >
-                Learn How It Works
+                How It Works
                 <ArrowRight className="w-4 h-4 shrink-0" aria-hidden="true" />
               </Link>
             </motion.div>
 
             {/* Trust items */}
-            <motion.ul
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="flex flex-col gap-2"
+              className="flex flex-wrap gap-x-6 gap-y-2"
               role="list"
+              aria-label="Trust signals"
             >
               {trustItems.map((item) => (
-                <li key={item} className="flex items-center gap-2">
+                <div key={item} className="flex items-center gap-2" role="listitem">
                   <CheckCircle className="w-4 h-4 text-green-500 shrink-0" aria-hidden="true" />
                   <span className="text-sm text-slate-500">{item}</span>
-                </li>
+                </div>
               ))}
-            </motion.ul>
+            </motion.div>
           </div>
 
-          {/* Right — Deal scanner visual */}
+          {/* ── Right: deal scanner visual ── */}
           <motion.div
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.65, delay: 0.3, ease: "easeOut" }}
-            className="relative lg:pl-8"
+            initial={{ opacity: 0, x: 32, scale: 0.97 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.28, ease: "easeOut" }}
+            className="relative"
           >
             <DealScannerVisual />
           </motion.div>
         </div>
 
-        {/* Stats bar */}
+        {/* ── Stats bar ── */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.7 }}
-          className="mt-16 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 max-w-2xl"
+          transition={{ duration: 0.5, delay: 0.68 }}
+          className="mt-16 sm:mt-20 pt-10 border-t border-slate-100"
         >
-          {[
-            { value: "12+", label: "Curated Deals" },
-            { value: "8",   label: "Categories" },
-            { value: "10",  label: "Partner Stores" },
-            { value: "₱0",  label: "Cost to Use" },
-          ].map(({ value, label }) => (
-            <div key={label} className="flex flex-col items-center sm:items-start">
-              <span className="text-2xl font-black text-slate-900">{value}</span>
-              <span className="text-xs text-slate-400 font-medium">{label}</span>
-            </div>
-          ))}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 sm:gap-10">
+            {stats.map(({ value, label, color }) => (
+              <div key={label}>
+                <div className={`text-3xl sm:text-4xl font-black ${color} mb-1 tabular`}>
+                  {value}
+                </div>
+                <div className="text-sm text-slate-400 font-medium">{label}</div>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </section>
