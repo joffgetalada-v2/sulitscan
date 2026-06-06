@@ -1288,10 +1288,10 @@ export function getDealBySlug(slug: string): Deal | undefined {
 // Platforms with active affiliate relationships — shown on public pages
 const ACTIVE_PLATFORMS = new Set(["Sephora PH", "Temu"])
 
-// All active deals sorted by discount % descending
+// All active deals sorted by discount % descending — only products with images
 export function getActiveDeals(): Deal[] {
   return deals
-    .filter(d => ACTIVE_PLATFORMS.has(d.platform))
+    .filter(d => ACTIVE_PLATFORMS.has(d.platform) && !!d.imageUrl)
     .sort((a, b) => b.discount - a.discount)
 }
 
