@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/seo"
 import { Mail, MessageSquare, Tag } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Contact SulitScan PH | Deal Reports, Feedback, and Partnerships",
+  title: { absolute: "Contact SulitScan PH | Deal Reports, Feedback, and Partnerships" },
   description: "Get in touch with SulitScan PH. Report an outdated price, suggest a deal, or ask about affiliate partnerships. We review messages within 2–3 business days.",
   alternates: { canonical: `${siteConfig.url}/contact` },
 }

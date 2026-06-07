@@ -25,7 +25,7 @@ export const categories: Category[] = [
     slug: "beauty",
     name: "Beauty",
     emoji: "💄",
-    description: "Skincare, makeup, hair care, and wellness picks from Sephora PH. Filipino skin-tone tested brands.",
+    description: "Beauty basics, skincare, makeup, and wellness picks from Temu and Sephora PH. Always check ingredients, shades, and product details before buying.",
     gradient: "from-pink-400 to-rose-600",
     dealCount: 58,
     featured: true,

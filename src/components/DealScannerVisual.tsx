@@ -20,13 +20,6 @@ function getSlides() {
   return top
 }
 
-const signals = [
-  { icon: TrendingDown, labelKey: "discount" as const },
-  { icon: Shield,       labelKey: "verified" as const },
-  { icon: Tag,          labelKey: "affiliate" as const },
-  { icon: Zap,          labelKey: "score" as const },
-]
-
 export default function DealScannerVisual() {
   const slides = getSlides()
   const [current, setCurrent] = useState(0)

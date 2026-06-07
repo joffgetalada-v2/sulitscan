@@ -9,28 +9,26 @@ import { siteConfig } from "@/lib/seo"
 import { formatDate, formatTag } from "@/lib/utils"
 
 function renderInline(text: string) {
-  const parts = text.split(/(\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*)/g)
+  const regex = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g
   const result: React.ReactNode[] = []
-  let i = 0
-  while (i < parts.length) {
-    const part = parts[i]
-    if (!part) { i++; continue }
-    const linkMatch = part.match(/^\[([^\]]+)\]\(([^)]+)\)$/)
-    if (linkMatch) {
-      const [, label, href] = linkMatch
-      const isInternal = href.startsWith("/")
+  let lastIndex = 0
+  let key = 0
+  for (const match of text.matchAll(regex)) {
+    const idx = match.index ?? 0
+    if (idx > lastIndex) result.push(text.slice(lastIndex, idx))
+    if (match[1] !== undefined) {
+      const isInternal = match[2].startsWith("/")
       result.push(
         isInternal
-          ? <Link key={i} href={href} className="text-green-600 underline hover:text-green-700">{label}</Link>
-          : <a key={i} href={href} target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">{label}</a>
+          ? <Link key={key++} href={match[2]} className="text-green-600 underline hover:text-green-700">{match[1]}</Link>
+          : <a key={key++} href={match[2]} target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">{match[1]}</a>
       )
-    } else if (part.match(/^\*\*[^*]+\*\*$/)) {
-      result.push(<strong key={i}>{part.replace(/\*\*/g, "")}</strong>)
     } else {
-      result.push(part)
+      result.push(<strong key={key++}>{match[3]}</strong>)
     }
-    i++
+    lastIndex = idx + match[0].length
   }
+  if (lastIndex < text.length) result.push(text.slice(lastIndex))
   return result.length === 1 && typeof result[0] === "string" ? result[0] : <>{result}</>
 }
 

@@ -26,7 +26,7 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "SulitScan PH | Temu and Sephora PH Deals for Filipino Shoppers",
+  title: { absolute: "SulitScan PH | Temu and Sephora PH Deals for Filipino Shoppers" },
   description:
     "Check selected Temu and Sephora PH deals before you click buy. SulitScan PH provides transparent deal notes, buyer reminders, and affiliate disclosures for Filipino shoppers.",
   alternates: { canonical: siteConfig.url },
