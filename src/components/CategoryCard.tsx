@@ -6,10 +6,11 @@ import type { Category } from "@/data/categories"
 
 interface CategoryCardProps {
   category: Category
+  liveCount?: number
   large?: boolean
 }
 
-export default function CategoryCard({ category, large = false }: CategoryCardProps) {
+export default function CategoryCard({ category, liveCount, large = false }: CategoryCardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.95 }}
@@ -47,7 +48,7 @@ export default function CategoryCard({ category, large = false }: CategoryCardPr
 
           <h3 className="text-sm font-bold text-white leading-tight mb-1">{category.name}</h3>
           <p className="text-xs text-white/70 leading-tight mt-auto">
-            {category.dealCount} deals
+            {liveCount ?? category.dealCount} deals
           </p>
         </div>
       </Link>

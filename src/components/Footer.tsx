@@ -20,10 +20,7 @@ const footerLinks = {
   ],
 }
 
-const platforms = [
-  "Shopee PH", "Lazada PH", "AliExpress", "Temu",
-  "SHEIN", "iHerb", "Trip.com", "Klook",
-]
+const platforms = ["Temu", "Sephora PH"]
 
 export default function Footer() {
   return (

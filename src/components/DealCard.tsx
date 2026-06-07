@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import { motion } from "framer-motion"
 import { ExternalLink, Zap } from "lucide-react"
 import type { Deal } from "@/data/deals"
@@ -21,8 +22,10 @@ export default function DealCard({ deal }: DealCardProps) {
       className="group relative flex flex-col bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-green-100 transition-all overflow-hidden"
     >
       {/* Image / visual area */}
-      <div
-        className={`relative h-56 bg-gradient-to-br ${deal.imageGradient} overflow-hidden`}
+      <Link
+        href={`/deals/${deal.slug}`}
+        className={`relative h-56 bg-gradient-to-br ${deal.imageGradient} overflow-hidden block`}
+        tabIndex={-1}
         aria-hidden="true"
       >
         {deal.imageUrl ? (
@@ -64,14 +67,16 @@ export default function DealCard({ deal }: DealCardProps) {
         <div className="absolute bottom-3 left-3 px-2 py-0.5 bg-black/20 backdrop-blur-sm rounded-full">
           <span className="text-xs text-white/90 font-medium">{deal.category}</span>
         </div>
-      </div>
+      </Link>
 
       {/* Content */}
       <div className="flex flex-col flex-1 p-4">
         {/* Title */}
-        <h3 className="text-sm font-bold text-slate-900 leading-snug mb-3 line-clamp-2 group-hover:text-green-700 transition-colors">
-          {deal.title}
-        </h3>
+        <Link href={`/deals/${deal.slug}`} className="block mb-3">
+          <h3 className="text-sm font-bold text-slate-900 leading-snug line-clamp-2 group-hover:text-green-700 transition-colors">
+            {deal.title}
+          </h3>
+        </Link>
 
         {/* Pricing */}
         <div className="flex items-baseline gap-2 mb-3">
@@ -107,6 +112,19 @@ export default function DealCard({ deal }: DealCardProps) {
         <p className="text-xs text-slate-500 leading-relaxed flex-1 mb-3 line-clamp-2">
           {deal.reason}
         </p>
+
+        {/* Trust footer */}
+        <div className="flex items-center justify-between mb-3">
+          <span className="text-[10px] text-slate-400">
+            {deal.isDemo ? "Sample data" : `Checked: ${deal.lastChecked}`}
+          </span>
+          <a
+            href={`mailto:deals@sulitscan.com?subject=Outdated+Price%3A+${encodeURIComponent(deal.title)}`}
+            className="text-[10px] text-slate-400 hover:text-rose-500 transition-colors underline underline-offset-2"
+          >
+            Report outdated price
+          </a>
+        </div>
 
         {/* CTA */}
         <a

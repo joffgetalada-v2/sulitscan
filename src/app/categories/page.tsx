@@ -3,6 +3,7 @@ import Link from "next/link"
 import CategoryCard from "@/components/CategoryCard"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
 import { categories } from "@/data/categories"
+import { getDealsByCategory } from "@/data/deals"
 import { siteConfig } from "@/lib/seo"
 import { LayoutGrid, ArrowRight } from "lucide-react"
 
@@ -20,6 +21,10 @@ export const metadata: Metadata = {
 }
 
 export default function CategoriesPage() {
+  const liveCounts = Object.fromEntries(
+    categories.map((c) => [c.slug, getDealsByCategory(c.slug).length])
+  )
+
   return (
     <>
       <BreadcrumbJsonLd
@@ -55,7 +60,7 @@ export default function CategoriesPage() {
         {/* Bento grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
           {categories.filter((cat) => cat.featured).map((cat) => (
-            <CategoryCard key={cat.id} category={cat} large />
+            <CategoryCard key={cat.id} category={cat} liveCount={liveCounts[cat.slug]} large />
           ))}
         </div>
 
@@ -81,7 +86,7 @@ export default function CategoriesPage() {
                 </h3>
                 <p className="text-xs text-slate-500 leading-relaxed line-clamp-2">{cat.description}</p>
                 <span className="text-xs text-green-600 font-semibold mt-1 block">
-                  {cat.dealCount} deals available
+                  {liveCounts[cat.slug]} deals available
                 </span>
               </div>
               <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-green-500 transition-colors shrink-0 mt-1" aria-hidden="true" />

@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/seo"
 import { ScrollText } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Terms of Use | SulitScan PH",
+  title: "Terms of Use",
   description: "SulitScan PH terms of use. How to use this site responsibly and what our limitations are.",
   alternates: { canonical: `${siteConfig.url}/terms` },
 }

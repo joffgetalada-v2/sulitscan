@@ -4,15 +4,12 @@ import { siteConfig } from "@/lib/seo"
 import { FileText } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Affiliate Disclosure | SulitScan PH",
+  title: "Affiliate Disclosure",
   description: "SulitScan PH affiliate disclosure. Learn how we earn commissions and how that affects our deal recommendations.",
   alternates: { canonical: `${siteConfig.url}/affiliate-disclosure` },
 }
 
-const partners = [
-  "Shopee Philippines", "Lazada Philippines", "AliExpress", "Temu", "SHEIN",
-  "iHerb", "Trip.com", "Klook", "Zalora Philippines", "Canva",
-]
+const partners = ["Temu", "Sephora PH (via Involve Asia)"]
 
 export default function AffiliateDisclosurePage() {
   return (
@@ -62,7 +59,7 @@ export default function AffiliateDisclosurePage() {
               Our Affiliate Partners
             </h2>
             <p className="mb-4">
-              We currently maintain affiliate relationships with the following platforms:
+              We currently maintain affiliate relationships with the following platforms only:
             </p>
             <div className="flex flex-wrap gap-2">
               {partners.map((p) => (

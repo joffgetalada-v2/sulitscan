@@ -6,9 +6,9 @@ import { siteConfig } from "@/lib/seo"
 import { ShieldCheck, Heart, BookOpen, ShoppingBag, CheckCircle, XCircle } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "About SulitScan PH | Smarter Deal Discovery for Filipino Shoppers",
+  title: "About SulitScan PH",
   description:
-    "Learn about SulitScan PH — a curated deals discovery site helping Filipino shoppers find genuinely sulit online deals from Shopee, Lazada, AliExpress, and more.",
+    "Learn about SulitScan PH — a curated deals discovery site helping Filipino shoppers find genuinely sulit online deals from Temu and Sephora PH.",
   alternates: { canonical: `${siteConfig.url}/about` },
 }
 
@@ -40,7 +40,7 @@ const weDont = [
   "Sell products directly",
   "Have a cart, checkout, or payment system",
   "Auto-redirect you to affiliate links",
-  "Scrape Shopee, Lazada, AliExpress, or any marketplace",
+  "Use automated scrapers to pull deal data",
   "Guarantee prices — always check the store before buying",
 ]
 

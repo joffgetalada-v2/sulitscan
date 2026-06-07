@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/seo"
 import { Shield } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | SulitScan PH",
+  title: "Privacy Policy",
   description: "SulitScan PH privacy policy. How we collect, use, and protect your information.",
   alternates: { canonical: `${siteConfig.url}/privacy-policy` },
 }
@@ -73,7 +73,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-lg font-bold text-slate-900 mb-3">3. Third-Party Links</h2>
             <p>
-              SulitScan PH contains affiliate links to third-party websites (Shopee, Lazada, etc.).
+              SulitScan PH contains affiliate links to third-party websites (Temu and Sephora PH).
               We are not responsible for the privacy practices of those websites. We encourage you
               to read the privacy policies of any third-party site you visit.
             </p>

@@ -6,7 +6,7 @@ import CategoryCard from "@/components/CategoryCard"
 import BlogCard from "@/components/BlogCard"
 import SectionHeading from "@/components/SectionHeading"
 import { ItemListJsonLd, FAQJsonLd } from "@/components/SeoJsonLd"
-import { getFeaturedDeals, getActiveDeals } from "@/data/deals"
+import { getFeaturedDeals, getActiveDeals, getDealsByCategory } from "@/data/deals"
 import { categories } from "@/data/categories"
 import { getRecentPosts } from "@/data/posts"
 import { siteConfig } from "@/lib/seo"
@@ -146,6 +146,9 @@ export default function HomePage() {
   const featuredDeals  = getFeaturedDeals(6)
   const activeDeals    = getActiveDeals()
   const recentPosts    = getRecentPosts(3)
+  const liveCounts     = Object.fromEntries(
+    categories.map((c) => [c.slug, getDealsByCategory(c.slug).length])
+  )
 
   return (
     <>
@@ -299,7 +302,7 @@ export default function HomePage() {
           />
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {categories.filter((cat) => cat.featured).map((cat) => (
-              <CategoryCard key={cat.id} category={cat} />
+              <CategoryCard key={cat.id} category={cat} liveCount={liveCounts[cat.slug]} />
             ))}
           </div>
           <div className="text-center mt-8">

@@ -4,7 +4,7 @@ import { siteConfig } from "@/lib/seo"
 import { Mail, MessageSquare, Tag } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Contact SulitScan PH",
+  title: "Contact",
   description: "Get in touch with SulitScan PH. Report a deal, suggest a store, or ask about affiliate partnerships.",
   alternates: { canonical: `${siteConfig.url}/contact` },
 }
@@ -77,6 +77,9 @@ export default function ContactPage() {
 
         {/* Contact form */}
         <form
+          action="mailto:hello@sulitscan.com"
+          method="POST"
+          encType="text/plain"
           className="space-y-5 bg-white border border-slate-100 rounded-2xl p-6 shadow-sm"
           aria-label="Contact form"
         >
@@ -124,6 +127,7 @@ export default function ContactPage() {
             >
               <option value="">Select a topic…</option>
               <option value="deal-suggestion">Deal Suggestion</option>
+              <option value="outdated-price">Report Outdated Price</option>
               <option value="partnership">Affiliate Partnership</option>
               <option value="broken-link">Broken Link / Error</option>
               <option value="feedback">General Feedback</option>
@@ -153,11 +157,11 @@ export default function ContactPage() {
           </button>
 
           <p className="text-xs text-slate-400 text-center">
-            Form is for demonstration purposes.{" "}
+            Submitting will open your email app with this message pre-filled.{" "}
             <a href="mailto:hello@sulitscan.com" className="underline hover:text-slate-600">
-              Email us directly
-            </a>{" "}
-            for a faster response.
+              Or email us directly
+            </a>
+            .
           </p>
         </form>
       </div>

@@ -26,6 +26,7 @@ export default function DealsGrid({ deals, categories }: DealsGridProps) {
   const [activeCategory, setActiveCategory] = useState("All")
   const [sortKey, setSortKey]         = useState<SortKey>("discount")
   const [showFilters, setShowFilters] = useState(false)
+  const [displayCount, setDisplayCount] = useState(24)
 
   const filtered = useMemo(() => {
     let result = deals
@@ -66,6 +67,7 @@ export default function DealsGrid({ deals, categories }: DealsGridProps) {
     setActiveStore("All")
     setActiveCategory("All")
     setSortKey("discount")
+    setDisplayCount(24)
   }
 
   const hasActiveFilters =
@@ -179,7 +181,8 @@ export default function DealsGrid({ deals, categories }: DealsGridProps) {
       {/* Sort + result count row */}
       <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
         <p className="text-sm text-slate-500">
-          Showing <strong className="text-slate-800">{filtered.length}</strong> of {deals.length} deals
+          Showing <strong className="text-slate-800">{Math.min(displayCount, filtered.length)}</strong> of{" "}
+          <strong className="text-slate-800">{filtered.length}</strong> deals
         </p>
         <div className="flex items-center gap-2">
           <label htmlFor="sort-select" className="text-xs text-slate-500 sr-only">Sort by</label>
@@ -208,10 +211,22 @@ export default function DealsGrid({ deals, categories }: DealsGridProps) {
 
       {/* Deal grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-        {filtered.map((deal) => (
+        {filtered.slice(0, displayCount).map((deal) => (
           <DealCard key={deal.id} deal={deal} />
         ))}
       </div>
+
+      {filtered.length > displayCount && (
+        <div className="mt-8 text-center">
+          <button
+            type="button"
+            onClick={() => setDisplayCount((c) => c + 24)}
+            className="inline-flex items-center gap-2 px-6 py-2.5 border border-slate-200 bg-white text-slate-700 text-sm font-semibold rounded-xl hover:border-green-400 hover:text-green-700 transition-colors shadow-sm"
+          >
+            Load more deals ({filtered.length - displayCount} remaining)
+          </button>
+        </div>
+      )}
 
       {filtered.length === 0 && (
         <div className="text-center py-16">
