@@ -4,17 +4,39 @@ const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
     remotePatterns: [
-      // Sephora PH product images (Involve Asia datafeed)
-      { protocol: "http",  hostname: "sephora.i.adx.io" },
-      { protocol: "https", hostname: "sephora.i.adx.io" },
       // Temu product images
       { protocol: "https", hostname: "aimg.kwcdn.com" },
       { protocol: "https", hostname: "img.kwcdn.com" },
-      // Shopee product images
-      { protocol: "https", hostname: "cf.shopee.ph" },
-      // Lazada / Alicdn product images
-      { protocol: "https", hostname: "ph-live.slatic.net" },
-      { protocol: "https", hostname: "sg-live.slatic.net" },
+      // Lookfantastic / CultBeauty CDN
+      { protocol: "https", hostname: "static.thcdn.com" },
+      // Sunday Riley
+      { protocol: "https", hostname: "sundayriley.com" },
+      // Mario Badescu
+      { protocol: "https", hostname: "www.mariobadescu.com" },
+      // Nordstrom Media
+      { protocol: "https", hostname: "n.nordstrommedia.com" },
+      // Apothecarie
+      { protocol: "https", hostname: "www.apothecarie.com" },
+      // The Detox Market
+      { protocol: "https", hostname: "www.thedetoxmarket.com" },
+      // Herbivore Botanicals JP
+      { protocol: "https", hostname: "herbivorebotanicals.jp" },
+      // Voo Beauty
+      { protocol: "https", hostname: "voobeauty.com" },
+      // SkinSafe Products CDN
+      { protocol: "https", hostname: "cdn1.skinsafeproducts.com" },
+      // Sigma Beauty
+      { protocol: "https", hostname: "sigmabeauty.com" },
+      // ZOEVA Cosmetics
+      { protocol: "https", hostname: "zoevacosmetics.com" },
+      // Ulta Beauty Media
+      { protocol: "https", hostname: "media.ulta.com" },
+      // Pony Brushes
+      { protocol: "https", hostname: "ponybrushes.com" },
+      // Evecare
+      { protocol: "https", hostname: "evecare.com" },
+      // SK-II / general Shopify CDN
+      { protocol: "https", hostname: "*.myshopify.com" },
     ],
   },
 }

@@ -6,14 +6,14 @@ import { siteConfig } from "@/lib/seo"
 import { ShoppingBag } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Best Discounts & Deals Philippines",
+  title: "Temu and Sephora PH Deals Philippines",
   description:
-    "Browse verified discount deals sorted by biggest savings — beauty, electronics, fashion, home, and more. Updated regularly.",
+    "Browse selected Temu and Sephora PH deals — beauty, skincare, home finds, gadgets, fashion, and budget picks. Sample deal notes with buyer reminders and affiliate disclosure.",
   alternates: { canonical: `${siteConfig.url}/deals` },
   openGraph: {
-    title: "Best Discounts & Deals Philippines | SulitScan PH",
+    title: "Temu and Sephora PH Deals | SulitScan PH",
     description:
-      "Verified price drops and exclusive discounts, sorted by biggest savings first.",
+      "Curated deal notes from Temu and Sephora PH. Search, filter by store, and sort by discount or SulitScore.",
     url: `${siteConfig.url}/deals`,
   },
 }
@@ -31,8 +31,8 @@ export default function DealsPage() {
         ]}
       />
       <ItemListJsonLd
-        name="Best Discount Deals Philippines – SulitScan PH"
-        items={activeDeals.map((d) => ({
+        name="Temu and Sephora PH Deals Philippines – SulitScan PH"
+        items={activeDeals.slice(0, 50).map((d) => ({
           name: d.title,
           url: `${siteConfig.url}/deals/${d.slug}`,
           description: d.reason,
@@ -48,13 +48,14 @@ export default function DealsPage() {
             </div>
             <div>
               <span className="inline-block mb-2 text-xs font-semibold tracking-widest uppercase text-green-700">
-                Verified Discounts
+                Curated Deal Notes
               </span>
               <h1 className="text-3xl font-black text-slate-900 tracking-tight mb-2">
-                Best deals right now
+                Temu &amp; Sephora PH Deals
               </h1>
-              <p className="text-slate-500 text-sm">
-                {activeDeals.length} deals · Sorted by biggest discount · Prices verified regularly
+              <p className="text-slate-500 text-sm max-w-xl">
+                {activeDeals.length} deal notes from Temu and Sephora PH. Search by product, filter by store or category,
+                and sort by discount, SulitScore, or price.
               </p>
             </div>
           </div>

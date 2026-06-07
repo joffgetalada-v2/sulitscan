@@ -17,16 +17,16 @@ const DealScannerVisual = dynamic(() => import("./DealScannerVisual"), {
 })
 
 const trustItems = [
-  "No fake checkout or cart",
-  "Affiliate links clearly disclosed",
-  "Made for Filipino shoppers",
+  "No checkout. No hidden redirects.",
+  "Affiliate links clearly disclosed.",
+  "Curated manually for Filipino shoppers.",
 ]
 
 const stats = [
-  { value: "50+",  label: "Curated Deals",   color: "text-green-600" },
-  { value: "8",    label: "Categories",       color: "text-slate-900" },
-  { value: "10",   label: "Partner Stores",   color: "text-slate-900" },
-  { value: "₱0",   label: "Cost to You",      color: "text-amber-600" },
+  { value: "2",    label: "Partner Stores",  color: "text-green-600" },
+  { value: "100+", label: "Curated Deals",   color: "text-slate-900" },
+  { value: "7",    label: "Categories",      color: "text-slate-900" },
+  { value: "₱0",  label: "Cost to You",     color: "text-amber-600" },
 ]
 
 export default function Hero() {
@@ -67,7 +67,7 @@ export default function Hero() {
             >
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse-dot" aria-hidden="true" />
               <span className="text-xs font-semibold text-green-700 tracking-wide">
-                Philippines&apos; Deal Scanner
+                Temu &amp; Sephora PH Deals
               </span>
             </motion.div>
 
@@ -79,10 +79,10 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.12 }}
               className="text-5xl sm:text-6xl lg:text-[4rem] xl:text-[4.5rem] font-black text-slate-900 leading-[1.0] tracking-tight mb-6"
             >
-              Find deals that
+              Check deals
               <br className="hidden sm:block" />
-              {" "}are{" "}
-              <span className="gradient-text">actually sulit.</span>
+              {" "}before you{" "}
+              <span className="gradient-text">click buy.</span>
             </motion.h1>
 
             {/* Subtext */}
@@ -92,8 +92,9 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.22 }}
               className="text-lg sm:text-xl text-slate-500 leading-relaxed mb-9 max-w-lg"
             >
-              Stop guessing if a &quot;sale&quot; is real. SulitScan scores every deal so Filipino
-              shoppers can buy with confidence — not regret.
+              SulitScan PH helps Filipino shoppers review selected Temu and Sephora
+              deals with transparent notes, buyer reminders, and clear affiliate
+              disclosures.
             </motion.p>
 
             {/* CTAs */}
@@ -108,7 +109,7 @@ export default function Hero() {
                 className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold text-base rounded-2xl transition-all shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/35 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
               >
                 <ShoppingBag className="w-5 h-5 shrink-0" aria-hidden="true" />
-                Browse Latest Deals
+                Browse Deals
               </Link>
               <Link
                 href="/about"
@@ -124,7 +125,7 @@ export default function Hero() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.5 }}
-              className="flex flex-wrap gap-x-6 gap-y-2"
+              className="flex flex-col gap-y-2"
               role="list"
               aria-label="Trust signals"
             >

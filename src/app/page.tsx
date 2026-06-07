@@ -23,18 +23,17 @@ import {
   Search,
   Zap,
   Clock,
-  Star,
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "SulitScan PH | Verified Online Deals, Discounts, and Shopping Guides",
+  title: "SulitScan PH | Temu and Sephora Deals for Filipino Shoppers",
   description:
-    "Find deals that are actually sulit. SulitScan PH helps Filipino shoppers discover curated online discounts, sale products, seller trust signals, and smart shopping guides.",
+    "SulitScan PH helps Filipino shoppers review selected Temu and Sephora deals with transparent notes, buyer reminders, and clear affiliate disclosures.",
   alternates: { canonical: siteConfig.url },
   openGraph: {
-    title: "SulitScan PH | Verified Online Deals, Discounts, and Shopping Guides",
+    title: "SulitScan PH | Temu and Sephora Deals for Filipino Shoppers",
     description:
-      "Find deals that are actually sulit. SulitScan PH helps Filipino shoppers discover curated online discounts, sale products, seller trust signals, and smart shopping guides.",
+      "SulitScan PH helps Filipino shoppers review selected Temu and Sephora deals with transparent notes, buyer reminders, and clear affiliate disclosures.",
     url: siteConfig.url,
   },
 }
@@ -45,24 +44,24 @@ const intelligenceCards = [
     color: "text-green-600",
     bg: "bg-green-50",
     border: "border-green-100",
-    title: "Price Drop Check",
-    body: "We cross-reference current prices against historical data so you know if the deal is genuine.",
+    title: "Price Check",
+    body: "We compare the listed price against similar products so you know if the discount is genuine before you click.",
   },
   {
     icon: Shield,
     color: "text-blue-600",
     bg: "bg-blue-50",
     border: "border-blue-100",
-    title: "Seller Trust",
-    body: "Seller rating, review count, official store status, and fulfillment speed — all checked.",
+    title: "Store Trust Note",
+    body: "We add context on the partner store — Temu for budget finds, Sephora PH for authenticated beauty.",
   },
   {
     icon: Tag,
     color: "text-amber-600",
     bg: "bg-amber-50",
     border: "border-amber-100",
-    title: "Voucher Stack",
-    body: "We note when platform vouchers, seller vouchers, and coins can stack for extra savings.",
+    title: "Voucher Reminder",
+    body: "We note when platform vouchers, first-order discounts, or loyalty points can add extra savings.",
   },
   {
     icon: MessageSquare,
@@ -70,7 +69,7 @@ const intelligenceCards = [
     bg: "bg-purple-50",
     border: "border-purple-100",
     title: "Buyer Notes",
-    body: "Honest notes on what to watch out for: sizing, shipping time, quality flags, and more.",
+    body: "Honest notes on what to check: sizing, shipping time, return policy, and quality expectations.",
   },
 ]
 
@@ -79,89 +78,67 @@ const howItWorks = [
     step: "01",
     icon: Search,
     title: "We find deals",
-    body: "We monitor top online stores and affiliate networks across the Philippines for genuine price drops.",
+    body: "We monitor Temu and Sephora PH through affiliate programs for genuine price drops and value picks.",
   },
   {
     step: "02",
     icon: Shield,
-    title: "We verify value",
-    body: "Seller trust, review quality, voucher availability, and historical pricing context.",
+    title: "We add context",
+    body: "Buyer notes, voucher reminders, shipping estimates, and an honest SulitScore for every deal.",
   },
   {
     step: "03",
     icon: Zap,
-    title: "We add SulitNotes",
-    body: "Each deal card shows why we picked it, what to watch for, and an honest SulitScore.",
+    title: "We disclose clearly",
+    body: "Every affiliate link is labeled. We may earn a commission — but it does not affect your price.",
   },
   {
     step: "04",
     icon: CheckCircle,
     title: "You decide",
-    body: "No auto-redirect. Every affiliate link is clearly labeled. You click when you're ready.",
+    body: "No auto-redirect. No fake scarcity. You click through to the partner store only when you're ready.",
   },
 ]
 
 const scanChecklist = [
-  { icon: TrendingDown, good: true,  label: "Price history",  value: "Genuine drop from ₱2,499" },
-  { icon: Shield,       good: true,  label: "Seller trust",   value: "Official Shopee Mall store" },
-  { icon: MessageSquare,good: true,  label: "Buyer reviews",  value: "4.9 ★ · 3,200+ reviews" },
-  { icon: Tag,          good: true,  label: "Voucher stack",  value: "Up to ₱150 stackable" },
-  { icon: Clock,        good: false, label: "Shipping speed", value: "7–15 days (Cross-border)" },
-  { icon: XCircle,      good: false, label: "Return policy",  value: "Limited — check seller terms" },
-]
-
-const testimonials = [
-  {
-    name: "Maria Santos",
-    initials: "MS",
-    city: "Manila",
-    from: "from-rose-400 to-pink-500",
-    quote:
-      "SulitScan saved me from a fake sale on Shopee. The price history check showed the item was never that expensive to begin with. Total game-changer!",
-  },
-  {
-    name: "Jericho Dela Cruz",
-    initials: "JD",
-    city: "Cebu City",
-    from: "from-blue-400 to-indigo-500",
-    quote:
-      "I love how they show the SulitScore on every deal. Now I know immediately if a sale is worth clicking. No more buyer's remorse from fake sales!",
-  },
-  {
-    name: "Ana Reyes",
-    initials: "AR",
-    city: "Davao City",
-    from: "from-green-400 to-emerald-500",
-    quote:
-      "The voucher stacking tips are genius. I combined Lazada coins, a seller voucher, and a platform voucher to save an extra ₱320 on my order.",
-  },
+  { icon: TrendingDown, good: true,  label: "Price plausibility",  value: "Similar products range ₱800–₱1,100" },
+  { icon: Shield,       good: true,  label: "Store trust",         value: "Sephora PH — brand authorized" },
+  { icon: MessageSquare,good: true,  label: "Buyer reviews",       value: "4.7 ★ · verified on partner store" },
+  { icon: Tag,          good: true,  label: "Loyalty points",      value: "Beauty Rewards applicable" },
+  { icon: Clock,        good: false, label: "Shipping speed",      value: "3–7 days standard (Sephora PH)" },
+  { icon: XCircle,      good: false, label: "Return policy",       value: "Opened items — non-returnable" },
 ]
 
 const faqItems = [
   {
     question: "Is SulitScan free to use?",
     answer:
-      "Yes, SulitScan is completely free for shoppers. We earn a small commission from affiliate links when you buy — at no extra cost to you.",
+      "Yes, SulitScan is completely free for shoppers. We may earn a small commission from affiliate links when you buy — at no extra cost to you.",
   },
   {
-    question: "Are the deals on SulitScan real?",
+    question: "Which stores does SulitScan currently cover?",
     answer:
-      "We manually curate deals and verify value signals against live affiliate datafeeds. Prices change frequently — always confirm the current price on the store's website before purchasing.",
+      "Right now, SulitScan focuses on selected deals from Temu and Sephora PH. We are starting focused and may add more stores later.",
+  },
+  {
+    question: "Are the prices on SulitScan live and accurate?",
+    answer:
+      "Prices are sourced from affiliate datafeeds and verified manually, but they can change. Always confirm the current price on the partner store (Temu or Sephora PH) before completing your purchase.",
   },
   {
     question: "What is the SulitScan Score?",
     answer:
-      "The SulitScan Score (1–10) reflects our assessment of deal quality based on discount authenticity, seller trust, review quality, and voucher stackability.",
+      "The SulitScan Score (1–10) reflects our assessment of deal quality based on discount authenticity, store trust, review signals, voucher potential, and shipping context.",
   },
   {
     question: "Do you sell products directly?",
     answer:
-      "No. SulitScan is a deals discovery and affiliate site. We help you find deals and link you to the store — we never handle payments or products.",
+      "No. SulitScan is a deals discovery and affiliate site. We help you find deals and link you to the partner store — we never handle payments or products.",
   },
   {
-    question: "How do you choose which deals to feature?",
+    question: "Are SulitScan affiliate links free for me to click?",
     answer:
-      "We look for genuine discounts (not inflated originals), strong seller ratings, positive buyer reviews, and deals we'd actually buy ourselves.",
+      "Yes. Affiliate links are free to click. If you purchase through our link, the partner store pays us a small referral commission. Your final price is not affected.",
   },
 ]
 
@@ -189,27 +166,46 @@ export default function HomePage() {
       <div className="bg-amber-50 border-b border-amber-200 py-3 px-4 text-center">
         <p className="text-xs text-amber-800 max-w-2xl mx-auto">
           <strong>Affiliate Disclosure:</strong> SulitScan earns a small commission on qualifying
-          purchases through affiliate links — at no extra cost to you.{" "}
+          purchases through partner links — at no extra cost to you.{" "}
           <Link href="/affiliate-disclosure" className="underline hover:text-amber-900 font-medium">
             Full disclosure →
           </Link>
         </p>
       </div>
 
-      {/* ─── Social proof counter strip ─── */}
+      {/* ─── Trust badges ─── */}
+      <section className="py-8 bg-white border-b border-slate-100" aria-label="Trust signals">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
+            {[
+              { icon: "🛒", label: "No checkout or cart" },
+              { icon: "🔒", label: "No hidden redirects" },
+              { icon: "📢", label: "Affiliate links disclosed" },
+              { icon: "✋", label: "Curated manually" },
+              { icon: "🏪", label: "Starting with 2 stores" },
+            ].map(({ icon, label }) => (
+              <div key={label} className="flex items-center gap-2 text-sm text-slate-600">
+                <span aria-hidden="true">{icon}</span>
+                <span>{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Stats strip ─── */}
       <section
         className="py-14 bg-gradient-to-r from-green-700 via-green-600 to-emerald-600 relative overflow-hidden"
-        aria-label="Platform statistics"
+        aria-label="Platform overview"
       >
-        {/* Grid on green */}
         <div className="absolute inset-0 bg-grid-dark" aria-hidden="true" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
-              { value: "₱2.4M+", label: "Demo savings shown",  note: "Illustrative total" },
-              { value: "50+",    label: "Deals curated",        note: "Manually verified" },
-              { value: "30–75%", label: "Top discounts",          note: "Verified price drops" },
-              { value: "100%",   label: "Free forever",         note: "No premium plan" },
+              { value: "2",      label: "Partner Stores",   note: "Temu & Sephora PH" },
+              { value: "100+",   label: "Curated Deals",    note: "Manually selected" },
+              { value: "30–75%", label: "Discounts shown",  note: "Sample deal data" },
+              { value: "100%",   label: "Free forever",     note: "No premium plan" },
             ].map(({ value, label, note }) => (
               <div key={label}>
                 <div className="text-4xl sm:text-5xl font-black text-white mb-1 tabular">
@@ -228,9 +224,9 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             id="intelligence-heading"
-            tag="Deal Intelligence"
-            title="We scan so you don't have to"
-            subtitle="Before every deal is listed, we check what matters most to Filipino shoppers."
+            tag="How We Help"
+            title="What we add to every deal"
+            subtitle="Before a deal is listed, we add context that helps you shop with confidence."
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {intelligenceCards.map((card) => (
@@ -261,10 +257,10 @@ export default function HomePage() {
                 id="featured-deals-heading"
                 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight"
               >
-                Deals worth your click
+                Deals worth checking
               </h2>
               <p className="mt-2 text-slate-500 text-sm">
-                Verified price drops. Confirm price on the store before buying.
+                Sample deal notes from Temu and Sephora PH. Confirm price on the partner store before buying.
               </p>
             </div>
             <Link
@@ -299,10 +295,10 @@ export default function HomePage() {
             id="categories-heading"
             tag="Shop by Category"
             title="Browse deals by what you need"
-            subtitle="From budget finds to tech deals, beauty, travel, and more."
+            subtitle="From budget finds to beauty, home, tech, and more."
           />
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-            {categories.map((cat) => (
+            {categories.filter((cat) => cat.featured).map((cat) => (
               <CategoryCard key={cat.id} category={cat} />
             ))}
           </div>
@@ -319,13 +315,13 @@ export default function HomePage() {
       </section>
 
       {/* ─── How It Works ─── */}
-      <section className="py-20 bg-white" aria-labelledby="how-heading">
+      <section className="py-20 bg-slate-50" aria-labelledby="how-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading
             id="how-heading"
             tag="How SulitScan Works"
-            title="Smart deals, transparent process"
-            subtitle="No dark patterns. No fake scarcity. Just honest deal discovery."
+            title="Transparent deal discovery"
+            subtitle="No dark patterns. No fake scarcity. Just honest deal notes."
           />
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {howItWorks.map((step, i) => (
@@ -333,18 +329,15 @@ export default function HomePage() {
                 key={step.step}
                 className="relative flex flex-col p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
               >
-                {/* Connector line */}
                 {i < howItWorks.length - 1 && (
                   <div
                     className="hidden lg:block absolute top-10 -right-3 w-6 h-px bg-slate-200 z-10"
                     aria-hidden="true"
                   />
                 )}
-                {/* Step number */}
                 <span className="text-4xl font-black text-slate-100 mb-3 select-none leading-none">
                   {step.step}
                 </span>
-                {/* Icon */}
                 <div className="w-9 h-9 rounded-xl bg-green-50 flex items-center justify-center mb-3">
                   <step.icon className="w-[18px] h-[18px] text-green-600" aria-hidden="true" />
                 </div>
@@ -356,8 +349,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Real Deal or Fake Sale ─── */}
-      <section className="py-20 bg-slate-50" aria-labelledby="fake-sale-heading">
+      {/* ─── Deal Checker Visual ─── */}
+      <section className="py-20 bg-white" aria-labelledby="checker-heading">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             {/* Left: copy */}
@@ -366,24 +359,24 @@ export default function HomePage() {
                 Buyer&apos;s Guide
               </span>
               <h2
-                id="fake-sale-heading"
+                id="checker-heading"
                 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight mb-4"
               >
-                Real deal or fake sale?
+                What we check before listing a deal
               </h2>
               <p className="text-slate-500 mb-6 leading-relaxed">
-                Not every &quot;sale&quot; is a real bargain. Here&apos;s what savvy Filipino
-                shoppers check before clicking buy:
+                Not every listed price is a genuine saving. Here&apos;s what we look at
+                before adding a deal to SulitScan:
               </p>
               <ul className="space-y-3 mb-6" role="list">
                 {[
                   "Is the original price realistic compared to similar products?",
-                  "Does the seller have high ratings and a long track record?",
-                  "Do buyer reviews match the product description?",
-                  "Can platform or seller vouchers be stacked?",
-                  "Is free shipping truly free or offset by a higher product price?",
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
+                  "Does the store have a good track record for authenticity and fulfillment?",
+                  "Are buyer reviews consistent with the product description?",
+                  "Can platform or loyalty vouchers be applied on top?",
+                  "What does the buyer need to know before purchasing?",
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
                     <CheckCircle
                       className="w-4 h-4 text-green-500 shrink-0 mt-0.5"
                       aria-hidden="true"
@@ -393,41 +386,39 @@ export default function HomePage() {
                 ))}
               </ul>
               <Link
-                href="/blog/how-to-check-price-history-shopee-lazada"
+                href="/blog/how-sulitscan-checks-deals"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700"
               >
-                Read our price-check guide{" "}
+                Read how SulitScan checks deals{" "}
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
             </div>
 
             {/* Right: scanner checklist visual */}
             <div className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
-              {/* Header */}
               <div className="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
                 <div>
-                  <p className="text-xs text-slate-400 font-medium">Scanning deal</p>
-                  <p className="text-sm font-bold text-slate-900">Xiaomi Smart Band 9</p>
+                  <p className="text-xs text-slate-400 font-medium">Sample deal check</p>
+                  <p className="text-sm font-bold text-slate-900">SK-II Facial Treatment Essence</p>
                 </div>
                 <span className="flex items-center gap-1.5 text-xs font-semibold text-green-600">
                   <span
                     className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse-dot"
                     aria-hidden="true"
                   />
-                  Scanning...
+                  Notes ready
                 </span>
               </div>
-              {/* Checklist */}
               <ul className="divide-y divide-slate-50" role="list">
                 {scanChecklist.map((item, i) => (
                   <li key={i} className="flex items-center gap-3 px-5 py-3">
                     <div
                       className={`w-7 h-7 rounded-lg flex items-center justify-center shrink-0 ${
-                        item.good ? "bg-green-50" : "bg-red-50"
+                        item.good ? "bg-green-50" : "bg-amber-50"
                       }`}
                     >
                       <item.icon
-                        className={`w-3.5 h-3.5 ${item.good ? "text-green-600" : "text-red-400"}`}
+                        className={`w-3.5 h-3.5 ${item.good ? "text-green-600" : "text-amber-500"}`}
                         aria-hidden="true"
                       />
                     </div>
@@ -445,7 +436,7 @@ export default function HomePage() {
                       className={`text-xs font-bold px-2 py-0.5 rounded-full ${
                         item.good
                           ? "bg-green-50 text-green-700"
-                          : "bg-red-50 text-red-500"
+                          : "bg-amber-50 text-amber-600"
                       }`}
                     >
                       {item.good ? "Pass" : "Note"}
@@ -453,7 +444,6 @@ export default function HomePage() {
                   </li>
                 ))}
               </ul>
-              {/* Footer */}
               <div className="px-5 py-3 bg-slate-50 border-t border-slate-100">
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-slate-500">Overall SulitScore</span>
@@ -461,6 +451,56 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Partner Stores ─── */}
+      <section className="py-16 bg-slate-50" aria-labelledby="stores-heading">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <SectionHeading
+            id="stores-heading"
+            tag="Partner Stores"
+            title="Starting with 2 stores"
+            subtitle="SulitScan currently focuses on selected deals from Temu and Sephora PH. More stores may be added later."
+          />
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
+            {[
+              {
+                href: "/stores/temu",
+                gradient: "from-orange-400 to-orange-600",
+                name: "Temu",
+                desc: "Budget finds: home, fashion, gadgets, and decor.",
+                badge: "Budget",
+              },
+              {
+                href: "/stores/sephora-ph",
+                gradient: "from-slate-800 to-slate-950",
+                name: "Sephora PH",
+                desc: "Authenticated beauty: skincare, makeup, and fragrance.",
+                badge: "Premium Beauty",
+              },
+            ].map((store) => (
+              <Link
+                key={store.name}
+                href={store.href}
+                className="group flex flex-col gap-3 p-6 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:border-green-100 transition-all"
+              >
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${store.gradient} flex items-center justify-center`} aria-hidden="true">
+                  <span className="text-white font-black text-sm">{store.name[0]}</span>
+                </div>
+                <div>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-sm font-bold text-slate-900 group-hover:text-green-700 transition-colors">{store.name}</h3>
+                    <span className="text-xs px-2 py-0.5 bg-green-50 text-green-700 rounded-full font-medium">{store.badge}</span>
+                  </div>
+                  <p className="text-xs text-slate-500">{store.desc}</p>
+                </div>
+                <span className="text-xs font-semibold text-green-600 flex items-center gap-1">
+                  View store <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -480,7 +520,7 @@ export default function HomePage() {
                 Read before you buy
               </h2>
               <p className="mt-2 text-slate-500 text-sm">
-                Tips, comparisons, and guides for Filipino shoppers.
+                Practical shopping guides for Filipino buyers — covering Temu, Sephora PH, and smarter buying habits.
               </p>
             </div>
             <Link
@@ -507,52 +547,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Testimonials ─── */}
-      <section className="py-20 bg-slate-50" aria-labelledby="testimonials-heading">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <SectionHeading
-            id="testimonials-heading"
-            tag="Community"
-            title="Filipino shoppers love SulitScan"
-            subtitle="See what smart buyers are saying about their experience."
-          />
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {testimonials.map((t) => (
-              <div
-                key={t.name}
-                className="bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all"
-              >
-                {/* Stars */}
-                <div className="flex items-center gap-0.5 mb-3" aria-label="5 out of 5 stars">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <Star key={s} className="w-4 h-4 text-amber-400 fill-amber-400" aria-hidden="true" />
-                  ))}
-                </div>
-                {/* Quote */}
-                <p className="text-sm text-slate-600 leading-relaxed mb-5">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                {/* Author */}
-                <div className="flex items-center gap-3">
-                  <div
-                    className={`w-9 h-9 rounded-full bg-gradient-to-br ${t.from} flex items-center justify-center font-black text-white text-sm shrink-0`}
-                    aria-hidden="true"
-                  >
-                    {t.initials}
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold text-slate-900">{t.name}</div>
-                    <div className="text-xs text-slate-400">{t.city} · Verified User</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ─── FAQ ─── */}
-      <section className="py-20 bg-white" aria-labelledby="faq-heading">
+      <section className="py-20 bg-slate-50" aria-labelledby="faq-heading">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <SectionHeading id="faq-heading" tag="FAQ" title="Common questions" />
           <div className="space-y-3">
@@ -584,19 +580,9 @@ export default function HomePage() {
         className="relative py-24 bg-slate-900 overflow-hidden"
         aria-labelledby="cta-heading"
       >
-        {/* Backgrounds */}
-        <div
-          className="absolute inset-0 bg-grid-dark"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-green-500/10 blur-3xl"
-          aria-hidden="true"
-        />
-        <div
-          className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-emerald-400/10 blur-3xl"
-          aria-hidden="true"
-        />
+        <div className="absolute inset-0 bg-grid-dark" aria-hidden="true" />
+        <div className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-green-500/10 blur-3xl" aria-hidden="true" />
+        <div className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-emerald-400/10 blur-3xl" aria-hidden="true" />
 
         <div className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="inline-block mb-4 px-3 py-1 text-xs font-semibold tracking-widest uppercase text-green-400 bg-green-400/10 rounded-full border border-green-400/20">
@@ -610,8 +596,8 @@ export default function HomePage() {
             <span className="gradient-text">sulit</span> deal today.
           </h2>
           <p className="text-slate-400 mb-10 leading-relaxed text-base sm:text-lg">
-            Browse {activeDeals.length}+ curated deals — verified price drops and exclusive discounts from top online stores.
-            No auto-redirect. No fake urgency. Just honest savings.
+            Browse {activeDeals.length}+ curated deal notes from Temu and Sephora PH.
+            No auto-redirect. No fake urgency. Affiliate links clearly disclosed.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
@@ -629,6 +615,13 @@ export default function HomePage() {
               Read Guides
             </Link>
           </div>
+          <p className="mt-8 text-xs text-slate-500">
+            SulitScan may earn a commission on qualifying purchases through affiliate links.
+            This does not affect your price.{" "}
+            <Link href="/affiliate-disclosure" className="underline hover:text-slate-400">
+              Full disclosure
+            </Link>
+          </p>
         </div>
       </section>
     </>

@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { motion } from "framer-motion"
-import { ExternalLink, Clock, Zap } from "lucide-react"
+import { ExternalLink, Zap } from "lucide-react"
 import type { Deal } from "@/data/deals"
 import { formatPrice, getSulitScoreBg, getSulitScoreLabel } from "@/lib/utils"
 
@@ -52,11 +52,13 @@ export default function DealCard({ deal }: DealCardProps) {
           </>
         )}
 
-        {/* Discount badge */}
-        <div className="absolute top-3 left-3 flex items-center gap-1 bg-white/95 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm">
-          <Zap className="w-3 h-3 text-green-600" aria-hidden="true" />
-          <span className="text-xs font-bold text-green-700">−{deal.discount}%</span>
-        </div>
+        {/* Discount badge — only shown when there's an actual discount */}
+        {deal.discount > 0 && (
+          <div className="absolute top-3 left-3 flex items-center gap-1 bg-white/95 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm">
+            <Zap className="w-3 h-3 text-green-600" aria-hidden="true" />
+            <span className="text-xs font-bold text-green-700">−{deal.discount}%</span>
+          </div>
+        )}
 
         {/* Category */}
         <div className="absolute bottom-3 left-3 px-2 py-0.5 bg-black/20 backdrop-blur-sm rounded-full">
@@ -74,10 +76,14 @@ export default function DealCard({ deal }: DealCardProps) {
         {/* Pricing */}
         <div className="flex items-baseline gap-2 mb-3">
           <span className="text-xl font-black text-slate-900">{formatPrice(deal.salePrice)}</span>
-          <span className="text-sm text-slate-400 line-through">{formatPrice(deal.originalPrice)}</span>
-          <span className="ml-auto text-xs font-bold text-green-600 bg-green-50 px-1.5 py-0.5 rounded-md">
-            Save {formatPrice(deal.originalPrice - deal.salePrice)}
-          </span>
+          {deal.discount > 0 && (
+            <span className="text-sm text-slate-400 line-through">{formatPrice(deal.originalPrice)}</span>
+          )}
+          {deal.discount > 0 && (
+            <span className="ml-auto text-xs font-bold text-green-600 bg-green-50 px-1.5 py-0.5 rounded-md">
+              Save {formatPrice(deal.originalPrice - deal.salePrice)}
+            </span>
+          )}
         </div>
 
         {/* SulitScore */}

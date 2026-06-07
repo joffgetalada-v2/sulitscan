@@ -44,7 +44,7 @@ export default function CategoriesPage() {
                 Shop deals by what you need
               </h1>
               <p className="text-slate-500 text-sm">
-                {categories.length} categories · Find exactly what you need at a price that&apos;s actually sulit.
+                {categories.filter((cat) => cat.featured).length} categories · Find exactly what you need at a price that&apos;s actually sulit.
               </p>
             </div>
           </div>
@@ -54,7 +54,7 @@ export default function CategoriesPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Bento grid */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-16">
-          {categories.map((cat) => (
+          {categories.filter((cat) => cat.featured).map((cat) => (
             <CategoryCard key={cat.id} category={cat} large />
           ))}
         </div>
@@ -62,7 +62,7 @@ export default function CategoriesPage() {
         {/* Category detail list */}
         <h2 className="text-xl font-black text-slate-900 mb-6">All categories</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {categories.map((cat) => (
+          {categories.filter((cat) => cat.featured).map((cat) => (
             <Link
               key={cat.id}
               href={`/categories/${cat.slug}`}

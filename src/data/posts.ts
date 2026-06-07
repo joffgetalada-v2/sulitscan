@@ -15,294 +15,373 @@ export interface BlogPost {
 export const posts: BlogPost[] = [
   {
     id: "post-001",
-    slug: "how-to-check-price-history-shopee-lazada",
-    title: "Is It Really on Sale? How to Check Shopee and Lazada Price History",
+    slug: "how-sulitscan-checks-deals",
+    title: "How SulitScan Checks Deals Before You Click Buy",
     excerpt:
-      "Flash sales can be misleading. Here's how to verify if a deal is genuine or if the original price was inflated before the promo.",
+      "Before any deal appears on SulitScan, we run it through a manual checklist. Here's exactly what we look at — and what we don't.",
     content: `
-Many Filipino shoppers have experienced "sale" prices that aren't actually lower than the usual price. Platforms sometimes raise the original price before a sale, making the discount look bigger than it is.
+SulitScan is not a live price aggregator. We manually curate selected deals from Temu and Sephora PH through affiliate partner programs. Here's what our deal-checking process looks like.
 
-## How to Check Price History
+## What We Check
 
-**Step 1: Use a Price Tracker Extension**
-Tools like Keepa (for international) or community-maintained spreadsheets can help track how a product's listed price has changed over time.
+**1. Is the price actually lower than usual?**
+We compare the listed sale price against publicly visible prices and similar products. If a product's "original price" looks inflated to make the discount seem bigger, we note that.
 
-**Step 2: Screenshot Before Big Sale Days**
-Before 11.11, 12.12, or Payday Sales, screenshot prices of items you're watching. Compare after the sale starts.
+**2. Is this a real product from a real seller?**
+For Sephora PH: all products come from an official, brand-authorized retailer. Authenticity is not a concern.
+For Temu: we check that the product category is appropriate for Temu (non-critical home, fashion, decor) and that buyer reviews exist.
 
-**Step 3: Check Product Reviews for Price Context**
-Reviewers sometimes mention what they paid. If many reviews mention a much lower price than the current "original," something's off.
+**3. Can additional savings be applied?**
+We note if platform vouchers, first-order discounts, or loyalty points can stack on top of the listed sale price.
 
-**Step 4: Search the Same Product Across Stores**
-Compare the same product across Shopee, Lazada, and AliExpress. The true market price becomes clearer.
+**4. What should the buyer check before purchasing?**
+Every deal card includes buyer notes: sizing reminders, shipping speed, quality flags, and return policy context.
 
-**Step 5: Wait 24–48 Hours**
-Many "flash deals" are not actually limited. The timer resets. Don't rush.
+**5. What is the SulitScore?**
+A 1–10 score based on discount authenticity, seller trust, review quality, voucher potential, and shipping context.
 
-## Red Flags to Watch For
-- Original price much higher than any similar product on the market
-- Seller account created recently with high ratings but low review count
-- Product images reused from other stores
+## What We Do Not Do
 
-SulitScan manually checks for these signals before adding a deal to our list.
+- We do not physically test products.
+- We do not verify live inventory.
+- We do not guarantee the price at checkout — prices change.
+- We do not process payments or take orders.
+
+## The Honest Disclaimer
+
+Prices listed on SulitScan are sourced from affiliate datafeeds and may not match the current price on the partner store. Always confirm the final price, available vouchers, and seller terms on Sephora PH or Temu before you buy.
+
+## Before You Click Buy — Your Checklist
+
+- Is the price on the partner store the same as what SulitScan shows?
+- Are there platform or seller vouchers you can apply?
+- Have you checked the size guide or product dimensions?
+- Have you read buyer reviews on the partner store?
+- Do you understand the return policy?
+
+SulitScan is a starting point — not the final word. You decide when to buy.
+
+## Affiliate Disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase. This does not affect your price. See our full [Affiliate Disclosure](/affiliate-disclosure) for details.
     `.trim(),
-    category: "Shopping Tips",
+    category: "About SulitScan",
     author: "SulitScan Team",
-    publishedAt: "2025-05-15",
+    publishedAt: "2026-06-01",
     readTime: 5,
-    tags: ["price-history", "shopee", "lazada", "tips", "smart-shopping"],
+    tags: ["how-it-works", "transparency", "sulitscan", "deal-checking"],
     coverGradient: "from-green-400 to-emerald-600",
   },
   {
     id: "post-002",
-    slug: "shopee-vouchers-you-are-not-using",
-    title: "Top 10 Shopee Vouchers You're Probably Not Using",
+    slug: "temu-shopping-guide-philippines",
+    title: "Temu Shopping Guide for Filipino Buyers: What to Know Before You Order",
     excerpt:
-      "Free shipping vouchers, platform coins, and seller vouchers can stack. Most shoppers miss at least three of these.",
+      "Temu offers surprisingly low prices, but there are a few things Filipino shoppers should know before clicking Buy Now.",
     content: `
-Shopee has multiple voucher layers that most casual shoppers don't fully use. Here's a breakdown.
+Temu has become popular in the Philippines for its ultra-low prices on home decor, fashion, gadgets, and everyday basics. Here's a practical guide for Filipino buyers.
 
-## Types of Shopee Vouchers
+## What Temu Is Good For
 
-**1. Platform-Wide Free Shipping Vouchers**
-Available in My Vouchers. Apply to orders above a minimum spend. Often the most valuable.
+Temu works best for:
+- Home organizers, storage, and decor
+- Phone accessories (cases, holders, cables)
+- Basic clothing and fashion accessories
+- Hobby and craft supplies
+- Small kitchen tools and gadgets
 
-**2. Seller-Specific Vouchers**
-Visit a store's page and follow them. Many shops give vouchers to new followers.
+**What to avoid on Temu:** High-value electronics, medications, branded goods, or anything where quality consistency is critical.
 
-**3. Shopee Coins Cashback**
-You earn Shopee Coins on every purchase. They're worth ₱0.20 per coin and can be used on your next order.
+## Pricing Reality
 
-**4. ShopeePay Cashback**
-Paying via ShopeePay (not linked bank card, but balance) sometimes gives an extra 5–10% cashback.
+Temu's prices are genuinely low. But:
+- The "original price" shown may be inflated to make the discount look bigger.
+- Vouchers and first-order discounts are common — check the promotions tab before checkout.
+- Shipping is often included, but check the estimated delivery window carefully.
 
-**5. Flash Vouchers (Claim Time)**
-Shopee releases new vouchers daily at 12:00 PM. These disappear in minutes.
+## Sizing
 
-**6. Shopee Live Vouchers**
-Watching Shopee Live streams gives claim vouchers for that session.
+Filipino shoppers consistently report that Temu clothing runs smaller than stated. Size up by at least one size for clothing. Always check the measurements in the product description, not just the size label.
 
-**7. Games (Shopee Farm, etc.)**
-Shopee's in-app games give coins that add up. Worth 5–10 minutes a day.
+## Shipping to the Philippines
 
-**8. Credit Card Partner Vouchers**
-Banks like BDO, BPI, and Metrobank often have exclusive Shopee promo codes.
+Standard shipping typically takes **7–20 business days**. Express shipping (if available) reduces this to 5–10 days. Temu does not guarantee exact delivery dates but usually meets the estimated window.
 
-**9. Birthday Month Voucher**
-Update your birthday in your profile. Shopee often gives a voucher in your birth month.
+## Returns and Refunds
 
-**10. Returning Cart Vouchers**
-Add items to cart, then come back after 24 hours. Sometimes you'll see a discount pop-up.
+Temu's return process is generally straightforward for:
+- Items not as described
+- Defective products
+- Items not received
 
-## How to Stack Them
-You can use one platform voucher + one seller voucher + Shopee Coins on a single order. That's three savings layers at once.
+Take photos of every order when it arrives. If an item is damaged or wrong, file the return request within the stated window (usually 90 days from purchase).
+
+## Before You Buy on Temu — Checklist
+
+- Read buyer reviews (not just the star rating — read written reviews)
+- Check the size measurements, not just the label
+- Look for the estimated shipping date
+- Check if a first-order or platform voucher applies
+- Is this a purchase you'd be OK with if quality is slightly off?
+
+## Affiliate Disclosure
+
+SulitScan may earn a commission when you click a Temu affiliate link and complete a purchase. This does not affect your price.
     `.trim(),
-    category: "Shopping Tips",
+    category: "Platform Guides",
     author: "SulitScan Team",
-    publishedAt: "2025-05-22",
+    publishedAt: "2026-06-02",
     readTime: 6,
-    tags: ["shopee", "vouchers", "tips", "savings", "hacks"],
+    tags: ["temu", "shopping-guide", "philippines", "tips", "buyer-guide"],
     coverGradient: "from-orange-400 to-red-500",
   },
   {
     id: "post-003",
-    slug: "aliexpress-vs-temu-which-is-safer",
-    title: "AliExpress vs Temu: Which is Safer for Filipino Shoppers?",
+    slug: "sephora-ph-beauty-guide",
+    title: "Sephora PH Beauty Deals: What to Check Before Buying",
     excerpt:
-      "Both offer rock-bottom prices. But which one is more reliable for delivery, quality, and buyer protection in the Philippines?",
+      "Sephora PH carries 300+ authentic beauty brands. Here's how to get the best value from their deals, loyalty points, and sale events.",
     content: `
-Both AliExpress and Temu have become popular among budget-conscious Filipino shoppers. Here's a head-to-head comparison.
+Sephora Philippines is one of the most trusted beauty retailers in the country. Carrying premium brands like SK-II, Sunday Riley, Mario Badescu, ZOEVA, Urban Decay, and their own Sephora Collection line, it's the go-to for authenticated skincare and makeup.
 
-## AliExpress
+## Why Sephora PH Deals Are Worth Checking
 
-**Pros:**
-- Established platform since 2010
-- Buyer Protection program (refund if item not received)
-- Wide variety of verified seller ratings
-- Faster shipping via Cainiao or AliExpress Standard Shipping
+Unlike marketplace sellers, all Sephora PH products are brand-authorized and authenticated. When Sephora runs a sale or promo, the discount is real — not padded from an inflated original.
 
-**Cons:**
-- Shipping to Philippines can still take 10–25 days
-- Quality varies wildly between sellers
-- Communication with sellers can be slow
+SulitScan tracks selected Sephora PH deals through the Involve Asia affiliate program. We list the price from the datafeed, but always **confirm the current price on sephora.ph** before purchasing.
 
-**Best For:** Electronics accessories, phone cases, tools, and hobby supplies.
+## Types of Sephora PH Deals
 
-## Temu
+**1. Sephora Collection Products**
+Sephora's own brand offers good quality at accessible prices (₱500–₱1,500 range). Popular picks include setting sprays, primers, brushes, and lip products.
 
-**Pros:**
-- Often even lower prices than AliExpress
-- Cleaner app experience
-- Refund policy is relatively smooth
+**2. Brand Sales and Promos**
+Sephora PH regularly runs brand-specific promos on premium lines. These are often time-limited — check their website or app for current promotions.
 
-**Cons:**
-- Newer platform (launched 2022) — less track record
-- Some users report impulse-buying due to aggressive promotions
-- Quality inconsistency is more common
-- Shipping takes 7–20 days
+**3. Gift Sets and Value Sets**
+Around holidays and sale events, Sephora bundles products into gift sets at better per-item pricing than buying individually.
 
-**Best For:** Non-critical items like decor, clothing basics, and novelty items.
+## Beauty Rewards Program
 
-## Our Recommendation
-For anything above ₱500, stick to AliExpress or local platforms (Shopee/Lazada). Temu is fine for low-stakes purchases where quality uncertainty is acceptable.
+Sephora PH has a Beauty Rewards loyalty program:
+- Earn points on every purchase
+- Points can be redeemed for discounts
+- Higher tiers (Gold, VIB) get early sale access and exclusive promos
 
-Always check the seller's review count and percentage, and use buyer protection if available.
+If you're a frequent Sephora buyer, creating an account and building your tier is worth it.
+
+## Free Shipping Threshold
+
+Free standard shipping applies to orders **₱1,500 and above**. If your order is slightly below, adding a small Sephora Collection item can push you over the threshold and save on shipping.
+
+## Before You Buy at Sephora PH — Checklist
+
+- Is the price on sephora.ph the same as what SulitScan shows?
+- Is there an active platform promo or Beauty Rewards offer you can use?
+- Is the product available in your preferred shade, size, or variant?
+- Are you familiar with the brand's return policy for opened products?
+- Is this a product suited to your skin type and concern?
+
+## Returns at Sephora PH
+
+Sephora PH accepts returns for unopened, unused products within 30 days with proof of purchase. Opened products are generally non-returnable unless defective. If buying a product for the first time, consider a smaller size or look for in-store samples before committing.
+
+## Affiliate Disclosure
+
+SulitScan may earn a commission when you click a Sephora PH affiliate link and complete a purchase. This does not affect your price.
     `.trim(),
     category: "Platform Guides",
     author: "SulitScan Team",
-    publishedAt: "2025-06-01",
+    publishedAt: "2026-06-03",
     readTime: 7,
-    tags: ["aliexpress", "temu", "platform-guide", "safety", "comparison"],
-    coverGradient: "from-blue-400 to-indigo-600",
+    tags: ["sephora", "beauty", "skincare", "philippines", "buyer-guide"],
+    coverGradient: "from-pink-400 to-rose-600",
   },
   {
     id: "post-004",
-    slug: "stack-vouchers-lazada-shopee",
-    title: "How to Stack Vouchers on Lazada and Shopee for Maximum Savings",
+    slug: "how-to-spot-fake-discounts",
+    title: "How to Spot Fake Discounts Online Before You Get Tricked",
     excerpt:
-      "Stacking vouchers is legal, works every day, and most shoppers never try it. Here's exactly how.",
+      "Not every sale is a real bargain. Here are the signs that a discount is genuine — and the red flags that it's not.",
     content: `
-Voucher stacking means applying multiple discount types to a single order at checkout. Lazada and Shopee both allow it.
+One of the most common tricks in online shopping is the inflated original price. A product is listed at ₱2,000 with a "50% off" tag showing ₱1,000 — but the product was never actually sold at ₱2,000. You're not saving anything.
 
-## On Shopee
+Here's how to protect yourself.
 
-**Layer 1 – Platform Voucher:** Select from "Shopee Vouchers" at checkout.
-**Layer 2 – Seller Voucher:** Select from "Shop Vouchers" at checkout.
-**Layer 3 – Shopee Coins:** Toggle "Use Shopee Coins" to apply up to 15% of order value.
-**Layer 4 – ShopeePay Cashback:** Set ShopeePay as payment method.
+## Red Flags: Signs a Discount May Be Fake
 
-That's four discounts on one order.
+**1. The Original Price Is Unusually High**
+If the "original price" is significantly higher than any similar product you can find elsewhere, the original price may have been inflated specifically to create the appearance of a discount.
 
-## On Lazada
+**2. The Sale Never Ends**
+Some platforms show countdown timers that reset every day. If a "flash sale" timer always shows a few hours remaining, it's not actually a flash sale.
 
-**Layer 1 – Platform Voucher:** Apply under "Voucher" at checkout.
-**Layer 2 – Seller Voucher:** Collected from seller's store page.
-**Layer 3 – LazCoins:** Toggle at checkout.
-**Layer 4 – Bank Promo:** Enter promo code from partner bank.
+**3. The "Was" Price Has No History**
+If you can't find any evidence that the product was ever sold at the original price — no old screenshots, no review dates matching that price — it may be fictitious.
 
-## Tips for Maximum Stack
+**4. Discount Size Doesn't Match Reality**
+A 90% discount on branded skincare or electronics is almost never real. If the deal seems too good to be true, it usually is.
 
-1. **Buy during a sale event.** Vouchers are more generous on 11.11, 12.12, and Payday Sales.
-2. **Hit the minimum spend.** Many vouchers activate only above ₱500 or ₱1,000.
-3. **Combine items per seller.** Buying multiple items from one seller triggers seller vouchers more easily.
-4. **Claim vouchers in advance.** Vouchers expire. Collect them early and use before they lapse.
+## How to Verify a Discount
 
-## Real Example
+**Check Similar Products**
+Search for the same or similar product across multiple stores. The true market price becomes clearer quickly.
 
-Order: ₱1,200 airfryer on Shopee
-- Platform Voucher: -₱100
-- Seller Voucher: -₱50
-- Shopee Coins: -₱60
-- ShopeePay 5% Cashback: -₱50
+**Read Dated Reviews**
+Buyer reviews include the purchase date. If reviewers from six months ago mention the same price as today's "sale price," the item was never actually discounted.
 
-**You pay: ₱940 instead of ₱1,200. 22% off.**
+**Look for Product Specifications**
+Generic products (phone cases, cables, decor) often have legitimate very low prices because margins are thin. But branded items at 80%+ off warrant skepticism.
+
+**Use SulitScan's Notes**
+Every deal on SulitScan includes a SulitScore and buyer notes. If something looks off about the discount, we try to flag it.
+
+## What SulitScan Does
+
+We manually review price claims before listing a deal. If a discount looks inflated, we either skip the product or note the concern in the buyer notes section.
+
+That said: we are not a live price tracker. Always confirm the current price and discount on the partner store before purchasing.
+
+## Your Pre-Purchase Checklist
+
+- Does the original price make sense compared to similar products?
+- Is there a dated review history consistent with the price claims?
+- Is the sale window actually limited, or does it reset?
+- Can you find the same product at a similar or lower price elsewhere?
+
+## Affiliate Disclosure
+
+SulitScan may earn a commission when you click partner links and complete a purchase. This does not affect your price.
     `.trim(),
     category: "Shopping Tips",
     author: "SulitScan Team",
-    publishedAt: "2025-06-03",
-    readTime: 6,
-    tags: ["vouchers", "stacking", "shopee", "lazada", "savings-tips"],
-    coverGradient: "from-purple-400 to-violet-600",
+    publishedAt: "2026-06-04",
+    readTime: 5,
+    tags: ["fake-discounts", "shopping-tips", "buyer-protection", "smart-shopping"],
+    coverGradient: "from-amber-400 to-orange-500",
   },
   {
     id: "post-005",
-    slug: "best-budget-tech-deals-under-500",
-    title: "Best Budget Tech Deals Under ₱500 This Month",
+    slug: "voucher-shipping-return-checklist",
+    title: "Voucher, Shipping, and Return Checklist for Every Online Order",
     excerpt:
-      "Screen cleaners, USB hubs, cable organizers, LED strips, and more — all under five hundred pesos.",
+      "Before you click confirm at checkout, run through this quick list. It takes 2 minutes and can save you money and frustration.",
     content: `
-You don't need a big budget to upgrade your tech setup. Here are this month's top picks under ₱500.
+Most online shopping regrets come from one of three things: missing a voucher, getting surprised by shipping time, or not knowing the return policy before buying. Here's a checklist to run through before every order.
 
-## Top Picks
+## Voucher Check
 
-**1. Phone Stand with 360° Rotation – ₱149**
-Essential for video calls and content watching. Adjustable height, compatible with all phones.
+**Temu:**
+- Check the Promotions tab for active coupon codes
+- First-time buyers often get a new-user discount — claim it before checkout
+- Look for bundled discounts (buy 2 or more items from the same seller)
 
-**2. USB-C to USB-A Cable (1.2m, fast-charging) – ₱89**
-Look for cables rated at 60W or above. Check for braided coating for durability.
+**Sephora PH:**
+- Log in to your Beauty Rewards account — points may be redeemable for a discount
+- Check if there's an active promo on the brand you're buying from
+- If your cart total is close to ₱1,500, consider adding a small item for free shipping
 
-**3. Silicone Cable Organizer Set (10 pcs) – ₱79**
-Keeps charging cables, earphones, and USB cables neat. Works on desks and bags.
+**General:**
+- Is there a credit card or e-wallet promo that applies? (GCash, PayMaya, bank promos)
+- Has the discount already been applied to the listed price, or do you need to enter a code?
 
-**4. LED Strip Light (5m, RGB, remote-controlled) – ₱299**
-Gaming setup or bedroom mood lighting. Adhesive backing. Check if remote is included.
+## Shipping Check
 
-**5. Laptop Stand (Adjustable Aluminum) – ₱389**
-Great ergonomic upgrade for working from home. Foldable and portable.
+- What is the estimated delivery date? (Not just "7–20 days" — look for the actual date)
+- Is free shipping included, or is it conditional on a minimum order?
+- Are you in a delivery area that may take longer? (Provinces, remote barangays)
+- Will the item arrive in time if you need it by a specific date?
 
-**6. Wireless Mouse (2.4GHz, 1200 DPI) – ₱299**
-Basic but reliable. Good for students and office use. Battery-powered.
+## Return Policy Check
 
-**7. Screen Cleaning Kit (Spray + Microfiber) – ₱149**
-Smudge-free screens on phones, laptops, glasses. Non-alcohol formula.
+**Before buying:**
+- Can this item be returned if it doesn't fit or isn't as described?
+- Is it returnable once opened? (Cosmetics and beauty items often cannot be returned if opened)
+- What is the return window? (Some platforms give 7 days, others 30 or 90)
+- Do you need to ship it back yourself, and is return shipping free?
 
-**8. Selfie Ring Light (10-inch, 3 color modes) – ₱499**
-Good lighting for online classes, streaming, or content creation.
+**After receiving:**
+- Take photos of the item and packaging immediately upon delivery
+- Check against the product description while you still have the option to file a return
+- Don't discard the packaging until you're satisfied
 
-## How We Chose These
-Each pick was checked against current marketplace prices. We avoided items with less than 4.5 stars or fewer than 50 reviews.
+## The Final Question
+
+Before you click Confirm Order:
+
+*"If this item arrives slightly different from what I expect — different color, slightly different size, slightly different quality — will I be satisfied with the purchase?"*
+
+If yes: proceed. If no: reconsider or research more before buying.
+
+## Affiliate Disclosure
+
+SulitScan may earn a commission when you click partner links and complete a purchase. This does not affect your price.
     `.trim(),
-    category: "Budget Finds",
+    category: "Shopping Tips",
     author: "SulitScan Team",
-    publishedAt: "2025-06-05",
+    publishedAt: "2026-06-05",
     readTime: 4,
-    tags: ["tech", "budget", "under-500", "gadgets", "home-office"],
-    coverGradient: "from-cyan-400 to-blue-500",
+    tags: ["checklist", "vouchers", "shipping", "returns", "tips"],
+    coverGradient: "from-teal-400 to-cyan-600",
   },
   {
     id: "post-006",
-    slug: "sulitscan-score-explained",
-    title: "SulitScan Score Explained: How We Rate Deals",
+    slug: "why-final-prices-change-at-checkout",
+    title: "Why the Final Price at Checkout Is Different from What You Saw",
     excerpt:
-      "Our score isn't just about discount size. Here's exactly what goes into a SulitScan Score and why an 8 is better than a 5.",
+      "You saw ₱299 on the deal page. At checkout it shows ₱420. Here's why this happens and how to avoid checkout surprises.",
     content: `
-We created the SulitScan Score to give shoppers a simple signal about deal quality. Here's what goes into it.
+The price you see on a deal listing — whether on SulitScan or the partner store's product page — is rarely the final price you pay. Here's why checkout prices differ and what to watch for.
 
-## What the Score Is
+## Common Reasons for Checkout Price Differences
 
-A number from 1 to 10. Higher is better.
+**1. Shipping Fees Added**
+The product price may not include shipping. On Temu, many items include free shipping — but some do not, especially for very small or lightweight items sold individually.
 
-**Score 9–10:** Excellent deal. Strong discount from a trusted seller. Price is verified lower than usual. Limited time or stock.
+**2. Voucher Not Applied**
+If you saw the price after a voucher was applied in a screenshot or deal post, but you didn't apply the voucher yourself at checkout, you'll pay more.
 
-**Score 7–8:** Good deal. Discount is real and meaningful. Some caveats apply (shipping time, sizing note, etc.).
+**3. Price Changed Since the Deal Was Listed**
+SulitScan sources prices from affiliate datafeeds, which may not reflect real-time price changes. Prices on Temu and Sephora PH can change daily or even hourly during sale events.
 
-**Score 5–6:** Decent deal. Not great, not bad. Buy only if you need it now or can't wait for a better price.
+**4. Variant Pricing**
+The price shown may be for a specific color, size, or quantity that's different from the one you selected. Always confirm the price updates after selecting your specific variant.
 
-**Score 3–4:** Marginal. Discount is small or seller trust is unclear. Check elsewhere first.
+**5. Currency or Tax Display**
+Some platforms show prices exclusive of taxes. At checkout, VAT or other fees may be added.
 
-**Score 1–2:** We wouldn't feature this. Listed for informational purposes only.
+**6. Exchange Rate Fluctuation**
+If you're paying through a credit card in a currency other than Philippine Peso, exchange rates affect your final billed amount.
 
-## What We Check
+## What SulitScan Does
 
-**1. Discount Authenticity**
-Is the original price realistic? We cross-reference similar products to verify.
+We source prices from affiliate datafeeds at the time we add or update a deal. We add a "price verified" date to every deal card. But we cannot guarantee the price is still the same when you click through.
 
-**2. Seller Trust**
-Seller rating, review count, fulfillment speed, official brand or mall store status.
+This is why every deal card on SulitScan includes:
+- A timestamp showing when the price was last checked
+- A reminder to confirm the final price on the partner store
+- A note that prices may change
 
-**3. Product Reviews**
-Do buyers report quality consistent with the price? We look for red flags.
+## Before You Pay — Final Check
 
-**4. Voucher Stackability**
-Can platform vouchers be applied? This affects the effective final price.
+1. Does the checkout price match what you expected?
+2. Has shipping been added? Is it still within your budget?
+3. Did you apply any available vouchers?
+4. Is the variant (size, color, quantity) correct?
+5. Is the delivery estimate acceptable?
 
-**5. Shipping Speed + Cost**
-Slow free shipping vs fast paid shipping affects value, especially for travel or time-sensitive items.
+If any of these don't look right — go back. There's no urgency. Good deals come back.
 
-**6. Price History Trend**
-Has this product been at this price before? Is this a genuine low?
+## Affiliate Disclosure
 
-## What We Don't Check
-We don't physically test products. SulitScan is a deals aggregation and guide site — we curate based on publicly available signals. Always read reviews before buying.
-
-We are transparent about this: every deal card shows exactly why we picked it.
+SulitScan may earn a commission when you click partner links and complete a purchase. This does not affect your price. See our full [Affiliate Disclosure](/affiliate-disclosure).
     `.trim(),
-    category: "About SulitScan",
+    category: "Shopping Tips",
     author: "SulitScan Team",
-    publishedAt: "2025-06-06",
+    publishedAt: "2026-06-06",
     readTime: 5,
-    tags: ["sulitscan", "score", "how-it-works", "transparency"],
-    coverGradient: "from-green-400 to-teal-500",
+    tags: ["checkout", "pricing", "tips", "buyer-protection", "transparency"],
+    coverGradient: "from-violet-400 to-purple-600",
   },
 ]
 
