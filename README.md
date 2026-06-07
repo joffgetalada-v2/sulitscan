@@ -1,8 +1,8 @@
 # SulitScan PH
 
-**Find deals that are actually sulit.**
+**Check deals before you click buy.**
 
-SulitScan PH is a professional affiliate marketing and deals discovery website for Filipino shoppers. It helps users find curated deals from Shopee, Lazada, AliExpress, Temu, and more — with honest value notes, SulitScore ratings, and clear affiliate disclosure.
+SulitScan PH is a curated deals discovery site for Filipino shoppers, focused on **Temu** and **Sephora PH** affiliate deals. Honest notes, SulitScore ratings, and clear affiliate disclosure on every page.
 
 ---
 
@@ -24,60 +24,52 @@ SulitScan PH is a professional affiliate marketing and deals discovery website f
 
 ```
 src/
-├── app/                    # Next.js App Router pages
-│   ├── layout.tsx          # Root layout with Header/Footer
-│   ├── page.tsx            # Homepage
-│   ├── deals/              # Deals listing + detail pages
-│   ├── categories/         # Category pages
-│   ├── stores/             # Partner store pages
-│   ├── blog/               # Blog listing + article pages
-│   ├── about/              # About page
-│   ├── contact/            # Contact page
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx                 # Homepage
+│   ├── ads.txt/route.ts         # Dynamic ads.txt (see AdSense section)
+│   ├── deals/                   # Deals listing + detail pages
+│   ├── categories/              # Category pages
+│   ├── stores/                  # Partner store pages
+│   ├── blog/                    # Blog listing + articles
+│   ├── about/
+│   ├── contact/
+│   ├── cookie-policy/           # Cookie Policy page
 │   ├── affiliate-disclosure/
 │   ├── privacy-policy/
 │   ├── terms/
-│   ├── sitemap.ts          # Auto-generated sitemap
-│   └── robots.ts           # robots.txt generation
-├── components/             # Reusable UI components
-│   ├── Header.tsx          # Sticky responsive navigation
-│   ├── Footer.tsx          # Footer with affiliate disclosure
-│   ├── Hero.tsx            # Homepage hero with Remotion animation
-│   ├── DealCard.tsx        # Product deal card
-│   ├── CategoryCard.tsx    # Category browse card
-│   ├── StoreCard.tsx       # Partner store card
-│   ├── SectionHeading.tsx  # Reusable section titles
-│   ├── SeoJsonLd.tsx       # JSON-LD structured data helpers
-│   ├── MotionMascot.tsx    # Animated scanner illustration
-│   └── RemotionHeroPlayer.tsx  # Client-only Remotion player
-├── remotion/
-│   └── SulitScanHeroAnimation.tsx  # Hero animation composition
-├── data/                   # Static sample data
+│   ├── sitemap.ts
+│   └── robots.ts
+├── components/
+│   ├── Header.tsx
+│   ├── Footer.tsx
+│   ├── DealCard.tsx
+│   ├── CategoryCard.tsx
+│   ├── DealsGrid.tsx
+│   ├── ExternalAffiliateLink.tsx  # Enforces correct rel attributes on all affiliate links
+│   ├── AdSensePlaceholder.tsx     # AdSense scaffold (disabled by default)
+│   ├── SeoJsonLd.tsx
+│   └── ...
+├── data/
 │   ├── deals.ts
 │   ├── categories.ts
 │   ├── posts.ts
 │   └── stores.ts
-└── lib/                    # Utilities
-    ├── seo.ts              # SEO config and metadata defaults
-    └── utils.ts            # Formatting helpers
+└── lib/
+    ├── seo.ts
+    └── utils.ts
 ```
 
 ---
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js 18+
-- npm 9+
-
-### Install and Run
-
 ```bash
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site.
+Open [http://localhost:3000](http://localhost:3000).
 
 ### Build for Production
 
@@ -94,24 +86,119 @@ npm run lint
 
 ---
 
-## Key Notes
+## Environment Variables
 
-### Compliance
-- No fake checkout, cart, or payment functionality
+| Variable | Required | Description |
+|---|---|---|
+| `NEXT_PUBLIC_ADSENSE_CLIENT_ID` | No | Google AdSense publisher ID for client-side ad rendering. Set to enable AdSense. |
+| `ADSENSE_PUBLISHER_ID` | No | Server-side AdSense publisher ID used to generate `/ads.txt`. |
+
+### `.env.local` example
+
+```env
+# AdSense — leave blank until your account is approved
+NEXT_PUBLIC_ADSENSE_CLIENT_ID=
+ADSENSE_PUBLISHER_ID=
+```
+
+---
+
+## AdSense Setup (When Ready)
+
+SulitScan is structured for AdSense approval. Follow these steps when ready to monetize:
+
+### Step 1 — Apply for AdSense
+
+Ensure the site has:
+- Active `/about`, `/contact`, `/privacy-policy`, `/affiliate-disclosure`, and `/cookie-policy` pages
+- Sufficient content (blog posts, deal pages)
+- No auto-redirects, fake buttons, or misleading CTAs
+
+### Step 2 — Get Approved
+
+Submit https://sulitscan.com to Google AdSense. Approval typically takes 1–14 days.
+
+### Step 3 — Configure Environment Variables
+
+In Vercel Dashboard → Settings → Environment Variables, add:
+```
+NEXT_PUBLIC_ADSENSE_CLIENT_ID = ca-pub-XXXXXXXXXXXXXXXX
+ADSENSE_PUBLISHER_ID = pub-XXXXXXXXXXXXXXXX
+```
+
+### Step 4 — Add AdSense Script to Layout
+
+In `src/app/layout.tsx`, add inside `<head>`:
+```tsx
+<script
+  async
+  src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID}`}
+  crossOrigin="anonymous"
+/>
+```
+
+### Step 5 — Place Ad Units
+
+Use the `AdSensePlaceholder` component in `src/components/AdSensePlaceholder.tsx`.
+Replace the placeholder `div` with the real `ins.adsbygoogle` element.
+
+**AdSense placement rules — do not violate:**
+- Do not place ads beside fake buttons, arrows, or product CTAs
+- Do not place ads where they could be confused with affiliate "View Deal" buttons
+- Keep affiliate CTAs clearly separate from ad units
+- Do not write "click ads to support us"
+
+### Step 6 — Verify ads.txt
+
+After deploying with `ADSENSE_PUBLISHER_ID` set, visit https://sulitscan.com/ads.txt to confirm it outputs:
+```
+google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+```
+
+---
+
+## Affiliate Links
+
+All affiliate links must use `ExternalAffiliateLink` from `src/components/ExternalAffiliateLink.tsx`.
+
+```tsx
+import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
+
+<ExternalAffiliateLink href={deal.affiliateLink} platform={deal.platform}>
+  View Deal on {deal.platform}
+</ExternalAffiliateLink>
+```
+
+This enforces: `target="_blank" rel="sponsored nofollow noopener noreferrer"` on every link.
+
+Affiliate button text should be:
+- ✅ "View Deal on Temu"
+- ✅ "View Deal on Sephora PH"
+- ✅ "Visit Temu"
+- ✅ "Visit Sephora PH"
+- ❌ "Buy Now" / "Checkout" / "Add to Cart" / "Claim Now"
+
+---
+
+## SEO
+
+- Canonical URLs: all point to `https://sulitscan.com`
+- Open Graph + Twitter Cards on every page
+- JSON-LD: Organization, WebSite, BreadcrumbList, ItemList, BlogPosting, FAQPage
+- `sitemap.ts` auto-generates all public routes
+- `robots.ts` allows all crawlers, links to sitemap
+- `metadataBase` set to `https://sulitscan.com` in layout
+
+---
+
+## Compliance
+
+- No cart, checkout, or payment functionality
 - No auto-redirect on affiliate links
-- All external affiliate links use rel="sponsored nofollow noopener noreferrer"
-- Affiliate disclosure on every page (footer + banner)
-- All deals are demo/sample data — not live prices
-
-### Remotion Player
-The hero animation uses @remotion/player loaded via next/dynamic with ssr: false to avoid SSR issues. The animation composition lives in src/remotion/SulitScanHeroAnimation.tsx.
-
-### SEO
-- Metadata API for every page
-- Canonical URLs pointing to sulitscan.com
-- Open Graph + Twitter Cards
-- JSON-LD structured data (Organization, WebSite, ItemList, BlogPosting, BreadcrumbList, FAQPage)
-- sitemap.ts + robots.ts
+- All affiliate links: `rel="sponsored nofollow noopener noreferrer"`
+- Affiliate disclosure on every page (footer banner + dedicated `/affiliate-disclosure` page)
+- Deal data is from affiliate datafeeds — not guaranteed live prices
+- `/cookie-policy` and `/privacy-policy` explain cookie and analytics usage
 
 ---
 
@@ -119,29 +206,27 @@ The hero animation uses @remotion/player loaded via next/dynamic with ssr: false
 
 ```bash
 git add .
-git commit -m "Initial SulitScan PH build"
+git commit -m "Your commit message"
 git push origin main
 ```
 
-Then connect your GitHub repo to Vercel and deploy. No additional build configuration needed.
+Connect your GitHub repo to Vercel. No additional build configuration needed.
 
 ---
 
-## TODOs / Future Enhancements
+## TODOs / Future
 
-- Connect to a real database or headless CMS for live deals
-- Add search functionality across deals and posts
-- Implement actual affiliate link tracking/redirect
-- Add user deal submission form
+- Connect to a CMS or database for live deal management
 - Add price history integration
 - Add email newsletter for weekly deal digests
-- Add dark mode support
-- Add product comparison feature
-- Integrate with Shopee/Lazada affiliate APIs when available
-- Add OG image generation for each deal/post
+- Add OG image generation per deal/post
+- Expand to additional affiliate partners (update `ACTIVE_PLATFORMS` in `deals.ts`)
+- Add dark mode
 
 ---
 
 ## Affiliate Disclosure
 
-SulitScan PH participates in affiliate programs. We earn a commission when you click our links and make a purchase — at no extra cost to you. See /affiliate-disclosure for full details.
+SulitScan PH participates in affiliate programs with Temu and Sephora PH (via Involve Asia).
+We earn a commission when you click our links and make a purchase — at no extra cost to you.
+See `/affiliate-disclosure` for full details.

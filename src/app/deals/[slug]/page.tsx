@@ -4,13 +4,14 @@ import Link from "next/link"
 import Image from "next/image"
 import { ExternalLink, ArrowLeft, Clock, Star, Tag, ShieldCheck, AlertCircle } from "lucide-react"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
-import { deals, getDealBySlug, getFeaturedDeals } from "@/data/deals"
+import { getActiveDeals, getDealBySlug, getFeaturedDeals } from "@/data/deals"
+import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import DealCard from "@/components/DealCard"
 import { siteConfig } from "@/lib/seo"
 import { formatPrice, getSulitScoreBg, getSulitScoreLabel } from "@/lib/utils"
 
 export function generateStaticParams() {
-  return deals.map((d) => ({ slug: d.slug }))
+  return getActiveDeals().map((d) => ({ slug: d.slug }))
 }
 
 export async function generateMetadata({
@@ -161,16 +162,15 @@ export default async function DealDetailPage({
             </div>
 
             {/* CTA */}
-            <a
+            <ExternalAffiliateLink
               href={deal.affiliateLink}
-              target="_blank"
-              rel="sponsored nofollow noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-3.5 px-6 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-md hover:shadow-green-200 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+              platform={deal.platform}
               aria-label={`View this deal on ${deal.platform} (affiliate link, opens in new tab)`}
+              className="flex items-center justify-center gap-2 w-full py-3.5 px-6 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-md hover:shadow-green-200 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >
               View Deal on {deal.platform}
               <ExternalLink className="w-4 h-4" aria-hidden="true" />
-            </a>
+            </ExternalAffiliateLink>
 
             <p className="mt-2 text-xs text-center text-slate-400">
               Affiliate link — SulitScan may earn a commission at no extra cost to you.{" "}
@@ -184,16 +184,19 @@ export default async function DealDetailPage({
           <h2 className="text-base font-bold text-slate-900 mb-4">Before you buy — checklist</h2>
           <ul className="space-y-2.5" role="list">
             {[
-              `Check the current price on ${deal.platform} — it may differ from what SulitScan shows.`,
-              "Look for any available platform vouchers or loyalty discounts you can apply.",
+              `Confirm the current price on ${deal.platform} — prices from SulitScan may not reflect the live price.`,
+              "Look for available platform vouchers, loyalty points, or first-order discounts.",
               deal.platform === "Temu"
-                ? "Check the size guide if ordering clothing — Temu sizing often runs smaller."
-                : "Check if the product shade, size, or variant you want is in stock.",
-              "Read buyer reviews on the partner store before deciding.",
+                ? "Check the size guide if ordering clothing or shoes — Temu sizing often runs smaller than stated."
+                : "Check that the product shade, size, or variant you want is currently in stock on Sephora PH.",
+              "Read buyer reviews on the partner store — look for verified purchase reviews.",
               deal.platform === "Temu"
-                ? "Note the estimated shipping date — Temu ships internationally (7–20 days to PH)."
-                : "Confirm shipping cost — free shipping applies to orders ₱1,500+ on Sephora PH.",
-              "Understand the return policy before opening the product.",
+                ? "Check the estimated delivery date — Temu ships internationally (7–20 business days to PH)."
+                : "Confirm shipping cost — free standard shipping applies to orders ₱1,500+ on Sephora PH.",
+              deal.platform === "Sephora PH" && ["Beauty", "Skincare"].includes(deal.category)
+                ? "For skincare and beauty: check the ingredient list for known allergens, patch test before full use, and read expiry and storage conditions."
+                : "Check if the product dimensions, materials, or specs match your needs.",
+              "Read the return policy before opening — most beauty products cannot be returned once opened.",
             ].map((item, idx) => (
               <li key={idx} className="flex items-start gap-2.5">
                 <span className="w-5 h-5 rounded-full bg-green-50 text-green-600 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">

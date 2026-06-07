@@ -28,7 +28,7 @@ SulitScan is not a live price aggregator. We manually curate selected deals from
 We compare the listed sale price against publicly visible prices and similar products. If a product's "original price" looks inflated to make the discount seem bigger, we note that.
 
 **2. Is this a real product from a real seller?**
-For Sephora PH: all products come from an official, brand-authorized retailer. Authenticity is not a concern.
+For Sephora PH: products are listed from an authorized retailer. Confirm the product details, size, price, and return policy on sephora.ph before buying.
 For Temu: we check that the product category is appropriate for Temu (non-critical home, fashion, decor) and that buyer reviews exist.
 
 **3. Can additional savings be applied?**
@@ -77,7 +77,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     slug: "temu-shopping-guide-philippines",
     title: "Temu Shopping Guide for Filipino Buyers: What to Know Before You Order",
     excerpt:
-      "Temu offers surprisingly low prices, but there are a few things Filipino shoppers should know before clicking Buy Now.",
+      "Temu offers surprisingly low prices, but there are a few things Filipino shoppers should know before placing an order.",
     content: `
 Temu has become popular in the Philippines for its ultra-low prices on home decor, fashion, gadgets, and everyday basics. Here's a practical guide for Filipino buyers.
 

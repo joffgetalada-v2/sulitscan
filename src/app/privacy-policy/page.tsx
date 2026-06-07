@@ -80,15 +80,43 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-slate-900 mb-3">4. Cookies</h2>
+            <h2 className="text-lg font-bold text-slate-900 mb-3">4. Analytics</h2>
             <p>
-              We use cookies to improve user experience and analyze site traffic. You can disable
-              cookies in your browser settings, though some features may not function correctly.
+              SulitScan PH uses <strong>Vercel Analytics</strong> to collect aggregated, anonymized usage
+              data — such as page views and navigation paths. This service does not use advertising
+              cookies and does not personally identify individual visitors. We use this data only to
+              improve the site experience.
             </p>
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-slate-900 mb-3">5. Data Security</h2>
+            <h2 className="text-lg font-bold text-slate-900 mb-3">5. Cookies</h2>
+            <p className="mb-3">
+              We use a limited number of cookies. For a full breakdown, see our{" "}
+              <a href="/cookie-policy" className="text-green-600 underline hover:text-green-700">Cookie Policy</a>.
+            </p>
+            <p>
+              SulitScan PH does <strong>not</strong> currently use advertising cookies or third-party
+              ad networks. If we add advertising in the future, this policy will be updated and a
+              cookie consent notice will be shown before enabling advertising cookies.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-slate-900 mb-3">6. Affiliate Link Tracking</h2>
+            <p>
+              When you click a Temu or Sephora PH affiliate link, those partner sites may use their own
+              cookies or tracking pixels to record the referral. SulitScan PH does not control this
+              tracking. Refer to{" "}
+              <a href="https://www.temu.com/privacy-policy.html" target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">Temu&apos;s Privacy Policy</a>{" "}
+              and{" "}
+              <a href="https://www.sephora.ph/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">Sephora PH&apos;s Privacy Policy</a>{" "}
+              for details on how they handle your data.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-slate-900 mb-3">7. Data Security</h2>
             <p>
               We implement reasonable security measures to protect your information. However, no
               internet transmission is 100% secure.
@@ -96,7 +124,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-slate-900 mb-3">6. Children&apos;s Privacy</h2>
+            <h2 className="text-lg font-bold text-slate-900 mb-3">8. Children&apos;s Privacy</h2>
             <p>
               SulitScan PH is not directed at children under 13. We do not knowingly collect
               personal information from children.
@@ -104,7 +132,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-slate-900 mb-3">7. Changes to This Policy</h2>
+            <h2 className="text-lg font-bold text-slate-900 mb-3">9. Changes to This Policy</h2>
             <p>
               We may update this privacy policy from time to time. Changes will be posted on this
               page with an updated date.
@@ -112,7 +140,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-slate-900 mb-3">8. Contact</h2>
+            <h2 className="text-lg font-bold text-slate-900 mb-3">10. Contact</h2>
             <p>
               For privacy questions, email us at{" "}
               <a href="mailto:hello@sulitscan.com" className="text-green-600 underline hover:text-green-700">
