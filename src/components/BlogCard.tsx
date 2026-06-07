@@ -1,4 +1,5 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Clock, ArrowRight } from "lucide-react"
 import type { BlogPost } from "@/data/posts"
 import { formatDate } from "@/lib/utils"
@@ -9,14 +10,15 @@ interface BlogCardProps {
 }
 
 const categoryColors: Record<string, string> = {
-  "Shopping Tips":  "bg-green-100 text-green-700",
+  "Shopping Tips":   "bg-green-100 text-green-700",
   "Platform Guides": "bg-blue-100 text-blue-700",
-  "Budget Finds":   "bg-amber-100 text-amber-700",
+  "Budget Finds":    "bg-amber-100 text-amber-700",
   "About SulitScan": "bg-purple-100 text-purple-700",
 }
 
 export default function BlogCard({ post, featured = false }: BlogCardProps) {
   const catColor = categoryColors[post.category] ?? "bg-slate-100 text-slate-600"
+  const coverHeight = featured ? "h-48" : "h-36"
 
   return (
     <Link
@@ -25,24 +27,34 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
       aria-label={`Read: ${post.title}`}
     >
       {/* Cover image area */}
-      <div className={`relative overflow-hidden ${featured ? "h-48" : "h-36"} bg-gradient-to-br ${post.coverGradient}`}>
-        {/* Pattern overlay */}
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
-            backgroundSize: "20px 20px",
-          }}
-          aria-hidden="true"
-        />
+      <div className={`relative overflow-hidden ${coverHeight} ${!post.coverImage ? `bg-gradient-to-br ${post.coverGradient}` : "bg-slate-100"}`}>
+        {post.coverImage ? (
+          <Image
+            src={post.coverImage}
+            alt={post.coverImageAlt ?? post.title}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-300"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        ) : (
+          <div
+            className="absolute inset-0 opacity-10"
+            style={{
+              backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
+              backgroundSize: "20px 20px",
+            }}
+            aria-hidden="true"
+          />
+        )}
+
         {/* Category badge */}
-        <div className="absolute top-3 left-3">
+        <div className="absolute top-3 left-3 z-10">
           <span className="inline-block px-2.5 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-semibold text-slate-700">
             {post.category}
           </span>
         </div>
         {/* Read time */}
-        <div className="absolute bottom-3 right-3 flex items-center gap-1 bg-black/30 backdrop-blur-sm rounded-full px-2 py-1">
+        <div className="absolute bottom-3 right-3 z-10 flex items-center gap-1 bg-black/30 backdrop-blur-sm rounded-full px-2 py-1">
           <Clock className="w-3 h-3 text-white" aria-hidden="true" />
           <span className="text-xs text-white font-medium">{post.readTime} min</span>
         </div>

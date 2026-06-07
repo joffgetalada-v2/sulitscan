@@ -1,11 +1,12 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
+import Image from "next/image"
 import { Clock, ArrowLeft, Tag, BookOpen } from "lucide-react"
 import { BreadcrumbJsonLd, BlogPostingJsonLd } from "@/components/SeoJsonLd"
 import { posts, getPostBySlug } from "@/data/posts"
 import { siteConfig } from "@/lib/seo"
-import { formatDate } from "@/lib/utils"
+import { formatDate, formatTag } from "@/lib/utils"
 
 function renderInline(text: string) {
   const parts = text.split(/(\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*)/g)
@@ -86,13 +87,29 @@ export default async function BlogPostPage({
         author={post.author}
         datePublished={post.publishedAt}
         url={postUrl}
+        imageUrl={post.coverImage ? `${siteConfig.url}${post.coverImage}` : undefined}
       />
 
-      {/* Cover */}
-      <div
-        className={`bg-gradient-to-br ${post.coverGradient} py-16 px-4 sm:px-6 lg:px-8`}
-        aria-hidden="true"
-      />
+      {/* Cover / Hero */}
+      <div className="relative w-full overflow-hidden" style={{ height: "260px" }}>
+        {post.coverImage ? (
+          <Image
+            src={post.coverImage}
+            alt={post.coverImageAlt ?? post.title}
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority
+          />
+        ) : (
+          <div className={`absolute inset-0 bg-gradient-to-br ${post.coverGradient}`} aria-hidden="true">
+            <div
+              className="absolute inset-0 opacity-10"
+              style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "20px 20px" }}
+            />
+          </div>
+        )}
+      </div>
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         {/* Back */}
@@ -182,16 +199,19 @@ export default async function BlogPostPage({
         </div>
 
         {/* Tags */}
-        <div className="mt-8 flex flex-wrap gap-2">
-          {post.tags.map((tag) => (
-            <span
-              key={tag}
-              className="inline-flex items-center gap-1 px-2.5 py-1 bg-slate-50 text-slate-500 text-xs rounded-full border border-slate-100"
-            >
-              <Tag className="w-3 h-3" aria-hidden="true" />
-              {tag}
-            </span>
-          ))}
+        <div className="mt-8">
+          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Tags</p>
+          <div className="flex flex-wrap gap-2">
+            {post.tags.map((tag) => (
+              <span
+                key={tag}
+                className="inline-flex items-center gap-1 px-2.5 py-1 bg-slate-50 text-slate-600 text-xs rounded-full border border-slate-100"
+              >
+                <Tag className="w-3 h-3" aria-hidden="true" />
+                {formatTag(tag)}
+              </span>
+            ))}
+          </div>
         </div>
 
         {/* Affiliate note */}

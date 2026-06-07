@@ -11,6 +11,8 @@ export interface BlogPost {
   readTime: number
   tags: string[]
   coverGradient: string
+  coverImage?: string
+  coverImageAlt?: string
 }
 
 export const posts: BlogPost[] = [
@@ -521,6 +523,8 @@ SulitScan may earn a commission when you click partner links and complete a purc
     readTime: 8,
     tags: ["fake-discounts", "shopping-tips", "buyer-protection", "smart-shopping"],
     coverGradient: "from-amber-400 to-orange-500",
+    coverImage: "/images/guides/fake-discount-check-guide.png",
+    coverImageAlt: "Illustration of a magnifying glass checking discount tags and fake sale pricing",
   },
   {
     id: "post-005",
@@ -645,6 +649,8 @@ SulitScan may earn a commission when you click partner links and complete a purc
     readTime: 8,
     tags: ["checklist", "vouchers", "shipping", "returns", "tips"],
     coverGradient: "from-teal-400 to-cyan-600",
+    coverImage: "/images/guides/voucher-shipping-return-checklist.png",
+    coverImageAlt: "Illustration of an online shopping checklist with delivery, voucher, and return icons",
   },
   {
     id: "post-006",
@@ -756,7 +762,7 @@ On most platforms, adding to cart does not lock in a price. The price at checkou
 **Q: What's the best way to avoid checkout price surprises?**
 Go all the way to the payment confirmation page before finalizing. Review the itemized total — product price, shipping, taxes, and any discounts applied — before entering payment details.
 
-**Q: Is the price guaranteed after I confirm the order?**
+**Q: Is the checkout price fixed after I confirm the order?**
 Yes — once an order is confirmed, the price at confirmation is the price you pay. Subsequent price drops on the platform do not retroactively apply to completed orders.
 
 **Q: What if I notice the wrong price was charged after payment?**
@@ -777,6 +783,8 @@ SulitScan may earn a commission when you click partner links and complete a purc
     readTime: 9,
     tags: ["checkout", "pricing", "tips", "buyer-protection", "transparency"],
     coverGradient: "from-violet-400 to-purple-600",
+    coverImage: "/images/guides/final-price-checkout-guide.png",
+    coverImageAlt: "Illustration of a checkout summary showing product price, shipping, vouchers, and final total",
   },
 ]
 

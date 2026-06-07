@@ -55,6 +55,35 @@ export function dealPlural(count: number): string {
   return count === 1 ? "1 deal" : `${count} deals`
 }
 
+const TAG_LABELS: Record<string, string> = {
+  "how-it-works": "How It Works",
+  "deal-checking": "Deal Checking",
+  "sulitscan": "SulitScan",
+  "buyer-guide": "Buyer Guide",
+  "shopping-guide": "Shopping Guide",
+  "under-500": "Under ₱500",
+  "under-1000": "Under ₱1,000",
+  "buyer-protection": "Buyer Protection",
+  "smart-shopping": "Smart Shopping",
+  "sephora": "Sephora PH",
+  "temu": "Temu",
+  "philippines": "Philippines",
+  "fake-discounts": "Fake Discounts",
+  "shopping-tips": "Shopping Tips",
+  "beauty": "Beauty",
+  "skincare": "Skincare",
+  "fashion": "Fashion",
+  "electronics": "Electronics",
+  "home-finds": "Home Finds",
+  "tech-deals": "Tech & Gadgets",
+  "gift-ideas": "Gift Ideas",
+}
+
+export function formatTag(tag: string): string {
+  if (TAG_LABELS[tag]) return TAG_LABELS[tag]
+  return tag.split("-").map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(" ")
+}
+
 export function getSulitScoreLabel(score: number): string {
   if (score >= 9) return "Excellent"
   if (score >= 7) return "Good Deal"

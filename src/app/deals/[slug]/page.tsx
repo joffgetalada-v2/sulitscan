@@ -8,7 +8,7 @@ import { getActiveDeals, getDealBySlug, getFeaturedDeals } from "@/data/deals"
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import DealCard from "@/components/DealCard"
 import { siteConfig } from "@/lib/seo"
-import { formatPrice, getSulitScoreBg, getSulitScoreLabel } from "@/lib/utils"
+import { formatPrice, getSulitScoreBg, getSulitScoreLabel, formatTag } from "@/lib/utils"
 
 function getBuyerChecklist(deal: { platform: string; category: string }): string[] {
   const cat = deal.category.toLowerCase()
@@ -217,7 +217,7 @@ export default async function DealDetailPage({
                   className="inline-flex items-center gap-1 px-2 py-0.5 bg-slate-50 text-slate-500 text-xs rounded-full border border-slate-100"
                 >
                   <Tag className="w-2.5 h-2.5" aria-hidden="true" />
-                  {tag}
+                  {formatTag(tag)}
                 </span>
               ))}
             </div>
