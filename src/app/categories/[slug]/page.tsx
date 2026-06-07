@@ -9,7 +9,7 @@ import { siteConfig } from "@/lib/seo"
 import { ArrowLeft } from "lucide-react"
 
 export function generateStaticParams() {
-  return categories.map((c) => ({ slug: c.slug }))
+  return categories.filter((c) => c.featured).map((c) => ({ slug: c.slug }))
 }
 
 export async function generateMetadata({

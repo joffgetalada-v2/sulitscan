@@ -21,7 +21,8 @@ const footerLinks = {
   ],
 }
 
-const platforms = ["Temu", "Sephora PH"]
+const activePlatforms = ["Temu", "Sephora PH"]
+const comingSoonPlatforms = ["Shopee", "Lazada", "AliExpress"]
 
 export default function Footer() {
   return (
@@ -95,22 +96,34 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Demo data notice */}
+            {/* Disclaimer */}
             <p className="text-xs text-slate-600 leading-relaxed max-w-xs mb-5">
-              All deals are sample/demo data. Always verify prices before buying.
-              No cart, checkout, or payment features on this site.
+              Product prices and discounts are manually added or sourced from affiliate datafeeds and may change anytime. Always confirm the final price, shipping, vouchers, availability, and return terms on the partner store before buying.
             </p>
 
             {/* Platforms list */}
             <div>
               <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mb-2.5">
-                Partner Platforms
+                Active Stores
               </p>
-              <div className="flex flex-wrap gap-1.5">
-                {platforms.map((p) => (
+              <div className="flex flex-wrap gap-1.5 mb-3">
+                {activePlatforms.map((p) => (
                   <span
                     key={p}
                     className="text-[11px] px-2 py-0.5 bg-slate-800 text-slate-400 rounded-md hover:bg-slate-700 hover:text-slate-300 transition-colors"
+                  >
+                    {p}
+                  </span>
+                ))}
+              </div>
+              <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mb-2.5">
+                Coming Soon
+              </p>
+              <div className="flex flex-wrap gap-1.5">
+                {comingSoonPlatforms.map((p) => (
+                  <span
+                    key={p}
+                    className="text-[11px] px-2 py-0.5 bg-slate-900 text-slate-600 rounded-md border border-slate-800"
                   >
                     {p}
                   </span>

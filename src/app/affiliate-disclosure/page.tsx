@@ -59,14 +59,22 @@ export default function AffiliateDisclosurePage() {
               Our Affiliate Partners
             </h2>
             <p className="mb-4">
-              We currently maintain affiliate relationships with the following platforms only:
+              SulitScan currently publishes active deal notes for the following stores only:
             </p>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 mb-4">
               {partners.map((p) => (
-                <span key={p} className="px-3 py-1 bg-slate-50 border border-slate-100 rounded-full text-xs font-medium text-slate-600">
+                <span key={p} className="px-3 py-1 bg-green-50 border border-green-100 rounded-full text-xs font-medium text-green-700">
                   {p}
                 </span>
               ))}
+            </div>
+            <p className="text-sm">
+              SulitScan PH may earn a commission when you click affiliate links for active partner stores and make a purchase. This does not affect your price.
+            </p>
+            <div className="mt-4 p-4 bg-slate-50 border border-slate-100 rounded-xl">
+              <p className="text-sm text-slate-500">
+                <strong className="text-slate-700">Coming soon:</strong> Shopee, Lazada, and AliExpress may be added later once product data, affiliate links, and buyer-check information are prepared. They are <strong>not</strong> currently active affiliate partners.
+              </p>
             </div>
           </section>
 

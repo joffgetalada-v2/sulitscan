@@ -1438,7 +1438,7 @@ export const deals: Deal[] = [
     title: "5/7/8/10pcs Stainless Steel Food Storage Containers – Airtight Lids, Freezer & Microwave Safe",
     platform: "Temu", platformColor: "#ff6d00", category: "Home",
     originalPrice: 599, salePrice: 299, discount: 50, sulitScore: 9,
-    reason: "410-grade stainless steel meal prep containers — stackable, airtight lids, freezer and microwave safe. At ₱299 for a full set, plastic meal-prep containers at Shopee cost ₱300+ with lower durability.",
+    reason: "410-grade stainless steel meal prep containers — stackable, airtight lids, freezer and microwave safe. At ₱299 for a full set, worth comparing against similar plastic containers at local stores.",
     imageGradient: "from-slate-300 to-gray-500",
     imageUrl: "https://img.kwcdn.com/product/fancy/89c1f540-0837-48bb-962f-d1d67c1588cd.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
