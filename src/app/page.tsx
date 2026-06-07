@@ -78,7 +78,7 @@ const howItWorks = [
     step: "01",
     icon: Search,
     title: "We find deals",
-    body: "We monitor Temu and Sephora PH through affiliate programs for genuine price drops and value picks.",
+    body: "We monitor Temu and Sephora PH through affiliate programs for value picks worth checking.",
   },
   {
     step: "02",
@@ -123,7 +123,7 @@ const faqItems = [
   {
     question: "Are the prices on SulitScan live and accurate?",
     answer:
-      "Prices are sourced from affiliate datafeeds and verified manually, but they can change. Always confirm the current price on the partner store (Temu or Sephora PH) before completing your purchase.",
+      "Prices are sourced from affiliate datafeeds and may not reflect the current price on the partner store. Always confirm on Temu or Sephora PH before completing your purchase.",
   },
   {
     question: "What is the SulitScan Score?",

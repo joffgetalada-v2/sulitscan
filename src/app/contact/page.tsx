@@ -4,8 +4,8 @@ import { siteConfig } from "@/lib/seo"
 import { Mail, MessageSquare, Tag } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Contact",
-  description: "Get in touch with SulitScan PH. Report a deal, suggest a store, or ask about affiliate partnerships.",
+  title: "Contact SulitScan PH | Deal Reports, Feedback, and Partnerships",
+  description: "Get in touch with SulitScan PH. Report an outdated price, suggest a deal, or ask about affiliate partnerships. We review messages within 2–3 business days.",
   alternates: { canonical: `${siteConfig.url}/contact` },
 }
 
@@ -84,6 +84,7 @@ export default function ContactPage() {
           aria-label="Contact form"
         >
           <h2 className="text-lg font-bold text-slate-900">Send a message</h2>
+          <p className="text-xs text-slate-500">This form prepares an email in your default mail app. You can review it before sending.</p>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
@@ -153,13 +154,13 @@ export default function ContactPage() {
             type="submit"
             className="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           >
-            Send Message
+            Prepare Email
           </button>
 
           <p className="text-xs text-slate-400 text-center">
-            Submitting will open your email app with this message pre-filled.{" "}
+            We try to review messages within 2–3 business days.{" "}
             <a href="mailto:hello@sulitscan.com" className="underline hover:text-slate-600">
-              Or email us directly
+              Or email us directly at hello@sulitscan.com
             </a>
             .
           </p>

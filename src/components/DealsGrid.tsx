@@ -182,7 +182,7 @@ export default function DealsGrid({ deals, categories }: DealsGridProps) {
       <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
         <p className="text-sm text-slate-500">
           Showing <strong className="text-slate-800">{Math.min(displayCount, filtered.length)}</strong> of{" "}
-          <strong className="text-slate-800">{filtered.length}</strong> deals
+          <strong className="text-slate-800">{filtered.length}</strong> {filtered.length === 1 ? "deal" : "deals"}
         </p>
         <div className="flex items-center gap-2">
           <label htmlFor="sort-select" className="text-xs text-slate-500 sr-only">Sort by</label>

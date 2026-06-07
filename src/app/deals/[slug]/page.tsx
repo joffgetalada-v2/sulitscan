@@ -10,6 +10,73 @@ import DealCard from "@/components/DealCard"
 import { siteConfig } from "@/lib/seo"
 import { formatPrice, getSulitScoreBg, getSulitScoreLabel } from "@/lib/utils"
 
+function getBuyerChecklist(deal: { platform: string; category: string }): string[] {
+  const cat = deal.category.toLowerCase()
+  const isTemu = deal.platform === "Temu"
+  const isSephora = deal.platform === "Sephora PH"
+  const isBeauty = ["beauty", "skincare", "makeup", "fragrance", "haircare", "hair care"].some((c) => cat.includes(c))
+  const isFashion = ["fashion", "clothing", "shoes", "accessories"].some((c) => cat.includes(c))
+  const isElectronics = ["electronics", "gadgets", "tech"].some((c) => cat.includes(c))
+  const isHome = ["home", "kitchen", "outdoor"].some((c) => cat.includes(c))
+
+  const base = [
+    `Confirm the current price on ${deal.platform} — prices from SulitScan may not match the current price.`,
+    "Look for available platform vouchers, loyalty points, or first-order discounts.",
+  ]
+
+  if (isBeauty || isSephora) {
+    return [
+      ...base,
+      "Check the ingredient list for known allergens or sensitivities.",
+      "Confirm the shade, variant, or product size you want is in stock on Sephora PH.",
+      "Patch test skincare on a small area before full use.",
+      "Confirm the return policy — opened beauty products are generally non-returnable.",
+      "Check official product details and claims on Sephora PH before buying.",
+    ]
+  }
+
+  if (isFashion) {
+    return [
+      ...base,
+      isTemu ? "Check the size guide in centimeters — Temu clothing and shoes often run smaller than labeled." : "Confirm your size and variant are available.",
+      "Read buyer reviews for fit, material, and quality — look for photos from reviewers.",
+      "Confirm return and exchange terms before ordering.",
+      "Check dimensions, material, and construction in product photos.",
+    ]
+  }
+
+  if (isElectronics) {
+    return [
+      ...base,
+      "Check compatibility with your device or setup before ordering.",
+      "Confirm voltage, charging specs, and plug type work in the Philippines.",
+      "Read buyer reviews for battery life, durability, and real-world performance.",
+      "Confirm what accessories are included in the package.",
+      isTemu ? "Check the estimated delivery date — Temu ships internationally (7–20 business days to PH)." : "Confirm shipping cost and delivery estimate.",
+    ]
+  }
+
+  if (isHome) {
+    return [
+      ...base,
+      "Check exact dimensions — confirm the item fits your space before ordering.",
+      "Read buyer reviews with photos for material quality and build.",
+      "Confirm whether tools or assembly are required.",
+      isTemu ? "Check the estimated delivery date — Temu ships internationally (7–20 business days to PH)." : "Confirm shipping cost and delivery estimate.",
+      "Check return policy if the item arrives damaged or doesn't fit.",
+    ]
+  }
+
+  return [
+    ...base,
+    isTemu ? "Check the size guide if ordering clothing or shoes — Temu sizing often runs smaller than stated." : "Confirm shade, size, or variant availability on Sephora PH.",
+    "Read buyer reviews on the partner store for real-world quality and fit.",
+    isTemu ? "Check the estimated delivery date — Temu ships internationally (7–20 business days to PH)." : "Confirm shipping cost — free standard shipping on Sephora PH orders ₱1,500+.",
+    "Check if the product dimensions, materials, or specs match your needs.",
+    "Read the return and refund policy before completing your purchase.",
+  ]
+}
+
 export function generateStaticParams() {
   return getActiveDeals().map((d) => ({ slug: d.slug }))
 }
@@ -183,21 +250,7 @@ export default async function DealDetailPage({
         <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 mb-10">
           <h2 className="text-base font-bold text-slate-900 mb-4">Before you buy — checklist</h2>
           <ul className="space-y-2.5" role="list">
-            {[
-              `Confirm the current price on ${deal.platform} — prices from SulitScan may not reflect the live price.`,
-              "Look for available platform vouchers, loyalty points, or first-order discounts.",
-              deal.platform === "Temu"
-                ? "Check the size guide if ordering clothing or shoes — Temu sizing often runs smaller than stated."
-                : "Check that the product shade, size, or variant you want is currently in stock on Sephora PH.",
-              "Read buyer reviews on the partner store — look for verified purchase reviews.",
-              deal.platform === "Temu"
-                ? "Check the estimated delivery date — Temu ships internationally (7–20 business days to PH)."
-                : "Confirm shipping cost — free standard shipping applies to orders ₱1,500+ on Sephora PH.",
-              deal.platform === "Sephora PH" && ["Beauty", "Skincare"].includes(deal.category)
-                ? "For skincare and beauty: check the ingredient list for known allergens, patch test before full use, and read expiry and storage conditions."
-                : "Check if the product dimensions, materials, or specs match your needs.",
-              "Read the return policy before opening — most beauty products cannot be returned once opened.",
-            ].map((item, idx) => (
+            {getBuyerChecklist(deal).map((item, idx) => (
               <li key={idx} className="flex items-start gap-2.5">
                 <span className="w-5 h-5 rounded-full bg-green-50 text-green-600 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5" aria-hidden="true">
                   {idx + 1}

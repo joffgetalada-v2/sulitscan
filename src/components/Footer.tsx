@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Logo from "@/components/Logo"
-import { Heart, Mail, MapPin } from "lucide-react"
+import { Mail, MapPin } from "lucide-react"
 
 const footerLinks = {
   Discover: [
@@ -159,13 +159,8 @@ export default function Footer() {
           <p className="text-xs text-slate-600">
             © {new Date().getFullYear()} SulitScan PH. All rights reserved.
           </p>
-          <p className="flex items-center gap-1.5 text-xs text-slate-600">
-            Made with{" "}
-            <Heart
-              className="w-3 h-3 text-rose-500 fill-rose-500 mx-0.5"
-              aria-hidden="true"
-            />{" "}
-            for Filipino shoppers
+          <p className="text-xs text-slate-600">
+            Made with care for Filipino shoppers
           </p>
         </div>
       </div>

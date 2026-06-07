@@ -51,6 +51,10 @@ export function getSulitScoreBg(score: number): string {
   return "bg-red-50 text-red-700 border-red-200"
 }
 
+export function dealPlural(count: number): string {
+  return count === 1 ? "1 deal" : `${count} deals`
+}
+
 export function getSulitScoreLabel(score: number): string {
   if (score >= 9) return "Excellent"
   if (score >= 7) return "Good Deal"
