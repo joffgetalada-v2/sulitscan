@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
 import { siteConfig } from "@/lib/seo"
+import ContactForm from "@/components/ContactForm"
 import { Mail, MessageSquare, Tag } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -76,95 +77,7 @@ export default function ContactPage() {
         </div>
 
         {/* Contact form */}
-        <form
-          action="mailto:hello@sulitscan.com"
-          method="POST"
-          encType="text/plain"
-          className="space-y-5 bg-white border border-slate-100 rounded-2xl p-6 shadow-sm"
-          aria-label="Contact form"
-        >
-          <h2 className="text-lg font-bold text-slate-900">Send a message</h2>
-          <p className="text-xs text-slate-500">This form prepares an email in your default mail app. You can review it before sending.</p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium text-slate-700 mb-1.5">
-                Name
-              </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                autoComplete="name"
-                className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
-                placeholder="Your name"
-                required
-              />
-            </div>
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-1.5">
-                Email
-              </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent"
-                placeholder="you@example.com"
-                required
-              />
-            </div>
-          </div>
-
-          <div>
-            <label htmlFor="subject" className="block text-sm font-medium text-slate-700 mb-1.5">
-              Topic
-            </label>
-            <select
-              id="subject"
-              name="subject"
-              className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent bg-white"
-            >
-              <option value="">Select a topic…</option>
-              <option value="deal-suggestion">Deal Suggestion</option>
-              <option value="outdated-price">Report Outdated Price</option>
-              <option value="partnership">Affiliate Partnership</option>
-              <option value="broken-link">Broken Link / Error</option>
-              <option value="feedback">General Feedback</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-
-          <div>
-            <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-1.5">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              rows={5}
-              className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent resize-none"
-              placeholder="Tell us what's on your mind…"
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full py-3 bg-green-600 hover:bg-green-700 text-white font-semibold rounded-xl transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-          >
-            Prepare Email
-          </button>
-
-          <p className="text-xs text-slate-400 text-center">
-            We try to review messages within 2–3 business days.{" "}
-            <a href="mailto:hello@sulitscan.com" className="underline hover:text-slate-600">
-              Or email us directly at hello@sulitscan.com
-            </a>
-            .
-          </p>
-        </form>
+        <ContactForm />
       </div>
     </>
   )
