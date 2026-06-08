@@ -204,7 +204,7 @@ export default async function DealDetailPage({
             <div className="flex items-start gap-2 p-3 bg-amber-50 border border-amber-100 rounded-xl mb-4">
               <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
               <p className="text-xs text-amber-700 leading-relaxed">
-                <strong>Sample deal note.</strong> Confirm the current price, vouchers, and availability on{" "}
+                <strong>Affiliate datafeed price.</strong> Confirm the current price, vouchers, and availability on{" "}
                 {deal.platform} before buying.
               </p>
             </div>

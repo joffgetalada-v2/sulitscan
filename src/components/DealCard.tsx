@@ -132,9 +132,9 @@ export default function DealCard({ deal }: DealCardProps) {
           target="_blank"
           rel="sponsored nofollow noopener noreferrer"
           className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-xl transition-colors shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
-          aria-label={`Get this deal — ${deal.title} (opens in new tab)`}
+          aria-label={`View deal on ${deal.platform} — ${deal.title} (opens in new tab)`}
         >
-          Get This Deal
+          View Deal on {deal.platform}
           <ExternalLink className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
         </a>
       </div>

@@ -60,7 +60,7 @@ export const stores: Store[] = [
     affiliateLink: "https://www.sephora.ph",
     isDemo: false,
     buyerNotes: [
-      "Sephora PH is a brand-authorized retailer. Always confirm product details, shade, and return terms on sephora.ph before buying.",
+      "Sephora PH is the partner store listed for these beauty deals. Always confirm product details, shade, and return terms on sephora.ph before buying.",
       "Free shipping is available for orders above ₱1,500.",
       "Check product availability online before visiting a physical store.",
       "Sephora Beauty Rewards points can be used for discounts on future purchases.",

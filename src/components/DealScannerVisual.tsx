@@ -198,7 +198,7 @@ export default function DealScannerVisual() {
             {/* CTA */}
             <div className="px-4 pb-4">
               <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl text-white text-sm font-bold shadow-sm shadow-green-200">
-                <span>Get This Deal</span>
+                <span>View Deal on Partner Store</span>
                 <ExternalLink className="w-4 h-4" aria-hidden="true" />
               </div>
               <p className="text-center text-[11px] text-slate-400 mt-2 leading-snug">

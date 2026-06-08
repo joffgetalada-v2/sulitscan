@@ -182,6 +182,7 @@ Shipping is often free. Most Temu orders to the Philippines include free standar
 This is important. Temu clothing sizes frequently run smaller than labeled — by one to two sizes. Filipino shoppers have consistently reported this in reviews.
 
 Before buying clothing:
+
 - Read the measurements in centimeters in the product description, not just the size label (S/M/L)
 - Compare against your own measurements
 - Check buyer photos and reviews — look for reviewers who mention size fit
@@ -207,6 +208,7 @@ Temu's return and refund process is generally straightforward for:
 - Items not received within the expected window
 
 **What to do when your order arrives:**
+
 1. Take photos of the package before opening
 2. Take photos of the item after opening
 3. Check against the product description and your order details
@@ -282,7 +284,7 @@ SulitScan may earn a commission when you click a Temu affiliate link and complet
     excerpt:
       "Sephora PH carries 300+ authentic beauty brands. Here's how to get the best value from their deals, loyalty points, and sale events.",
     content: `
-Sephora Philippines is one of the most trusted beauty retailers in the country, carrying premium brands like SK-II, Sunday Riley, Mario Badescu, ZOEVA, Natasha Denona, Urban Decay, and their own Sephora Collection line. This guide helps Filipino shoppers get the best value from Sephora PH's deals, loyalty program, and sale events.
+Sephora Philippines is the partner store listed for these beauty deals. They carry premium brands including SK-II, Sunday Riley, Mario Badescu, ZOEVA, Natasha Denona, Urban Decay, and the Sephora Collection line. This guide helps Filipino shoppers check Sephora PH's deals, loyalty program, and sale events before buying.
 
 ## What's in This Guide
 
@@ -297,9 +299,9 @@ Sephora Philippines is one of the most trusted beauty retailers in the country, 
 
 ## Why Sephora PH Deals Are Worth Checking
 
-Unlike marketplace sellers who may vary in product authenticity, Sephora PH is a brand-authorized retailer. When they run a sale or promotion, the discount is typically applied to the actual retail price.
+Sephora PH is the partner store listed for these beauty deals. Always confirm the current price on sephora.ph before purchasing — prices in our datafeed may not always reflect active promotions or recent price changes.
 
-SulitScan tracks selected Sephora PH deals through the Involve Asia affiliate program. We list the price from the datafeed and add buyer notes — but always **confirm the current price on sephora.ph** before purchasing. Prices in our datafeed may not always reflect active promotions or recent price changes.
+SulitScan tracks selected Sephora PH deals through the Involve Asia affiliate program. We list the price from the datafeed and add buyer notes — always **confirm current price and availability on sephora.ph** before purchasing.
 
 ## Types of Sephora PH Deals
 
@@ -373,7 +375,7 @@ Makeup shades (foundation, concealer, lip products) can look different on screen
 ## FAQ
 
 **Q: Are all products on Sephora PH authentic?**
-Sephora PH is a brand-authorized retailer. Always confirm product details, shade, size, and return terms on sephora.ph before buying. If you have concerns about a specific product's authenticity upon receipt, contact Sephora PH customer service directly.
+Sephora PH is the partner store listed for these deals. Always confirm product details, shade, size, and return terms on sephora.ph before buying. If you have concerns about a specific product upon receipt, contact Sephora PH customer service directly.
 
 **Q: Does SulitScan list all Sephora PH products?**
 No. We curate a selected set of deals — products that we think are worth flagging based on price, value, or category fit. For the full Sephora PH catalog, visit sephora.ph directly.
@@ -504,7 +506,7 @@ That said: we are not a live price tracker. Always confirm the current price and
 Not necessarily. Genuine clearance sales, overstock liquidations, and end-of-season discounts can produce significant price reductions. The key is whether the original price was real. Compare against market prices, not just the stated original.
 
 **Q: What about flash sales from official brand stores?**
-Official brand promotions from verified sellers (like brand-authorized stores) are generally more trustworthy than random marketplace sellers offering huge discounts. Still verify the price makes sense relative to the product's normal market value.
+Official brand promotions from authorized retailers are generally more trustworthy than random marketplace sellers offering huge discounts. Still verify the price makes sense relative to the product's normal market value.
 
 **Q: Does SulitScan guarantee that listed discounts are real?**
 No. We review price claims manually and try to flag questionable discounts — but we cannot guarantee accuracy. Prices change after we list a deal, and we may miss some inflated originals. Always confirm on the partner store.

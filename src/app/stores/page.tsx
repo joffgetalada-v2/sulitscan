@@ -8,7 +8,7 @@ import { Store, ArrowRight, CheckCircle, Truck, ShieldCheck, Clock } from "lucid
 export const metadata: Metadata = {
   title: "Temu and Sephora PH Partner Stores Philippines",
   description:
-    "SulitScan currently focuses on selected deals from two partner stores: Temu (budget finds) and Sephora PH (authenticated beauty). More stores may be added later.",
+    "SulitScan currently focuses on selected deals from two partner stores: Temu (budget finds) and Sephora PH (beauty and skincare). More stores may be added later.",
   alternates: { canonical: `${siteConfig.url}/stores` },
   openGraph: {
     title: "Partner Stores | SulitScan PH",
@@ -57,8 +57,7 @@ export default function StoresPage() {
           <span className="text-lg mt-0.5" aria-hidden="true">📌</span>
           <p className="text-sm text-amber-800">
             <strong>Affiliate disclosure:</strong> SulitScan earns a small commission when you purchase through our
-            partner links — at no extra cost to you. We only work with stores we believe offer genuine value
-            to Filipino shoppers.{" "}
+            partner links — at no extra cost to you. We only feature stores with clear buyer notes and affiliate disclosures.{" "}
             <Link href="/affiliate-disclosure" className="underline font-medium">Full disclosure →</Link>
           </p>
         </div>

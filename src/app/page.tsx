@@ -45,7 +45,7 @@ const intelligenceCards = [
     bg: "bg-green-50",
     border: "border-green-100",
     title: "Price Check",
-    body: "We compare the listed price against similar products so you know if the discount is genuine before you click.",
+    body: "We add price-check reminders and value notes so you know what to compare before you click.",
   },
   {
     icon: Shield,
@@ -53,7 +53,7 @@ const intelligenceCards = [
     bg: "bg-blue-50",
     border: "border-blue-100",
     title: "Store Trust Note",
-    body: "We add context on the partner store — Temu for budget finds, Sephora PH for authenticated beauty.",
+    body: "We add context on the partner store — Temu for budget finds, Sephora PH for beauty and skincare notes.",
   },
   {
     icon: Tag,
@@ -207,7 +207,7 @@ export default function HomePage() {
             {[
               { value: "2",      label: "Partner Stores",   note: "Temu & Sephora PH" },
               { value: "100+",   label: "Curated Deals",    note: "Manually selected" },
-              { value: "30–75%", label: "Discounts shown",  note: "Sample deal data" },
+              { value: "30–75%", label: "Discounts shown",  note: "From affiliate datafeeds" },
               { value: "100%",   label: "Free forever",     note: "No premium plan" },
             ].map(({ value, label, note }) => (
               <div key={label}>
@@ -263,7 +263,7 @@ export default function HomePage() {
                 Deals worth checking
               </h2>
               <p className="mt-2 text-slate-500 text-sm">
-                Sample deal notes from Temu and Sephora PH. Confirm price on the partner store before buying.
+                Deal notes from Temu and Sephora PH affiliate datafeeds. Confirm price on the partner store before buying.
               </p>
             </div>
             <Link
