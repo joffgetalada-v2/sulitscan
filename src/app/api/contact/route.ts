@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 const TOPIC_LABELS: Record<string, string> = {
   "deal-suggestion":  "Deal Suggestion",
   "outdated-price":   "Report Outdated Price",
@@ -35,6 +33,7 @@ export async function POST(req: NextRequest) {
   const topicLabel = TOPIC_LABELS[subject ?? ""] ?? "General"
 
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY)
     await resend.emails.send({
       from:    "SulitScan PH <hello@e.sulitscan.com>",
       to:      ["joff.getalada@dovrmedia.com"],
