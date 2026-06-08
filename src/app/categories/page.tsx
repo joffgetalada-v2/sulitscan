@@ -6,6 +6,7 @@ import { categories } from "@/data/categories"
 import { getDealsByCategory } from "@/data/deals"
 import { siteConfig } from "@/lib/seo"
 import { LayoutGrid, ArrowRight } from "lucide-react"
+import { formatDealCount } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Shopping Deal Categories",
@@ -86,7 +87,7 @@ export default function CategoriesPage() {
                 </h3>
                 <p className="text-xs text-slate-500 leading-relaxed line-clamp-2">{cat.description}</p>
                 <span className="text-xs text-green-600 font-semibold mt-1 block">
-                  {liveCounts[cat.slug] === 1 ? "1 deal" : `${liveCounts[cat.slug]} deals`} available
+                  {formatDealCount(liveCounts[cat.slug])} available
                 </span>
               </div>
               <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-green-500 transition-colors shrink-0 mt-1" aria-hidden="true" />

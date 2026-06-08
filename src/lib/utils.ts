@@ -55,6 +55,10 @@ export function dealPlural(count: number): string {
   return count === 1 ? "1 deal" : `${count} deals`
 }
 
+export function formatDealCount(count: number): string {
+  return count === 1 ? "1 deal" : `${count} deals`
+}
+
 const TAG_LABELS: Record<string, string> = {
   "how-it-works": "How It Works",
   "deal-checking": "Deal Checking",

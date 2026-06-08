@@ -4,6 +4,7 @@ import { useState, useMemo } from "react"
 import DealCard from "./DealCard"
 import type { Deal } from "@/data/deals"
 import { Search, SlidersHorizontal, X } from "lucide-react"
+import { formatDealCount } from "@/lib/utils"
 
 interface DealsGridProps {
   deals: Deal[]
@@ -79,9 +80,9 @@ export default function DealsGrid({ deals, categories }: DealsGridProps) {
       <div className="mb-6 flex items-start gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
         <span className="text-base shrink-0 mt-0.5" aria-hidden="true">📌</span>
         <p className="text-xs text-amber-800">
-          <strong>Sample deal data notice:</strong> Product prices and discounts shown are sourced from
+          <strong>Affiliate datafeed prices:</strong> Product prices and discounts are sourced from
           affiliate datafeeds and may not reflect current prices on the partner store. Always confirm the
-          final price, shipping fees, available vouchers, and seller terms on{" "}
+          final price, shipping fees, available vouchers, and return terms on{" "}
           <strong>Temu</strong> or <strong>Sephora PH</strong> before buying.
         </p>
       </div>
@@ -244,8 +245,8 @@ export default function DealsGrid({ deals, categories }: DealsGridProps) {
       {filtered.length > 0 && (
         <div className="mt-12 text-center">
           <p className="text-xs text-slate-400">
-            Showing {filtered.length} deal{filtered.length !== 1 ? "s" : ""} ·
-            Prices are sample data — confirm on partner store before buying.
+            Showing {formatDealCount(filtered.length)} ·
+            Prices are from affiliate datafeeds — confirm on partner store before buying.
           </p>
         </div>
       )}

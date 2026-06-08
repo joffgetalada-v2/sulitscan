@@ -22,7 +22,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   ...defaultMetadata,
   title: {
-    default: "SulitScan PH | Verified Online Deals, Discounts, and Shopping Guides",
+    default: "SulitScan PH | Temu and Sephora PH Deals for Filipino Shoppers",
     template: "%s | SulitScan PH",
   },
   icons: {

@@ -42,7 +42,7 @@ export default function DealScannerVisual() {
 
   const signalData = [
     { icon: TrendingDown, label: "Discount",     value: `${deal.discount}% off`,       good: true },
-    { icon: Shield,       label: "Verified Pick", value: "SulitScan curated",           good: true },
+    { icon: Shield,       label: "Curated Pick",  value: "SulitScan reviewed",          good: true },
     { icon: Tag,          label: "Affiliate Link", value: "Clearly disclosed",           good: true },
     { icon: Zap,          label: "SulitScore",    value: `${deal.sulitScore}/10`,        good: true },
   ]

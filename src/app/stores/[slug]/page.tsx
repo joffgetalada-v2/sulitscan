@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ExternalLink, CheckCircle, Truck, ArrowLeft, ShieldCheck, RotateCcw, Clock } from "lucide-react"
+import { formatDealCount } from "@/lib/utils"
 import DealCard from "@/components/DealCard"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
 import { stores, getStoreBySlug } from "@/data/stores"
@@ -86,7 +87,7 @@ export default async function StoreDetailPage({
           <div className="mt-4 flex flex-wrap gap-3">
             <span className="flex items-center gap-1 bg-white/20 text-white text-xs font-medium px-3 py-1 rounded-full">
               <ShieldCheck className="w-3 h-3" aria-hidden="true" />
-              {store.trustLevel === "high" ? "High Trust" : store.trustLevel === "medium" ? "Verified Platform" : "New Platform"}
+              {store.trustLevel === "high" ? "Active Store" : store.trustLevel === "medium" ? "Active Store" : "Listed Store"}
             </span>
             {store.shipsToPhilippines && (
               <span className="flex items-center gap-1 bg-white/20 text-white text-xs font-medium px-3 py-1 rounded-full">
@@ -112,7 +113,7 @@ export default async function StoreDetailPage({
             {storeDeals.length > 0 ? (
               <section aria-labelledby="store-deals-heading">
                 <h2 id="store-deals-heading" className="text-xl font-bold text-slate-900 mb-6">
-                  {storeDeals.length} deals from {store.name}
+                  {formatDealCount(storeDeals.length)} from {store.name}
                 </h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
                   {storeDeals.slice(0, 12).map((deal) => (

@@ -7,6 +7,7 @@ import { categories, getCategoryBySlug } from "@/data/categories"
 import { getDealsByCategory } from "@/data/deals"
 import { siteConfig } from "@/lib/seo"
 import { ArrowLeft } from "lucide-react"
+import { formatDealCount } from "@/lib/utils"
 
 export function generateStaticParams() {
   return categories.filter((c) => c.featured).map((c) => ({ slug: c.slug }))
@@ -82,7 +83,7 @@ export default async function CategoryPage({
             <div>
               <h1 className="text-3xl font-black text-white">{category.name}</h1>
               <p className="text-white/80 mt-1 text-sm max-w-lg">
-                {categoryDeals.length} deal{categoryDeals.length !== 1 ? "s" : ""} · {category.description}
+                {formatDealCount(categoryDeals.length)} · {category.description}
               </p>
             </div>
           </div>
@@ -94,7 +95,7 @@ export default async function CategoryPage({
         <div className="mb-8 flex items-start gap-3 p-4 bg-amber-50 border border-amber-200 rounded-xl">
           <span className="text-base shrink-0 mt-0.5" aria-hidden="true">📌</span>
           <p className="text-xs text-amber-800">
-            <strong>Sample deal data:</strong> Prices shown are from affiliate datafeeds and may not reflect the current
+            <strong>Affiliate datafeed prices:</strong> Prices shown are sourced from affiliate datafeeds and may not reflect the current
             price on the partner store. Always confirm before buying.{" "}
             <Link href="/affiliate-disclosure" className="underline font-medium">Affiliate disclosure →</Link>
           </p>
@@ -125,8 +126,8 @@ export default async function CategoryPage({
         {categoryDeals.length > 0 && (
           <div className="mt-10 text-center">
             <p className="text-xs text-slate-400">
-              Showing {categoryDeals.length} deal{categoryDeals.length !== 1 ? "s" : ""} ·
-              Prices are sample data — confirm on partner store before buying.
+              Showing {formatDealCount(categoryDeals.length)} ·
+              Prices are from affiliate datafeeds — confirm on partner store before buying.
             </p>
           </div>
         )}

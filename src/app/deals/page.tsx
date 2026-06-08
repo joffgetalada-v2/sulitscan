@@ -4,11 +4,12 @@ import { BreadcrumbJsonLd, ItemListJsonLd } from "@/components/SeoJsonLd"
 import { getActiveDeals, getActiveCategories } from "@/data/deals"
 import { siteConfig } from "@/lib/seo"
 import { ShoppingBag } from "lucide-react"
+import { formatDealCount } from "@/lib/utils"
 
 export const metadata: Metadata = {
   title: "Temu and Sephora PH Deals Philippines",
   description:
-    "Browse selected Temu and Sephora PH deals — beauty, skincare, home finds, gadgets, fashion, and budget picks. Sample deal notes with buyer reminders and affiliate disclosure.",
+    "Browse selected Temu and Sephora PH deals — beauty, skincare, home finds, gadgets, fashion, and budget picks. Buyer reminders and affiliate disclosure on every deal.",
   alternates: { canonical: `${siteConfig.url}/deals` },
   openGraph: {
     title: "Temu and Sephora PH Deals | SulitScan PH",
@@ -54,7 +55,7 @@ export default function DealsPage() {
                 Temu &amp; Sephora PH Deals
               </h1>
               <p className="text-slate-500 text-sm max-w-xl">
-                {activeDeals.length} deal notes from Temu and Sephora PH. Search by product, filter by store or category,
+                {formatDealCount(activeDeals.length)} from Temu and Sephora PH. Search by product, filter by store or category,
                 and sort by discount, SulitScore, or price.
               </p>
             </div>

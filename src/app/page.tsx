@@ -102,8 +102,8 @@ const howItWorks = [
 
 const scanChecklist = [
   { icon: TrendingDown, good: true,  label: "Price plausibility",  value: "Similar products range ₱800–₱1,100" },
-  { icon: Shield,       good: true,  label: "Store trust",         value: "Sephora PH — brand authorized" },
-  { icon: MessageSquare,good: true,  label: "Buyer reviews",       value: "4.7 ★ · verified on partner store" },
+  { icon: Shield,       good: true,  label: "Store context",       value: "Sephora PH — authorized retailer" },
+  { icon: MessageSquare,good: true,  label: "Buyer reviews",       value: "4.7 ★ · check on partner store" },
   { icon: Tag,          good: true,  label: "Loyalty points",      value: "Beauty Rewards applicable" },
   { icon: Clock,        good: false, label: "Shipping speed",      value: "3–7 days standard (Sephora PH)" },
   { icon: XCircle,      good: false, label: "Return policy",       value: "Opened items — non-returnable" },

@@ -13,7 +13,7 @@ export const siteConfig = {
 export const defaultMetadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "SulitScan PH | Temu and Sephora Deals for Filipino Shoppers",
+    default: "SulitScan PH | Temu and Sephora PH Deals for Filipino Shoppers",
     template: "%s | SulitScan PH",
   },
   description: siteConfig.description,
@@ -45,7 +45,7 @@ export const defaultMetadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "SulitScan PH | Temu and Sephora Deals for Filipino Shoppers",
+    title: "SulitScan PH | Temu and Sephora PH Deals for Filipino Shoppers",
     description: siteConfig.description,
     images: [
       {
@@ -58,7 +58,7 @@ export const defaultMetadata = {
   },
   twitter: {
     card: "summary_large_image" as const,
-    title: "SulitScan PH | Temu and Sephora Deals for Filipino Shoppers",
+    title: "SulitScan PH | Temu and Sephora PH Deals for Filipino Shoppers",
     description: siteConfig.description,
     images: [siteConfig.ogImage],
     creator: siteConfig.twitterHandle,

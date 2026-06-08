@@ -75,7 +75,7 @@ export default function StoresPage() {
                     <p className="text-white/70 text-sm">{store.tagline}</p>
                   </div>
                   <span className="px-3 py-1 bg-white/20 text-white text-xs font-semibold rounded-full">
-                    {store.trustLevel === "high" ? "High Trust" : store.trustLevel === "medium" ? "Verified" : "New"}
+                    {store.trustLevel === "high" ? "Active Store" : store.trustLevel === "medium" ? "Active Store" : "Listed Store"}
                   </span>
                 </div>
                 <div className="flex flex-wrap gap-2 mt-4">

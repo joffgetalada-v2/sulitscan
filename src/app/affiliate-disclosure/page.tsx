@@ -35,7 +35,7 @@ export default function AffiliateDisclosurePage() {
               <h1 className="text-3xl font-black text-slate-900 tracking-tight mb-1">
                 Affiliate Disclosure
               </h1>
-              <p className="text-sm text-slate-400">Last updated: June 2025</p>
+              <p className="text-sm text-slate-400">Last updated: June 2026</p>
             </div>
           </div>
         </div>
@@ -101,15 +101,18 @@ export default function AffiliateDisclosurePage() {
             </p>
           </section>
 
-          <section aria-labelledby="disclosure-demo">
-            <h2 id="disclosure-demo" className="text-lg font-bold text-slate-900 mb-3">
-              Demo Data Notice
+          <section aria-labelledby="disclosure-prices">
+            <h2 id="disclosure-prices" className="text-lg font-bold text-slate-900 mb-3">
+              Price Data and Accuracy
             </h2>
             <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl">
               <p>
-                All deals currently displayed on SulitScan PH are <strong>sample/demo content</strong>.
-                Prices shown are illustrative only and may not reflect actual current prices. Always
-                check the partner store directly before making a purchase decision.
+                Product prices and discounts on SulitScan PH are manually added or sourced from affiliate
+                datafeeds. They may change at any time without notice. <strong>Always confirm the final
+                price, shipping fees, available vouchers, product availability, and return terms on the
+                partner store before buying.</strong> Affiliate relationships do not guarantee that a deal
+                is the best option for every shopper. SulitScan does not sell products, process payments,
+                or handle orders.
               </p>
             </div>
           </section>
