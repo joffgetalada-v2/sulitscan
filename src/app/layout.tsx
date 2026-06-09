@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
 import "./globals.css"
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/SeoJsonLd"
@@ -50,12 +51,19 @@ export default function RootLayout({
         <WebSiteJsonLd />
       </head>
       <body className="min-h-screen flex flex-col bg-white text-slate-900 antialiased">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:px-4 focus:py-2 focus:bg-green-600 focus:text-white focus:font-semibold focus:rounded-lg focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
         <Header />
         <main id="main-content" className="flex-1" tabIndex={-1}>
           {children}
         </main>
         <Footer />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
