@@ -1,9 +1,9 @@
 export const siteConfig = {
   name: "SulitScan PH",
   shortName: "SulitScan",
-  tagline: "Check deals before you click buy.",
+  tagline: "Curated online deals and shopping guides for Filipino shoppers.",
   description:
-    "SulitScan PH helps Filipino shoppers review selected Temu and Sephora deals with transparent notes, buyer reminders, and clear affiliate disclosures.",
+    "Find deals that are actually sulit. SulitScan PH helps Filipino shoppers discover curated online deals, buyer notes, affiliate disclosures, and smart shopping guides before clicking buy.",
   url: "https://sulitscan.com",
   ogImage: "https://sulitscan.com/og-image.png",
   locale: "en_PH",
@@ -13,7 +13,7 @@ export const siteConfig = {
 export const defaultMetadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "SulitScan PH | Temu and Sephora PH Deals for Filipino Shoppers",
+    default: "SulitScan PH | Curated Online Deals and Shopping Guides for Filipino Shoppers",
     template: "%s | SulitScan PH",
   },
   description: siteConfig.description,
@@ -45,7 +45,7 @@ export const defaultMetadata = {
     locale: siteConfig.locale,
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: "SulitScan PH | Temu and Sephora PH Deals for Filipino Shoppers",
+    title: "SulitScan PH | Curated Online Deals and Shopping Guides for Filipino Shoppers",
     description: siteConfig.description,
     images: [
       {
@@ -58,7 +58,7 @@ export const defaultMetadata = {
   },
   twitter: {
     card: "summary_large_image" as const,
-    title: "SulitScan PH | Temu and Sephora PH Deals for Filipino Shoppers",
+    title: "SulitScan PH | Curated Online Deals and Shopping Guides for Filipino Shoppers",
     description: siteConfig.description,
     images: [siteConfig.ogImage],
     creator: siteConfig.twitterHandle,

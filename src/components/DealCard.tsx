@@ -114,16 +114,16 @@ export default function DealCard({ deal }: DealCardProps) {
         </p>
 
         {/* Trust footer */}
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between pt-2.5 mt-1 border-t border-slate-50 mb-3">
           <span className="text-[10px] text-slate-400">
             {deal.isDemo ? "Sample data" : `Checked: ${deal.lastChecked}`}
           </span>
-          <a
-            href={`mailto:deals@sulitscan.com?subject=Outdated+Price%3A+${encodeURIComponent(deal.title)}`}
+          <Link
+            href={`/contact?topic=outdated-price&deal=${encodeURIComponent(deal.slug)}`}
             className="text-[10px] text-slate-400 hover:text-rose-500 transition-colors underline underline-offset-2"
           >
             Report outdated price
-          </a>
+          </Link>
         </div>
 
         {/* CTA */}

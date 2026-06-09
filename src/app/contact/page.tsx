@@ -10,7 +10,18 @@ export const metadata: Metadata = {
   alternates: { canonical: `${siteConfig.url}/contact` },
 }
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ topic?: string; deal?: string; message?: string }>
+}) {
+  const { topic, deal, message } = await searchParams
+
+  const initialSubject = topic ?? ""
+  const initialMessage = deal
+    ? `Deal: ${deal}\n\nPlease describe the issue with this deal's pricing or information:`
+    : (message ?? "")
+
   return (
     <>
       <BreadcrumbJsonLd
@@ -77,7 +88,7 @@ export default function ContactPage() {
         </div>
 
         {/* Contact form */}
-        <ContactForm />
+        <ContactForm initialSubject={initialSubject} initialMessage={initialMessage} />
       </div>
     </>
   )

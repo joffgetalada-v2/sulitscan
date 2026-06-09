@@ -7,14 +7,14 @@ import { ShoppingBag } from "lucide-react"
 import { formatDealCount } from "@/lib/utils"
 
 export const metadata: Metadata = {
-  title: "Temu and Sephora PH Deals Philippines",
+  title: "Latest Online Deals Philippines | SulitScan PH",
   description:
-    "Browse selected Temu and Sephora PH deals — beauty, skincare, home finds, gadgets, fashion, and budget picks. Buyer reminders and affiliate disclosure on every deal.",
+    "Browse curated online deals from Temu and Sephora PH — beauty, skincare, home finds, gadgets, fashion, and budget picks. Buyer notes and affiliate disclosure on every deal.",
   alternates: { canonical: `${siteConfig.url}/deals` },
   openGraph: {
-    title: "Temu and Sephora PH Deals | SulitScan PH",
+    title: "Latest Online Deals Philippines | SulitScan PH",
     description:
-      "Curated deal notes from Temu and Sephora PH. Search, filter by store, and sort by discount or SulitScore.",
+      "Curated deal notes from Temu and Sephora PH. Filter by category, store, and SulitScore. Affiliate links clearly disclosed.",
     url: `${siteConfig.url}/deals`,
   },
 }

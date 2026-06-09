@@ -6,13 +6,13 @@ import { siteConfig } from "@/lib/seo"
 import { BookOpen } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Shopping Guides — Temu and Sephora PH Tips",
+  title: "Smart Shopping Guides Philippines | SulitScan PH",
   description:
-    "Shopping guides for Filipino buyers — covering Temu, Sephora PH, how to spot fake discounts, voucher tips, and smart buying habits.",
+    "Shopping guides for Filipino buyers — Temu tips, Sephora PH buying advice, how to spot fake discounts, voucher strategies, and smart online shopping habits.",
   alternates: { canonical: `${siteConfig.url}/blog` },
   openGraph: {
-    title: "Shopping Guides — Temu and Sephora PH | SulitScan PH",
-    description: "Shopping guides covering Temu, Sephora PH, smart buying habits, and deal-checking tips.",
+    title: "Smart Shopping Guides Philippines | SulitScan PH",
+    description: "Practical shopping guides covering Temu, Sephora PH, deal-checking, and smarter buying habits for Filipino shoppers.",
     url: `${siteConfig.url}/blog`,
   },
 }

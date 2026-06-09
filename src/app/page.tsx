@@ -26,14 +26,14 @@ import {
 } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: { absolute: "SulitScan PH | Temu and Sephora PH Deals for Filipino Shoppers" },
+  title: { absolute: "SulitScan PH | Curated Online Deals and Shopping Guides for Filipino Shoppers" },
   description:
-    "Check selected Temu and Sephora PH deals before you click buy. SulitScan PH provides transparent deal notes, buyer reminders, and affiliate disclosures for Filipino shoppers.",
+    "Find deals that are actually sulit. SulitScan PH helps Filipino shoppers discover curated online deals, buyer notes, affiliate disclosures, and smart shopping guides before clicking buy.",
   alternates: { canonical: siteConfig.url },
   openGraph: {
-    title: "SulitScan PH | Temu and Sephora PH Deals for Filipino Shoppers",
+    title: "SulitScan PH | Curated Online Deals and Shopping Guides for Filipino Shoppers",
     description:
-      "Check selected Temu and Sephora PH deals before you click buy. SulitScan PH provides transparent deal notes, buyer reminders, and affiliate disclosures for Filipino shoppers.",
+      "Find deals that are actually sulit. SulitScan PH helps Filipino shoppers discover curated online deals, buyer notes, affiliate disclosures, and smart shopping guides before clicking buy.",
     url: siteConfig.url,
   },
 }

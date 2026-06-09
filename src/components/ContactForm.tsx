@@ -5,7 +5,12 @@ import { CheckCircle, AlertCircle, Loader2 } from "lucide-react"
 
 type Status = "idle" | "submitting" | "success" | "error"
 
-export default function ContactForm() {
+interface ContactFormProps {
+  initialSubject?: string
+  initialMessage?: string
+}
+
+export default function ContactForm({ initialSubject = "", initialMessage = "" }: ContactFormProps) {
   const [status, setStatus] = useState<Status>("idle")
   const [errorMsg, setErrorMsg] = useState("")
   const formRef = useRef<HTMLFormElement>(null)
@@ -125,6 +130,7 @@ export default function ContactForm() {
         <select
           id="subject"
           name="subject"
+          defaultValue={initialSubject}
           disabled={status === "submitting"}
           className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent bg-white disabled:opacity-50 disabled:cursor-not-allowed"
         >
@@ -147,6 +153,7 @@ export default function ContactForm() {
           name="message"
           rows={5}
           required
+          defaultValue={initialMessage}
           disabled={status === "submitting"}
           className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent resize-none disabled:opacity-50 disabled:cursor-not-allowed"
           placeholder="Tell us what's on your mind…"

@@ -222,10 +222,18 @@ export default async function DealDetailPage({
               ))}
             </div>
 
-            {/* Last checked */}
-            <div className="flex items-center gap-1.5 text-xs text-amber-600 mb-6">
-              <Clock className="w-3.5 h-3.5" aria-hidden="true" />
-              {deal.lastChecked}
+            {/* Last checked + report */}
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center gap-1.5 text-xs text-amber-600">
+                <Clock className="w-3.5 h-3.5" aria-hidden="true" />
+                {deal.lastChecked}
+              </div>
+              <Link
+                href={`/contact?topic=outdated-price&deal=${encodeURIComponent(deal.slug)}`}
+                className="text-xs text-slate-400 hover:text-rose-500 transition-colors underline underline-offset-2"
+              >
+                Report outdated price
+              </Link>
             </div>
 
             {/* CTA */}

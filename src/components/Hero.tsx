@@ -67,7 +67,7 @@ export default function Hero() {
             >
               <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse-dot" aria-hidden="true" />
               <span className="text-xs font-semibold text-green-700 tracking-wide">
-                Temu &amp; Sephora PH Deals
+                Curated Online Deals Philippines
               </span>
             </motion.div>
 
@@ -92,9 +92,9 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.22 }}
               className="text-lg sm:text-xl text-slate-500 leading-relaxed mb-9 max-w-lg"
             >
-              SulitScan PH helps Filipino shoppers review selected Temu and Sephora
-              deals with transparent notes, buyer reminders, and clear affiliate
-              disclosures.
+              Curated online deals and shopping guides for Filipino shoppers.
+              Currently covering selected Temu and Sephora PH deals — more stores
+              may be added after review.
             </motion.p>
 
             {/* CTAs */}
