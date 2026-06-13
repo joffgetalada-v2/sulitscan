@@ -4,9 +4,18 @@ import type { NextRequest } from "next/server"
 export function middleware(request: NextRequest) {
   const host = request.headers.get("host") ?? ""
 
-  // Redirect only the primary Vercel subdomain, not preview deploys.
-  // Preview deploys use the pattern: project-git-branch-team.vercel.app
+  // Redirect the primary Vercel subdomain to the canonical domain.
+  // Preview deploys use project-git-branch-team.vercel.app — not matched here.
   if (host === "sulitscan.vercel.app") {
+    const url = request.nextUrl.clone()
+    url.protocol = "https:"
+    url.host = "sulitscan.com"
+    url.port = ""
+    return NextResponse.redirect(url, { status: 301 })
+  }
+
+  // Redirect www to the apex domain.
+  if (host === "www.sulitscan.com") {
     const url = request.nextUrl.clone()
     url.protocol = "https:"
     url.host = "sulitscan.com"

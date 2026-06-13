@@ -9,7 +9,10 @@ export const metadata: Metadata = {
   alternates: { canonical: `${siteConfig.url}/affiliate-disclosure` },
 }
 
-const partners = ["Temu", "Sephora PH (via Involve Asia)"]
+const partners = [
+  { name: "Temu", note: "" },
+  { name: "Sephora PH", note: "via Involve Asia" },
+]
 
 export default function AffiliateDisclosurePage() {
   return (
@@ -61,13 +64,15 @@ export default function AffiliateDisclosurePage() {
             <p className="mb-4">
               SulitScan currently publishes active deal notes for the following stores only:
             </p>
-            <div className="flex flex-wrap gap-2 mb-4">
+            <ul className="mb-4 space-y-1.5" role="list">
               {partners.map((p) => (
-                <span key={p} className="px-3 py-1 bg-green-50 border border-green-100 rounded-full text-xs font-medium text-green-700">
-                  {p}
-                </span>
+                <li key={p.name} className="flex items-center gap-2 text-sm text-slate-700">
+                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" aria-hidden="true" />
+                  <span className="font-medium">{p.name}</span>
+                  {p.note && <span className="text-slate-400 text-xs">{p.note}</span>}
+                </li>
               ))}
-            </div>
+            </ul>
             <p className="text-sm">
               SulitScan PH may earn a commission when you click affiliate links for active partner stores and make a purchase. This does not affect your price.
             </p>

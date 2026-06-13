@@ -9,7 +9,7 @@ import { LayoutGrid, ArrowRight, CheckCircle, AlertCircle } from "lucide-react"
 import { formatDealCount } from "@/lib/utils"
 
 export const metadata: Metadata = {
-  title: "Shopping Deal Categories Philippines | SulitScan PH",
+  title: "Shopping Deal Categories Philippines",
   description:
     "Browse SulitScan deals by category — Under ₱500, Tech & Gadgets, Home Finds, Beauty, Fashion, and Gift Ideas. Curated deals for Filipino shoppers with buyer notes on every listing.",
   alternates: { canonical: `${siteConfig.url}/categories` },

@@ -7,7 +7,7 @@ import { ShoppingBag } from "lucide-react"
 import { formatDealCount } from "@/lib/utils"
 
 export const metadata: Metadata = {
-  title: "Latest Online Deals Philippines | SulitScan PH",
+  title: "Latest Online Deals Philippines",
   description:
     "Browse curated online deals from Temu and Sephora PH — beauty, skincare, home finds, gadgets, fashion, and budget picks. Buyer notes and affiliate disclosure on every deal.",
   alternates: { canonical: `${siteConfig.url}/deals` },

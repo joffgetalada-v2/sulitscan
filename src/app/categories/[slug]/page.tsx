@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!category) return {}
   const content = categoryContent[slug]
   return {
-    title: `${category.name} Deals Philippines | SulitScan PH`,
+    title: `${category.name} Deals Philippines`,
     description:
       content?.intro.slice(0, 155) ??
       `${category.description} Browse ${category.name.toLowerCase()} deals from Temu and Sephora PH on SulitScan PH.`,

@@ -60,7 +60,7 @@ export async function generateMetadata({
   const post = getPostBySlug(slug)
   if (!post) return {}
   return {
-    title: `${post.title} | SulitScan PH`,
+    title: post.title,
     description: post.excerpt,
     alternates: { canonical: `${siteConfig.url}/blog/${slug}` },
     openGraph: {

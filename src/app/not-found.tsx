@@ -2,7 +2,7 @@ import Link from "next/link"
 import { ArrowLeft, Search, ShoppingBag, BookOpen, Mail } from "lucide-react"
 
 export const metadata = {
-  title: "Page Not Found | SulitScan PH",
+  title: { absolute: "Page Not Found | SulitScan PH" },
   description: "The page you're looking for doesn't exist. Browse deals, guides, or contact us.",
 }
 

@@ -22,7 +22,7 @@ export async function generateMetadata({
   const store = getStoreBySlug(slug)
   if (!store) return {}
   return {
-    title: `${store.name} Deals Philippines | SulitScan PH`,
+    title: `${store.name} Deals Philippines`,
     description: `${store.description} Browse selected ${store.name} deals on SulitScan PH with buyer notes, shipping info, and affiliate disclosure.`,
     alternates: { canonical: `${siteConfig.url}/stores/${slug}` },
     openGraph: {

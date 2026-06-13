@@ -104,32 +104,28 @@ export default function Footer() {
 
             {/* Platforms list */}
             <div>
-              <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mb-2.5">
+              <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mb-2">
                 Active Stores
               </p>
-              <div className="flex flex-wrap gap-1.5 mb-3">
+              <ul className="space-y-1 mb-4" role="list">
                 {activePlatforms.map((p) => (
-                  <span
-                    key={p}
-                    className="text-[11px] px-2 py-0.5 bg-slate-800 text-slate-400 rounded-md hover:bg-slate-700 hover:text-slate-300 transition-colors"
-                  >
+                  <li key={p} className="flex items-center gap-2 text-[11px] text-slate-400">
+                    <span className="w-1 h-1 rounded-full bg-green-500 shrink-0" aria-hidden="true" />
                     {p}
-                  </span>
+                  </li>
                 ))}
-              </div>
-              <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mb-2.5">
+              </ul>
+              <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mb-2">
                 Coming Soon
               </p>
-              <div className="flex flex-wrap gap-1.5">
+              <ul className="space-y-1" role="list">
                 {comingSoonPlatforms.map((p) => (
-                  <span
-                    key={p}
-                    className="text-[11px] px-2 py-0.5 bg-slate-900 text-slate-600 rounded-md border border-slate-800"
-                  >
+                  <li key={p} className="flex items-center gap-2 text-[11px] text-slate-600">
+                    <span className="w-1 h-1 rounded-full bg-slate-700 shrink-0" aria-hidden="true" />
                     {p}
-                  </span>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
 

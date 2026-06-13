@@ -93,9 +93,9 @@ export default function DealCard({ deal }: DealCardProps) {
 
         {/* SulitScore */}
         <div className="mb-3">
-          <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold border ${getSulitScoreBg(deal.sulitScore)}`}>
+          <div className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border ${getSulitScoreBg(deal.sulitScore)}`}>
             <span className="font-black">{deal.sulitScore}/10</span>
-            <span>·</span>
+            <span className="mx-1">·</span>
             <span>{getSulitScoreLabel(deal.sulitScore)}</span>
           </div>
         </div>

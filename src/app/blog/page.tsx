@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/seo"
 import { BookOpen } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: "Smart Shopping Guides Philippines | SulitScan PH",
+  title: "Smart Shopping Guides Philippines",
   description:
     "Shopping guides for Filipino buyers — Temu tips, Sephora PH buying advice, how to spot fake discounts, voucher strategies, and smart online shopping habits.",
   alternates: { canonical: `${siteConfig.url}/blog` },
