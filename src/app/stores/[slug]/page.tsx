@@ -163,7 +163,7 @@ export default async function StoreDetailPage({
             <section aria-labelledby="store-deals-heading">
               <h2 id="store-deals-heading" className="text-xl font-bold text-slate-900 mb-4">
                 {storeDeals.length > 0
-                  ? `${storeDeals.length} curated deals from ${store.name}`
+                  ? `${storeDeals.length} curated deal${storeDeals.length !== 1 ? "s" : ""} from ${store.name}`
                   : `Deals from ${store.name}`}
               </h2>
               <StoreDeals deals={storeDeals} storeName={store.name} />
