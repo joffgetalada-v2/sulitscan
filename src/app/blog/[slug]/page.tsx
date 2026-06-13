@@ -2,11 +2,26 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
-import { Clock, ArrowLeft, Tag, BookOpen } from "lucide-react"
+import { Clock, ArrowLeft, Tag, BookOpen, List } from "lucide-react"
 import { BreadcrumbJsonLd, BlogPostingJsonLd } from "@/components/SeoJsonLd"
 import { posts, getPostBySlug } from "@/data/posts"
 import { siteConfig } from "@/lib/seo"
 import { formatDate, formatTag } from "@/lib/utils"
+
+function slugifyHeading(text: string): string {
+  return text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-").replace(/--+/g, "-").trim()
+}
+
+function extractHeadings(content: string): { level: 2 | 3; text: string; id: string }[] {
+  return content
+    .split("\n\n")
+    .filter((block) => block.startsWith("## ") || block.startsWith("### "))
+    .map((block) => {
+      const isH3 = block.startsWith("### ")
+      const text = block.replace(/^#{2,3} /, "")
+      return { level: (isH3 ? 3 : 2) as 2 | 3, text, id: slugifyHeading(text) }
+    })
+}
 
 function renderInline(text: string) {
   const regex = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g
@@ -45,11 +60,11 @@ export async function generateMetadata({
   const post = getPostBySlug(slug)
   if (!post) return {}
   return {
-    title: post.title,
+    title: `${post.title} | SulitScan PH`,
     description: post.excerpt,
     alternates: { canonical: `${siteConfig.url}/blog/${slug}` },
     openGraph: {
-      title: post.title,
+      title: `${post.title} | SulitScan PH`,
       description: post.excerpt,
       url: `${siteConfig.url}/blog/${slug}`,
       type: "article",
@@ -69,6 +84,8 @@ export default async function BlogPostPage({
   if (!post) notFound()
 
   const postUrl = `${siteConfig.url}/blog/${slug}`
+  const headings = extractHeadings(post.content)
+  const relatedPosts = posts.filter((p) => p.slug !== slug).slice(0, 3)
 
   return (
     <>
@@ -109,149 +126,221 @@ export default async function BlogPostPage({
         )}
       </div>
 
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        {/* Back */}
-        <Link
-          href="/blog"
-          className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-green-600 mb-6 transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-          Back to Blog
-        </Link>
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
 
-        {/* Meta */}
-        <span className="text-xs font-semibold text-green-600 uppercase tracking-wide">
-          {post.category}
-        </span>
+          {/* Main column */}
+          <div className="lg:col-span-3">
+            {/* Back */}
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-green-600 mb-6 transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+              Back to Blog
+            </Link>
 
-        <h1 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight mt-2 mb-4">
-          {post.title}
-        </h1>
-
-        <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 mb-6 pb-6 border-b border-slate-100">
-          <span>By {post.author}</span>
-          <span>Published {formatDate(post.publishedAt)}</span>
-          {"lastReviewed" in post && post.lastReviewed && (
-            <span className="flex items-center gap-1 text-green-600">
-              <Clock className="w-3 h-3" aria-hidden="true" />
-              Last reviewed {formatDate(post.lastReviewed as string)}
+            {/* Meta */}
+            <span className="text-xs font-semibold text-green-600 uppercase tracking-wide">
+              {post.category}
             </span>
-          )}
-          <span>{post.readTime} min read</span>
-        </div>
 
-        {/* Content */}
-        <div className="prose prose-sm prose-slate max-w-none">
-          {post.content.split("\n\n").map((block, i) => {
-            if (block.startsWith("## ")) {
-              return (
-                <h2 key={i} className="text-lg font-bold text-slate-900 mt-8 mb-2">
-                  {renderInline(block.replace(/^## /, ""))}
-                </h2>
-              )
-            }
-            if (block.startsWith("### ")) {
-              return (
-                <h3 key={i} className="text-base font-semibold text-slate-800 mt-5 mb-1.5">
-                  {renderInline(block.replace(/^### /, ""))}
-                </h3>
-              )
-            }
-            if (block.startsWith("- ")) {
-              const items = block.split("\n").filter((l) => l.startsWith("- "))
-              return (
-                <ul key={i} className="list-disc pl-5 space-y-1.5 my-3">
-                  {items.map((item, j) => (
-                    <li key={j} className="text-slate-600 text-sm leading-relaxed">
-                      {renderInline(item.replace(/^- /, ""))}
-                    </li>
-                  ))}
-                </ul>
-              )
-            }
-            if (/^\d+\. /.test(block.split("\n")[0])) {
-              const items = block.split("\n").filter((l) => /^\d+\. /.test(l))
-              return (
-                <ol key={i} className="list-decimal pl-5 space-y-1.5 my-3">
-                  {items.map((item, j) => (
-                    <li key={j} className="text-slate-600 text-sm leading-relaxed">
-                      {renderInline(item.replace(/^\d+\. /, ""))}
+            <h1 className="text-2xl sm:text-3xl font-black text-slate-900 leading-tight mt-2 mb-4">
+              {post.title}
+            </h1>
+
+            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-400 mb-6 pb-6 border-b border-slate-100">
+              <span>By {post.author}</span>
+              <span>Published {formatDate(post.publishedAt)}</span>
+              {"lastReviewed" in post && post.lastReviewed && (
+                <span className="flex items-center gap-1 text-green-600">
+                  <Clock className="w-3 h-3" aria-hidden="true" />
+                  Last reviewed {formatDate(post.lastReviewed as string)}
+                </span>
+              )}
+              <span>{post.readTime} min read</span>
+            </div>
+
+            {/* Mobile TOC */}
+            {headings.length > 2 && (
+              <div className="lg:hidden bg-slate-50 border border-slate-200 rounded-xl p-4 mb-6">
+                <p className="text-xs font-semibold text-slate-700 mb-2 flex items-center gap-1.5">
+                  <List className="w-3.5 h-3.5" aria-hidden="true" />
+                  In this guide
+                </p>
+                <ol className="space-y-1">
+                  {headings.filter((h) => h.level === 2).map((h, i) => (
+                    <li key={i}>
+                      <a
+                        href={`#${h.id}`}
+                        className="text-xs text-green-600 hover:underline leading-relaxed"
+                      >
+                        {h.text}
+                      </a>
                     </li>
                   ))}
                 </ol>
-              )
-            }
-            if (block.startsWith("> ")) {
-              return (
-                <blockquote key={i} className="border-l-4 border-green-200 pl-4 my-4 text-sm text-slate-500 italic">
-                  {renderInline(block.replace(/^> /, ""))}
-                </blockquote>
-              )
-            }
-            return (
-              <p key={i} className="text-slate-600 text-sm leading-relaxed my-3">
-                {renderInline(block)}
+              </div>
+            )}
+
+            {/* Content */}
+            <div className="prose prose-sm prose-slate max-w-none">
+              {post.content.split("\n\n").map((block, i) => {
+                if (block.startsWith("## ")) {
+                  const text = block.replace(/^## /, "")
+                  const id = slugifyHeading(text)
+                  return (
+                    <h2 key={i} id={id} className="text-lg font-bold text-slate-900 mt-8 mb-2 scroll-mt-20">
+                      {renderInline(text)}
+                    </h2>
+                  )
+                }
+                if (block.startsWith("### ")) {
+                  const text = block.replace(/^### /, "")
+                  const id = slugifyHeading(text)
+                  return (
+                    <h3 key={i} id={id} className="text-base font-semibold text-slate-800 mt-5 mb-1.5 scroll-mt-20">
+                      {renderInline(text)}
+                    </h3>
+                  )
+                }
+                if (block.startsWith("- ")) {
+                  const items = block.split("\n").filter((l) => l.startsWith("- "))
+                  return (
+                    <ul key={i} className="list-disc pl-5 space-y-1.5 my-3">
+                      {items.map((item, j) => (
+                        <li key={j} className="text-slate-600 text-sm leading-relaxed">
+                          {renderInline(item.replace(/^- /, ""))}
+                        </li>
+                      ))}
+                    </ul>
+                  )
+                }
+                if (/^\d+\. /.test(block.split("\n")[0])) {
+                  const items = block.split("\n").filter((l) => /^\d+\. /.test(l))
+                  return (
+                    <ol key={i} className="list-decimal pl-5 space-y-1.5 my-3">
+                      {items.map((item, j) => (
+                        <li key={j} className="text-slate-600 text-sm leading-relaxed">
+                          {renderInline(item.replace(/^\d+\. /, ""))}
+                        </li>
+                      ))}
+                    </ol>
+                  )
+                }
+                if (block.startsWith("> ")) {
+                  return (
+                    <blockquote key={i} className="border-l-4 border-green-200 pl-4 my-4 text-sm text-slate-500 italic">
+                      {renderInline(block.replace(/^> /, ""))}
+                    </blockquote>
+                  )
+                }
+                return (
+                  <p key={i} className="text-slate-600 text-sm leading-relaxed my-3">
+                    {renderInline(block)}
+                  </p>
+                )
+              })}
+            </div>
+
+            {/* Tags */}
+            <div className="mt-8">
+              <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Tags</p>
+              <div className="flex flex-wrap gap-2">
+                {post.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="inline-flex items-center gap-1 px-2.5 py-1 bg-slate-50 text-slate-600 text-xs rounded-full border border-slate-100"
+                  >
+                    <Tag className="w-3 h-3" aria-hidden="true" />
+                    {formatTag(tag)}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Affiliate note */}
+            <div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800">
+              <strong>Affiliate Disclosure:</strong> Links in this article may be affiliate links. SulitScan
+              earns a commission if you buy — at no extra cost to you.{" "}
+              <Link href="/affiliate-disclosure" className="underline">Learn more</Link>
+            </div>
+
+            {/* Related posts */}
+            {relatedPosts.length > 0 && (
+              <section aria-labelledby="related-posts-heading" className="mt-10">
+                <h2 id="related-posts-heading" className="text-base font-bold text-slate-900 mb-4">
+                  More shopping guides
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {relatedPosts.map((p) => (
+                    <Link
+                      key={p.id}
+                      href={`/blog/${p.slug}`}
+                      className="group p-4 bg-white border border-slate-100 rounded-xl hover:border-green-100 hover:shadow-md transition-all"
+                    >
+                      <div className={`w-full h-20 rounded-lg bg-gradient-to-br ${p.coverGradient} mb-3`} aria-hidden="true" />
+                      <span className="text-[10px] font-semibold text-green-600 uppercase tracking-wide">{p.category}</span>
+                      <h3 className="text-xs font-bold text-slate-900 mt-1 leading-snug line-clamp-2 group-hover:text-green-700 transition-colors">
+                        {p.title}
+                      </h3>
+                      <p className="text-[10px] text-slate-400 mt-1">{p.readTime} min read</p>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Internal links */}
+            <div className="mt-8 p-4 bg-slate-50 border border-slate-100 rounded-xl">
+              <p className="text-xs font-semibold text-slate-700 mb-3 flex items-center gap-2">
+                <BookOpen className="w-3.5 h-3.5" aria-hidden="true" />
+                Explore SulitScan
               </p>
-            )
-          })}
-        </div>
-
-        {/* Tags */}
-        <div className="mt-8">
-          <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Tags</p>
-          <div className="flex flex-wrap gap-2">
-            {post.tags.map((tag) => (
-              <span
-                key={tag}
-                className="inline-flex items-center gap-1 px-2.5 py-1 bg-slate-50 text-slate-600 text-xs rounded-full border border-slate-100"
-              >
-                <Tag className="w-3 h-3" aria-hidden="true" />
-                {formatTag(tag)}
-              </span>
-            ))}
+              <div className="flex flex-wrap gap-2">
+                {[
+                  { label: "Browse all deals", href: "/deals" },
+                  { label: "Shop by category", href: "/categories" },
+                  { label: "Partner stores", href: "/stores" },
+                  { label: "More guides", href: "/blog" },
+                ].map((l) => (
+                  <Link
+                    key={l.href}
+                    href={l.href}
+                    className="text-xs px-3 py-1.5 bg-white text-green-600 border border-green-100 rounded-full hover:bg-green-50 transition-colors font-medium"
+                  >
+                    {l.label}
+                  </Link>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
 
-        {/* Affiliate note */}
-        <div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800">
-          <strong>Affiliate Disclosure:</strong> Links in this article may be affiliate links. SulitScan
-          earns a commission if you buy — at no extra cost to you.{" "}
-          <Link href="/affiliate-disclosure" className="underline">Learn more</Link>
-        </div>
-
-        {/* Internal links */}
-        <div className="mt-8 p-4 bg-slate-50 border border-slate-100 rounded-xl">
-          <p className="text-xs font-semibold text-slate-700 mb-3 flex items-center gap-2">
-            <BookOpen className="w-3.5 h-3.5" aria-hidden="true" />
-            Explore SulitScan
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {[
-              { label: "Browse all deals", href: "/deals" },
-              { label: "Shop by category", href: "/categories" },
-              { label: "Partner stores", href: "/stores" },
-              { label: "More guides", href: "/blog" },
-            ].map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="text-xs px-3 py-1.5 bg-white text-green-600 border border-green-100 rounded-full hover:bg-green-50 transition-colors font-medium"
-              >
-                {l.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        {/* Back to blog */}
-        <div className="mt-8">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-green-600 hover:text-green-700"
-          >
-            <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-            More guides
-          </Link>
+          {/* Sidebar: desktop TOC */}
+          {headings.length > 2 && (
+            <aside className="hidden lg:block">
+              <div className="sticky top-6 bg-white border border-slate-100 rounded-2xl shadow-sm p-5">
+                <p className="text-xs font-semibold text-slate-700 mb-3 flex items-center gap-1.5">
+                  <List className="w-3.5 h-3.5" aria-hidden="true" />
+                  In this guide
+                </p>
+                <nav aria-label="Table of contents">
+                  <ol className="space-y-1.5">
+                    {headings.filter((h) => h.level === 2).map((h, i) => (
+                      <li key={i}>
+                        <a
+                          href={`#${h.id}`}
+                          className="text-xs text-slate-500 hover:text-green-600 leading-relaxed transition-colors block"
+                        >
+                          {h.text}
+                        </a>
+                      </li>
+                    ))}
+                  </ol>
+                </nav>
+              </div>
+            </aside>
+          )}
         </div>
       </div>
     </>

@@ -1,13 +1,13 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import { ExternalLink, CheckCircle, Truck, ArrowLeft, ShieldCheck, RotateCcw, Clock } from "lucide-react"
-import { formatDealCount } from "@/lib/utils"
-import DealCard from "@/components/DealCard"
-import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
+import { ExternalLink, CheckCircle, Truck, ArrowLeft, ShieldCheck, RotateCcw, Clock, AlertCircle, ChevronDown } from "lucide-react"
+import { BreadcrumbJsonLd, FAQJsonLd } from "@/components/SeoJsonLd"
 import { stores, getStoreBySlug } from "@/data/stores"
+import { getStoreContent } from "@/data/store-content"
 import { getDealsByPlatform } from "@/data/deals"
 import { siteConfig } from "@/lib/seo"
+import StoreDeals from "@/components/StoreDeals"
 
 export function generateStaticParams() {
   return stores.map((s) => ({ slug: s.slug }))
@@ -22,8 +22,8 @@ export async function generateMetadata({
   const store = getStoreBySlug(slug)
   if (!store) return {}
   return {
-    title: `${store.name} Deals Philippines — ${store.tagline}`,
-    description: `${store.description} Browse selected ${store.name} deals on SulitScan PH with buyer notes and affiliate disclosure.`,
+    title: `${store.name} Deals Philippines | SulitScan PH`,
+    description: `${store.description} Browse selected ${store.name} deals on SulitScan PH with buyer notes, shipping info, and affiliate disclosure.`,
     alternates: { canonical: `${siteConfig.url}/stores/${slug}` },
     openGraph: {
       title: `${store.name} Deals Philippines | SulitScan PH`,
@@ -43,6 +43,7 @@ export default async function StoreDetailPage({
   if (!store) notFound()
 
   const storeDeals = getDealsByPlatform(store.name)
+  const content = getStoreContent(slug)
 
   return (
     <>
@@ -53,6 +54,9 @@ export default async function StoreDetailPage({
           { name: store.name, url: `${siteConfig.url}/stores/${slug}` },
         ]}
       />
+      {content?.faqs && content.faqs.length > 0 && (
+        <FAQJsonLd items={content.faqs} />
+      )}
 
       {/* Back nav */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
@@ -107,34 +111,84 @@ export default async function StoreDetailPage({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
 
-          {/* Left: deals */}
-          <div className="lg:col-span-2">
-            {/* Deals */}
-            {storeDeals.length > 0 ? (
-              <section aria-labelledby="store-deals-heading">
-                <h2 id="store-deals-heading" className="text-xl font-bold text-slate-900 mb-6">
-                  {formatDealCount(storeDeals.length)} from {store.name}
-                </h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-8">
-                  {storeDeals.slice(0, 12).map((deal) => (
-                    <DealCard key={deal.id} deal={deal} />
+          {/* Left: main content + deals */}
+          <div className="lg:col-span-2 space-y-10">
+
+            {/* Store intro */}
+            {content?.intro && (
+              <section>
+                <div className="prose prose-sm prose-slate max-w-none">
+                  {content.intro.trim().split("\n\n").map((para, i) => (
+                    <p key={i} className="text-sm text-slate-600 leading-relaxed mb-3">{para}</p>
                   ))}
                 </div>
-                {storeDeals.length > 12 && (
-                  <div className="text-center">
-                    <Link
-                      href="/deals"
-                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-slate-200 text-slate-700 font-semibold text-sm rounded-xl hover:border-green-200 hover:text-green-700 transition-all"
-                    >
-                      View all {storeDeals.length} deals →
-                    </Link>
-                  </div>
-                )}
               </section>
-            ) : (
-              <div className="p-8 bg-slate-50 rounded-2xl text-center text-slate-400 text-sm">
-                No deals listed for this store yet. Check back soon.
+            )}
+
+            {/* Good for / Be careful */}
+            {content && (
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="bg-green-50 border border-green-100 rounded-2xl p-5">
+                  <h2 className="text-sm font-bold text-green-900 mb-3 flex items-center gap-2">
+                    <CheckCircle className="w-4 h-4 text-green-600 shrink-0" aria-hidden="true" />
+                    Good for
+                  </h2>
+                  <ul className="space-y-2" role="list">
+                    {content.goodFor.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="w-1 h-1 rounded-full bg-green-500 shrink-0 mt-2" aria-hidden="true" />
+                        <span className="text-xs text-green-800 leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="bg-amber-50 border border-amber-100 rounded-2xl p-5">
+                  <h2 className="text-sm font-bold text-amber-900 mb-3 flex items-center gap-2">
+                    <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" aria-hidden="true" />
+                    Be careful with
+                  </h2>
+                  <ul className="space-y-2" role="list">
+                    {content.beCareful.map((item, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="w-1 h-1 rounded-full bg-amber-500 shrink-0 mt-2" aria-hidden="true" />
+                        <span className="text-xs text-amber-800 leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
+            )}
+
+            {/* Deals */}
+            <section aria-labelledby="store-deals-heading">
+              <h2 id="store-deals-heading" className="text-xl font-bold text-slate-900 mb-4">
+                {storeDeals.length > 0
+                  ? `${storeDeals.length} curated deals from ${store.name}`
+                  : `Deals from ${store.name}`}
+              </h2>
+              <StoreDeals deals={storeDeals} storeName={store.name} />
+            </section>
+
+            {/* FAQs */}
+            {content?.faqs && content.faqs.length > 0 && (
+              <section aria-labelledby="faq-heading">
+                <h2 id="faq-heading" className="text-xl font-bold text-slate-900 mb-5">
+                  Frequently asked questions about {store.name}
+                </h2>
+                <div className="space-y-3">
+                  {content.faqs.map((faq, i) => (
+                    <details key={i} className="group bg-white border border-slate-100 rounded-xl shadow-sm">
+                      <summary className="flex items-center justify-between gap-3 px-5 py-4 cursor-pointer list-none select-none text-sm font-semibold text-slate-900 hover:text-green-700 transition-colors">
+                        {faq.question}
+                        <ChevronDown className="w-4 h-4 text-slate-400 group-open:rotate-180 transition-transform shrink-0" aria-hidden="true" />
+                      </summary>
+                      <div className="px-5 pb-4">
+                        <p className="text-sm text-slate-600 leading-relaxed">{faq.answer}</p>
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              </section>
             )}
           </div>
 
@@ -146,7 +200,7 @@ export default async function StoreDetailPage({
                 <CheckCircle className="w-4 h-4 text-green-500" aria-hidden="true" />
                 Buyer Reminders
               </h3>
-              <ul className="space-y-2.5">
+              <ul className="space-y-2.5" role="list">
                 {store.buyerNotes.map((note, i) => (
                   <li key={i} className="flex items-start gap-2">
                     <span className="w-1 h-1 rounded-full bg-green-400 shrink-0 mt-2" aria-hidden="true" />
@@ -207,6 +261,22 @@ export default async function StoreDetailPage({
                 Visit {store.name}
                 <ExternalLink className="w-4 h-4" aria-hidden="true" />
               </a>
+            </div>
+
+            {/* Related links */}
+            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+              <h3 className="text-sm font-bold text-slate-900 mb-3">Explore more</h3>
+              <ul className="space-y-2" role="list">
+                <li>
+                  <Link href="/deals" className="text-xs text-green-600 hover:underline">Browse all deals →</Link>
+                </li>
+                <li>
+                  <Link href="/categories" className="text-xs text-green-600 hover:underline">Shop by category →</Link>
+                </li>
+                <li>
+                  <Link href="/blog" className="text-xs text-green-600 hover:underline">Shopping guides →</Link>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

@@ -1,5 +1,9 @@
 import { siteConfig } from "@/lib/seo"
 
+function safeJson(obj: unknown): string {
+  return JSON.stringify(obj).replace(/</g, "\\u003c")
+}
+
 export function OrganizationJsonLd() {
   const schema = {
     "@context": "https://schema.org",
@@ -16,7 +20,7 @@ export function OrganizationJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: safeJson(schema) }}
     />
   )
 }
@@ -40,7 +44,7 @@ export function WebSiteJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: safeJson(schema) }}
     />
   )
 }
@@ -64,7 +68,7 @@ export function BreadcrumbJsonLd({ items }: { items: BreadcrumbItem[] }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: safeJson(schema) }}
     />
   )
 }
@@ -91,7 +95,7 @@ export function ItemListJsonLd({ items, name }: { items: DealItem[]; name: strin
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: safeJson(schema) }}
     />
   )
 }
@@ -138,7 +142,7 @@ export function BlogPostingJsonLd({
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: safeJson(schema) }}
     />
   )
 }
@@ -164,7 +168,7 @@ export function FAQJsonLd({ items }: { items: FAQItem[] }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: safeJson(schema) }}
     />
   )
 }
