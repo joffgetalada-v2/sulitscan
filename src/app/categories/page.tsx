@@ -130,12 +130,12 @@ export default function CategoriesPage() {
               has curated deals with buyer notes and a SulitScore to help you decide before clicking buy.
             </p>
             <p className="text-sm text-slate-600 leading-relaxed">
-              <strong>Budget categories</strong> (Under ₱500, Under ₱1,000) group deals purely by price range.
+              <strong>Budget categories</strong>{" "}(Under ₱500, Under ₱1,000) group deals purely by price range.
               These are useful when you have a spending limit in mind and want to see everything available
               within that range across different product types.
             </p>
             <p className="text-sm text-slate-600 leading-relaxed">
-              <strong>Product categories</strong> (Beauty, Home Finds, Tech & Gadgets, Fashion, Gift Ideas)
+              <strong>Product categories</strong>{" "}(Beauty, Home Finds, Tech & Gadgets, Fashion, Gift Ideas)
               group deals by what you&apos;re shopping for. These pages include category-specific buyer guidance —
               what to check before buying beauty products, how to read Temu sizing, what to look for in
               home finds, and more.
