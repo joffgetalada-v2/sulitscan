@@ -107,25 +107,17 @@ export default function Footer() {
               <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mb-2">
                 Active Stores
               </p>
-              <ul className="space-y-1 mb-4" role="list">
-                {activePlatforms.map((p) => (
-                  <li key={p} className="flex items-center gap-2 text-[11px] text-slate-400">
-                    <span className="w-1 h-1 rounded-full bg-green-500 shrink-0" aria-hidden="true" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
+              <p className="flex items-center gap-2 text-[11px] text-slate-400 mb-4">
+                <span className="w-1 h-1 rounded-full bg-green-500 shrink-0" aria-hidden="true" />
+                {activePlatforms.join(", ")}
+              </p>
               <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mb-2">
                 Coming Soon
               </p>
-              <ul className="space-y-1" role="list">
-                {comingSoonPlatforms.map((p) => (
-                  <li key={p} className="flex items-center gap-2 text-[11px] text-slate-600">
-                    <span className="w-1 h-1 rounded-full bg-slate-700 shrink-0" aria-hidden="true" />
-                    {p}
-                  </li>
-                ))}
-              </ul>
+              <p className="flex items-center gap-2 text-[11px] text-slate-600">
+                <span className="w-1 h-1 rounded-full bg-slate-700 shrink-0" aria-hidden="true" />
+                {comingSoonPlatforms.join(", ")}
+              </p>
             </div>
           </div>
 
