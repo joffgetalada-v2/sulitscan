@@ -157,9 +157,8 @@ export default async function CategoryPage({
                 </h2>
                 <ul className="space-y-2">
                   {content.commonMistakes.map((item, i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <span className="text-xs font-bold text-rose-400 mt-0.5 shrink-0" aria-hidden="true">✕</span>
-                      <span className="text-xs text-slate-600 leading-relaxed">{item}</span>
+                    <li key={i} className="text-xs text-slate-600 leading-relaxed">
+                      <span className="font-bold text-rose-400" aria-hidden="true">✕</span> {item}
                     </li>
                   ))}
                 </ul>
