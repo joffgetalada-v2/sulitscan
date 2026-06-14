@@ -3,12 +3,26 @@ import { Resend } from "resend"
 
 const TOPIC_LABELS: Record<string, string> = {
   "deal-suggestion":  "Deal Suggestion",
-  "outdated-price":   "Report Outdated Price",
+  "outdated-price":   "Outdated Price Report",
   "partnership":      "Affiliate Partnership",
   "broken-link":      "Broken Link / Error",
   "feedback":         "General Feedback",
   "other":            "Other",
 }
+
+// Per-topic routing. Deal-related topics go to deals@, partnerships to
+// partners@, everything else to hello@. The monitored ops inbox is BCC'd on
+// every message during soft launch so nothing is lost if an alias isn't live.
+const TOPIC_ROUTING: Record<string, string> = {
+  "deal-suggestion":  "deals@sulitscan.com",
+  "outdated-price":   "deals@sulitscan.com",
+  "broken-link":      "deals@sulitscan.com",
+  "partnership":      "partners@sulitscan.com",
+  "feedback":         "hello@sulitscan.com",
+  "other":            "hello@sulitscan.com",
+}
+const DEFAULT_RECIPIENT = "hello@sulitscan.com"
+const OPS_INBOX = "joff.getalada@dovrmedia.com"
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null)
@@ -31,12 +45,14 @@ export async function POST(req: NextRequest) {
   }
 
   const topicLabel = TOPIC_LABELS[subject ?? ""] ?? "General"
+  const recipient = TOPIC_ROUTING[subject ?? ""] ?? DEFAULT_RECIPIENT
 
   try {
     const resend = new Resend(process.env.RESEND_API_KEY)
     await resend.emails.send({
       from:    "SulitScan PH <hello@e.sulitscan.com>",
-      to:      ["joff.getalada@dovrmedia.com"],
+      to:      [recipient],
+      bcc:     [OPS_INBOX],
       replyTo: email.trim(),
       subject: `[SulitScan Contact] ${topicLabel} — ${name.trim()}`,
       html: `
