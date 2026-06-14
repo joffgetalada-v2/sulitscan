@@ -3,6 +3,7 @@
 import { useState } from "react"
 import DealCard from "@/components/DealCard"
 import type { Deal } from "@/data/deals"
+import { formatShowingDeals } from "@/lib/utils"
 
 const INITIAL = 24
 const STEP = 12
@@ -26,7 +27,7 @@ export default function StoreDeals({ deals, storeName }: StoreDealsProps) {
   return (
     <>
       <p className="text-xs text-slate-400 mb-4">
-        Showing {Math.min(visible, deals.length)} of {deals.length} deal{deals.length !== 1 ? "s" : ""} ·{" "}
+        {formatShowingDeals(Math.min(visible, deals.length), deals.length)} ·{" "}
         Prices from affiliate datafeed — confirm current price on {storeName} before buying.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">

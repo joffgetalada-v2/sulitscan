@@ -4,7 +4,7 @@ import { useState, useMemo } from "react"
 import DealCard from "./DealCard"
 import type { Deal } from "@/data/deals"
 import { Search, SlidersHorizontal, X } from "lucide-react"
-import { formatDealCount } from "@/lib/utils"
+import { formatDealCount, formatShowingDeals } from "@/lib/utils"
 
 interface DealsGridProps {
   deals: Deal[]
@@ -182,8 +182,7 @@ export default function DealsGrid({ deals, categories }: DealsGridProps) {
       {/* Sort + result count row */}
       <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
         <p className="text-sm text-slate-500">
-          Showing <strong className="text-slate-800">{Math.min(displayCount, filtered.length)}</strong> of{" "}
-          <strong className="text-slate-800">{filtered.length}</strong> {filtered.length === 1 ? "deal" : "deals"}
+          {formatShowingDeals(Math.min(displayCount, filtered.length), filtered.length)}
         </p>
         <div className="flex items-center gap-2">
           <label htmlFor="sort-select" className="text-xs text-slate-500 sr-only">Sort by</label>

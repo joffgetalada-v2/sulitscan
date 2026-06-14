@@ -59,6 +59,11 @@ export function formatDealCount(count: number): string {
   return count === 1 ? "1 deal" : `${count} deals`
 }
 
+// Single source of truth for "Showing X of Y deals" progress text.
+export function formatShowingDeals(visible: number, total: number): string {
+  return `Showing ${visible} of ${total} ${total === 1 ? "deal" : "deals"}`
+}
+
 const TAG_LABELS: Record<string, string> = {
   "how-it-works": "How It Works",
   "deal-checking": "Deal Checking",

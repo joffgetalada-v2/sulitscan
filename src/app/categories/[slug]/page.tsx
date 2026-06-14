@@ -7,6 +7,7 @@ import { getDealsByCategory } from "@/data/deals"
 import { categoryContent } from "@/data/category-content"
 import CategoryDeals from "@/components/CategoryDeals"
 import { siteConfig } from "@/lib/seo"
+import { formatDealCount } from "@/lib/utils"
 import { ArrowLeft, CheckCircle, BookOpen, AlertCircle } from "lucide-react"
 
 export function generateStaticParams() {
@@ -88,7 +89,7 @@ export default async function CategoryPage({
             <div>
               <h1 className="text-3xl font-black text-white">{category.name}</h1>
               <p className="text-white/80 mt-1 text-sm max-w-lg">
-                {categoryDeals.length} deal{categoryDeals.length !== 1 ? "s" : ""} · {category.description}
+                {formatDealCount(categoryDeals.length)} · {category.description}
               </p>
             </div>
           </div>

@@ -3,6 +3,7 @@
 import { useState } from "react"
 import type { Deal } from "@/data/deals"
 import DealCard from "@/components/DealCard"
+import { formatShowingDeals } from "@/lib/utils"
 
 const INITIAL = 24
 const STEP = 12
@@ -36,7 +37,7 @@ export default function CategoryDeals({ deals }: Props) {
       {deals.length > 0 && (
         <div className="mt-6 text-center">
           <p className="text-xs text-slate-400">
-            Showing {Math.min(visible, deals.length)} of {deals.length} deal{deals.length !== 1 ? "s" : ""} ·
+            {formatShowingDeals(Math.min(visible, deals.length), deals.length)} ·
             Prices from affiliate datafeeds — confirm on partner store before buying.
           </p>
         </div>
