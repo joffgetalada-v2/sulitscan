@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { motion } from "framer-motion"
 import type { Category } from "@/data/categories"
+import { formatDealCount } from "@/lib/utils"
 
 interface CategoryCardProps {
   category: Category
@@ -48,7 +49,7 @@ export default function CategoryCard({ category, liveCount, large = false }: Cat
 
           <h3 className="text-sm font-bold text-white leading-tight mb-1">{category.name}</h3>
           <p className="text-xs text-white/70 leading-tight mt-auto">
-            {liveCount ?? category.dealCount} deals
+            {formatDealCount(liveCount ?? category.dealCount)}
           </p>
         </div>
       </Link>

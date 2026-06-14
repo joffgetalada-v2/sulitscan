@@ -19,7 +19,7 @@ export default async function ContactPage({
 
   const initialSubject = topic ?? ""
   const initialMessage = deal
-    ? `Deal: ${deal}\n\nPlease describe the issue with this deal's pricing or information:`
+    ? `Deal: ${deal}\nDeal URL: ${siteConfig.url}/deals/${deal}\n\nPlease describe the issue with this deal's pricing or information:`
     : (message ?? "")
 
   return (

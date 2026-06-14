@@ -94,3 +94,9 @@ export function getSulitScoreLabel(score: number): string {
   if (score >= 5) return "Decent"
   return "Check First"
 }
+
+// Reusable score label: always renders "8/10 · Good Deal" with real spaces
+// around the separator (crawlable, not just visual margin).
+export function formatScore(score: number): string {
+  return `${score}/10 · ${getSulitScoreLabel(score)}`
+}

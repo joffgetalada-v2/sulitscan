@@ -5,7 +5,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ExternalLink, Zap } from "lucide-react"
 import type { Deal } from "@/data/deals"
-import { formatPrice, getSulitScoreBg, getSulitScoreLabel } from "@/lib/utils"
+import { formatPrice, formatScore, getSulitScoreBg, getSulitScoreLabel } from "@/lib/utils"
 
 interface DealCardProps {
   deal: Deal
@@ -93,9 +93,12 @@ export default function DealCard({ deal }: DealCardProps) {
 
         {/* SulitScore */}
         <div className="mb-3">
-          <div className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border ${getSulitScoreBg(deal.sulitScore)}`}>
+          <div
+            title={formatScore(deal.sulitScore)}
+            className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold border ${getSulitScoreBg(deal.sulitScore)}`}
+          >
             <span className="font-black">{deal.sulitScore}/10</span>
-            <span className="mx-1">·</span>
+            <span>{" · "}</span>
             <span>{getSulitScoreLabel(deal.sulitScore)}</span>
           </div>
         </div>
@@ -116,7 +119,7 @@ export default function DealCard({ deal }: DealCardProps) {
         {/* Trust footer */}
         <div className="pt-2.5 mt-1 border-t border-slate-50 mb-3">
           <p className="text-[10px] text-slate-400">
-            {deal.isDemo ? "Sample data" : `Confirm price on ${deal.platform} before buying.`}
+            {deal.isDemo ? "Sample data" : `Confirm current price on ${deal.platform} before buying.`}
             {" · "}
             <Link
               href={`/contact?topic=outdated-price&deal=${encodeURIComponent(deal.slug)}`}
