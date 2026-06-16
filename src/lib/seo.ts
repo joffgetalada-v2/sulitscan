@@ -3,9 +3,9 @@ export const siteConfig = {
   shortName: "SulitScan",
   tagline: "Curated online deals and shopping guides for Filipino shoppers.",
   description:
-    "Find deals that are actually sulit. SulitScan PH helps Filipino shoppers discover curated online deals, buyer notes, affiliate disclosures, and smart shopping guides before clicking buy.",
+    "SulitScan PH helps Filipino shoppers find curated online deals with honest buyer notes, fake-discount checks, and smart shopping guides for Temu and Sephora PH.",
   url: "https://sulitscan.com",
-  ogImage: "https://sulitscan.com/og-image.png",
+  ogImage: "https://sulitscan.com/og-image.jpg",
   locale: "en_PH",
   twitterHandle: "@sulitscanph",
 }

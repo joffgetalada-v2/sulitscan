@@ -75,7 +75,7 @@ export default function CookiePolicyPage() {
                   own tracking cookies to attribute the referral. SulitScan does not control third-party
                   cookies. Refer to{" "}
                   <a href="https://www.temu.com/privacy-policy.html" target="_blank" rel="noopener noreferrer" className="text-green-600 underline">Temu&apos;s Privacy Policy</a> and{" "}
-                  <a href="https://www.sephora.ph/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-green-600 underline">Sephora PH&apos;s Privacy Policy</a> for details.
+                  <a href="https://www.sephora.ph/privacy" target="_blank" rel="noopener noreferrer" className="text-green-600 underline">Sephora PH&apos;s Privacy Policy</a> for details.
                 </p>
               </div>
               <div className="p-4 bg-amber-50 rounded-xl border border-amber-100">

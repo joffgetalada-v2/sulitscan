@@ -110,7 +110,7 @@ export default function PrivacyPolicyPage() {
               tracking. Refer to{" "}
               <a href="https://www.temu.com/privacy-policy.html" target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">Temu&apos;s Privacy Policy</a>{" "}
               and{" "}
-              <a href="https://www.sephora.ph/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">Sephora PH&apos;s Privacy Policy</a>{" "}
+              <a href="https://www.sephora.ph/privacy" target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">Sephora PH&apos;s Privacy Policy</a>{" "}
               for details on how they handle your data.
             </p>
           </section>

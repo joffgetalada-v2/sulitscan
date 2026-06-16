@@ -8,7 +8,7 @@ import { getActiveDeals, getDealBySlug, getFeaturedDeals } from "@/data/deals"
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import DealCard from "@/components/DealCard"
 import { siteConfig } from "@/lib/seo"
-import { formatPrice, getSulitScoreBg, getSulitScoreLabel, formatTag } from "@/lib/utils"
+import { formatPrice, getSulitScoreBg, getSulitScoreLabel, formatTag, clampMeta } from "@/lib/utils"
 
 function getBuyerChecklist(deal: { platform: string; category: string }): string[] {
   const cat = deal.category.toLowerCase()
@@ -92,7 +92,7 @@ export async function generateMetadata({
   const discountText = deal.discount > 0 ? `${deal.discount}% off. ` : ""
   return {
     title: `${deal.title} — ${deal.platform} Deal`,
-    description: `${discountText}${deal.reason} SulitScore: ${deal.sulitScore}/10. Check deal notes before buying on ${deal.platform}.`,
+    description: clampMeta(`${discountText}${deal.reason} SulitScore ${deal.sulitScore}/10 — confirm the price on ${deal.platform} before buying.`),
     alternates: { canonical: `${siteConfig.url}/deals/${slug}` },
     openGraph: {
       title: `${deal.title} | SulitScan PH`,
@@ -230,6 +230,7 @@ export default async function DealDetailPage({
               </div>
               <Link
                 href={`/contact?topic=outdated-price&deal=${encodeURIComponent(deal.slug)}`}
+                rel="nofollow"
                 className="text-xs text-slate-400 hover:text-rose-500 transition-colors underline underline-offset-2"
               >
                 Report outdated price

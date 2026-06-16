@@ -9,7 +9,7 @@ import { formatDealCount } from "@/lib/utils"
 export const metadata: Metadata = {
   title: "Latest Online Deals Philippines",
   description:
-    "Browse curated online deals from Temu and Sephora PH — beauty, skincare, home finds, gadgets, fashion, and budget picks. Buyer notes and affiliate disclosure on every deal.",
+    "Browse curated online deals from Temu and Sephora PH — beauty, home finds, gadgets, fashion, and budget picks, with buyer notes on every deal.",
   alternates: { canonical: `${siteConfig.url}/deals` },
   openGraph: {
     title: "Latest Online Deals Philippines | SulitScan PH",

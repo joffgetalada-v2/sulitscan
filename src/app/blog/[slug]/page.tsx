@@ -6,7 +6,7 @@ import { Clock, ArrowLeft, Tag, BookOpen, List } from "lucide-react"
 import { BreadcrumbJsonLd, BlogPostingJsonLd } from "@/components/SeoJsonLd"
 import { posts, getPostBySlug } from "@/data/posts"
 import { siteConfig } from "@/lib/seo"
-import { formatDate, formatTag } from "@/lib/utils"
+import { formatDate, formatTag, clampMeta } from "@/lib/utils"
 
 function slugifyHeading(text: string): string {
   return text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-").replace(/--+/g, "-").trim()
@@ -61,7 +61,7 @@ export async function generateMetadata({
   if (!post) return {}
   return {
     title: post.title,
-    description: post.excerpt,
+    description: clampMeta(post.excerpt),
     alternates: { canonical: `${siteConfig.url}/blog/${slug}` },
     openGraph: {
       title: `${post.title} | SulitScan PH`,

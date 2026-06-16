@@ -28,7 +28,7 @@ import {
 export const metadata: Metadata = {
   title: { absolute: "SulitScan PH | Curated Online Deals and Shopping Guides for Filipino Shoppers" },
   description:
-    "Find deals that are actually sulit. SulitScan PH helps Filipino shoppers discover curated online deals, buyer notes, affiliate disclosures, and smart shopping guides before clicking buy.",
+    "SulitScan PH helps Filipino shoppers find curated online deals with honest buyer notes, fake-discount checks, and smart shopping guides for Temu and Sephora PH.",
   alternates: { canonical: siteConfig.url },
   openGraph: {
     title: "SulitScan PH | Curated Online Deals and Shopping Guides for Filipino Shoppers",

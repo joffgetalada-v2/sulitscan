@@ -128,7 +128,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     readTime: 7,
     tags: ["how-it-works", "transparency", "sulitscan", "deal-checking"],
     coverGradient: "from-green-400 to-emerald-600",
-    coverImage: "/images/guides/how-sulitscan-checks-deals.png",
+    coverImage: "/images/guides/how-sulitscan-checks-deals.jpg",
     coverImageAlt: "How SulitScan checks deals — phone showing a checked deal with price comparison, seller rating, and a deal checklist",
   },
   {
@@ -278,7 +278,7 @@ SulitScan may earn a commission when you click a Temu affiliate link and complet
     readTime: 9,
     tags: ["temu", "shopping-guide", "philippines", "tips", "buyer-guide"],
     coverGradient: "from-orange-400 to-red-500",
-    coverImage: "/images/guides/temu-shopping-guide-philippines.png",
+    coverImage: "/images/guides/temu-shopping-guide-philippines.jpg",
     coverImageAlt: "Temu shopping guide for Filipino buyers — Temu app showing affordable finds, free shipping, and discounts",
   },
   {
@@ -408,7 +408,7 @@ SulitScan may earn a commission when you click a Sephora PH affiliate link and c
     readTime: 10,
     tags: ["sephora", "beauty", "skincare", "philippines", "buyer-guide"],
     coverGradient: "from-pink-400 to-rose-600",
-    coverImage: "/images/guides/sephora-ph-beauty-guide.png",
+    coverImage: "/images/guides/sephora-ph-beauty-guide.jpg",
     coverImageAlt: "Sephora PH beauty deals — skincare, makeup, and fragrance with authenticity, price, expiry, and return check icons",
   },
   {
@@ -531,7 +531,7 @@ SulitScan may earn a commission when you click partner links and complete a purc
     readTime: 8,
     tags: ["fake-discounts", "shopping-tips", "buyer-protection", "smart-shopping"],
     coverGradient: "from-amber-400 to-orange-500",
-    coverImage: "/images/guides/fake-discount-check-guide.png",
+    coverImage: "/images/guides/fake-discount-check-guide.jpg",
     coverImageAlt: "Illustration of a magnifying glass checking discount tags and fake sale pricing",
   },
   {
@@ -657,7 +657,7 @@ SulitScan may earn a commission when you click partner links and complete a purc
     readTime: 8,
     tags: ["checklist", "vouchers", "shipping", "returns", "tips"],
     coverGradient: "from-teal-400 to-cyan-600",
-    coverImage: "/images/guides/voucher-shipping-return-checklist.png",
+    coverImage: "/images/guides/voucher-shipping-return-checklist.jpg",
     coverImageAlt: "Illustration of an online shopping checklist with delivery, voucher, and return icons",
   },
   {
@@ -791,7 +791,7 @@ SulitScan may earn a commission when you click partner links and complete a purc
     readTime: 9,
     tags: ["checkout", "pricing", "tips", "buyer-protection", "transparency"],
     coverGradient: "from-violet-400 to-purple-600",
-    coverImage: "/images/guides/final-price-checkout-guide.png",
+    coverImage: "/images/guides/final-price-checkout-guide.jpg",
     coverImageAlt: "Illustration of a checkout summary showing product price, shipping, vouchers, and final total",
   },
 
@@ -888,7 +888,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     readTime: 9,
     tags: ["temu", "under-500", "home-finds", "shopping-guide", "philippines"],
     coverGradient: "from-orange-400 to-amber-500",
-    coverImage: "/images/guides/best-temu-finds-under-500-philippines.png",
+    coverImage: "/images/guides/best-temu-finds-under-500-philippines.jpg",
     coverImageAlt: "Best Temu finds under ₱500 — budget home organizers, cable holders, phone stand, tumbler, and desk accessories",
   },
 
@@ -985,7 +985,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     readTime: 8,
     tags: ["temu", "shipping", "philippines", "buyer-guide", "shopping-guide"],
     coverGradient: "from-sky-400 to-blue-600",
-    coverImage: "/images/guides/temu-philippines-shipping-guide.png",
+    coverImage: "/images/guides/temu-philippines-shipping-guide.jpg",
     coverImageAlt: "Temu Philippines shipping guide — order tracking screen showing processing, shipping, customs, and delivery stages",
   },
 
@@ -1066,7 +1066,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     readTime: 9,
     tags: ["sephora", "beauty", "skincare", "shopping-guide", "philippines"],
     coverGradient: "from-rose-400 to-pink-600",
-    coverImage: "/images/guides/sephora-ph-sale-guide.png",
+    coverImage: "/images/guides/sephora-ph-sale-guide.jpg",
     coverImageAlt: "Sephora PH sale guide — beauty products with up to 30% off, Beauty Pass rewards card, and a maximize-your-value checklist",
   },
 
@@ -1166,7 +1166,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     readTime: 9,
     tags: ["shopping-tips", "buyer-protection", "safety", "philippines", "smart-shopping"],
     coverGradient: "from-emerald-400 to-teal-600",
-    coverImage: "/images/guides/online-shopping-safety-tips-philippines.png",
+    coverImage: "/images/guides/online-shopping-safety-tips-philippines.jpg",
     coverImageAlt: "Online shopping safety tips Philippines — secure checkout screen, shield lock, and a shopping safety checklist",
   },
 ]

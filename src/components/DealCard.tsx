@@ -123,6 +123,7 @@ export default function DealCard({ deal }: DealCardProps) {
             {" · "}
             <Link
               href={`/contact?topic=outdated-price&deal=${encodeURIComponent(deal.slug)}`}
+              rel="nofollow"
               className="hover:text-rose-500 transition-colors underline underline-offset-2"
             >
               Report outdated price

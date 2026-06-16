@@ -7,7 +7,7 @@ import { getDealsByCategory } from "@/data/deals"
 import { categoryContent } from "@/data/category-content"
 import CategoryDeals from "@/components/CategoryDeals"
 import { siteConfig } from "@/lib/seo"
-import { formatDealCount } from "@/lib/utils"
+import { formatDealCount, clampMeta } from "@/lib/utils"
 import { ArrowLeft, CheckCircle, BookOpen, AlertCircle } from "lucide-react"
 
 export function generateStaticParams() {
@@ -25,9 +25,10 @@ export async function generateMetadata({
   const content = categoryContent[slug]
   return {
     title: `${category.name} Deals Philippines`,
-    description:
-      content?.intro.slice(0, 155) ??
-      `${category.description} Browse ${category.name.toLowerCase()} deals from Temu and Sephora PH on SulitScan PH.`,
+    description: clampMeta(
+      content?.intro ??
+        `${category.description} Browse ${category.name.toLowerCase()} deals from Temu and Sephora PH on SulitScan PH.`
+    ),
     alternates: { canonical: `${siteConfig.url}/categories/${slug}` },
     openGraph: {
       title: `${category.name} Deals Philippines | SulitScan PH`,

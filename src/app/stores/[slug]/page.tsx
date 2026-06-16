@@ -7,6 +7,7 @@ import { stores, getStoreBySlug } from "@/data/stores"
 import { getStoreContent } from "@/data/store-content"
 import { getDealsByPlatform } from "@/data/deals"
 import { siteConfig } from "@/lib/seo"
+import { clampMeta } from "@/lib/utils"
 import StoreDeals from "@/components/StoreDeals"
 
 export function generateStaticParams() {
@@ -23,7 +24,7 @@ export async function generateMetadata({
   if (!store) return {}
   return {
     title: `${store.name} Deals Philippines`,
-    description: `${store.description} Browse selected ${store.name} deals on SulitScan PH with buyer notes, shipping info, and affiliate disclosure.`,
+    description: clampMeta(`${store.description} Browse selected ${store.name} deals on SulitScan PH with buyer notes, shipping info, and affiliate disclosure.`),
     alternates: { canonical: `${siteConfig.url}/stores/${slug}` },
     openGraph: {
       title: `${store.name} Deals Philippines | SulitScan PH`,

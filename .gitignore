@@ -42,3 +42,8 @@ next-env.d.ts
 
 # scripts (local scraping/utility scripts, not for deployment)
 /scripts
+
+# local SEO audit exports (Screaming Frog, etc.) — never commit or expose publicly
+seo-audits/
+*.crawl
+*.seospider

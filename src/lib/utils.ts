@@ -37,6 +37,17 @@ export function truncate(text: string, maxLength: number): string {
   return text.slice(0, maxLength).trimEnd() + "…"
 }
 
+// Clamp a meta description to ~155 chars at a word boundary (avoids mid-word
+// cuts and SERP truncation). Collapses whitespace and trims trailing punctuation.
+export function clampMeta(text: string, max = 155): string {
+  const t = text.replace(/\s+/g, " ").trim()
+  if (t.length <= max) return t
+  const cut = t.slice(0, max - 1)
+  const lastSpace = cut.lastIndexOf(" ")
+  const base = lastSpace > 80 ? cut.slice(0, lastSpace) : cut
+  return base.replace(/[\s,.;:—–-]+$/, "") + "…"
+}
+
 export function getSulitScoreColor(score: number): string {
   if (score >= 9) return "text-green-600"
   if (score >= 7) return "text-emerald-500"

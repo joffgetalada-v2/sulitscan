@@ -63,7 +63,7 @@ export const categoryContent: Record<string, CategoryContent> = {
       },
     ],
     relatedCategories: ["under-1000", "home-finds", "beauty"],
-    relatedBlogSlugs: ["temu-shopping-guide-philippines", "how-to-spot-fake-discounts-philippines"],
+    relatedBlogSlugs: ["temu-shopping-guide-philippines", "how-to-spot-fake-discounts"],
   },
 
   "under-1000": {
