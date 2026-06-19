@@ -70,6 +70,7 @@ export async function generateMetadata({
       type: "article",
       publishedTime: post.publishedAt,
       authors: [post.author],
+      ...(post.coverImage ? { images: [`${siteConfig.url}${post.coverImage}`] } : {}),
     },
   }
 }
@@ -233,6 +234,29 @@ export default async function BlogPostPage({
                     <blockquote key={i} className="border-l-4 border-green-200 pl-4 my-4 text-sm text-slate-500 italic">
                       {renderInline(block.replace(/^> /, ""))}
                     </blockquote>
+                  )
+                }
+                // Image block: ![alt|WIDTHxHEIGHT](/src) — dims keep layout stable (no CLS)
+                const imgMatch = block.match(/^!\[([^\]]*)\]\(([^)]+)\)$/)
+                if (imgMatch) {
+                  const rawAlt = imgMatch[1]
+                  const src = imgMatch[2]
+                  const dim = rawAlt.match(/\|(\d+)x(\d+)$/)
+                  const alt = rawAlt.replace(/\|\d+x\d+$/, "").trim()
+                  return (
+                    <figure key={i} className="my-6">
+                      <Image
+                        src={src}
+                        alt={alt}
+                        width={dim ? Number(dim[1]) : 1600}
+                        height={dim ? Number(dim[2]) : 900}
+                        className="w-full h-auto rounded-xl border border-slate-100"
+                        sizes="(max-width: 1024px) 100vw, 768px"
+                      />
+                      {alt && (
+                        <figcaption className="mt-2 text-xs text-slate-400 text-center">{alt}</figcaption>
+                      )}
+                    </figure>
                   )
                 }
                 return (

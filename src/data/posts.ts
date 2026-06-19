@@ -1169,6 +1169,150 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     coverImage: "/images/guides/online-shopping-safety-tips-philippines.jpg",
     coverImageAlt: "Online shopping safety tips Philippines — secure checkout screen, shield lock, and a shopping safety checklist",
   },
+
+  {
+    id: "post-011",
+    slug: "philippine-import-tax-guide-online-shoppers",
+    title: "Philippine Import Tax Guide for Online Shoppers: What to Check Before Ordering Abroad",
+    excerpt:
+      "Will you pay import tax when your overseas order reaches the Philippines? A plain-English guide to the ₱10,000 de minimis rule, customs duty, VAT, and landed cost.",
+    content: `
+Ordering from overseas stores is normal now for Filipino shoppers. Platforms like Temu, Shein, AliExpress, and Amazon make it easy to buy gadgets, clothes, skincare, and home items at attractive prices. But before you check out, there is one question many shoppers forget to ask: **will I need to pay import tax when my package arrives in the Philippines?**
+
+This guide explains the basics in plain terms — written for everyday online shoppers, not customs brokers. The goal is to help you understand what can affect your final cost before your order reaches your door. It pairs well with our [Temu Philippines shipping guide](/blog/temu-philippines-shipping-guide) and our explainer on [why final prices change at checkout](/blog/why-final-prices-change-at-checkout).
+
+> This is a general educational guide, not official Bureau of Customs advice. For high-value shipments, always confirm with the courier and official sources.
+
+## What's in this guide
+
+- What import tax means for online shoppers
+- The ₱10,000 de minimis rule
+- Why your final cost differs from checkout
+- FOB vs CIF, explained simply
+- Worked examples, below and above ₱10,000
+- Multiple packages arriving together
+- Common mistakes and a pre-order checklist
+- How to estimate your landed cost
+
+## What is import tax in the Philippines?
+
+When goods enter the Philippines from another country, they may be assessed by the Bureau of Customs. Depending on the item value, product type, and how the shipment is classified, it may be subject to **customs duty**, **VAT**, import processing charges, or other fees.
+
+For online shoppers, this usually matters when buying from overseas platforms or sellers — Temu and Shein orders shipped from abroad, AliExpress and Amazon parcels, consolidated shipments from forwarders, and other cross-border packages.
+
+Not every package is taxed. The amount depends on the declared value of the goods and how the shipment is assessed.
+
+## The ₱10,000 de minimis rule
+
+In simple terms, the de minimis rule is a threshold for low-value imports. For many personal online orders, if the value of the goods is **₱10,000 or less**, customs duty and VAT generally are not collected. Once a shipment goes above the threshold, duties and taxes may apply depending on the product category and customs assessment.
+
+This threshold is usually checked against the **value of the goods** (often called the FOB or FCA value) — that is, the item value itself, before shipping and insurance.
+
+![Philippine ₱10,000 de minimis rule — orders valued at ₱10,000 or less may enter duty and VAT free, while orders above ₱10,000 may become dutiable|1448x1086](/images/guides/philippine-de-minimis-rule.jpg)
+
+## Why your final cost differs from the checkout price
+
+Many shoppers assume the checkout price is the final cost. That is not always true. The amount shown on the shopping app may cover the item and sometimes shipping, but it may not include every import-related charge.
+
+Your final **landed cost** can be affected by item value, currency conversion, shipping, insurance, product category, the customs duty rate, VAT, courier handling or processing fees, and whether several packages are assessed together. This is why a cheap-looking item can become more expensive when it arrives.
+
+![Sample landed-cost breakdown for an overseas order — item price plus shipping, insurance, customs duty, and 12% VAT add up to the total you actually pay|1448x1086](/images/guides/import-tax-cost-breakdown.jpg)
+
+## FOB vs CIF: the difference in plain terms
+
+Two terms you may see are **FOB** and **CIF**:
+
+- **FOB** is the value of the goods themselves — think of it as the item price before shipping and insurance.
+- **CIF** means cost, insurance, and freight — the item value plus shipping plus insurance.
+
+A simple way to remember it:
+
+> FOB = item value. CIF = item value + shipping + insurance.
+
+The de minimis check is usually based on the goods value. But if a shipment becomes taxable, the calculation may use a broader customs value that can include shipping and insurance.
+
+## Example: an order below ₱10,000
+
+Say you order accessories from an overseas store:
+
+- Item value: ₱3,500
+- Shipping: ₱300
+- Insurance: ₱0
+
+If the goods value is within the de minimis threshold and the package qualifies, customs duty and VAT generally are not collected. Still check the platform, courier, and shipping terms, since other processing or handling charges can depend on the arrangement.
+
+## Example: an order above ₱10,000
+
+Now say you order several items together:
+
+- Item value: ₱12,500
+- Shipping: ₱800
+- Insurance: ₱0
+
+Since the goods value is above ₱10,000, the shipment may be subject to customs duty and VAT depending on the product category and official assessment. This is where estimating before you buy really helps.
+
+## What about multiple packages on the same day?
+
+This catches a lot of shoppers. If you place several orders close together, they may arrive around the same time — and depending on how they are assessed, multiple packages for the same recipient or address may be treated together.
+
+For example, three parcels of ₱4,000, ₱3,500, and ₱3,200 each look below ₱10,000 individually. Together, the total is ₱10,700 — which can push the combined value over the threshold. If you are buying several items from overseas within the same period, plan your orders carefully.
+
+## Why product category matters
+
+Different products can carry different duty rates. Clothing, shoes, electronics, cosmetics, books, toys, and bags are not always treated the same — the actual duty depends on the proper HS or AHTN classification. Calculators can only estimate based on general categories; for high-value shipments, verify the classification through official sources or a customs professional.
+
+## Common mistakes Filipino shoppers make
+
+- **Looking only at the item price.** A product looks cheap until shipping, VAT, duty, and handling are added.
+- **Ignoring currency conversion.** A price in USD, CNY, or JPY changes in pesos depending on the exchange rate used.
+- **Buying several packages at once.** Shipments arriving together may be assessed together.
+- **Assuming the seller paid all taxes.** A final-looking checkout amount does not always cover import charges.
+- **Not checking the product category.** The duty rate depends on what the item actually is, not just what the seller calls it.
+
+Our guide on [how to spot fake discounts](/blog/how-to-spot-fake-discounts) and our [online shopping safety tips](/blog/online-shopping-safety-tips-philippines) cover related traps worth avoiding.
+
+## Quick checklist before placing an overseas order
+
+- What is the item value in pesos?
+- Is it close to or above ₱10,000?
+- How much is shipping, and is insurance included?
+- What product category does it belong to?
+- Will multiple packages arrive around the same time?
+- Does the checkout page mention duties, taxes, or import fees?
+- Does the courier collect charges on delivery?
+- Is the seller reliable and the return policy acceptable?
+- Is the item still worth it after possible charges?
+
+## Estimate your landed cost before you order
+
+Want a quick estimate before you buy? We built a free sister tool, **[ImportTaxPH](https://www.importtaxph.com/)**, to help Filipino shoppers estimate possible customs duty, VAT, and total landed cost for overseas orders from stores like Temu, Shein, AliExpress, and Amazon.
+
+To get a useful estimate, have these ready: item price and currency, shipping cost, insurance if any, product category, and whether multiple shipments may arrive on the same day. The result is an estimate only — the final assessment depends on official customs valuation and classification — but it helps you decide whether a foreign deal is still worth it after charges. You can try it at [importtaxph.com](https://www.importtaxph.com/).
+
+## Is buying overseas still worth it?
+
+Sometimes, yes — when the product is much cheaper than local options, hard to find here, shipping is reasonable, the order is below the de minimis threshold, and the seller has good reviews. Local buying can be better when the price difference is small, you need fast delivery, warranty matters, or the item is expensive, fragile, or sensitive to sizing and returns.
+
+The best choice is not always the cheapest checkout price — it is the one with the best total value after all costs and risks. When you spot an overseas deal on [SulitScan](/deals), factor in the possible landed cost first.
+
+## Related on SulitScan
+
+Read our [Temu Philippines shipping guide](/blog/temu-philippines-shipping-guide) for delivery and fees, [why final prices change at checkout](/blog/why-final-prices-change-at-checkout), and our [best Temu finds under ₱500](/blog/best-temu-finds-under-500-philippines). Browse current [Under ₱500 deals](/categories/under-500) or all [deals on SulitScan](/deals).
+
+## Affiliate Disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. ImportTaxPH is our free sister tool, not a Bureau of Customs service — its estimates are for guidance only, not legal or tax advice. Always confirm the final landed cost with the courier and official sources before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Tips",
+    author: "SulitScan Team",
+    publishedAt: "2026-06-20",
+    lastReviewed: "2026-06-20",
+    readTime: 10,
+    tags: ["import-tax", "customs", "philippines", "shopping-tips", "temu"],
+    coverGradient: "from-blue-500 to-indigo-600",
+    coverImage: "/images/guides/import-tax-landed-cost.jpg",
+    coverImageAlt: "International parcel from overseas to the Philippines with a customs declaration, calculator, peso bills, and a landed-cost breakdown",
+  },
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
