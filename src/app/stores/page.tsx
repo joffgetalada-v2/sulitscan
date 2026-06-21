@@ -2,10 +2,10 @@ import type { Metadata } from "next"
 import { existsSync } from "fs"
 import { join } from "path"
 import Link from "next/link"
+import Image from "next/image"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
 import PartnerBanners from "@/components/PartnerBanners"
-import StoreHeroBanner, { type StoreBannerItem } from "@/components/StoreHeroBanner"
-import { stores, getStoreBySlug } from "@/data/stores"
+import { stores } from "@/data/stores"
 import { partnerBanners } from "@/data/partner-banners"
 import { siteConfig } from "@/lib/seo"
 import { Store, ArrowRight, CheckCircle, Truck, ShieldCheck, Clock } from "lucide-react"
@@ -30,39 +30,6 @@ export const metadata: Metadata = {
 }
 
 export default function StoresPage() {
-  const storeBannerItems: StoreBannerItem[] = (
-    [
-      {
-        slug: "temu",
-        name: "Temu",
-        src: "/banners/stores/temu.jpg",
-        alt: "Temu partner store banner — budget finds across home, fashion, electronics, and beauty, ships to the Philippines",
-        w: 1811,
-        h: 412,
-      },
-      {
-        slug: "sephora-ph",
-        name: "Sephora PH",
-        src: "/banners/stores/sephora-ph.jpg",
-        alt: "Sephora PH partner store banner — premium beauty, skincare, makeup, and fragrance with free shipping over ₱1,500",
-        w: 1809,
-        h: 398,
-      },
-    ] as const
-  ).map((b) => {
-    const store = getStoreBySlug(b.slug)
-    return {
-      storeName: b.name,
-      imageSrc: publicImg(b.src),
-      imageAlt: b.alt,
-      imageWidth: b.w,
-      imageHeight: b.h,
-      detailHref: `/stores/${b.slug}`,
-      visitHref: store?.affiliateLink,
-      gradient: store?.gradient ?? "from-slate-700 to-slate-900",
-    }
-  })
-
   return (
     <>
       <BreadcrumbJsonLd
@@ -106,43 +73,52 @@ export default function StoresPage() {
           </p>
         </div>
 
-        {/* Store partner banner hero */}
-        <StoreHeroBanner
-          headingId="store-banner-heading"
-          title="Partner stores to check before you buy"
-          description="Browse selected store pages and partner offers with buyer reminders, price checks, and clear affiliate disclosures."
-          items={storeBannerItems}
-          disclosureText="SulitScan may earn a commission when you visit partner stores through our links. Always confirm final prices, shipping, availability, and return terms on the partner store."
-        />
-
         {/* Store cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
           {stores.map((store) => (
             <div key={store.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden hover:shadow-md transition-all">
-              {/* Store hero */}
-              <div className={`bg-gradient-to-br ${store.gradient} px-6 py-8`}>
-                <div className="flex items-start justify-between">
-                  <div>
-                    <h2 className="text-2xl font-black text-white mb-1">{store.name}</h2>
-                    <p className="text-white/70 text-sm">{store.tagline}</p>
-                  </div>
-                  <span className="px-3 py-1 bg-white/20 text-white text-xs font-semibold rounded-full">
-                    {store.trustLevel === "high" ? "Active Store" : store.trustLevel === "medium" ? "Active Store" : "Listed Store"}
+              {/* Store hero — banner image when available, else gradient header */}
+              {store.bannerImage && publicImg(store.bannerImage) ? (
+                <div className="relative">
+                  <Image
+                    src={store.bannerImage}
+                    alt={`${store.name} store banner — ${store.tagline}`}
+                    width={1811}
+                    height={412}
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    className="w-full h-auto"
+                    priority
+                  />
+                  <h2 className="sr-only">{store.name}</h2>
+                  <span className="absolute top-3 right-3 px-3 py-1 bg-black/50 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
+                    {store.trustLevel === "new" ? "Listed Store" : "Active Store"}
                   </span>
                 </div>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {store.shipsToPhilippines && (
-                    <span className="flex items-center gap-1 bg-white/10 text-white text-xs px-2.5 py-1 rounded-full">
-                      <Truck className="w-3 h-3" aria-hidden="true" /> Ships to PH
+              ) : (
+                <div className={`bg-gradient-to-br ${store.gradient} px-6 py-8`}>
+                  <div className="flex items-start justify-between">
+                    <div>
+                      <h2 className="text-2xl font-black text-white mb-1">{store.name}</h2>
+                      <p className="text-white/70 text-sm">{store.tagline}</p>
+                    </div>
+                    <span className="px-3 py-1 bg-white/20 text-white text-xs font-semibold rounded-full">
+                      {store.trustLevel === "new" ? "Listed Store" : "Active Store"}
                     </span>
-                  )}
-                  {store.freeShippingMinimum !== null && (
-                    <span className="flex items-center gap-1 bg-white/10 text-white text-xs px-2.5 py-1 rounded-full">
-                      Free shipping ₱{store.freeShippingMinimum.toLocaleString()}+
-                    </span>
-                  )}
+                  </div>
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {store.shipsToPhilippines && (
+                      <span className="flex items-center gap-1 bg-white/10 text-white text-xs px-2.5 py-1 rounded-full">
+                        <Truck className="w-3 h-3" aria-hidden="true" /> Ships to PH
+                      </span>
+                    )}
+                    {store.freeShippingMinimum !== null && (
+                      <span className="flex items-center gap-1 bg-white/10 text-white text-xs px-2.5 py-1 rounded-full">
+                        Free shipping ₱{store.freeShippingMinimum.toLocaleString()}+
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Store detail */}
               <div className="px-6 py-5">

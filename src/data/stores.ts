@@ -10,6 +10,8 @@ export interface Store {
   freeShippingMinimum: number | null
   trustLevel: "high" | "medium" | "new"
   gradient: string
+  /** Optional wide store banner used as the card header (falls back to the gradient). */
+  bannerImage?: string
   affiliateLink: string
   isDemo: boolean
   buyerNotes: string[]
@@ -31,6 +33,7 @@ export const stores: Store[] = [
     freeShippingMinimum: null,
     trustLevel: "medium",
     gradient: "from-orange-400 to-orange-600",
+    bannerImage: "/banners/stores/temu.jpg",
     affiliateLink: "https://temu.com",
     isDemo: false,
     buyerNotes: [
@@ -57,6 +60,7 @@ export const stores: Store[] = [
     freeShippingMinimum: 1500,
     trustLevel: "high",
     gradient: "from-slate-800 to-slate-950",
+    bannerImage: "/banners/stores/sephora-ph.jpg",
     affiliateLink: "https://www.sephora.ph",
     isDemo: false,
     buyerNotes: [
