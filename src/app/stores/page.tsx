@@ -1,11 +1,20 @@
 import type { Metadata } from "next"
+import { existsSync } from "fs"
+import { join } from "path"
 import Link from "next/link"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
 import PartnerBanners from "@/components/PartnerBanners"
-import { stores } from "@/data/stores"
+import StoreHeroBanner, { type StoreBannerItem } from "@/components/StoreHeroBanner"
+import { stores, getStoreBySlug } from "@/data/stores"
 import { partnerBanners } from "@/data/partner-banners"
 import { siteConfig } from "@/lib/seo"
 import { Store, ArrowRight, CheckCircle, Truck, ShieldCheck, Clock } from "lucide-react"
+
+// Returns the public URL only if the file actually exists, so a missing banner
+// gracefully falls back to a gradient instead of a broken image.
+function publicImg(rel: string): string | undefined {
+  return existsSync(join(process.cwd(), "public", rel.replace(/^\//, ""))) ? rel : undefined
+}
 
 export const metadata: Metadata = {
   title: "Temu and Sephora PH Partner Stores Philippines",
@@ -21,6 +30,39 @@ export const metadata: Metadata = {
 }
 
 export default function StoresPage() {
+  const storeBannerItems: StoreBannerItem[] = (
+    [
+      {
+        slug: "temu",
+        name: "Temu",
+        src: "/banners/stores/temu.jpg",
+        alt: "Temu partner store banner — budget finds across home, fashion, electronics, and beauty, ships to the Philippines",
+        w: 1811,
+        h: 412,
+      },
+      {
+        slug: "sephora-ph",
+        name: "Sephora PH",
+        src: "/banners/stores/sephora-ph.jpg",
+        alt: "Sephora PH partner store banner — premium beauty, skincare, makeup, and fragrance with free shipping over ₱1,500",
+        w: 1809,
+        h: 398,
+      },
+    ] as const
+  ).map((b) => {
+    const store = getStoreBySlug(b.slug)
+    return {
+      storeName: b.name,
+      imageSrc: publicImg(b.src),
+      imageAlt: b.alt,
+      imageWidth: b.w,
+      imageHeight: b.h,
+      detailHref: `/stores/${b.slug}`,
+      visitHref: store?.affiliateLink,
+      gradient: store?.gradient ?? "from-slate-700 to-slate-900",
+    }
+  })
+
   return (
     <>
       <BreadcrumbJsonLd
@@ -63,6 +105,15 @@ export default function StoresPage() {
             <Link href="/affiliate-disclosure" className="underline font-medium">Full disclosure →</Link>
           </p>
         </div>
+
+        {/* Store partner banner hero */}
+        <StoreHeroBanner
+          headingId="store-banner-heading"
+          title="Partner stores to check before you buy"
+          description="Browse selected store pages and partner offers with buyer reminders, price checks, and clear affiliate disclosures."
+          items={storeBannerItems}
+          disclosureText="SulitScan may earn a commission when you visit partner stores through our links. Always confirm final prices, shipping, availability, and return terms on the partner store."
+        />
 
         {/* Store cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
