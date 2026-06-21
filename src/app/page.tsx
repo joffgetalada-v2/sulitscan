@@ -5,7 +5,9 @@ import DealCard from "@/components/DealCard"
 import CategoryCard from "@/components/CategoryCard"
 import BlogCard from "@/components/BlogCard"
 import SectionHeading from "@/components/SectionHeading"
+import PartnerBanners from "@/components/PartnerBanners"
 import { ItemListJsonLd, FAQJsonLd } from "@/components/SeoJsonLd"
+import { homePartnerBanners } from "@/data/partner-banners"
 import { getFeaturedDeals, getActiveDeals, getDealsByCategory } from "@/data/deals"
 import { categories } from "@/data/categories"
 import { getRecentPosts } from "@/data/posts"
@@ -288,6 +290,18 @@ export default function HomePage() {
               See All {activeDeals.length} Deals
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ─── Featured Partner Offers (sponsored) ─── */}
+      <section className="py-16 bg-white border-t border-slate-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <PartnerBanners
+            headingId="home-partner-offers-heading"
+            title="Featured partner offers"
+            subtitle="Sponsored links to partner stores worth a look. See all partners on our stores page."
+            banners={homePartnerBanners}
+          />
         </div>
       </section>
 

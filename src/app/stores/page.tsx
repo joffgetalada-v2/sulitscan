@@ -1,7 +1,9 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
+import PartnerBanners from "@/components/PartnerBanners"
 import { stores } from "@/data/stores"
+import { partnerBanners } from "@/data/partner-banners"
 import { siteConfig } from "@/lib/seo"
 import { Store, ArrowRight, CheckCircle, Truck, ShieldCheck, Clock } from "lucide-react"
 
@@ -139,6 +141,16 @@ export default function StoresPage() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Featured partner offers (sponsored advertiser links) */}
+        <div className="mb-14 pt-2">
+          <PartnerBanners
+            headingId="partner-offers-heading"
+            title="Featured partner offers"
+            subtitle="Sponsored links to partner stores worth checking. These are advertiser offers — their catalogs are not imported into SulitScan deals, so confirm everything on the partner site before buying."
+            banners={partnerBanners}
+          />
         </div>
 
         {/* Coming soon stores */}
