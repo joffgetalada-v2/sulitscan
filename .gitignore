@@ -40,8 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# scripts (local scraping/utility scripts, not for deployment)
-/scripts
+# scripts (local scraping/utility scripts, not for deployment) — except committed guards
+/scripts/*
+!/scripts/check-links.mjs
 
 # local SEO audit / private data exports — never commit or expose publicly
 seo-audits/
