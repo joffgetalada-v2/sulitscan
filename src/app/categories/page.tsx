@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Link from "next/link"
 import CategoryCard from "@/components/CategoryCard"
-import { BreadcrumbJsonLd, FAQJsonLd } from "@/components/SeoJsonLd"
+import { BreadcrumbJsonLd, FAQJsonLd, ItemListJsonLd } from "@/components/SeoJsonLd"
 import { categories } from "@/data/categories"
 import { getDealsByCategory } from "@/data/deals"
 import { siteConfig } from "@/lib/seo"
@@ -58,6 +58,14 @@ export default function CategoriesPage() {
         ]}
       />
       <FAQJsonLd items={categoryFaqs} />
+      <ItemListJsonLd
+        name="Shopping Deal Categories Philippines – SulitScan PH"
+        items={categories.filter((c) => c.featured).map((c) => ({
+          name: c.name,
+          url: `${siteConfig.url}/categories/${c.slug}`,
+          description: c.description,
+        }))}
+      />
 
       {/* Header */}
       <div className="bg-gradient-to-b from-slate-50 to-white border-b border-slate-100">

@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import Image from "next/image"
 import BlogCard from "@/components/BlogCard"
-import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
+import { BreadcrumbJsonLd, ItemListJsonLd } from "@/components/SeoJsonLd"
 import { posts } from "@/data/posts"
 import { siteConfig } from "@/lib/seo"
 import { BookOpen } from "lucide-react"
@@ -26,6 +26,14 @@ export default function BlogPage() {
           { name: "Home", url: siteConfig.url },
           { name: "Blog", url: `${siteConfig.url}/blog` },
         ]}
+      />
+      <ItemListJsonLd
+        name="Smart Shopping Guides Philippines – SulitScan PH"
+        items={posts.map((p) => ({
+          name: p.title,
+          url: `${siteConfig.url}/blog/${p.slug}`,
+          description: p.excerpt,
+        }))}
       />
 
       {/* Hero banner */}

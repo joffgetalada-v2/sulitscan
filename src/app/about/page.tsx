@@ -6,7 +6,7 @@ import { siteConfig } from "@/lib/seo"
 import { ShieldCheck, Heart, BookOpen, ShoppingBag, CheckCircle, XCircle } from "lucide-react"
 
 export const metadata: Metadata = {
-  title: { absolute: "About SulitScan PH" },
+  title: { absolute: "About SulitScan PH | Smarter Deal Discovery for Filipino Shoppers" },
   description:
     "Learn about SulitScan PH — a curated deals discovery site helping Filipino shoppers find genuinely sulit online deals from Temu and Sephora PH.",
   alternates: { canonical: `${siteConfig.url}/about` },

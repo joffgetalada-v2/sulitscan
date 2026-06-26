@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import { ExternalLink, CheckCircle, Truck, ArrowLeft, ShieldCheck, RotateCcw, Clock, AlertCircle, ChevronDown } from "lucide-react"
-import { BreadcrumbJsonLd, FAQJsonLd } from "@/components/SeoJsonLd"
+import { BreadcrumbJsonLd, FAQJsonLd, ItemListJsonLd } from "@/components/SeoJsonLd"
 import { stores, getStoreBySlug } from "@/data/stores"
 import { getStoreContent } from "@/data/store-content"
 import { getDealsByPlatform } from "@/data/deals"
@@ -57,6 +57,16 @@ export default async function StoreDetailPage({
       />
       {content?.faqs && content.faqs.length > 0 && (
         <FAQJsonLd items={content.faqs} />
+      )}
+      {storeDeals.length > 0 && (
+        <ItemListJsonLd
+          name={`${store.name} Deals Philippines – SulitScan PH`}
+          items={storeDeals.slice(0, 24).map((d) => ({
+            name: d.title,
+            url: `${siteConfig.url}/deals/${d.slug}`,
+            description: d.reason,
+          }))}
+        />
       )}
 
       {/* Back nav */}

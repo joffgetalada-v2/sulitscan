@@ -3,7 +3,7 @@ import { existsSync } from "fs"
 import { join } from "path"
 import Link from "next/link"
 import Image from "next/image"
-import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
+import { BreadcrumbJsonLd, ItemListJsonLd } from "@/components/SeoJsonLd"
 import PartnerBanners from "@/components/PartnerBanners"
 import { stores } from "@/data/stores"
 import { partnerBanners } from "@/data/partner-banners"
@@ -37,6 +37,14 @@ export default function StoresPage() {
           { name: "Home",   url: siteConfig.url },
           { name: "Stores", url: `${siteConfig.url}/stores` },
         ]}
+      />
+      <ItemListJsonLd
+        name="Partner Stores Philippines – SulitScan PH"
+        items={stores.map((s) => ({
+          name: s.name,
+          url: `${siteConfig.url}/stores/${s.slug}`,
+          description: s.tagline,
+        }))}
       />
 
       {/* Header */}
