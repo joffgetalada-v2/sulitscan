@@ -49,6 +49,9 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "evecare.com" },
       // SK-II / general Shopify CDN
       { protocol: "https", hostname: "*.myshopify.com" },
+      // Shopee product images (affiliate datafeed)
+      { protocol: "https", hostname: "cf.shopee.ph" },
+      { protocol: "https", hostname: "down-ph.img.susercontent.com" },
     ],
   },
 }

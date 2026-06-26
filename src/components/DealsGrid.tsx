@@ -13,7 +13,7 @@ interface DealsGridProps {
 
 type SortKey = "discount" | "score" | "price-asc" | "newest"
 
-const STORES = ["All", "Temu", "Sephora PH"]
+const STORES = ["All", "Temu", "Sephora PH", "Shopee PH"]
 const SORT_OPTIONS: { key: SortKey; label: string }[] = [
   { key: "discount",  label: "Biggest discount" },
   { key: "score",     label: "Highest SulitScore" },

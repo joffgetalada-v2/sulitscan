@@ -8,8 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run check:links && npm run build",
+    "check": "npm run lint && npm run typecheck && npm run check:links && npm run check:affiliate-products && npm run build",
     "check:links": "node scripts/check-links.mjs",
+    "check:affiliate-products": "node scripts/check-affiliate-products.mjs",
     "test:e2e": "playwright test"
   },
   "dependencies": {

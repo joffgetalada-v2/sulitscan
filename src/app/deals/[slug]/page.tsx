@@ -14,6 +14,7 @@ function getBuyerChecklist(deal: { platform: string; category: string }): string
   const cat = deal.category.toLowerCase()
   const isTemu = deal.platform === "Temu"
   const isSephora = deal.platform === "Sephora PH"
+  const isShopee = deal.platform === "Shopee PH"
   const isBeauty = ["beauty", "skincare", "makeup", "fragrance", "haircare", "hair care"].some((c) => cat.includes(c))
   const isFashion = ["fashion", "clothing", "shoes", "accessories"].some((c) => cat.includes(c))
   const isElectronics = ["electronics", "gadgets", "tech"].some((c) => cat.includes(c))
@@ -23,6 +24,17 @@ function getBuyerChecklist(deal: { platform: string; category: string }): string
     `Confirm the current price on ${deal.platform} — prices from SulitScan may not match the current price.`,
     "Look for available platform vouchers, loyalty points, or first-order discounts.",
   ]
+
+  if (isShopee) {
+    return [
+      ...base,
+      "Check the seller rating and read recent buyer reviews with photos before ordering.",
+      "Look for Shopee vouchers, coins, and free-shipping promos that can lower your total.",
+      "Confirm the shipping fee and estimated delivery time for your address.",
+      "Check the seller's return and refund policy before buying.",
+      "For branded items, prefer Shopee Mall or Preferred/Official sellers to avoid replicas.",
+    ]
+  }
 
   if (isBeauty || isSephora) {
     return [

@@ -43,6 +43,7 @@ next-env.d.ts
 # scripts (local scraping/utility scripts, not for deployment) — except committed guards
 /scripts/*
 !/scripts/check-links.mjs
+!/scripts/check-affiliate-products.mjs
 
 # local SEO audit / private data exports — never commit or expose publicly
 seo-audits/
@@ -54,3 +55,9 @@ affiliate-imports/
 downloads/
 *.crawl
 *.seospider
+# affiliate / data feed exports (app data lives in src/data/*.ts, never CSV)
+*.csv
+*.tsv
+*.xlsx
+*.xls
+*.jsonl
