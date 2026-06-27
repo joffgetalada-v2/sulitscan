@@ -1426,6 +1426,8 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     readTime: 8,
     tags: ["shopee", "under-500", "home-finds", "shopping-guide", "philippines"],
     coverGradient: "from-orange-400 to-amber-500",
+    coverImage: "/images/guides/best-shopee-finds-under-500-philippines.jpg",
+    coverImageAlt: "Best Shopee finds under ₱500 in the Philippines: phone stand, desk organizer, cable holder, tumbler, makeup organizer, and travel pouch",
     faqs: [
       {
         question: "Are Shopee items under ₱500 worth buying?",
