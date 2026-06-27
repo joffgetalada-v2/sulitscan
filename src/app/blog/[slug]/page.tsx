@@ -6,7 +6,7 @@ import { Clock, ArrowLeft, Tag, BookOpen, List } from "lucide-react"
 import { BreadcrumbJsonLd, BlogPostingJsonLd, FAQJsonLd } from "@/components/SeoJsonLd"
 import DealCard from "@/components/DealCard"
 import ImportTaxCallout from "@/components/ImportTaxCallout"
-import { posts, getPostBySlug } from "@/data/posts"
+import { posts, getPostBySlug, DEFAULT_BLOG_COVER, DEFAULT_BLOG_COVER_ALT } from "@/data/posts"
 import { getDealsByPlatform, getDealsByCategory, getFeaturedDeals } from "@/data/deals"
 import { siteConfig } from "@/lib/seo"
 import { formatDate, formatTag, clampMeta } from "@/lib/utils"
@@ -73,7 +73,7 @@ export async function generateMetadata({
       type: "article",
       publishedTime: post.publishedAt,
       authors: [post.author],
-      ...(post.coverImage ? { images: [`${siteConfig.url}${post.coverImage}`] } : {}),
+      images: [`${siteConfig.url}${post.coverImage ?? DEFAULT_BLOG_COVER}`],
     },
   }
 }
@@ -118,29 +118,20 @@ export default async function BlogPostPage({
         author={post.author}
         datePublished={post.publishedAt}
         url={postUrl}
-        imageUrl={post.coverImage ? `${siteConfig.url}${post.coverImage}` : undefined}
+        imageUrl={`${siteConfig.url}${post.coverImage ?? DEFAULT_BLOG_COVER}`}
       />
       {post.faqs && post.faqs.length > 0 && <FAQJsonLd items={post.faqs} />}
 
-      {/* Cover / Hero */}
+      {/* Cover / Hero (post cover, or the shared default) */}
       <div className="relative w-full overflow-hidden" style={{ height: "260px" }}>
-        {post.coverImage ? (
-          <Image
-            src={post.coverImage}
-            alt={post.coverImageAlt ?? post.title}
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority
-          />
-        ) : (
-          <div className={`absolute inset-0 bg-gradient-to-br ${post.coverGradient}`} aria-hidden="true">
-            <div
-              className="absolute inset-0 opacity-10"
-              style={{ backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)", backgroundSize: "20px 20px" }}
-            />
-          </div>
-        )}
+        <Image
+          src={post.coverImage ?? DEFAULT_BLOG_COVER}
+          alt={post.coverImage ? (post.coverImageAlt ?? post.title) : DEFAULT_BLOG_COVER_ALT}
+          fill
+          className="object-cover"
+          sizes="100vw"
+          priority
+        />
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">

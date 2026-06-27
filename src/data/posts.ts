@@ -17,6 +17,10 @@ export interface BlogPost {
   faqs?: { question: string; answer: string }[]
 }
 
+// Used for any post without its own coverImage (and for new posts by default).
+export const DEFAULT_BLOG_COVER = "/images/blog-default.jpg"
+export const DEFAULT_BLOG_COVER_ALT = "SulitScan PH Blog: smart shopping guides for Filipino shoppers"
+
 export const posts: BlogPost[] = [
   {
     id: "post-001",

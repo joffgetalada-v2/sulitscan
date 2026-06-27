@@ -2,6 +2,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Clock, ArrowRight } from "lucide-react"
 import type { BlogPost } from "@/data/posts"
+import { DEFAULT_BLOG_COVER, DEFAULT_BLOG_COVER_ALT } from "@/data/posts"
 import { formatDate } from "@/lib/utils"
 
 interface BlogCardProps {
@@ -26,26 +27,15 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
       className="group flex flex-col bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:border-green-100 transition-all overflow-hidden"
       aria-label={`Read: ${post.title}`}
     >
-      {/* Cover image area */}
-      <div className={`relative overflow-hidden ${coverHeight} ${!post.coverImage ? `bg-gradient-to-br ${post.coverGradient}` : "bg-slate-100"}`}>
-        {post.coverImage ? (
-          <Image
-            src={post.coverImage}
-            alt={post.coverImageAlt ?? post.title}
-            fill
-            className="object-cover group-hover:scale-105 transition-transform duration-300"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          />
-        ) : (
-          <div
-            className="absolute inset-0 opacity-10"
-            style={{
-              backgroundImage: "radial-gradient(circle at 1px 1px, white 1px, transparent 0)",
-              backgroundSize: "20px 20px",
-            }}
-            aria-hidden="true"
-          />
-        )}
+      {/* Cover image area (post cover, or the shared default) */}
+      <div className={`relative overflow-hidden ${coverHeight} bg-slate-100`}>
+        <Image
+          src={post.coverImage ?? DEFAULT_BLOG_COVER}
+          alt={post.coverImage ? (post.coverImageAlt ?? post.title) : DEFAULT_BLOG_COVER_ALT}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        />
 
         {/* Category badge */}
         <div className="absolute top-3 left-3 z-10">
