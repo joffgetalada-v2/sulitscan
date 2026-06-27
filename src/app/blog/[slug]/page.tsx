@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { Clock, ArrowLeft, Tag, BookOpen, List } from "lucide-react"
-import { BreadcrumbJsonLd, BlogPostingJsonLd } from "@/components/SeoJsonLd"
+import { BreadcrumbJsonLd, BlogPostingJsonLd, FAQJsonLd } from "@/components/SeoJsonLd"
 import DealCard from "@/components/DealCard"
 import ImportTaxCallout from "@/components/ImportTaxCallout"
 import { posts, getPostBySlug } from "@/data/posts"
@@ -94,7 +94,8 @@ export default async function BlogPostPage({
   // Match a few relevant deals to the post's topic (blog -> money-page flow).
   const topic = `${slug} ${post.tags.join(" ")}`.toLowerCase()
   const relatedDeals = (
-    /sephora|beauty|skincare|makeup/.test(topic) ? getDealsByPlatform("Sephora PH")
+    /shopee/.test(topic) ? getDealsByPlatform("Shopee PH")
+    : /sephora|beauty|skincare|makeup/.test(topic) ? getDealsByPlatform("Sephora PH")
     : /under-500|budget/.test(topic) ? getDealsByCategory("under-500")
     : /temu/.test(topic) ? getDealsByPlatform("Temu")
     : getFeaturedDeals(3)
@@ -119,6 +120,7 @@ export default async function BlogPostPage({
         url={postUrl}
         imageUrl={post.coverImage ? `${siteConfig.url}${post.coverImage}` : undefined}
       />
+      {post.faqs && post.faqs.length > 0 && <FAQJsonLd items={post.faqs} />}
 
       {/* Cover / Hero */}
       <div className="relative w-full overflow-hidden" style={{ height: "260px" }}>

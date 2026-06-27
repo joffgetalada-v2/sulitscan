@@ -13,6 +13,8 @@ export interface BlogPost {
   coverGradient: string
   coverImage?: string
   coverImageAlt?: string
+  /** Optional visible FAQs — when present, also emitted as FAQPage JSON-LD. */
+  faqs?: { question: string; answer: string }[]
 }
 
 export const posts: BlogPost[] = [
@@ -1312,6 +1314,145 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     coverGradient: "from-blue-500 to-indigo-600",
     coverImage: "/images/guides/import-tax-landed-cost.jpg",
     coverImageAlt: "International parcel from overseas to the Philippines with a customs declaration, calculator, peso bills, and a landed-cost breakdown",
+  },
+
+  {
+    id: "post-012",
+    slug: "best-shopee-finds-under-500-philippines",
+    title: "Best Shopee Finds Under ₱500 Philippines",
+    excerpt:
+      "Under ₱500, Shopee is great for organizers, phone accessories, and bags, and risky for electronics. Here is what actually holds up and what to skip.",
+    content: `
+Shopee is where a lot of Filipino shoppers go first for cheap, practical stuff. Under ₱500 you are not buying heirlooms. You are buying the small things that make a desk tidier, a bag lighter, or a kitchen drawer less chaotic. That is exactly where Shopee tends to be worth it.
+
+This guide is about the under ₱500 finds that actually hold up, not the ones that look great in the listing photo and arrive sad. It pairs well with our [best Temu finds under ₱500](/blog/best-temu-finds-under-500-philippines) if you are weighing the two.
+
+## What's in this guide
+
+- Why Shopee works for budget hauls
+- The categories that deliver under ₱500
+- A quick buyer checklist
+- What to check before you order
+- Common mistakes to avoid
+- Is it worth it
+- FAQs
+
+## Why Shopee works for budget hauls
+
+The appeal is simple. Local sellers, faster shipping than overseas marketplaces, frequent vouchers, and a return process that exists if something goes wrong. You can get an order in a few days instead of a few weeks, and you can stack a voucher or free shipping promo on top of an already low price.
+
+The catch is that quality is all over the place. One ₱149 organizer is genuinely useful for three years. The next one cracks in the first week. The trick is knowing which categories are forgiving at this price and which ones are not.
+
+## The categories that deliver under ₱500
+
+### Home and desk organization
+
+This is the safest bet. Drawer dividers, pen holders, cable boxes, storage bins, shoe racks, and small kitchen organizers each do one job, and most do it fine. Buy these freely. If a ₱200 organizer saves you ten minutes of digging every morning, it paid for itself. Browse our [Home Finds](/categories/home-finds) for current picks.
+
+### Phone and tech accessories
+
+Phone stands, cable organizers, cable clips, mousepads, laptop stands, and earphone cases are low risk and cheap. Confirm the connector type before buying anything that plugs in, and skip the very cheapest chargers and power banks. For everything else, browse [Tech and Gadgets](/categories/tech-deals).
+
+### Bags and everyday fashion
+
+Tote bags, sling bags, canvas bags, caps, and simple accessories are forgiving because they do not depend on exact sizing. A ₱300 canvas tote does not need to be premium to be useful. Read the buyer photos, not just the listing render, since fabric and color are where cheap bags disappoint.
+
+### Travel and packing
+
+Toiletry bags, packing pouches, and zippered organizers are cheap and genuinely handy for trips. They keep a bag from turning into a black hole. Just do not expect heavy duty zippers at this price.
+
+## A quick buyer checklist
+
+Before you order anything under ₱500, run through this:
+
+1. Does the seller have a solid rating and a decent number of sales?
+2. Are there buyer reviews with real photos, ideally from Filipino shoppers?
+3. Does the listing show actual dimensions in centimeters?
+4. Is there a voucher or free shipping promo you can apply?
+5. What does shipping cost, and when does it arrive?
+6. What is the return policy if it shows up wrong or broken?
+
+If most of those check out, a cheap item is usually a safe bet.
+
+## What to check before you order
+
+> A ₱149 price tag is only a good deal once the size, material, and seller all check out.
+
+Sellers matter more than the price. A Preferred Seller or Shopee Mall listing is not a guarantee, but it is a better starting point than a brand new shop with no reviews. For anything branded, be skeptical of prices far below everyone else, since replicas are common at the bottom of the market. Our guide on [how to spot fake discounts](/blog/how-to-spot-fake-discounts) covers the inflated original price trick that shows up here a lot.
+
+Check the all in cost too. A ₱120 item with ₱90 shipping is really a ₱210 item. Vouchers can swing it the other way, so look before you commit.
+
+## Common mistakes to avoid
+
+- Buying on the listing photo alone. The styled render is not what ships. The buyer photos are.
+- Ignoring the size. Plenty of cheap organizers are smaller than they look on screen.
+- Filling a cart with ten random things because they are cheap. Two useful items beat ten that sit in a drawer.
+- Assuming branded means real. At suspiciously low prices, it often is not.
+- Skipping the return terms. On a ₱200 item the return shipping can cost more than the refund is worth, so know that going in.
+
+Our [online shopping safety tips](/blog/online-shopping-safety-tips-philippines) go deeper on seller and payment red flags.
+
+## Is it worth it
+
+Honestly, yes, for the right things. Shopee under ₱500 is great for organizers, accessories, and everyday practical items where good enough is genuinely good enough. It is a worse idea for anything where safety, warranty, sizing, or authenticity really matters. Spend the ₱149 on a drawer organizer. Do not spend it on a charger for your new phone.
+
+Browse current [deals on SulitScan](/deals) or jump straight to [Under ₱500](/categories/under-500), where you can filter by store and sort by our SulitScore.
+
+## FAQs
+
+**Q: Are Shopee items under ₱500 worth buying?**
+For practical, low risk items like organizers, phone accessories, and bags, usually yes. The value is consistent when the item does not depend on premium materials or exact sizing. For electronics with batteries, branded goods, or anything safety related, spend a bit more or buy from a verified seller.
+
+**Q: How do I avoid getting a bad product on Shopee?**
+Check the seller rating and sales count, read reviews with real buyer photos, and confirm the dimensions in the listing. Preferred Sellers and Shopee Mall shops are a safer starting point, though not a guarantee.
+
+**Q: Does SulitScan sell these products?**
+No. SulitScan is a shopping guide. We point you to listings on partner stores like Shopee, and you buy directly from the seller. We do not handle payments, orders, or returns.
+
+**Q: Why is the price on SulitScan different from Shopee?**
+Prices come from affiliate datafeeds and can lag the live Shopee price. Vouchers and flash sales change fast, so always confirm the current price on Shopee before buying.
+
+**Q: Can I return a cheap Shopee item if it arrives wrong?**
+Shopee has a return and refund process, but for low value items the return shipping may cost more than the refund. Take photos on arrival, file within the window, and weigh whether the return is worth the hassle.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. Prices, vouchers, and availability change often, so always confirm the final price, shipping fee, and return terms on Shopee before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Platform Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-06-27",
+    lastReviewed: "2026-06-27",
+    readTime: 8,
+    tags: ["shopee", "under-500", "home-finds", "shopping-guide", "philippines"],
+    coverGradient: "from-orange-400 to-amber-500",
+    faqs: [
+      {
+        question: "Are Shopee items under ₱500 worth buying?",
+        answer:
+          "For practical, low risk items like organizers, phone accessories, and bags, usually yes. The value is consistent when the item does not depend on premium materials or exact sizing. For electronics with batteries, branded goods, or anything safety related, spend a bit more or buy from a verified seller.",
+      },
+      {
+        question: "How do I avoid getting a bad product on Shopee?",
+        answer:
+          "Check the seller rating and sales count, read reviews with real buyer photos, and confirm the dimensions in the listing. Preferred Sellers and Shopee Mall shops are a safer starting point, though not a guarantee.",
+      },
+      {
+        question: "Does SulitScan sell these products?",
+        answer:
+          "No. SulitScan is a shopping guide. We point you to listings on partner stores like Shopee, and you buy directly from the seller. We do not handle payments, orders, or returns.",
+      },
+      {
+        question: "Why is the price on SulitScan different from Shopee?",
+        answer:
+          "Prices come from affiliate datafeeds and can lag the live Shopee price. Vouchers and flash sales change fast, so always confirm the current price on Shopee before buying.",
+      },
+      {
+        question: "Can I return a cheap Shopee item if it arrives wrong?",
+        answer:
+          "Shopee has a return and refund process, but for low value items the return shipping may cost more than the refund. Take photos on arrival, file within the window, and weigh whether the return is worth the hassle.",
+      },
+    ],
   },
 ]
 
