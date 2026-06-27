@@ -1,7 +1,7 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
-import { ExternalLink, CheckCircle, Truck, ArrowLeft, ShieldCheck, RotateCcw, Clock, AlertCircle, ChevronDown } from "lucide-react"
+import { ExternalLink, CheckCircle, Truck, ArrowLeft, ArrowRight, ShieldCheck, RotateCcw, Clock, AlertCircle, ChevronDown, BookOpen } from "lucide-react"
 import { BreadcrumbJsonLd, FAQJsonLd, ItemListJsonLd } from "@/components/SeoJsonLd"
 import { stores, getStoreBySlug } from "@/data/stores"
 import { getStoreContent } from "@/data/store-content"
@@ -89,16 +89,26 @@ export default async function StoreDetailPage({
               <h1 className="text-3xl font-black text-white mb-2">{store.name}</h1>
               <p className="text-white/80 text-sm max-w-xl">{store.description}</p>
             </div>
-            <a
-              href={store.affiliateLink}
-              target="_blank"
-              rel="sponsored nofollow noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 hover:bg-white/30 text-white font-semibold text-sm rounded-xl border border-white/30 transition-all"
-              aria-label={`Visit ${store.name} (affiliate link, opens in new tab)`}
-            >
-              Visit {store.name}
-              <ExternalLink className="w-4 h-4" aria-hidden="true" />
-            </a>
+            {store.affiliateLink ? (
+              <a
+                href={store.affiliateLink}
+                target="_blank"
+                rel="sponsored nofollow noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 hover:bg-white/30 text-white font-semibold text-sm rounded-xl border border-white/30 transition-all"
+                aria-label={`Visit ${store.name} (affiliate link, opens in new tab)`}
+              >
+                Visit {store.name}
+                <ExternalLink className="w-4 h-4" aria-hidden="true" />
+              </a>
+            ) : (
+              <a
+                href="#store-deals-heading"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 hover:bg-white/30 text-white font-semibold text-sm rounded-xl border border-white/30 transition-all"
+              >
+                Browse {store.name} deals
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </a>
+            )}
           </div>
           <div className="mt-4 flex flex-wrap gap-3">
             <span className="flex items-center gap-1 bg-white/20 text-white text-xs font-medium px-3 py-1 rounded-full">
@@ -260,28 +270,46 @@ export default async function StoreDetailPage({
             <div className="bg-slate-50 rounded-2xl border border-slate-100 p-5">
               <p className="text-xs text-slate-500 leading-relaxed">
                 <strong className="text-slate-700">Affiliate disclosure:</strong> SulitScan may earn
-                a small commission when you click the link below and complete a purchase. This does not
+                a small commission when you click a {store.name} link and complete a purchase. This does not
                 affect your price.{" "}
                 <Link href="/affiliate-disclosure" className="underline text-slate-600">
                   Full disclosure
                 </Link>
               </p>
-              <a
-                href={store.affiliateLink}
-                target="_blank"
-                rel="sponsored nofollow noopener noreferrer"
-                className="mt-3 flex items-center justify-center gap-2 w-full py-3 px-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-sm rounded-xl shadow-sm transition-all"
-                aria-label={`Visit ${store.name} (affiliate link, opens in new tab)`}
-              >
-                Visit {store.name}
-                <ExternalLink className="w-4 h-4" aria-hidden="true" />
-              </a>
+              {store.affiliateLink ? (
+                <a
+                  href={store.affiliateLink}
+                  target="_blank"
+                  rel="sponsored nofollow noopener noreferrer"
+                  className="mt-3 flex items-center justify-center gap-2 w-full py-3 px-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-sm rounded-xl shadow-sm transition-all"
+                  aria-label={`Visit ${store.name} (affiliate link, opens in new tab)`}
+                >
+                  Visit {store.name}
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                </a>
+              ) : (
+                <a
+                  href="#store-deals-heading"
+                  className="mt-3 flex items-center justify-center gap-2 w-full py-3 px-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-sm rounded-xl shadow-sm transition-all"
+                >
+                  Browse {store.name} deals
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </a>
+              )}
             </div>
 
             {/* Related links */}
             <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
               <h3 className="text-sm font-bold text-slate-900 mb-3">Explore more</h3>
               <ul className="space-y-2" role="list">
+                {store.relatedGuideSlug && (
+                  <li>
+                    <Link href={`/blog/${store.relatedGuideSlug}`} className="text-xs text-green-700 font-medium hover:underline inline-flex items-center gap-1.5">
+                      <BookOpen className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+                      {store.name} buyer guide →
+                    </Link>
+                  </li>
+                )}
                 <li>
                   <Link href="/deals" className="text-xs text-green-600 hover:underline">Browse all deals →</Link>
                 </li>

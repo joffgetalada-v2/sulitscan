@@ -121,7 +121,7 @@ We update deals when we notice price changes through our affiliate feeds. But we
 Yes. Every deal detail page has a "Report outdated price" link. Clicking it opens your email client with the deal pre-filled. We review all reports.
 
 **Q: Do you cover Shopee, Lazada, or AliExpress?**
-Not yet. SulitScan currently focuses on Temu and Sephora PH. More stores may be added later.
+Shopee PH is now an active store on SulitScan, alongside Temu and Sephora PH. Lazada and AliExpress are not active yet and may be added later once their offers and buyer-check information are prepared.
 
 ## Affiliate Disclosure
 
@@ -1400,7 +1400,7 @@ Our [online shopping safety tips](/blog/online-shopping-safety-tips-philippines)
 
 Honestly, yes, for the right things. Shopee under ₱500 is great for organizers, accessories, and everyday practical items where good enough is genuinely good enough. It is a worse idea for anything where safety, warranty, sizing, or authenticity really matters. Spend the ₱149 on a drawer organizer. Do not spend it on a charger for your new phone.
 
-Browse current [deals on SulitScan](/deals) or jump straight to [Under ₱500](/categories/under-500), where you can filter by store and sort by our SulitScore.
+Browse current [deals on SulitScan](/deals) or jump straight to [Under ₱500](/categories/under-500), where you can filter by store and sort by our SulitScore. For buyer reminders and FAQs specific to this marketplace, see our [Shopee PH buyer guide](/stores/shopee-ph).
 
 ## FAQs
 

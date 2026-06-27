@@ -17,14 +17,14 @@ function publicImg(rel: string): string | undefined {
 }
 
 export const metadata: Metadata = {
-  title: "Temu and Sephora PH Partner Stores Philippines",
+  title: "Temu, Shopee PH, and Sephora PH Partner Stores Philippines",
   description:
-    "SulitScan focuses on curated deals from two partner stores: Temu for budget finds and Sephora PH for beauty and skincare. More stores coming soon.",
+    "SulitScan features curated deals from partner stores: Temu and Shopee PH for budget and marketplace finds, and Sephora PH for beauty and skincare. Affiliate links clearly disclosed.",
   alternates: { canonical: `${siteConfig.url}/stores` },
   openGraph: {
     title: "Partner Stores | SulitScan PH",
     description:
-      "SulitScan currently focuses on selected deals from Temu and Sephora PH. Affiliate links clearly disclosed.",
+      "SulitScan currently features selected deals from Temu, Shopee PH, and Sephora PH. Affiliate links clearly disclosed.",
     url: `${siteConfig.url}/stores`,
   },
 }
@@ -62,8 +62,8 @@ export default function StoresPage() {
                 Where we find deals
               </h1>
               <p className="text-slate-500 text-sm max-w-xl">
-                SulitScan currently focuses on selected deals from <strong>2 partner stores</strong>: Temu and Sephora PH.
-                We are starting focused and building trust before expanding.
+                SulitScan currently features selected deals from <strong>3 partner stores</strong>: Temu, Shopee PH, and Sephora PH.
+                We add new partners only after reviewing their offers and buyer-check information.
               </p>
             </div>
           </div>
@@ -76,7 +76,7 @@ export default function StoresPage() {
           <span className="text-lg mt-0.5" aria-hidden="true">📌</span>
           <p className="text-sm text-amber-800">
             <strong>Affiliate disclosure:</strong> SulitScan earns a small commission when you purchase through our
-            partner links — at no extra cost to you. We only feature stores with clear buyer notes and affiliate disclosures.{" "}
+            partner links, at no extra cost to you. We only feature stores with clear buyer notes and affiliate disclosures.{" "}
             <Link href="/affiliate-disclosure" className="underline font-medium">Full disclosure →</Link>
           </p>
         </div>
@@ -85,12 +85,12 @@ export default function StoresPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
           {stores.map((store) => (
             <div key={store.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden hover:shadow-md transition-all">
-              {/* Store hero — banner image when available, else gradient header */}
+              {/* Store hero, banner image when available, else gradient header */}
               {store.bannerImage && publicImg(store.bannerImage) ? (
                 <div className="relative">
                   <Image
                     src={store.bannerImage}
-                    alt={`${store.name} store banner — ${store.tagline}`}
+                    alt={`${store.name} store banner, ${store.tagline}`}
                     width={1811}
                     height={412}
                     sizes="(max-width: 640px) 100vw, 50vw"
@@ -163,15 +163,17 @@ export default function StoresPage() {
                     View store details
                     <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                   </Link>
-                  <a
-                    href={store.affiliateLink}
-                    target="_blank"
-                    rel="sponsored nofollow noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-600 transition-colors"
-                    aria-label={`Visit ${store.name} (affiliate link, opens in new tab)`}
-                  >
-                    Visit {store.name} →
-                  </a>
+                  {store.affiliateLink && (
+                    <a
+                      href={store.affiliateLink}
+                      target="_blank"
+                      rel="sponsored nofollow noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-600 transition-colors"
+                      aria-label={`Visit ${store.name} (affiliate link, opens in new tab)`}
+                    >
+                      Visit {store.name} →
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -183,7 +185,7 @@ export default function StoresPage() {
           <PartnerBanners
             headingId="partner-offers-heading"
             title="Featured partner offers"
-            subtitle="Sponsored links to partner stores worth checking. These are advertiser offers — their catalogs are not imported into SulitScan deals, so confirm everything on the partner site before buying."
+            subtitle="Sponsored links to partner stores worth checking. These are advertiser offers, and their catalogs are not imported into SulitScan deals, so confirm everything on the partner site before buying."
             banners={partnerBanners}
           />
         </div>
@@ -194,11 +196,10 @@ export default function StoresPage() {
             Coming Soon
           </h2>
           <p className="text-sm text-slate-500 mb-6">
-            SulitScan currently focuses on Temu and Sephora PH. Shopee, Lazada, and AliExpress are planned for future deal coverage once affiliate offers, discounts, and buyer-check information are prepared.
+            SulitScan currently features Temu, Shopee PH, and Sephora PH. Lazada and AliExpress are planned for future deal coverage once affiliate offers, discounts, and buyer-check information are prepared.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-10">
             {[
-              { name: "Shopee", desc: "Philippine marketplace with a wide range of local and imported products." },
               { name: "Lazada", desc: "Southeast Asian e-commerce platform covering electronics, fashion, and more." },
               { name: "AliExpress", desc: "Global marketplace for low-price direct-from-factory products." },
             ].map((store) => (

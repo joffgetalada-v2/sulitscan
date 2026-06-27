@@ -30,7 +30,7 @@ import {
 export const metadata: Metadata = {
   title: { absolute: "SulitScan PH | Curated Online Deals and Shopping Guides for Filipino Shoppers" },
   description:
-    "SulitScan PH helps Filipino shoppers find curated online deals with honest buyer notes, fake-discount checks, and smart shopping guides for Temu and Sephora PH.",
+    "SulitScan PH helps Filipino shoppers find curated online deals with honest buyer notes, fake-discount checks, and smart shopping guides for Temu, Shopee PH, and Sephora PH.",
   alternates: { canonical: siteConfig.url },
   openGraph: {
     title: "SulitScan PH | Curated Online Deals and Shopping Guides for Filipino Shoppers",
@@ -55,7 +55,7 @@ const intelligenceCards = [
     bg: "bg-blue-50",
     border: "border-blue-100",
     title: "Store Trust Note",
-    body: "We add context on the partner store — Temu for budget finds, Sephora PH for beauty and skincare notes.",
+    body: "We add context on the partner store: Temu and Shopee PH for budget finds, Sephora PH for beauty and skincare notes.",
   },
   {
     icon: Tag,
@@ -80,7 +80,7 @@ const howItWorks = [
     step: "01",
     icon: Search,
     title: "We find deals",
-    body: "We monitor Temu and Sephora PH through affiliate programs for value picks worth checking.",
+    body: "We monitor Temu, Shopee PH, and Sephora PH through affiliate programs for value picks worth checking.",
   },
   {
     step: "02",
@@ -92,7 +92,7 @@ const howItWorks = [
     step: "03",
     icon: Zap,
     title: "We disclose clearly",
-    body: "Every affiliate link is labeled. We may earn a commission — but it does not affect your price.",
+    body: "Every affiliate link is labeled. We may earn a commission, but it does not affect your price.",
   },
   {
     step: "04",
@@ -104,28 +104,28 @@ const howItWorks = [
 
 const scanChecklist = [
   { icon: TrendingDown, good: true,  label: "Price plausibility",  value: "Similar products range ₱800–₱1,100" },
-  { icon: Shield,       good: true,  label: "Store context",       value: "Sephora PH — authorized retailer" },
+  { icon: Shield,       good: true,  label: "Store context",       value: "Sephora PH, authorized retailer" },
   { icon: MessageSquare,good: true,  label: "Buyer reviews",       value: "4.7 ★ · check on partner store" },
   { icon: Tag,          good: true,  label: "Loyalty points",      value: "Beauty Rewards applicable" },
   { icon: Clock,        good: false, label: "Shipping speed",      value: "3–7 days standard (Sephora PH)" },
-  { icon: XCircle,      good: false, label: "Return policy",       value: "Opened items — non-returnable" },
+  { icon: XCircle,      good: false, label: "Return policy",       value: "Opened items, non-returnable" },
 ]
 
 const faqItems = [
   {
     question: "Is SulitScan free to use?",
     answer:
-      "Yes, SulitScan is completely free for shoppers. We may earn a small commission from affiliate links when you buy — at no extra cost to you.",
+      "Yes, SulitScan is completely free for shoppers. We may earn a small commission from affiliate links when you buy, at no extra cost to you.",
   },
   {
     question: "Which stores does SulitScan currently cover?",
     answer:
-      "Right now, SulitScan focuses on selected deals from Temu and Sephora PH. We are starting focused and may add more stores later.",
+      "Right now, SulitScan features selected deals from Temu, Shopee PH, and Sephora PH. We may add more reviewed partner stores later.",
   },
   {
     question: "Are the prices on SulitScan live and accurate?",
     answer:
-      "Prices are sourced from affiliate datafeeds and may not reflect the current price on the partner store. Always confirm on Temu or Sephora PH before completing your purchase.",
+      "Prices are sourced from affiliate datafeeds and may not reflect the current price on the partner store. Always confirm on Temu, Shopee PH, or Sephora PH before completing your purchase.",
   },
   {
     question: "What is the SulitScan Score?",
@@ -135,7 +135,7 @@ const faqItems = [
   {
     question: "Do you sell products directly?",
     answer:
-      "No. SulitScan is a deals discovery and affiliate site. We help you find deals and link you to the partner store — we never handle payments or products.",
+      "No. SulitScan is a deals discovery and affiliate site. We help you find deals and link you to the partner store, we never handle payments or products.",
   },
   {
     question: "Are SulitScan affiliate links free for me to click?",
@@ -171,7 +171,7 @@ export default function HomePage() {
       <div className="bg-amber-50 border-b border-amber-200 py-3 px-4 text-center">
         <p className="text-xs text-amber-800 max-w-2xl mx-auto">
           <strong>Affiliate Disclosure:</strong> SulitScan earns a small commission on qualifying
-          purchases through partner links — at no extra cost to you.{" "}
+          purchases through partner links, at no extra cost to you.{" "}
           <Link href="/affiliate-disclosure" className="underline hover:text-amber-900 font-medium">
             Full disclosure →
           </Link>
@@ -187,7 +187,7 @@ export default function HomePage() {
               { icon: "🔒", label: "No hidden redirects" },
               { icon: "📢", label: "Affiliate links disclosed" },
               { icon: "✋", label: "Curated manually" },
-              { icon: "🏪", label: "Starting with 2 stores" },
+              { icon: "🏪", label: "3 partner stores" },
             ].map(({ icon, label }) => (
               <div key={label} className="flex items-center gap-2 text-sm text-slate-600">
                 <span aria-hidden="true">{icon}</span>
@@ -207,9 +207,9 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
-              { value: "2",      label: "Partner Stores",   note: "Temu & Sephora PH" },
+              { value: "3",      label: "Partner Stores",   note: "Temu, Shopee PH, Sephora PH" },
               { value: "100+",   label: "Curated Deals",    note: "Manually selected" },
-              { value: "30–75%", label: "Discounts shown",  note: "From affiliate datafeeds" },
+              { value: "30–75%", label: "Discounts shown",  note: "Listed by the partner store" },
               { value: "100%",   label: "Free forever",     note: "No premium plan" },
             ].map(({ value, label, note }) => (
               <div key={label}>
@@ -265,7 +265,7 @@ export default function HomePage() {
                 Deals worth checking
               </h2>
               <p className="mt-2 text-slate-500 text-sm">
-                Deal notes from Temu and Sephora PH affiliate datafeeds. Confirm price on the partner store before buying.
+                Deal notes from Temu, Shopee PH, and Sephora PH affiliate datafeeds. Confirm price on the partner store before buying.
               </p>
             </div>
             <Link
@@ -464,7 +464,7 @@ export default function HomePage() {
               <div className="px-5 py-3 bg-slate-50 border-t border-slate-100">
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-slate-500">Overall SulitScore</span>
-                  <span className="text-sm font-black text-green-600">8 / 10 — Good Deal</span>
+                  <span className="text-sm font-black text-green-600">8 / 10 · Good Deal</span>
                 </div>
               </div>
             </div>
@@ -478,10 +478,10 @@ export default function HomePage() {
           <SectionHeading
             id="stores-heading"
             tag="Partner Stores"
-            title="Starting with 2 stores"
-            subtitle="SulitScan currently focuses on selected deals from Temu and Sephora PH. More stores may be added later."
+            title="Our partner stores"
+            subtitle="SulitScan currently features selected deals from Temu, Shopee PH, and Sephora PH. More reviewed partners may be added later."
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-3xl mx-auto">
             {[
               {
                 href: "/stores/temu",
@@ -489,6 +489,13 @@ export default function HomePage() {
                 name: "Temu",
                 desc: "Budget finds: home, fashion, gadgets, and decor.",
                 badge: "Budget",
+              },
+              {
+                href: "/stores/shopee-ph",
+                gradient: "from-orange-500 to-red-500",
+                name: "Shopee PH",
+                desc: "Marketplace finds: home, tech, fashion, and travel.",
+                badge: "Marketplace",
               },
               {
                 href: "/stores/sephora-ph",
@@ -537,7 +544,7 @@ export default function HomePage() {
                 Read before you buy
               </h2>
               <p className="mt-2 text-slate-500 text-sm">
-                Practical shopping guides for Filipino buyers — covering Temu, Sephora PH, and smarter buying habits.
+                Practical shopping guides for Filipino buyers, covering Temu, Shopee PH, Sephora PH, and smarter buying habits.
               </p>
             </div>
             <Link
@@ -613,7 +620,7 @@ export default function HomePage() {
             <span className="gradient-text">sulit</span> deal today.
           </h2>
           <p className="text-slate-400 mb-10 leading-relaxed text-base sm:text-lg">
-            Browse {activeDeals.length}+ curated deal notes from Temu and Sephora PH.
+            Browse {activeDeals.length}+ curated deal notes from Temu, Shopee PH, and Sephora PH.
             No auto-redirect. No fake urgency. Affiliate links clearly disclosed.
           </p>
           <div className="flex flex-wrap justify-center gap-3">

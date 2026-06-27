@@ -83,7 +83,7 @@ export default function DealsGrid({ deals, categories }: DealsGridProps) {
           <strong>Affiliate datafeed prices:</strong> Product prices and discounts are sourced from
           affiliate datafeeds and may not reflect current prices on the partner store. Always confirm the
           final price, shipping fees, available vouchers, and return terms on{" "}
-          <strong>Temu</strong> or <strong>Sephora PH</strong> before buying.
+          <strong>Temu</strong>, <strong>Shopee PH</strong>, or <strong>Sephora PH</strong> before buying.
         </p>
       </div>
 
@@ -245,7 +245,7 @@ export default function DealsGrid({ deals, categories }: DealsGridProps) {
         <div className="mt-12 text-center">
           <p className="text-xs text-slate-400">
             Showing {formatDealCount(filtered.length)} ·
-            Prices are from affiliate datafeeds — confirm on partner store before buying.
+            Prices are from affiliate datafeeds, confirm on the partner store before buying.
           </p>
         </div>
       )}

@@ -8,7 +8,7 @@ import { ShieldCheck, Heart, BookOpen, ShoppingBag, CheckCircle, XCircle } from 
 export const metadata: Metadata = {
   title: { absolute: "About SulitScan PH | Smarter Deal Discovery for Filipino Shoppers" },
   description:
-    "Learn about SulitScan PH — a curated deals discovery site helping Filipino shoppers find genuinely sulit online deals from Temu and Sephora PH.",
+    "Learn about SulitScan PH, a curated deals discovery site helping Filipino shoppers find genuinely sulit online deals from Temu, Shopee PH, and Sephora PH.",
   alternates: { canonical: `${siteConfig.url}/about` },
 }
 
@@ -32,7 +32,7 @@ const values = [
     color: "text-blue-600",
     bg: "bg-blue-50",
     title: "Education",
-    body: "We write guides to help you shop better — not just click more affiliate links.",
+    body: "We write guides to help you shop better, not just click more affiliate links.",
   },
 ]
 
@@ -41,7 +41,7 @@ const weDont = [
   "Have a cart, checkout, or payment system",
   "Auto-redirect you to affiliate links",
   "Use automated scrapers to pull deal data",
-  "Guarantee prices — always check the store before buying",
+  "Guarantee prices, always check the store before buying",
 ]
 
 const weDo = [
@@ -73,7 +73,7 @@ export default function AboutPage() {
             About SulitScan PH
           </h1>
           <p className="text-lg text-slate-500 leading-relaxed max-w-xl mx-auto">
-            A deals discovery site for Filipino shoppers who want to shop smarter — not just cheaper.
+            A deals discovery site for Filipino shoppers who want to shop smarter, not just cheaper.
           </p>
         </div>
       </div>
@@ -88,7 +88,7 @@ export default function AboutPage() {
             discount percentages.
           </p>
           <p className="text-slate-600 leading-relaxed">
-            Our goal is simple: help Filipino shoppers find deals that are <em>actually</em> sulit —
+            Our goal is simple: help Filipino shoppers find deals that are <em>actually</em> sulit,
             good value from trustworthy sellers, with transparent notes about what we checked and what
             you should watch out for.
           </p>
@@ -150,7 +150,7 @@ export default function AboutPage() {
           </h2>
           <p className="text-sm text-amber-800 leading-relaxed">
             SulitScan is an affiliate marketing website. We earn a small commission when you click
-            our affiliate links and make a purchase — at no extra cost to you. All affiliate links are
+            our affiliate links and make a purchase, at no extra cost to you. All affiliate links are
             clearly labeled, and we only feature deals we believe offer genuine value.{" "}
             <Link href="/affiliate-disclosure" className="underline font-medium hover:text-amber-900">
               Full disclosure →

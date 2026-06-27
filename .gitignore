@@ -44,6 +44,7 @@ next-env.d.ts
 /scripts/*
 !/scripts/check-links.mjs
 !/scripts/check-affiliate-products.mjs
+!/scripts/check-product-quality.mjs
 
 # local SEO audit / private data exports — never commit or expose publicly
 seo-audits/

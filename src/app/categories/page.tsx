@@ -11,12 +11,12 @@ import { formatDealCount } from "@/lib/utils"
 export const metadata: Metadata = {
   title: "Shopping Deal Categories Philippines",
   description:
-    "Browse SulitScan deals by category — Under ₱500, Tech & Gadgets, Home Finds, Beauty, Fashion, and Gift Ideas. Curated deals for Filipino shoppers with buyer notes on every listing.",
+    "Browse SulitScan deals by category, Under ₱500, Tech & Gadgets, Home Finds, Beauty, Fashion, and Gift Ideas. Curated deals for Filipino shoppers with buyer notes on every listing.",
   alternates: { canonical: `${siteConfig.url}/categories` },
   openGraph: {
     title: "Shopping Deal Categories Philippines | SulitScan PH",
     description:
-      "Browse curated online deals by category — budget picks, beauty, home finds, tech, fashion, and gift ideas for Filipino shoppers.",
+      "Browse curated online deals by category, budget picks, beauty, home finds, tech, fashion, and gift ideas for Filipino shoppers.",
     url: `${siteConfig.url}/categories`,
   },
 }
@@ -30,7 +30,7 @@ const categoryFaqs = [
   {
     question: "Are prices shown in categories the final prices?",
     answer:
-      "No. Prices shown on SulitScan are sourced from affiliate datafeeds and may not reflect the current price on the partner store. Sale prices, platform vouchers, and promotions change frequently. Always confirm the final price on Temu or Sephora PH before completing your purchase.",
+      "No. Prices shown on SulitScan are sourced from affiliate datafeeds and may not reflect the current price on the partner store. Sale prices, platform vouchers, and promotions change frequently. Always confirm the final price on Temu, Shopee PH, or Sephora PH before completing your purchase.",
   },
   {
     question: "Which categories have the most deals right now?",
@@ -40,7 +40,7 @@ const categoryFaqs = [
   {
     question: "Can I filter deals by store within a category?",
     answer:
-      "Not directly on category pages — but the main deals page (/deals) has filters for store, category, and sort order. You can also browse store-specific deals on the Temu store page or Sephora PH store page.",
+      "Not directly on category pages, but the main deals page (/deals) has filters for store, category, and sort order. You can also browse store-specific deals on the Temu, Shopee PH, or Sephora PH store pages.",
   },
 ]
 
@@ -134,7 +134,7 @@ export default function CategoriesPage() {
             <p className="text-sm text-slate-600 leading-relaxed">
               SulitScan categories are designed to help Filipino shoppers find deals that match both their
               budget and their specific shopping needs. Whether you&apos;re looking for everyday home finds,
-              beauty deals from Sephora PH, budget gadgets, or gift ideas under ₱500 — each category page
+              beauty deals from Sephora PH, budget gadgets, or gift ideas under ₱500, each category page
               has curated deals with buyer notes and a SulitScore to help you decide before clicking buy.
             </p>
             <p className="text-sm text-slate-600 leading-relaxed">
@@ -144,14 +144,15 @@ export default function CategoriesPage() {
             </p>
             <p className="text-sm text-slate-600 leading-relaxed">
               <strong>Product categories</strong>{" "}(Beauty, Home Finds, Tech & Gadgets, Fashion, Gift Ideas)
-              group deals by what you&apos;re shopping for. These pages include category-specific buyer guidance —
+              group deals by what you&apos;re shopping for. These pages include category-specific buyer guidance,
               what to check before buying beauty products, how to read Temu sizing, what to look for in
               home finds, and more.
             </p>
             <p className="text-sm text-slate-600 leading-relaxed">
               Every deal on SulitScan includes a price disclaimer reminding you that prices are sourced
               from affiliate datafeeds and may not match the current price on the partner store. Confirm
-              the final price on <Link href="/stores/temu" className="text-green-600 hover:underline">Temu</Link> or{" "}
+              the final price on <Link href="/stores/temu" className="text-green-600 hover:underline">Temu</Link>,{" "}
+              <Link href="/stores/shopee-ph" className="text-green-600 hover:underline">Shopee PH</Link>, or{" "}
               <Link href="/stores/sephora-ph" className="text-green-600 hover:underline">Sephora PH</Link> before buying.
             </p>
 
@@ -183,9 +184,9 @@ export default function CategoriesPage() {
                 </h3>
                 <ul className="space-y-1.5" role="list">
                   {[
-                    "Prices shown are from affiliate datafeeds — always confirm on the partner store",
-                    "Temu sizing can run smaller than labeled — check the CM size guide",
-                    "Sephora PH sale prices change frequently — verify before buying",
+                    "Prices shown are from affiliate datafeeds, always confirm on the partner store",
+                    "Temu sizing can run smaller than labeled, check the CM size guide",
+                    "Sephora PH sale prices change frequently, verify before buying",
                     "Report outdated prices using the link on any deal card",
                   ].map((tip, i) => (
                     <li key={i} className="flex items-start gap-2">
@@ -207,7 +208,13 @@ export default function CategoriesPage() {
                   <Link href="/stores/temu" className="text-sm text-green-600 hover:underline font-medium">
                     Temu →
                   </Link>
-                  <p className="text-xs text-slate-400 mt-0.5">Budget finds — home, fashion, accessories</p>
+                  <p className="text-xs text-slate-400 mt-0.5">Budget finds: home, fashion, accessories</p>
+                </li>
+                <li>
+                  <Link href="/stores/shopee-ph" className="text-sm text-green-600 hover:underline font-medium">
+                    Shopee PH →
+                  </Link>
+                  <p className="text-xs text-slate-400 mt-0.5">Marketplace finds: home, tech, fashion, travel</p>
                 </li>
                 <li>
                   <Link href="/stores/sephora-ph" className="text-sm text-green-600 hover:underline font-medium">

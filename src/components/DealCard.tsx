@@ -5,6 +5,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ExternalLink, Zap } from "lucide-react"
 import type { Deal } from "@/data/deals"
+import { isSuspiciousDiscount } from "@/data/deals"
 import { formatPrice, formatScore, getSulitScoreBg, getSulitScoreLabel } from "@/lib/utils"
 
 interface DealCardProps {
@@ -12,6 +13,7 @@ interface DealCardProps {
 }
 
 export default function DealCard({ deal }: DealCardProps) {
+  const suspicious = isSuspiciousDiscount(deal)
   return (
     <motion.article
       initial={{ opacity: 0, y: 20 }}
@@ -55,12 +57,20 @@ export default function DealCard({ deal }: DealCardProps) {
           </>
         )}
 
-        {/* Discount badge — only shown when there's an actual discount */}
+        {/* Discount badge. A genuine discount shows the number; a suspiciously high
+            one (80%+) is softened to a neutral label so we don't over-promise. */}
         {deal.discount > 0 && (
-          <div className="absolute top-3 left-3 flex items-center gap-1 bg-white/95 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm">
-            <Zap className="w-3 h-3 text-green-600" aria-hidden="true" />
-            <span className="text-xs font-bold text-green-700">−{deal.discount}%</span>
-          </div>
+          suspicious ? (
+            <div className="absolute top-3 left-3 flex items-center gap-1 bg-amber-50/95 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm">
+              <Zap className="w-3 h-3 text-amber-600" aria-hidden="true" />
+              <span className="text-xs font-bold text-amber-700">Big listed drop</span>
+            </div>
+          ) : (
+            <div className="absolute top-3 left-3 flex items-center gap-1 bg-white/95 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm">
+              <Zap className="w-3 h-3 text-green-600" aria-hidden="true" />
+              <span className="text-xs font-bold text-green-700">−{deal.discount}%</span>
+            </div>
+          )
         )}
 
         {/* Category */}
@@ -81,10 +91,10 @@ export default function DealCard({ deal }: DealCardProps) {
         {/* Pricing */}
         <div className="flex items-baseline gap-2 mb-3">
           <span className="text-xl font-black text-slate-900">{formatPrice(deal.salePrice)}</span>
-          {deal.discount > 0 && (
+          {deal.discount > 0 && !suspicious && (
             <span className="text-sm text-slate-400 line-through">{formatPrice(deal.originalPrice)}</span>
           )}
-          {deal.discount > 0 && (
+          {deal.discount > 0 && !suspicious && (
             <span className="ml-auto text-xs font-bold text-green-600 bg-green-50 px-1.5 py-0.5 rounded-md">
               Save {formatPrice(deal.originalPrice - deal.salePrice)}
             </span>
@@ -115,6 +125,13 @@ export default function DealCard({ deal }: DealCardProps) {
         <p className="text-xs text-slate-500 leading-relaxed flex-1 mb-3 line-clamp-2">
           {deal.reason}
         </p>
+
+        {/* Risk note for suspiciously large listed discounts */}
+        {suspicious && (
+          <p className="text-[10px] text-amber-600 leading-relaxed mb-3 -mt-1">
+            Very high listed discount. Compare the final price, reviews, and seller details before buying.
+          </p>
+        )}
 
         {/* Trust footer */}
         <div className="pt-2.5 mt-1 border-t border-slate-50 mb-3">

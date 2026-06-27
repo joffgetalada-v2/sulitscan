@@ -3,7 +3,7 @@ export const siteConfig = {
   shortName: "SulitScan",
   tagline: "Curated online deals and shopping guides for Filipino shoppers.",
   description:
-    "SulitScan PH helps Filipino shoppers find curated online deals with honest buyer notes, fake-discount checks, and smart shopping guides for Temu and Sephora PH.",
+    "SulitScan PH helps Filipino shoppers find curated online deals with honest buyer notes, fake-discount checks, and smart shopping guides for Temu, Shopee PH, and Sephora PH.",
   url: "https://sulitscan.com",
   ogImage: "https://sulitscan.com/og-image.jpg",
   locale: "en_PH",
@@ -24,6 +24,9 @@ export const defaultMetadata = {
     "Temu deals Philippines",
     "Temu Philippines shopping guide",
     "Temu finds Philippines",
+    "Shopee PH deals",
+    "Shopee finds Philippines",
+    "Shopee under 500 Philippines",
     "Sephora PH deals",
     "Sephora Philippines sale",
     "beauty deals Philippines",

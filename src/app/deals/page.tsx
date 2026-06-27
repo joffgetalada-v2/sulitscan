@@ -10,12 +10,12 @@ import { formatDealCount } from "@/lib/utils"
 export const metadata: Metadata = {
   title: "Latest Online Deals Philippines",
   description:
-    "Browse curated online deals from Temu and Sephora PH — beauty, home finds, gadgets, fashion, and budget picks, with buyer notes on every deal.",
+    "Browse curated online deals from Temu, Shopee PH, and Sephora PH: beauty, home finds, gadgets, fashion, and budget picks, with buyer notes on every deal.",
   alternates: { canonical: `${siteConfig.url}/deals` },
   openGraph: {
     title: "Latest Online Deals Philippines | SulitScan PH",
     description:
-      "Curated deal notes from Temu and Sephora PH. Filter by category, store, and SulitScore. Affiliate links clearly disclosed.",
+      "Curated deal notes from Temu, Shopee PH, and Sephora PH. Filter by category, store, and SulitScore. Affiliate links clearly disclosed.",
     url: `${siteConfig.url}/deals`,
   },
 }
@@ -33,7 +33,7 @@ export default function DealsPage() {
         ]}
       />
       <ItemListJsonLd
-        name="Temu and Sephora PH Deals Philippines – SulitScan PH"
+        name="Temu, Shopee PH, and Sephora PH Deals Philippines – SulitScan PH"
         items={activeDeals.slice(0, 50).map((d) => ({
           name: d.title,
           url: `${siteConfig.url}/deals/${d.slug}`,
@@ -53,10 +53,10 @@ export default function DealsPage() {
                 Curated Deal Notes
               </span>
               <h1 className="text-3xl font-black text-slate-900 tracking-tight mb-2">
-                Temu &amp; Sephora PH Deals
+                Temu, Shopee PH &amp; Sephora PH Deals
               </h1>
               <p className="text-slate-500 text-sm max-w-xl">
-                {formatDealCount(activeDeals.length)} from Temu and Sephora PH. Search by product, filter by store or category,
+                {formatDealCount(activeDeals.length)} from Temu, Shopee PH, and Sephora PH. Search by product, filter by store or category,
                 and sort by discount, SulitScore, or price.
               </p>
             </div>

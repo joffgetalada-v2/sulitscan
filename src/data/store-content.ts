@@ -97,6 +97,51 @@ SulitScan earns a small affiliate commission when you purchase through our Sepho
       },
     ],
   },
+  {
+    slug: "shopee-ph",
+    intro: `Shopee Philippines is a local online marketplace where many sellers list home, tech, fashion, beauty, and daily essentials. For Filipino shoppers, Shopee is a useful source of budget finds and practical everyday items, especially under a few hundred pesos. Because orders usually ship locally, delivery tends to be faster than overseas marketplaces, and vouchers or free-shipping promos can bring an already low price down further.
+
+The trade-off is that quality varies a lot from seller to seller. SulitScan features selected Shopee PH products with buyer notes, but prices come from an affiliate datafeed and can lag the live Shopee price. Always confirm the current price, the seller rating, the buyer reviews, and the final cost after vouchers and shipping on Shopee before completing your order.
+
+SulitScan does not sell Shopee products and does not guarantee any seller. We point you to listings, and you buy directly from the seller on Shopee. SulitScan may earn a small affiliate commission when you buy through our links, at no extra cost to you.`,
+    goodFor: [
+      "Home and desk organizers, storage boxes, and small kitchen tools",
+      "Phone and tech accessories like stands, holders, cases, and cable organizers",
+      "Bags and everyday fashion: tote bags, sling bags, caps, and simple accessories",
+      "Travel pouches, toiletry bags, and packing organizers",
+      "Budget beauty tools such as brush sets and brush holders",
+      "Low-stakes, practical items under a few hundred pesos",
+    ],
+    beCareful: [
+      "Suspiciously large discounts: a listed 80% or 90% off can reflect an inflated original price, so compare the final price with similar items",
+      "Branded or luxury-style goods at prices far below everyone else, where replicas are common",
+      "Cheap chargers, power banks, and battery electronics, where safety and quality matter more",
+      "Items that depend on exact sizing or material, since cheap listings can differ from the photos",
+      "New sellers with few reviews: prefer Preferred Sellers or Shopee Mall as a safer starting point",
+    ],
+    faqs: [
+      {
+        question: "Does SulitScan sell Shopee products directly?",
+        answer: "No. SulitScan is a shopping guide and affiliate discovery site. We point you to listings on Shopee, and you buy directly from the seller. We do not handle payments, orders, or returns.",
+      },
+      {
+        question: "Are Shopee prices always accurate on SulitScan?",
+        answer: "Not always. Prices come from an affiliate datafeed and can lag the live Shopee price. Vouchers and flash sales change fast, so always confirm the current price on Shopee before buying.",
+      },
+      {
+        question: "What should I check before buying from Shopee?",
+        answer: "Check the seller rating and sales count, read reviews with real buyer photos, confirm the dimensions in centimeters, and add up the final cost after vouchers and shipping. Preferred Sellers and Shopee Mall shops are a safer starting point, though not a guarantee.",
+      },
+      {
+        question: "Why do some Shopee discounts look very high?",
+        answer: "A listed 80% or 90% discount sometimes reflects an inflated original price rather than a real saving. Compare the sale price with similar items, check reviews and seller details, and weigh the shipping fee before deciding.",
+      },
+      {
+        question: "How does SulitScan earn from Shopee links?",
+        answer: "SulitScan may earn a small affiliate commission when you click a Shopee link and complete a purchase, at no extra cost to you. This does not affect your price and does not change which products we feature.",
+      },
+    ],
+  },
 ]
 
 export function getStoreContent(slug: string): StoreContent | undefined {

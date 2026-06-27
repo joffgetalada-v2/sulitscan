@@ -243,7 +243,7 @@ export default async function BlogPostPage({
                     </blockquote>
                   )
                 }
-                // Image block: ![alt|WIDTHxHEIGHT](/src) — dims keep layout stable (no CLS)
+                // Image block: ![alt|WIDTHxHEIGHT](/src), dims keep layout stable (no CLS)
                 const imgMatch = block.match(/^!\[([^\]]*)\]\(([^)]+)\)$/)
                 if (imgMatch) {
                   const rawAlt = imgMatch[1]
@@ -300,7 +300,7 @@ export default async function BlogPostPage({
             {/* Affiliate note */}
             <div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800">
               <strong>Affiliate Disclosure:</strong> Links in this article may be affiliate links. SulitScan
-              earns a commission if you buy — at no extra cost to you.{" "}
+              earns a commission if you buy, at no extra cost to you.{" "}
               <Link href="/affiliate-disclosure" className="underline">Learn more</Link>
             </div>
 

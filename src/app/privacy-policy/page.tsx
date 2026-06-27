@@ -73,7 +73,7 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-lg font-bold text-slate-900 mb-3">3. Third-Party Links</h2>
             <p>
-              SulitScan PH contains affiliate links to third-party websites (Temu and Sephora PH).
+              SulitScan PH contains affiliate links to third-party websites (Temu, Shopee PH, and Sephora PH).
               We are not responsible for the privacy practices of those websites. We encourage you
               to read the privacy policies of any third-party site you visit.
             </p>
@@ -83,7 +83,7 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-lg font-bold text-slate-900 mb-3">4. Analytics</h2>
             <p>
               SulitScan PH uses <strong>Vercel Analytics</strong> to collect aggregated, anonymized usage
-              data — such as page views and navigation paths. This service does not use advertising
+              data, such as page views and navigation paths. This service does not use advertising
               cookies and does not personally identify individual visitors. We use this data only to
               improve the site experience.
             </p>
@@ -105,10 +105,11 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-lg font-bold text-slate-900 mb-3">6. Affiliate Link Tracking</h2>
             <p>
-              When you click a Temu or Sephora PH affiliate link, those partner sites may use their own
+              When you click a Temu, Shopee PH, or Sephora PH affiliate link, those partner sites may use their own
               cookies or tracking pixels to record the referral. SulitScan PH does not control this
               tracking. Refer to{" "}
-              <a href="https://www.temu.com/privacy-policy.html" target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">Temu&apos;s Privacy Policy</a>{" "}
+              <a href="https://www.temu.com/privacy-policy.html" target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">Temu&apos;s Privacy Policy</a>,{" "}
+              <a href="https://shopee.ph/legaldoc/privacy" target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">Shopee PH&apos;s Privacy Policy</a>,{" "}
               and{" "}
               <a href="https://www.sephora.ph/privacy" target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">Sephora PH&apos;s Privacy Policy</a>{" "}
               for details on how they handle your data.

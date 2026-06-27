@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 
 const partners = [
   { name: "Temu", note: "" },
+  { name: "Shopee PH", note: "via Shopee Affiliate Program" },
   { name: "Sephora PH", note: "via Involve Asia" },
 ]
 
@@ -78,7 +79,7 @@ export default function AffiliateDisclosurePage() {
             </p>
             <div className="mt-4 p-4 bg-slate-50 border border-slate-100 rounded-xl">
               <p className="text-sm text-slate-500">
-                <strong className="text-slate-700">Coming soon:</strong> Shopee, Lazada, and AliExpress may be added later once product data, affiliate links, and buyer-check information are prepared. They are <strong>not</strong> currently active affiliate partners.
+                <strong className="text-slate-700">Coming soon:</strong> Lazada and AliExpress may be added later once product data, affiliate links, and buyer-check information are prepared. They are <strong>not</strong> currently active affiliate partners.
               </p>
             </div>
           </section>

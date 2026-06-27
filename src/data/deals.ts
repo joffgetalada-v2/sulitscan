@@ -651,7 +651,7 @@ export const deals: Deal[] = [
   {
     id: "deal-035",
     slug: "genuine-leather-slim-wallet-temu",
-    title: "Genuine Leather Men's Slim Wallet – Vintage Vertical Card Holder",
+    title: "Men's Slim Vertical Wallet – Vintage Card Holder",
     platform: "Temu",
     platformColor: "#ff6d00",
     category: "Fashion",
@@ -659,7 +659,7 @@ export const deals: Deal[] = [
     salePrice: 112,
     discount: 55,
     sulitScore: 8,
-    reason: "Slim vertical wallet with coin purse and ID window. At ₱112, worth checking against similar wallets locally — verify material quality in product photos before ordering.",
+    reason: "Slim vertical wallet with coin purse and ID window, in a leather-look finish. At ₱112, worth checking against similar wallets locally. Confirm the material details in the product photos and listing before ordering.",
     imageGradient: "from-amber-700 to-stone-800",
     imageUrl: "https://img.kwcdn.com/product/fancy/b91ebdbc-36c7-4d01-9b7f-7db41b3b9c4a.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1066,10 +1066,10 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-065", slug: "bullcaptain-leather-crossbody-bag-temu",
-    title: "BULLCAPTAIN Men's Genuine Leather Crossbody Bag – Retro Cowhide Shoulder Bag",
+    title: "BULLCAPTAIN Men's Crossbody Bag – Retro Shoulder Bag",
     platform: "Temu", platformColor: "#ff6d00", category: "Fashion",
     originalPrice: 599, salePrice: 299, discount: 50, sulitScore: 8,
-    reason: "Large-capacity genuine cowhide leather shoulder bag with multiple compartments. Retro styling that works for casual and business. At ₱299 real leather bags start at ₱700+ locally.",
+    reason: "Large-capacity leather-look shoulder bag with multiple compartments. Retro styling that works for casual and business. Confirm the material details and seller reviews on the listing before buying.",
     imageGradient: "from-amber-800 to-stone-900",
     imageUrl: "https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/7c42f5f26a2454889e1b8b443d29a644.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1605,10 +1605,10 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-109", slug: "mens-rfid-wallet-chain-genuine-leather-temu",
-    title: "Men's Genuine Leather Wallet with Chain – RFID Blocking, Double Zipper, Coin Pocket",
+    title: "Men's Wallet with Chain – RFID Blocking, Double Zipper, Coin Pocket",
     platform: "Temu", platformColor: "#ff6d00", category: "Fashion",
     originalPrice: 499, salePrice: 249, discount: 50, sulitScore: 8,
-    reason: "Real cowhide leather bifold with RFID-blocking lining, double zipper compartments, chain attachment, and dedicated coin pocket. At ₱249, compare with similar leather wallets locally — verify quality in product photos before ordering.",
+    reason: "Leather-look bifold with RFID-blocking lining, double zipper compartments, chain attachment, and dedicated coin pocket. At ₱249, compare with similar wallets locally. Confirm the material details in the product photos and listing before ordering.",
     imageGradient: "from-amber-700 to-stone-900",
     imageUrl: "https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/9c0c6844d9efe5241541835071c0c2f2.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -2726,7 +2726,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-001",
     slug: "metal-mesh-coated-hook-style-open-basket-hanging-sto-005045",
-    title: "Metal mesh coated hook-style open basket – hanging storage basket",
+    title: "Metal Mesh Hanging Storage Basket",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -2745,7 +2745,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-002",
     slug: "tanle-silicone-foldable-water-bottle-is-leak-proof-a-702052",
-    title: "TANLE silicone foldable water bottle is leak proof and reusable.",
+    title: "Foldable Silicone Water Bottle (Leak-Proof, Reusable)",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -2764,7 +2764,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-003",
     slug: "tumbler-hot-and-cold-thermos-double-wall-vacuum-insu-634012",
-    title: "Tumbler hot and cold Thermos Double Wall Vacuum Insulated",
+    title: "Double-Wall Vacuum Insulated Tumbler (Hot and Cold)",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -2783,7 +2783,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-004",
     slug: "triangle-coat-rack-floor-bedroom-multi-function-clot-181276",
-    title: "Triangle Coat rack floor bedroom multi-function clothes hanger",
+    title: "Multi-Function Coat Rack and Clothes Hanger",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -2802,7 +2802,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-005",
     slug: "shelves-for-shoes-9-layer-folding-multi-tier-shoe-ra-036787",
-    title: "Shelves for shoes, 9-layer folding multi-tier shoe rack",
+    title: "9-Layer Folding Shoe Rack",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -2821,7 +2821,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-006",
     slug: "uhome-3-in1-children-lunchbag-set-lunchbaglunchboxtu-305627",
-    title: "Uhome 3 in1 Children LunchBag Set (lunchbag/lunchbox/tumbler)",
+    title: "3-in-1 Children's Lunch Bag Set (Bag, Box, Tumbler)",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -2840,7 +2840,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-007",
     slug: "flip-top-storage-box-stackable-storage-box-plastic-118125",
-    title: "Flip Top Storage Box Stackable storage box Plastic",
+    title: "Flip-Top Stackable Plastic Storage Box",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -2859,7 +2859,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-008",
     slug: "desktop-stationery-storage-box-iron-net-7-grid-pen-h-497196",
-    title: "Desktop stationery storage box Iron net 7 grid pen holder black",
+    title: "7-Grid Desktop Pen and Stationery Organizer",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -2878,7 +2878,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-009",
     slug: "stainless-steel-thermos-double-drinking-spout-handle-015031",
-    title: "Stainless steel thermos double drinking spout handle portable",
+    title: "Portable Stainless Steel Thermos with Handle",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -2897,7 +2897,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-010",
     slug: "345-layer-kitchen-organizer-storage-rack-367825",
-    title: "3/4/5 Layer kitchen organizer storage rack",
+    title: "Multi-Layer Kitchen Organizer Rack (3 to 5 Tiers)",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -2916,7 +2916,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-011",
     slug: "pen-holder-student-desktop-creative-pen-bucket-fashi-517684",
-    title: "Pen holder student desktop creative pen bucket fashion plastic",
+    title: "Desktop Pen Holder Organizer",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -2935,7 +2935,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-012",
     slug: "videveckmal-dish-brush-with-soap-dispenser-527858",
-    title: "Videveckmal Dish brush with soap dispenser",
+    title: "Dish Brush with Soap Dispenser",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -2954,7 +2954,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-013",
     slug: "1pctoothbrush-storage-rack-stainless-steel-toothbrus-875980",
-    title: "1PCtoothbrush storage rack Stainless steel toothbrush holder",
+    title: "Stainless Steel Toothbrush Holder Rack",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -2973,7 +2973,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-014",
     slug: "acrylic-storage-box-cosmetic-storage-box-desktop-org-126639",
-    title: "Acrylic storage box cosmetic storage box desktop organizer box",
+    title: "Acrylic Cosmetic and Desktop Organizer Box",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -2992,7 +2992,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-015",
     slug: "food-grade-fresh-keeping-box-refrigerator-storage-bo-443059",
-    title: "Food grade fresh-keeping box Refrigerator storage box Cabinet",
+    title: "Food-Grade Fridge Storage Box",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -3011,7 +3011,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-016",
     slug: "toilet-paper-towel-rack-toilet-paper-box-storage-rac-281926",
-    title: "Toilet paper towel rack Toilet paper box storage rack",
+    title: "Toilet Paper Holder and Storage Rack",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Home",
@@ -3030,7 +3030,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-017",
     slug: "uisn-v06-womens-pu-leather-tote-bag-medium-shoulder-600118",
-    title: "UISN V06 Women's PU leather tote bag medium shoulder bag handbag",
+    title: "Women's PU Leather Tote and Shoulder Bag",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Fashion",
@@ -3049,7 +3049,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-018",
     slug: "yqy-new-canvas-large-capacity-shoulder-bag-025078",
-    title: "YQY New canvas Large Capacity shoulder bag",
+    title: "Large Canvas Shoulder Bag",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Fashion",
@@ -3068,7 +3068,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-019",
     slug: "sy-s607-new-simple-japanese-shoulder-bag-large-capac-765230",
-    title: "SY S607 New simple Japanese shoulder bag large capacity small",
+    title: "Simple Large-Capacity Shoulder Bag",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Fashion",
@@ -3087,7 +3087,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-020",
     slug: "lovito-women-casual-bag-versatile-commuting-small-sh-421038",
-    title: "Lovito Women Casual Bag Versatile Commuting Small shoulder bag",
+    title: "Lovito Women's Casual Crossbody Shoulder Bag",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Fashion",
@@ -3106,7 +3106,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-021",
     slug: "jys-womens-versatile-multi-pocket-crossbody-bag-448992",
-    title: "JYS Women's versatile multi-pocket crossbody bag.",
+    title: "Women's Multi-Pocket Crossbody Bag",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Fashion",
@@ -3125,7 +3125,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-022",
     slug: "emma-with-box-shoulder-bagsling-bag-for-women-b1617-169524",
-    title: "Emma With box shoulder bag/sling bag for women (B1617)",
+    title: "Women's Shoulder and Sling Bag",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Fashion",
@@ -3144,7 +3144,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-023",
     slug: "york-letter-embroidery-brooklyn-soft-top-baseball-ca-233350",
-    title: "YORK letter embroidery BROOKLYN soft top baseball cap",
+    title: "Embroidered Soft-Top Baseball Cap",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Fashion",
@@ -3163,7 +3163,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-024",
     slug: "printed-black-tote-bag-baguio-city-33x37cm-253678",
-    title: "Printed black tote bag baguio city (33x37cm)",
+    title: "Printed Black Canvas Tote Bag (33 x 37 cm)",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Fashion",
@@ -3182,7 +3182,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-025",
     slug: "a02-set-womens-camisole-headband-body-hugging-form-197484",
-    title: "A02-Set women's camisole + headband, body-hugging form",
+    title: "Women's Camisole and Headband Set",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Fashion",
@@ -3201,7 +3201,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-026",
     slug: "big-bow-pearl-ribbon-hairpin-female-high-end-back-of-189941",
-    title: "Big bow pearl ribbon hairpin female high-end back of the head",
+    title: "Pearl Bow Ribbon Hairpin",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Fashion",
@@ -3220,7 +3220,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-027",
     slug: "yoyo-stylish-womens-handbag-shoulder-bag-crossbody-b-166150",
-    title: "YOYO Stylish women's handbag shoulder bag crossbody bag",
+    title: "Women's Handbag and Crossbody Bag",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Fashion",
@@ -3239,7 +3239,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-028",
     slug: "cycling-sunglasses-outdoor-windproof-mountaineering-664776",
-    title: "Cycling sunglasses, outdoor windproof mountaineering sports",
+    title: "Windproof Cycling and Sports Sunglasses",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Fashion",
@@ -3258,7 +3258,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-029",
     slug: "ugreen-s5wireless-earphone-case-hitune-s5cute-earpho-744890",
-    title: "UGREEN S5Wireless earphone case HiTune S5Cute Earphone Protective",
+    title: "UGREEN HiTune S5 Earphone Protective Case",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Electronics",
@@ -3277,7 +3277,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-030",
     slug: "smilee-three-legged-bracket-ring-light-camera-portab-201242",
-    title: "Smilee Three-legged bracket Ring Light camera portable tripod W",
+    title: "Portable Ring Light with Tripod Stand",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Electronics",
@@ -3296,7 +3296,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-031",
     slug: "yamy-projector-stand-tripod-adjustable-universal-por-708587",
-    title: "YAMY projector stand tripod Adjustable Universal Portable Folding",
+    title: "Adjustable Portable Projector Tripod Stand",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Electronics",
@@ -3315,7 +3315,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-032",
     slug: "lazy-pad-phone-holder-for-cellphone-universal-190135",
-    title: "Lazy pad phone holder for cellphone universal",
+    title: "Universal Lazy Phone Holder",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Electronics",
@@ -3334,7 +3334,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-033",
     slug: "love-style-6in1-set-charger-protector-set-804547",
-    title: "Love Style 6IN1 Set Charger Protector Set",
+    title: "6-in-1 Charger Cable Protector Set",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Electronics",
@@ -3353,7 +3353,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-034",
     slug: "cellphone-tripod-camera-long-tripod-free-phone-holde-700512",
-    title: "Cellphone tripod camera long tripod free phone holder black",
+    title: "Cellphone and Camera Tripod with Phone Holder",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Electronics",
@@ -3372,7 +3372,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-035",
     slug: "bathroom-waterproof-mobile-phone-box-touch-screen-ba-509973",
-    title: "Bathroom waterproof mobile phone box touch screen bathroom",
+    title: "Waterproof Bathroom Phone Holder Box (Touch Screen)",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Electronics",
@@ -3391,7 +3391,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-036",
     slug: "camera-tripod-head-interface-conversion-screw-14-to-593850",
-    title: "Camera tripod head interface conversion screw 1/4 to 3/8 nut nut",
+    title: "Camera Tripod Screw Adapter (1/4 to 3/8)",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Electronics",
@@ -3410,7 +3410,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-037",
     slug: "kfy-deformed-car-multi-function-mobile-phone-holder-820784",
-    title: "KFY Deformed car multi-function mobile phone holder, suction cup",
+    title: "Car Phone Holder with Suction Cup",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Electronics",
@@ -3429,7 +3429,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-038",
     slug: "shelf-phone-and-tablet-stand-for-easy-learning-onlin-920771",
-    title: "Shelf Phone and tablet stand for easy learning online livestream",
+    title: "Phone and Tablet Stand for Study and Livestream",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Electronics",
@@ -3448,7 +3448,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-039",
     slug: "otg-micro-card-reader-mini-sd-1-gb-1-package-492197",
-    title: "OTG micro card reader + Mini SD 1 Gb (1 package)",
+    title: "OTG Micro Card Reader with Mini SD (1 GB)",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Electronics",
@@ -3467,7 +3467,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-040",
     slug: "14-38-crab-claw-clamp-mounts-camera-accessories-camc-102559",
-    title: "1/4 3/8 crab claw clamp mounts camera accessories, camcorder",
+    title: "Crab Claw Clamp Mount for Cameras (1/4 and 3/8)",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Electronics",
@@ -3486,7 +3486,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-041",
     slug: "cheznara-aesthetic-quilted-pouch-894831",
-    title: "ChezNARA - Aesthetic Quilted Pouch",
+    title: "Aesthetic Quilted Pouch",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Travel",
@@ -3505,7 +3505,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-042",
     slug: "korean-travel-toiletry-bag-hanging-high-quality-wate-796289",
-    title: "Korean Travel toiletry bag hanging high quality water proof pouch",
+    title: "Hanging Travel Toiletry Bag (Water-Resistant)",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Travel",
@@ -3524,7 +3524,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-043",
     slug: "zipper-lock-zipper-storage-bag-zipper-travel-pouch-565597",
-    title: "Zipper lock zipper storage bag/ zipper travel pouch",
+    title: "Zippered Travel Storage Pouch",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Travel",
@@ -3543,7 +3543,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-044",
     slug: "hokkaido-blue-personal-makeup-brush-set-8-piece-647464",
-    title: "Hokkaido - Blue personal makeup brush set 8 Piece",
+    title: "8-Piece Makeup Brush Set",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Beauty",
@@ -3586,19 +3586,34 @@ export function getDealBySlug(slug: string): Deal | undefined {
   return deals.find((d) => d.slug === slug)
 }
 
-// Platforms with active affiliate relationships — shown on public pages
+// Platforms with active affiliate relationships, shown on public pages
 const ACTIVE_PLATFORMS = new Set(["Sephora PH", "Temu", "Shopee PH"])
 
-// All active deals sorted by discount % descending — only products with images
+// Discounts at or above this are treated as suspicious. A listed 80%+ "discount"
+// often reflects an inflated original price, so we demote these from the homepage
+// featured row and Top Picks, and soften how the discount is shown on the card.
+export const SUSPICIOUS_DISCOUNT = 80
+export function isSuspiciousDiscount(deal: Deal): boolean {
+  return deal.discount >= SUSPICIOUS_DISCOUNT
+}
+
+// All active deals sorted by discount % descending, only products with images
 export function getActiveDeals(): Deal[] {
   return deals
     .filter(d => ACTIVE_PLATFORMS.has(d.platform) && !!d.imageUrl)
     .sort((a, b) => b.discount - a.discount)
 }
 
-// Top N active deals for homepage featured section
+// Curated homepage picks: strong SulitScore and a sensible (non-suspicious)
+// discount, sorted by score first so featured feels hand-picked rather than a
+// raw datafeed dump led by the biggest, least trustworthy discounts.
 export function getFeaturedDeals(count = 6): Deal[] {
-  return getActiveDeals().slice(0, count)
+  const active = getActiveDeals()
+  const curated = active
+    .filter(d => !isSuspiciousDiscount(d) && d.sulitScore >= 8)
+    .sort((a, b) => b.sulitScore - a.sulitScore || b.discount - a.discount)
+  const pool = curated.length >= count ? curated : active.filter(d => !isSuspiciousDiscount(d))
+  return pool.slice(0, count)
 }
 
 // All category labels present in active deals (for filter tabs)

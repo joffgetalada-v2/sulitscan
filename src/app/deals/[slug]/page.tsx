@@ -21,7 +21,7 @@ function getBuyerChecklist(deal: { platform: string; category: string }): string
   const isHome = ["home", "kitchen", "outdoor"].some((c) => cat.includes(c))
 
   const base = [
-    `Confirm the current price on ${deal.platform} — prices from SulitScan may not match the current price.`,
+    `Confirm the current price on ${deal.platform}, prices from SulitScan may not match the current price.`,
     "Look for available platform vouchers, loyalty points, or first-order discounts.",
   ]
 
@@ -42,7 +42,7 @@ function getBuyerChecklist(deal: { platform: string; category: string }): string
       "Check the ingredient list for known allergens or sensitivities.",
       "Confirm the shade, variant, or product size you want is in stock on Sephora PH.",
       "Patch test skincare on a small area before full use.",
-      "Confirm the return policy — opened beauty products are generally non-returnable.",
+      "Confirm the return policy, opened beauty products are generally non-returnable.",
       "Check official product details and claims on Sephora PH before buying.",
     ]
   }
@@ -50,8 +50,8 @@ function getBuyerChecklist(deal: { platform: string; category: string }): string
   if (isFashion) {
     return [
       ...base,
-      isTemu ? "Check the size guide in centimeters — Temu clothing and shoes often run smaller than labeled." : "Confirm your size and variant are available.",
-      "Read buyer reviews for fit, material, and quality — look for photos from reviewers.",
+      isTemu ? "Check the size guide in centimeters, Temu clothing and shoes often run smaller than labeled." : "Confirm your size and variant are available.",
+      "Read buyer reviews for fit, material, and quality, look for photos from reviewers.",
       "Confirm return and exchange terms before ordering.",
       "Check dimensions, material, and construction in product photos.",
     ]
@@ -64,32 +64,32 @@ function getBuyerChecklist(deal: { platform: string; category: string }): string
       "Confirm voltage, charging specs, and plug type work in the Philippines.",
       "Read buyer reviews for battery life, durability, and real-world performance.",
       "Confirm what accessories are included in the package.",
-      isTemu ? "Check the estimated delivery date — Temu ships internationally (7–20 business days to PH)." : "Confirm shipping cost and delivery estimate.",
+      isTemu ? "Check the estimated delivery date, Temu ships internationally (7–20 business days to PH)." : "Confirm shipping cost and delivery estimate.",
     ]
   }
 
   if (isHome) {
     return [
       ...base,
-      "Check exact dimensions — confirm the item fits your space before ordering.",
+      "Check exact dimensions, confirm the item fits your space before ordering.",
       "Read buyer reviews with photos for material quality and build.",
       "Confirm whether tools or assembly are required.",
-      isTemu ? "Check the estimated delivery date — Temu ships internationally (7–20 business days to PH)." : "Confirm shipping cost and delivery estimate.",
+      isTemu ? "Check the estimated delivery date, Temu ships internationally (7–20 business days to PH)." : "Confirm shipping cost and delivery estimate.",
       "Check return policy if the item arrives damaged or doesn't fit.",
     ]
   }
 
   return [
     ...base,
-    isTemu ? "Check the size guide if ordering clothing or shoes — Temu sizing often runs smaller than stated." : "Confirm shade, size, or variant availability on Sephora PH.",
+    isTemu ? "Check the size guide if ordering clothing or shoes, Temu sizing often runs smaller than stated." : "Confirm shade, size, or variant availability on Sephora PH.",
     "Read buyer reviews on the partner store for real-world quality and fit.",
-    isTemu ? "Check the estimated delivery date — Temu ships internationally (7–20 business days to PH)." : "Confirm shipping cost — free standard shipping on Sephora PH orders ₱1,500+.",
+    isTemu ? "Check the estimated delivery date, Temu ships internationally (7–20 business days to PH)." : "Confirm shipping cost, free standard shipping on Sephora PH orders ₱1,500+.",
     "Check if the product dimensions, materials, or specs match your needs.",
     "Read the return and refund policy before completing your purchase.",
   ]
 }
 
-// Honest, category-based guidance — helps a buyer self-select (no invented claims).
+// Honest, category-based guidance, helps a buyer self-select (no invented claims).
 function getBestForSkipIf(deal: { category: string }): { bestFor: string[]; skipIf: string[] } {
   const cat = deal.category.toLowerCase()
   if (["beauty", "skincare", "makeup", "fragrance"].some((c) => cat.includes(c)))
@@ -110,7 +110,7 @@ function getBestForSkipIf(deal: { category: string }): { bestFor: string[]; skip
   if (["fashion", "clothing", "shoes", "accessories"].some((c) => cat.includes(c)))
     return {
       bestFor: ["Everyday wear and a budget wardrobe refresh", "Accessories where exact fit matters less", "Casual, low-risk style picks"],
-      skipIf: ["You need exact sizing — check the size guide first", "You need premium fabric or materials", "You're buying for a formal occasion"],
+      skipIf: ["You need exact sizing, check the size guide first", "You need premium fabric or materials", "You're buying for a formal occasion"],
     }
   if (cat.includes("travel"))
     return {
@@ -137,8 +137,8 @@ export async function generateMetadata({
   if (!deal) return {}
   const discountText = deal.discount > 0 ? `${deal.discount}% off. ` : ""
   return {
-    title: `${deal.title} — ${deal.platform} Deal`,
-    description: clampMeta(`${discountText}${deal.reason} SulitScore ${deal.sulitScore}/10 — confirm the price on ${deal.platform} before buying.`),
+    title: `${deal.title}, ${deal.platform} Deal`,
+    description: clampMeta(`${discountText}${deal.reason} SulitScore ${deal.sulitScore}/10, confirm the price on ${deal.platform} before buying.`),
     alternates: { canonical: `${siteConfig.url}/deals/${slug}` },
     openGraph: {
       title: `${deal.title} | SulitScan PH`,
@@ -237,7 +237,7 @@ export default async function DealDetailPage({
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold border mb-4 ${getSulitScoreBg(deal.sulitScore)}`}
             >
               <Star className="w-4 h-4 fill-current" aria-hidden="true" />
-              SulitScore {deal.sulitScore}/10 — {getSulitScoreLabel(deal.sulitScore)}
+              SulitScore {deal.sulitScore}/10 Â· {getSulitScoreLabel(deal.sulitScore)}
             </div>
 
             {/* Why picked */}
@@ -295,7 +295,7 @@ export default async function DealDetailPage({
             </ExternalAffiliateLink>
 
             <p className="mt-2 text-xs text-center text-slate-400">
-              Affiliate link — SulitScan may earn a commission at no extra cost to you.{" "}
+              Affiliate link: SulitScan may earn a commission at no extra cost to you.{" "}
               <Link href="/affiliate-disclosure" className="underline">Learn more</Link>
             </p>
           </div>
@@ -303,7 +303,7 @@ export default async function DealDetailPage({
 
         {/* Buyer checklist */}
         <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 mb-10">
-          <h2 className="text-base font-bold text-slate-900 mb-4">Before you buy — checklist</h2>
+          <h2 className="text-base font-bold text-slate-900 mb-4">Before you buy: checklist</h2>
           <ul className="space-y-2.5" role="list">
             {getBuyerChecklist(deal).map((item, idx) => (
               <li key={idx} className="flex items-start gap-2.5">

@@ -4,6 +4,8 @@ import Link from "next/link"
 import dynamic from "next/dynamic"
 import { motion } from "framer-motion"
 import { ShoppingBag, ArrowRight, CheckCircle } from "lucide-react"
+import { stores } from "@/data/stores"
+import { categories } from "@/data/categories"
 
 const DealScannerVisual = dynamic(() => import("./DealScannerVisual"), {
   ssr: false,
@@ -23,10 +25,10 @@ const trustItems = [
 ]
 
 const stats = [
-  { value: "2",    label: "Partner Stores",  color: "text-green-600" },
-  { value: "100+", label: "Curated Deals",   color: "text-slate-900" },
-  { value: "7",    label: "Categories",      color: "text-slate-900" },
-  { value: "₱0",  label: "Cost to You",     color: "text-amber-600" },
+  { value: String(stores.length),                          label: "Partner Stores", color: "text-green-600" },
+  { value: "100+",                                          label: "Curated Deals",  color: "text-slate-900" },
+  { value: String(categories.filter((c) => c.featured).length), label: "Categories", color: "text-slate-900" },
+  { value: "₱0",                                           label: "Cost to You",    color: "text-amber-600" },
 ]
 
 export default function Hero() {
@@ -93,8 +95,8 @@ export default function Hero() {
               className="text-lg sm:text-xl text-slate-500 leading-relaxed mb-9 max-w-lg"
             >
               Curated online deals and shopping guides for Filipino shoppers.
-              Currently covering selected Temu and Sephora PH deals — more stores
-              may be added after review.
+              Currently covering selected Temu, Shopee PH, and Sephora PH deals.
+              More stores may be added after review.
             </motion.p>
 
             {/* CTAs */}

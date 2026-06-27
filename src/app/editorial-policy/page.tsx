@@ -7,7 +7,7 @@ import { ShieldCheck, FileText, RefreshCw, Tag, AlertCircle } from "lucide-react
 export const metadata: Metadata = {
   title: { absolute: "Editorial Policy | SulitScan PH" },
   description:
-    "How SulitScan PH selects, reviews, and publishes deal notes and shopping guides — our standards for accuracy, affiliate disclosure, and buyer fairness.",
+    "How SulitScan PH selects, reviews, and publishes deal notes and shopping guides, our standards for accuracy, affiliate disclosure, and buyer fairness.",
   alternates: { canonical: `${siteConfig.url}/editorial-policy` },
 }
 
@@ -18,14 +18,14 @@ const sections = [
     body: [
       "SulitScan PH publishes deal notes sourced from affiliate datafeeds and manual research. We do not accept payment to feature deals or promote specific products.",
       "Deals are selected based on discount percentage, SulitScore (a composite value rating), and relevance to Filipino shoppers. We prioritise deals with verifiable price history and clear buyer reminders.",
-      "We currently focus on two partner stores — Temu and Sephora PH — where we have affiliate arrangements. We do not feature stores we cannot disclose commercially.",
+      "We currently feature three partner stores: Temu, Shopee PH, and Sephora PH, where we have affiliate arrangements. We do not feature stores we cannot disclose commercially.",
     ],
   },
   {
     icon: Tag,
     title: "Affiliate relationships",
     body: [
-      "SulitScan PH participates in affiliate programmes. When you click a partner link and make a purchase, we may earn a small commission — at no extra cost to you.",
+      "SulitScan PH participates in affiliate programmes. When you click a partner link and make a purchase, we may earn a small commission, at no extra cost to you.",
       "All affiliate links are labelled and use rel=\"sponsored nofollow noopener noreferrer\". Every deal page includes an affiliate disclosure notice.",
       "Our editorial decisions are not influenced by affiliate commission rates. If a deal scores poorly on buyer reminders or value, we do not feature it.",
     ],
@@ -43,7 +43,7 @@ const sections = [
     icon: FileText,
     title: "Shopping guides and blog posts",
     body: [
-      "Shopping guides on SulitScan PH are written to help Filipino shoppers make more informed purchasing decisions. They include buyer tips, category overviews, and general guidance — not product endorsements.",
+      "Shopping guides on SulitScan PH are written to help Filipino shoppers make more informed purchasing decisions. They include buyer tips, category overviews, and general guidance, not product endorsements.",
       "We do not publish fake reviews, fabricated testimonials, or artificial urgency (e.g. fake countdowns, fake stock levels). All content is written or reviewed by the SulitScan editorial team.",
       "Where guides reference specific products or stores, those references may be connected to affiliate relationships that are clearly disclosed.",
     ],
@@ -79,7 +79,7 @@ export default function EditorialPolicyPage() {
             Editorial Policy
           </h1>
           <p className="text-slate-500 text-sm leading-relaxed max-w-xl">
-            SulitScan PH is a neutral shopping assistant — not a seller, not an endorser.
+            SulitScan PH is a neutral shopping assistant, not a seller, not an endorser.
             This page explains how we select deals, disclose affiliate relationships, and maintain
             accuracy across our content.
           </p>

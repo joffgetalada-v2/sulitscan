@@ -3,7 +3,7 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import { BreadcrumbJsonLd, ItemListJsonLd, FAQJsonLd } from "@/components/SeoJsonLd"
 import { categories, getCategoryBySlug } from "@/data/categories"
-import { getDealsByCategory } from "@/data/deals"
+import { getDealsByCategory, isSuspiciousDiscount } from "@/data/deals"
 import { categoryContent } from "@/data/category-content"
 import CategoryDeals from "@/components/CategoryDeals"
 import TopPicks from "@/components/TopPicks"
@@ -29,7 +29,7 @@ export async function generateMetadata({
     title: `${category.name} Deals Philippines`,
     description: clampMeta(
       content?.intro ??
-        `${category.description} Browse ${category.name.toLowerCase()} deals from Temu and Sephora PH on SulitScan PH.`
+        `${category.description} Browse ${category.name.toLowerCase()} deals from Temu, Shopee PH, and Sephora PH on SulitScan PH.`
     ),
     alternates: { canonical: `${siteConfig.url}/categories/${slug}` },
     openGraph: {
@@ -51,9 +51,13 @@ export default async function CategoryPage({
 
   const categoryDeals = getDealsByCategory(slug)
   const content = categoryContent[slug]
-  // Top picks: highest SulitScore, then biggest discount — capped at 8.
+  // Top picks: highest SulitScore, then biggest discount, capped at 8. Suspiciously
+  // large discounts (80%+) are excluded so Top Picks stays curated and low-risk.
   const topPicks = categoryDeals.length > 8
-    ? [...categoryDeals].sort((a, b) => b.sulitScore - a.sulitScore || b.discount - a.discount).slice(0, 8)
+    ? [...categoryDeals]
+        .filter((d) => !isSuspiciousDiscount(d))
+        .sort((a, b) => b.sulitScore - a.sulitScore || b.discount - a.discount)
+        .slice(0, 8)
     : []
 
   return (
@@ -122,7 +126,7 @@ export default async function CategoryPage({
           <TopPicks
             headingId="top-picks-heading"
             title={`Top picks in ${category.name}`}
-            subtitle="Our highest-scoring, lowest-risk options in this category — confirm the price on the partner store before buying."
+            subtitle="Our highest-scoring, lowest-risk options in this category, confirm the price on the partner store before buying."
             deals={topPicks}
           />
         )}
@@ -236,11 +240,15 @@ export default async function CategoryPage({
                 <div className="space-y-2">
                   <Link href="/stores/temu" className="flex items-center gap-2 text-xs text-slate-600 hover:text-green-700 transition-colors">
                     <span className="w-5 h-5 rounded-md bg-orange-100 flex items-center justify-center text-[10px] font-bold text-orange-600" aria-hidden="true">T</span>
-                    Temu — budget finds
+                    Temu, budget finds
+                  </Link>
+                  <Link href="/stores/shopee-ph" className="flex items-center gap-2 text-xs text-slate-600 hover:text-green-700 transition-colors">
+                    <span className="w-5 h-5 rounded-md bg-orange-500 flex items-center justify-center text-[10px] font-bold text-white" aria-hidden="true">S</span>
+                    Shopee PH, marketplace finds
                   </Link>
                   <Link href="/stores/sephora-ph" className="flex items-center gap-2 text-xs text-slate-600 hover:text-green-700 transition-colors">
                     <span className="w-5 h-5 rounded-md bg-slate-800 flex items-center justify-center text-[10px] font-bold text-white" aria-hidden="true">S</span>
-                    Sephora PH — beauty
+                    Sephora PH, beauty
                   </Link>
                 </div>
               </div>
@@ -252,7 +260,7 @@ export default async function CategoryPage({
         {categoryDeals.length > 0 ? (
           <section aria-labelledby="deals-section-heading">
             <h2 id="deals-section-heading" className="text-lg font-bold text-slate-900 mb-5">
-              {category.name} deals — {categoryDeals.length} available
+              {category.name} deals, {categoryDeals.length} available
             </h2>
             <CategoryDeals deals={categoryDeals} />
           </section>

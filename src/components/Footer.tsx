@@ -22,8 +22,8 @@ const footerLinks = {
   ],
 }
 
-const activePlatforms = ["Temu", "Sephora PH"]
-const comingSoonPlatforms = ["Shopee", "Lazada", "AliExpress"]
+const activePlatforms = ["Temu", "Shopee PH", "Sephora PH"]
+const comingSoonPlatforms = ["Lazada", "AliExpress"]
 
 export default function Footer() {
   return (
@@ -34,7 +34,7 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 text-center">
           <p className="text-xs text-amber-800">
             <strong>Affiliate Disclosure:</strong> SulitScan PH earns a small commission when you
-            click affiliate links and make a purchase — at no extra cost to you. We only feature
+            click affiliate links and make a purchase, at no extra cost to you. We only feature
             deals we believe offer genuine value.{" "}
             <Link
               href="/affiliate-disclosure"
@@ -55,7 +55,7 @@ export default function Footer() {
                 The smarter way to shop online
               </p>
               <p className="text-2xl font-black text-white leading-tight">
-                SulitScan PH — your deal intelligence layer.
+                SulitScan PH, your deal intelligence layer.
               </p>
             </div>
             <Link
@@ -77,7 +77,7 @@ export default function Footer() {
             <Logo dark size="md" className="mb-4" />
             <p className="text-sm text-slate-400 leading-relaxed max-w-xs mb-4">
               SulitScan PH helps Filipino shoppers find curated online deals, compare value,
-              and shop smarter — without the fake urgency.
+              and shop smarter, without the fake urgency.
             </p>
 
             {/* Contact */}

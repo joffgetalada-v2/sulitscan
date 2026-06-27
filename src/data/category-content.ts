@@ -13,7 +13,7 @@ export const categoryContent: Record<string, CategoryContent> = {
   "under-500": {
     slug: "under-500",
     intro:
-      "Shopping on a budget in the Philippines doesn't mean settling for low quality — it means knowing which categories consistently deliver value under ₱500. From Temu home organizers to Sephora PH skincare samples, there are genuinely useful finds in this price range. The key is knowing what to look for and what to avoid. This guide covers the best categories for under ₱500 deals, what to check before buying, and common traps that make a seemingly cheap purchase a poor one.",
+      "Shopping on a budget in the Philippines doesn't mean settling for low quality. It means knowing which categories consistently deliver value under ₱500. From Temu home organizers to Shopee PH desk, bag, and travel finds, there are genuinely useful items in this price range. The key is knowing what to look for and what to avoid. This guide covers the best categories for under ₱500 deals, what to check before buying, and common traps that make a seemingly cheap purchase a poor one.",
     bestFor: [
       "Temu home organizers, cable holders, and kitchen gadgets priced under ₱300",
       "Beauty basics and travel-size skincare from Sephora PH under ₱500",
@@ -63,7 +63,7 @@ export const categoryContent: Record<string, CategoryContent> = {
       },
     ],
     relatedCategories: ["under-1000", "home-finds", "beauty"],
-    relatedBlogSlugs: ["temu-shopping-guide-philippines", "how-to-spot-fake-discounts"],
+    relatedBlogSlugs: ["best-shopee-finds-under-500-philippines", "temu-shopping-guide-philippines", "how-to-spot-fake-discounts"],
   },
 
   "under-1000": {
@@ -180,7 +180,7 @@ export const categoryContent: Record<string, CategoryContent> = {
   "home-finds": {
     slug: "home-finds",
     intro:
-      "Home finds on Temu cover a surprisingly wide range — from kitchen organizers and drawer dividers to outdoor tools and LED lighting. For Filipino shoppers setting up a home, renting an apartment, or looking for practical upgrades without Shopee or SM prices, Temu's home category is worth exploring — with the right expectations. This guide covers what works, what to avoid, and how to check dimensions and quality before buying.",
+      "Home finds on SulitScan cover a surprisingly wide range, from kitchen organizers and drawer dividers to outdoor tools and LED lighting. For Filipino shoppers setting up a home, renting an apartment, or looking for practical upgrades without mall markups, the Temu and Shopee PH home selections are worth exploring with the right expectations. This guide covers what works, what to avoid, and how to check dimensions and quality before buying.",
     bestFor: [
       "Kitchen organizers, rack systems, drawer dividers, and storage containers",
       "Cable management: cord clips, velcro ties, cable boxes, and power strip holders",
@@ -230,13 +230,13 @@ export const categoryContent: Record<string, CategoryContent> = {
       },
     ],
     relatedCategories: ["under-500", "under-1000", "tech-deals"],
-    relatedBlogSlugs: ["temu-shopping-guide-philippines"],
+    relatedBlogSlugs: ["best-shopee-finds-under-500-philippines", "temu-shopping-guide-philippines"],
   },
 
   "tech-deals": {
     slug: "tech-deals",
     intro:
-      "Tech and gadget deals on Temu can be genuinely useful — especially for accessories, cables, phone mounts, and basic tools. But electronics at very low prices require more careful checking than other categories. This guide covers the tech deals worth considering for Filipino buyers, how to verify specifications before ordering, and which tech items to avoid buying from international budget marketplaces.",
+      "Tech and gadget deals on Temu and Shopee PH can be genuinely useful, especially for accessories, cables, phone mounts, tripods, and basic tools. But electronics at very low prices require more careful checking than other categories. This guide covers the tech deals worth considering for Filipino buyers, how to verify specifications before ordering, and which tech items to avoid buying from budget marketplaces.",
     bestFor: [
       "Phone accessories: cases, screen protectors, holders, and selfie sticks",
       "Cable and charging accessories: USB-C cables, multi-port hubs, short charging cables",
@@ -286,13 +286,13 @@ export const categoryContent: Record<string, CategoryContent> = {
       },
     ],
     relatedCategories: ["under-1000", "home-finds"],
-    relatedBlogSlugs: ["temu-shopping-guide-philippines"],
+    relatedBlogSlugs: ["best-shopee-finds-under-500-philippines", "temu-shopping-guide-philippines"],
   },
 
   "fashion": {
     slug: "fashion",
     intro:
-      "Temu's fashion category covers everything from casual basics to seasonal styles — all at very low prices. For Filipino buyers shopping on a budget, Temu clothing can be a reasonable option for everyday wear, home loungewear, or seasonal pieces you don't expect to use long-term. The critical thing is understanding the sizing, material quality expectations, and return process before committing to a purchase.",
+      "The fashion category covers everything from casual basics to seasonal styles and everyday bags, all at very low prices from Temu and Shopee PH. For Filipino buyers shopping on a budget, this can be a reasonable option for everyday wear, home loungewear, or bags and accessories you want to try without overspending. The critical thing is understanding the sizing, material quality expectations, and return process before committing to a purchase.",
     bestFor: [
       "Basic everyday pieces: plain tees, casual shorts, leggings, and basic tops",
       "Loungewear and sleepwear where fit tolerances are more forgiving",
@@ -341,13 +341,13 @@ export const categoryContent: Record<string, CategoryContent> = {
       },
     ],
     relatedCategories: ["under-500", "under-1000", "gift-ideas"],
-    relatedBlogSlugs: ["temu-shopping-guide-philippines"],
+    relatedBlogSlugs: ["best-shopee-finds-under-500-philippines", "temu-shopping-guide-philippines"],
   },
 
   "gift-ideas": {
     slug: "gift-ideas",
     intro:
-      "Finding gifts online in the Philippines is tricky — you need something that looks and feels presentable, ships on time, and won't disappoint when unwrapped. SulitScan's gift ideas category features only deals with a SulitScore of 8 and above, which means they've passed checks on discount authenticity, store reliability, and buyer review signals. This guide covers what makes a good online gift, how to choose safely, and practical tips for gifting from Temu and Sephora PH.",
+      "Finding gifts online in the Philippines is tricky. You need something that looks and feels presentable, ships on time, and won't disappoint when unwrapped. SulitScan's gift ideas category features only deals with a SulitScore of 8 and above, which means they've passed checks on discount authenticity, store reliability, and buyer review signals. This guide covers what makes a good online gift, how to choose safely, and practical tips for gifting from Temu, Shopee PH, and Sephora PH.",
     bestFor: [
       "Sephora PH beauty gift sets and skincare bundles — practical, well-packaged gifts for friends and family",
       "Temu home accessories and organizers as practical gifts for new homeowners",
@@ -397,5 +397,50 @@ export const categoryContent: Record<string, CategoryContent> = {
     ],
     relatedCategories: ["beauty", "fashion", "under-1000"],
     relatedBlogSlugs: ["sephora-ph-beauty-guide", "how-sulitscan-checks-deals"],
+  },
+
+  "travel": {
+    slug: "travel",
+    intro:
+      "Travel finds on SulitScan focus on the small, practical things that keep a trip organized: toiletry bags, packing pouches, and zippered organizers from Shopee PH. These are cheap, genuinely handy, and forgiving to buy because they do not depend on exact sizing. The goal of this category is simple, useful gear that stops a bag from turning into a black hole, not heavy-duty luggage. This guide covers what is worth buying, what to check before you order, and the mistakes to avoid.",
+    bestFor: [
+      "Toiletry bags and hanging wash bags for trips",
+      "Packing pouches and zippered organizers for clothes and cables",
+      "Small quilted or aesthetic pouches for daily carry",
+      "Lightweight organizers that keep a bag tidy without adding bulk",
+      "Low-stakes, under a few hundred pesos travel accessories",
+    ],
+    whatToCheck: [
+      "Confirm the dimensions in centimeters. Pouches often look larger in listing photos than they are.",
+      "Check the material and water-resistance claims against buyer photos, not just the listing render.",
+      "Do not expect heavy-duty zippers at this price. Read reviews that mention the zipper and stitching.",
+      "Add up the final cost after vouchers and shipping before deciding.",
+      "Check the seller rating and return terms on Shopee before buying.",
+    ],
+    commonMistakes: [
+      "Buying on the styled listing photo alone. The buyer photos show what actually ships.",
+      "Assuming a cheap pouch is waterproof. Treat water-resistance claims as water-resistant, not waterproof.",
+      "Ignoring the dimensions and ending up with a pouch too small for the job.",
+      "Skipping the return terms on a low-value item where return shipping can cost more than the refund.",
+    ],
+    faqs: [
+      {
+        question: "Are Shopee travel pouches worth buying?",
+        answer:
+          "For organizing a bag, usually yes. Toiletry bags, packing pouches, and zippered organizers are cheap and practical. Just keep expectations realistic on zipper quality and water-resistance, and read reviews with real buyer photos first.",
+      },
+      {
+        question: "What should I check before buying a travel pouch?",
+        answer:
+          "Confirm the dimensions in centimeters, check the material against buyer photos, read reviews that mention the zipper and stitching, and add up the final price after vouchers and shipping. Prefer sellers with solid ratings.",
+      },
+      {
+        question: "Does SulitScan sell these travel items?",
+        answer:
+          "No. SulitScan is a shopping guide. We point you to listings on Shopee, and you buy directly from the seller. Always confirm the current price, seller details, and return terms on Shopee before buying.",
+      },
+    ],
+    relatedCategories: ["under-500", "home-finds", "fashion"],
+    relatedBlogSlugs: ["best-shopee-finds-under-500-philippines", "online-shopping-safety-tips-philippines"],
   },
 }
