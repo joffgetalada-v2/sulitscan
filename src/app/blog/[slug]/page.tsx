@@ -4,7 +4,10 @@ import Link from "next/link"
 import Image from "next/image"
 import { Clock, ArrowLeft, Tag, BookOpen, List } from "lucide-react"
 import { BreadcrumbJsonLd, BlogPostingJsonLd } from "@/components/SeoJsonLd"
+import DealCard from "@/components/DealCard"
+import ImportTaxCallout from "@/components/ImportTaxCallout"
 import { posts, getPostBySlug } from "@/data/posts"
+import { getDealsByPlatform, getDealsByCategory, getFeaturedDeals } from "@/data/deals"
 import { siteConfig } from "@/lib/seo"
 import { formatDate, formatTag, clampMeta } from "@/lib/utils"
 
@@ -87,6 +90,17 @@ export default async function BlogPostPage({
   const postUrl = `${siteConfig.url}/blog/${slug}`
   const headings = extractHeadings(post.content)
   const relatedPosts = posts.filter((p) => p.slug !== slug).slice(0, 3)
+
+  // Match a few relevant deals to the post's topic (blog -> money-page flow).
+  const topic = `${slug} ${post.tags.join(" ")}`.toLowerCase()
+  const relatedDeals = (
+    /sephora|beauty|skincare|makeup/.test(topic) ? getDealsByPlatform("Sephora PH")
+    : /under-500|budget/.test(topic) ? getDealsByCategory("under-500")
+    : /temu/.test(topic) ? getDealsByPlatform("Temu")
+    : getFeaturedDeals(3)
+  ).slice(0, 3)
+  // ImportTaxPH is relevant on overseas/Temu/shipping guides (not on the import-tax post itself).
+  const showImportTax = /temu|shipping|overseas|aliexpress/.test(topic) && !slug.includes("import-tax")
 
   return (
     <>
@@ -283,12 +297,36 @@ export default async function BlogPostPage({
               </div>
             </div>
 
+            {/* Import-tax callout for overseas / Temu guides */}
+            {showImportTax && (
+              <div className="mt-8">
+                <ImportTaxCallout />
+              </div>
+            )}
+
             {/* Affiliate note */}
             <div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800">
               <strong>Affiliate Disclosure:</strong> Links in this article may be affiliate links. SulitScan
               earns a commission if you buy — at no extra cost to you.{" "}
               <Link href="/affiliate-disclosure" className="underline">Learn more</Link>
             </div>
+
+            {/* Related deals to check */}
+            {relatedDeals.length > 0 && (
+              <section aria-labelledby="related-deals-heading" className="mt-10">
+                <h2 id="related-deals-heading" className="text-base font-bold text-slate-900 mb-1">
+                  Related deals to check
+                </h2>
+                <p className="text-xs text-slate-400 mb-4">
+                  Confirm the current price, vouchers, and shipping on the partner store before buying.
+                </p>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  {relatedDeals.map((d) => (
+                    <DealCard key={d.id} deal={d} />
+                  ))}
+                </div>
+              </section>
+            )}
 
             {/* Related posts */}
             {relatedPosts.length > 0 && (

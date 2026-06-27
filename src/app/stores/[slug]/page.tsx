@@ -9,6 +9,7 @@ import { getDealsByPlatform } from "@/data/deals"
 import { siteConfig } from "@/lib/seo"
 import { clampMeta } from "@/lib/utils"
 import StoreDeals from "@/components/StoreDeals"
+import ImportTaxCallout from "@/components/ImportTaxCallout"
 
 export function generateStaticParams() {
   return stores.map((s) => ({ slug: s.slug }))
@@ -169,6 +170,9 @@ export default async function StoreDetailPage({
                 </div>
               </div>
             )}
+
+            {/* Overseas import-tax callout (Temu ships internationally) */}
+            {slug === "temu" && <ImportTaxCallout />}
 
             {/* Deals */}
             <section aria-labelledby="store-deals-heading">

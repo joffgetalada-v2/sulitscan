@@ -6,6 +6,8 @@ import { categories, getCategoryBySlug } from "@/data/categories"
 import { getDealsByCategory } from "@/data/deals"
 import { categoryContent } from "@/data/category-content"
 import CategoryDeals from "@/components/CategoryDeals"
+import TopPicks from "@/components/TopPicks"
+import TrustBar from "@/components/TrustBar"
 import { siteConfig } from "@/lib/seo"
 import { formatDealCount, clampMeta } from "@/lib/utils"
 import { ArrowLeft, CheckCircle, BookOpen, AlertCircle } from "lucide-react"
@@ -49,6 +51,10 @@ export default async function CategoryPage({
 
   const categoryDeals = getDealsByCategory(slug)
   const content = categoryContent[slug]
+  // Top picks: highest SulitScore, then biggest discount — capped at 8.
+  const topPicks = categoryDeals.length > 8
+    ? [...categoryDeals].sort((a, b) => b.sulitScore - a.sulitScore || b.discount - a.discount).slice(0, 8)
+    : []
 
   return (
     <>
@@ -108,6 +114,18 @@ export default async function CategoryPage({
             <Link href="/affiliate-disclosure" className="underline font-medium">Affiliate disclosure →</Link>
           </p>
         </div>
+
+        <TrustBar className="mb-8" />
+
+        {/* Top Picks */}
+        {topPicks.length > 0 && (
+          <TopPicks
+            headingId="top-picks-heading"
+            title={`Top picks in ${category.name}`}
+            subtitle="Our highest-scoring, lowest-risk options in this category — confirm the price on the partner store before buying."
+            deals={topPicks}
+          />
+        )}
 
         {/* SEO intro content */}
         {content && (

@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
-import { ExternalLink, ArrowLeft, Clock, Star, Tag, ShieldCheck, AlertCircle } from "lucide-react"
+import { ExternalLink, ArrowLeft, Clock, Star, Tag, ShieldCheck, AlertCircle, CheckCircle, MinusCircle } from "lucide-react"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
 import { getActiveDeals, getDealBySlug, getFeaturedDeals } from "@/data/deals"
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
@@ -87,6 +87,40 @@ function getBuyerChecklist(deal: { platform: string; category: string }): string
     "Check if the product dimensions, materials, or specs match your needs.",
     "Read the return and refund policy before completing your purchase.",
   ]
+}
+
+// Honest, category-based guidance — helps a buyer self-select (no invented claims).
+function getBestForSkipIf(deal: { category: string }): { bestFor: string[]; skipIf: string[] } {
+  const cat = deal.category.toLowerCase()
+  if (["beauty", "skincare", "makeup", "fragrance"].some((c) => cat.includes(c)))
+    return {
+      bestFor: ["Basic beauty routines and everyday tools", "Trying a product before a full-size buy", "Giftable beauty picks"],
+      skipIf: ["You have sensitive skin and can't patch test first", "You need verified authenticity for a specific brand", "You can't confirm the return policy"],
+    }
+  if (["electronics", "tech", "gadgets"].some((c) => cat.includes(c)))
+    return {
+      bestFor: ["Work-from-home and desk setups", "Everyday phone, cable, and accessory needs", "Low-stakes upgrades on a budget"],
+      skipIf: ["You need manufacturer warranty support", "You need verified brand authenticity", "You need it delivered urgently"],
+    }
+  if (["home", "kitchen", "outdoor"].some((c) => cat.includes(c)))
+    return {
+      bestFor: ["Small spaces and home organization", "Budget upgrades for everyday use", "Practical, non-critical household items"],
+      skipIf: ["You need premium materials or heavy-duty build", "You haven't measured your space yet", "You need exact color matching"],
+    }
+  if (["fashion", "clothing", "shoes", "accessories"].some((c) => cat.includes(c)))
+    return {
+      bestFor: ["Everyday wear and a budget wardrobe refresh", "Accessories where exact fit matters less", "Casual, low-risk style picks"],
+      skipIf: ["You need exact sizing — check the size guide first", "You need premium fabric or materials", "You're buying for a formal occasion"],
+    }
+  if (cat.includes("travel"))
+    return {
+      bestFor: ["Travel packing and organization", "Lightweight, giftable everyday items", "Keeping bags and toiletries tidy"],
+      skipIf: ["You need heavy-duty, long-haul durability", "You need it before an imminent trip", "You need premium materials"],
+    }
+  return {
+    bestFor: ["Practical, everyday use", "Budget-conscious shoppers", "Simple, giftable picks"],
+    skipIf: ["You need warranty or after-sales support", "You need exact sizing or premium materials", "You can't confirm return terms"],
+  }
 }
 
 export function generateStaticParams() {
@@ -253,10 +287,10 @@ export default async function DealDetailPage({
             <ExternalAffiliateLink
               href={deal.affiliateLink}
               platform={deal.platform}
-              aria-label={`View this deal on ${deal.platform} (affiliate link, opens in new tab)`}
+              aria-label={`Check the current price on ${deal.platform} (affiliate link, opens in new tab)`}
               className="flex items-center justify-center gap-2 w-full py-3.5 px-6 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-md hover:shadow-green-200 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >
-              View Deal on {deal.platform}
+              Check Price on {deal.platform}
               <ExternalLink className="w-4 h-4" aria-hidden="true" />
             </ExternalAffiliateLink>
 
@@ -281,6 +315,43 @@ export default async function DealDetailPage({
             ))}
           </ul>
         </div>
+
+        {/* Best for / Skip if */}
+        {(() => {
+          const { bestFor, skipIf } = getBestForSkipIf(deal)
+          return (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-10">
+              <div className="bg-green-50 border border-green-100 rounded-2xl p-5">
+                <h2 className="text-sm font-bold text-green-900 mb-3 flex items-center gap-2">
+                  <CheckCircle className="w-4 h-4 text-green-600 shrink-0" aria-hidden="true" />
+                  Best for
+                </h2>
+                <ul className="space-y-2" role="list">
+                  {bestFor.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0 mt-1.5" aria-hidden="true" />
+                      <span className="text-xs text-green-800 leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-amber-50 border border-amber-100 rounded-2xl p-5">
+                <h2 className="text-sm font-bold text-amber-900 mb-3 flex items-center gap-2">
+                  <MinusCircle className="w-4 h-4 text-amber-600 shrink-0" aria-hidden="true" />
+                  Skip if
+                </h2>
+                <ul className="space-y-2" role="list">
+                  {skipIf.map((item, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0 mt-1.5" aria-hidden="true" />
+                      <span className="text-xs text-amber-800 leading-relaxed">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          )
+        })()}
 
         {/* Related deals */}
         {relatedDeals.length > 0 && (
