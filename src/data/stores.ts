@@ -12,6 +12,9 @@ export interface Store {
   gradient: string
   /** Optional wide store banner used as the card header (falls back to the gradient). */
   bannerImage?: string
+  /** Intrinsic banner dimensions for correct aspect ratio (defaults to 1811x412). */
+  bannerWidth?: number
+  bannerHeight?: number
   /**
    * External store link (store homepage). Optional: stores reached only through
    * per-product affiliate links (e.g. Shopee PH) have no store-level link, so we
@@ -96,6 +99,9 @@ export const stores: Store[] = [
     freeShippingMinimum: null,
     trustLevel: "medium",
     gradient: "from-orange-500 to-red-500",
+    bannerImage: "/banners/stores/shopee-ph.jpg",
+    bannerWidth: 1672,
+    bannerHeight: 941,
     relatedGuideSlug: "best-shopee-finds-under-500-philippines",
     isDemo: false,
     buyerNotes: [

@@ -99,8 +99,8 @@ export default async function StoreDetailPage({
             <Image
               src={banner}
               alt={`${store.name} store banner, ${store.tagline}`}
-              width={1811}
-              height={412}
+              width={store.bannerWidth ?? 1811}
+              height={store.bannerHeight ?? 412}
               sizes="(max-width: 1280px) 100vw, 1280px"
               className="w-full h-auto"
               priority

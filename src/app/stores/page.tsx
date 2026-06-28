@@ -96,8 +96,8 @@ export default function StoresPage() {
                   <Image
                     src={store.bannerImage}
                     alt={`${store.name} store banner, ${store.tagline}`}
-                    width={1811}
-                    height={412}
+                    width={store.bannerWidth ?? 1811}
+                    height={store.bannerHeight ?? 412}
                     sizes="(max-width: 640px) 100vw, 50vw"
                     className="w-full h-auto group-hover:opacity-95 transition-opacity"
                     priority
