@@ -5,7 +5,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { ExternalLink, Zap } from "lucide-react"
 import type { Deal } from "@/data/deals"
-import { isSuspiciousDiscount } from "@/data/deals"
+import { isSuspiciousDiscount, SUSPICIOUS_DISCOUNT_NOTE } from "@/data/deals"
 import { formatPrice, formatScore, getSulitScoreBg, getSulitScoreLabel } from "@/lib/utils"
 
 interface DealCardProps {
@@ -129,7 +129,7 @@ export default function DealCard({ deal }: DealCardProps) {
         {/* Risk note for suspiciously large listed discounts */}
         {suspicious && (
           <p className="text-[10px] text-amber-600 leading-relaxed mb-3 -mt-1">
-            Very high listed discount. Compare the final price, reviews, and seller details before buying.
+            {SUSPICIOUS_DISCOUNT_NOTE}
           </p>
         )}
 

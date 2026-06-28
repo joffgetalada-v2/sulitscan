@@ -7,7 +7,7 @@ import { BreadcrumbJsonLd, BlogPostingJsonLd, FAQJsonLd } from "@/components/Seo
 import DealCard from "@/components/DealCard"
 import ImportTaxCallout from "@/components/ImportTaxCallout"
 import { posts, getPostBySlug, DEFAULT_BLOG_COVER, DEFAULT_BLOG_COVER_ALT } from "@/data/posts"
-import { getDealsByPlatform, getDealsByCategory, getFeaturedDeals } from "@/data/deals"
+import { getDealsByPlatform, getDealsByCategory, getFeaturedDeals, isSuspiciousDiscount } from "@/data/deals"
 import { siteConfig } from "@/lib/seo"
 import { formatDate, formatTag, clampMeta } from "@/lib/utils"
 
@@ -99,7 +99,7 @@ export default async function BlogPostPage({
     : /under-500|budget/.test(topic) ? getDealsByCategory("under-500")
     : /temu/.test(topic) ? getDealsByPlatform("Temu")
     : getFeaturedDeals(3)
-  ).slice(0, 3)
+  ).filter((d) => !isSuspiciousDiscount(d)).slice(0, 3)
   // ImportTaxPH is relevant on overseas/Temu/shipping guides (not on the import-tax post itself).
   const showImportTax = /temu|shipping|overseas|aliexpress/.test(topic) && !slug.includes("import-tax")
 

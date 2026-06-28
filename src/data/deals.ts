@@ -651,7 +651,7 @@ export const deals: Deal[] = [
   {
     id: "deal-035",
     slug: "genuine-leather-slim-wallet-temu",
-    title: "Men's Slim Vertical Wallet – Vintage Card Holder",
+    title: "Men's Slim Vertical Leather-Look Wallet – Vintage Card Holder",
     platform: "Temu",
     platformColor: "#ff6d00",
     category: "Fashion",
@@ -1066,7 +1066,7 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-065", slug: "bullcaptain-leather-crossbody-bag-temu",
-    title: "BULLCAPTAIN Men's Crossbody Bag – Retro Shoulder Bag",
+    title: "BULLCAPTAIN Men's Leather-Look Crossbody Bag – Retro Shoulder Bag",
     platform: "Temu", platformColor: "#ff6d00", category: "Fashion",
     originalPrice: 599, salePrice: 299, discount: 50, sulitScore: 8,
     reason: "Large-capacity leather-look shoulder bag with multiple compartments. Retro styling that works for casual and business. Confirm the material details and seller reviews on the listing before buying.",
@@ -1078,10 +1078,10 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-066", slug: "mens-skeleton-watch-temu",
-    title: "Men's Fully Automatic Skeleton Watch – Transparent Dial, Waterproof, Luminous",
+    title: "Men's Fully Automatic Skeleton Watch – Transparent Dial, Water-Resistant, Luminous",
     platform: "Temu", platformColor: "#ff6d00", category: "Fashion",
     originalPrice: 599, salePrice: 299, discount: 50, sulitScore: 8,
-    reason: "Mechanical skeleton watch with visible movement — high-end business styling. Waterproof and luminous hands. Check buyer reviews for movement quality and water resistance before ordering.",
+    reason: "Mechanical skeleton watch with visible movement and business styling. Water-resistant with luminous hands. Check buyer reviews for movement quality and water resistance before ordering.",
     imageGradient: "from-gray-700 to-zinc-900",
     imageUrl: "https://img.kwcdn.com/product/fancy/f92afc50-3535-4a91-9882-db755b7fc4f5.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1605,7 +1605,7 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-109", slug: "mens-rfid-wallet-chain-genuine-leather-temu",
-    title: "Men's Wallet with Chain – RFID Blocking, Double Zipper, Coin Pocket",
+    title: "Men's Leather-Look Wallet with Chain – RFID Blocking, Double Zipper, Coin Pocket",
     platform: "Temu", platformColor: "#ff6d00", category: "Fashion",
     originalPrice: 499, salePrice: 249, discount: 50, sulitScore: 8,
     reason: "Leather-look bifold with RFID-blocking lining, double zipper compartments, chain attachment, and dedicated coin pocket. At ₱249, compare with similar wallets locally. Confirm the material details in the product photos and listing before ordering.",
@@ -1753,10 +1753,10 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-121", slug: "safety-vest-reflective-9pockets-temu",
-    title: "TCCFCCT Safety Vest 9-Pocket – High-Visibility Reflective, ANSI/ISEA Rated, Yellow",
+    title: "TCCFCCT Safety Vest 9-Pocket – High-Visibility Reflective, Yellow",
     platform: "Temu", platformColor: "#ff6d00", category: "Outdoor",
     originalPrice: 399, salePrice: 199, discount: 50, sulitScore: 8,
-    reason: "ANSI/ISEA-rated high-visibility vest with 9 pockets and reinforced sewing — good for surveyors, construction workers, drivers, and warehouse staff. Confirm ANSI/ISEA rating details in product specs before ordering.",
+    reason: "High-visibility reflective vest with 9 pockets and reinforced sewing, suitable for surveyors, construction workers, drivers, and warehouse staff. Confirm any safety rating or certification details in the product specs before ordering.",
     imageGradient: "from-yellow-400 to-amber-500",
     imageUrl: "https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/803cc8777a53931738134858fc1e7f72.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -3372,7 +3372,7 @@ export const deals: Deal[] = [
   {
     id: "shopee-035",
     slug: "bathroom-waterproof-mobile-phone-box-touch-screen-ba-509973",
-    title: "Waterproof Bathroom Phone Holder Box (Touch Screen)",
+    title: "Water-Resistant Bathroom Phone Holder Box (Touch Screen)",
     platform: "Shopee PH",
     platformColor: "#ee4d2d",
     category: "Electronics",
@@ -3596,6 +3596,10 @@ export const SUSPICIOUS_DISCOUNT = 80
 export function isSuspiciousDiscount(deal: Deal): boolean {
   return deal.discount >= SUSPICIOUS_DISCOUNT
 }
+
+// Shared warning shown wherever a suspicious (80%+) discount is displayed.
+export const SUSPICIOUS_DISCOUNT_NOTE =
+  "Very high listed discounts can reflect inflated original prices. Compare the final price, reviews, and seller details before buying."
 
 // All active deals sorted by discount % descending, only products with images
 export function getActiveDeals(): Deal[] {

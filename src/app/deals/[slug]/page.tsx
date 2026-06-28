@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ExternalLink, ArrowLeft, Clock, Star, Tag, ShieldCheck, AlertCircle, CheckCircle, MinusCircle } from "lucide-react"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
-import { getActiveDeals, getDealBySlug, getFeaturedDeals } from "@/data/deals"
+import { getActiveDeals, getDealBySlug, getFeaturedDeals, isSuspiciousDiscount, SUSPICIOUS_DISCOUNT_NOTE } from "@/data/deals"
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import DealCard from "@/components/DealCard"
 import { siteConfig } from "@/lib/seo"
@@ -157,6 +157,7 @@ export default async function DealDetailPage({
   const deal = getDealBySlug(slug)
   if (!deal) notFound()
 
+  const suspicious = isSuspiciousDiscount(deal)
   const relatedDeals = getFeaturedDeals(4).filter((d) => d.id !== deal.id).slice(0, 3)
 
   return (
@@ -215,29 +216,44 @@ export default async function DealDetailPage({
               {deal.title}
             </h1>
 
-            {/* Price */}
+            {/* Price. A suspiciously high discount (80%+) is softened: no inflated
+                strikethrough, and a neutral "Big listed drop" badge instead of the number. */}
             <div className="flex items-baseline gap-3 mb-4 flex-wrap">
               <span className="text-3xl font-black text-slate-900">
                 {formatPrice(deal.salePrice)}
               </span>
               {deal.discount > 0 && (
-                <>
-                  <span className="text-lg text-slate-400 line-through">
-                    {formatPrice(deal.originalPrice)}
+                suspicious ? (
+                  <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-sm font-bold rounded-full">
+                    Big listed drop
                   </span>
-                  <span className="px-2 py-0.5 bg-green-100 text-green-700 text-sm font-bold rounded-full">
-                    −{deal.discount}%
-                  </span>
-                </>
+                ) : (
+                  <>
+                    <span className="text-lg text-slate-400 line-through">
+                      {formatPrice(deal.originalPrice)}
+                    </span>
+                    <span className="px-2 py-0.5 bg-green-100 text-green-700 text-sm font-bold rounded-full">
+                      −{deal.discount}%
+                    </span>
+                  </>
+                )
               )}
             </div>
+
+            {/* Suspicious-discount warning */}
+            {suspicious && (
+              <div className="flex items-start gap-2 p-3 bg-amber-50 border border-amber-200 rounded-xl mb-4">
+                <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
+                <p className="text-xs text-amber-700 leading-relaxed">{SUSPICIOUS_DISCOUNT_NOTE}</p>
+              </div>
+            )}
 
             {/* SulitScore */}
             <div
               className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-semibold border mb-4 ${getSulitScoreBg(deal.sulitScore)}`}
             >
               <Star className="w-4 h-4 fill-current" aria-hidden="true" />
-              SulitScore {deal.sulitScore}/10 Â· {getSulitScoreLabel(deal.sulitScore)}
+              SulitScore {deal.sulitScore}/10 · {getSulitScoreLabel(deal.sulitScore)}
             </div>
 
             {/* Why picked */}
