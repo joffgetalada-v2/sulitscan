@@ -825,7 +825,7 @@ export const deals: Deal[] = [
     title: "Dual Camera Car Dash Cam 1080P – Front & Interior, Night Vision, Loop Recording",
     platform: "Temu", platformColor: "#ff6d00", category: "Electronics",
     originalPrice: 1099, salePrice: 549, discount: 50, sulitScore: 9,
-    reason: "Records both front windshield AND interior simultaneously, useful for rideshare drivers. Includes G-sensor, motion detection, night vision, and parking monitor. Check installation instructions, compatibility with your car model, and buyer reviews before ordering.",
+    reason: "Records the front windshield and interior at the same time, which can be useful for rideshare drivers. Listed features include a G-sensor, motion detection, low-light recording, and a parking monitor. Low-light video quality varies, so check sample footage in buyer reviews. Confirm installation, compatibility with your car, warranty, seller support, and return terms before buying.",
     imageGradient: "from-slate-700 to-gray-900",
     imageUrl: "https://img.kwcdn.com/product/fancy/5de93493-37e1-4b65-a064-25c95ef4d107.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1486,7 +1486,7 @@ export const deals: Deal[] = [
     title: "40oz Stainless Steel Vacuum Insulated Tumbler with Handle – Hot & Cold, Gradient Color",
     platform: "Temu", platformColor: "#ff6d00", category: "Home",
     originalPrice: 499, salePrice: 249, discount: 50, sulitScore: 9,
-    reason: "Double-wall vacuum insulation for temperature retention, 40oz large capacity with leak-proof lid and handle. Check reviews for lid seal quality and confirm dimensions fit your bag before ordering.",
+    reason: "Double-wall vacuum insulation for temperature retention, 40oz large capacity with a lid and handle. Check reviews for the lid seal quality and water-tightness, and confirm the dimensions fit your bag before ordering.",
     imageGradient: "from-cyan-500 to-teal-700",
     imageUrl: "https://img.kwcdn.com/product/fancy/82243b10-e661-47bc-9dde-63474a605af6.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1825,7 +1825,7 @@ export const deals: Deal[] = [
     salePrice: 2060,
     discount: 0,
     sulitScore: 8,
-    reason: "Lancôme's dual-phase eye makeup remover lifts even waterproof mascara with minimal rubbing. Check the ingredient list for sensitivity and confirm size and price on Sephora PH before buying.",
+    reason: "Lancôme's dual-phase eye makeup remover is designed to remove eye makeup, including waterproof formulas. Check buyer reviews for how it performs, check the ingredient list for sensitivity, and confirm the size and price on Sephora PH before buying.",
     imageGradient: "from-amber-50 to-amber-200",
     imageUrl: "https://static.thcdn.com/productimg/original/11077850-1015330091441129.jpg",
     affiliateLink: "https://invol.co/aff_m?offer_id=101834&aff_id=1060158&source=feed&url=https%3A%2F%2Fwww.sephora.ph%2Fproducts%2Flancome-bi-facil-eye-makeup-remover%2Fv%2Fdefault",
@@ -1882,7 +1882,7 @@ export const deals: Deal[] = [
     salePrice: 620,
     discount: 0,
     sulitScore: 8,
-    reason: "Urban Decay's metallic eyeshadow duo, top reviewed by Sephora PH shoppers. Long-wearing, intensely pigmented shades that deliver bold, editorial-worthy eye looks.",
+    reason: "Urban Decay's metallic eyeshadow duo, well reviewed by Sephora PH shoppers. Highly pigmented, long-wearing shades in versatile colors for everyday or bolder eye looks. Check the shades and finish in buyer photos before buying.",
     imageGradient: "from-stone-800 to-zinc-900",
     imageUrl: "",
     affiliateLink: "https://invol.co/aff_m?offer_id=101834&aff_id=1060158&source=feed&url=https%3A%2F%2Fwww.sephora.ph%2Fproducts%2Furban-decay-grind-house%2Fv%2Fdefault",
@@ -2110,7 +2110,7 @@ export const deals: Deal[] = [
     salePrice: 950,
     discount: 0,
     sulitScore: 8,
-    reason: "Starskin's ultra-luxury bio-cellulose mask delivers intense illumination in 15 minutes, real diamond powder and hyaluronic acid for a glass-skin VIP treatment.",
+    reason: "Starskin's bio-cellulose face mask with diamond powder and hyaluronic acid. Check the official product page for the full ingredient list, and check buyer reviews for visible results, wear time, and skin compatibility before buying.",
     imageGradient: "from-slate-100 to-zinc-300",
     imageUrl: "https://static.thcdn.com/productimg/original/11420432-5034964017456872.jpg",
     affiliateLink: "https://invol.co/aff_m?offer_id=101834&aff_id=1060158&source=feed&url=https%3A%2F%2Fwww.sephora.ph%2Fproducts%2Fstarskin-the-diamond-mask-vip-illuminating-luxury-bio-cellulose-second-skin-face-mask%2Fv%2F1-mask",
@@ -2129,7 +2129,7 @@ export const deals: Deal[] = [
     salePrice: 639,
     discount: 0,
     sulitScore: 7,
-    reason: "Starskin's 2-step camellia oil mask, an oil capsule followed by a sheet mask for serious hydration and brightening in one treatment. Transformative results in 15 minutes.",
+    reason: "Starskin's 2-step camellia mask, an oil capsule followed by a sheet mask aimed at hydration and brightening. Check buyer reviews for visible results, wear time, and skin type compatibility before buying.",
     imageGradient: "from-pink-100 to-pink-300",
     imageUrl: "https://static.thcdn.com/productimg/original/11691111-1274931169169782.jpg",
     affiliateLink: "https://invol.co/aff_m?offer_id=101834&aff_id=1060158&source=feed&url=https%3A%2F%2Fwww.sephora.ph%2Fproducts%2Fstarskin-100-percent-camellia-nourishing-and-brightening-2-step-oil-sheet-mask%2Fv%2F1-capsule-1-mask",
@@ -2260,7 +2260,7 @@ export const deals: Deal[] = [
     salePrice: 848,
     discount: 0,
     sulitScore: 7,
-    reason: "Sephora Collection's illuminating primer creates a radiant base that makes foundation grip better and glow longer, for a lit-from-within, dewy complexion that lasts.",
+    reason: "Sephora Collection's illuminating primer is designed to create a radiant-looking base that helps foundation adhere, with a dewy finish. Check buyer reviews and the official product details on Sephora PH before buying.",
     imageGradient: "from-pink-200 to-orange-200",
     imageUrl: "",
     affiliateLink: "https://invol.co/aff_m?offer_id=101834&aff_id=1060158&source=feed&url=https%3A%2F%2Fwww.sephora.ph%2Fproducts%2Fsephora-collection-perfecting-glow-primer%2Fv%2Fdefault",
@@ -2544,7 +2544,7 @@ export const deals: Deal[] = [
     salePrice: 990,
     discount: 0,
     sulitScore: 8,
-    reason: "Sigma Beauty's E20 short shader packs maximum color payoff with its dense flat shape, ideal for foil-applying or intense eyeshadow that needs to stay exactly where you put it.",
+    reason: "Sigma Beauty's E20 short shader has a dense, flat shape made for eyeshadow application, suited for foil-applying or precise placement. Check buyer reviews for the bristle quality and feel before buying.",
     imageGradient: "from-stone-700 to-gray-800",
     imageUrl: "https://sigmabeauty.com/cdn/shop/files/1080-2026_PDPs_E20_104.jpg?v=1772567711",
     affiliateLink: "https://invol.co/aff_m?offer_id=101834&aff_id=1060158&source=feed&url=https%3A%2F%2Fwww.sephora.ph%2Fproducts%2Fsigma-beauty-e20-short-shader-brush%2Fv%2Fe20-short-shader-brush",
@@ -3610,11 +3610,13 @@ export function isRiskyElectronics(deal: Deal): boolean {
 }
 
 // Risk rank for default ordering (lower sorts first). Extreme discounts are demoted
-// hardest, then other suspicious discounts, then higher-uncertainty electronics.
+// hardest, then other suspicious discounts, then higher-uncertainty electronics, then
+// general electronics, so safe practical (non-electronics) picks lead the list.
 function dealRiskRank(deal: Deal): number {
-  if (deal.discount >= 90) return 3
-  if (isSuspiciousDiscount(deal)) return 2
-  if (isRiskyElectronics(deal)) return 1
+  if (deal.discount >= 90) return 4
+  if (isSuspiciousDiscount(deal)) return 3
+  if (isRiskyElectronics(deal)) return 2
+  if (deal.category === "Electronics") return 1
   return 0
 }
 
