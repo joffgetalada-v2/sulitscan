@@ -545,7 +545,7 @@ export const deals: Deal[] = [
     salePrice: 121,
     discount: 55,
     sulitScore: 8,
-    reason: "Solar-powered, no wiring needed. IP44 waterproof, 1.9M tall, retro tungsten look. Compare the final price and check buyer reviews for solar panel performance before ordering.",
+    reason: "Solar-powered, no wiring needed, 1.9M tall, retro tungsten look. Listed as weather-resistant, so check the water-resistance details before buying. Compare the final price and check buyer reviews for solar panel performance before ordering.",
     imageGradient: "from-amber-500 to-yellow-600",
     imageUrl: "https://img.kwcdn.com/product/fancy/2de9f959-4254-4d26-aab5-312582107a69.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -786,10 +786,10 @@ export const deals: Deal[] = [
   // ── Electronics ──────────────────────────────────────────────────────────────
   {
     id: "deal-042", slug: "smart-watch-fitness-temu",
-    title: "Smart Watch with Full Touch Screen – Calls, Pedometer & Fitness Alerts",
+    title: "Smart Watch with Full Touch Screen – Calls, Step Counter, Basic Wellness Reminders",
     platform: "Temu", platformColor: "#ff6d00", category: "Electronics",
     originalPrice: 699, salePrice: 299, discount: 57, sulitScore: 8,
-    reason: "Full touch screen, answers calls, tracks steps and health alerts. Compatible with iPhone and Android. Check reviews for battery life, strap quality, and long-term accuracy before ordering.",
+    reason: "Full touch screen, answers calls, counts steps, and shows basic wellness reminders. Compatible with iPhone and Android. This is not a medical device, so do not rely on it for health decisions. Check reviews for battery life, compatibility, warranty, seller support, and return terms before buying.",
     imageGradient: "from-blue-600 to-indigo-800",
     imageUrl: "https://img.kwcdn.com/product/fancy/11546db6-0c3e-4a70-8822-301a6d583f40.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -801,7 +801,7 @@ export const deals: Deal[] = [
     title: "EXJ 20000mAh Power Bank 22.5W Fast Charge – USB-C & Dual USB-A",
     platform: "Temu", platformColor: "#ff6d00", category: "Electronics",
     originalPrice: 899, salePrice: 449, discount: 50, sulitScore: 9,
-    reason: "20,000mAh with 22.5W fast charging, USB-C PD + dual USB-A output. LED display shows remaining power. Check reviews for actual charging speed and battery consistency before buying.",
+    reason: "20,000mAh with 22.5W fast charging, USB-C PD and dual USB-A output. LED display shows remaining power. Check reviews for the actual charging speed, battery life, compatibility, warranty, seller support, and return terms before buying.",
     imageGradient: "from-slate-600 to-blue-800",
     imageUrl: "https://img.kwcdn.com/product/fancy/9f48a640-868d-40d3-8534-61fdf415b780.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -837,7 +837,7 @@ export const deals: Deal[] = [
     title: "3-in-1 Fast Wireless Charger Stand – iPhone, Apple Watch & AirPods",
     platform: "Temu", platformColor: "#ff6d00", category: "Electronics",
     originalPrice: 499, salePrice: 249, discount: 50, sulitScore: 9,
-    reason: "Charges iPhone, Apple Watch and AirPods simultaneously from one USB plug. Check compatibility with your specific iPhone and Watch model before ordering, and confirm charging speeds match your expectations.",
+    reason: "Charges iPhone, Apple Watch, and AirPods from one USB plug. Check reviews for compatibility with your specific iPhone and Watch model, charging speed, warranty, seller support, and return terms before buying.",
     imageGradient: "from-cyan-500 to-blue-700",
     imageUrl: "https://img.kwcdn.com/product/fancy/53aa6ed4-7f83-4c77-851a-f22b7798a7c4.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -935,7 +935,7 @@ export const deals: Deal[] = [
     title: "106 LED Solar Wall Lights – Motion Sensor, 120° Angle, 5M Cable",
     platform: "Temu", platformColor: "#ff6d00", category: "Home",
     originalPrice: 599, salePrice: 299, discount: 50, sulitScore: 9,
-    reason: "106 bright LEDs with PIR motion sensor, activates when someone walks by. IP65 waterproof, 5M cable. At ₱299, may reduce the need for hardwired outdoor lighting, check installation requirements before ordering.",
+    reason: "106 bright LEDs with PIR motion sensor, activates when someone walks by. Listed as weather-resistant with a 5M cable, so check the water-resistance details before buying. At ₱299, may reduce the need for hardwired outdoor lighting, check installation requirements before ordering.",
     imageGradient: "from-amber-400 to-orange-600",
     imageUrl: "https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/2276d661858f97e9fd9fd56934ad04b0.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -995,7 +995,7 @@ export const deals: Deal[] = [
     title: "5/7/9pcs Nonstick Cookware Set – Removable Handle, Induction Compatible",
     platform: "Temu", platformColor: "#ff6d00", category: "Home",
     originalPrice: 999, salePrice: 499, discount: 50, sulitScore: 9,
-    reason: "Detachable handle saves storage space, pans stack flat. Induction and gas compatible, dishwasher safe, oven safe. At ₱499 for a full set, compare with local cookware options before ordering.",
+    reason: "Detachable handle saves storage space, pans stack flat. Induction and gas compatible. Check the material details, size, and the heat-use, dishwasher, and oven instructions before buying. At ₱499 for a full set, compare with local cookware options before ordering.",
     imageGradient: "from-red-500 to-orange-700",
     imageUrl: "https://img.kwcdn.com/product/fancy/19dce639-24f0-42fb-8128-642a66b67bb3.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1164,10 +1164,10 @@ export const deals: Deal[] = [
   // ── Beauty ────────────────────────────────────────────────────────────────────
   {
     id: "deal-073", slug: "otwoo-tinted-lip-balm-temu",
-    title: "O.TWO.O Tinted Lip Balm 3.3g – Color-Changing, Waterproof, Hydrating 3-in-1",
+    title: "O.TWO.O Tinted Lip Balm 3.3g – Color-Changing, Long-Wear, Hydrating 3-in-1",
     platform: "Temu", platformColor: "#ff6d00", category: "Beauty",
     originalPrice: 159, salePrice: 79, discount: 50, sulitScore: 8,
-    reason: "Functions as lip balm, lipstick, and lip stain in one, color adapts to your lip tone. Waterproof formula with plant squalane. Check shade and finish in buyer photos before ordering.",
+    reason: "Functions as lip balm, lipstick, and lip stain in one, color adapts to your lip tone. Long-wear formula with plant squalane. Check the water-resistance and wear details in buyer reviews, and check the shade and finish in buyer photos before ordering.",
     imageGradient: "from-rose-500 to-pink-700",
     imageUrl: "https://img.kwcdn.com/product/fancy/a1416e4f-99f6-4954-97a9-79714d7e63ab.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1188,7 +1188,7 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-075", slug: "otwoo-matte-lip-gloss-temu",
-    title: "O.TWO.O Matte Lip Gloss – Waterproof, Non-Smudge, Long-Lasting Korean Formula",
+    title: "O.TWO.O Matte Lip Gloss – Long-Wear, Non-Smudge, Korean Formula",
     platform: "Temu", platformColor: "#ff6d00", category: "Beauty",
     originalPrice: 159, salePrice: 79, discount: 50, sulitScore: 8,
     reason: "Korean matte lip tint in multiple shades, described by buyers as long-wearing. Check shade accuracy, finish type, and ingredient list in buyer reviews before ordering.",
@@ -1224,10 +1224,10 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-078", slug: "otwoo-black-liquid-eyeliner-temu",
-    title: "O.TWO.O Black Liquid Eyeliner – Super Waterproof, Long-Lasting, Easy Apply",
+    title: "O.TWO.O Black Liquid Eyeliner – Long-Wear, Smudge-Resistant, Easy Apply",
     platform: "Temu", platformColor: "#ff6d00", category: "Beauty",
     originalPrice: 159, salePrice: 79, discount: 50, sulitScore: 8,
-    reason: "Intense black pigment with a precision tip for thin or thick lines. Waterproof formula, check buyer reviews for actual smudge resistance and longevity before buying.",
+    reason: "Intense black pigment with a precision tip for thin or thick lines. Check buyer reviews for the actual smudge resistance, water-resistance, and longevity before buying.",
     imageGradient: "from-gray-800 to-zinc-900",
     imageUrl: "https://img.kwcdn.com/product/fancy/4fdf2a5f-ecde-470b-bd85-dafcce784ded.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1280,7 +1280,7 @@ export const deals: Deal[] = [
     title: "2025 OBD2 Scanner Diagnostic Tool – Check Engine Code Reader with Reset & I/M Readiness",
     platform: "Temu", platformColor: "#ff6d00", category: "Electronics",
     originalPrice: 699, salePrice: 349, discount: 50, sulitScore: 9,
-    reason: "Reads and clears check engine codes for all OBD2 cars made since 1996. Supports Mode 6, I/M readiness, and live data. At ₱349, mechanics charge ₱500 just to plug in a scanner.",
+    reason: "Reads and clears check engine codes for OBD2 cars made since 1996. Supports Mode 6, I/M readiness, and live data. Check reviews for compatibility with your car, accuracy, warranty, seller support, and return terms before buying.",
     imageGradient: "from-orange-600 to-red-800",
     imageUrl: "https://img.kwcdn.com/product/fancy/74d58ca3-b345-4d9f-9369-99ff36cb02f5.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1339,10 +1339,10 @@ export const deals: Deal[] = [
   // ── Home & Kitchen ────────────────────────────────────────────────────────────
   {
     id: "deal-087", slug: "solar-corner-garden-light-1-9m-temu",
-    title: "1.9M Outdoor Solar Corner Garden Light – Retro Style, IP44, Adjustable Height",
+    title: "1.9M Outdoor Solar Corner Garden Light – Retro Style, Weather-Resistant, Adjustable Height",
     platform: "Temu", platformColor: "#ff6d00", category: "Home",
     originalPrice: 599, salePrice: 299, discount: 50, sulitScore: 8,
-    reason: "IP44 weather-resistant solar lantern on 1.9M pole, adjustable height, retro tungsten-look bulb, no wiring needed. Great for gardens, courtyards, and entryways. At ₱299, garden lanterns at SM Home cost ₱600+.",
+    reason: "Weather-resistant solar lantern on 1.9M pole, adjustable height, retro tungsten-look bulb, no wiring needed. Check the water-resistance details before buying. Great for gardens, courtyards, and entryways. At ₱299, garden lanterns at SM Home cost ₱600+.",
     imageGradient: "from-yellow-500 to-amber-700",
     imageUrl: "https://img.kwcdn.com/product/fancy/2de9f959-4254-4d26-aab5-312582107a69.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1351,10 +1351,10 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-088", slug: "bohemian-ceramic-salad-bowls-2pcs-temu",
-    title: "2pcs Bohemian Ceramic Salad Bowls with Handles – 22cm, Microwave & Oven Safe",
+    title: "2pcs Bohemian Ceramic Salad Bowls with Handles – 22cm",
     platform: "Temu", platformColor: "#ff6d00", category: "Home",
     originalPrice: 399, salePrice: 199, discount: 50, sulitScore: 8,
-    reason: "Two 22cm ceramic bowls with handles, microwave safe, oven safe, dishwasher safe. Bohemian pattern works for serving salads, pasta, and soups. At ₱199 for both, similar bowls at Landmark cost ₱400+ each.",
+    reason: "Two 22cm ceramic bowls with handles in a bohemian pattern, good for serving salads, pasta, and soups. Check the material details, size, heat-use instructions, and cleaning instructions before buying. At ₱199 for both, similar bowls at Landmark cost ₱400+ each.",
     imageGradient: "from-orange-400 to-amber-600",
     imageUrl: "https://img.kwcdn.com/product/fancy/c742b663-c479-4bac-8bbb-1817d5a42e89.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1387,10 +1387,10 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-091", slug: "waterproof-mattress-protector-cover-temu",
-    title: "Multi-Color Waterproof Mattress Protector Fitted Sheet – Soft, Single-King Sizes",
+    title: "Multi-Color Water-Resistant Mattress Protector Fitted Sheet – Soft, Single-King Sizes",
     platform: "Temu", platformColor: "#ff6d00", category: "Home",
     originalPrice: 399, salePrice: 199, discount: 50, sulitScore: 8,
-    reason: "Waterproof fitted sheet protects against spills, sweat, and bedwetting, soft and quiet fabric, not crinkly. Multiple sizes from single to king. At ₱199, SM Homeworld sells similar protectors at ₱400+.",
+    reason: "Water-resistant fitted sheet that helps protect against spills, sweat, and bedwetting, with soft and quiet fabric, not crinkly. Check the water-resistance details before buying. Multiple sizes from single to king. At ₱199, SM Homeworld sells similar protectors at ₱400+.",
     imageGradient: "from-sky-300 to-blue-500",
     imageUrl: "https://img.kwcdn.com/product/fancy/a1871047-5923-4f11-b8e8-72bf80d46fb7.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1435,10 +1435,10 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-095", slug: "stainless-steel-food-containers-airtight-temu",
-    title: "5/7/8/10pcs Stainless Steel Food Storage Containers – Airtight Lids, Freezer & Microwave Safe",
+    title: "5/7/8/10pcs Stainless Steel Food Storage Containers – Airtight Lids, Stackable",
     platform: "Temu", platformColor: "#ff6d00", category: "Home",
     originalPrice: 599, salePrice: 299, discount: 50, sulitScore: 9,
-    reason: "410-grade stainless steel meal prep containers, stackable, airtight lids, freezer and microwave safe. Check the set count and container dimensions in product details before ordering.",
+    reason: "410-grade stainless steel meal prep containers, stackable, with airtight lids. Metal containers are not always microwave safe, so check the material details, size, and the heat-use, microwave, freezer, dishwasher, and oven instructions before buying. Check the set count and container dimensions in the product details before ordering.",
     imageGradient: "from-slate-300 to-gray-500",
     imageUrl: "https://img.kwcdn.com/product/fancy/89c1f540-0837-48bb-962f-d1d67c1588cd.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -3601,15 +3601,31 @@ export function isSuspiciousDiscount(deal: Deal): boolean {
 export const SUSPICIOUS_DISCOUNT_NOTE =
   "Very high listed discounts can reflect inflated original prices. Compare the final price, reviews, and seller details before buying."
 
+// Higher-uncertainty deals we keep out of the first impression: battery, charging,
+// dashcam, OBD2, smartwatch, and solar-lighting electronics, where quality and
+// safety vary more and buyers should check reviews and seller details first.
+const RISKY_ELECTRONICS = /\b(power ?bank|wireless charger|dash ?cam|obd-?2|obd-?ii|smart ?watch)\b|\bsolar (lights?|lamp|wall|garden|corner|string|panel)\b/i
+export function isRiskyElectronics(deal: Deal): boolean {
+  return RISKY_ELECTRONICS.test(deal.title)
+}
+
+// Risk rank for default ordering (lower sorts first). Extreme discounts are demoted
+// hardest, then other suspicious discounts, then higher-uncertainty electronics.
+function dealRiskRank(deal: Deal): number {
+  if (deal.discount >= 90) return 3
+  if (isSuspiciousDiscount(deal)) return 2
+  if (isRiskyElectronics(deal)) return 1
+  return 0
+}
+
 // Default ordering for public deal lists. Keeps safe, practical, higher-confidence
-// picks first and pushes suspiciously discounted items (80%+) to the end, so the
-// first impression is not led by the biggest, least trustworthy discounts.
+// picks first and demotes suspicious discounts and higher-uncertainty electronics,
+// so the first impression is not led by the biggest or least predictable items.
 export function compareDealsForDefault(a: Deal, b: Deal): number {
-  const susA = isSuspiciousDiscount(a) ? 1 : 0
-  const susB = isSuspiciousDiscount(b) ? 1 : 0
-  if (susA !== susB) return susA - susB                                   // suspicious discounts last
+  const ra = dealRiskRank(a), rb = dealRiskRank(b)
+  if (ra !== rb) return ra - rb                                           // safer items first
   if (b.sulitScore !== a.sulitScore) return b.sulitScore - a.sulitScore   // higher SulitScore first
-  return b.discount - a.discount                                          // then a larger (non-suspicious) discount
+  return b.discount - a.discount                                          // then a larger (reasonable) discount
 }
 
 // All active deals (active platform and has image), in the recommended default order.
@@ -3619,14 +3635,14 @@ export function getActiveDeals(): Deal[] {
     .sort(compareDealsForDefault)
 }
 
-// Curated homepage picks: strong SulitScore and a sensible (non-suspicious)
-// discount, sorted by score first so featured feels hand-picked rather than a
-// raw datafeed dump led by the biggest, least trustworthy discounts.
+// Curated homepage picks: strong SulitScore and a sensible (non-suspicious) discount,
+// ordered by the same recommended logic so featured leads with safe, practical items
+// rather than the biggest discounts or higher-uncertainty electronics.
 export function getFeaturedDeals(count = 6): Deal[] {
   const active = getActiveDeals()
   const curated = active
     .filter(d => !isSuspiciousDiscount(d) && d.sulitScore >= 8)
-    .sort((a, b) => b.sulitScore - a.sulitScore || b.discount - a.discount)
+    .sort(compareDealsForDefault)
   const pool = curated.length >= count ? curated : active.filter(d => !isSuspiciousDiscount(d))
   return pool.slice(0, count)
 }
