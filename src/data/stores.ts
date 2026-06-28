@@ -15,6 +15,9 @@ export interface Store {
   /** Intrinsic banner dimensions for correct aspect ratio (defaults to 1811x412). */
   bannerWidth?: number
   bannerHeight?: number
+  /** True when the banner image already includes the store-status badge, so the
+      card does not overlay a duplicate "Active Store" pill. */
+  bannerHasBadge?: boolean
   /**
    * External store link (store homepage). Optional: stores reached only through
    * per-product affiliate links (e.g. Shopee PH) have no store-level link, so we
@@ -100,8 +103,9 @@ export const stores: Store[] = [
     trustLevel: "medium",
     gradient: "from-orange-500 to-red-500",
     bannerImage: "/banners/stores/shopee-ph.jpg",
-    bannerWidth: 1672,
-    bannerHeight: 941,
+    bannerWidth: 1810,
+    bannerHeight: 869,
+    bannerHasBadge: true,
     relatedGuideSlug: "best-shopee-finds-under-500-philippines",
     isDemo: false,
     buyerNotes: [

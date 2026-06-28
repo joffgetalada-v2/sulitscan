@@ -103,9 +103,11 @@ export default function StoresPage() {
                     priority
                   />
                   <h2 className="sr-only">{store.name}</h2>
-                  <span className="absolute top-3 right-3 px-3 py-1 bg-black/50 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
-                    {store.trustLevel === "new" ? "Listed Store" : "Active Store"}
-                  </span>
+                  {!store.bannerHasBadge && (
+                    <span className="absolute top-3 right-3 px-3 py-1 bg-black/50 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
+                      {store.trustLevel === "new" ? "Listed Store" : "Active Store"}
+                    </span>
+                  )}
                 </Link>
               ) : (
                 <Link href={`/stores/${store.slug}`} className={`block bg-gradient-to-br ${store.gradient} px-6 py-8`}>

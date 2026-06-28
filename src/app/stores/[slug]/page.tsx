@@ -132,23 +132,25 @@ export default async function StoreDetailPage({
               </a>
             )}
           </div>
-          <div className="mt-4 flex flex-wrap gap-3">
-            <span className="flex items-center gap-1 bg-green-50 text-green-700 border border-green-100 text-xs font-medium px-3 py-1 rounded-full">
-              <ShieldCheck className="w-3 h-3" aria-hidden="true" />
-              {store.trustLevel === "new" ? "Listed Store" : "Active Store"}
-            </span>
-            {store.shipsToPhilippines && (
-              <span className="flex items-center gap-1 bg-slate-50 text-slate-600 border border-slate-100 text-xs font-medium px-3 py-1 rounded-full">
-                <Truck className="w-3 h-3" aria-hidden="true" />
-                Ships to Philippines
+          {!store.bannerHasBadge && (
+            <div className="mt-4 flex flex-wrap gap-3">
+              <span className="flex items-center gap-1 bg-green-50 text-green-700 border border-green-100 text-xs font-medium px-3 py-1 rounded-full">
+                <ShieldCheck className="w-3 h-3" aria-hidden="true" />
+                {store.trustLevel === "new" ? "Listed Store" : "Active Store"}
               </span>
-            )}
-            {store.freeShippingMinimum !== null && (
-              <span className="flex items-center gap-1 bg-slate-50 text-slate-600 border border-slate-100 text-xs font-medium px-3 py-1 rounded-full">
-                Free shipping ₱{store.freeShippingMinimum.toLocaleString()}+
-              </span>
-            )}
-          </div>
+              {store.shipsToPhilippines && (
+                <span className="flex items-center gap-1 bg-slate-50 text-slate-600 border border-slate-100 text-xs font-medium px-3 py-1 rounded-full">
+                  <Truck className="w-3 h-3" aria-hidden="true" />
+                  Ships to Philippines
+                </span>
+              )}
+              {store.freeShippingMinimum !== null && (
+                <span className="flex items-center gap-1 bg-slate-50 text-slate-600 border border-slate-100 text-xs font-medium px-3 py-1 rounded-full">
+                  Free shipping ₱{store.freeShippingMinimum.toLocaleString()}+
+                </span>
+              )}
+            </div>
+          )}
         </div>
       ) : (
         <div className={`bg-gradient-to-br ${store.gradient} py-12 px-4 sm:px-6 lg:px-8 mt-4`}>
