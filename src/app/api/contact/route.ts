@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
       to:      [recipient],
       bcc:     [OPS_INBOX],
       replyTo: email.trim(),
-      subject: `[SulitScan Contact] ${topicLabel} — ${name.trim()}`,
+      subject: `[SulitScan Contact] ${topicLabel}, ${name.trim()}`,
       html: `
         <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#1e293b">
           <div style="background:#f0fdf4;padding:24px 24px 16px;border-radius:12px 12px 0 0;border-bottom:2px solid #bbf7d0">

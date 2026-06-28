@@ -166,7 +166,7 @@ export default function DealScannerVisual() {
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-semibold text-slate-500">SulitScore™</span>
                 <span className="text-sm font-black text-green-600">
-                  {deal.sulitScore} / 10 — {scoreLabel}
+                  {deal.sulitScore} / 10, {scoreLabel}
                 </span>
               </div>
               <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
@@ -202,7 +202,7 @@ export default function DealScannerVisual() {
                 <ExternalLink className="w-4 h-4" aria-hidden="true" />
               </div>
               <p className="text-center text-[11px] text-slate-400 mt-2 leading-snug">
-                Affiliate link — clearly disclosed. You decide when to visit.
+                Affiliate link, clearly disclosed. You decide when to visit.
               </p>
             </div>
           </motion.div>

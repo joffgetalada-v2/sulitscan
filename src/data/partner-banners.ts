@@ -13,7 +13,7 @@ export interface PartnerBanner {
   status: "active" | "pending"
 }
 
-// External advertiser/affiliate banners. These are sponsored partner links — they
+// External advertiser/affiliate banners. These are sponsored partner links, they
 // do NOT mean the advertiser's catalog is imported into SulitScan deals.
 export const partnerBanners: PartnerBanner[] = [
   {

@@ -13,7 +13,7 @@ export interface BlogPost {
   coverGradient: string
   coverImage?: string
   coverImageAlt?: string
-  /** Optional visible FAQs — when present, also emitted as FAQPage JSON-LD. */
+  /** Optional visible FAQs, when present, also emitted as FAQPage JSON-LD. */
   faqs?: { question: string; answer: string }[]
 }
 
@@ -27,7 +27,7 @@ export const posts: BlogPost[] = [
     slug: "how-sulitscan-checks-deals",
     title: "How SulitScan Checks Deals Before You Click Buy",
     excerpt:
-      "Before any deal appears on SulitScan, we run it through a manual checklist. Here's exactly what we look at — and what we don't.",
+      "Before any deal appears on SulitScan, we run it through a manual checklist. Here's exactly what we look at, and what we don't.",
     content: `
 SulitScan is not a live price aggregator. We manually curate selected deals from Temu and Sephora PH through affiliate partner programs. Before any deal goes live on the site, we go through a structured review process. Here's exactly what that looks like.
 
@@ -42,7 +42,7 @@ SulitScan is not a live price aggregator. We manually curate selected deals from
 
 ## How We Find Deals
 
-We monitor Temu and Sephora PH through affiliate programs — specifically Temu's direct affiliate partner program and Involve Asia (for Sephora PH). Affiliate partners share product data, pricing, and deal information.
+We monitor Temu and Sephora PH through affiliate programs, specifically Temu's direct affiliate partner program and Involve Asia (for Sephora PH). Affiliate partners share product data, pricing, and deal information.
 
 We browse these feeds manually and select products that appear to offer genuine value to Filipino shoppers. We do not use bots, scrapers, or automated tools to bulk-import deal data.
 
@@ -50,7 +50,7 @@ We browse these feeds manually and select products that appear to offer genuine 
 
 ### 1. Is the price actually lower than usual?
 
-We compare the listed sale price against publicly visible prices for similar products. If a product's "original price" looks inflated to make the discount seem bigger than it is, we note that in the buyer notes — or skip the product entirely.
+We compare the listed sale price against publicly visible prices for similar products. If a product's "original price" looks inflated to make the discount seem bigger than it is, we note that in the buyer notes, or skip the product entirely.
 
 Not every discount is genuine. A product listed at ₱999 "down from ₱3,500" is worth checking against similar products before assuming the ₱3,500 was ever a real price.
 
@@ -66,7 +66,7 @@ We note if platform vouchers, first-order discounts, or loyalty points can stack
 
 ### 4. What should the buyer check before purchasing?
 
-Every deal card on SulitScan includes buyer notes: sizing reminders, shipping speed, quality expectations, and return policy context. These are not generic disclaimers — we write them based on the specific product type.
+Every deal card on SulitScan includes buyer notes: sizing reminders, shipping speed, quality expectations, and return policy context. These are not generic disclaimers, we write them based on the specific product type.
 
 For clothing: we note sizing concerns (Temu often runs small). For skincare: we note patch test reminders and checking ingredient lists. For electronics: we flag compatibility and warranty questions.
 
@@ -74,11 +74,11 @@ For clothing: we note sizing concerns (Temu often runs small). For skincare: we 
 
 The SulitScore is a 1–10 rating we assign to each deal based on:
 
-- **Discount authenticity** — does the stated discount reflect a genuine price reduction?
-- **Store trust** — how reliable is the seller or platform for this product type?
-- **Review quality** — do buyer reviews on the partner store support the product claims?
-- **Voucher potential** — can extra savings be applied?
-- **Shipping and delivery context** — is the shipping time and cost reasonable?
+- **Discount authenticity**: does the stated discount reflect a genuine price reduction?
+- **Store trust**: how reliable is the seller or platform for this product type?
+- **Review quality**: do buyer reviews on the partner store support the product claims?
+- **Voucher potential**: can extra savings be applied?
+- **Shipping and delivery context**: is the shipping time and cost reasonable?
 
 A score of 9–10 means we consider the deal genuinely strong. A score of 6–7 means it may be worth checking but has caveats worth reading.
 
@@ -86,7 +86,7 @@ A score of 9–10 means we consider the deal genuinely strong. A score of 6–7 
 
 - We do not physically test products
 - We do not verify live inventory or stock
-- We do not guarantee the price at checkout — prices change frequently
+- We do not guarantee the price at checkout, prices change frequently
 - We do not process payments or take orders
 - We do not make medical or clinical claims about beauty products
 - We do not fabricate reviews or testimonials
@@ -95,9 +95,9 @@ A score of 9–10 means we consider the deal genuinely strong. A score of 6–7 
 
 Prices listed on SulitScan are sourced from affiliate datafeeds at the time we add or update a deal. They may not match the current price on the partner store. Platform vouchers and first-order discounts are not always reflected in the listed price.
 
-Always confirm the final price, available vouchers, and seller terms on Sephora PH or Temu before you buy. If the price has changed since we listed it, use the "Report outdated price" link on the deal page — we appreciate the heads up.
+Always confirm the final price, available vouchers, and seller terms on Sephora PH or Temu before you buy. If the price has changed since we listed it, use the "Report outdated price" link on the deal page, we appreciate the heads up.
 
-## Before You Click Buy — Your Checklist
+## Before You Click Buy, Your Checklist
 
 1. Is the price on the partner store the same as what SulitScan shows?
 2. Are there platform or seller vouchers you can apply?
@@ -107,7 +107,7 @@ Always confirm the final price, available vouchers, and seller terms on Sephora 
 6. For skincare or beauty: have you checked the ingredient list?
 7. For Temu orders: is the delivery estimate acceptable for when you need it?
 
-SulitScan is a starting point — not the final word. You decide when to buy.
+SulitScan is a starting point, not the final word. You decide when to buy.
 
 ## FAQ
 
@@ -115,7 +115,7 @@ SulitScan is a starting point — not the final word. You decide when to buy.
 No. We only list deals we believe offer genuine value. Our affiliate relationships do not determine our editorial selections. See our [Affiliate Disclosure](/affiliate-disclosure) for full details.
 
 **Q: How often are prices updated?**
-We update deals when we notice price changes through our affiliate feeds. But we are a small, manual operation — prices can change faster than we update. Always confirm on the partner store.
+We update deals when we notice price changes through our affiliate feeds. But we are a small, manual operation, prices can change faster than we update. Always confirm on the partner store.
 
 **Q: Can I report a deal with a wrong price?**
 Yes. Every deal detail page has a "Report outdated price" link. Clicking it opens your email client with the deal pre-filled. We review all reports.
@@ -135,7 +135,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     tags: ["how-it-works", "transparency", "sulitscan", "deal-checking"],
     coverGradient: "from-green-400 to-emerald-600",
     coverImage: "/images/guides/how-sulitscan-checks-deals.jpg",
-    coverImageAlt: "How SulitScan checks deals — phone showing a checked deal with price comparison, seller rating, and a deal checklist",
+    coverImageAlt: "How SulitScan checks deals, phone showing a checked deal with price comparison, seller rating, and a deal checklist",
   },
   {
     id: "post-002",
@@ -187,20 +187,20 @@ Shipping is often free. Most Temu orders to the Philippines include free standar
 
 ## Sizing for Filipino Shoppers
 
-This is important. Temu clothing sizes frequently run smaller than labeled — by one to two sizes. Filipino shoppers have consistently reported this in reviews.
+This is important. Temu clothing sizes frequently run smaller than labeled, by one to two sizes. Filipino shoppers have consistently reported this in reviews.
 
 Before buying clothing:
 
 - Read the measurements in centimeters in the product description, not just the size label (S/M/L)
 - Compare against your own measurements
-- Check buyer photos and reviews — look for reviewers who mention size fit
+- Check buyer photos and reviews, look for reviewers who mention size fit
 - When in doubt, size up
 
 For footwear, the same applies. A labeled size 38 may fit closer to a local size 36–37. Always check the size chart in centimeters and buyer reviews before ordering shoes.
 
 ## Shipping to the Philippines
 
-Standard shipping from Temu to the Philippines typically takes **7–20 business days** from the order date. This is international shipping — not local. If you need something by a specific date, plan accordingly.
+Standard shipping from Temu to the Philippines typically takes **7–20 business days** from the order date. This is international shipping, not local. If you need something by a specific date, plan accordingly.
 
 Express shipping is sometimes available and can shorten delivery to 5–10 business days, but it usually costs extra.
 
@@ -224,7 +224,7 @@ Temu's return and refund process is generally straightforward for:
 
 If you need to return an item, do it through the Temu app. Keep packaging until you're satisfied with the order.
 
-For minor differences (slightly different color shade, texture slightly different from photos), Temu may offer a partial refund rather than a full return — check their policy for the specific product category.
+For minor differences (slightly different color shade, texture slightly different from photos), Temu may offer a partial refund rather than a full return, check their policy for the specific product category.
 
 ## Safety and Quality Tips
 
@@ -237,14 +237,14 @@ For children's products, exercise extra caution and check for any safety certifi
 ## Voucher and Savings Tips
 
 - Check the Promotions tab on Temu before adding items to cart
-- First-time buyers usually get a new-user welcome discount — claim it before checkout
+- First-time buyers usually get a new-user welcome discount, claim it before checkout
 - Look for "Buy X get Y" deals or bundle discounts on multi-quantity items
-- Temu periodically runs sale events (e.g., birthday sales, holiday sales) — timing a purchase for a sale event can increase savings
-- Some GCash and credit card promos can stack with Temu's own discounts — check your bank or e-wallet for active promos
+- Temu periodically runs sale events (e.g., birthday sales, holiday sales), timing a purchase for a sale event can increase savings
+- Some GCash and credit card promos can stack with Temu's own discounts, check your bank or e-wallet for active promos
 
-## Before You Order on Temu — Checklist
+## Before You Order on Temu, Checklist
 
-1. Read buyer reviews — not just the star rating, read the written reviews
+1. Read buyer reviews, not just the star rating, read the written reviews
 2. Check the measurements, not just the size label, for clothing and footwear
 3. Look for the estimated shipping date at checkout
 4. Check if a first-order or platform voucher applies
@@ -285,7 +285,7 @@ SulitScan may earn a commission when you click a Temu affiliate link and complet
     tags: ["temu", "shopping-guide", "philippines", "tips", "buyer-guide"],
     coverGradient: "from-orange-400 to-red-500",
     coverImage: "/images/guides/temu-shopping-guide-philippines.jpg",
-    coverImageAlt: "Temu shopping guide for Filipino buyers — Temu app showing affordable finds, free shipping, and discounts",
+    coverImageAlt: "Temu shopping guide for Filipino buyers, Temu app showing affordable finds, free shipping, and discounts",
   },
   {
     id: "post-003",
@@ -309,9 +309,9 @@ Sephora Philippines is the partner store listed for these beauty deals. They car
 
 ## Why Sephora PH Deals Are Worth Checking
 
-Sephora PH is the partner store listed for these beauty deals. Always confirm the current price on sephora.ph before purchasing — prices in our datafeed may not always reflect active promotions or recent price changes.
+Sephora PH is the partner store listed for these beauty deals. Always confirm the current price on sephora.ph before purchasing, prices in our datafeed may not always reflect active promotions or recent price changes.
 
-SulitScan tracks selected Sephora PH deals through the Involve Asia affiliate program. We list the price from the datafeed and add buyer notes — always **confirm current price and availability on sephora.ph** before purchasing.
+SulitScan tracks selected Sephora PH deals through the Involve Asia affiliate program. We list the price from the datafeed and add buyer notes, always **confirm current price and availability on sephora.ph** before purchasing.
 
 ## Types of Sephora PH Deals
 
@@ -335,7 +335,7 @@ Sephora PH occasionally runs app-exclusive promotions or time-limited flash disc
 
 If you shop at Sephora PH regularly, the Beauty Rewards loyalty program is worth using:
 
-- Earn points on every purchase — both in-store and online
+- Earn points on every purchase, both in-store and online
 - Points accumulate and can be redeemed for discounts on future purchases
 - Higher tiers (Gold, VIB) unlock earlier sale access and exclusive offers
 - Creating an account is free
@@ -367,17 +367,17 @@ This section is important for anyone buying skincare or beauty products online.
 Makeup shades (foundation, concealer, lip products) can look different on screen than in person. Before purchasing:
 
 - Check the product page for swatches in multiple skin tones
-- Look for Filipino beauty bloggers or buyers who have reviewed the product — reviews from people with similar skin tones are most useful
+- Look for Filipino beauty bloggers or buyers who have reviewed the product, reviews from people with similar skin tones are most useful
 - For foundation: many brands publish undertone guides. Warm undertones (yellow-leaning) are common among Filipino skin. Check whether a product's shade range includes warm-undertoned options
-- For lip products: the shade on screen may appear lighter or darker than on your lips — check buyer photos in reviews
+- For lip products: the shade on screen may appear lighter or darker than on your lips, check buyer photos in reviews
 
-## Before You Buy at Sephora PH — Checklist
+## Before You Buy at Sephora PH, Checklist
 
 1. Is the price on sephora.ph the same as what SulitScan shows?
 2. Is there an active platform promo, Beauty Rewards offer, or brand promotion you can use?
 3. Is the product available in your preferred shade, size, or variant?
 4. Have you read the ingredient list for allergens or sensitivities?
-5. Are you familiar with the return policy — especially for opened products?
+5. Are you familiar with the return policy, especially for opened products?
 6. Is this a product suited to your skin type and concern?
 7. If buying skincare for the first time: are you planning to patch test before full use?
 8. Is the total order above ₱1,500 for free shipping?
@@ -388,10 +388,10 @@ Makeup shades (foundation, concealer, lip products) can look different on screen
 Sephora PH is the partner store listed for these deals. Always confirm product details, shade, size, and return terms on sephora.ph before buying. If you have concerns about a specific product upon receipt, contact Sephora PH customer service directly.
 
 **Q: Does SulitScan list all Sephora PH products?**
-No. We curate a selected set of deals — products that we think are worth flagging based on price, value, or category fit. For the full Sephora PH catalog, visit sephora.ph directly.
+No. We curate a selected set of deals, products that we think are worth flagging based on price, value, or category fit. For the full Sephora PH catalog, visit sephora.ph directly.
 
 **Q: Can I combine Beauty Rewards points with a SulitScan affiliate link?**
-Yes — you can still log in to your Beauty Rewards account and earn points when you click through from SulitScan. The affiliate link does not affect your account or rewards.
+Yes, you can still log in to your Beauty Rewards account and earn points when you click through from SulitScan. The affiliate link does not affect your account or rewards.
 
 **Q: How often are Sephora PH deals updated on SulitScan?**
 We update deals periodically. Prices in our datafeed may not always reflect real-time changes. Always confirm on sephora.ph before buying.
@@ -415,16 +415,16 @@ SulitScan may earn a commission when you click a Sephora PH affiliate link and c
     tags: ["sephora", "beauty", "skincare", "philippines", "buyer-guide"],
     coverGradient: "from-pink-400 to-rose-600",
     coverImage: "/images/guides/sephora-ph-beauty-guide.jpg",
-    coverImageAlt: "Sephora PH beauty deals — skincare, makeup, and fragrance with authenticity, price, expiry, and return check icons",
+    coverImageAlt: "Sephora PH beauty deals, skincare, makeup, and fragrance with authenticity, price, expiry, and return check icons",
   },
   {
     id: "post-004",
     slug: "how-to-spot-fake-discounts",
     title: "How to Spot Fake Discounts Online Before You Get Tricked",
     excerpt:
-      "Not every sale is a real bargain. Here are the signs that a discount is genuine — and the red flags that it's not.",
+      "Not every sale is a real bargain. Here are the signs that a discount is genuine, and the red flags that it's not.",
     content: `
-One of the most common tricks in online shopping is the inflated original price. A product is listed at ₱2,000 with a "50% off" tag showing ₱1,000 — but the product was never actually sold at ₱2,000. You're not saving anything real. You're paying the regular price with a misleading label on it.
+One of the most common tricks in online shopping is the inflated original price. A product is listed at ₱2,000 with a "50% off" tag showing ₱1,000, but the product was never actually sold at ₱2,000. You're not saving anything real. You're paying the regular price with a misleading label on it.
 
 This guide helps Filipino shoppers identify genuine discounts and avoid the most common pricing tricks.
 
@@ -439,7 +439,7 @@ This guide helps Filipino shoppers identify genuine discounts and avoid the most
 
 ## Why Fake Discounts Are Widespread
 
-Online marketplaces make it easy for sellers to set their own "original prices." There's often little enforcement of whether the original price was ever a real transaction price. A seller can list a product at ₱5,000 for one day, then "discount" it to ₱1,200 — showing a dramatic 76% off that never reflected an actual market price.
+Online marketplaces make it easy for sellers to set their own "original prices." There's often little enforcement of whether the original price was ever a real transaction price. A seller can list a product at ₱5,000 for one day, then "discount" it to ₱1,200, showing a dramatic 76% off that never reflected an actual market price.
 
 This isn't unique to any one platform. It's a known pattern across global e-commerce, including some deals on otherwise legitimate platforms.
 
@@ -451,7 +451,7 @@ If a simple plastic kitchen gadget has an "original price" of ₱3,500 and a sal
 
 ### The sale never ends
 
-Some platforms show countdown timers that reset every day. If a "flash sale" or "limited time offer" timer always shows a few hours remaining no matter when you check, it's a permanent feature disguised as urgency — not a real limited-time deal.
+Some platforms show countdown timers that reset every day. If a "flash sale" or "limited time offer" timer always shows a few hours remaining no matter when you check, it's a permanent feature disguised as urgency, not a real limited-time deal.
 
 ### The discount is extreme on branded products
 
@@ -485,7 +485,7 @@ For branded products, check the official brand website or an authorized local re
 
 ### Use SulitScan's notes
 
-Every deal on SulitScan includes a SulitScore and buyer notes. If something looks off about the discount — we try to flag it or skip the product entirely. If the buyer notes say "compare against similar products before buying," that's a cue to do exactly that.
+Every deal on SulitScan includes a SulitScore and buyer notes. If something looks off about the discount, we try to flag it or skip the product entirely. If the buyer notes say "compare against similar products before buying," that's a cue to do exactly that.
 
 ## What to Do When Something Looks Off
 
@@ -521,10 +521,10 @@ Not necessarily. Genuine clearance sales, overstock liquidations, and end-of-sea
 Official brand promotions from authorized retailers are generally more trustworthy than random marketplace sellers offering huge discounts. Still verify the price makes sense relative to the product's normal market value.
 
 **Q: Does SulitScan guarantee that listed discounts are real?**
-No. We review price claims manually and try to flag questionable discounts — but we cannot guarantee accuracy. Prices change after we list a deal, and we may miss some inflated originals. Always confirm on the partner store.
+No. We review price claims manually and try to flag questionable discounts, but we cannot guarantee accuracy. Prices change after we list a deal, and we may miss some inflated originals. Always confirm on the partner store.
 
 **Q: How do "buy more save more" deals work?**
-These are often legitimate — the per-unit price drops when you buy a bundle. Just check that the single-unit price is a reasonable market price first. If the single-unit price is also inflated, the bundle discount is built on a false base.
+These are often legitimate, the per-unit price drops when you buy a bundle. Just check that the single-unit price is a reasonable market price first. If the single-unit price is also inflated, the bundle discount is built on a false base.
 
 ## Affiliate Disclosure
 
@@ -549,7 +549,7 @@ SulitScan may earn a commission when you click partner links and complete a purc
     content: `
 Most online shopping regrets come from one of three things: missing a voucher that would have saved money, getting surprised by a shipping time longer than expected, or finding out after opening that the item can't be returned. A two-minute checklist before checkout can prevent all three.
 
-This guide covers what to check for vouchers, shipping, and returns before confirming any online order — specifically for Temu and Sephora PH.
+This guide covers what to check for vouchers, shipping, and returns before confirming any online order, specifically for Temu and Sephora PH.
 
 ## What's in This Guide
 
@@ -567,7 +567,7 @@ This guide covers what to check for vouchers, shipping, and returns before confi
 Before confirming a Temu order:
 
 - Check the **Promotions** tab on Temu for active coupon codes
-- First-time buyers usually get a new-user welcome discount — this appears when you first browse or at checkout
+- First-time buyers usually get a new-user welcome discount, this appears when you first browse or at checkout
 - Look for bundled discounts: some Temu products offer a better per-unit price when you buy 2 or more
 - Check if a platform-wide coupon applies and add it before confirming
 
@@ -577,22 +577,22 @@ Temu periodically runs sale events (flash sales, holiday sales). If your order i
 
 Before confirming a Sephora PH order:
 
-- Log in to your **Beauty Rewards account** — points may be redeemable for a discount
+- Log in to your **Beauty Rewards account**: points may be redeemable for a discount
 - Check if there's an active brand promotion on the product you're buying (brand-specific promos appear on the product page or in the Promos section)
 - If your cart total is close to ₱1,500, consider adding a small item to reach the free shipping threshold
-- Check if a brand has an anniversary or birthday sale running — these are often announced in Sephora PH's newsletter and app
+- Check if a brand has an anniversary or birthday sale running, these are often announced in Sephora PH's newsletter and app
 
 ### General Voucher Tips
 
 - Is there an active credit card, GCash, or e-wallet promo that applies to your purchase? Check your bank or e-wallet app for current promos
 - Has the discount already been applied to the listed price, or do you need to enter a code at checkout?
-- Some vouchers have minimum order requirements — confirm your cart meets it
+- Some vouchers have minimum order requirements, confirm your cart meets it
 
 ## Shipping Check
 
 Before confirming any order, check the following:
 
-- **Estimated delivery date**: Not just "7–20 days" — look for the specific estimated date shown at checkout. This is more useful than a range.
+- **Estimated delivery date**: Not just "7–20 days", look for the specific estimated date shown at checkout. This is more useful than a range.
 - **Free shipping**: Is it included, or is there a condition (minimum spend, specific items)?
 - **Your delivery area**: Are you in a location that may have extended delivery times? Provincial addresses and remote barangays can add 3–5 extra days.
 - **Urgency**: Do you need this item by a specific date? If yes, is the shipping estimate compatible?
@@ -606,13 +606,13 @@ For **Sephora PH**: Standard shipping takes 3–7 business days for Metro Manila
 ### Before buying
 
 - Can this item be returned if it doesn't fit, doesn't match the description, or isn't what you expected?
-- **Cosmetics and beauty items**: These often cannot be returned once opened. This is standard practice — not unique to Sephora PH. If you're unsure about a product, consider starting with a smaller size.
+- **Cosmetics and beauty items**: These often cannot be returned once opened. This is standard practice, not unique to Sephora PH. If you're unsure about a product, consider starting with a smaller size.
 - What is the return window? (Temu: typically 90 days from purchase for defective items. Sephora PH: 30 days from purchase for unopened items in original packaging.)
 - Do you need to ship the item back yourself? Is return shipping free or at your cost?
 
 ### After receiving your order
 
-Always take photos of your order when it arrives — both the package before opening and the item after opening. This is your evidence if you need to file a return.
+Always take photos of your order when it arrives, both the package before opening and the item after opening. This is your evidence if you need to file a return.
 
 - Check the item against the product description and your order details
 - Check that sizing, color, and variant are what you ordered
@@ -625,7 +625,7 @@ File a return claim as early as possible if something is wrong. Don't wait until
 
 Before you click Confirm Order, ask yourself:
 
-> "If this item arrives slightly different from what I expect — slightly different color, slightly different size, slightly different quality — will I be satisfied with this purchase?"
+> "If this item arrives slightly different from what I expect, slightly different color, slightly different size, slightly different quality, will I be satisfied with this purchase?"
 
 If yes: proceed. If no: research more or reconsider.
 
@@ -634,7 +634,7 @@ This is especially useful for Temu purchases, where product photos and reality s
 ## FAQ
 
 **Q: What if a voucher I expected didn't apply?**
-Check if there's a minimum spend requirement you didn't meet, or if the voucher is for specific product categories. Contact platform support if a valid voucher isn't applying — save screenshots as evidence.
+Check if there's a minimum spend requirement you didn't meet, or if the voucher is for specific product categories. Contact platform support if a valid voucher isn't applying, save screenshots as evidence.
 
 **Q: Can I combine a voucher with Beauty Rewards points at Sephora PH?**
 Sephora PH's checkout allows points redemption and promo codes. Check the checkout page for all available options before confirming.
@@ -646,7 +646,7 @@ Take photos immediately (before and after opening). File a return request throug
 Contact Sephora PH customer service with your order number and photos of what you received. Wrong items can typically be returned and replaced regardless of whether the product was opened.
 
 **Q: Is it worth buying product insurance for high-value items?**
-Some platforms offer optional purchase protection add-ons. For high-value items, this can be worth considering — read the coverage terms before paying for it.
+Some platforms offer optional purchase protection add-ons. For high-value items, this can be worth considering, read the coverage terms before paying for it.
 
 ## Related on SulitScan
 
@@ -673,7 +673,7 @@ SulitScan may earn a commission when you click partner links and complete a purc
     excerpt:
       "You saw ₱299 on the deal page. At checkout it shows ₱420. Here's why this happens and how to avoid checkout surprises.",
     content: `
-You found a deal. The product page shows ₱299. You add it to cart, go to checkout — and it shows ₱420. What happened?
+You found a deal. The product page shows ₱299. You add it to cart, go to checkout, and it shows ₱420. What happened?
 
 Price differences between deal listings and checkout are common across all online shopping platforms, including Temu and Sephora PH. This guide explains the most common reasons, and what you can do to avoid unpleasant surprises.
 
@@ -690,25 +690,25 @@ Price differences between deal listings and checkout are common across all onlin
 
 ### 1. Shipping fees added
 
-The product price may not include shipping. For Temu, most orders include free shipping — but some items (particularly lightweight or very-low-price single items) may have a shipping fee. The shipping cost is added at checkout, not shown on the product listing.
+The product price may not include shipping. For Temu, most orders include free shipping, but some items (particularly lightweight or very-low-price single items) may have a shipping fee. The shipping cost is added at checkout, not shown on the product listing.
 
 For Sephora PH, free shipping applies to orders ₱1,500 and above. Below that threshold, a shipping fee is added at checkout.
 
 ### 2. Voucher not applied
 
-If you saw a deal price after a voucher was applied in a screenshot, post, or deal listing — but you didn't apply the same voucher yourself at checkout — you'll pay the pre-voucher price.
+If you saw a deal price after a voucher was applied in a screenshot, post, or deal listing, but you didn't apply the same voucher yourself at checkout, you'll pay the pre-voucher price.
 
 Always check the Promotions or Vouchers section at checkout before confirming. Don't assume a discount is already applied to the listed price.
 
 ### 3. Price changed since the deal was listed
 
-This is the most common reason for differences between SulitScan's listed price and the checkout price. Prices on Temu and Sephora PH can change daily — sometimes hourly during sale events.
+This is the most common reason for differences between SulitScan's listed price and the checkout price. Prices on Temu and Sephora PH can change daily, sometimes hourly during sale events.
 
 SulitScan sources prices from affiliate datafeeds at the time we add or update a deal. We cannot guarantee the price is still the same when you click through to the partner store. This is why every deal card on SulitScan includes a "last checked" date and a reminder to confirm the final price on the partner store.
 
 ### 4. Variant pricing
 
-The price shown may be for a specific color, size, or quantity. If you select a different variant — a larger size, a different color, a different quantity — the price updates to that variant's price.
+The price shown may be for a specific color, size, or quantity. If you select a different variant, a larger size, a different color, a different quantity, the price updates to that variant's price.
 
 Always confirm the price updates correctly after selecting your specific variant before proceeding to checkout.
 
@@ -729,29 +729,29 @@ Some Temu products have a minimum order quantity (e.g., "pack of 5" or "set of 3
 - Temu's listed price on product pages is usually the pre-shipping price
 - First-time buyer discounts are applied at checkout, not on the product page
 - Bundled or multi-quantity discounts apply when you add the required quantity
-- Flash sale prices are time-limited — if you delay, the price may revert
+- Flash sale prices are time-limited, if you delay, the price may revert
 
 ## Sephora PH-Specific Price Notes
 
 - Sephora PH shows product prices inclusive of VAT
 - Shipping is free for orders ₱1,500 and above; below that, a shipping fee applies
 - Beauty Rewards point redemptions are applied at checkout
-- Brand promo codes and platform vouchers are entered at checkout — they don't automatically appear in the cart
+- Brand promo codes and platform vouchers are entered at checkout, they don't automatically appear in the cart
 
 ## What SulitScan Does
 
-We add a "last checked" timestamp to every deal. We include a price disclaimer reminding you that prices may differ from what we list. And we include a buyer checklist on every deal detail page — the first item is always to confirm the current price on the partner store.
+We add a "last checked" timestamp to every deal. We include a price disclaimer reminding you that prices may differ from what we list. And we include a buyer checklist on every deal detail page, the first item is always to confirm the current price on the partner store.
 
-We are a small, manual operation. Prices in our datafeed update periodically but are not real-time. The best use of SulitScan is as a discovery tool — find deals here, then confirm the price and details on the partner store before buying.
+We are a small, manual operation. Prices in our datafeed update periodically but are not real-time. The best use of SulitScan is as a discovery tool, find deals here, then confirm the price and details on the partner store before buying.
 
 ## How to Check the Final Price Before Committing
 
 1. Click through to the partner store from the deal card or detail page
 2. Select the specific variant you want (size, color, quantity)
 3. Add to cart
-4. Check the cart total — this is the pre-checkout price
+4. Check the cart total, this is the pre-checkout price
 5. At checkout: check for available vouchers and apply them
-6. Review the order total on the payment page — this includes shipping and any taxes
+6. Review the order total on the payment page, this includes shipping and any taxes
 7. Only confirm the order when you're satisfied with the total
 
 ## Your Final Pre-Purchase Checklist
@@ -763,7 +763,7 @@ We are a small, manual operation. Prices in our datafeed update periodically but
 5. Is the delivery estimate acceptable?
 6. Do you understand the return policy if the item doesn't meet expectations?
 
-If any of these don't look right — step back. There's no urgency. Good deals come back.
+If any of these don't look right, step back. There's no urgency. Good deals come back.
 
 ## FAQ
 
@@ -774,10 +774,10 @@ Prices change after we update our listings. Our datafeed prices are not real-tim
 On most platforms, adding to cart does not lock in a price. The price at checkout is the current price at the time you complete the order. Cart prices can change.
 
 **Q: What's the best way to avoid checkout price surprises?**
-Go all the way to the payment confirmation page before finalizing. Review the itemized total — product price, shipping, taxes, and any discounts applied — before entering payment details.
+Go all the way to the payment confirmation page before finalizing. Review the itemized total, product price, shipping, taxes, and any discounts applied, before entering payment details.
 
 **Q: Is the checkout price fixed after I confirm the order?**
-Yes — once an order is confirmed, the price at confirmation is the price you pay. Subsequent price drops on the platform do not retroactively apply to completed orders.
+Yes, once an order is confirmed, the price at confirmation is the price you pay. Subsequent price drops on the platform do not retroactively apply to completed orders.
 
 **Q: What if I notice the wrong price was charged after payment?**
 Contact the platform's customer support with your order details. Keep all order confirmations and receipts. Most platforms have a process for billing dispute resolution.
@@ -806,9 +806,9 @@ SulitScan may earn a commission when you click partner links and complete a purc
     slug: "best-temu-finds-under-500-philippines",
     title: "Best Temu Finds Philippines Under ₱500",
     excerpt:
-      "Under ₱500, some Temu products are genuinely useful and others are a waste of a delivery slot. Here are the categories that consistently deliver value — and what to check first.",
+      "Under ₱500, some Temu products are genuinely useful and others are a waste of a delivery slot. Here are the categories that consistently deliver value, and what to check first.",
     content: `
-Temu has become one of the most popular ways for Filipino shoppers to find low-cost home, fashion, and accessory items online. But "cheap" and "sulit" are not the same thing. Under ₱500, some Temu products are genuinely useful — and others are a waste of a delivery slot. This guide covers the categories that consistently deliver value under ₱500, what to check before ordering, and how to avoid the common traps.
+Temu has become one of the most popular ways for Filipino shoppers to find low-cost home, fashion, and accessory items online. But "cheap" and "sulit" are not the same thing. Under ₱500, some Temu products are genuinely useful, and others are a waste of a delivery slot. This guide covers the categories that consistently deliver value under ₱500, what to check before ordering, and how to avoid the common traps.
 
 ## What's in this guide
 
@@ -821,7 +821,7 @@ Temu has become one of the most popular ways for Filipino shoppers to find low-c
 
 ## Why Under ₱500 Is a Smart Starting Budget
 
-If you are new to Temu, a first order under ₱500 is the lowest-risk way to test the platform. You get to see the real shipping time to the Philippines, the actual packaging, and the true material quality — without committing a large amount of money to a store you have not bought from before.
+If you are new to Temu, a first order under ₱500 is the lowest-risk way to test the platform. You get to see the real shipping time to the Philippines, the actual packaging, and the true material quality, without committing a large amount of money to a store you have not bought from before.
 
 Most genuinely useful Temu finds in this range are small, practical items where "good enough" quality is perfectly acceptable: organizers, clips, basic accessories, and tools you will not be heartbroken about if they are a little flimsier than expected.
 
@@ -837,7 +837,7 @@ Cord clips, velcro ties, charging cable organizers, phone stands, and pop socket
 
 ### Kitchen gadgets and tools
 
-Measuring spoons, silicone brushes, jar openers, peelers, and small storage containers are practical buys. Avoid anything that needs to hold heat, take a sharp edge, or carry real weight — those are where ultra-cheap kitchen tools disappoint.
+Measuring spoons, silicone brushes, jar openers, peelers, and small storage containers are practical buys. Avoid anything that needs to hold heat, take a sharp edge, or carry real weight, those are where ultra-cheap kitchen tools disappoint.
 
 ### Stationery and desk accessories
 
@@ -875,7 +875,7 @@ Temu frequently offers new-user vouchers, first-order discounts, and platform-wi
 
 - Apply any available platform voucher or coupon code.
 - Check whether free or discounted shipping applies to your order total.
-- Compare the final, all-in total — not the pre-voucher sticker price.
+- Compare the final, all-in total, not the pre-voucher sticker price.
 
 Our [voucher and shipping checklist](/blog/voucher-shipping-return-checklist) walks through this in detail.
 
@@ -885,7 +885,7 @@ Browse current [Under ₱500 deals](/categories/under-500) or explore [Home Find
 
 ## Affiliate Disclosure
 
-SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. Prices are sourced from affiliate datafeeds and may differ from the current price on Temu — always confirm before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. Prices are sourced from affiliate datafeeds and may differ from the current price on Temu, always confirm before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
     `.trim(),
     category: "Platform Guides",
     author: "SulitScan Team",
@@ -895,7 +895,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     tags: ["temu", "under-500", "home-finds", "shopping-guide", "philippines"],
     coverGradient: "from-orange-400 to-amber-500",
     coverImage: "/images/guides/best-temu-finds-under-500-philippines.jpg",
-    coverImageAlt: "Best Temu finds under ₱500 — budget home organizers, cable holders, phone stand, tumbler, and desk accessories",
+    coverImageAlt: "Best Temu finds under ₱500, budget home organizers, cable holders, phone stand, tumbler, and desk accessories",
   },
 
   {
@@ -905,7 +905,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     excerpt:
       "How long does Temu take to arrive in the Philippines, and how much is shipping? A clear guide to delivery windows, fees, customs, tracking, and what to do if something goes wrong.",
     content: `
-One of the most common questions Filipino shoppers ask before their first Temu order is simple: how long will it actually take to arrive, and how much is shipping? This guide explains how Temu shipping to the Philippines works — delivery windows, fees, customs, tracking, and what to do if something goes wrong.
+One of the most common questions Filipino shoppers ask before their first Temu order is simple: how long will it actually take to arrive, and how much is shipping? This guide explains how Temu shipping to the Philippines works, delivery windows, fees, customs, tracking, and what to do if something goes wrong.
 
 ## What's in this guide
 
@@ -921,7 +921,7 @@ One of the most common questions Filipino shoppers ask before their first Temu o
 
 Temu fulfills most Philippine orders from international warehouses, then hands the parcel to a local courier for final delivery. This means your order typically passes through two stages: an international leg, and a local last-mile delivery once it reaches the country.
 
-Because of this model, Temu delivery is slower than a local seller shipping from within the Philippines — but the trade-off is access to a much wider catalog at low prices.
+Because of this model, Temu delivery is slower than a local seller shipping from within the Philippines, but the trade-off is access to a much wider catalog at low prices.
 
 ## Typical Delivery Times
 
@@ -932,7 +932,7 @@ For most standard orders, expect **7 to 20 business days** from order confirmati
 - Customs clearance
 - Local courier load in your area
 
-> Always check the estimated delivery date shown at checkout before you confirm — it is the most accurate prediction for your specific order.
+> Always check the estimated delivery date shown at checkout before you confirm, it is the most accurate prediction for your specific order.
 
 Some items ship from local or regional warehouses and arrive faster. Temu labels these where applicable, so look for quicker estimated dates if speed matters.
 
@@ -941,7 +941,7 @@ Some items ship from local or regional warehouses and arrive faster. Temu labels
 Temu regularly runs free or discounted shipping promotions, and many orders above a certain total qualify for free standard delivery. At checkout:
 
 - Check whether your order qualifies for free shipping.
-- Compare standard vs. express options — express costs more but shortens the international leg.
+- Compare standard vs. express options, express costs more but shortens the international leg.
 - Confirm the all-in total, including shipping, before paying.
 
 Because promotions change frequently, treat any shipping fee as something to confirm at checkout rather than assume.
@@ -962,7 +962,7 @@ After your order ships, Temu provides tracking inside the app and via email. Tra
 
 Temu offers buyer protection that covers late deliveries, items that never arrive, and items that arrive damaged or significantly not as described. If something goes wrong:
 
-1. Check the estimated delivery date — many "late" parcels are still within the stated window.
+1. Check the estimated delivery date, many "late" parcels are still within the stated window.
 2. Open the order in the Temu app and use the help or refund option.
 3. For damaged or wrong items, take clear photos immediately upon arrival.
 4. File the claim within the protection window stated in the app.
@@ -982,7 +982,7 @@ New to Temu? Read our full [Temu shopping guide for the Philippines](/blog/temu-
 
 ## Affiliate Disclosure
 
-SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. Shipping fees, delivery windows, and import charges are set by Temu and may change — always confirm at checkout. See our full [Affiliate Disclosure](/affiliate-disclosure).
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. Shipping fees, delivery windows, and import charges are set by Temu and may change, always confirm at checkout. See our full [Affiliate Disclosure](/affiliate-disclosure).
     `.trim(),
     category: "Platform Guides",
     author: "SulitScan Team",
@@ -992,7 +992,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     tags: ["temu", "shipping", "philippines", "buyer-guide", "shopping-guide"],
     coverGradient: "from-sky-400 to-blue-600",
     coverImage: "/images/guides/temu-philippines-shipping-guide.jpg",
-    coverImageAlt: "Temu Philippines shipping guide — order tracking screen showing processing, shipping, customs, and delivery stages",
+    coverImageAlt: "Temu Philippines shipping guide, order tracking screen showing processing, shipping, customs, and delivery stages",
   },
 
   {
@@ -1000,9 +1000,9 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     slug: "sephora-ph-sale-guide",
     title: "Sephora PH Sale Guide: How to Get Better Value on Beauty Deals",
     excerpt:
-      "Premium beauty comes with premium prices — but with the right timing and a few habits, you can get genuinely better value on Sephora PH skincare, makeup, and fragrance.",
+      "Premium beauty comes with premium prices, but with the right timing and a few habits, you can get genuinely better value on Sephora PH skincare, makeup, and fragrance.",
     content: `
-Sephora PH is the go-to for authenticated beauty in the Philippines — but premium brands come with premium prices. The good news: with the right timing and a few habits, you can get genuinely better value on skincare, makeup, and fragrance. This guide explains how Sephora PH sales work and how to make your beauty budget go further.
+Sephora PH is the go-to for authenticated beauty in the Philippines, but premium brands come with premium prices. The good news: with the right timing and a few habits, you can get genuinely better value on skincare, makeup, and fragrance. This guide explains how Sephora PH sales work and how to make your beauty budget go further.
 
 ## What's in this guide
 
@@ -1016,7 +1016,7 @@ Sephora PH is the go-to for authenticated beauty in the Philippines — but prem
 
 ## How Sephora PH Pricing and Sales Work
 
-Sephora PH is an authorized retailer, so the products are authentic and prices are set by the store. Unlike some marketplace sellers, you will not see wildly inflated "original" prices designed to make discounts look bigger. That makes Sephora PH sales easier to trust — a discount is usually a real reduction from the standard retail price.
+Sephora PH is an authorized retailer, so the products are authentic and prices are set by the store. Unlike some marketplace sellers, you will not see wildly inflated "original" prices designed to make discounts look bigger. That makes Sephora PH sales easier to trust, a discount is usually a real reduction from the standard retail price.
 
 Sales tend to cluster around seasonal events and member promotions rather than running continuously. Knowing the rhythm helps you time bigger purchases.
 
@@ -1024,10 +1024,10 @@ Sales tend to cluster around seasonal events and member promotions rather than r
 
 The strongest value windows typically include:
 
-- **Seasonal sale events** — mid-year and year-end sales often bring the deepest reductions.
-- **Brand-specific promotions** — individual brands run limited offers throughout the year.
-- **Member sale events** — loyalty members frequently get early access or extra discounts.
-- **Holiday gift sets** — late in the year, value sets and bundles offer more product per peso.
+- **Seasonal sale events**: mid-year and year-end sales often bring the deepest reductions.
+- **Brand-specific promotions**: individual brands run limited offers throughout the year.
+- **Member sale events**: loyalty members frequently get early access or extra discounts.
+- **Holiday gift sets**: late in the year, value sets and bundles offer more product per peso.
 
 > If a product is not urgent, add it to your wishlist and wait for a sale event rather than paying full price.
 
@@ -1037,21 +1037,21 @@ Even outside major sales, you can stretch your budget:
 
 - **Buy sets and bundles.** Value sets and minis often cost less per milliliter than full-size individual products.
 - **Start with travel sizes.** For a product you have not tried, a mini lets you test before committing to a full-size price.
-- **Watch free shipping thresholds.** Sephora PH offers free shipping on orders above a set amount (commonly ₱1,500) — consolidating purchases can save on delivery.
+- **Watch free shipping thresholds.** Sephora PH offers free shipping on orders above a set amount (commonly ₱1,500), consolidating purchases can save on delivery.
 - **Prioritize hero products.** Spend on the items that matter most for your routine, and economize on basics.
 
 ## Beauty Rewards and Member Perks
 
-Sephora PH's Beauty Rewards program lets you earn points on purchases that can be redeemed later, and members often get early or exclusive access to sales. If you buy from Sephora PH more than once or twice a year, enrolling is worth it — the points and member-only offers add real value over time.
+Sephora PH's Beauty Rewards program lets you earn points on purchases that can be redeemed later, and members often get early or exclusive access to sales. If you buy from Sephora PH more than once or twice a year, enrolling is worth it, the points and member-only offers add real value over time.
 
 ## What to Check Before You Buy
 
 Before checking out, confirm:
 
-- **Shade or variant availability.** Sale items can sell out in popular shades — confirm yours is in stock.
+- **Shade or variant availability.** Sale items can sell out in popular shades, confirm yours is in stock.
 - **Full-size vs. sample.** Make sure you are comparing like for like when judging value.
 - **Ingredient list.** Check for allergens or actives (AHA, BHA, retinol) if you have sensitive skin, and patch test new products.
-- **Current price on the partner store.** Prices on SulitScan come from affiliate datafeeds and may lag the live Sephora PH price — always confirm before buying.
+- **Current price on the partner store.** Prices on SulitScan come from affiliate datafeeds and may lag the live Sephora PH price, always confirm before buying.
 
 ## Returns and Authenticity
 
@@ -1063,7 +1063,7 @@ Read our [Sephora PH beauty guide](/blog/sephora-ph-beauty-guide) for brand and 
 
 ## Affiliate Disclosure
 
-SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. Sale prices and availability are set by Sephora PH and change frequently — always confirm on the partner store before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. Sale prices and availability are set by Sephora PH and change frequently, always confirm on the partner store before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
     `.trim(),
     category: "Platform Guides",
     author: "SulitScan Team",
@@ -1073,7 +1073,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     tags: ["sephora", "beauty", "skincare", "shopping-guide", "philippines"],
     coverGradient: "from-rose-400 to-pink-600",
     coverImage: "/images/guides/sephora-ph-sale-guide.jpg",
-    coverImageAlt: "Sephora PH sale guide — beauty products with up to 30% off, Beauty Pass rewards card, and a maximize-your-value checklist",
+    coverImageAlt: "Sephora PH sale guide, beauty products with up to 30% off, Beauty Pass rewards card, and a maximize-your-value checklist",
   },
 
   {
@@ -1083,7 +1083,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     excerpt:
       "Online shopping is convenient but attracts scams, fake listings, and misleading discounts. Practical safety checks every Filipino shopper can use to buy with confidence.",
     content: `
-Online shopping in the Philippines is convenient and often cheaper than buying in store — but it also attracts scams, fake listings, and misleading discounts. This guide covers practical safety checks every Filipino shopper can use to buy with confidence, whether on Temu, Sephora PH, or any other platform.
+Online shopping in the Philippines is convenient and often cheaper than buying in store, but it also attracts scams, fake listings, and misleading discounts. This guide covers practical safety checks every Filipino shopper can use to buy with confidence, whether on Temu, Sephora PH, or any other platform.
 
 ## What's in this guide
 
@@ -1107,22 +1107,22 @@ Before buying, confirm you are dealing with a legitimate store:
 
 Star ratings alone can mislead. Dig deeper:
 
-- **Filter for reviews with photos** from real buyers — these reveal true size, color, and quality.
+- **Filter for reviews with photos** from real buyers, these reveal true size, color, and quality.
 - **Read the middle and negative reviews,** not just the five-star ones. Patterns in complaints (runs small, arrived damaged, not as pictured) are the most useful signal.
-- **Be wary of listings with only generic, repetitive praise** and no detail — these can be padded.
+- **Be wary of listings with only generic, repetitive praise** and no detail, these can be padded.
 
 ## Spot Fake Discounts
 
 A big red discount badge does not guarantee a real saving. A product listed at ₱999 "down from ₱3,500" may never have sold at ₱3,500.
 
-> Judge the sale price against what similar products actually cost — not against the inflated "original" price next to it.
+> Judge the sale price against what similar products actually cost, not against the inflated "original" price next to it.
 
 Our full guide on [how to spot fake discounts](/blog/how-to-spot-fake-discounts) breaks this down with examples.
 
 ## Protect Your Payment and Data
 
 - **Use the platform's official checkout.** Never pay outside the app or site via direct bank transfer to a seller for a marketplace order.
-- **Avoid sellers who ask you to move to a chat app** to "complete payment" — a common scam pattern.
+- **Avoid sellers who ask you to move to a chat app** to "complete payment", a common scam pattern.
 - **Watch for phishing.** Legitimate stores will not ask for your password or full card details by message or email.
 - **Use payment methods with buyer protection** where available.
 
@@ -1150,7 +1150,7 @@ Stop and reconsider if you see:
 
 If an order arrives wrong, damaged, or never shows up:
 
-1. Document everything — take photos on arrival and keep all order confirmations.
+1. Document everything, take photos on arrival and keep all order confirmations.
 2. Open a claim through the platform's official buyer protection or dispute process.
 3. File within the stated protection window.
 4. Escalate to the platform's customer support if the seller is unresponsive.
@@ -1173,7 +1173,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     tags: ["shopping-tips", "buyer-protection", "safety", "philippines", "smart-shopping"],
     coverGradient: "from-emerald-400 to-teal-600",
     coverImage: "/images/guides/online-shopping-safety-tips-philippines.jpg",
-    coverImageAlt: "Online shopping safety tips Philippines — secure checkout screen, shield lock, and a shopping safety checklist",
+    coverImageAlt: "Online shopping safety tips Philippines, secure checkout screen, shield lock, and a shopping safety checklist",
   },
 
   {
@@ -1185,7 +1185,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     content: `
 Ordering from overseas stores is normal now for Filipino shoppers. Platforms like Temu, Shein, AliExpress, and Amazon make it easy to buy gadgets, clothes, skincare, and home items at attractive prices. But before you check out, there is one question many shoppers forget to ask: **will I need to pay import tax when my package arrives in the Philippines?**
 
-This guide explains the basics in plain terms — written for everyday online shoppers, not customs brokers. The goal is to help you understand what can affect your final cost before your order reaches your door. It pairs well with our [Temu Philippines shipping guide](/blog/temu-philippines-shipping-guide) and our explainer on [why final prices change at checkout](/blog/why-final-prices-change-at-checkout).
+This guide explains the basics in plain terms, written for everyday online shoppers, not customs brokers. The goal is to help you understand what can affect your final cost before your order reaches your door. It pairs well with our [Temu Philippines shipping guide](/blog/temu-philippines-shipping-guide) and our explainer on [why final prices change at checkout](/blog/why-final-prices-change-at-checkout).
 
 > This is a general educational guide, not official Bureau of Customs advice. For high-value shipments, always confirm with the courier and official sources.
 
@@ -1204,7 +1204,7 @@ This guide explains the basics in plain terms — written for everyday online sh
 
 When goods enter the Philippines from another country, they may be assessed by the Bureau of Customs. Depending on the item value, product type, and how the shipment is classified, it may be subject to **customs duty**, **VAT**, import processing charges, or other fees.
 
-For online shoppers, this usually matters when buying from overseas platforms or sellers — Temu and Shein orders shipped from abroad, AliExpress and Amazon parcels, consolidated shipments from forwarders, and other cross-border packages.
+For online shoppers, this usually matters when buying from overseas platforms or sellers, Temu and Shein orders shipped from abroad, AliExpress and Amazon parcels, consolidated shipments from forwarders, and other cross-border packages.
 
 Not every package is taxed. The amount depends on the declared value of the goods and how the shipment is assessed.
 
@@ -1212,9 +1212,9 @@ Not every package is taxed. The amount depends on the declared value of the good
 
 In simple terms, the de minimis rule is a threshold for low-value imports. For many personal online orders, if the value of the goods is **₱10,000 or less**, customs duty and VAT generally are not collected. Once a shipment goes above the threshold, duties and taxes may apply depending on the product category and customs assessment.
 
-This threshold is usually checked against the **value of the goods** (often called the FOB or FCA value) — that is, the item value itself, before shipping and insurance.
+This threshold is usually checked against the **value of the goods** (often called the FOB or FCA value), that is, the item value itself, before shipping and insurance.
 
-![Philippine ₱10,000 de minimis rule — orders valued at ₱10,000 or less may enter duty and VAT free, while orders above ₱10,000 may become dutiable|1448x1086](/images/guides/philippine-de-minimis-rule.jpg)
+![Philippine ₱10,000 de minimis rule, orders valued at ₱10,000 or less may enter duty and VAT free, while orders above ₱10,000 may become dutiable|1448x1086](/images/guides/philippine-de-minimis-rule.jpg)
 
 ## Why your final cost differs from the checkout price
 
@@ -1222,14 +1222,14 @@ Many shoppers assume the checkout price is the final cost. That is not always tr
 
 Your final **landed cost** can be affected by item value, currency conversion, shipping, insurance, product category, the customs duty rate, VAT, courier handling or processing fees, and whether several packages are assessed together. This is why a cheap-looking item can become more expensive when it arrives.
 
-![Sample landed-cost breakdown for an overseas order — item price plus shipping, insurance, customs duty, and 12% VAT add up to the total you actually pay|1448x1086](/images/guides/import-tax-cost-breakdown.jpg)
+![Sample landed-cost breakdown for an overseas order, item price plus shipping, insurance, customs duty, and 12% VAT add up to the total you actually pay|1448x1086](/images/guides/import-tax-cost-breakdown.jpg)
 
 ## FOB vs CIF: the difference in plain terms
 
 Two terms you may see are **FOB** and **CIF**:
 
-- **FOB** is the value of the goods themselves — think of it as the item price before shipping and insurance.
-- **CIF** means cost, insurance, and freight — the item value plus shipping plus insurance.
+- **FOB** is the value of the goods themselves, think of it as the item price before shipping and insurance.
+- **CIF** means cost, insurance, and freight, the item value plus shipping plus insurance.
 
 A simple way to remember it:
 
@@ -1259,13 +1259,13 @@ Since the goods value is above ₱10,000, the shipment may be subject to customs
 
 ## What about multiple packages on the same day?
 
-This catches a lot of shoppers. If you place several orders close together, they may arrive around the same time — and depending on how they are assessed, multiple packages for the same recipient or address may be treated together.
+This catches a lot of shoppers. If you place several orders close together, they may arrive around the same time, and depending on how they are assessed, multiple packages for the same recipient or address may be treated together.
 
-For example, three parcels of ₱4,000, ₱3,500, and ₱3,200 each look below ₱10,000 individually. Together, the total is ₱10,700 — which can push the combined value over the threshold. If you are buying several items from overseas within the same period, plan your orders carefully.
+For example, three parcels of ₱4,000, ₱3,500, and ₱3,200 each look below ₱10,000 individually. Together, the total is ₱10,700, which can push the combined value over the threshold. If you are buying several items from overseas within the same period, plan your orders carefully.
 
 ## Why product category matters
 
-Different products can carry different duty rates. Clothing, shoes, electronics, cosmetics, books, toys, and bags are not always treated the same — the actual duty depends on the proper HS or AHTN classification. Calculators can only estimate based on general categories; for high-value shipments, verify the classification through official sources or a customs professional.
+Different products can carry different duty rates. Clothing, shoes, electronics, cosmetics, books, toys, and bags are not always treated the same, the actual duty depends on the proper HS or AHTN classification. Calculators can only estimate based on general categories; for high-value shipments, verify the classification through official sources or a customs professional.
 
 ## Common mistakes Filipino shoppers make
 
@@ -1293,13 +1293,13 @@ Our guide on [how to spot fake discounts](/blog/how-to-spot-fake-discounts) and 
 
 Want a quick estimate before you buy? We built a free sister tool, **[ImportTaxPH](https://www.importtaxph.com/)**, to help Filipino shoppers estimate possible customs duty, VAT, and total landed cost for overseas orders from stores like Temu, Shein, AliExpress, and Amazon.
 
-To get a useful estimate, have these ready: item price and currency, shipping cost, insurance if any, product category, and whether multiple shipments may arrive on the same day. The result is an estimate only — the final assessment depends on official customs valuation and classification — but it helps you decide whether a foreign deal is still worth it after charges. You can try it at [importtaxph.com](https://www.importtaxph.com/).
+To get a useful estimate, have these ready: item price and currency, shipping cost, insurance if any, product category, and whether multiple shipments may arrive on the same day. The result is an estimate only, the final assessment depends on official customs valuation and classification, but it helps you decide whether a foreign deal is still worth it after charges. You can try it at [importtaxph.com](https://www.importtaxph.com/).
 
 ## Is buying overseas still worth it?
 
-Sometimes, yes — when the product is much cheaper than local options, hard to find here, shipping is reasonable, the order is below the de minimis threshold, and the seller has good reviews. Local buying can be better when the price difference is small, you need fast delivery, warranty matters, or the item is expensive, fragile, or sensitive to sizing and returns.
+Sometimes, yes, when the product is much cheaper than local options, hard to find here, shipping is reasonable, the order is below the de minimis threshold, and the seller has good reviews. Local buying can be better when the price difference is small, you need fast delivery, warranty matters, or the item is expensive, fragile, or sensitive to sizing and returns.
 
-The best choice is not always the cheapest checkout price — it is the one with the best total value after all costs and risks. When you spot an overseas deal on [SulitScan](/deals), factor in the possible landed cost first.
+The best choice is not always the cheapest checkout price, it is the one with the best total value after all costs and risks. When you spot an overseas deal on [SulitScan](/deals), factor in the possible landed cost first.
 
 ## Related on SulitScan
 
@@ -1307,7 +1307,7 @@ Read our [Temu Philippines shipping guide](/blog/temu-philippines-shipping-guide
 
 ## Affiliate Disclosure
 
-SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. ImportTaxPH is our free sister tool, not a Bureau of Customs service — its estimates are for guidance only, not legal or tax advice. Always confirm the final landed cost with the courier and official sources before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. ImportTaxPH is our free sister tool, not a Bureau of Customs service, its estimates are for guidance only, not legal or tax advice. Always confirm the final landed cost with the courier and official sources before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
     `.trim(),
     category: "Shopping Tips",
     author: "SulitScan Team",

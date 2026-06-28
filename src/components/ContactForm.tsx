@@ -57,7 +57,7 @@ export default function ContactForm({ initialSubject = "", initialMessage = "" }
         <h2 className="text-lg font-bold text-slate-900">Message sent!</h2>
         <p className="text-sm text-slate-500 max-w-sm">
           We received your message and will reply within 2–3 business days.
-          Check your inbox — our reply will come from <strong>hello@e.sulitscan.com</strong>.
+          Check your inbox, our reply will come from <strong>hello@e.sulitscan.com</strong>.
         </p>
         <button
           type="button"

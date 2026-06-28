@@ -8,7 +8,7 @@ const SIGNALS = [
 ]
 
 /**
- * Compact, honest trust strip for money pages. No fake urgency or claims —
+ * Compact, honest trust strip for money pages. No fake urgency or claims,
  * reinforces that SulitScan is a guide, not a seller.
  */
 export default function TrustBar({ className = "" }: { className?: string }) {

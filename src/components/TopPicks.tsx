@@ -10,7 +10,7 @@ interface TopPicksProps {
 
 /**
  * A compact "Top Picks" row (6–8 curated deals) that surfaces the strongest,
- * lowest-risk options before the full grid — reduces choice overload.
+ * lowest-risk options before the full grid, reduces choice overload.
  */
 export default function TopPicks({ title, subtitle, deals, headingId }: TopPicksProps) {
   if (deals.length === 0) return null

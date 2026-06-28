@@ -8,7 +8,7 @@ interface ExternalAffiliateLinkProps extends AnchorHTMLAttributes<HTMLAnchorElem
 /**
  * Use this component for every outbound affiliate CTA.
  * It enforces: target="_blank" rel="sponsored nofollow noopener noreferrer"
- * Never use raw <a> for affiliate links — this wrapper prevents accidental omissions.
+ * Never use raw <a> for affiliate links, this wrapper prevents accidental omissions.
  */
 export function ExternalAffiliateLink({
   href,
@@ -23,7 +23,7 @@ export function ExternalAffiliateLink({
       href={href}
       target="_blank"
       rel="sponsored nofollow noopener noreferrer"
-      aria-label={ariaLabel ?? `${String(children)} — opens on ${platform} (affiliate link, new tab)`}
+      aria-label={ariaLabel ?? `${String(children)}, opens on ${platform} (affiliate link, new tab)`}
       className={className}
       {...rest}
     >

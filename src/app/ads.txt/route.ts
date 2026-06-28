@@ -1,5 +1,5 @@
 /**
- * /ads.txt — dynamic generation.
+ * /ads.txt, dynamic generation.
  *
  * Set ADSENSE_PUBLISHER_ID in your environment to activate.
  * Example: ADSENSE_PUBLISHER_ID=pub-XXXXXXXXXXXXXXXX
@@ -11,7 +11,7 @@ export function GET() {
 
   const body = publisherId
     ? `google.com, ${publisherId}, DIRECT, f08c47fec0942fa0\n`
-    : `# ads.txt — Google AdSense publisher ID not yet configured.\n# Set ADSENSE_PUBLISHER_ID environment variable to activate.\n`
+    : `# ads.txt, Google AdSense publisher ID not yet configured.\n# Set ADSENSE_PUBLISHER_ID environment variable to activate.\n`
 
   return new Response(body, {
     headers: {

@@ -38,7 +38,7 @@ export default function CategoryDeals({ deals }: Props) {
         <div className="mt-6 text-center">
           <p className="text-xs text-slate-400">
             {formatShowingDeals(Math.min(visible, deals.length), deals.length)} ·
-            Prices from affiliate datafeeds — confirm on partner store before buying.
+            Prices from affiliate datafeeds, confirm on partner store before buying.
           </p>
         </div>
       )}

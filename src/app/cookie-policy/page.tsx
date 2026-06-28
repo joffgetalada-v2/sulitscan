@@ -55,7 +55,7 @@ export default function CookiePolicyPage() {
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
                 <h3 className="text-sm font-semibold text-slate-800 mb-1">Analytics Cookies</h3>
                 <p className="text-xs text-slate-500">
-                  We use <strong>Vercel Analytics</strong> to understand how visitors use the site — such as
+                  We use <strong>Vercel Analytics</strong> to understand how visitors use the site, such as
                   which pages are most visited and how users navigate. This data is aggregated and does not
                   personally identify you. Vercel Analytics is privacy-focused and does not use third-party
                   advertising cookies.

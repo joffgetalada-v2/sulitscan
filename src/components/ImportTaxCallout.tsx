@@ -2,7 +2,7 @@ import { Calculator } from "lucide-react"
 
 /**
  * Callout to ImportTaxPH (our free sister tool) for overseas-shopping pages.
- * Not an affiliate link — uses a normal external rel.
+ * Not an affiliate link, uses a normal external rel.
  */
 export default function ImportTaxCallout() {
   return (
@@ -22,7 +22,7 @@ export default function ImportTaxCallout() {
           to estimate possible customs duty, VAT, and total landed cost before you buy.
         </p>
         <p className="text-xs text-slate-400 mt-1">
-          Our free sister tool — estimates only, not a Bureau of Customs assessment.
+          Our free sister tool, estimates only, not a Bureau of Customs assessment.
         </p>
       </div>
     </div>

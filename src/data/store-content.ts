@@ -9,25 +9,25 @@ export interface StoreContent {
 export const storeContent: StoreContent[] = [
   {
     slug: "temu",
-    intro: `Temu is a global online marketplace offering a wide range of everyday products at very low price points — from home organizers and kitchen tools to phone accessories, fashion basics, and beauty items. For Filipino shoppers, Temu can be a useful source of budget-friendly finds, especially for non-critical purchases where you're comfortable with some variability in quality.
+    intro: `Temu is a global online marketplace offering a wide range of everyday products at very low price points, from home organizers and kitchen tools to phone accessories, fashion basics, and beauty items. For Filipino shoppers, Temu can be a useful source of budget-friendly finds, especially for non-critical purchases where you're comfortable with some variability in quality.
 
-Because Temu ships internationally to the Philippines, delivery typically takes 7 to 20 business days. Product quality varies by seller and product type. Deals featured on SulitScan are manually selected and annotated with buyer notes — but prices from our affiliate datafeed may not reflect the current price on Temu. Always confirm the price, available vouchers, and product details on Temu before completing your order.
+Because Temu ships internationally to the Philippines, delivery typically takes 7 to 20 business days. Product quality varies by seller and product type. Deals featured on SulitScan are manually selected and annotated with buyer notes, but prices from our affiliate datafeed may not reflect the current price on Temu. Always confirm the price, available vouchers, and product details on Temu before completing your order.
 
 SulitScan earns a small affiliate commission when you purchase through our links, at no extra cost to you.`,
     goodFor: [
       "Home organizers, storage boxes, and drawer dividers",
       "Kitchen tools, utensils, and small appliances",
       "Phone accessories, cables, and holders",
-      "Fashion basics — basics, activewear, belts, and accessories",
+      "Fashion basics, activewear, belts, and accessories",
       "Decor items, seasonal finds, and craft supplies",
       "Under ₱500 gift ideas and stocking stuffers",
     ],
     beCareful: [
-      "Electronics above ₱1,000 — quality can be inconsistent and returns are harder",
-      "Items requiring exact sizing — check size guides in centimeters, not just S/M/L labels",
-      "Branded or luxury-style goods — Temu is not an authorized retailer of established brands",
-      "Items where fast delivery matters — standard shipping takes 7–20 business days",
-      "Heavily discounted \"original\" prices — some baseline prices may be inflated",
+      "Electronics above ₱1,000, quality can be inconsistent and returns are harder",
+      "Items requiring exact sizing, check size guides in centimeters, not just S/M/L labels",
+      "Branded or luxury-style goods, Temu is not an authorized retailer of established brands",
+      "Items where fast delivery matters, standard shipping takes 7–20 business days",
+      "Heavily discounted \"original\" prices, some baseline prices may be inflated",
     ],
     faqs: [
       {
@@ -48,19 +48,19 @@ SulitScan earns a small affiliate commission when you purchase through our links
       },
       {
         question: "Can I use vouchers on top of Temu sale prices?",
-        answer: "Yes — Temu frequently offers platform-wide coupons, new-user discounts, and bundled vouchers that can stack on top of listed sale prices. Check the Temu app coupon section before checkout to see available savings.",
+        answer: "Yes, Temu frequently offers platform-wide coupons, new-user discounts, and bundled vouchers that can stack on top of listed sale prices. Check the Temu app coupon section before checkout to see available savings.",
       },
     ],
   },
   {
     slug: "sephora-ph",
-    intro: `Sephora Philippines is an authorized premium beauty retailer carrying 300+ brands — including SK-II, Sunday Riley, ZOEVA, Mario Badescu, Natasha Denona, and the Sephora Collection. For Filipino beauty shoppers, Sephora PH is one of the most reliable sources for authenticated skincare, makeup, and fragrance products, with a nationwide delivery network and a Beauty Rewards loyalty program.
+    intro: `Sephora Philippines is an authorized premium beauty retailer carrying 300+ brands, including SK-II, Sunday Riley, ZOEVA, Mario Badescu, Natasha Denona, and the Sephora Collection. For Filipino beauty shoppers, Sephora PH is one of the most reliable sources for authenticated skincare, makeup, and fragrance products, with a nationwide delivery network and a Beauty Rewards loyalty program.
 
-Deals featured on SulitScan from Sephora PH are sourced through the Involve Asia affiliate program. Prices are from the affiliate datafeed and may not reflect current Sephora PH prices — always confirm the final price, shade availability, and product details on sephora.ph before buying.
+Deals featured on SulitScan from Sephora PH are sourced through the Involve Asia affiliate program. Prices are from the affiliate datafeed and may not reflect current Sephora PH prices, always confirm the final price, shade availability, and product details on sephora.ph before buying.
 
 SulitScan earns a small affiliate commission when you purchase through our Sephora PH links via Involve Asia, at no extra cost to you.`,
     goodFor: [
-      "Authenticated skincare from trusted brands — SK-II, Sunday Riley, Kiehl's",
+      "Authenticated skincare from trusted brands, SK-II, Sunday Riley, Kiehl's",
       "Premium makeup and foundation shade matching using Sephora's online tools",
       "Fragrance purchases where authenticity matters",
       "Stocking up on Sephora Collection products during sale periods",
@@ -68,16 +68,16 @@ SulitScan earns a small affiliate commission when you purchase through our Sepho
       "Free shipping on orders ₱1,500 and above",
     ],
     beCareful: [
-      "Shade and variant availability — confirm your exact shade is in stock on sephora.ph before ordering",
-      "Opened or used products — Sephora PH generally does not accept returns on opened beauty products unless defective",
-      "Ingredient sensitivities — always check the ingredient list for known allergens before buying skincare",
-      "Sale prices — sale events change frequently, confirm the current price on sephora.ph before buying",
-      "Beauty Rewards tiers — some perks and free samples depend on your current tier level",
+      "Shade and variant availability, confirm your exact shade is in stock on sephora.ph before ordering",
+      "Opened or used products, Sephora PH generally does not accept returns on opened beauty products unless defective",
+      "Ingredient sensitivities, always check the ingredient list for known allergens before buying skincare",
+      "Sale prices, sale events change frequently, confirm the current price on sephora.ph before buying",
+      "Beauty Rewards tiers, some perks and free samples depend on your current tier level",
     ],
     faqs: [
       {
         question: "Does Sephora PH ship nationwide in the Philippines?",
-        answer: "Yes — Sephora PH ships nationwide. Standard delivery typically takes 3 to 7 business days depending on your location. Free standard shipping applies to orders ₱1,500 and above.",
+        answer: "Yes, Sephora PH ships nationwide. Standard delivery typically takes 3 to 7 business days depending on your location. Free standard shipping applies to orders ₱1,500 and above.",
       },
       {
         question: "What is the Sephora PH return policy?",
@@ -85,7 +85,7 @@ SulitScan earns a small affiliate commission when you purchase through our Sepho
       },
       {
         question: "Are Sephora PH products authentic?",
-        answer: "Yes — Sephora PH is an authorized retailer for all brands it carries. Products sold on sephora.ph are guaranteed authentic. If you receive a product that appears counterfeit or damaged, contact Sephora PH customer support directly.",
+        answer: "Yes, Sephora PH is an authorized retailer for all brands it carries. Products sold on sephora.ph are guaranteed authentic. If you receive a product that appears counterfeit or damaged, contact Sephora PH customer support directly.",
       },
       {
         question: "How do Sephora Beauty Rewards work in the Philippines?",

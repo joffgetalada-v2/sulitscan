@@ -1,7 +1,7 @@
 "use client"
 
 /**
- * AdSense Placeholder — disabled by default.
+ * AdSense Placeholder, disabled by default.
  *
  * To enable AdSense:
  * 1. Set NEXT_PUBLIC_ADSENSE_CLIENT_ID in your .env.local and in Vercel Environment Variables.
@@ -38,7 +38,7 @@ export function AdSensePlaceholder({ slot }: { slot?: string }) {
       aria-hidden="true"
       data-ad-slot={slot}
     >
-      <span className="text-xs text-slate-300">Ad placeholder — not live</span>
+      <span className="text-xs text-slate-300">Ad placeholder, not live</span>
     </div>
   )
 }

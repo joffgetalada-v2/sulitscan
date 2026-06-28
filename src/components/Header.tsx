@@ -30,7 +30,7 @@ export default function Header() {
       {/* ── Announcement bar ── */}
       <div className="announcement-gradient py-2 px-4 text-center text-xs text-white font-medium">
         <Sparkles className="inline w-3 h-3 mr-1 opacity-80" aria-hidden="true" />
-        New deals added weekly —{" "}
+        New deals added weekly,{" "}
         <Link
           href="/deals"
           className="font-bold underline underline-offset-2 hover:opacity-80 transition-opacity"

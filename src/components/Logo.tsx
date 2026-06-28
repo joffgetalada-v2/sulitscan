@@ -43,7 +43,7 @@ export default function Logo({ className, dark = false, size = "md", hideText = 
     <Link
       href={href}
       className={cn("flex items-center gap-2 group shrink-0", className)}
-      aria-label="SulitScan PH — home"
+      aria-label="SulitScan PH, home"
     >
       <LogoMark
         size={markSizes[size]}

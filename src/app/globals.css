@@ -87,7 +87,7 @@ html {
 .animate-pulse-dot    { animation: pulse-dot      1.5s ease-in-out infinite; }
 .animate-bounce-soft  { animation: bounce-soft    2s ease-in-out infinite; }
 
-/* Scan line — for absolute-positioned element inside relative overflow-hidden container */
+/* Scan line, for absolute-positioned element inside relative overflow-hidden container */
 .scan-line {
   position: absolute;
   left: 0;
@@ -99,7 +99,7 @@ html {
   z-index: 10;
 }
 
-/* Marquee — wrap two copies inside for seamless loop */
+/* Marquee, wrap two copies inside for seamless loop */
 .animate-marquee { animation: marquee 30s linear infinite; }
 
 /* Shimmer skeleton */
@@ -161,7 +161,7 @@ html {
 
 /* ─── Premium Design Utilities ─── */
 
-/* Gradient text — green brand */
+/* Gradient text, green brand */
 .gradient-text {
   background: linear-gradient(135deg, #16a34a 0%, #059669 100%);
   -webkit-background-clip: text;

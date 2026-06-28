@@ -28,7 +28,7 @@ export default function StoreDeals({ deals, storeName }: StoreDealsProps) {
     <>
       <p className="text-xs text-slate-400 mb-4">
         {formatShowingDeals(Math.min(visible, deals.length), deals.length)} ·{" "}
-        Prices from affiliate datafeed — confirm current price on {storeName} before buying.
+        Prices from affiliate datafeed, confirm current price on {storeName} before buying.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {deals.slice(0, visible).map((deal) => (

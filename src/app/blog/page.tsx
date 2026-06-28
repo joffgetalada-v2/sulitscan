@@ -9,7 +9,7 @@ import { BookOpen } from "lucide-react"
 export const metadata: Metadata = {
   title: "Smart Shopping Guides Philippines",
   description:
-    "Shopping guides for Filipino buyers — Temu tips, Sephora PH buying advice, how to spot fake discounts, voucher strategies, and smart online shopping habits.",
+    "Shopping guides for Filipino buyers, Temu tips, Sephora PH buying advice, how to spot fake discounts, voucher strategies, and smart online shopping habits.",
   alternates: { canonical: `${siteConfig.url}/blog` },
   openGraph: {
     title: "Smart Shopping Guides Philippines | SulitScan PH",
@@ -40,7 +40,7 @@ export default function BlogPage() {
       <div className="relative w-full overflow-hidden" style={{ height: "260px" }}>
         <Image
           src="/images/guides/smart-shopping-guide.jpg"
-          alt="SulitScan PH Smart Shopping Guides — deal checks, buyer tips, and budget finds for Filipino shoppers"
+          alt="SulitScan PH Smart Shopping Guides, deal checks, buyer tips, and budget finds for Filipino shoppers"
           fill
           className="object-cover"
           sizes="100vw"
