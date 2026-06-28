@@ -334,7 +334,15 @@ export default async function BlogPostPage({
                       href={`/blog/${p.slug}`}
                       className="group p-4 bg-white border border-slate-100 rounded-xl hover:border-green-100 hover:shadow-md transition-all"
                     >
-                      <div className={`w-full h-20 rounded-lg bg-gradient-to-br ${p.coverGradient} mb-3`} aria-hidden="true" />
+                      <div className="relative w-full h-20 rounded-lg overflow-hidden mb-3 bg-slate-100">
+                        <Image
+                          src={p.coverImage ?? DEFAULT_BLOG_COVER}
+                          alt={p.coverImage ? (p.coverImageAlt ?? p.title) : DEFAULT_BLOG_COVER_ALT}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          sizes="(max-width: 640px) 100vw, 33vw"
+                        />
+                      </div>
                       <span className="text-[10px] font-semibold text-green-600 uppercase tracking-wide">{p.category}</span>
                       <h3 className="text-xs font-bold text-slate-900 mt-1 leading-snug line-clamp-2 group-hover:text-green-700 transition-colors">
                         {p.title}
