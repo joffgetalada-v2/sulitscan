@@ -846,10 +846,10 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-047", slug: "acer-wireless-earbuds-temu",
-    title: "Acer OHR503 Mini Sport Wireless Earbuds – Noise-Canceling, Long Battery",
+    title: "Acer OHR503 Mini Sport Wireless Earbuds, Noise-Reducing Design",
     platform: "Temu", platformColor: "#ff6d00", category: "Electronics",
     originalPrice: 399, salePrice: 199, discount: 50, sulitScore: 8,
-    reason: "Branded Acer TWS earbuds with in-ear noise canceling and extended battery life. Check reviews for sound quality and connection stability before buying.",
+    reason: "Acer TWS earbuds with an in-ear noise-reducing design. Check reviews for real battery life, sound quality, compatibility, warranty, seller support, and return terms before buying.",
     imageGradient: "from-sky-500 to-cyan-700",
     imageUrl: "https://img.kwcdn.com/product/fancy/8697b8b1-5c88-435f-8438-26b7964718df.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1996,7 +1996,7 @@ export const deals: Deal[] = [
     salePrice: 1070,
     discount: 0,
     sulitScore: 7,
-    reason: "Mario Badescu's exfoliating toner with salicylic acid, aimed at oily and acne-prone skin. Check the ingredient list and official product details on Sephora PH before adding to your routine.",
+    reason: "Mario Badescu's exfoliating toner with salicylic acid, popular in oily and combination skin routines. Check the ingredient list and official product details on Sephora PH before adding to your routine.",
     imageGradient: "from-blue-100 to-blue-300",
     imageUrl: "https://www.mariobadescu.com/cdn/shop/files/i3q7dwn1xs2cbezcd8sr_b9f5a263-026d-4f3d-a88c-cdd98e9e966a.jpg",
     affiliateLink: "https://invol.co/aff_m?offer_id=101834&aff_id=1060158&source=feed&url=https%3A%2F%2Fwww.sephora.ph%2Fproducts%2Fmario-badescu-special-cleansing-lotion-o-236ml%2Fv%2Fdefault",
@@ -3601,11 +3601,22 @@ export function isSuspiciousDiscount(deal: Deal): boolean {
 export const SUSPICIOUS_DISCOUNT_NOTE =
   "Very high listed discounts can reflect inflated original prices. Compare the final price, reviews, and seller details before buying."
 
-// All active deals sorted by discount % descending, only products with images
+// Default ordering for public deal lists. Keeps safe, practical, higher-confidence
+// picks first and pushes suspiciously discounted items (80%+) to the end, so the
+// first impression is not led by the biggest, least trustworthy discounts.
+export function compareDealsForDefault(a: Deal, b: Deal): number {
+  const susA = isSuspiciousDiscount(a) ? 1 : 0
+  const susB = isSuspiciousDiscount(b) ? 1 : 0
+  if (susA !== susB) return susA - susB                                   // suspicious discounts last
+  if (b.sulitScore !== a.sulitScore) return b.sulitScore - a.sulitScore   // higher SulitScore first
+  return b.discount - a.discount                                          // then a larger (non-suspicious) discount
+}
+
+// All active deals (active platform and has image), in the recommended default order.
 export function getActiveDeals(): Deal[] {
   return deals
     .filter(d => ACTIVE_PLATFORMS.has(d.platform) && !!d.imageUrl)
-    .sort((a, b) => b.discount - a.discount)
+    .sort(compareDealsForDefault)
 }
 
 // Curated homepage picks: strong SulitScore and a sensible (non-suspicious)

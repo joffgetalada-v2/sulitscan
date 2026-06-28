@@ -3,6 +3,7 @@
 import { useState, useMemo } from "react"
 import DealCard from "./DealCard"
 import type { Deal } from "@/data/deals"
+import { compareDealsForDefault } from "@/data/deals"
 import { Search, SlidersHorizontal, X } from "lucide-react"
 import { formatDealCount, formatShowingDeals } from "@/lib/utils"
 
@@ -11,10 +12,11 @@ interface DealsGridProps {
   categories: string[]
 }
 
-type SortKey = "discount" | "score" | "price-asc" | "newest"
+type SortKey = "recommended" | "discount" | "score" | "price-asc" | "newest"
 
 const STORES = ["All", "Temu", "Sephora PH", "Shopee PH"]
 const SORT_OPTIONS: { key: SortKey; label: string }[] = [
+  { key: "recommended", label: "Recommended" },
   { key: "discount",  label: "Biggest discount" },
   { key: "score",     label: "Highest SulitScore" },
   { key: "price-asc", label: "Lowest price" },
@@ -25,7 +27,7 @@ export default function DealsGrid({ deals, categories }: DealsGridProps) {
   const [search, setSearch]           = useState("")
   const [activeStore, setActiveStore] = useState("All")
   const [activeCategory, setActiveCategory] = useState("All")
-  const [sortKey, setSortKey]         = useState<SortKey>("discount")
+  const [sortKey, setSortKey]         = useState<SortKey>("recommended")
   const [showFilters, setShowFilters] = useState(false)
   const [displayCount, setDisplayCount] = useState(24)
 
@@ -55,6 +57,7 @@ export default function DealsGrid({ deals, categories }: DealsGridProps) {
 
     // Sort
     return [...result].sort((a, b) => {
+      if (sortKey === "recommended") return compareDealsForDefault(a, b)
       if (sortKey === "discount")  return b.discount - a.discount
       if (sortKey === "score")     return b.sulitScore - a.sulitScore
       if (sortKey === "price-asc") return a.salePrice - b.salePrice
@@ -67,12 +70,12 @@ export default function DealsGrid({ deals, categories }: DealsGridProps) {
     setSearch("")
     setActiveStore("All")
     setActiveCategory("All")
-    setSortKey("discount")
+    setSortKey("recommended")
     setDisplayCount(24)
   }
 
   const hasActiveFilters =
-    search.trim() || activeStore !== "All" || activeCategory !== "All" || sortKey !== "discount"
+    search.trim() || activeStore !== "All" || activeCategory !== "All" || sortKey !== "recommended"
 
   return (
     <>
