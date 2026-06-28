@@ -1,6 +1,9 @@
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
+import { existsSync } from "fs"
+import { join } from "path"
 import Link from "next/link"
+import Image from "next/image"
 import { ExternalLink, CheckCircle, Truck, ArrowLeft, ArrowRight, ShieldCheck, RotateCcw, Clock, AlertCircle, ChevronDown, BookOpen } from "lucide-react"
 import { BreadcrumbJsonLd, FAQJsonLd, ItemListJsonLd } from "@/components/SeoJsonLd"
 import { stores, getStoreBySlug } from "@/data/stores"
@@ -10,6 +13,12 @@ import { siteConfig } from "@/lib/seo"
 import { clampMeta } from "@/lib/utils"
 import StoreDeals from "@/components/StoreDeals"
 import ImportTaxCallout from "@/components/ImportTaxCallout"
+
+// Returns the public URL only if the file actually exists, so a missing banner
+// gracefully falls back to the gradient hero instead of a broken image.
+function publicImg(rel: string): string | undefined {
+  return existsSync(join(process.cwd(), "public", rel.replace(/^\//, ""))) ? rel : undefined
+}
 
 export function generateStaticParams() {
   return stores.map((s) => ({ slug: s.slug }))
@@ -46,6 +55,7 @@ export default async function StoreDetailPage({
 
   const storeDeals = getDealsByPlatform(store.name)
   const content = getStoreContent(slug)
+  const banner = store.bannerImage && publicImg(store.bannerImage) ? store.bannerImage : null
 
   return (
     <>
@@ -81,20 +91,32 @@ export default async function StoreDetailPage({
         </Link>
       </div>
 
-      {/* Store hero */}
-      <div className={`bg-gradient-to-br ${store.gradient} py-12 px-4 sm:px-6 lg:px-8 mt-4`}>
-        <div className="max-w-7xl mx-auto">
-          <div className="flex items-start justify-between flex-wrap gap-4">
+      {/* Store hero. Uses the store banner when one exists, with the store info and
+          CTA in a light row below it. Falls back to the gradient hero otherwise. */}
+      {banner ? (
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-4">
+          <div className="relative rounded-2xl overflow-hidden border border-slate-100 shadow-sm">
+            <Image
+              src={banner}
+              alt={`${store.name} store banner, ${store.tagline}`}
+              width={1811}
+              height={412}
+              sizes="(max-width: 1280px) 100vw, 1280px"
+              className="w-full h-auto"
+              priority
+            />
+          </div>
+          <div className="flex items-start justify-between flex-wrap gap-4 mt-5">
             <div>
-              <h1 className="text-3xl font-black text-white mb-2">{store.name}</h1>
-              <p className="text-white/80 text-sm max-w-xl">{store.description}</p>
+              <h1 className="text-3xl font-black text-slate-900 mb-2">{store.name}</h1>
+              <p className="text-slate-500 text-sm max-w-xl">{store.description}</p>
             </div>
             {store.affiliateLink ? (
               <a
                 href={store.affiliateLink}
                 target="_blank"
                 rel="sponsored nofollow noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 hover:bg-white/30 text-white font-semibold text-sm rounded-xl border border-white/30 transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold text-sm rounded-xl transition-all shadow-sm"
                 aria-label={`Visit ${store.name} (affiliate link, opens in new tab)`}
               >
                 Visit {store.name}
@@ -103,7 +125,7 @@ export default async function StoreDetailPage({
             ) : (
               <a
                 href="#store-deals-heading"
-                className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 hover:bg-white/30 text-white font-semibold text-sm rounded-xl border border-white/30 transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold text-sm rounded-xl transition-all shadow-sm"
               >
                 Browse {store.name} deals
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
@@ -111,24 +133,72 @@ export default async function StoreDetailPage({
             )}
           </div>
           <div className="mt-4 flex flex-wrap gap-3">
-            <span className="flex items-center gap-1 bg-white/20 text-white text-xs font-medium px-3 py-1 rounded-full">
+            <span className="flex items-center gap-1 bg-green-50 text-green-700 border border-green-100 text-xs font-medium px-3 py-1 rounded-full">
               <ShieldCheck className="w-3 h-3" aria-hidden="true" />
-              {store.trustLevel === "high" ? "Active Store" : store.trustLevel === "medium" ? "Active Store" : "Listed Store"}
+              {store.trustLevel === "new" ? "Listed Store" : "Active Store"}
             </span>
             {store.shipsToPhilippines && (
-              <span className="flex items-center gap-1 bg-white/20 text-white text-xs font-medium px-3 py-1 rounded-full">
+              <span className="flex items-center gap-1 bg-slate-50 text-slate-600 border border-slate-100 text-xs font-medium px-3 py-1 rounded-full">
                 <Truck className="w-3 h-3" aria-hidden="true" />
                 Ships to Philippines
               </span>
             )}
             {store.freeShippingMinimum !== null && (
-              <span className="flex items-center gap-1 bg-white/20 text-white text-xs font-medium px-3 py-1 rounded-full">
+              <span className="flex items-center gap-1 bg-slate-50 text-slate-600 border border-slate-100 text-xs font-medium px-3 py-1 rounded-full">
                 Free shipping ₱{store.freeShippingMinimum.toLocaleString()}+
               </span>
             )}
           </div>
         </div>
-      </div>
+      ) : (
+        <div className={`bg-gradient-to-br ${store.gradient} py-12 px-4 sm:px-6 lg:px-8 mt-4`}>
+          <div className="max-w-7xl mx-auto">
+            <div className="flex items-start justify-between flex-wrap gap-4">
+              <div>
+                <h1 className="text-3xl font-black text-white mb-2">{store.name}</h1>
+                <p className="text-white/80 text-sm max-w-xl">{store.description}</p>
+              </div>
+              {store.affiliateLink ? (
+                <a
+                  href={store.affiliateLink}
+                  target="_blank"
+                  rel="sponsored nofollow noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 hover:bg-white/30 text-white font-semibold text-sm rounded-xl border border-white/30 transition-all"
+                  aria-label={`Visit ${store.name} (affiliate link, opens in new tab)`}
+                >
+                  Visit {store.name}
+                  <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                </a>
+              ) : (
+                <a
+                  href="#store-deals-heading"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 hover:bg-white/30 text-white font-semibold text-sm rounded-xl border border-white/30 transition-all"
+                >
+                  Browse {store.name} deals
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </a>
+              )}
+            </div>
+            <div className="mt-4 flex flex-wrap gap-3">
+              <span className="flex items-center gap-1 bg-white/20 text-white text-xs font-medium px-3 py-1 rounded-full">
+                <ShieldCheck className="w-3 h-3" aria-hidden="true" />
+                {store.trustLevel === "new" ? "Listed Store" : "Active Store"}
+              </span>
+              {store.shipsToPhilippines && (
+                <span className="flex items-center gap-1 bg-white/20 text-white text-xs font-medium px-3 py-1 rounded-full">
+                  <Truck className="w-3 h-3" aria-hidden="true" />
+                  Ships to Philippines
+                </span>
+              )}
+              {store.freeShippingMinimum !== null && (
+                <span className="flex items-center gap-1 bg-white/20 text-white text-xs font-medium px-3 py-1 rounded-full">
+                  Free shipping ₱{store.freeShippingMinimum.toLocaleString()}+
+                </span>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">

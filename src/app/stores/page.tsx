@@ -85,25 +85,30 @@ export default function StoresPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
           {stores.map((store) => (
             <div key={store.id} className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden hover:shadow-md transition-all">
-              {/* Store hero, banner image when available, else gradient header */}
+              {/* Store hero, banner image when available, else gradient header. The
+                  whole header links through to the store detail page. */}
               {store.bannerImage && publicImg(store.bannerImage) ? (
-                <div className="relative">
+                <Link
+                  href={`/stores/${store.slug}`}
+                  className="relative block group"
+                  aria-label={`View ${store.name} store details`}
+                >
                   <Image
                     src={store.bannerImage}
                     alt={`${store.name} store banner, ${store.tagline}`}
                     width={1811}
                     height={412}
                     sizes="(max-width: 640px) 100vw, 50vw"
-                    className="w-full h-auto"
+                    className="w-full h-auto group-hover:opacity-95 transition-opacity"
                     priority
                   />
                   <h2 className="sr-only">{store.name}</h2>
                   <span className="absolute top-3 right-3 px-3 py-1 bg-black/50 backdrop-blur-sm text-white text-xs font-semibold rounded-full">
                     {store.trustLevel === "new" ? "Listed Store" : "Active Store"}
                   </span>
-                </div>
+                </Link>
               ) : (
-                <div className={`bg-gradient-to-br ${store.gradient} px-6 py-8`}>
+                <Link href={`/stores/${store.slug}`} className={`block bg-gradient-to-br ${store.gradient} px-6 py-8`}>
                   <div className="flex items-start justify-between">
                     <div>
                       <h2 className="text-2xl font-black text-white mb-1">{store.name}</h2>
@@ -125,7 +130,7 @@ export default function StoresPage() {
                       </span>
                     )}
                   </div>
-                </div>
+                </Link>
               )}
 
               {/* Store detail */}
