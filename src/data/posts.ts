@@ -1464,6 +1464,163 @@ SulitScan may earn a commission when you click a partner link and complete a pur
       },
     ],
   },
+
+  {
+    id: "post-013",
+    slug: "how-to-check-if-shopee-seller-is-legit",
+    title: "How to Check If a Shopee Seller Is Legit in the Philippines",
+    excerpt:
+      "Not every Shopee seller is worth trusting. Here is how to read a seller's rating, reviews, badges, and listings before you tap Buy Now.",
+    content: `
+On Shopee, the product is only half the decision. The other half is the seller behind it. Two listings can show the same item at the same price, and one ships fast from a shop with thousands of happy buyers while the other goes quiet the moment you pay. Checking the seller first is the simplest way to avoid that second outcome.
+
+This guide walks through how to read a Shopee seller's profile, reviews, and listings so you can tell a reliable shop from a sketchy one before you tap Buy Now. It works at any price, but it matters most for branded items and anything above loose-change money. It pairs well with our [best Shopee finds under ₱500](/blog/best-shopee-finds-under-500-philippines) if you are putting together a budget haul.
+
+## What's in this guide
+
+- Who this guide is for
+- Why the seller matters more than the listing
+- What a trustworthy seller profile looks like
+- How to read the reviews
+- Red flags to watch for
+- How to compare the real final price
+- When to skip a seller
+- FAQs
+
+## Who this guide is for
+
+This is for anyone who shops on Shopee and has felt that small hesitation before paying a seller they have never bought from. New shoppers, gift buyers on a deadline, and anyone tempted by a branded item priced far below everyone else will get the most out of it. If you mostly buy cheap, low risk things like organizers or phone holders, the quick version is enough. If you are eyeing electronics, a phone, or a branded bag, read the whole thing.
+
+## Check the seller before the product
+
+![Where to check a Shopee seller's track record before buying: shop rating, total sales, join date, and chat response|1672x941](/images/guides/online-shopping-safety-tips-philippines.jpg)
+
+Before the listing photos pull you in, open the seller's shop page. Almost everything you need to judge a seller is there: how long they have been on Shopee, how many items they have sold, their overall rating, how fast they ship, and how they handle chat. A polished product photo tells you nothing about whether the shop will actually deliver. The seller's track record does.
+
+Make it a habit. Tap the shop name, skim the profile for half a minute, and only then go back to the item. If the shop already looks shaky, the price stops mattering.
+
+## What a trustworthy Shopee seller profile looks like
+
+No single number proves a seller is legit. A few signals read together are what actually tell you:
+
+- **Rating and review count.** A rating around 4.7 and up across hundreds or thousands of reviews is more convincing than a perfect 5.0 from twelve buyers.
+- **Sales volume and shop age.** A shop that has sold thousands of items over a couple of years has far more to lose by scamming you than a week-old shop with no history.
+- **Preferred Seller or Shopee Mall badge.** Preferred Seller points to a consistent track record, and Shopee Mall is for official brand and verified stores. Neither is a guarantee, but both beat an unbadged shop as a starting point.
+- **Ship-on-time and low cancellation rate.** Many shops show their shipping performance. A seller who ships on time and rarely cancels is easier to trust.
+- **Active chat replies.** A seller who answers questions quickly and clearly is usually a real, working shop, not a placeholder.
+
+Read these as a set. One strong signal does not cancel out a pile of weak ones.
+
+## How to read the reviews
+
+Star ratings are a starting point, not the verdict. The honest information lives in the written reviews, so this is where to spend your time.
+
+- **Sort to the reviews with photos and read those first.** Real buyer photos show the true size, color, and quality, not the styled studio render.
+- **Read the 3-star and lower reviews on purpose.** Patterns in the complaints, like arrived smaller than expected, not as pictured, or stopped working in a week, are the most honest signal you will get.
+- **Be suspicious of reviews that all sound the same** or landed on the same day. Generic, repeated praise with no detail can be padded.
+- **Check whether the seller replies to bad reviews.** A shop that responds and tries to fix problems is usually one worth dealing with.
+
+Our [online shopping safety tips](/blog/online-shopping-safety-tips-philippines) go deeper on reading reviews and spotting the padded ones.
+
+## Red flags to watch for
+
+![Shopee seller red flags: prices far below everyone else, off-platform payment requests, and copied or padded reviews|1672x941](/images/guides/fake-discount-check-guide.jpg)
+
+Slow down and reconsider if you notice any of these:
+
+- A branded item priced far below every other seller. At the bottom of the market, replicas are common, and our guide on [how to spot fake discounts](/blog/how-to-spot-fake-discounts) covers the inflated original price trick that usually rides along with them.
+- A brand new shop with no reviews selling flagship products in bulk.
+- A seller who asks you to chat off Shopee or pay by direct bank transfer or e-wallet outside the app. That strips away your buyer protection, and it is a classic scam setup.
+- Pressure in the chat, like rushing you to pay before a made-up promo ends.
+- No clear return terms, vague product details, or photos that look lifted from other listings.
+
+Any one of these is a reason to pause. Two or more, and walking away is usually the smart move.
+
+## How to compare the real final price
+
+A legit seller can still be the wrong pick if the total does not add up. The listed price is rarely the final price.
+
+- **Add the shipping fee.** A ₱120 item with ₱90 shipping is really a ₱210 item.
+- **Apply the vouchers you actually have,** not the maximum the listing advertises.
+- **Compare the after-voucher total** against other sellers and other stores, not against the crossed-out original price beside it.
+
+For a full pre-checkout routine, see our [voucher, shipping, and return checklist](/blog/voucher-shipping-return-checklist) and our explainer on [why the final price changes at checkout](/blog/why-final-prices-change-at-checkout).
+
+## When to skip a seller or listing
+
+Some situations are not worth the risk no matter how good the price looks:
+
+- A branded gadget or bag from an unbadged shop with thin reviews.
+- Any order where the seller wants payment outside Shopee.
+- A listing with no real buyer photos for an item where fit, size, or quality really matters.
+- A shop with a pattern of unresolved complaints about the same problem.
+
+Skipping a sketchy seller is not a loss. There is almost always another shop selling the same thing with a record you can actually trust. Browse vetted picks in [Under ₱500](/categories/under-500), or read the buyer reminders on our [Shopee PH buyer guide](/stores/shopee-ph).
+
+## Related shopping tool
+
+Planning to order from an overseas seller too, not just local Shopee shops? You can [estimate the possible import costs with ImportTaxPH](https://www.importtaxph.com/) before you compare the final price. It is a free sister tool that helps you ballpark possible customs duty, VAT, and landed cost on cross-border orders. The result is an estimate for planning only, so still confirm official customs rules, courier fees, and the seller's shipping terms when it matters.
+
+## Related guides on SulitScan
+
+Keep going with our [best Shopee finds under ₱500](/blog/best-shopee-finds-under-500-philippines), [online shopping safety tips](/blog/online-shopping-safety-tips-philippines), and [how to spot fake discounts](/blog/how-to-spot-fake-discounts). Or browse current [deals on SulitScan](/deals), each with its own buyer notes.
+
+## FAQs
+
+**Q: How can I tell if a Shopee seller is legit?**
+Open the shop page and check a few signals together: a solid rating across many reviews, a real sales history, how long the shop has operated, a Preferred Seller or Shopee Mall badge, and quick chat replies. No single badge proves it, but the full picture usually does.
+
+**Q: Is Shopee Mall safer than a regular seller?**
+Shopee Mall is for official brand stores and verified sellers, so it is a safer starting point, especially for branded items. It is still worth reading the reviews and confirming the return terms, since policies vary by shop.
+
+**Q: What does Preferred Seller mean on Shopee?**
+It is a badge Shopee gives sellers with a consistent track record on things like ratings, shipping speed, and chat response. It is a good sign, not a guarantee, so keep checking the reviews and the final price.
+
+**Q: Does SulitScan sell these products?**
+No. SulitScan is a shopping guide. We point you to listings on partner stores like Shopee, and you buy directly from the seller. We do not handle payments, orders, or returns.
+
+**Q: What should I do if a Shopee order arrives wrong or never comes?**
+Take photos as soon as it arrives, then file through Shopee's official return and refund process within the stated window. Keep everything inside Shopee so your buyer protection still applies, and escalate to Shopee support if the seller goes quiet.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. Prices, vouchers, and availability change often, so always confirm the final price, shipping fee, and return terms on Shopee before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Tips",
+    author: "SulitScan Team",
+    publishedAt: "2026-06-28",
+    lastReviewed: "2026-06-28",
+    readTime: 8,
+    tags: ["shopee", "seller-check", "online-safety", "buyer-protection", "philippines"],
+    coverGradient: "from-orange-400 to-rose-500",
+    faqs: [
+      {
+        question: "How can I tell if a Shopee seller is legit?",
+        answer:
+          "Open the shop page and check a few signals together: a solid rating across many reviews, a real sales history, how long the shop has operated, a Preferred Seller or Shopee Mall badge, and quick chat replies. No single badge proves it, but the full picture usually does.",
+      },
+      {
+        question: "Is Shopee Mall safer than a regular seller?",
+        answer:
+          "Shopee Mall is for official brand stores and verified sellers, so it is a safer starting point, especially for branded items. It is still worth reading the reviews and confirming the return terms, since policies vary by shop.",
+      },
+      {
+        question: "What does Preferred Seller mean on Shopee?",
+        answer:
+          "It is a badge Shopee gives sellers with a consistent track record on things like ratings, shipping speed, and chat response. It is a good sign, not a guarantee, so keep checking the reviews and the final price.",
+      },
+      {
+        question: "Does SulitScan sell these products?",
+        answer:
+          "No. SulitScan is a shopping guide. We point you to listings on partner stores like Shopee, and you buy directly from the seller. We do not handle payments, orders, or returns.",
+      },
+      {
+        question: "What should I do if a Shopee order arrives wrong or never comes?",
+        answer:
+          "Take photos as soon as it arrives, then file through Shopee's official return and refund process within the stated window. Keep everything inside Shopee so your buyer protection still applies, and escalate to Shopee support if the seller goes quiet.",
+      },
+    ],
+  },
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
