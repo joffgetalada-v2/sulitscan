@@ -813,7 +813,7 @@ export const deals: Deal[] = [
     title: "Compact 1080P FHD Mini Camera – 130° Wide-Angle, Autofocus, Fill Light",
     platform: "Temu", platformColor: "#ff6d00", category: "Electronics",
     originalPrice: 999, salePrice: 499, discount: 50, sulitScore: 8,
-    reason: "1080P full HD with 130° wide-angle lens, built-in fill light, TFT LCD screen, TF card slot. A budget option for vlogging and travel, check video quality samples in reviews before buying.",
+    reason: "1080P with a 130° wide-angle lens, built-in fill light, TFT LCD screen, and TF card slot. A budget option for vlogging and travel. Check video quality samples in reviews, and check compatibility, warranty, seller support, and return terms before buying.",
     imageGradient: "from-gray-700 to-slate-900",
     imageUrl: "https://img.kwcdn.com/product/fancy/333caa08-b241-4e2e-9491-7cc9cdb2edba.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1289,10 +1289,10 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-083", slug: "cordless-car-polisher-mini-temu",
-    title: "Cordless Mini Car Polisher – USB Rechargeable, Digital Screen, 2-Speed, Scratch Repair",
+    title: "Cordless Mini Car Polisher – USB Rechargeable, Digital Screen, 2-Speed",
     platform: "Temu", platformColor: "#ff6d00", category: "Electronics",
     originalPrice: 899, salePrice: 449, discount: 50, sulitScore: 8,
-    reason: "Cordless car polisher with digital display and USB charging, includes polishing pads for scratch repair, waxing, and window film removal. At ₱449, car detailing kits at shops cost ₱1,500+.",
+    reason: "Cordless car polisher with digital display and USB charging, includes polishing pads for waxing and light buffing. Results vary by paint condition and technique, so check buyer reviews before buying. At ₱449, car detailing kits at shops cost ₱1,500+.",
     imageGradient: "from-blue-600 to-slate-800",
     imageUrl: "https://img.kwcdn.com/product/fancy/2965510b-633b-4adf-9fe0-307a0d7c9a12.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1301,10 +1301,10 @@ export const deals: Deal[] = [
   },
   {
     id: "deal-084", slug: "depusheng-c90-dynamic-microphone-temu",
-    title: "DEPUSHENG C90 Professional Dynamic Cardioid Microphone – XLR to 1/4\" Cable Included",
+    title: "DEPUSHENG C90 Dynamic Cardioid Microphone – XLR to 1/4\" Cable Included",
     platform: "Temu", platformColor: "#ff6d00", category: "Electronics",
     originalPrice: 699, salePrice: 349, discount: 50, sulitScore: 8,
-    reason: "Professional moving-coil cardioid microphone with on/off switch, includes 177cm XLR to 1/4\" cable. Ideal for karaoke, home recording, and live vocals. At ₱349, compare with similar mics locally before ordering.",
+    reason: "Moving-coil cardioid microphone with on/off switch, includes a 177cm XLR to 1/4\" cable. Suited for karaoke, home recording, and live vocals. Check buyer reviews for sound quality and build before ordering. At ₱349, compare with similar mics locally before ordering.",
     imageGradient: "from-gray-700 to-zinc-900",
     imageUrl: "https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/49a9477e373d0652ec5264887b0f5e01.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -3604,7 +3604,7 @@ export const SUSPICIOUS_DISCOUNT_NOTE =
 // Higher-uncertainty deals we keep out of the first impression: battery, charging,
 // dashcam, OBD2, smartwatch, and solar-lighting electronics, where quality and
 // safety vary more and buyers should check reviews and seller details first.
-const RISKY_ELECTRONICS = /\b(power ?bank|wireless charger|dash ?cam|obd-?2|obd-?ii|smart ?watch)\b|\bsolar (lights?|lamp|wall|garden|corner|string|panel)\b/i
+const RISKY_ELECTRONICS = /\b(power ?bank|wireless charger|charger|dash ?cam|obd-?2|obd-?ii|smart ?watch|earbuds?|earphones?|microphone|mini camera|car polisher)\b|\bsolar (lights?|lamp|wall|garden|corner|string|panel)\b/i
 export function isRiskyElectronics(deal: Deal): boolean {
   return RISKY_ELECTRONICS.test(deal.title)
 }

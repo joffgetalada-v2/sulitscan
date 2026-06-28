@@ -1367,6 +1367,8 @@ Toiletry bags, packing pouches, and zippered organizers are cheap and genuinely 
 
 ## A quick buyer checklist
 
+![Buyer checklist for Shopee finds under 500 pesos in the Philippines|1672x941](/images/guides/voucher-shipping-return-checklist.jpg)
+
 Before you order anything under ₱500, run through this:
 
 1. Does the seller have a solid rating and a decent number of sales?
@@ -1387,6 +1389,8 @@ Sellers matter more than the price. A Preferred Seller or Shopee Mall listing is
 Check the all in cost too. A ₱120 item with ₱90 shipping is really a ₱210 item. Vouchers can swing it the other way, so look before you commit.
 
 ## Common mistakes to avoid
+
+![Common mistakes to avoid when buying Shopee finds under 500 pesos|1672x941](/images/guides/fake-discount-check-guide.jpg)
 
 - Buying on the listing photo alone. The styled render is not what ships. The buyer photos are.
 - Ignoring the size. Plenty of cheap organizers are smaller than they look on screen.
