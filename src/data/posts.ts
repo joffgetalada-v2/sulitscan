@@ -1629,6 +1629,361 @@ SulitScan may earn a commission when you click a partner link and complete a pur
       },
     ],
   },
+  {
+    id: "post-014",
+    slug: "how-to-check-shopee-seller-legit-philippines",
+    title: "How to Check If a Shopee Seller Is Legit Before Buying",
+    excerpt:
+      "Before you click buy on Shopee, there are a few seller signals that take under a minute to check and save you from the most common disappointments.",
+    content: `
+Quick answer: Open the seller's shop page and look at rating count, total sales, shop age, ship-on-time rate, and whether they hold a Preferred Seller or Shopee Mall badge. Then read buyer photo reviews before you order.
+
+## Why seller checking matters
+
+The product listing is what Shopee shows you first. The seller's profile is what you should read before you buy.
+
+A polished listing photo tells you nothing about whether the item will arrive on time, match the description, or be straightforward to return if something goes wrong. On Shopee, anyone can open a shop, which keeps prices competitive and variety high. It also means seller quality varies widely. Checking the profile takes under a minute and avoids most of the common disappointments.
+
+## Check the seller rating and shop history
+
+Tap the shop name to open the full profile. Here is what to look for:
+
+- **Rating and review count.** A 4.7 rating across 2,000 reviews is more meaningful than a perfect 5.0 from 15 buyers. Volume and time tell the real story.
+- **Shop age.** A shop active for over a year has a track record you can actually evaluate. A newly opened shop with no history is harder to judge.
+- **Total sales.** Thousands of completed orders means thousands of buyers who did or did not complain. If the rating holds at that volume, that is a meaningful signal.
+- **Ship-on-time rate.** A seller who frequently ships late is a delivery risk. Many shop profiles display this number.
+- **Preferred Seller badge.** Shopee awards this for consistent ratings, shipping, and chat response. A meaningful signal, not a guarantee.
+- **Shopee Mall badge.** This is for official brand stores and verified retailers. For branded purchases, Shopee Mall is a safer starting point.
+
+Read these signals together. A Preferred Seller badge on a shop with thin reviews and a very recent opening is still worth a closer look.
+
+## Read real buyer photo reviews
+
+Star ratings are a summary. Written reviews with buyer photos are the actual evidence.
+
+Sort the reviews to show photos first. Real buyer photos show true color, size, packaging condition, and quality on arrival. Not the styled shoot from the listing.
+
+Read the 3-star and 1-star reviews on purpose. If multiple buyers report the same issue, whether that is smaller than pictured, color noticeably off, or stopped working after a short time, that pattern matters. One complaint can be an outlier. Three buyers describing the same problem is a warning.
+
+Be careful if reviews look identical or all appeared on the same day. Padded reviews can raise a rating without reflecting real purchases.
+
+## Compare the final price after vouchers and shipping
+
+A low listed price is not what you pay. Before you decide:
+
+- Add the shipping fee. A ₱180 item with ₱90 shipping is a ₱270 item.
+- Apply the vouchers you actually have in your account, not the maximum the listing advertises.
+- Compare the after-voucher total with other sellers listing the same item, not the crossed-out original price.
+
+Use our [voucher, shipping, and return checklist](/blog/voucher-shipping-return-checklist) for a step-by-step pre-checkout routine.
+
+## Watch for fake branded items and suspiciously low prices
+
+If a seller offers a branded product at a price noticeably below every other listing, that gap is a reason to pause.
+
+Replicas and counterfeit goods appear on open marketplaces. A price well below market, very few reviews for a supposedly popular item, a recently opened shop, and listing photos that look copied from elsewhere can each be a signal. Together, they are a clear warning.
+
+For branded goods, Shopee Mall is a safer starting point. For beauty and skincare from an authorized retailer, see our [Sephora PH guide](/stores/sephora-ph). Our guide on [how to spot fake discounts](/blog/how-to-spot-fake-discounts) covers the inflated original price trick in more detail.
+
+## What to check before clicking a SulitScan Shopee deal
+
+SulitScan deal cards show a SulitScore, buyer notes, and the date we last checked the listing. Use those as context, then confirm on Shopee before buying:
+
+- Is the current price on Shopee the same as what SulitScan shows?
+- Are there platform vouchers or shop vouchers you can apply?
+- Have you opened the seller's shop profile and read the reviews?
+- Do you understand the return terms for this product?
+
+SulitScan is a starting point. The seller's Shopee page is where you confirm.
+
+## Common mistakes to avoid
+
+- Buying from a new shop because the price is lower than everyone else's, without checking why.
+- Trusting a 5-star rating without looking at the number of reviews behind it.
+- Agreeing to pay outside Shopee, through GCash direct transfer, bank transfer, or any channel outside the app. This removes your buyer protection.
+- Ignoring the shipping estimate when you need the item by a specific date.
+- Skipping the size chart and return policy on clothing or footwear.
+
+## Related Shopee PH guides
+
+Browse [current Shopee deals on SulitScan](/stores/shopee-ph), read our [best Shopee finds under 500 guide](/blog/best-shopee-finds-under-500-philippines), and see our [online shopping safety tips](/blog/online-shopping-safety-tips-philippines) for habits that protect you. Our guide on [how to spot fake discounts](/blog/how-to-spot-fake-discounts) covers the classic warning signs in detail.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. Prices, vouchers, and availability change frequently, so always confirm the final price and return terms on Shopee before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Safety",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-05",
+    lastReviewed: "2026-07-05",
+    readTime: 7,
+    tags: ["shopee", "seller-check", "online-safety", "buyer-protection", "philippines", "legit-seller"],
+    coverGradient: "from-orange-500 to-amber-600",
+    faqs: [
+      {
+        question: "How do I know if a Shopee seller is legit?",
+        answer:
+          "Open the seller's shop page and check rating count, total sales, shop age, ship-on-time rate, and whether they carry a Preferred Seller or Shopee Mall badge. Then read buyer photo reviews. No single signal proves legitimacy, but the full picture gives you a clear read.",
+      },
+      {
+        question: "Is Shopee Mall always safe?",
+        answer:
+          "Shopee Mall is for official brand stores and verified retailers, making it a safer starting point for branded purchases. It is still worth reading the reviews and checking the return terms, since policies vary by shop.",
+      },
+      {
+        question: "Are Preferred Sellers always reliable?",
+        answer:
+          "Preferred Seller is a badge Shopee awards for consistent ratings, shipping, and chat response. It is a meaningful positive signal, not a guarantee. Check the reviews and the final price regardless.",
+      },
+      {
+        question: "What should I check before buying a cheap Shopee item?",
+        answer:
+          "Check the seller profile and rating count, read buyer photo reviews, calculate the final price including shipping and any vouchers you have, and confirm the return window before you pay.",
+      },
+      {
+        question: "Does SulitScan sell Shopee products directly?",
+        answer:
+          "No. SulitScan is a shopping guide. We link to listings on partner stores including Shopee PH, and you buy directly from the seller on Shopee. We do not handle orders, payments, or returns.",
+      },
+    ],
+  },
+  {
+    id: "post-015",
+    slug: "shopee-vs-lazada-vs-temu-philippines",
+    title: "Shopee vs Lazada vs Temu Philippines: What to Check Before Buying",
+    excerpt:
+      "Filipino shoppers compare Shopee, Lazada, and Temu most often. Here is what makes each platform different and what to check before you buy on any of them.",
+    content: `
+Shopee, Lazada, and Temu are the three online marketplaces Filipino shoppers compare most often. Each has a different structure, different seller types, and different things to check before you buy. This guide covers the key differences and what to look for on each platform.
+
+SulitScan currently lists deals from Shopee PH and Temu. Lazada coverage may be added after a full review.
+
+## Quick comparison
+
+**Shopee Philippines:** Mostly local sellers shipping within the Philippines, fast delivery on many items, daily platform vouchers and Shopee Coins, large catalog across all categories.
+
+**Lazada Philippines:** Local and brand sellers, Lazada Express delivery options, brand-focused catalog, strong for electronics and branded goods. Not yet active on SulitScan.
+
+**Temu Philippines:** International marketplace shipping from overseas warehouses, very low prices across everyday categories, longer delivery window, cross-border shipping means customs questions may apply on some orders.
+
+## What to check on Shopee
+
+Shopee works well for everyday purchases from local sellers: home organizers, fashion basics, kitchenware, phone accessories, and beauty products. Local shipping means faster delivery compared to international platforms.
+
+Before buying on Shopee:
+- Check the seller profile: rating count, total sales, shop age, Preferred Seller or Shopee Mall badge.
+- Read buyer photo reviews before you commit.
+- Calculate the final price including the shipping fee and any vouchers you actually have.
+- Confirm the return window and process.
+
+For a full Shopee seller check routine, see our [Shopee seller legitimacy guide](/blog/how-to-check-shopee-seller-legit-philippines). Browse vetted Shopee deals at the [Shopee PH store page](/stores/shopee-ph).
+
+## What to check on Lazada
+
+Lazada Philippines has a large catalog of local and brand products. It is known for brand-focused deals, Lazada Express delivery, and voucher stacking.
+
+Lazada is not yet active on SulitScan. When we complete our buyer-check review and prepare Lazada-specific buyer information, we may add coverage. For now, the same core principles apply on any marketplace: check the seller profile, read reviews, calculate the full price with shipping, and confirm return terms before you pay.
+
+## What to check on Temu
+
+Temu ships to the Philippines from international warehouses. Prices are often noticeably lower than local listings for many product categories, especially home items, casual fashion, and everyday accessories.
+
+Before buying on Temu:
+- **Expect longer delivery.** Standard Temu shipping to the Philippines typically takes 7 to 20 days depending on the item and the shipping option selected.
+- **Check sizing carefully.** Temu clothing runs smaller than labeled. Read the measurements in centimeters, not just the size label.
+- **Read buyer reviews and look for photos** from real purchases, not just listing images.
+- **Confirm the return window** if quality matters for your specific order.
+
+For a full Temu buying guide, see our [Temu shopping guide for Filipino buyers](/blog/temu-shopping-guide-philippines) and our [Temu Philippines shipping guide](/blog/temu-philippines-shipping-guide). Browse Temu deals at the [Temu store page](/stores/temu).
+
+## Shipping, vouchers, returns, and final price
+
+No matter which platform you use, the listed price is rarely what you pay at checkout. Here is what to account for:
+
+- **Shipping fee.** Add it before you compare prices across platforms and sellers.
+- **Platform vouchers.** Each platform has its own voucher types. Apply what you actually have, not the maximum the listing advertises.
+- **Shop vouchers.** Some sellers offer their own discounts on top of platform vouchers.
+- **Final checkout price.** This is what you are actually paying. Compare this number, not the crossed-out original price beside the listing.
+
+See our guide on [why the final price changes at checkout](/blog/why-final-prices-change-at-checkout) and our [voucher, shipping, and return checklist](/blog/voucher-shipping-return-checklist) for a pre-checkout routine.
+
+## When to use ImportTaxPH for cross-border orders
+
+If you are ordering from Temu or any international marketplace, customs duties or import taxes may apply depending on declared value and product category.
+
+You can use [ImportTaxPH](https://www.importtaxph.com/) to estimate possible import costs before you compare the total landed price across platforms. ImportTaxPH is a free planning tool. The result is an estimate for planning purposes only. Confirm actual customs rules, your courier's handling fees, and the seller's shipping terms for larger or higher-value orders.
+
+Our [Philippine import tax guide for online shoppers](/blog/philippine-import-tax-guide-online-shoppers) covers the de minimis rule, customs duties, and what to expect.
+
+## Common mistakes
+
+- Comparing listed prices across platforms without adding the shipping fee to each one.
+- Applying a voucher discount to your comparison without confirming you actually have that voucher available.
+- Assuming the seller's return process is the same across platforms. Each platform and seller has its own terms.
+- Buying high-value electronics from an international seller without checking compatibility, warranty support, and potential import cost.
+
+## Related categories and stores on SulitScan
+
+Browse [tech deals](/categories/tech-deals), [home finds](/categories/home-finds), and [items under 500](/categories/under-500) on SulitScan. See the [Shopee PH store page](/stores/shopee-ph) and the [Temu store page](/stores/temu) for buyer notes, shipping information, and vetted deals with SulitScore ratings.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. SulitScan does not currently list Lazada deals. Prices, seller terms, and platform policies change regularly, so always confirm on the partner store before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Marketplace Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-05",
+    lastReviewed: "2026-07-05",
+    readTime: 8,
+    tags: ["shopee", "lazada", "temu", "marketplace-comparison", "philippines", "online-shopping"],
+    coverGradient: "from-indigo-500 to-violet-600",
+    faqs: [
+      {
+        question: "Which is better, Shopee, Lazada, or Temu?",
+        answer:
+          "It depends on what you are buying. Shopee and Lazada are strong for local products with fast local shipping. Temu can offer lower prices on everyday items but ships from overseas, so delivery takes longer and import costs may apply on some orders.",
+      },
+      {
+        question: "Which one usually ships faster in the Philippines?",
+        answer:
+          "Shopee and Lazada local sellers ship fastest because goods are already within the Philippines. Temu ships from international warehouses, which typically means 7 to 20 days for standard delivery.",
+      },
+      {
+        question: "Should I use Temu for cheap items?",
+        answer:
+          "Temu can work well for low-stakes everyday items where price matters more than delivery speed. Check buyer reviews carefully, confirm sizing from the centimeter measurements, and factor in the delivery timeline before ordering.",
+      },
+      {
+        question: "Why does the final price change at checkout?",
+        answer:
+          "The listed price usually excludes the shipping fee and does not reflect the vouchers you actually have available. Prices also update frequently on all platforms. Our guide on why the final price changes at checkout explains each step.",
+      },
+      {
+        question: "Does SulitScan sell products directly?",
+        answer:
+          "No. SulitScan is a shopping guide. We link to deals on partner stores including Shopee PH and Temu, and you buy directly from those platforms. We do not handle payments, orders, or returns.",
+      },
+    ],
+  },
+  {
+    id: "post-016",
+    slug: "best-phone-accessories-under-500-philippines",
+    title: "Best Phone Accessories Under ₱500 Philippines: What Is Worth Checking",
+    excerpt:
+      "Phone accessories under 500 pesos cover a range of practical buys, but some categories need more careful checking than others. Here is what to look for before you order.",
+    content: `
+Phone accessories under 500 pesos are easy to find on Shopee and Temu. Some are genuinely practical and reasonable value. Others, especially chargers, power banks, and battery-related products, carry risks that a low price does not remove. This guide covers what is worth considering and what to check carefully before you buy.
+
+## Quick answer
+
+Phone stands, cases, cable organizers, and cable clips in the under-500 range are lower-risk if you confirm compatibility and check buyer reviews. Chargers, power banks, and anything involving batteries need more careful checking: listed specifications, any certification markings shown, seller track record, buyer reviews from real users, return policy, and seller support.
+
+## Safer phone accessories under 500
+
+These categories carry lower risk in the under-500 range because they do not involve electricity, batteries, or compatibility issues that could damage your device:
+
+**Phone stands and holders.** Adjustable desktop stands, car mounts, and ring holders are practical everyday buys. Check that the size fits your phone model and read reviews for build quality and stability under regular use.
+
+**Phone cases and covers.** Cases are relatively low-risk, but always confirm the exact model compatibility before ordering. A case listed for a phone model may not fit the specific variant you own. Check the seller's compatibility information and read buyer feedback before adding to cart.
+
+**Cable clips and organizers.** Magnetic cable holders, desk cord organizers, and clip-on cable managers are useful accessories with minimal risk beyond build quality. Read reviews for material and durability.
+
+**Screen cleaning kits.** Microfiber cloths and lens cleaning sets are straightforward purchases. Check that no harsh chemicals are included and read reviews for cloth quality.
+
+**Accessory pouches and storage.** Small pouches for cables, earphones, or charging accessories are practical and low-risk. Build quality is the main thing to check in reviews.
+
+## Accessories to check carefully: chargers, cables, and power banks
+
+These categories deserve more careful evaluation before you buy, regardless of price:
+
+### Chargers
+
+A charger with no certification markings, no brand information, and no seller support is a risk to your device. Before buying any charger under 500:
+
+- Check whether the listing includes any certification or safety markings.
+- Read buyer reviews that specifically mention long-term use, how warm the charger runs, and whether it lasted months of regular charging.
+- Confirm the output voltage and amperage match your device's charging specification.
+- Check the seller's return and replacement policy in case of a defect.
+- Prefer sellers with a real review history over a longer period, not just recent ratings.
+
+We do not recommend buying unbranded chargers without checking these points first.
+
+### Power banks
+
+A power bank holds a battery cell. Unverified, very cheap cells carry real risks. Before buying:
+
+- Check whether the listing includes any information about the battery cell type or protection circuit.
+- Read buyer reviews that specifically mention heat during charging, how many charge cycles it lasted, and whether the rated capacity matched actual use.
+- Confirm the seller's return and warranty policy.
+- Prefer sellers with clear product details and a review history where buyers comment on durability over time, not just first impressions.
+
+### Charging cables
+
+Braided cables in the under-500 range can be reasonable quality. Confirm compatibility with your device's charging standard (USB-C, Micro-USB, or Lightning equivalent) and read reviews for durability across weeks of use, not just unboxing reactions.
+
+## What to check before buying
+
+For any phone accessory under 500, use this checklist before you add to cart:
+
+1. Is the accessory compatible with your specific phone model or charging standard?
+2. Does the product listing include useful technical details, not just marketing copy?
+3. Are there buyer reviews with photos from real buyers?
+4. For electrical accessories: does the listing include any specification or certification information?
+5. What is the seller's return window and process for defective items?
+6. Have you added the shipping fee to your price comparison?
+
+## Common mistakes
+
+- Ordering a case, mount, or holder without confirming exact phone model compatibility first.
+- Buying the cheapest charger or power bank listed without reading reviews about long-term use and heat.
+- Trusting a listing with good photos but no technical details, no certification markings, and no real buyer feedback beyond generic 5-star comments.
+- Skipping the return policy check on electrical accessories.
+
+## Best categories to browse on SulitScan
+
+Browse [tech deals on SulitScan](/categories/tech-deals) for curated picks with buyer notes and SulitScore ratings. You can also browse [items under 500](/categories/under-500) and [items under 1000](/categories/under-1000) for a wider range of everyday buys.
+
+For Shopee-sourced accessories, our [Shopee seller check guide](/blog/how-to-check-shopee-seller-legit-philippines) and [best Shopee finds under 500 guide](/blog/best-shopee-finds-under-500-philippines) are useful starting points. For Temu-sourced accessories, see our [Temu shopping guide](/blog/temu-shopping-guide-philippines) for what to check on sizing and delivery.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. We do not physically test products. Prices, listings, and seller availability change regularly. Always confirm the final price, specifications, and return terms on the partner store before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Tech Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-05",
+    lastReviewed: "2026-07-05",
+    readTime: 8,
+    tags: ["phone-accessories", "tech-deals", "under-500", "shopee", "temu", "philippines", "charger-safety"],
+    coverGradient: "from-slate-600 to-slate-900",
+    faqs: [
+      {
+        question: "What phone accessories under 500 are worth buying?",
+        answer:
+          "Phone stands, cases, cable organizers, and cable clips are often practical value when you confirm compatibility and check buyer reviews. For electrical accessories like chargers and power banks, read the product details and buyer reviews more carefully before buying.",
+      },
+      {
+        question: "Are cheap chargers safe to buy online?",
+        answer:
+          "Price alone does not determine safety. Check whether the charger lists any certification or safety markings, read reviews from buyers who mention long-term use and heat levels during charging, and confirm the seller's return policy before buying.",
+      },
+      {
+        question: "Should I buy cheap power banks?",
+        answer:
+          "Cheap power banks from sellers with no clear product information or real buyer reviews deserve more caution. Check whether the listing includes battery cell or protection circuit information, read durability reviews over time, and confirm the return policy.",
+      },
+      {
+        question: "What should I check before buying phone accessories?",
+        answer:
+          "Confirm compatibility with your specific device or charging standard, read buyer photo reviews, check technical details for electrical items, calculate the final price including shipping, and confirm the seller's return policy.",
+      },
+      {
+        question: "Where can I browse SulitScan tech deals?",
+        answer:
+          "Browse the tech deals category on SulitScan, or check the Shopee PH and Temu store pages for deals with buyer notes and SulitScore ratings.",
+      },
+    ],
+  },
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
