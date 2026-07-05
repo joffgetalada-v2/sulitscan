@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
 import { siteConfig } from "@/lib/seo"
 import { Shield } from "lucide-react"
@@ -117,7 +117,18 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-slate-900 mb-3">7. Data Security</h2>
+            <h2 className="text-lg font-bold text-slate-900 mb-3">7. Email Alerts and Newsletter</h2>
+            <p>
+              If you sign up for SulitScan Weekly Deal Alerts, we collect your email address and your
+              consent confirmation. We use this to send you deal alerts, shopping tips, and price-check
+              reminders. You can unsubscribe at any time by clicking the unsubscribe link in any email.
+              We do not sell, rent, or share your email address with third parties for marketing
+              purposes. Your email is stored securely and used only for SulitScan communications.
+            </p>
+          </section>
+
+          <section>
+            <h2 className="text-lg font-bold text-slate-900 mb-3">8. Data Security</h2>
             <p>
               We implement reasonable security measures to protect your information. However, no
               internet transmission is 100% secure.
@@ -125,7 +136,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-slate-900 mb-3">8. Children&apos;s Privacy</h2>
+            <h2 className="text-lg font-bold text-slate-900 mb-3">9. Children&apos;s Privacy</h2>
             <p>
               SulitScan PH is not directed at children under 13. We do not knowingly collect
               personal information from children.
@@ -133,7 +144,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-slate-900 mb-3">9. Changes to This Policy</h2>
+            <h2 className="text-lg font-bold text-slate-900 mb-3">10. Changes to This Policy</h2>
             <p>
               We may update this privacy policy from time to time. Changes will be posted on this
               page with an updated date.
@@ -141,7 +152,7 @@ export default function PrivacyPolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-slate-900 mb-3">10. Contact</h2>
+            <h2 className="text-lg font-bold text-slate-900 mb-3">11. Contact</h2>
             <p>
               For privacy questions, email us at{" "}
               <a href="mailto:hello@sulitscan.com" className="text-green-600 underline hover:text-green-700">

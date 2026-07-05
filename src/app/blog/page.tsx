@@ -5,6 +5,7 @@ import { BreadcrumbJsonLd, ItemListJsonLd } from "@/components/SeoJsonLd"
 import { posts } from "@/data/posts"
 import { siteConfig } from "@/lib/seo"
 import { BookOpen } from "lucide-react"
+import NewsletterSignup from "@/components/newsletter/NewsletterSignup"
 
 export const metadata: Metadata = {
   title: "Smart Shopping Guides Philippines",
@@ -75,6 +76,13 @@ export default function BlogPage() {
           {posts.map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}
+        </div>
+
+        {/* Newsletter CTA */}
+        <div className="mt-12 max-w-lg mx-auto text-center">
+          <p className="text-sm font-bold text-slate-900 mb-1">Get weekly sulit finds in your inbox</p>
+          <p className="text-xs text-slate-500 mb-5">Deal alerts and shopping tips for Filipino buyers, free.</p>
+          <NewsletterSignup source="blog-index" />
         </div>
       </div>
     </>

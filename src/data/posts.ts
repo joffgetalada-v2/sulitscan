@@ -1,4 +1,4 @@
-export interface BlogPost {
+﻿export interface BlogPost {
   id: string
   slug: string
   title: string
@@ -207,6 +207,14 @@ Express shipping is sometimes available and can shorten delivery to 5–10 busin
 Temu provides tracking through their app and website. You'll receive notifications as your order moves through international logistics. The last-mile delivery in the Philippines is handled by local courier partners.
 
 If you're in a remote province or barangay, add extra days to the estimate.
+
+## Import Taxes and Customs
+
+Because Temu ships internationally, your order may be subject to customs duties or import taxes when it arrives in the Philippines. Whether fees apply depends on your order value, the product type, and how the shipment is declared.
+
+For help estimating potential import costs before ordering, you can use [ImportTaxPH](https://www.importtaxph.com/). This is especially useful for larger orders or items like electronics and clothing bundles.
+
+Note: ImportTaxPH provides estimates for planning purposes only. Final charges depend on product classification, declared value, courier handling, customs assessment, and current rules.
 
 ## Returns and Refunds
 

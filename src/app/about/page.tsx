@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import Link from "next/link"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
 import { LogoMark } from "@/components/Logo"

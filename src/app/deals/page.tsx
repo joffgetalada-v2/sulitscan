@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import DealsGrid from "@/components/DealsGrid"
 import TrustBar from "@/components/TrustBar"
 import { BreadcrumbJsonLd, ItemListJsonLd } from "@/components/SeoJsonLd"

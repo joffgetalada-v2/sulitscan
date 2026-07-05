@@ -1,4 +1,4 @@
-export interface StoreContent {
+﻿export interface StoreContent {
   slug: string
   intro: string
   goodFor: string[]

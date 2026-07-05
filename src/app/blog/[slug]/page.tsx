@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
@@ -10,6 +10,7 @@ import { posts, getPostBySlug, DEFAULT_BLOG_COVER, DEFAULT_BLOG_COVER_ALT } from
 import { getDealsByPlatform, getDealsByCategory, getFeaturedDeals, isSuspiciousDiscount } from "@/data/deals"
 import { siteConfig } from "@/lib/seo"
 import { formatDate, formatTag, clampMeta } from "@/lib/utils"
+import NewsletterSignup from "@/components/newsletter/NewsletterSignup"
 
 function slugifyHeading(text: string): string {
   return text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-").replace(/--+/g, "-").trim()
@@ -297,8 +298,15 @@ export default async function BlogPostPage({
               </div>
             )}
 
+            {/* Newsletter CTA */}
+            <div className="mt-8 p-5 bg-green-50 border border-green-100 rounded-2xl">
+              <p className="text-xs font-bold text-green-900 mb-1">Get weekly sulit finds in your inbox</p>
+              <p className="text-xs text-green-700 mb-4">Shopping tips, price-check reminders, and the best deals, free.</p>
+              <NewsletterSignup source="blog-article" variant="compact" />
+            </div>
+
             {/* Affiliate note */}
-            <div className="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800">
+            <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800">
               <strong>Affiliate Disclosure:</strong> Links in this article may be affiliate links. SulitScan
               earns a commission if you buy, at no extra cost to you.{" "}
               <Link href="/affiliate-disclosure" className="underline">Learn more</Link>

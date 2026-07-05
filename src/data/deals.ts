@@ -1,4 +1,4 @@
-export interface Deal {
+﻿export interface Deal {
   id: string
   slug: string
   title: string
@@ -545,7 +545,7 @@ export const deals: Deal[] = [
     salePrice: 121,
     discount: 55,
     sulitScore: 8,
-    reason: "Solar-powered, no wiring needed, 1.9M tall, retro tungsten look. Listed as weather-resistant, so check the water-resistance details before buying. Compare the final price and check buyer reviews for solar panel performance before ordering.",
+    reason: "Solar-powered, no wiring needed. 1.9M tall, retro tungsten look. Check the listed weather-resistance rating and buyer reviews for solar panel performance before ordering.",
     imageGradient: "from-amber-500 to-yellow-600",
     imageUrl: "https://img.kwcdn.com/product/fancy/2de9f959-4254-4d26-aab5-312582107a69.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -935,7 +935,7 @@ export const deals: Deal[] = [
     title: "106 LED Solar Wall Lights – Motion Sensor, 120° Angle, 5M Cable",
     platform: "Temu", platformColor: "#ff6d00", category: "Home",
     originalPrice: 599, salePrice: 299, discount: 50, sulitScore: 9,
-    reason: "106 bright LEDs with PIR motion sensor, activates when someone walks by. Listed as weather-resistant with a 5M cable, so check the water-resistance details before buying. At ₱299, may reduce the need for hardwired outdoor lighting, check installation requirements before ordering.",
+    reason: "106 bright LEDs with PIR motion sensor, activates when someone walks by. 5M cable. Check the listed IP rating and weather-resistance details in buyer reviews before ordering. At ₱299, may reduce the need for hardwired outdoor lighting.",
     imageGradient: "from-amber-400 to-orange-600",
     imageUrl: "https://img.kwcdn.com/product/Fancyalgo/VirtualModelMatting/2276d661858f97e9fd9fd56934ad04b0.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1081,7 +1081,7 @@ export const deals: Deal[] = [
     title: "Men's Fully Automatic Skeleton Watch – Transparent Dial, Water-Resistant, Luminous",
     platform: "Temu", platformColor: "#ff6d00", category: "Fashion",
     originalPrice: 599, salePrice: 299, discount: 50, sulitScore: 8,
-    reason: "Mechanical skeleton watch with visible movement and business styling. Water-resistant with luminous hands. Check buyer reviews for movement quality and water resistance before ordering.",
+    reason: "Mechanical skeleton watch with visible movement and business styling. Check buyer reviews for actual water resistance, luminous hand performance, and movement quality before ordering.",
     imageGradient: "from-gray-700 to-zinc-900",
     imageUrl: "https://img.kwcdn.com/product/fancy/f92afc50-3535-4a91-9882-db755b7fc4f5.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1342,7 +1342,7 @@ export const deals: Deal[] = [
     title: "1.9M Outdoor Solar Corner Garden Light – Retro Style, Weather-Resistant, Adjustable Height",
     platform: "Temu", platformColor: "#ff6d00", category: "Home",
     originalPrice: 599, salePrice: 299, discount: 50, sulitScore: 8,
-    reason: "Weather-resistant solar lantern on 1.9M pole, adjustable height, retro tungsten-look bulb, no wiring needed. Check the water-resistance details before buying. Great for gardens, courtyards, and entryways. At ₱299, garden lanterns at SM Home cost ₱600+.",
+    reason: "Solar-powered lantern on 1.9M pole, adjustable height, retro tungsten-look bulb, no wiring needed. Check the listed weather-resistance rating against buyer reviews before ordering. Great for gardens and entryways. At ₱299, garden lanterns at SM Home cost ₱600+.",
     imageGradient: "from-yellow-500 to-amber-700",
     imageUrl: "https://img.kwcdn.com/product/fancy/2de9f959-4254-4d26-aab5-312582107a69.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1354,7 +1354,7 @@ export const deals: Deal[] = [
     title: "2pcs Bohemian Ceramic Salad Bowls with Handles – 22cm",
     platform: "Temu", platformColor: "#ff6d00", category: "Home",
     originalPrice: 399, salePrice: 199, discount: 50, sulitScore: 8,
-    reason: "Two 22cm ceramic bowls with handles in a bohemian pattern, good for serving salads, pasta, and soups. Check the material details, size, heat-use instructions, and cleaning instructions before buying. At ₱199 for both, similar bowls at Landmark cost ₱400+ each.",
+    reason: "Two 22cm ceramic bowls with handles and a bohemian pattern. Seller lists as microwave, oven, and dishwasher safe - check product instructions and buyer reviews before use. At ₱199 for both, similar bowls at Landmark cost ₱400+ each.",
     imageGradient: "from-orange-400 to-amber-600",
     imageUrl: "https://img.kwcdn.com/product/fancy/c742b663-c479-4bac-8bbb-1817d5a42e89.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
@@ -1390,7 +1390,7 @@ export const deals: Deal[] = [
     title: "Multi-Color Water-Resistant Mattress Protector Fitted Sheet – Soft, Single-King Sizes",
     platform: "Temu", platformColor: "#ff6d00", category: "Home",
     originalPrice: 399, salePrice: 199, discount: 50, sulitScore: 8,
-    reason: "Water-resistant fitted sheet that helps protect against spills, sweat, and bedwetting, with soft and quiet fabric, not crinkly. Check the water-resistance details before buying. Multiple sizes from single to king. At ₱199, SM Homeworld sells similar protectors at ₱400+.",
+    reason: "Fitted sheet protects against spills, sweat, and bedwetting. Check the water-resistance details and buyer reviews before ordering. Soft and quiet fabric, not crinkly. Multiple sizes from single to king. At ₱199, SM Homeworld sells similar protectors at ₱400+.",
     imageGradient: "from-sky-300 to-blue-500",
     imageUrl: "https://img.kwcdn.com/product/fancy/a1871047-5923-4f11-b8e8-72bf80d46fb7.jpg?imageView2/2/w/500/q/70/format/avif",
     affiliateLink: "https://temu.to/k/ge7hcjmmrb4",

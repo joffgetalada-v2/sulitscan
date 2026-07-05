@@ -325,6 +325,27 @@ export default async function StoreDetailPage({
               <p className="text-xs text-slate-500 leading-relaxed">{store.returnNote}</p>
             </div>
 
+            {/* ImportTaxPH callout for Temu */}
+            {slug === "temu" && (
+              <div className="bg-blue-50 rounded-2xl border border-blue-100 p-5">
+                <h3 className="text-sm font-bold text-blue-900 mb-2">Import taxes and customs</h3>
+                <p className="text-xs text-blue-800 leading-relaxed mb-3">
+                  Temu ships internationally to the Philippines. Customs duties or import taxes may apply depending on your order value and product category.
+                </p>
+                <a
+                  href="https://www.importtaxph.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs text-blue-700 font-semibold underline hover:text-blue-900"
+                >
+                  Estimate import costs at ImportTaxPH →
+                </a>
+                <p className="text-[10px] text-blue-600 mt-2 leading-relaxed">
+                  ImportTaxPH provides estimates for planning only. Final charges depend on product classification, declared value, courier handling, and current customs rules.
+                </p>
+              </div>
+            )}
+
             {/* Price disclaimer */}
             <div className="bg-amber-50 rounded-2xl border border-amber-100 p-5">
               <h3 className="text-sm font-bold text-amber-800 mb-2 flex items-center gap-2">

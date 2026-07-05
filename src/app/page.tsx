@@ -1,4 +1,4 @@
-import type { Metadata } from "next"
+﻿import type { Metadata } from "next"
 import Link from "next/link"
 import Hero from "@/components/Hero"
 import DealCard from "@/components/DealCard"
@@ -6,6 +6,7 @@ import CategoryCard from "@/components/CategoryCard"
 import BlogCard from "@/components/BlogCard"
 import SectionHeading from "@/components/SectionHeading"
 import PartnerBanners from "@/components/PartnerBanners"
+import NewsletterSignup from "@/components/newsletter/NewsletterSignup"
 import { ItemListJsonLd, FAQJsonLd } from "@/components/SeoJsonLd"
 import { homePartnerBanners } from "@/data/partner-banners"
 import { getFeaturedDeals, getActiveDeals, getDealsByCategory } from "@/data/deals"
@@ -567,6 +568,24 @@ export default function HomePage() {
               <BookOpen className="w-4 h-4" aria-hidden="true" />
               Read All Guides
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Newsletter ─── */}
+      <section className="py-16 bg-green-50 border-y border-green-100" aria-labelledby="newsletter-heading">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <span className="inline-block mb-3 px-3 py-1 text-xs font-semibold tracking-widest uppercase text-green-700 bg-white border border-green-100 rounded-full">
+            SulitScan Weekly
+          </span>
+          <h2 id="newsletter-heading" className="text-2xl font-black text-slate-900 mb-2">
+            Get weekly sulit finds
+          </h2>
+          <p className="text-sm text-slate-500 mb-8">
+            Shopping tips, price-check reminders, and the best deals, delivered to your inbox.
+          </p>
+          <div className="max-w-md mx-auto text-left">
+            <NewsletterSignup source="homepage" />
           </div>
         </div>
       </section>
