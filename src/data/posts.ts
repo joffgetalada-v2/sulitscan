@@ -1841,6 +1841,9 @@ export function getPostsNewestFirst(): BlogPost[] {
 }
 
 export function getRelatedPosts(current: BlogPost, count = 3): BlogPost[] {
+  const normalizedCount = Number.isFinite(count)
+    ? Math.min(3, Math.max(0, Math.floor(count)))
+    : 0
   const currentTags = new Set(current.tags)
   return posts
     .filter((candidate) => candidate.slug !== current.slug)
@@ -1855,7 +1858,7 @@ export function getRelatedPosts(current: BlogPost, count = 3): BlogPost[] {
       b.candidate.publishedAt.localeCompare(a.candidate.publishedAt) ||
       b.candidate.id.localeCompare(a.candidate.id)
     )
-    .slice(0, count)
+    .slice(0, normalizedCount)
     .map(({ candidate }) => candidate)
 }
 

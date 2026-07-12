@@ -12,6 +12,7 @@
     "check:links": "node scripts/check-links.mjs",
     "check:affiliate-products": "node scripts/check-affiliate-products.mjs",
     "check:product-quality": "node scripts/check-product-quality.mjs",
+    "test:recommendations": "node --test tests/recommendations.node.mjs",
     "test:e2e": "playwright test"
   },
   "dependencies": {

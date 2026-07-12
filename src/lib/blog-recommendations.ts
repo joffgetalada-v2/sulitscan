@@ -10,6 +10,9 @@ const categorySignals: Array<{ pattern: RegExp; categories: string[] }> = [
 ]
 
 export function getRelatedDealsForPost(post: BlogPost, count = 3): Deal[] {
+  const normalizedCount = Number.isFinite(count)
+    ? Math.min(3, Math.max(0, Math.floor(count)))
+    : 0
   const topic = `${post.slug} ${post.title} ${post.tags.join(" ")}`.toLowerCase()
   const postTags = new Set(post.tags.map((tag) => tag.toLowerCase()))
 
@@ -34,6 +37,6 @@ export function getRelatedDealsForPost(post: BlogPost, count = 3): Deal[] {
       b.deal.sulitScore - a.deal.sulitScore ||
       a.deal.salePrice - b.deal.salePrice
     )
-    .slice(0, count)
+    .slice(0, normalizedCount)
     .map(({ deal }) => deal)
 }
