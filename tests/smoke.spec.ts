@@ -46,3 +46,13 @@ test("skip-to-content link is present", async ({ page }) => {
   const skipLink = page.locator('a[href="#main-content"]')
   await expect(skipLink).toBeAttached()
 })
+
+test("retired Shopee seller guide permanently redirects to the canonical guide", async ({ request }) => {
+  const response = await request.get("/blog/how-to-check-if-shopee-seller-is-legit", {
+    maxRedirects: 0,
+  })
+  expect(response.status()).toBe(308)
+  expect(response.headers().location).toBe(
+    "/blog/how-to-check-shopee-seller-legit-philippines"
+  )
+})

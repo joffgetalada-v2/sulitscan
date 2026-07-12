@@ -14,6 +14,15 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: "/(.*)", headers: securityHeaders }]
   },
+  async redirects() {
+    return [
+      {
+        source: "/blog/how-to-check-if-shopee-seller-is-legit",
+        destination: "/blog/how-to-check-shopee-seller-legit-philippines",
+        permanent: true,
+      },
+    ]
+  },
   images: {
     remotePatterns: [
       // Temu product images
