@@ -37,9 +37,39 @@ const STATIC = new Set([
 ])
 const catSlugs = new Set(slugsOf("src/data/categories.ts"))
 const storeSlugs = new Set(slugsOf("src/data/stores.ts"))
+const postsSrc = read("src/data/posts.ts")
 const postSlugs = new Set(slugsOf("src/data/posts.ts"))
 const dealSlugs = slugsOf("src/data/deals.ts")
 const dealSet = new Set(dealSlugs)
+
+const postSlugList = slugsOf("src/data/posts.ts")
+const postTitles = [...postsSrc.matchAll(/^\s+title:\s*"([^"]+)"/gm)].map((m) => m[1])
+
+for (const [label, values] of [["post slug", postSlugList], ["post title", postTitles]]) {
+  const seenValues = new Set()
+  for (const value of values) {
+    if (seenValues.has(value)) errors.push(`Duplicate ${label}: "${value}"`)
+    seenValues.add(value)
+  }
+}
+
+for (const match of postsSrc.matchAll(/coverImage:\s*"(\/images\/guides\/[^"]+)"/g)) {
+  if (!existsSync(join(ROOT, "public", match[1].replace(/^\//, "")))) {
+    errors.push(`posts.ts: missing cover image public${match[1]}`)
+  }
+}
+
+const REQUIRED_GROWTH_POSTS = new Set([
+  "best-home-organization-finds-under-500-philippines",
+  "best-gifts-under-500-philippines",
+  "best-work-from-home-desk-accessories-under-1000-philippines",
+  "best-beauty-finds-under-500-philippines",
+])
+for (const slug of REQUIRED_GROWTH_POSTS) {
+  if (!postSlugs.has(slug)) errors.push(`Missing required growth post: "${slug}"`)
+  const expectedCover = `coverImage: "/images/guides/${slug}.jpg"`
+  if (!postsSrc.includes(expectedCover)) errors.push(`Missing required cover entry for: "${slug}"`)
+}
 
 function validInternal(path) {
   const p = path.split("?")[0].split("#")[0].replace(/\/+$/, "").replace(/^\//, "")
@@ -78,7 +108,6 @@ for (const f of walk("src", [".tsx", ".ts"])) {
     if (!validInternal(m[1])) errors.push(`${f}: broken internal link href="${m[1]}"`)
   }
 }
-const postsSrc = read("src/data/posts.ts")
 // Markdown page links [text](/path) — exclude image markdown ![alt](/path)
 for (const m of postsSrc.matchAll(/(?<!!)\[[^\]]*\]\((\/[^)]+)\)/g)) {
   if (!validInternal(m[1])) errors.push(`posts.ts: broken markdown link (${m[1]})`)

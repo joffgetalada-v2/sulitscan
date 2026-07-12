@@ -71,3 +71,19 @@ test("Shopee seller guide recommends related Shopee content", async ({ page }) =
   const related = page.getByRole("region", { name: "More shopping guides" })
   await expect(related.getByRole("link", { name: /Shopee/i }).first()).toBeVisible()
 })
+
+const growthPosts = [
+  "best-home-organization-finds-under-500-philippines",
+  "best-gifts-under-500-philippines",
+  "best-work-from-home-desk-accessories-under-1000-philippines",
+  "best-beauty-finds-under-500-philippines",
+]
+
+for (const slug of growthPosts) {
+  test(`${slug} renders a unique cover, related deals, and disclosure`, async ({ page }) => {
+    await page.goto(`/blog/${slug}`)
+    await expect(page.locator(`img[src*="${slug}"]`).first()).toBeVisible()
+    await expect(page.getByRole("heading", { name: "Related deals to check" })).toBeVisible()
+    await expect(page.locator("main").getByText("Affiliate Disclosure:", { exact: false })).toBeVisible()
+  })
+}

@@ -1827,6 +1827,472 @@ SulitScan may earn a commission when you click a partner link and complete a pur
       },
     ],
   },
+  {
+    id: "post-017",
+    slug: "best-home-organization-finds-under-500-philippines",
+    title: "Best Home Organization Finds Under ₱500 Philippines",
+    excerpt:
+      "Practical home organizers can fit a 500-peso budget, but dimensions, materials, shipping, and seller history matter more than a tidy listing photo.",
+    content: `
+Home organization finds under 500 pesos are worth checking when they solve one specific storage problem and fit the space you already have. Drawer dividers, cable clips, small bins, shelf helpers, and compact racks can be practical categories. The useful buy is not the organizer with the most compartments; it is the one whose measurements, material, and final checkout cost work in your room.
+
+## Quick answer
+
+Start with low-risk organizers that do not carry heavy loads: drawer trays, cable clips, document holders, small baskets, and lightweight shelf bins. Measure the available width, depth, and height before browsing. Then compare the delivered total, read recent seller reviews with buyer photos, and check the return terms. Prices and vouchers can change between this guide and checkout, so confirm the final amount before paying.
+
+## Best categories
+
+**Drawer organizers.** Modular trays are easier to adapt than one large insert. Measure the drawer's inside dimensions, including any curved corners or handle hardware. Shallow trays suit utensils, makeup, stationery, and small tools; taller bins can stop a drawer from closing.
+
+**Cable clips and cord boxes.** Adhesive clips can keep charging cords reachable without taking desk space. Check the cable diameter the clip accepts and whether reviews mention the adhesive holding on wood, laminate, tile, or painted walls. A cable box should have enough ventilation and room for plugs without sharply bending cords.
+
+**Small storage bins and baskets.** These are useful for pantry sachets, cleaning supplies, toiletries, and hobby materials. Handles help on high shelves, while clear or open-front bins make frequently used items easier to see. Avoid treating a lightweight plastic bin as a load-bearing shelf.
+
+**Compact spice and countertop racks.** A small rack can free worktop space, but only if its footprint fits beside appliances and its shelves fit your bottles. Check whether the listing gives usable shelf clearance, not only the rack's total height.
+
+**Document and lid holders.** Vertical holders can organize folders, pot lids, trays, or chopping boards. Look for a stable base and enough slot width for the items you plan to store.
+
+Browse more practical categories in [home finds](/categories/home-finds) and compare options in [items under 500](/categories/under-500).
+
+## Measurements and materials
+
+Measure the space twice and write the numbers down in centimeters. For drawers, record inside width, depth, and usable height. For shelves, include the opening, any door hinge, and the space needed to pull a bin forward. For racks, check both the footprint and the clearance between tiers.
+
+Material descriptions need context. Thin plastic can be fine for socks or sachets but may bow under bottles. Metal racks should have level feet and joints that reviewers describe as stable. Fabric bins need a firm base if you want them to hold their shape. Bamboo or wood products can swell in damp areas, so look for care instructions before placing them beside a sink.
+
+Do not rely on a staged photo for scale. Compare the stated dimensions with an object you own, or mark the footprint with paper or masking tape. That simple check can prevent an organizer from becoming more clutter.
+
+## Seller reviews
+
+Read recent reviews for the exact variation you plan to order. A listing may combine ratings for several sizes, colors, or materials, and a positive review of the largest bin may not describe the smaller one in your cart.
+
+Useful reviews mention dimensions, plastic thickness, assembly, odor, adhesive strength, sharp edges, and condition on arrival. Buyer photos can reveal scale and color more clearly than edited listing images. Check the seller's history, response to defects, and return instructions. A high rating with repetitive one-line comments gives less information than a smaller set of specific reviews.
+
+## Shopee vs Temu final cost
+
+Compare the same usable size and material, not only two products with similar photos. On [Shopee PH](/stores/shopee-ph), a local listing may have a different shipping fee, dispatch point, voucher, or return route from another seller. On [Temu](/stores/temu), an item may be part of a cross-border basket with different delivery and return conditions.
+
+Use this calculation for both carts: item price plus shipping and any fees, minus only the vouchers that actually apply. Divide bundle prices by the number of pieces you will really use. A ten-piece set is not better value if six pieces do not fit. Recheck the total immediately before payment because prices, vouchers, stock, and seller terms can change.
+
+## What to skip
+
+- Listings with no dimensions or only vague labels such as small, medium, and large.
+- Adhesive organizers with no surface guidance or reviews about long-term hold.
+- Thin stackable bins shown carrying heavy bottles without a stated load limit.
+- Racks with unclear assembly photos, exposed sharp edges, or repeated wobble complaints.
+- Large sets bought only because the per-piece figure looks low.
+- Any item whose return cost or process would make a sizing mistake difficult to resolve.
+
+## Checklist
+
+1. Name the exact clutter problem the organizer should solve.
+2. Measure width, depth, height, openings, and clearances in centimeters.
+3. Confirm the material suits the expected load and moisture level.
+4. Read recent reviews for the exact size or variation.
+5. Compare the final delivered cost after real vouchers and fees.
+6. Check assembly instructions, care notes, and the return window.
+7. Reconfirm the price, seller, variation, and delivery estimate at checkout.
+
+## Related SulitScan guides
+
+Use the [home finds](/categories/home-finds) page for organizers and everyday household items, then narrow the budget with [items under 500](/categories/under-500). The [Shopee PH store guide](/stores/shopee-ph) and [Temu store guide](/stores/temu) explain the platform-specific checks to make before opening a partner listing.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. We have not physically tested every item described in these practical categories. Prices, vouchers, stock, delivery estimates, seller reviews, and return terms can change. Confirm the current listing and final checkout details on the partner store. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Budget Finds",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-12",
+    lastReviewed: "2026-07-12",
+    readTime: 9,
+    tags: ["home-organization", "home-finds", "under-500", "shopee", "temu", "philippines"],
+    coverGradient: "from-emerald-400 to-orange-300",
+    coverImage: "/images/guides/best-home-organization-finds-under-500-philippines.jpg",
+    coverImageAlt: "Brand-neutral storage bins, drawer organizers, cable clips, compact rack, and measuring tape in a bright apartment",
+    faqs: [
+      {
+        question: "What home organizers under 500 pesos are worth checking?",
+        answer:
+          "Drawer trays, cable clips, small baskets, document holders, and compact racks can be practical categories when their measurements and materials fit your space. Confirm the final price, reviews, and return terms before ordering.",
+      },
+      {
+        question: "How do I measure for a drawer organizer?",
+        answer:
+          "Measure the drawer's inside width, depth, and usable height in centimeters. Account for curved corners, handle hardware, and the clearance needed for the drawer to close.",
+      },
+      {
+        question: "Should I compare Shopee and Temu using the listed price?",
+        answer:
+          "Compare the final checkout total instead. Add shipping and fees, subtract only vouchers that actually apply, and compare the same usable size, material, and quantity.",
+      },
+      {
+        question: "What should I check in organizer reviews?",
+        answer:
+          "Look for comments and buyer photos about real dimensions, material thickness, assembly, stability, adhesive strength, sharp edges, and the condition in which the item arrived.",
+      },
+      {
+        question: "Can prices in this guide change?",
+        answer:
+          "Yes. Marketplace prices, vouchers, stock, delivery estimates, and seller terms can change. Recheck the listing and return policy immediately before payment.",
+      },
+    ],
+  },
+  {
+    id: "post-018",
+    slug: "best-gifts-under-500-philippines",
+    title: "Best Gifts Under ₱500 Philippines: Practical Ideas for Every Occasion",
+    excerpt:
+      "Choose a useful gift under 500 pesos by starting with the recipient, then budgeting for shipping, wrapping, delivery timing, and return limits.",
+    content: `
+A thoughtful gift under 500 pesos does not need to look expensive. It needs to suit the recipient, arrive when you need it, and stay within budget after shipping and presentation. Practical categories such as drinkware, pouches, notebooks, cable organizers, and simple self-care tools give you room to choose something personal without relying on a risky size, shade, or technical specification.
+
+## Quick answer
+
+Choose one useful item linked to the recipient's routine, then reserve part of the budget for delivery and wrapping. Read recent reviews, confirm dimensions or materials, and check whether the recipient could return or exchange it. Marketplace prices and vouchers change, so use the final checkout total rather than the crossed-out price in the listing.
+
+## Choose by recipient
+
+For a coworker, choose something neutral and easy to use at a desk: a notebook, cable pouch, tumbler sleeve, or compact organizer. For a close friend, you can be more personal by matching a color, hobby, or daily habit. For a family member, a kitchen helper, travel pouch, reusable container, or small home organizer may feel more useful than novelty decor.
+
+Think about what the recipient already carries, uses, or complains about. Someone who commutes may appreciate a pouch or compact umbrella cover. A student may use a notebook set or cable organizer. A home cook may prefer a measuring tool or storage helper. Avoid making assumptions about body size, skin type, fragrance preference, or device compatibility unless you know the details.
+
+Browse [gift ideas](/categories/gift-ideas) for practical categories and [items under 500](/categories/under-500) when the item budget is fixed.
+
+## Practical categories
+
+**Drinkware and accessories.** A plain insulated tumbler, bottle pouch, or coaster set can work across many occasions. Check capacity, lid design, material description, and reviews about leaks or odor.
+
+**Travel and cable pouches.** Choose a size that fits the recipient's usual bag. Interior pockets are useful only if cables and plugs fit them; review photos can show the real scale.
+
+**Notebooks and desk sets.** Check page count, paper ruling, dimensions, binding, and whether pens are included or only shown as props. Neutral designs are easier for exchange gifts.
+
+**Simple self-care tools.** Hair accessories, manicure tools, makeup pouches, or a compact mirror can be lower-risk than skincare or makeup formulas. Check material quality, edges, seller reviews, and hygiene-related return restrictions.
+
+**Small home helpers.** Drawer trays, reusable bags, kitchen towels, and compact organizers can suit people who prefer useful gifts. Match the item to their space so it does not become clutter.
+
+## Birthday and thank-you ideas
+
+For a birthday, pair a small useful item with a handwritten note that names why you chose it. A notebook for a new project, a travel pouch for an upcoming trip, or a desk organizer for a new job feels more intentional than a random bundle.
+
+For a thank-you gift, keep the gesture proportional and easy to accept. A simple tumbler, snack container, pouch, or desk item can acknowledge help without creating pressure. If the recipient has dietary restrictions or allergies, choose a non-food item unless you know what is suitable.
+
+Presentation can add meaning without consuming the budget. Reusable cloth, a paper sleeve, or a plain box with a ribbon can look considered. Do not remove labels or seals the recipient may need for a return.
+
+## Exchange gifts
+
+Exchange gifts work better when they are broadly useful, compact, and not dependent on a personal size. Neutral-color desk accessories, organizers, drinkware, notebooks, and travel pouches are worth checking. Follow the announced budget, theme, and prohibited categories.
+
+If the exchange has a 500-peso ceiling, clarify whether shipping and wrapping count. Avoid joke items that create waste, products with intimate sizing, and electrical accessories with unclear specifications. Keep a screenshot or receipt if the recipient may need proof of purchase.
+
+## Delivery and presentation
+
+Order timing is part of the gift. Review the current delivery estimate at checkout and leave room for courier delays, a damaged parcel, or the wrong variation. A seller's past review does not guarantee a future delivery date. For a fixed occasion, a locally available alternative may be more practical than a cross-border item with a tight deadline.
+
+Check whether the item arrives in presentable condition or needs another box. Read reviews about dents, leaks, missing pieces, and packaging. If gift messaging is available, confirm what the recipient will see. Keep invoices and return instructions accessible without exposing payment details.
+
+Our [voucher, shipping, and return checklist](/blog/voucher-shipping-return-checklist) gives you a final review before placing the order.
+
+## What to skip
+
+- Skincare, makeup, or fragrance when you do not know sensitivities or preferences.
+- Clothing, rings, or fitted accessories when you do not know exact measurements.
+- Chargers, heated items, or battery products with unclear safety information.
+- Food without checking allergies, dietary needs, and expiry information.
+- Listings with no recent reviews for the exact variation.
+- Personalized items when spelling, production time, or return limits are unclear.
+
+## Checklist
+
+1. Match the gift to one real habit, hobby, or need.
+2. Confirm the recipient's size, shade, compatibility, or restrictions when relevant.
+3. Read recent seller reviews and inspect buyer photos.
+4. Add shipping, fees, wrapping, and any personalization to the budget.
+5. Confirm the current delivery estimate for the occasion.
+6. Check damage, exchange, and return terms before ordering.
+7. Recheck the item variation and final price at payment.
+
+## Related deals
+
+Browse [gift ideas](/categories/gift-ideas) for occasion-friendly options and [items under 500](/categories/under-500) for the current budget filter. Before ordering, use the [voucher, shipping, and return checklist](/blog/voucher-shipping-return-checklist) to confirm the final amount and seller terms.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. We do not physically test every gift described here or guarantee delivery by an occasion. Prices, vouchers, stock, seller reviews, delivery estimates, and return rules can change. Confirm all details on the partner store. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Gift Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-12",
+    lastReviewed: "2026-07-12",
+    readTime: 9,
+    tags: ["gift-ideas", "under-500", "shopee", "temu", "sephora", "philippines"],
+    coverGradient: "from-rose-400 to-amber-300",
+    coverImage: "/images/guides/best-gifts-under-500-philippines.jpg",
+    coverImageAlt: "Brand-neutral tumbler, travel pouch, notebook, beauty pouch, cable organizer, and wrapped gift in a warm flat lay",
+    faqs: [
+      {
+        question: "What practical gifts under 500 pesos are worth checking?",
+        answer:
+          "Drinkware, travel pouches, notebooks, cable organizers, desk items, and small home helpers are practical categories. Match the item to the recipient and confirm reviews, delivery, and return terms.",
+      },
+      {
+        question: "What should I buy for an exchange gift under 500 pesos?",
+        answer:
+          "Choose something broadly useful and not dependent on size, shade, or device compatibility, such as a neutral notebook, compact organizer, travel pouch, or drinkware accessory.",
+      },
+      {
+        question: "Does a 500-peso gift budget include shipping?",
+        answer:
+          "That depends on the event rules. For your own budget, calculate the complete amount: item price, shipping, fees, wrapping, and personalization minus only vouchers that apply.",
+      },
+      {
+        question: "How early should I order an online gift?",
+        answer:
+          "Check the current estimate at checkout and leave time for possible courier delays, damage, or a wrong variation. No marketplace delivery estimate is a guarantee for a fixed occasion.",
+      },
+      {
+        question: "What gifts should I avoid when I do not know the recipient well?",
+        answer:
+          "Avoid products that depend on body size, makeup shade, fragrance taste, allergies, device compatibility, or unclear electrical safety information.",
+      },
+    ],
+  },
+  {
+    id: "post-019",
+    slug: "best-work-from-home-desk-accessories-under-1000-philippines",
+    title: "Best Work-From-Home Desk Accessories Under ₱1,000 Philippines",
+    excerpt:
+      "Build a more usable home desk with measured, low-risk accessories—and take extra care with lamps, chargers, power strips, and other electrical items.",
+    content: `
+Work-from-home desk accessories under 1,000 pesos are worth checking when they fix a specific problem: a low screen, uneven lighting, tangled cables, or a crowded work surface. Start with your desk dimensions and daily discomfort, not a styled setup photo. A stand, lamp, cable clip, or organizer only helps when it fits your equipment and supports a repeatable working position.
+
+## Quick answer
+
+Non-electrical accessories such as laptop stands, phone stands, desk mats, cable clips, and small organizers are practical categories within this budget. Measure first, check weight and compatibility, and read recent reviews. For lamps, chargers, adapters, and power strips, verify specifications and safety information, prefer accountable sellers, and never overload an outlet. Confirm the final checkout price and return policy because listings and vouchers can change.
+
+## Stands
+
+A laptop stand can raise the screen and free some desk space. Check the supported device width, stated load, base dimensions, adjustment range, and whether the hinge stays firm in long-term reviews. Ventilation matters for laptops, so avoid designs that cover intake vents. A stand does not replace an external keyboard and mouse when raising the laptop makes typing uncomfortable.
+
+A phone stand is lower-risk but still needs a stable base and enough room for your phone with its case. If you join video calls, check the viewing-angle range. For tablets, confirm the stand is rated for the larger weight and will not tip when you touch the screen.
+
+## Lighting
+
+Place task lighting so it brightens documents or the keyboard without reflecting directly on the screen. A lamp with adjustable height or angle is easier to position than one with a fixed neck. Check base size, switch location, power method, bulb compatibility, and reviews about flicker or heat.
+
+Color modes and touch controls may be convenient, but they do not compensate for vague electrical specifications. If a listing omits input voltage, rated power, plug type, or warranty information, skip it. Keep lamps away from curtains, paper piles, and liquids, and follow the manufacturer's use instructions.
+
+## Cable management
+
+Adhesive cable clips, reusable ties, under-desk trays, and cable sleeves can reduce tangles. Count the cables and measure the thickest plug before choosing a product. An under-desk tray needs enough knee clearance and a mounting method suitable for the desktop material.
+
+Do not bundle power cords so tightly that heat cannot escape, and do not sharply bend charging cables at the connector. Adhesive products may damage painted or laminated surfaces, so read removal instructions and reviews for surfaces similar to yours.
+
+## Organizers
+
+Small drawer units, monitor risers with storage, pen trays, and document holders can keep frequently used items reachable. Choose an organizer based on what must fit inside it. Measure notebooks, headphones, chargers, and stationery rather than guessing from a listing photo.
+
+Check whether drawers open fully within the available depth and whether a riser leaves enough screen height and keyboard space. Thin plastic may suit light stationery but not a monitor. For any product carrying equipment, follow the stated load limit and review buyer photos for flexing or uneven feet.
+
+Browse [home finds](/categories/home-finds) for storage helpers and [tech deals](/categories/tech-deals) for device-related accessories.
+
+## Electrical accessory caution
+
+Power strips, extension cords, chargers, adapters, and USB hubs deserve more scrutiny than a desk mat or tray. Confirm the input and output ratings, plug compatibility, cable length, protection features stated by the manufacturer, and any certification information shown in the listing. Read reviews about heat, intermittent power, loose sockets, and seller support over time.
+
+Do not daisy-chain extension cords or power strips. Do not exceed the rated load. Replace an item that becomes unusually hot, smells burnt, sparks, crackles, or has a damaged cable. If the listing is unclear, ask the seller or choose a product with traceable specifications and local support. A low price is not a substitute for electrical safety.
+
+For chargers and battery-related products, read our [phone accessories under 500 guide](/blog/best-phone-accessories-under-500-philippines) before ordering.
+
+## Ergonomic measurements
+
+Desk accessories should support a neutral position rather than force your body to adapt. When seated, aim to keep shoulders relaxed, elbows near your sides, and wrists roughly straight. Position the top portion of the screen around eye level if comfortable, and keep the screen far enough away that text is readable without leaning forward.
+
+Measure the seated elbow height, current screen height, keyboard depth, and available desk width. If a stand raises a laptop, budget space for a separate keyboard and pointing device. Comfort varies by person and health needs; persistent pain, numbness, headaches, or vision strain deserves advice from a qualified professional rather than another accessory.
+
+## Shopee vs Temu
+
+Compare equivalent materials, dimensions, load ratings, and electrical specifications. A lower item price on one platform may be offset by shipping, a basket threshold, or a return process that does not suit a bulky item. [Items under 1000](/categories/under-1000) can help you browse by budget, but the current partner-store checkout is the source for the amount you will pay.
+
+On either marketplace, read recent reviews for the exact variation, confirm dispatch and delivery estimates, and check the return route for defective or incompatible items. Add item price, shipping, and fees, then subtract only vouchers that apply. Recheck the seller and final amount before payment because prices and terms can change.
+
+## Checklist
+
+1. Identify one desk problem to solve before browsing.
+2. Measure the desk, equipment, clearance, and cable lengths.
+3. Confirm compatibility, material, adjustment range, and load rating.
+4. For electrical items, verify ratings, plug type, safety information, and seller support.
+5. Read recent reviews for the exact variation and long-term use.
+6. Calculate the final cost with shipping and real vouchers.
+7. Check the return process for defects, damage, or incompatibility.
+8. Stop using any electrical accessory that shows signs of overheating or damage.
+
+## Related deals
+
+Browse [tech deals](/categories/tech-deals), [home finds](/categories/home-finds), and [items under 1000](/categories/under-1000) for desk-friendly categories. The [phone accessories under 500 guide](/blog/best-phone-accessories-under-500-philippines) adds checks for chargers, cables, stands, and power banks.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. We do not physically test every accessory and do not provide electrical or medical certification. Prices, specifications, seller reviews, stock, delivery estimates, and return rules can change. Confirm the listing and follow manufacturer safety instructions. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Tech Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-12",
+    lastReviewed: "2026-07-12",
+    readTime: 10,
+    tags: ["work-from-home", "desk-accessories", "tech-deals", "home-finds", "under-1000", "shopee", "temu", "philippines"],
+    coverGradient: "from-slate-700 to-emerald-600",
+    coverImage: "/images/guides/best-work-from-home-desk-accessories-under-1000-philippines.jpg",
+    coverImageAlt: "Organized compact desk with a laptop stand, task lamp, cable clips, desk mat, phone stand, and drawer organizer",
+    faqs: [
+      {
+        question: "What desk accessories under 1,000 pesos are worth checking?",
+        answer:
+          "Laptop and phone stands, desk mats, cable clips, document holders, and small organizers are practical categories when their measurements and load ratings suit your setup.",
+      },
+      {
+        question: "What should I check before buying a laptop stand?",
+        answer:
+          "Confirm device width, stated load, base dimensions, adjustment range, ventilation, and hinge stability in recent reviews. Consider a separate keyboard and mouse if the raised position makes typing awkward.",
+      },
+      {
+        question: "Are cheap power strips and desk lamps safe?",
+        answer:
+          "Price alone cannot establish safety. Check electrical ratings, plug compatibility, safety or certification information shown, seller history, warranty or return support, and reviews about heat or faults. Never overload or daisy-chain power strips.",
+      },
+      {
+        question: "How should I compare Shopee and Temu desk accessories?",
+        answer:
+          "Compare the same dimensions, materials, load ratings, and specifications, then calculate the final total with shipping and only applicable vouchers. Also compare delivery and return terms.",
+      },
+      {
+        question: "Can a desk accessory fix persistent back or wrist pain?",
+        answer:
+          "An accessory may help adjust a setup, but persistent pain, numbness, headaches, or vision strain should be discussed with a qualified professional. Comfort and health needs differ by person.",
+      },
+    ],
+  },
+  {
+    id: "post-020",
+    slug: "best-beauty-finds-under-500-philippines",
+    title: "Best Beauty Finds Under ₱500 Philippines: What to Check Before Buying",
+    excerpt:
+      "Budget beauty can be practical when you start with low-risk tools and verify ingredients, shades, authenticity signals, expiry information, and return restrictions.",
+    content: `
+Beauty finds under 500 pesos are worth checking when the product suits your skin, shade, hygiene needs, and risk tolerance. Makeup tools, pouches, compact mirrors, and other non-formula basics are practical categories to start with. Skincare and makeup formulas need more checking because ingredients, authenticity, shade accuracy, expiry, and return restrictions matter more than a discount badge.
+
+## Quick answer
+
+For a lower-risk budget buy, consider washable tools or accessories with clear materials and care instructions. For skincare or makeup, read the full ingredient list, verify the seller and source, check batch or expiry information where available, and review the return policy before opening the product. Prices and vouchers change, so confirm the item, variation, and final checkout total before paying.
+
+## Tools and low-risk basics
+
+Makeup brushes, powder puffs, washable applicators, compact mirrors, travel containers, headbands, and cosmetic pouches do not depend on a formula or shade. They can still cause problems if materials are rough, difficult to clean, or poorly finished.
+
+Check brush density, shedding, handle stability, mirror edges, zipper quality, and the size shown in centimeters. Read cleaning instructions and buyer reviews. Wash reusable tools before first use when the manufacturer allows it, let them dry fully, and do not share items that touch eyes, lips, or broken skin.
+
+Browse [beauty](/categories/beauty) for current beauty-related categories and [items under 500](/categories/under-500) for the budget filter.
+
+## Skincare checks
+
+Start with the complete ingredient list and product purpose. Do not treat phrases such as gentle, clean, brightening, or dermatologist-inspired as proof that a product suits you. If you know you react to a fragrance, preservative, active ingredient, or plant extract, check for it before ordering.
+
+Follow the product directions and patch-test when appropriate. Introduce one new formula at a time so you can identify a reaction more easily. Stop use if irritation develops. Persistent or severe skin concerns belong with a qualified healthcare professional, not a marketplace review or shopping guide.
+
+Check the container size, seal, storage instructions, batch information, and expiry or period-after-opening symbol where applicable. A low unit price is not useful if the quantity is too large to finish safely after opening.
+
+## Makeup shades
+
+Screen color, lighting, filters, and editing can make a lip or complexion shade look different from real life. Look for swatches on more than one skin tone and in different lighting. Read the shade name and number carefully, because a listing may group several variants under one review score.
+
+For base makeup, compare undertone and finish as well as depth. For lip and eye products, check whether reviews mention staining, fragrance, dryness, or sensitivity. A virtual swatch or buyer photo can guide a choice, but it cannot guarantee an exact match on your skin.
+
+## Authenticity signals
+
+Buy from a seller or retailer whose identity and product source you can evaluate. On a marketplace, inspect shop history, recent reviews for the exact item, buyer photos, product details, and the seller's response to authenticity questions. Be cautious when a familiar product is priced far below comparable authorized listings without a clear reason.
+
+Look for consistent product naming, seal details, batch or lot information, and complete manufacturer or distributor information where it should be present. Packaging can change, so a different box alone does not prove an item is fake. At the same time, a polished photo or an official-looking word in a shop name does not prove authenticity.
+
+The [Shopee PH store guide](/stores/shopee-ph) covers seller checks. The [Sephora PH store guide](/stores/sephora-ph) explains what to expect from that retailer.
+
+## Expiry and returns
+
+Check expiry, batch, or period-after-opening information before use. Do not buy a quantity you cannot reasonably finish within the stated period. Store products as directed and avoid items that arrive unsealed, leaking, unusually separated, discolored, or with an unexpected odor. Contact the seller or retailer before using a questionable item.
+
+Beauty returns can be restricted once a seal is broken or a product is used. Read the current policy before ordering, especially for shade mismatch, sensitivity, damaged packaging, or suspected authenticity problems. Photograph the parcel and item on arrival if you may need to document damage or a missing seal.
+
+## Shopee vs Sephora PH
+
+[Shopee PH](/stores/shopee-ph) gives access to many independent and official marketplace sellers, so the seller, variation, and fulfillment source require close review. [Sephora PH](/stores/sephora-ph) is a beauty retailer with its own catalog, promotions, and return rules. Neither a marketplace badge nor a retailer name removes the need to confirm the exact listing, product details, and policy at checkout.
+
+Compare the final amount for the same authentic product and size: item price plus shipping and fees, minus only vouchers or rewards that apply. Consider source confidence, available shade information, delivery estimate, and return route alongside price. Review the current terms before payment because promotions, stock, and policies change.
+
+## What to skip
+
+- Formula listings with no complete ingredient information.
+- Sellers with unclear identity, copied-looking reviews, or no useful history for the exact item.
+- Products making medical, permanent, or instant transformation claims without reliable evidence.
+- Familiar products priced implausibly below comparable authorized listings with no explanation.
+- Open, leaking, damaged, discolored, or unexpectedly scented products.
+- Shades chosen only from a filtered listing photo.
+- Used testers, decanted products, or hygiene-sensitive items with unclear handling.
+
+## Checklist
+
+1. Confirm the exact product, size, shade, and seller.
+2. Read the ingredient list and directions for formulas.
+3. Check seller history, recent reviews, and buyer photos.
+4. Look for seal, batch, expiry, or period-after-opening information where applicable.
+5. Compare the final total, source confidence, and return route.
+6. Read hygiene and opened-product return restrictions before purchase.
+7. Inspect the parcel before use and document damage or a missing seal.
+8. Patch-test when appropriate and stop use if irritation occurs.
+
+## Related deals
+
+Browse [beauty](/categories/beauty) and [items under 500](/categories/under-500), then compare the current seller details through [Shopee PH](/stores/shopee-ph) or [Sephora PH](/stores/sephora-ph). Our [Sephora PH beauty guide](/blog/sephora-ph-beauty-guide) adds retailer-specific checks for products, rewards, shipping, and returns.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. We do not physically test every product and do not provide medical advice or guarantee authenticity from independent sellers. Prices, ingredients, packaging, stock, seller reviews, delivery estimates, and return rules can change. Confirm the current listing and consult a qualified professional for individual health concerns. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Beauty Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-12",
+    lastReviewed: "2026-07-12",
+    readTime: 10,
+    tags: ["beauty", "skincare", "makeup", "under-500", "shopee", "sephora", "philippines"],
+    coverGradient: "from-pink-300 to-emerald-200",
+    coverImage: "/images/guides/best-beauty-finds-under-500-philippines.jpg",
+    coverImageAlt: "Brand-neutral beauty tools, compact mirror, lip tint, neutral makeup palette, skincare bottles, patch-test card, and magnifying glass",
+    faqs: [
+      {
+        question: "What beauty finds under 500 pesos are lower-risk?",
+        answer:
+          "Washable tools and accessories such as brushes, puffs, compact mirrors, headbands, and pouches can be lower-risk than formulas or shade-dependent products when materials and care instructions are clear.",
+      },
+      {
+        question: "What should I check before buying budget skincare?",
+        answer:
+          "Read the complete ingredient list and directions, check the seller and source, review seal and expiry information, understand opened-product return restrictions, and patch-test when appropriate.",
+      },
+      {
+        question: "How can I check whether a beauty product is authentic?",
+        answer:
+          "Evaluate the seller's identity and history, recent reviews for the exact item, buyer photos, product details, seals, batch information, and pricing compared with authorized sources. No single signal proves authenticity.",
+      },
+      {
+        question: "Why can a makeup shade look different from the listing?",
+        answer:
+          "Screen settings, lighting, filters, editing, skin tone, and undertone can all change how a shade appears. Compare multiple swatches and confirm the exact shade name and number.",
+      },
+      {
+        question: "Can opened beauty products be returned?",
+        answer:
+          "Return eligibility varies by seller and retailer, and hygiene rules may limit returns after opening. Read the current policy before purchase and document any damage or missing seal before use.",
+      },
+    ],
+  },
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
