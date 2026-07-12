@@ -1833,6 +1833,32 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
   return posts.find((p) => p.slug === slug)
 }
 
+export function getPostsNewestFirst(): BlogPost[] {
+  return [...posts].sort((a, b) => {
+    const byDate = b.publishedAt.localeCompare(a.publishedAt)
+    return byDate !== 0 ? byDate : b.id.localeCompare(a.id)
+  })
+}
+
+export function getRelatedPosts(current: BlogPost, count = 3): BlogPost[] {
+  const currentTags = new Set(current.tags)
+  return posts
+    .filter((candidate) => candidate.slug !== current.slug)
+    .map((candidate) => ({
+      candidate,
+      score:
+        candidate.tags.filter((tag) => currentTags.has(tag)).length * 3 +
+        (candidate.category === current.category ? 2 : 0),
+    }))
+    .sort((a, b) =>
+      b.score - a.score ||
+      b.candidate.publishedAt.localeCompare(a.candidate.publishedAt) ||
+      b.candidate.id.localeCompare(a.candidate.id)
+    )
+    .slice(0, count)
+    .map(({ candidate }) => candidate)
+}
+
 export function getRecentPosts(count = 6): BlogPost[] {
-  return [...posts].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt)).slice(0, count)
+  return getPostsNewestFirst().slice(0, count)
 }

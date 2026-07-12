@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import Image from "next/image"
 import BlogCard from "@/components/BlogCard"
 import { BreadcrumbJsonLd, ItemListJsonLd } from "@/components/SeoJsonLd"
-import { posts } from "@/data/posts"
+import { getPostsNewestFirst } from "@/data/posts"
 import { siteConfig } from "@/lib/seo"
 import { BookOpen } from "lucide-react"
 import NewsletterSignup from "@/components/newsletter/NewsletterSignup"
@@ -20,6 +20,8 @@ export const metadata: Metadata = {
 }
 
 export default function BlogPage() {
+  const orderedPosts = getPostsNewestFirst()
+
   return (
     <>
       <BreadcrumbJsonLd
@@ -30,7 +32,7 @@ export default function BlogPage() {
       />
       <ItemListJsonLd
         name="Smart Shopping Guides Philippines – SulitScan PH"
-        items={posts.map((p) => ({
+        items={orderedPosts.map((p) => ({
           name: p.title,
           url: `${siteConfig.url}/blog/${p.slug}`,
           description: p.excerpt,
@@ -64,7 +66,7 @@ export default function BlogPage() {
                 Smart shopping guides for Filipino shoppers
               </h1>
               <p className="text-slate-500 text-sm">
-                {posts.length} guides · Temu, Shopee PH, and Sephora PH tips, deal-checking, and smart shopping habits.
+                {orderedPosts.length} guides · Temu, Shopee PH, and Sephora PH tips, deal-checking, and smart shopping habits.
               </p>
             </div>
           </div>
@@ -73,7 +75,7 @@ export default function BlogPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {posts.map((post) => (
+          {orderedPosts.map((post) => (
             <BlogCard key={post.id} post={post} />
           ))}
         </div>

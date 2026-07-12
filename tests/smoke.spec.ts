@@ -56,3 +56,18 @@ test("retired Shopee seller guide permanently redirects to the canonical guide",
     "/blog/how-to-check-shopee-seller-legit-philippines"
   )
 })
+
+test("blog index lists guides newest first", async ({ page }) => {
+  await page.goto("/blog")
+  const dates = await page.locator('main a[href^="/blog/"] time').evaluateAll((nodes) =>
+    nodes.map((node) => node.getAttribute("datetime") ?? "")
+  )
+  expect(dates.length).toBeGreaterThan(3)
+  expect(dates).toEqual([...dates].sort((a, b) => b.localeCompare(a)))
+})
+
+test("Shopee seller guide recommends related Shopee content", async ({ page }) => {
+  await page.goto("/blog/how-to-check-shopee-seller-legit-philippines")
+  const related = page.getByRole("region", { name: "More shopping guides" })
+  await expect(related.getByRole("link", { name: /Shopee/i }).first()).toBeVisible()
+})

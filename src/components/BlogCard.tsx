@@ -62,7 +62,9 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
           {post.excerpt}
         </p>
         <div className="flex items-center justify-between mt-3 pt-3 border-t border-slate-50">
-          <span className="text-xs text-slate-400">{formatDate(post.publishedAt)}</span>
+          <time dateTime={post.publishedAt} className="text-xs text-slate-400">
+            {formatDate(post.publishedAt)}
+          </time>
           <span className="flex items-center gap-1 text-xs font-semibold text-green-600 group-hover:gap-2 transition-all">
             Read <ArrowRight className="w-3 h-3" aria-hidden="true" />
           </span>

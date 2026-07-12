@@ -6,8 +6,8 @@ import { Clock, ArrowLeft, Tag, BookOpen, List } from "lucide-react"
 import { BreadcrumbJsonLd, BlogPostingJsonLd, FAQJsonLd } from "@/components/SeoJsonLd"
 import DealCard from "@/components/DealCard"
 import ImportTaxCallout from "@/components/ImportTaxCallout"
-import { posts, getPostBySlug, DEFAULT_BLOG_COVER, DEFAULT_BLOG_COVER_ALT } from "@/data/posts"
-import { getDealsByPlatform, getDealsByCategory, getFeaturedDeals, isSuspiciousDiscount } from "@/data/deals"
+import { posts, getPostBySlug, getRelatedPosts, DEFAULT_BLOG_COVER, DEFAULT_BLOG_COVER_ALT } from "@/data/posts"
+import { getRelatedDealsForPost } from "@/lib/blog-recommendations"
 import { siteConfig } from "@/lib/seo"
 import { formatDate, formatTag, clampMeta } from "@/lib/utils"
 import NewsletterSignup from "@/components/newsletter/NewsletterSignup"
@@ -90,17 +90,9 @@ export default async function BlogPostPage({
 
   const postUrl = `${siteConfig.url}/blog/${slug}`
   const headings = extractHeadings(post.content)
-  const relatedPosts = posts.filter((p) => p.slug !== slug).slice(0, 3)
-
-  // Match a few relevant deals to the post's topic (blog -> money-page flow).
+  const relatedPosts = getRelatedPosts(post)
+  const relatedDeals = getRelatedDealsForPost(post)
   const topic = `${slug} ${post.tags.join(" ")}`.toLowerCase()
-  const relatedDeals = (
-    /shopee/.test(topic) ? getDealsByPlatform("Shopee PH")
-    : /sephora|beauty|skincare|makeup/.test(topic) ? getDealsByPlatform("Sephora PH")
-    : /under-500|budget/.test(topic) ? getDealsByCategory("under-500")
-    : /temu/.test(topic) ? getDealsByPlatform("Temu")
-    : getFeaturedDeals(3)
-  ).filter((d) => !isSuspiciousDiscount(d)).slice(0, 3)
   // ImportTaxPH is relevant on overseas/Temu/shipping guides (not on the import-tax post itself).
   const showImportTax = /temu|shipping|overseas|aliexpress/.test(topic) && !slug.includes("import-tax")
 
@@ -331,7 +323,7 @@ export default async function BlogPostPage({
 
             {/* Related posts */}
             {relatedPosts.length > 0 && (
-              <section aria-labelledby="related-posts-heading" className="mt-10">
+              <section aria-label="More shopping guides" aria-labelledby="related-posts-heading" className="mt-10">
                 <h2 id="related-posts-heading" className="text-base font-bold text-slate-900 mb-4">
                   More shopping guides
                 </h2>
