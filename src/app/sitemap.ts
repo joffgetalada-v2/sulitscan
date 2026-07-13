@@ -7,76 +7,70 @@ import { stores } from "@/data/stores"
 const BASE_URL = "https://sulitscan.com"
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const newestPostReview = posts.reduce(
+    (latest, post) => post.lastReviewed > latest ? post.lastReviewed : latest,
+    posts[0]?.lastReviewed ?? "2026-07-12"
+  )
+
   const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: BASE_URL,
-      lastModified: new Date(),
       changeFrequency: "daily",
       priority: 1,
     },
     {
       url: `${BASE_URL}/deals`,
-      lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.9,
     },
     {
       url: `${BASE_URL}/categories`,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/stores`,
-      lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/blog`,
-      lastModified: new Date(),
+      lastModified: new Date(newestPostReview),
       changeFrequency: "weekly",
       priority: 0.8,
     },
     {
       url: `${BASE_URL}/about`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.5,
     },
     {
       url: `${BASE_URL}/contact`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.4,
     },
     {
       url: `${BASE_URL}/affiliate-disclosure`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.4,
     },
     {
       url: `${BASE_URL}/privacy-policy`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.3,
     },
     {
       url: `${BASE_URL}/terms`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.3,
     },
     {
       url: `${BASE_URL}/cookie-policy`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.3,
     },
     {
       url: `${BASE_URL}/editorial-policy`,
-      lastModified: new Date(),
       changeFrequency: "monthly",
       priority: 0.4,
     },
@@ -85,7 +79,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const activeDeals = getActiveDeals()
   const dealRoutes: MetadataRoute.Sitemap = activeDeals.map((deal) => ({
     url: `${BASE_URL}/deals/${deal.slug}`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }))
@@ -93,21 +86,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const featuredCategories = categories.filter((c) => c.featured)
   const categoryRoutes: MetadataRoute.Sitemap = featuredCategories.map((cat) => ({
     url: `${BASE_URL}/categories/${cat.slug}`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.6,
   }))
 
   const postRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
-    lastModified: new Date(post.publishedAt),
+    lastModified: new Date(post.lastReviewed),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }))
 
   const storeRoutes: MetadataRoute.Sitemap = stores.map((store) => ({
     url: `${BASE_URL}/stores/${store.slug}`,
-    lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.7,
   }))

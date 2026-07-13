@@ -160,6 +160,17 @@ test("retired Shopee seller guide permanently redirects to the canonical guide",
   )
 })
 
+test("sitemap contains reviewed canonical guides and excludes the retired guide", async ({ request }) => {
+  const response = await request.get("/sitemap.xml")
+  expect(response.status()).toBe(200)
+  const xml = await response.text()
+  expect(xml).toContain("/blog/best-home-organization-finds-under-500-philippines")
+  expect(xml).toMatch(
+    /<loc>https:\/\/sulitscan\.com\/blog\/how-to-check-shopee-seller-legit-philippines<\/loc>\s*<lastmod>2026-07-12/
+  )
+  expect(xml).not.toContain("/blog/how-to-check-if-shopee-seller-is-legit")
+})
+
 test("blog index lists guides newest first", async ({ page }) => {
   await page.goto("/blog")
   const dates = await page.locator('main a[href^="/blog/"] time').evaluateAll((nodes) =>
