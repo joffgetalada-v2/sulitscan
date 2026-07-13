@@ -73,16 +73,30 @@ test("Shopee seller guide recommends related Shopee content", async ({ page }) =
 })
 
 const growthPosts = [
-  "best-home-organization-finds-under-500-philippines",
-  "best-gifts-under-500-philippines",
-  "best-work-from-home-desk-accessories-under-1000-philippines",
-  "best-beauty-finds-under-500-philippines",
+  {
+    slug: "best-home-organization-finds-under-500-philippines",
+    faqQuestion: "What home organizers under 500 pesos are worth checking?",
+  },
+  {
+    slug: "best-gifts-under-500-philippines",
+    faqQuestion: "What practical gifts under 500 pesos are worth checking?",
+  },
+  {
+    slug: "best-work-from-home-desk-accessories-under-1000-philippines",
+    faqQuestion: "What desk accessories under 1,000 pesos are worth checking?",
+  },
+  {
+    slug: "best-beauty-finds-under-500-philippines",
+    faqQuestion: "What beauty finds under 500 pesos are lower-risk?",
+  },
 ]
 
-for (const slug of growthPosts) {
-  test(`${slug} renders a unique cover, related deals, and disclosure`, async ({ page }) => {
+for (const { slug, faqQuestion } of growthPosts) {
+  test(`${slug} renders a unique cover, FAQs, related deals, and disclosure`, async ({ page }) => {
     await page.goto(`/blog/${slug}`)
     await expect(page.locator(`img[src*="${slug}"]`).first()).toBeVisible()
+    await expect(page.getByRole("heading", { name: "Frequently asked questions", exact: true })).toBeVisible()
+    await expect(page.locator("summary").filter({ hasText: faqQuestion })).toBeVisible()
     await expect(page.getByRole("heading", { name: "Related deals to check" })).toBeVisible()
     await expect(page.locator("main").getByText("Affiliate Disclosure:", { exact: false })).toBeVisible()
   })

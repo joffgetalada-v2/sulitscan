@@ -267,6 +267,36 @@ export default async function BlogPostPage({
               })}
             </div>
 
+            {/* FAQs */}
+            {post.faqs && post.faqs.length > 0 && (
+              <section className="mt-10" aria-labelledby="post-faq-heading">
+                <h2 id="post-faq-heading" className="text-lg font-bold text-slate-900 mb-5">
+                  Frequently asked questions
+                </h2>
+                <div className="space-y-3">
+                  {post.faqs.map((faq) => (
+                    <details
+                      key={faq.question}
+                      className="group bg-white border border-slate-100 rounded-xl overflow-hidden shadow-sm hover:border-green-100 transition-colors"
+                    >
+                      <summary className="flex items-center justify-between gap-3 px-5 py-4 cursor-pointer text-sm font-semibold text-slate-900 hover:bg-slate-50 transition-colors list-none select-none">
+                        {faq.question}
+                        <span
+                          className="text-slate-400 group-open:rotate-180 transition-transform text-lg leading-none shrink-0"
+                          aria-hidden="true"
+                        >
+                          ↓
+                        </span>
+                      </summary>
+                      <div className="px-5 pb-4 pt-3 border-t border-slate-50">
+                        <p className="text-sm text-slate-600 leading-relaxed">{faq.answer}</p>
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            )}
+
             {/* Tags */}
             <div className="mt-8">
               <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Tags</p>
