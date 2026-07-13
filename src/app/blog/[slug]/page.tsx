@@ -126,6 +126,7 @@ export default async function BlogPostPage({
   const topic = `${slug} ${post.tags.join(" ")}`.toLowerCase()
   // ImportTaxPH is relevant on overseas/Temu/shipping guides (not on the import-tax post itself).
   const showImportTax = /temu|shipping|overseas|aliexpress/.test(topic) && !slug.includes("import-tax")
+  const isTemuContext = /temu/.test(topic)
 
   return (
     <>
@@ -347,7 +348,11 @@ export default async function BlogPostPage({
             {/* Import-tax callout for overseas / Temu guides */}
             {showImportTax && (
               <div className="mt-8">
-                <ImportTaxCallout sourceSlug={slug} platform="temu" placement="blog-article" />
+                <ImportTaxCallout
+                  sourceSlug={slug}
+                  platform={isTemuContext ? "temu" : "general"}
+                  placement="blog-article"
+                />
               </div>
             )}
 

@@ -54,16 +54,39 @@ test("deal card emits an affiliate_click event", async ({ page }) => {
   const popup = await popupPromise
   await popup.close()
   const events = await page.evaluate(() =>
-    (window as typeof window & { __events: Array<{ type: string; payload: { name?: string } }> }).__events
+    (window as typeof window & {
+      __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
+    }).__events
   )
-  expect(events.some((event) => event.type === "event" && event.payload.name === "affiliate_click")).toBe(true)
+  const event = events.find((candidate) =>
+    candidate.type === "event" && candidate.payload.name === "affiliate_click"
+  )
+  expect(event).toBeDefined()
+  expect(Object.keys(event?.payload.data ?? {}).sort()).toEqual(["placement", "platform", "source"])
+  expect(event?.payload.data).toMatchObject({ placement: "deal-card", source: "deals" })
 })
 
 test("Temu guide links to the tracked Temu ImportTaxPH calculator", async ({ page }) => {
   await page.goto("/blog/temu-shopping-guide-philippines")
   const link = page.getByRole("link", { name: /ImportTaxPH/i }).first()
-  await expect(link).toHaveAttribute("href", /importtaxph\.com\/temu-import-tax/)
-  await expect(link).toHaveAttribute("href", /utm_source=sulitscan/)
+  const href = await link.getAttribute("href")
+  expect(href).not.toBeNull()
+  const url = new URL(href as string)
+  expect(url.pathname).toBe("/temu-import-tax")
+  expect(url.searchParams.get("utm_source")).toBe("sulitscan")
+  expect(url.searchParams.get("utm_medium")).toBe("referral")
+  expect(url.searchParams.get("utm_campaign")).toBe("cross_site")
+  expect(url.searchParams.get("utm_content")).toBe(
+    "temu-shopping-guide-philippines:inline-article"
+  )
+})
+
+test("generic shipping guide links its ImportTaxPH callout to the homepage", async ({ page }) => {
+  await page.goto("/blog/voucher-shipping-return-checklist")
+  const callout = page.getByText("Ordering from overseas?", { exact: true }).locator("..")
+  const href = await callout.getByRole("link", { name: "ImportTaxPH" }).getAttribute("href")
+  expect(href).not.toBeNull()
+  expect(new URL(href as string).pathname).toBe("/")
 })
 
 test("tracked Temu ImportTaxPH link emits a sister_site_click event", async ({ page }) => {
@@ -79,9 +102,46 @@ test("tracked Temu ImportTaxPH link emits a sister_site_click event", async ({ p
   const popup = await popupPromise
   await popup.close()
   const events = await page.evaluate(() =>
-    (window as typeof window & { __events: Array<{ type: string; payload: { name?: string } }> }).__events
+    (window as typeof window & {
+      __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
+    }).__events
   )
-  expect(events.some((event) => event.type === "event" && event.payload.name === "sister_site_click")).toBe(true)
+  const event = events.find((candidate) =>
+    candidate.type === "event" && candidate.payload.name === "sister_site_click"
+  )
+  expect(event).toBeDefined()
+  expect(Object.keys(event?.payload.data ?? {}).sort()).toEqual(["destination", "placement", "source"])
+  expect(event?.payload.data).toEqual({
+    destination: "importtaxph",
+    placement: "inline-article",
+    source: "temu-shopping-guide-philippines",
+  })
+})
+
+test("analytics failure does not block affiliate navigation", async ({ page }) => {
+  await page.addInitScript(() => {
+    window.va = (type) => {
+      if (type === "event") throw new Error("analytics unavailable")
+    }
+  })
+  await page.goto("/deals")
+  const popupPromise = page.waitForEvent("popup")
+  await page.locator('a[rel*="sponsored"]').first().click()
+  const popup = await popupPromise
+  await popup.close()
+})
+
+test("analytics failure does not block sister-site navigation", async ({ page }) => {
+  await page.addInitScript(() => {
+    window.va = (type) => {
+      if (type === "event") throw new Error("analytics unavailable")
+    }
+  })
+  await page.goto("/blog/temu-shopping-guide-philippines")
+  const popupPromise = page.waitForEvent("popup")
+  await page.getByRole("link", { name: /ImportTaxPH/i }).first().click()
+  const popup = await popupPromise
+  await popup.close()
 })
 
 test("skip-to-content link is present", async ({ page }) => {
