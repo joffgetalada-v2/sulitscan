@@ -139,15 +139,45 @@ for (const f of walk("src", [".tsx", ".ts"])) {
 
 // ── 5. Affiliate link components carry the required rel ───────────────────
 const REL = "sponsored nofollow noopener noreferrer"
-for (const f of [
-  "src/components/ExternalAffiliateLink.tsx",
-  "src/components/StoreCard.tsx",
-  "src/components/PartnerBanners.tsx",
-]) {
-  if (!read(f).includes(REL)) errors.push(`${f}: missing rel="${REL}"`)
+const affiliateWrapper = "src/components/ExternalAffiliateLink.tsx"
+if (!read(affiliateWrapper).includes(REL)) {
+  errors.push(`${affiliateWrapper}: missing rel="${REL}"`)
 }
-if (!read("src/components/DealCard.tsx").includes("<ExternalAffiliateLink")) {
-  errors.push("src/components/DealCard.tsx: affiliate CTA must use ExternalAffiliateLink")
+
+for (const f of walk("src", [".tsx"])) {
+  if (f === affiliateWrapper) continue
+  if (/<a\b[^>]*\brel=["'][^"']*\bsponsored\b[^"']*["'][^>]*>/gs.test(read(f))) {
+    errors.push(`${f}: raw sponsored anchor must use ExternalAffiliateLink`)
+  }
+}
+
+for (const [f, placement] of [
+  ["src/components/DealCard.tsx", "deal-card"],
+  ["src/components/PartnerBanners.tsx", "partner-banner"],
+  ["src/components/StoreCard.tsx", "store-card"],
+  ["src/app/stores/page.tsx", "store-index"],
+]) {
+  const source = read(f)
+  if (!source.includes("<ExternalAffiliateLink")) {
+    errors.push(`${f}: affiliate CTA must use ExternalAffiliateLink`)
+  }
+  if (!source.includes(`placement="${placement}"`)) {
+    errors.push(`${f}: affiliate CTA must use stable placement "${placement}"`)
+  }
+}
+
+const playwrightSrc = read("playwright.config.ts")
+const localPortLiterals = playwrightSrc.match(/\b3101\b/g) ?? []
+if (localPortLiterals.length !== 1) {
+  errors.push("playwright.config.ts: define local port 3101 once and derive URL and command from it")
+}
+if (!playwrightSrc.includes("${localPlaywrightPort}")) {
+  errors.push("playwright.config.ts: local URL and command must interpolate localPlaywrightPort")
+}
+
+const packageJson = JSON.parse(read("package.json"))
+if (!packageJson.scripts?.check?.includes("npm run test:recommendations")) {
+  errors.push("package.json: standard check chain must include npm run test:recommendations")
 }
 
 // ── Report ────────────────────────────────────────────────────────────────

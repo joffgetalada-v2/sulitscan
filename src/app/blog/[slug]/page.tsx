@@ -7,7 +7,7 @@ import { BreadcrumbJsonLd, BlogPostingJsonLd, FAQJsonLd } from "@/components/Seo
 import DealCard from "@/components/DealCard"
 import ImportTaxCallout from "@/components/ImportTaxCallout"
 import TrackedSisterSiteLink from "@/components/TrackedSisterSiteLink"
-import { posts, getPostBySlug, getRelatedPosts, DEFAULT_BLOG_COVER, DEFAULT_BLOG_COVER_ALT } from "@/data/posts"
+import { posts, getPostBySlug, getRelatedPosts, DEFAULT_BLOG_COVER, DEFAULT_BLOG_COVER_ALT, type BlogPost } from "@/data/posts"
 import { getRelatedDealsForPost } from "@/lib/blog-recommendations"
 import { siteConfig } from "@/lib/seo"
 import { formatDate, formatTag, clampMeta } from "@/lib/utils"
@@ -37,7 +37,7 @@ function isImportTaxPhUrl(href: string): boolean {
   }
 }
 
-function renderInline(text: string, sourceSlug: string) {
+function renderInline(text: string, post: BlogPost) {
   const regex = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g
   const result: React.ReactNode[] = []
   let lastIndex = 0
@@ -49,7 +49,7 @@ function renderInline(text: string, sourceSlug: string) {
       const href = match[2]
       const isInternal = href.startsWith("/")
       const isImportTaxPh = isImportTaxPhUrl(href)
-      const trackedHref = isImportTaxPh && sourceSlug === "temu-shopping-guide-philippines"
+      const trackedHref = isImportTaxPh && post.importTaxContext === "temu"
         ? "https://importtaxph.com/temu-import-tax"
         : href
       if (isInternal) {
@@ -61,7 +61,7 @@ function renderInline(text: string, sourceSlug: string) {
           <TrackedSisterSiteLink
             key={key++}
             href={trackedHref}
-            sourceSlug={sourceSlug}
+            sourceSlug={post.slug}
             placement="inline-article"
             className="text-green-600 underline hover:text-green-700"
           >
@@ -123,10 +123,6 @@ export default async function BlogPostPage({
   const headings = extractHeadings(post.content)
   const relatedPosts = getRelatedPosts(post)
   const relatedDeals = getRelatedDealsForPost(post)
-  const topic = `${slug} ${post.tags.join(" ")}`.toLowerCase()
-  // ImportTaxPH is relevant on overseas/Temu/shipping guides (not on the import-tax post itself).
-  const showImportTax = /temu|shipping|overseas|aliexpress/.test(topic) && !slug.includes("import-tax")
-  const isTemuContext = /temu/.test(topic)
 
   return (
     <>
@@ -224,7 +220,7 @@ export default async function BlogPostPage({
                   const id = slugifyHeading(text)
                   return (
                     <h2 key={i} id={id} className="text-lg font-bold text-slate-900 mt-8 mb-2 scroll-mt-20">
-                      {renderInline(text, slug)}
+                      {renderInline(text, post)}
                     </h2>
                   )
                 }
@@ -233,7 +229,7 @@ export default async function BlogPostPage({
                   const id = slugifyHeading(text)
                   return (
                     <h3 key={i} id={id} className="text-base font-semibold text-slate-800 mt-5 mb-1.5 scroll-mt-20">
-                      {renderInline(text, slug)}
+                      {renderInline(text, post)}
                     </h3>
                   )
                 }
@@ -243,7 +239,7 @@ export default async function BlogPostPage({
                     <ul key={i} className="list-disc pl-5 space-y-1.5 my-3">
                       {items.map((item, j) => (
                         <li key={j} className="text-slate-600 text-sm leading-relaxed">
-                          {renderInline(item.replace(/^- /, ""), slug)}
+                          {renderInline(item.replace(/^- /, ""), post)}
                         </li>
                       ))}
                     </ul>
@@ -255,7 +251,7 @@ export default async function BlogPostPage({
                     <ol key={i} className="list-decimal pl-5 space-y-1.5 my-3">
                       {items.map((item, j) => (
                         <li key={j} className="text-slate-600 text-sm leading-relaxed">
-                          {renderInline(item.replace(/^\d+\. /, ""), slug)}
+                          {renderInline(item.replace(/^\d+\. /, ""), post)}
                         </li>
                       ))}
                     </ol>
@@ -264,7 +260,7 @@ export default async function BlogPostPage({
                 if (block.startsWith("> ")) {
                   return (
                     <blockquote key={i} className="border-l-4 border-green-200 pl-4 my-4 text-sm text-slate-500 italic">
-                      {renderInline(block.replace(/^> /, ""), slug)}
+                      {renderInline(block.replace(/^> /, ""), post)}
                     </blockquote>
                   )
                 }
@@ -293,7 +289,7 @@ export default async function BlogPostPage({
                 }
                 return (
                   <p key={i} className="text-slate-600 text-sm leading-relaxed my-3">
-                    {renderInline(block, slug)}
+                    {renderInline(block, post)}
                   </p>
                 )
               })}
@@ -345,12 +341,12 @@ export default async function BlogPostPage({
               </div>
             </div>
 
-            {/* Import-tax callout for overseas / Temu guides */}
-            {showImportTax && (
+            {/* Import-tax callout only for editorially assigned cross-border guides. */}
+            {post.importTaxContext && (
               <div className="mt-8">
                 <ImportTaxCallout
                   sourceSlug={slug}
-                  platform={isTemuContext ? "temu" : "general"}
+                  platform={post.importTaxContext}
                   placement="blog-article"
                 />
               </div>

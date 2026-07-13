@@ -5,6 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { BreadcrumbJsonLd, ItemListJsonLd } from "@/components/SeoJsonLd"
 import PartnerBanners from "@/components/PartnerBanners"
+import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import { stores } from "@/data/stores"
 import { partnerBanners } from "@/data/partner-banners"
 import { siteConfig } from "@/lib/seo"
@@ -171,15 +172,15 @@ export default function StoresPage() {
                     <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                   </Link>
                   {store.affiliateLink && (
-                    <a
+                    <ExternalAffiliateLink
                       href={store.affiliateLink}
-                      target="_blank"
-                      rel="sponsored nofollow noopener noreferrer"
+                      platform={store.name}
+                      placement="store-index"
                       className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-slate-600 transition-colors"
                       aria-label={`Visit ${store.name} (affiliate link, opens in new tab)`}
                     >
                       Visit {store.name} →
-                    </a>
+                    </ExternalAffiliateLink>
                   )}
                 </div>
               </div>

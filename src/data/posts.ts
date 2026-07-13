@@ -13,8 +13,27 @@
   coverGradient: string
   coverImage?: string
   coverImageAlt?: string
+  /** Editorially assigned recommendation signals, independent of SEO tags. */
+  recommendationIntent?: BlogRecommendationIntent
+  /** Render the sister-tool callout only when an editor assigns this context. */
+  importTaxContext?: "temu" | "general"
   /** Optional visible FAQs, when present, also emitted as FAQPage JSON-LD. */
   faqs?: { question: string; answer: string }[]
+}
+
+export type RecommendationPlatform = "Shopee PH" | "Temu" | "Sephora PH"
+
+export interface BlogRecommendationIntent {
+  /** Editorial topics used only for guide-to-guide relevance. */
+  topics: string[]
+  /** Store relationships that may break ties after a topic match. */
+  platforms?: RecommendationPlatform[]
+  /** Explicit catalog eligibility; every returned deal must match these signals. */
+  deals?: {
+    categories?: string[]
+    tags: string[]
+    maxPrice?: number
+  }
 }
 
 // Used for any post without its own coverImage (and for new posts by default).
@@ -133,6 +152,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     lastReviewed: "2026-06-08",
     readTime: 7,
     tags: ["how-it-works", "transparency", "sulitscan", "deal-checking"],
+    recommendationIntent: { topics: ["sulitscan-editorial"] },
     coverGradient: "from-green-400 to-emerald-600",
     coverImage: "/images/guides/how-sulitscan-checks-deals.jpg",
     coverImageAlt: "How SulitScan checks deals, phone showing a checked deal with price comparison, seller rating, and a deal checklist",
@@ -291,6 +311,12 @@ SulitScan may earn a commission when you click a Temu affiliate link and complet
     lastReviewed: "2026-06-08",
     readTime: 9,
     tags: ["temu", "shopping-guide", "philippines", "tips", "buyer-guide"],
+    recommendationIntent: {
+      topics: ["temu-buying"],
+      platforms: ["Temu"],
+      deals: { tags: ["temu"], maxPrice: 1000 },
+    },
+    importTaxContext: "temu",
     coverGradient: "from-orange-400 to-red-500",
     coverImage: "/images/guides/temu-shopping-guide-philippines.jpg",
     coverImageAlt: "Temu shopping guide for Filipino buyers, Temu app showing affordable finds, free shipping, and discounts",
@@ -421,6 +447,11 @@ SulitScan may earn a commission when you click a Sephora PH affiliate link and c
     lastReviewed: "2026-06-08",
     readTime: 10,
     tags: ["sephora", "beauty", "skincare", "philippines", "buyer-guide"],
+    recommendationIntent: {
+      topics: ["beauty-shopping"],
+      platforms: ["Sephora PH"],
+      deals: { categories: ["Beauty", "Skincare"], tags: ["beauty", "skincare", "makeup", "tools"] },
+    },
     coverGradient: "from-pink-400 to-rose-600",
     coverImage: "/images/guides/sephora-ph-beauty-guide.jpg",
     coverImageAlt: "Sephora PH beauty deals, skincare, makeup, and fragrance with authenticity, price, expiry, and return check icons",
@@ -544,6 +575,7 @@ SulitScan may earn a commission when you click partner links and complete a purc
     lastReviewed: "2026-06-08",
     readTime: 8,
     tags: ["fake-discounts", "shopping-tips", "buyer-protection", "smart-shopping"],
+    recommendationIntent: { topics: ["shopping-safety"] },
     coverGradient: "from-amber-400 to-orange-500",
     coverImage: "/images/guides/fake-discount-check-guide.jpg",
     coverImageAlt: "Illustration of a magnifying glass checking discount tags and fake sale pricing",
@@ -670,6 +702,8 @@ SulitScan may earn a commission when you click partner links and complete a purc
     lastReviewed: "2026-06-08",
     readTime: 8,
     tags: ["checklist", "vouchers", "shipping", "returns", "tips"],
+    recommendationIntent: { topics: ["gift-planning", "checkout-checklist"] },
+    importTaxContext: "general",
     coverGradient: "from-teal-400 to-cyan-600",
     coverImage: "/images/guides/voucher-shipping-return-checklist.jpg",
     coverImageAlt: "Illustration of an online shopping checklist with delivery, voucher, and return icons",
@@ -804,6 +838,7 @@ SulitScan may earn a commission when you click partner links and complete a purc
     lastReviewed: "2026-06-08",
     readTime: 9,
     tags: ["checkout", "pricing", "tips", "buyer-protection", "transparency"],
+    recommendationIntent: { topics: ["checkout-checklist"] },
     coverGradient: "from-violet-400 to-purple-600",
     coverImage: "/images/guides/final-price-checkout-guide.jpg",
     coverImageAlt: "Illustration of a checkout summary showing product price, shipping, vouchers, and final total",
@@ -901,6 +936,12 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     lastReviewed: "2026-06-14",
     readTime: 9,
     tags: ["temu", "under-500", "home-finds", "shopping-guide", "philippines"],
+    recommendationIntent: {
+      topics: ["temu-buying", "home-organization"],
+      platforms: ["Temu"],
+      deals: { categories: ["Home"], tags: ["storage", "organizer"], maxPrice: 500 },
+    },
+    importTaxContext: "temu",
     coverGradient: "from-orange-400 to-amber-500",
     coverImage: "/images/guides/best-temu-finds-under-500-philippines.jpg",
     coverImageAlt: "Best Temu finds under ₱500, budget home organizers, cable holders, phone stand, tumbler, and desk accessories",
@@ -998,6 +1039,8 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     lastReviewed: "2026-06-14",
     readTime: 8,
     tags: ["temu", "shipping", "philippines", "buyer-guide", "shopping-guide"],
+    recommendationIntent: { topics: ["temu-buying", "cross-border-shipping"], platforms: ["Temu"] },
+    importTaxContext: "temu",
     coverGradient: "from-sky-400 to-blue-600",
     coverImage: "/images/guides/temu-philippines-shipping-guide.jpg",
     coverImageAlt: "Temu Philippines shipping guide, order tracking screen showing processing, shipping, customs, and delivery stages",
@@ -1079,6 +1122,11 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     lastReviewed: "2026-06-14",
     readTime: 9,
     tags: ["sephora", "beauty", "skincare", "shopping-guide", "philippines"],
+    recommendationIntent: {
+      topics: ["beauty-shopping"],
+      platforms: ["Sephora PH"],
+      deals: { categories: ["Beauty", "Skincare"], tags: ["beauty", "skincare", "makeup", "tools"] },
+    },
     coverGradient: "from-rose-400 to-pink-600",
     coverImage: "/images/guides/sephora-ph-sale-guide.jpg",
     coverImageAlt: "Sephora PH sale guide, beauty products with up to 30% off, Beauty Pass rewards card, and a maximize-your-value checklist",
@@ -1179,6 +1227,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     lastReviewed: "2026-06-14",
     readTime: 9,
     tags: ["shopping-tips", "buyer-protection", "safety", "philippines", "smart-shopping"],
+    recommendationIntent: { topics: ["shopping-safety"] },
     coverGradient: "from-emerald-400 to-teal-600",
     coverImage: "/images/guides/online-shopping-safety-tips-philippines.jpg",
     coverImageAlt: "Online shopping safety tips Philippines, secure checkout screen, shield lock, and a shopping safety checklist",
@@ -1323,6 +1372,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     lastReviewed: "2026-06-20",
     readTime: 10,
     tags: ["import-tax", "customs", "philippines", "shopping-tips", "temu"],
+    recommendationIntent: { topics: ["cross-border-shipping"] },
     coverGradient: "from-blue-500 to-indigo-600",
     coverImage: "/images/guides/import-tax-landed-cost.jpg",
     coverImageAlt: "International parcel from overseas to the Philippines with a customs declaration, calculator, peso bills, and a landed-cost breakdown",
@@ -1441,6 +1491,11 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     lastReviewed: "2026-06-27",
     readTime: 8,
     tags: ["shopee", "under-500", "home-finds", "shopping-guide", "philippines"],
+    recommendationIntent: {
+      topics: ["shopee-buying", "home-organization"],
+      platforms: ["Shopee PH"],
+      deals: { categories: ["Home"], tags: ["storage", "organizer"], maxPrice: 500 },
+    },
     coverGradient: "from-orange-400 to-amber-500",
     coverImage: "/images/guides/best-shopee-finds-under-500-philippines.jpg",
     coverImageAlt: "Best Shopee finds under ₱500 in the Philippines: phone stand, desk organizer, cable holder, tumbler, makeup organizer, and travel pouch",
@@ -1561,6 +1616,11 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     lastReviewed: "2026-07-12",
     readTime: 7,
     tags: ["shopee", "seller-check", "online-safety", "buyer-protection", "philippines", "legit-seller"],
+    recommendationIntent: {
+      topics: ["shopee-buying", "shopping-safety"],
+      platforms: ["Shopee PH"],
+      deals: { tags: ["shopee"] },
+    },
     coverGradient: "from-orange-500 to-amber-600",
     faqs: [
       {
@@ -1679,6 +1739,11 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     lastReviewed: "2026-07-05",
     readTime: 8,
     tags: ["shopee", "lazada", "temu", "marketplace-comparison", "philippines", "online-shopping"],
+    recommendationIntent: {
+      topics: ["shopee-buying", "temu-buying", "marketplace-comparison"],
+      platforms: ["Shopee PH", "Temu"],
+    },
+    importTaxContext: "general",
     coverGradient: "from-indigo-500 to-violet-600",
     faqs: [
       {
@@ -1798,6 +1863,12 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     lastReviewed: "2026-07-05",
     readTime: 8,
     tags: ["phone-accessories", "tech-deals", "under-500", "shopee", "temu", "philippines", "charger-safety"],
+    recommendationIntent: {
+      topics: ["tech-accessories"],
+      platforms: ["Shopee PH", "Temu"],
+      deals: { categories: ["Electronics"], tags: ["phone", "charger", "usb-c", "power-bank"], maxPrice: 500 },
+    },
+    importTaxContext: "temu",
     coverGradient: "from-slate-600 to-slate-900",
     faqs: [
       {
@@ -1907,6 +1978,12 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     lastReviewed: "2026-07-12",
     readTime: 9,
     tags: ["home-organization", "home-finds", "under-500", "shopee", "temu", "philippines"],
+    recommendationIntent: {
+      topics: ["home-organization"],
+      platforms: ["Shopee PH", "Temu"],
+      deals: { categories: ["Home"], tags: ["storage", "organizer"], maxPrice: 500 },
+    },
+    importTaxContext: "temu",
     coverGradient: "from-emerald-400 to-orange-300",
     coverImage: "/images/guides/best-home-organization-finds-under-500-philippines.jpg",
     coverImageAlt: "Brand-neutral storage bins, drawer organizers, cable clips, compact rack, and measuring tape in a bright apartment",
@@ -2026,6 +2103,11 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     lastReviewed: "2026-07-12",
     readTime: 9,
     tags: ["gift-ideas", "under-500", "shopee", "temu", "sephora", "philippines"],
+    recommendationIntent: {
+      topics: ["gift-planning", "checkout-checklist"],
+      platforms: ["Shopee PH", "Temu", "Sephora PH"],
+      deals: { categories: ["Home", "Beauty", "Skincare", "Fashion"], tags: ["gift"], maxPrice: 500 },
+    },
     coverGradient: "from-rose-400 to-amber-300",
     coverImage: "/images/guides/best-gifts-under-500-philippines.jpg",
     coverImageAlt: "Brand-neutral tumbler, travel pouch, notebook, beauty pouch, cable organizer, and wrapped gift in a warm flat lay",
@@ -2141,6 +2223,12 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     lastReviewed: "2026-07-12",
     readTime: 10,
     tags: ["work-from-home", "desk-accessories", "tech-deals", "home-finds", "under-1000", "shopee", "temu", "philippines"],
+    recommendationIntent: {
+      topics: ["desk-accessories", "tech-accessories"],
+      platforms: ["Shopee PH", "Temu"],
+      deals: { categories: ["Home", "Electronics"], tags: ["desk", "office", "wfh"], maxPrice: 1000 },
+    },
+    importTaxContext: "temu",
     coverGradient: "from-slate-700 to-emerald-600",
     coverImage: "/images/guides/best-work-from-home-desk-accessories-under-1000-philippines.jpg",
     coverImageAlt: "Organized compact desk with a laptop stand, task lamp, cable clips, desk mat, phone stand, and drawer organizer",
@@ -2262,6 +2350,11 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     lastReviewed: "2026-07-12",
     readTime: 10,
     tags: ["beauty", "skincare", "makeup", "under-500", "shopee", "sephora", "philippines"],
+    recommendationIntent: {
+      topics: ["beauty-shopping"],
+      platforms: ["Shopee PH", "Sephora PH"],
+      deals: { categories: ["Beauty", "Skincare"], tags: ["beauty", "skincare", "makeup", "tools"], maxPrice: 500 },
+    },
     coverGradient: "from-pink-300 to-emerald-200",
     coverImage: "/images/guides/best-beauty-finds-under-500-philippines.jpg",
     coverImageAlt: "Brand-neutral beauty tools, compact mirror, lip tint, neutral makeup palette, skincare bottles, patch-test card, and magnifying glass",
@@ -2310,15 +2403,26 @@ export function getRelatedPosts(current: BlogPost, count = 3): BlogPost[] {
   const normalizedCount = Number.isFinite(count)
     ? Math.min(3, Math.max(0, Math.floor(count)))
     : 0
-  const currentTags = new Set(current.tags)
+  const currentIntent = current.recommendationIntent
+  if (!currentIntent || normalizedCount === 0) return []
+
+  const currentTopics = new Set(currentIntent.topics)
+  const currentPlatforms = new Set(currentIntent.platforms ?? [])
   return posts
-    .filter((candidate) => candidate.slug !== current.slug)
-    .map((candidate) => ({
-      candidate,
-      score:
-        candidate.tags.filter((tag) => currentTags.has(tag)).length * 3 +
-        (candidate.category === current.category ? 2 : 0),
-    }))
+    .filter((candidate) => candidate.slug !== current.slug && candidate.recommendationIntent)
+    .map((candidate) => {
+      const candidateIntent = candidate.recommendationIntent
+      const topicMatches = candidateIntent?.topics.filter((topic) => currentTopics.has(topic)).length ?? 0
+      const platformMatches = candidateIntent?.platforms?.filter((platform) => currentPlatforms.has(platform)).length ?? 0
+      return {
+        candidate,
+        // Platform/category relationships refine a real topic match; they never create one.
+        score: topicMatches > 0
+          ? topicMatches * 6 + platformMatches * 2 + (candidate.category === current.category ? 1 : 0)
+          : 0,
+      }
+    })
+    .filter(({ score }) => score > 0)
     .sort((a, b) =>
       b.score - a.score ||
       b.candidate.publishedAt.localeCompare(a.candidate.publishedAt) ||

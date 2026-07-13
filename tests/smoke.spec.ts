@@ -5,7 +5,7 @@ const routes = [
   { path: "/deals",                title: "Deals" },
   { path: "/categories",           title: "Categories" },
   { path: "/stores",               title: "Stores" },
-  { path: "/blog",                 title: "Blog" },
+  { path: "/blog",                 title: "Smart Shopping Guides" },
   { path: "/about",                title: "About" },
   { path: "/contact",              title: "Contact" },
   { path: "/affiliate-disclosure", title: "Affiliate" },
@@ -66,6 +66,60 @@ test("deal card emits an affiliate_click event", async ({ page }) => {
   expect(event?.payload.data).toMatchObject({ placement: "deal-card", source: "deals" })
 })
 
+test("homepage partner banner emits a private affiliate_click event", async ({ page }) => {
+  await page.addInitScript(() => {
+    ;(window as typeof window & { __events: unknown[] }).__events = []
+    window.va = (type, payload) => {
+      ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
+    }
+  })
+  await page.goto("/")
+  const popupPromise = page.waitForEvent("popup")
+  await page.getByRole("link", { name: /sponsored partner/i }).first().click()
+  const popup = await popupPromise
+  await popup.close()
+  const events = await page.evaluate(() =>
+    (window as typeof window & {
+      __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
+    }).__events
+  )
+  const event = events.find((candidate) =>
+    candidate.type === "event" && candidate.payload.name === "affiliate_click"
+  )
+  expect(event?.payload.data).toEqual({
+    platform: "Shopee",
+    placement: "partner-banner",
+    source: "home",
+  })
+})
+
+test("store-index affiliate link emits a private affiliate_click event", async ({ page }) => {
+  await page.addInitScript(() => {
+    ;(window as typeof window & { __events: unknown[] }).__events = []
+    window.va = (type, payload) => {
+      ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
+    }
+  })
+  await page.goto("/stores")
+  const popupPromise = page.waitForEvent("popup")
+  await page.getByRole("link", { name: /Visit Temu \(affiliate link/i }).click()
+  const popup = await popupPromise
+  await popup.close()
+  const events = await page.evaluate(() =>
+    (window as typeof window & {
+      __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
+    }).__events
+  )
+  const event = events.find((candidate) =>
+    candidate.type === "event" && candidate.payload.name === "affiliate_click"
+  )
+  expect(event?.payload.data).toEqual({
+    platform: "Temu",
+    placement: "store-index",
+    source: "stores",
+  })
+})
+
 test("Temu guide links to the tracked Temu ImportTaxPH calculator", async ({ page }) => {
   await page.goto("/blog/temu-shopping-guide-philippines")
   const link = page.getByRole("link", { name: /ImportTaxPH/i }).first()
@@ -87,6 +141,16 @@ test("generic shipping guide links its ImportTaxPH callout to the homepage", asy
   const href = await callout.getByRole("link", { name: "ImportTaxPH" }).getAttribute("href")
   expect(href).not.toBeNull()
   expect(new URL(href as string).pathname).toBe("/")
+})
+
+test("gift and beauty guides omit the ImportTaxPH callout", async ({ page }) => {
+  for (const slug of [
+    "best-gifts-under-500-philippines",
+    "best-beauty-finds-under-500-philippines",
+  ]) {
+    await page.goto(`/blog/${slug}`)
+    await expect(page.getByText("Ordering from overseas?", { exact: true })).toHaveCount(0)
+  }
 })
 
 test("tracked Temu ImportTaxPH link emits a sister_site_click event", async ({ page }) => {

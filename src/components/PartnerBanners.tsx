@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { ExternalLink, Megaphone } from "lucide-react"
+import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import type { PartnerBanner } from "@/data/partner-banners"
 
 interface PartnerBannersProps {
@@ -31,11 +32,11 @@ export default function PartnerBanners({ title, subtitle, banners, headingId }: 
 
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
         {banners.map((b) => (
-          <a
+          <ExternalAffiliateLink
             key={b.id}
             href={b.href}
-            target="_blank"
-            rel="sponsored nofollow noopener noreferrer"
+            platform={b.advertiserName}
+            placement="partner-banner"
             aria-label={`${b.advertiserName}: ${b.title}, sponsored partner, opens in a new tab`}
             className="group flex flex-col bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:border-green-100 transition-all overflow-hidden focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           >
@@ -67,7 +68,7 @@ export default function PartnerBanners({ title, subtitle, banners, headingId }: 
                 <ExternalLink className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
               </span>
             </div>
-          </a>
+          </ExternalAffiliateLink>
         ))}
       </div>
 

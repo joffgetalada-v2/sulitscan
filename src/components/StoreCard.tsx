@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { ExternalLink, Shield, Truck } from "lucide-react"
+import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import type { Store } from "@/data/stores"
 
 interface StoreCardProps {
@@ -92,16 +93,18 @@ export default function StoreCard({ store }: StoreCardProps) {
           >
             View Deals
           </Link>
-          <a
-            href={store.affiliateLink}
-            target="_blank"
-            rel="sponsored nofollow noopener noreferrer"
-            className="flex items-center justify-center gap-1.5 flex-1 text-xs font-semibold py-2 px-3 rounded-lg bg-green-600 hover:bg-green-700 text-white transition-colors"
-            aria-label={`Visit ${store.name} (opens in new tab)`}
-          >
-            Visit Store
-            <ExternalLink className="w-3 h-3 shrink-0" aria-hidden="true" />
-          </a>
+          {store.affiliateLink && (
+            <ExternalAffiliateLink
+              href={store.affiliateLink}
+              platform={store.name}
+              placement="store-card"
+              className="flex items-center justify-center gap-1.5 flex-1 text-xs font-semibold py-2 px-3 rounded-lg bg-green-600 hover:bg-green-700 text-white transition-colors"
+              aria-label={`Visit ${store.name} (affiliate link, opens in new tab)`}
+            >
+              Visit Store
+              <ExternalLink className="w-3 h-3 shrink-0" aria-hidden="true" />
+            </ExternalAffiliateLink>
+          )}
         </div>
       </div>
     </div>
