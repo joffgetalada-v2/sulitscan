@@ -140,12 +140,14 @@ for (const f of walk("src", [".tsx", ".ts"])) {
 // ── 5. Affiliate link components carry the required rel ───────────────────
 const REL = "sponsored nofollow noopener noreferrer"
 for (const f of [
-  "src/components/DealCard.tsx",
   "src/components/ExternalAffiliateLink.tsx",
   "src/components/StoreCard.tsx",
   "src/components/PartnerBanners.tsx",
 ]) {
   if (!read(f).includes(REL)) errors.push(`${f}: missing rel="${REL}"`)
+}
+if (!read("src/components/DealCard.tsx").includes("<ExternalAffiliateLink")) {
+  errors.push("src/components/DealCard.tsx: affiliate CTA must use ExternalAffiliateLink")
 }
 
 // ── Report ────────────────────────────────────────────────────────────────

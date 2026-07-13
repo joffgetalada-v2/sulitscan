@@ -303,6 +303,7 @@ export default async function DealDetailPage({
             <ExternalAffiliateLink
               href={deal.affiliateLink}
               platform={deal.platform}
+              placement="deal-detail-primary"
               aria-label={`Check the current price on ${deal.platform} (affiliate link, opens in new tab)`}
               className="flex items-center justify-center gap-2 w-full py-3.5 px-6 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-md hover:shadow-green-200 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >

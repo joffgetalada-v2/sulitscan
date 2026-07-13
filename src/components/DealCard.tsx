@@ -7,6 +7,7 @@ import { ExternalLink, Zap } from "lucide-react"
 import type { Deal } from "@/data/deals"
 import { isSuspiciousDiscount, SUSPICIOUS_DISCOUNT_NOTE } from "@/data/deals"
 import { formatPrice, formatScore, getSulitScoreBg, getSulitScoreLabel } from "@/lib/utils"
+import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 
 interface DealCardProps {
   deal: Deal
@@ -149,16 +150,16 @@ export default function DealCard({ deal }: DealCardProps) {
         </div>
 
         {/* CTA */}
-        <a
+        <ExternalAffiliateLink
           href={deal.affiliateLink}
-          target="_blank"
-          rel="sponsored nofollow noopener noreferrer"
+          platform={deal.platform}
+          placement="deal-card"
           className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-xl transition-colors shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           aria-label={`Check current price on ${deal.platform}: ${deal.title} (opens in new tab)`}
         >
           Check Price on {deal.platform}
           <ExternalLink className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
-        </a>
+        </ExternalAffiliateLink>
       </div>
     </motion.article>
   )

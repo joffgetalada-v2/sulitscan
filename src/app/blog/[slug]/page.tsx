@@ -6,6 +6,7 @@ import { Clock, ArrowLeft, Tag, BookOpen, List } from "lucide-react"
 import { BreadcrumbJsonLd, BlogPostingJsonLd, FAQJsonLd } from "@/components/SeoJsonLd"
 import DealCard from "@/components/DealCard"
 import ImportTaxCallout from "@/components/ImportTaxCallout"
+import TrackedSisterSiteLink from "@/components/TrackedSisterSiteLink"
 import { posts, getPostBySlug, getRelatedPosts, DEFAULT_BLOG_COVER, DEFAULT_BLOG_COVER_ALT } from "@/data/posts"
 import { getRelatedDealsForPost } from "@/lib/blog-recommendations"
 import { siteConfig } from "@/lib/seo"
@@ -27,7 +28,16 @@ function extractHeadings(content: string): { level: 2 | 3; text: string; id: str
     })
 }
 
-function renderInline(text: string) {
+function isImportTaxPhUrl(href: string): boolean {
+  try {
+    const hostname = new URL(href).hostname.toLowerCase()
+    return hostname === "importtaxph.com" || hostname === "www.importtaxph.com"
+  } catch {
+    return false
+  }
+}
+
+function renderInline(text: string, sourceSlug: string) {
   const regex = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g
   const result: React.ReactNode[] = []
   let lastIndex = 0
@@ -36,12 +46,33 @@ function renderInline(text: string) {
     const idx = match.index ?? 0
     if (idx > lastIndex) result.push(text.slice(lastIndex, idx))
     if (match[1] !== undefined) {
-      const isInternal = match[2].startsWith("/")
-      result.push(
-        isInternal
-          ? <Link key={key++} href={match[2]} className="text-green-600 underline hover:text-green-700">{match[1]}</Link>
-          : <a key={key++} href={match[2]} target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">{match[1]}</a>
-      )
+      const href = match[2]
+      const isInternal = href.startsWith("/")
+      const isImportTaxPh = isImportTaxPhUrl(href)
+      const trackedHref = isImportTaxPh && sourceSlug === "temu-shopping-guide-philippines"
+        ? "https://importtaxph.com/temu-import-tax"
+        : href
+      if (isInternal) {
+        result.push(
+          <Link key={key++} href={href} className="text-green-600 underline hover:text-green-700">{match[1]}</Link>
+        )
+      } else if (isImportTaxPh) {
+        result.push(
+          <TrackedSisterSiteLink
+            key={key++}
+            href={trackedHref}
+            sourceSlug={sourceSlug}
+            placement="inline-article"
+            className="text-green-600 underline hover:text-green-700"
+          >
+            {match[1]}
+          </TrackedSisterSiteLink>
+        )
+      } else {
+        result.push(
+          <a key={key++} href={href} target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">{match[1]}</a>
+        )
+      }
     } else {
       result.push(<strong key={key++}>{match[3]}</strong>)
     }
@@ -192,7 +223,7 @@ export default async function BlogPostPage({
                   const id = slugifyHeading(text)
                   return (
                     <h2 key={i} id={id} className="text-lg font-bold text-slate-900 mt-8 mb-2 scroll-mt-20">
-                      {renderInline(text)}
+                      {renderInline(text, slug)}
                     </h2>
                   )
                 }
@@ -201,7 +232,7 @@ export default async function BlogPostPage({
                   const id = slugifyHeading(text)
                   return (
                     <h3 key={i} id={id} className="text-base font-semibold text-slate-800 mt-5 mb-1.5 scroll-mt-20">
-                      {renderInline(text)}
+                      {renderInline(text, slug)}
                     </h3>
                   )
                 }
@@ -211,7 +242,7 @@ export default async function BlogPostPage({
                     <ul key={i} className="list-disc pl-5 space-y-1.5 my-3">
                       {items.map((item, j) => (
                         <li key={j} className="text-slate-600 text-sm leading-relaxed">
-                          {renderInline(item.replace(/^- /, ""))}
+                          {renderInline(item.replace(/^- /, ""), slug)}
                         </li>
                       ))}
                     </ul>
@@ -223,7 +254,7 @@ export default async function BlogPostPage({
                     <ol key={i} className="list-decimal pl-5 space-y-1.5 my-3">
                       {items.map((item, j) => (
                         <li key={j} className="text-slate-600 text-sm leading-relaxed">
-                          {renderInline(item.replace(/^\d+\. /, ""))}
+                          {renderInline(item.replace(/^\d+\. /, ""), slug)}
                         </li>
                       ))}
                     </ol>
@@ -232,7 +263,7 @@ export default async function BlogPostPage({
                 if (block.startsWith("> ")) {
                   return (
                     <blockquote key={i} className="border-l-4 border-green-200 pl-4 my-4 text-sm text-slate-500 italic">
-                      {renderInline(block.replace(/^> /, ""))}
+                      {renderInline(block.replace(/^> /, ""), slug)}
                     </blockquote>
                   )
                 }
@@ -261,7 +292,7 @@ export default async function BlogPostPage({
                 }
                 return (
                   <p key={i} className="text-slate-600 text-sm leading-relaxed my-3">
-                    {renderInline(block)}
+                    {renderInline(block, slug)}
                   </p>
                 )
               })}
@@ -316,7 +347,7 @@ export default async function BlogPostPage({
             {/* Import-tax callout for overseas / Temu guides */}
             {showImportTax && (
               <div className="mt-8">
-                <ImportTaxCallout />
+                <ImportTaxCallout sourceSlug={slug} platform="temu" placement="blog-article" />
               </div>
             )}
 

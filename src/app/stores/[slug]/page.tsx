@@ -13,6 +13,7 @@ import { siteConfig } from "@/lib/seo"
 import { clampMeta } from "@/lib/utils"
 import StoreDeals from "@/components/StoreDeals"
 import ImportTaxCallout from "@/components/ImportTaxCallout"
+import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 
 // Returns the public URL only if the file actually exists, so a missing banner
 // gracefully falls back to the gradient hero instead of a broken image.
@@ -112,16 +113,16 @@ export default async function StoreDetailPage({
               <p className="text-slate-500 text-sm max-w-xl">{store.description}</p>
             </div>
             {store.affiliateLink ? (
-              <a
+              <ExternalAffiliateLink
                 href={store.affiliateLink}
-                target="_blank"
-                rel="sponsored nofollow noopener noreferrer"
+                platform={store.name}
+                placement="store-hero"
                 className="inline-flex items-center gap-2 px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white font-semibold text-sm rounded-xl transition-all shadow-sm"
                 aria-label={`Visit ${store.name} (affiliate link, opens in new tab)`}
               >
                 Visit {store.name}
                 <ExternalLink className="w-4 h-4" aria-hidden="true" />
-              </a>
+              </ExternalAffiliateLink>
             ) : (
               <a
                 href="#store-deals-heading"
@@ -161,16 +162,16 @@ export default async function StoreDetailPage({
                 <p className="text-white/80 text-sm max-w-xl">{store.description}</p>
               </div>
               {store.affiliateLink ? (
-                <a
+                <ExternalAffiliateLink
                   href={store.affiliateLink}
-                  target="_blank"
-                  rel="sponsored nofollow noopener noreferrer"
+                  platform={store.name}
+                  placement="store-hero-gradient"
                   className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/20 hover:bg-white/30 text-white font-semibold text-sm rounded-xl border border-white/30 transition-all"
                   aria-label={`Visit ${store.name} (affiliate link, opens in new tab)`}
                 >
                   Visit {store.name}
                   <ExternalLink className="w-4 h-4" aria-hidden="true" />
-                </a>
+                </ExternalAffiliateLink>
               ) : (
                 <a
                   href="#store-deals-heading"
@@ -254,7 +255,9 @@ export default async function StoreDetailPage({
             )}
 
             {/* Overseas import-tax callout (Temu ships internationally) */}
-            {slug === "temu" && <ImportTaxCallout />}
+            {slug === "temu" && (
+              <ImportTaxCallout sourceSlug="store-temu" platform="temu" placement="store-main" />
+            )}
 
             {/* Deals */}
             <section aria-labelledby="store-deals-heading">
@@ -325,27 +328,6 @@ export default async function StoreDetailPage({
               <p className="text-xs text-slate-500 leading-relaxed">{store.returnNote}</p>
             </div>
 
-            {/* ImportTaxPH callout for Temu */}
-            {slug === "temu" && (
-              <div className="bg-blue-50 rounded-2xl border border-blue-100 p-5">
-                <h3 className="text-sm font-bold text-blue-900 mb-2">Import taxes and customs</h3>
-                <p className="text-xs text-blue-800 leading-relaxed mb-3">
-                  Temu ships internationally to the Philippines. Customs duties or import taxes may apply depending on your order value and product category.
-                </p>
-                <a
-                  href="https://www.importtaxph.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-xs text-blue-700 font-semibold underline hover:text-blue-900"
-                >
-                  Estimate import costs at ImportTaxPH →
-                </a>
-                <p className="text-[10px] text-blue-600 mt-2 leading-relaxed">
-                  ImportTaxPH provides estimates for planning only. Final charges depend on product classification, declared value, courier handling, and current customs rules.
-                </p>
-              </div>
-            )}
-
             {/* Price disclaimer */}
             <div className="bg-amber-50 rounded-2xl border border-amber-100 p-5">
               <h3 className="text-sm font-bold text-amber-800 mb-2 flex items-center gap-2">
@@ -370,16 +352,16 @@ export default async function StoreDetailPage({
                 </Link>
               </p>
               {store.affiliateLink ? (
-                <a
+                <ExternalAffiliateLink
                   href={store.affiliateLink}
-                  target="_blank"
-                  rel="sponsored nofollow noopener noreferrer"
+                  platform={store.name}
+                  placement="store-sidebar"
                   className="mt-3 flex items-center justify-center gap-2 w-full py-3 px-4 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold text-sm rounded-xl shadow-sm transition-all"
                   aria-label={`Visit ${store.name} (affiliate link, opens in new tab)`}
                 >
                   Visit {store.name}
                   <ExternalLink className="w-4 h-4" aria-hidden="true" />
-                </a>
+                </ExternalAffiliateLink>
               ) : (
                 <a
                   href="#store-deals-heading"

@@ -41,6 +41,49 @@ test("affiliate links have correct rel attributes", async ({ page }) => {
   }
 })
 
+test("deal card emits an affiliate_click event", async ({ page }) => {
+  await page.addInitScript(() => {
+    ;(window as typeof window & { __events: unknown[] }).__events = []
+    window.va = (type, payload) => {
+      ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
+    }
+  })
+  await page.goto("/deals")
+  const popupPromise = page.waitForEvent("popup")
+  await page.locator('a[rel*="sponsored"]').first().click()
+  const popup = await popupPromise
+  await popup.close()
+  const events = await page.evaluate(() =>
+    (window as typeof window & { __events: Array<{ type: string; payload: { name?: string } }> }).__events
+  )
+  expect(events.some((event) => event.type === "event" && event.payload.name === "affiliate_click")).toBe(true)
+})
+
+test("Temu guide links to the tracked Temu ImportTaxPH calculator", async ({ page }) => {
+  await page.goto("/blog/temu-shopping-guide-philippines")
+  const link = page.getByRole("link", { name: /ImportTaxPH/i }).first()
+  await expect(link).toHaveAttribute("href", /importtaxph\.com\/temu-import-tax/)
+  await expect(link).toHaveAttribute("href", /utm_source=sulitscan/)
+})
+
+test("tracked Temu ImportTaxPH link emits a sister_site_click event", async ({ page }) => {
+  await page.addInitScript(() => {
+    ;(window as typeof window & { __events: unknown[] }).__events = []
+    window.va = (type, payload) => {
+      ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
+    }
+  })
+  await page.goto("/blog/temu-shopping-guide-philippines")
+  const popupPromise = page.waitForEvent("popup")
+  await page.getByRole("link", { name: /ImportTaxPH/i }).first().click()
+  const popup = await popupPromise
+  await popup.close()
+  const events = await page.evaluate(() =>
+    (window as typeof window & { __events: Array<{ type: string; payload: { name?: string } }> }).__events
+  )
+  expect(events.some((event) => event.type === "event" && event.payload.name === "sister_site_click")).toBe(true)
+})
+
 test("skip-to-content link is present", async ({ page }) => {
   await page.goto("/")
   const skipLink = page.locator('a[href="#main-content"]')
