@@ -88,6 +88,18 @@ test("deal recommendations are active, non-suspicious, unique, and deterministic
   assert.equal(new Set(ids).size, ids.length)
 })
 
+test("back-to-school guide cites the current DTI 2026–2027 source instead of the 2025 release", () => {
+  const post = postsModule.getPostBySlug("back-to-school-essentials-under-500-philippines")
+  const currentDtiSource =
+    "https://dtiwebfiles.s3-ap-southeast-1.amazonaws.com/e-Presyo/School%20Supplies/Gabay%20sa%20Pamimili%20ng%20School%20Supplies%20School%20Year%202026-2027%20Price%20Range_SS%20%2824%20x%2033%20in%29.pdf"
+  const outdatedDtiSource =
+    "https://fairtrade.dti.gov.ph/press-release/dti-secures-divisoria-school-supplies-for-reasonable-prices-as-classes-near/"
+
+  assert.ok(post, "back-to-school guide fixture must exist")
+  assert.ok(post.content.includes(currentDtiSource), "guide must cite the current DTI 2026–2027 price guide")
+  assert.ok(!post.content.includes(outdatedDtiSource), "guide must not cite the superseded 2025 monitoring release")
+})
+
 const finalCatalogCases = [
   {
     slug: "best-home-organization-finds-under-500-philippines",

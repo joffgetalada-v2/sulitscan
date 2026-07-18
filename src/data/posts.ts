@@ -2419,7 +2419,7 @@ Browse [items under ₱500](/categories/under-500) for the budget view, [tech de
 
 Check notebook dimensions, page or leaf count, ruling, binding, and paper description. Product photos may include several sizes, so confirm the selected variation rather than relying on the first image. For pens, pencils, crayons, rulers, erasers, and sharpeners, check the quantity, point or tip type, color assortment, and labeling shown for the exact item.
 
-The Department of Trade and Industry's [school-supply monitoring advisory](https://fairtrade.dti.gov.ph/press-release/dti-secures-divisoria-school-supplies-for-reasonable-prices-as-classes-near/) explains how its Gabay sa Pamimili price guide helps shoppers compare school essentials. Use the newest DTI guide available when you shop; do not reuse prices from an older school year as if they were current.
+The Department of Trade and Industry's [Gabay sa Pamimili ng School Supplies for School Year 2026–2027](https://dtiwebfiles.s3-ap-southeast-1.amazonaws.com/e-Presyo/School%20Supplies/Gabay%20sa%20Pamimili%20ng%20School%20Supplies%20School%20Year%202026-2027%20Price%20Range_SS%20%2824%20x%2033%20in%29.pdf) is a one-page school-supplies price-range guide. It lists product categories and specifications for notebooks, pad paper, pencils, ballpens, crayons, erasers, sharpeners, and rulers. Use it as a comparison reference, not a guaranteed store quote: check the exact product, seller, and checkout amount when you shop.
 
 ### Bag and lunch storage
 
