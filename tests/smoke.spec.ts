@@ -280,6 +280,10 @@ test("deals page exposes crawlable server pagination", async ({ page }) => {
   await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
   await expect(page.getByRole("link", { name: "Previous page" })).toHaveAttribute("href", "/deals")
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://sulitscan.com/deals?page=2")
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", /Deals.*Page 2/i)
+  await expect(page.locator('meta[property="og:url"]')).toHaveAttribute("content", "https://sulitscan.com/deals?page=2")
+  await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute("content", /Deals.*Page 2/i)
+  await expect(page.locator('meta[name="twitter:description"]')).toHaveAttribute("content", /curated online deals/i)
   expect(await page.locator("main article").count()).toBeLessThanOrEqual(24)
 })
 
@@ -290,6 +294,15 @@ test("filtered deals are noindex and preserve URL state", async ({ page }) => {
   await expect(page.locator('select[name="store"]')).toHaveValue("Sephora PH")
 })
 
+test("invalid deal filters normalize visibly but remain noindex", async ({ page }) => {
+  await page.goto("/deals?store=garbage&category=garbage&sort=garbage")
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
+  await expect(page.locator('select[name="store"]')).toHaveValue("All")
+  await expect(page.locator('select[name="category"]')).toHaveValue("All")
+  await expect(page.locator('select[name="sort"]')).toHaveValue("recommended")
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://sulitscan.com/deals")
+})
+
 
 test("article uses article-specific Twitter metadata and dateModified", async ({ page }) => {
   await page.goto("/blog/best-shopee-finds-under-500-philippines")
@@ -297,7 +310,7 @@ test("article uses article-specific Twitter metadata and dateModified", async ({
   await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute("content", /best-shopee-finds-under-500-philippines/i)
   const jsonLd = await page.locator('script[type="application/ld+json"]').allTextContents()
   const article = jsonLd.map((value) => JSON.parse(value)).find((value) => value["@type"] === "BlogPosting")
-  expect(article.dateModified).toBe("2026-07-19")
+  expect(article.dateModified).toBe("2026-06-27")
   expect(article.author.url).toContain("/editorial-policy")
 })
 
@@ -369,12 +382,21 @@ test.describe("evidence-led guide routes", () => {
   }
 })
 
-test("cookware guide alone renders the ImportTaxPH callout", async ({ page }) => {
+test("cookware guide keeps one contextual ImportTaxPH link without a duplicate callout", async ({ page }) => {
   for (const slug of evidenceLedGuides) {
     await page.goto(`/blog/${slug}`)
     const callout = page.getByText("Ordering from overseas?", { exact: true })
     if (slug === "cookware-sets-philippines-buying-guide") {
-      await expect(callout).toBeVisible()
+      await expect(callout).toHaveCount(0)
+      const links = page.getByRole("link", { name: "ImportTaxPH", exact: true })
+      await expect(links).toHaveCount(1)
+      const href = await links.getAttribute("href")
+      expect(href).not.toBeNull()
+      const url = new URL(href as string)
+      expect(url.hostname).toBe("importtaxph.com")
+      expect(url.searchParams.get("utm_content")).toBe(
+        "cookware-sets-philippines-buying-guide:inline-article"
+      )
     } else {
       await expect(callout).toHaveCount(0)
     }

@@ -33,6 +33,10 @@ function firstValue(value: string | string[] | undefined): string {
   return Array.isArray(value) ? value[0] ?? "" : value ?? ""
 }
 
+function allValues(value: string | string[] | undefined): string[] {
+  return Array.isArray(value) ? value : [value ?? ""]
+}
+
 function normalizePage(value: string): number {
   const page = Number(value)
   return Number.isInteger(page) && page > 0 ? page : 1
@@ -55,6 +59,10 @@ export function resolveDealListing(deals: Deal[], raw: DealSearchParams): DealLi
   const requestedStore = firstValue(raw.store)
   const requestedCategory = firstValue(raw.category)
   const requestedSort = firstValue(raw.sort)
+  const hasRawFilters = allValues(raw.q).some((value) => Boolean(value.trim()))
+    || allValues(raw.store).some((value) => value !== "" && value !== "All")
+    || allValues(raw.category).some((value) => value !== "" && value !== "All")
+    || allValues(raw.sort).some((value) => value !== "" && value !== "recommended")
   const store = stores.has(requestedStore) ? requestedStore : "All"
   const category = categories.has(requestedCategory) ? requestedCategory : "All"
   const sort = SORT_KEYS.includes(requestedSort as DealSortKey)
@@ -82,7 +90,7 @@ export function resolveDealListing(deals: Deal[], raw: DealSearchParams): DealLi
     items: sortDeals(filtered, sort).slice(start, start + DEALS_PAGE_SIZE),
     total,
     pageCount,
-    isFiltered: Boolean(q) || store !== "All" || category !== "All" || sort !== "recommended",
+    isFiltered: hasRawFilters,
   }
 }
 

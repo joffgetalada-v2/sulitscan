@@ -39,6 +39,10 @@ function getSisterSiteDestination(href: string): "importtaxph" | "applyreadycv" 
   }
 }
 
+function hasInlineImportTaxPhLink(content: string): boolean {
+  return /\]\(https:\/\/(?:www\.)?importtaxph\.com(?:[/?#]|\))/i.test(content)
+}
+
 function renderInline(text: string, post: BlogPost) {
   const regex = /\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*/g
   const result: React.ReactNode[] = []
@@ -355,7 +359,7 @@ export default async function BlogPostPage({
             </div>
 
             {/* Import-tax callout only for editorially assigned cross-border guides. */}
-            {post.importTaxContext && (
+            {post.importTaxContext && !hasInlineImportTaxPhLink(post.content) && (
               <div className="mt-8">
                 <ImportTaxCallout
                   sourceSlug={slug}

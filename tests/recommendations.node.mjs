@@ -100,6 +100,23 @@ test("back-to-school guide cites the current DTI 2026–2027 source instead of t
   assert.ok(!post.content.includes(outdatedDtiSource), "guide must not cite the superseded 2025 monitoring release")
 })
 
+test("carry-on guide states PAL's individual size and weight maxima", () => {
+  const post = postsModule.getPostBySlug("carry-on-luggage-philippines-buying-guide")
+
+  assert.ok(post, "carry-on guide fixture must exist")
+  assert.match(post.content, /56 × 36 × 23 cm/)
+  assert.match(post.content, /maximum weight of 7 kg/)
+  assert.doesNotMatch(post.content, /combined external dimensions of no more than 115 cm/)
+})
+
+test("cookware guide uses the production Bureau of Customs importation URL", () => {
+  const post = postsModule.getPostBySlug("cookware-sets-philippines-buying-guide")
+
+  assert.ok(post, "cookware guide fixture must exist")
+  assert.ok(post.content.includes("https://customs.gov.ph/guidelines-on-importation/"))
+  assert.ok(!post.content.includes("https://www2.customs.gov.ph/"))
+})
+
 const finalCatalogCases = [
   {
     slug: "best-home-organization-finds-under-500-philippines",

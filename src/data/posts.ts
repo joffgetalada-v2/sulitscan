@@ -1488,7 +1488,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     category: "Platform Guides",
     author: "SulitScan Team",
     publishedAt: "2026-06-27",
-    lastReviewed: "2026-07-19",
+    lastReviewed: "2026-06-27",
     readTime: 8,
     tags: ["shopee", "under-500", "home-finds", "shopping-guide", "philippines"],
     recommendationIntent: {
@@ -2575,7 +2575,7 @@ For lids, verify the material, fit, knob or handle attachment, vent design if pr
 
 When ordering through [Temu](/stores/temu) or another overseas seller, compare the complete checkout total, dispatch origin, delivery estimate, parcel tracking, and return route. A low item price may sit beside shipping, platform fees, or charges that appear only after the basket is assembled. [Shopee PH](/stores/shopee-ph) also mixes seller and fulfillment arrangements, so confirm whether the selected listing ships locally or across borders.
 
-The Philippine Bureau of Customs publishes [official importation guidance](https://www2.customs.gov.ph/guidelines-on-importation/) covering duties, taxes, exemptions, and entry rules. The treatment of an order can depend on its value, goods, shipment, and current regulations, so confirm official guidance for the actual order instead of relying on a product-page estimate.
+The Philippine Bureau of Customs publishes [official importation guidance](https://customs.gov.ph/guidelines-on-importation/) covering duties, taxes, exemptions, and entry rules. The treatment of an order can depend on its value, goods, shipment, and current regulations, so confirm official guidance for the actual order instead of relying on a product-page estimate.
 
 For a planning figure, [ImportTaxPH](https://importtaxph.com/temu-import-tax) is a free SulitScan sister tool that can estimate possible Temu import costs. It is not a government calculator, customs ruling, or guarantee of the amount due. Recheck the partner checkout and Bureau of Customs information before ordering.
 
@@ -2796,7 +2796,7 @@ Browse [travel](/categories/travel), [fashion](/categories/fashion), and [items 
 
 ## Official airline examples
 
-The current [Philippine Airlines carry-on baggage page](https://www.philippineairlines.com/ph/en/before-you-fly/baggage-information/baggage-allowance/baggage-allowance-fees/carry-on-baggage.html) states one carry-on piece, a maximum weight of 7 kg, and combined external dimensions of no more than 115 cm. Because a combined measurement does not tell you whether a particular shape fits a cabin or sizer, confirm all details on PAL's page for the actual itinerary.
+The current [Philippine Airlines carry-on baggage page](https://www.philippineairlines.com/ph/en/before-you-fly/baggage-information/baggage-allowance/baggage-allowance-fees/carry-on-baggage.html) states one carry-on piece with individual maximum dimensions of 56 × 36 × 23 cm and a maximum weight of 7 kg. Confirm all details on PAL's page for the actual itinerary.
 
 The current [Cebu Pacific baggage guide](https://help.cebupacificair.com/article/ceb-baggage-guidelines-and-upgrade-options-118500) lists a 7 kg total hand-carry allowance. It describes one overhead item within 56 × 36 × 23 cm and one under-seat personal item within 20 × 20 × 36 cm. Read the complete page for piece and item conditions rather than using the dimensions alone.
 

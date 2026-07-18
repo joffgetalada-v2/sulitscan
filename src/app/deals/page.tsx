@@ -12,19 +12,47 @@ interface DealsPageProps {
   searchParams: Promise<DealSearchParams>
 }
 
+const DEALS_DESCRIPTION = "Browse curated online deals from Temu, Shopee PH, and Sephora PH with buyer notes on every listing."
+
 export async function generateMetadata({ searchParams }: DealsPageProps): Promise<Metadata> {
   const listing = resolveDealListing(getActiveDeals(), await searchParams)
   const canonical = listing.isFiltered || listing.page === 1
     ? `${siteConfig.url}/deals`
     : `${siteConfig.url}/deals?page=${listing.page}`
+  const title = listing.page > 1 && !listing.isFiltered
+    ? `Latest Online Deals Philippines — Page ${listing.page}`
+    : "Latest Online Deals Philippines"
+  const socialTitle = `${title} | SulitScan PH`
 
   return {
-    title: listing.page > 1 && !listing.isFiltered
-      ? `Latest Online Deals Philippines — Page ${listing.page}`
-      : "Latest Online Deals Philippines",
-    description: "Browse curated online deals from Temu, Shopee PH, and Sephora PH with buyer notes on every listing.",
+    title,
+    description: DEALS_DESCRIPTION,
     alternates: { canonical },
     robots: { index: !listing.isFiltered, follow: true },
+    openGraph: {
+      type: "website",
+      locale: siteConfig.locale,
+      url: canonical,
+      siteName: siteConfig.name,
+      title: socialTitle,
+      description: DEALS_DESCRIPTION,
+      images: [
+        {
+          url: siteConfig.ogImage,
+          width: 1200,
+          height: 630,
+          alt: "SulitScan PH — Check deals before you click buy",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: socialTitle,
+      description: DEALS_DESCRIPTION,
+      images: [siteConfig.ogImage],
+      creator: siteConfig.twitterHandle,
+      site: siteConfig.twitterHandle,
+    },
   }
 }
 

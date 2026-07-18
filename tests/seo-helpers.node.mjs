@@ -33,10 +33,19 @@ const listingModule = loadTypeScriptModule("src/lib/deal-listing.ts", {
 })
 
 test("deal SEO titles are unique and no longer than 65 characters", () => {
-  const titles = dealsModule.getActiveDeals().map(seoModule.buildDealSeoTitle)
+  const activeDeals = dealsModule.getActiveDeals()
+  const titles = activeDeals.map(seoModule.buildDealSeoTitle)
   assert.equal(new Set(titles).size, titles.length)
   assert.ok(titles.every((title) => title.length <= 65))
   assert.ok(titles.every((title) => title.endsWith("| SulitScan PH")))
+  assert.ok(
+    titles.every((title, index) => {
+      const suffix = ` – ${activeDeals[index].platform} | SulitScan PH`
+      const phrase = title.slice(0, -suffix.length)
+      return !/[\s\-–—|:;,./\\!?()[\]{}"']$/u.test(phrase)
+    }),
+    `active deal title has punctuation before its platform suffix`
+  )
 })
 
 test("deal SEO descriptions are unique product-specific snippets", () => {
@@ -69,6 +78,21 @@ test("deal SEO title skips an overlong first token without splitting it", () => 
 
   assert.equal(title, "Desk Organizer – Shopee PH | SulitScan PH")
   assert.ok(!title.includes(longFirstToken.slice(0, 20)))
+})
+
+test("deal SEO title removes trailing punctuation before the platform suffix", () => {
+  const deal = {
+    slug: "punctuation-at-truncation-boundary",
+    title: "12345678901234567890123456789012345678901 – Extra",
+    platform: "Temu",
+    category: "Home",
+  }
+  const fixtureSeoModule = loadSeoModuleForDeals([deal])
+
+  assert.equal(
+    fixtureSeoModule.buildDealSeoTitle(deal),
+    "12345678901234567890123456789012345678901 – Temu | SulitScan PH"
+  )
 })
 
 test("deal SEO titles add stable hashes when truncated product phrases collide", () => {
@@ -108,6 +132,21 @@ test("deal listing filters and sorts deterministically", () => {
   assert.ok(result.items.every((deal) => /brush/i.test(`${deal.title} ${deal.category} ${deal.tags.join(" ")}`)))
   assert.deepEqual(result.items.map((deal) => deal.salePrice), [...result.items.map((deal) => deal.salePrice)].sort((a, b) => a - b))
   assert.equal(result.isFiltered, true)
+})
+
+test("invalid non-default deal filters remain noindex after display normalization", () => {
+  for (const raw of [
+    { store: "garbage" },
+    { category: "garbage" },
+    { sort: "garbage" },
+    { store: ["All", "garbage"] },
+  ]) {
+    const result = listingModule.resolveDealListing(dealsModule.getActiveDeals(), raw)
+    assert.equal(result.store, "All")
+    assert.equal(result.category, "All")
+    assert.equal(result.sort, "recommended")
+    assert.equal(result.isFiltered, true)
+  }
 })
 
 test("deal pagination URLs preserve filters without empty defaults", () => {

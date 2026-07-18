@@ -22,6 +22,14 @@ function truncateAtWordBoundary(text: string, limit: number): string {
   return phrase.join(" ") || "Item"
 }
 
+function cleanTitlePhrase(text: string): string {
+  return text.replace(/[\s\-–—|:;,./\\!?()[\]{}"']+$/gu, "").trim() || "Item"
+}
+
+function buildTitlePhrase(text: string, limit: number): string {
+  return cleanTitlePhrase(truncateAtWordBoundary(text, limit))
+}
+
 function stableHash(value: string): string {
   let hash = 5381
   for (const character of value) hash = (hash * 33) ^ character.charCodeAt(0)
@@ -30,7 +38,7 @@ function stableHash(value: string): string {
 
 function buildTitleWithoutHash(deal: Deal): string {
   const phraseLimit = TITLE_LIMIT - SITE_SUFFIX.length - deal.platform.length - 3
-  return `${truncateAtWordBoundary(deal.title, phraseLimit)} – ${deal.platform}${SITE_SUFFIX}`
+  return `${buildTitlePhrase(deal.title, phraseLimit)} – ${deal.platform}${SITE_SUFFIX}`
 }
 
 function getTitleCollisions(deal: Deal): Deal[] {
@@ -60,7 +68,7 @@ export function buildDealSeoTitle(deal: Deal): string {
   const hashRank = sameHashDeals.findIndex((candidate) => candidate.slug === deal.slug)
   const hashSuffix = ` #${hash}${sameHashDeals.length > 1 ? `-${hashRank + 1}` : ""}`
   const phraseLimit = TITLE_LIMIT - SITE_SUFFIX.length - deal.platform.length - 3 - hashSuffix.length
-  return `${truncateAtWordBoundary(deal.title, phraseLimit)}${hashSuffix} – ${deal.platform}${SITE_SUFFIX}`
+  return `${buildTitlePhrase(deal.title, phraseLimit)}${hashSuffix} – ${deal.platform}${SITE_SUFFIX}`
 }
 
 export function buildDealSeoDescription(deal: Deal): string {
