@@ -47,6 +47,8 @@ next-env.d.ts
 !/scripts/check-product-quality.mjs
 
 # local SEO audit / private data exports — never commit or expose publicly
+.worktrees/
+.firecrawl/
 seo-audits/
 search-console-exports/
 analytics-exports/
