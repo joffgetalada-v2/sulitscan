@@ -28,6 +28,9 @@ const dealsModule = loadTypeScriptModule("src/data/deals.ts")
 const seoModule = loadTypeScriptModule("src/lib/deal-seo.ts", {
   "@/data/deals": dealsModule,
 })
+const listingModule = loadTypeScriptModule("src/lib/deal-listing.ts", {
+  "@/data/deals": dealsModule,
+})
 
 test("deal SEO titles are unique and no longer than 65 characters", () => {
   const titles = dealsModule.getActiveDeals().map(seoModule.buildDealSeoTitle)
@@ -89,4 +92,28 @@ test("deal SEO titles add stable hashes when truncated product phrases collide",
   assert.notEqual(titles[0], titles[1])
   assert.ok(titles.every((title) => / #\w+ – Shopee PH \| SulitScan PH$/.test(title)))
   assert.ok(titles.every((title) => title.length <= 65))
+})
+
+test("deal listing clamps invalid pages and returns 24 products", () => {
+  const result = listingModule.resolveDealListing(dealsModule.getActiveDeals(), { page: "9999" })
+  assert.equal(result.page, result.pageCount)
+  assert.ok(result.items.length > 0 && result.items.length <= 24)
+})
+
+test("deal listing filters and sorts deterministically", () => {
+  const result = listingModule.resolveDealListing(dealsModule.getActiveDeals(), {
+    q: "brush", store: "Sephora PH", sort: "price-asc", page: "1",
+  })
+  assert.ok(result.items.every((deal) => deal.platform === "Sephora PH"))
+  assert.ok(result.items.every((deal) => /brush/i.test(`${deal.title} ${deal.category} ${deal.tags.join(" ")}`)))
+  assert.deepEqual(result.items.map((deal) => deal.salePrice), [...result.items.map((deal) => deal.salePrice)].sort((a, b) => a - b))
+  assert.equal(result.isFiltered, true)
+})
+
+test("deal pagination URLs preserve filters without empty defaults", () => {
+  const href = listingModule.buildDealsHref(
+    { q: "brush", store: "Sephora PH", category: "All", sort: "recommended", page: 1 },
+    { page: 2 }
+  )
+  assert.equal(href, "/deals?q=brush&store=Sephora+PH&page=2")
 })

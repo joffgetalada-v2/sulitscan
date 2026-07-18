@@ -250,6 +250,22 @@ test("Shopee seller guide recommends related Shopee content", async ({ page }) =
   await expect(related.getByRole("link", { name: /Shopee/i }).first()).toBeVisible()
 })
 
+test("deals page exposes crawlable server pagination", async ({ page }) => {
+  await page.goto("/deals?page=2")
+  await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
+  await expect(page.getByRole("link", { name: "Previous page" })).toHaveAttribute("href", "/deals")
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://sulitscan.com/deals?page=2")
+  expect(await page.locator("main article").count()).toBeLessThanOrEqual(24)
+})
+
+test("filtered deals are noindex and preserve URL state", async ({ page }) => {
+  await page.goto("/deals?q=brush&store=Sephora+PH")
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
+  await expect(page.locator('input[name="q"]')).toHaveValue("brush")
+  await expect(page.locator('select[name="store"]')).toHaveValue("Sephora PH")
+})
+
+
 test("article uses article-specific Twitter metadata and dateModified", async ({ page }) => {
   await page.goto("/blog/best-shopee-finds-under-500-philippines")
   await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute("content", /Shopee/i)

@@ -1,8 +1,5 @@
-﻿"use client"
-
 import Image from "next/image"
 import Link from "next/link"
-import { motion } from "framer-motion"
 import { ExternalLink, Zap } from "lucide-react"
 import type { Deal } from "@/data/deals"
 import { isSuspiciousDiscount, SUSPICIOUS_DISCOUNT_NOTE } from "@/data/deals"
@@ -11,20 +8,13 @@ import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 
 interface DealCardProps {
   deal: Deal
+  imagePriority?: boolean
 }
 
-export default function DealCard({ deal }: DealCardProps) {
+export default function DealCard({ deal, imagePriority = false }: DealCardProps) {
   const suspicious = isSuspiciousDiscount(deal)
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className="group relative flex flex-col bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-green-100 transition-all overflow-hidden"
-    >
-      {/* Image / visual area */}
+    <article className="group relative flex flex-col bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-green-100 transition-all overflow-hidden">
       <Link
         href={`/deals/${deal.slug}`}
         className={`relative h-56 bg-gradient-to-br ${deal.imageGradient} overflow-hidden block`}
@@ -39,6 +29,8 @@ export default function DealCard({ deal }: DealCardProps) {
             className="object-cover"
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
             unoptimized
+            loading={imagePriority ? "eager" : "lazy"}
+            fetchPriority={imagePriority ? "high" : "auto"}
           />
         ) : (
           <>
@@ -58,8 +50,6 @@ export default function DealCard({ deal }: DealCardProps) {
           </>
         )}
 
-        {/* Discount badge. A genuine discount shows the number; a suspiciously high
-            one (80%+) is softened to a neutral label so we don't over-promise. */}
         {deal.discount > 0 && (
           suspicious ? (
             <div className="absolute top-3 left-3 flex items-center gap-1 bg-amber-50/95 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm">
@@ -74,22 +64,18 @@ export default function DealCard({ deal }: DealCardProps) {
           )
         )}
 
-        {/* Category */}
         <div className="absolute bottom-3 left-3 px-2 py-0.5 bg-black/20 backdrop-blur-sm rounded-full">
           <span className="text-xs text-white/90 font-medium">{deal.category}</span>
         </div>
       </Link>
 
-      {/* Content */}
       <div className="flex flex-col flex-1 p-4">
-        {/* Title */}
         <Link href={`/deals/${deal.slug}`} className="block mb-3">
           <h3 className="text-sm font-bold text-slate-900 leading-snug line-clamp-2 group-hover:text-green-700 transition-colors">
             {deal.title}
           </h3>
         </Link>
 
-        {/* Pricing */}
         <div className="flex items-baseline gap-2 mb-3">
           <span className="text-xl font-black text-slate-900">{formatPrice(deal.salePrice)}</span>
           {deal.discount > 0 && !suspicious && (
@@ -102,7 +88,6 @@ export default function DealCard({ deal }: DealCardProps) {
           )}
         </div>
 
-        {/* SulitScore */}
         <div className="mb-3">
           <div
             title={formatScore(deal.sulitScore)}
@@ -114,7 +99,6 @@ export default function DealCard({ deal }: DealCardProps) {
           </div>
         </div>
 
-        {/* Score bar */}
         <div className="h-1.5 bg-slate-100 rounded-full mb-3 overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-green-400 to-emerald-500 rounded-full transition-all"
@@ -122,19 +106,16 @@ export default function DealCard({ deal }: DealCardProps) {
           />
         </div>
 
-        {/* Reason */}
         <p className="text-xs text-slate-500 leading-relaxed flex-1 mb-3 line-clamp-2">
           {deal.reason}
         </p>
 
-        {/* Risk note for suspiciously large listed discounts */}
         {suspicious && (
           <p className="text-[10px] text-amber-600 leading-relaxed mb-3 -mt-1">
             {SUSPICIOUS_DISCOUNT_NOTE}
           </p>
         )}
 
-        {/* Trust footer */}
         <div className="pt-2.5 mt-1 border-t border-slate-50 mb-3">
           <p className="text-[10px] text-slate-400">
             {deal.isDemo ? "Sample data" : `Confirm current price on ${deal.platform} before buying.`}
@@ -149,7 +130,6 @@ export default function DealCard({ deal }: DealCardProps) {
           </p>
         </div>
 
-        {/* CTA */}
         <ExternalAffiliateLink
           href={deal.affiliateLink}
           platform={deal.platform}
@@ -161,6 +141,6 @@ export default function DealCard({ deal }: DealCardProps) {
           <ExternalLink className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
         </ExternalAffiliateLink>
       </div>
-    </motion.article>
+    </article>
   )
 }

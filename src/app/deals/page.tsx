@@ -1,47 +1,57 @@
-﻿import type { Metadata } from "next"
+import type { Metadata } from "next"
 import DealsGrid from "@/components/DealsGrid"
 import TrustBar from "@/components/TrustBar"
 import { BreadcrumbJsonLd, ItemListJsonLd } from "@/components/SeoJsonLd"
 import { getActiveDeals, getActiveCategories } from "@/data/deals"
+import { DEALS_PAGE_SIZE, resolveDealListing, type DealSearchParams } from "@/lib/deal-listing"
 import { siteConfig } from "@/lib/seo"
 import { ShoppingBag } from "lucide-react"
 import { formatDealCount } from "@/lib/utils"
 
-export const metadata: Metadata = {
-  title: "Latest Online Deals Philippines",
-  description:
-    "Browse curated online deals from Temu, Shopee PH, and Sephora PH: beauty, home finds, gadgets, fashion, and budget picks, with buyer notes on every deal.",
-  alternates: { canonical: `${siteConfig.url}/deals` },
-  openGraph: {
-    title: "Latest Online Deals Philippines | SulitScan PH",
-    description:
-      "Curated deal notes from Temu, Shopee PH, and Sephora PH. Filter by category, store, and SulitScore. Affiliate links clearly disclosed.",
-    url: `${siteConfig.url}/deals`,
-  },
+interface DealsPageProps {
+  searchParams: Promise<DealSearchParams>
 }
 
-export default function DealsPage() {
+export async function generateMetadata({ searchParams }: DealsPageProps): Promise<Metadata> {
+  const listing = resolveDealListing(getActiveDeals(), await searchParams)
+  const canonical = listing.isFiltered || listing.page === 1
+    ? `${siteConfig.url}/deals`
+    : `${siteConfig.url}/deals?page=${listing.page}`
+
+  return {
+    title: listing.page > 1 && !listing.isFiltered
+      ? `Latest Online Deals Philippines — Page ${listing.page}`
+      : "Latest Online Deals Philippines",
+    description: "Browse curated online deals from Temu, Shopee PH, and Sephora PH with buyer notes on every listing.",
+    alternates: { canonical },
+    robots: { index: !listing.isFiltered, follow: true },
+  }
+}
+
+export default async function DealsPage({ searchParams }: DealsPageProps) {
   const activeDeals = getActiveDeals()
+  const listing = resolveDealListing(activeDeals, await searchParams)
   const categories = getActiveCategories()
+  const stores = ["All", ...Array.from(new Set(activeDeals.map((deal) => deal.platform))).sort()]
 
   return (
     <>
       <BreadcrumbJsonLd
         items={[
-          { name: "Home",  url: siteConfig.url },
+          { name: "Home", url: siteConfig.url },
           { name: "Deals", url: `${siteConfig.url}/deals` },
         ]}
       />
       <ItemListJsonLd
         name="Temu, Shopee PH, and Sephora PH Deals Philippines – SulitScan PH"
-        items={activeDeals.slice(0, 50).map((d) => ({
-          name: d.title,
-          url: `${siteConfig.url}/deals/${d.slug}`,
-          description: d.reason,
+        items={listing.items.map((deal, index) => ({
+          name: deal.title,
+          url: `${siteConfig.url}/deals/${deal.slug}`,
+          description: deal.reason,
+          position: (listing.page - 1) * DEALS_PAGE_SIZE + index + 1,
         }))}
       />
 
-      {/* Page header */}
       <div className="bg-gradient-to-b from-slate-50 to-white border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="flex items-start gap-4">
@@ -66,7 +76,7 @@ export default function DealsPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <TrustBar className="mb-6" />
-        <DealsGrid deals={activeDeals} categories={categories} />
+        <DealsGrid listing={listing} categories={categories} stores={stores} />
       </div>
     </>
   )
