@@ -256,7 +256,7 @@ test("article uses article-specific Twitter metadata and dateModified", async ({
   await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute("content", /best-shopee-finds-under-500-philippines/i)
   const jsonLd = await page.locator('script[type="application/ld+json"]').allTextContents()
   const article = jsonLd.map((value) => JSON.parse(value)).find((value) => value["@type"] === "BlogPosting")
-  expect(article.dateModified).toBe("2026-07-12")
+  expect(article.dateModified).toBe("2026-07-19")
   expect(article.author.url).toContain("/editorial-policy")
 })
 

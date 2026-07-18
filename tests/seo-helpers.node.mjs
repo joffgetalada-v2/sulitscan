@@ -45,3 +45,48 @@ test("deal SEO descriptions are unique product-specific snippets", () => {
     descriptions[index].toLowerCase().includes(deal.title.split(/\s+/)[0].toLowerCase())
   ))
 })
+
+function loadSeoModuleForDeals(activeDeals) {
+  return loadTypeScriptModule("src/lib/deal-seo.ts", {
+    "@/data/deals": { getActiveDeals: () => activeDeals },
+  })
+}
+
+test("deal SEO title skips an overlong first token without splitting it", () => {
+  const longFirstToken = "UninterruptedProductIdentifierThatExceedsTheAvailableTitlePhraseLength"
+  const deal = {
+    slug: "long-token-desk-organizer",
+    title: `${longFirstToken} Desk Organizer`,
+    platform: "Shopee PH",
+    category: "Home",
+  }
+  const fixtureSeoModule = loadSeoModuleForDeals([deal])
+
+  const title = fixtureSeoModule.buildDealSeoTitle(deal)
+
+  assert.equal(title, "Desk Organizer – Shopee PH | SulitScan PH")
+  assert.ok(!title.includes(longFirstToken.slice(0, 20)))
+})
+
+test("deal SEO titles add stable hashes when truncated product phrases collide", () => {
+  const dealsWithCollidingTitles = [
+    {
+      slug: "portable-organizer-bedroom-a",
+      title: "Portable Multi-Function Organizer Storage Basket for Bedroom A",
+      platform: "Shopee PH",
+      category: "Home",
+    },
+    {
+      slug: "portable-organizer-bedroom-b",
+      title: "Portable Multi-Function Organizer Storage Basket for Bedroom B",
+      platform: "Shopee PH",
+      category: "Home",
+    },
+  ]
+  const fixtureSeoModule = loadSeoModuleForDeals(dealsWithCollidingTitles)
+  const titles = dealsWithCollidingTitles.map(fixtureSeoModule.buildDealSeoTitle)
+
+  assert.notEqual(titles[0], titles[1])
+  assert.ok(titles.every((title) => / #\w+ – Shopee PH \| SulitScan PH$/.test(title)))
+  assert.ok(titles.every((title) => title.length <= 65))
+})

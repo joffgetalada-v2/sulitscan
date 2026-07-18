@@ -8,15 +8,24 @@ function truncateAtWordBoundary(text: string, limit: number): string {
   const normalized = text.replace(/\s+/g, " ").trim()
   if (normalized.length <= limit) return normalized
 
-  const candidate = normalized.slice(0, limit + 1)
-  const lastSpace = candidate.lastIndexOf(" ")
-  return (lastSpace > 0 ? candidate.slice(0, lastSpace) : normalized.slice(0, limit)).trim()
+  const words = normalized.split(" ")
+  const phrase: string[] = []
+  for (const word of words) {
+    const candidate = [...phrase, word].join(" ")
+    if (candidate.length <= limit) {
+      phrase.push(word)
+    } else if (phrase.length > 0) {
+      break
+    }
+  }
+
+  return phrase.join(" ") || "Item"
 }
 
 function stableHash(value: string): string {
   let hash = 5381
   for (const character of value) hash = (hash * 33) ^ character.charCodeAt(0)
-  return (hash >>> 0).toString(36).slice(0, 4)
+  return (hash >>> 0).toString(36).slice(-4)
 }
 
 function buildTitleWithoutHash(deal: Deal): string {
@@ -24,9 +33,11 @@ function buildTitleWithoutHash(deal: Deal): string {
   return `${truncateAtWordBoundary(deal.title, phraseLimit)} – ${deal.platform}${SITE_SUFFIX}`
 }
 
-function hasTitleCollision(deal: Deal): boolean {
+function getTitleCollisions(deal: Deal): Deal[] {
   const title = buildTitleWithoutHash(deal)
-  return getActiveDeals().filter((candidate) => buildTitleWithoutHash(candidate) === title).length > 1
+  return getActiveDeals()
+    .filter((candidate) => buildTitleWithoutHash(candidate) === title)
+    .sort((a, b) => a.slug.localeCompare(b.slug))
 }
 
 function buildDescriptionWithoutHash(deal: Deal): string {
@@ -41,9 +52,13 @@ function hasDescriptionCollision(deal: Deal): boolean {
 }
 
 export function buildDealSeoTitle(deal: Deal): string {
-  if (!hasTitleCollision(deal)) return buildTitleWithoutHash(deal)
+  const collisions = getTitleCollisions(deal)
+  if (collisions.length < 2) return buildTitleWithoutHash(deal)
 
-  const hashSuffix = ` #${stableHash(deal.slug)}`
+  const hash = stableHash(deal.slug)
+  const sameHashDeals = collisions.filter((candidate) => stableHash(candidate.slug) === hash)
+  const hashRank = sameHashDeals.findIndex((candidate) => candidate.slug === deal.slug)
+  const hashSuffix = ` #${hash}${sameHashDeals.length > 1 ? `-${hashRank + 1}` : ""}`
   const phraseLimit = TITLE_LIMIT - SITE_SUFFIX.length - deal.platform.length - 3 - hashSuffix.length
   return `${truncateAtWordBoundary(deal.title, phraseLimit)}${hashSuffix} – ${deal.platform}${SITE_SUFFIX}`
 }
