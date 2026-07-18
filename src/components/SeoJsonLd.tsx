@@ -105,6 +105,7 @@ interface BlogPostingProps {
   description: string
   author: string
   datePublished: string
+  dateModified: string
   url: string
   imageUrl?: string
 }
@@ -114,6 +115,7 @@ export function BlogPostingJsonLd({
   description,
   author,
   datePublished,
+  dateModified,
   url,
   imageUrl,
 }: BlogPostingProps) {
@@ -125,6 +127,7 @@ export function BlogPostingJsonLd({
     author: {
       "@type": "Organization",
       name: author,
+      url: `${siteConfig.url}/editorial-policy`,
     },
     publisher: {
       "@type": "Organization",
@@ -132,6 +135,7 @@ export function BlogPostingJsonLd({
       url: siteConfig.url,
     },
     datePublished,
+    dateModified,
     url,
     ...(imageUrl ? { image: imageUrl } : {}),
     mainEntityOfPage: {

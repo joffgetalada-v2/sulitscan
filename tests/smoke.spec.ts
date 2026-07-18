@@ -250,6 +250,21 @@ test("Shopee seller guide recommends related Shopee content", async ({ page }) =
   await expect(related.getByRole("link", { name: /Shopee/i }).first()).toBeVisible()
 })
 
+test("article uses article-specific Twitter metadata and dateModified", async ({ page }) => {
+  await page.goto("/blog/best-shopee-finds-under-500-philippines")
+  await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute("content", /Shopee/i)
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute("content", /best-shopee-finds-under-500-philippines/i)
+  const jsonLd = await page.locator('script[type="application/ld+json"]').allTextContents()
+  const article = jsonLd.map((value) => JSON.parse(value)).find((value) => value["@type"] === "BlogPosting")
+  expect(article.dateModified).toBe("2026-07-12")
+  expect(article.author.url).toContain("/editorial-policy")
+})
+
+test("unfinished digital tools category is noindex", async ({ page }) => {
+  await page.goto("/categories/digital-tools")
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
+})
+
 const growthPosts = [
   {
     slug: "best-home-organization-finds-under-500-philippines",

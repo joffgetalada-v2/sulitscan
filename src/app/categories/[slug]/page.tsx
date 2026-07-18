@@ -25,6 +25,7 @@ export async function generateMetadata({
   const category = getCategoryBySlug(slug)
   if (!category) return {}
   const content = categoryContent[slug]
+  const indexable = category.featured && getDealsByCategory(slug).length > 0
   return {
     title: `${category.name} Deals Philippines`,
     description: clampMeta(
@@ -32,6 +33,7 @@ export async function generateMetadata({
         `${category.description} Browse ${category.name.toLowerCase()} deals from Temu, Shopee PH, and Sephora PH on SulitScan PH.`
     ),
     alternates: { canonical: `${siteConfig.url}/categories/${slug}` },
+    robots: { index: indexable, follow: true },
     openGraph: {
       title: `${category.name} Deals Philippines | SulitScan PH`,
       description: category.description,

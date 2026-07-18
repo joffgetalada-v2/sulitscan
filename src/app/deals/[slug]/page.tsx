@@ -8,7 +8,8 @@ import { getActiveDeals, getDealBySlug, getFeaturedDeals, isSuspiciousDiscount, 
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import DealCard from "@/components/DealCard"
 import { siteConfig } from "@/lib/seo"
-import { formatPrice, getSulitScoreBg, getSulitScoreLabel, formatTag, clampMeta } from "@/lib/utils"
+import { buildDealSeoDescription, buildDealSeoTitle } from "@/lib/deal-seo"
+import { formatPrice, getSulitScoreBg, getSulitScoreLabel, formatTag } from "@/lib/utils"
 
 function getBuyerChecklist(deal: { platform: string; category: string }): string[] {
   const cat = deal.category.toLowerCase()
@@ -135,14 +136,15 @@ export async function generateMetadata({
   const { slug } = await params
   const deal = getDealBySlug(slug)
   if (!deal) return {}
-  const discountText = deal.discount > 0 ? `${deal.discount}% off. ` : ""
+  const title = buildDealSeoTitle(deal)
+  const description = buildDealSeoDescription(deal)
   return {
-    title: `${deal.title}, ${deal.platform} Deal`,
-    description: clampMeta(`${discountText}${deal.reason} SulitScore ${deal.sulitScore}/10, confirm the price on ${deal.platform} before buying.`),
+    title: { absolute: title },
+    description,
     alternates: { canonical: `${siteConfig.url}/deals/${slug}` },
     openGraph: {
-      title: `${deal.title} | SulitScan PH`,
-      description: deal.reason,
+      title,
+      description,
       url: `${siteConfig.url}/deals/${slug}`,
     },
   }

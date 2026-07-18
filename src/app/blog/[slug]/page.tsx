@@ -104,8 +104,17 @@ export async function generateMetadata({
       url: `${siteConfig.url}/blog/${slug}`,
       type: "article",
       publishedTime: post.publishedAt,
+      modifiedTime: post.lastReviewed,
       authors: [post.author],
       images: [`${siteConfig.url}${post.coverImage ?? DEFAULT_BLOG_COVER}`],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${post.title} | SulitScan PH`,
+      description: clampMeta(post.excerpt),
+      images: [`${siteConfig.url}${post.coverImage ?? DEFAULT_BLOG_COVER}`],
+      creator: siteConfig.twitterHandle,
+      site: siteConfig.twitterHandle,
     },
   }
 }
@@ -138,6 +147,7 @@ export default async function BlogPostPage({
         description={post.excerpt}
         author={post.author}
         datePublished={post.publishedAt}
+        dateModified={post.lastReviewed}
         url={postUrl}
         imageUrl={`${siteConfig.url}${post.coverImage ?? DEFAULT_BLOG_COVER}`}
       />

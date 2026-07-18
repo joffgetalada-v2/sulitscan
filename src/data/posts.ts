@@ -1488,7 +1488,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     category: "Platform Guides",
     author: "SulitScan Team",
     publishedAt: "2026-06-27",
-    lastReviewed: "2026-06-27",
+    lastReviewed: "2026-07-12",
     readTime: 8,
     tags: ["shopee", "under-500", "home-finds", "shopping-guide", "philippines"],
     recommendationIntent: {
