@@ -126,6 +126,56 @@ const finalCatalogCases = [
       "best-work-from-home-desk-accessories-under-1000-philippines",
     ]),
   },
+  {
+    slug: "back-to-school-essentials-under-500-philippines",
+    allowedCategories: new Set(["Home", "Electronics", "Fashion"]),
+    requiredDealTags: new Set(["desk", "office", "organizer", "bag", "school", "study", "lunch"]),
+    requiredRelatedSlug: "best-work-from-home-desk-accessories-under-1000-philippines",
+    rejectedRelatedSlugs: new Set([
+      "best-beauty-finds-under-500-philippines",
+      "sephora-ph-beauty-guide",
+    ]),
+  },
+  {
+    slug: "cookware-sets-philippines-buying-guide",
+    allowedCategories: new Set(["Home"]),
+    requiredDealTags: new Set(["cookware", "kitchen", "pan", "pot", "storage"]),
+    requiredRelatedSlug: "best-home-organization-finds-under-500-philippines",
+    rejectedRelatedSlugs: new Set([
+      "best-beauty-finds-under-500-philippines",
+      "best-phone-accessories-under-500-philippines",
+    ]),
+  },
+  {
+    slug: "bags-under-500-philippines-buying-guide",
+    allowedCategories: new Set(["Fashion"]),
+    requiredDealTags: new Set(["bag", "tote", "wallet", "backpack", "travel"]),
+    requiredRelatedSlug: "best-gifts-under-500-philippines",
+    rejectedRelatedSlugs: new Set([
+      "best-home-organization-finds-under-500-philippines",
+      "best-beauty-finds-under-500-philippines",
+    ]),
+  },
+  {
+    slug: "carry-on-luggage-philippines-buying-guide",
+    allowedCategories: new Set(["Fashion", "Travel"]),
+    requiredDealTags: new Set(["luggage", "travel", "bag", "organizer"]),
+    requiredRelatedSlug: "bags-under-500-philippines-buying-guide",
+    rejectedRelatedSlugs: new Set([
+      "best-home-organization-finds-under-500-philippines",
+      "best-beauty-finds-under-500-philippines",
+    ]),
+  },
+  {
+    slug: "makeup-brush-sets-philippines-beginner-guide",
+    allowedCategories: new Set(["Beauty", "Skincare"]),
+    requiredDealTags: new Set(["brush", "tools", "makeup", "beauty"]),
+    requiredRelatedSlug: "sephora-ph-beauty-guide",
+    rejectedRelatedSlugs: new Set([
+      "best-home-organization-finds-under-500-philippines",
+      "best-work-from-home-desk-accessories-under-1000-philippines",
+    ]),
+  },
 ]
 
 for (const catalogCase of finalCatalogCases) {
@@ -143,6 +193,10 @@ for (const catalogCase of finalCatalogCases) {
 
     const relatedDeals = recommendationsModule.getRelatedDealsForPost(post, 3)
     assert.ok(relatedDeals.length > 0 && relatedDeals.length <= 3)
+    const activeDealIds = new Set(dealsModule.getActiveDeals().map((deal) => deal.id))
+    assert.equal(new Set(relatedDeals.map((deal) => deal.id)).size, relatedDeals.length)
+    assert.ok(relatedDeals.every((deal) => activeDealIds.has(deal.id)))
+    assert.ok(relatedDeals.every((deal) => !dealsModule.isSuspiciousDiscount(deal)))
     assert.ok(
       relatedDeals.every((deal) => catalogCase.allowedCategories.has(deal.category)),
       `unrelated category returned for ${catalogCase.slug}: ${relatedDeals.map((deal) => deal.category).join(", ")}`

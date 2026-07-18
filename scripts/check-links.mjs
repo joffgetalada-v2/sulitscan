@@ -45,6 +45,11 @@ const dealSet = new Set(dealSlugs)
 const postSlugList = slugsOf("src/data/posts.ts")
 const postTitles = [...postsSrc.matchAll(/^\s+title:\s*"([^"]+)"/gm)].map((m) => m[1])
 
+const MINIMUM_POST_COUNT = 24
+if (postSlugList.length < MINIMUM_POST_COUNT) {
+  errors.push(`Expected at least ${MINIMUM_POST_COUNT} posts, found ${postSlugList.length}`)
+}
+
 for (const [label, values] of [["post slug", postSlugList], ["post title", postTitles]]) {
   const seenValues = new Set()
   for (const value of values) {
@@ -64,6 +69,11 @@ const REQUIRED_GROWTH_POSTS = new Set([
   "best-gifts-under-500-philippines",
   "best-work-from-home-desk-accessories-under-1000-philippines",
   "best-beauty-finds-under-500-philippines",
+  "back-to-school-essentials-under-500-philippines",
+  "cookware-sets-philippines-buying-guide",
+  "bags-under-500-philippines-buying-guide",
+  "carry-on-luggage-philippines-buying-guide",
+  "makeup-brush-sets-philippines-beginner-guide",
 ])
 for (const slug of REQUIRED_GROWTH_POSTS) {
   if (!postSlugs.has(slug)) errors.push(`Missing required growth post: "${slug}"`)

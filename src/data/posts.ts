@@ -2390,6 +2390,646 @@ SulitScan may earn a commission when you click a partner link and complete a pur
       },
     ],
   },
+  {
+    id: "post-021",
+    slug: "back-to-school-essentials-under-500-philippines",
+    title: "Back-to-School Essentials Under ₱500 Philippines: 2026 Buying Checklist",
+    excerpt:
+      "Build a school basket around the classroom list first, then compare quantity, seller evidence, delivery timing, and the final checkout total before adding extras.",
+    content: `
+Back-to-school essentials under ₱500 in the Philippines should begin with the items a learner is required to bring, not accessories that only make a desk look complete. Use the teacher or school list as the filter and buy the right notebook and writing-tool specifications. Consider a bag, lunch container, organizer, or small electronic accessory only if the remaining budget and delivery window allow it.
+
+## Quick answer
+
+Put classroom requirements in three groups: needed on the first day, needed later in the term, and optional. Fund the first group before browsing desk accessories. For every online option, compare usable quantity and specifications, add shipping and fees, subtract only a voucher that applies, and check the return route. A low listing price is not useful when the variation is wrong or the parcel arrives after classes begin.
+
+## How to plan a ₱500 school basket
+
+Start with the school's written list. Copy each required item, quantity, size, ruling, color, or other specification into a note. Mark anything you already have in usable condition. The remaining list is the basket you need to fund.
+
+Set ₱500 as the maximum delivered total, not the sum of the large prices shown on search cards. Add the selected item prices, shipping, platform fees, and any required minimum spend. Deduct a voucher only after the checkout shows it applies. If the total is too high, remove optional items first, compare a smaller usable quantity, or buy later-term supplies separately. Do not reduce a required quantity or substitute a specification without checking with the teacher.
+
+Compare like with like. Divide a multipack's final item cost by the number of usable notebooks, pens, or containers only when every piece meets the requirement. A large bundle can waste the budget when it includes colors, sizes, or accessories the learner will not use.
+
+Browse [items under ₱500](/categories/under-500) for the budget view, [tech deals](/categories/tech-deals) for device-related accessories, and [fashion](/categories/fashion) for bags and pouches. These pages are starting points; the partner listing and checkout show the current variation and total.
+
+## Back-to-school essentials under ₱500 by item type
+
+### Notebooks and writing tools
+
+Check notebook dimensions, page or leaf count, ruling, binding, and paper description. Product photos may include several sizes, so confirm the selected variation rather than relying on the first image. For pens, pencils, crayons, rulers, erasers, and sharpeners, check the quantity, point or tip type, color assortment, and labeling shown for the exact item.
+
+The Department of Trade and Industry's [school-supply monitoring advisory](https://fairtrade.dti.gov.ph/press-release/dti-secures-divisoria-school-supplies-for-reasonable-prices-as-classes-near/) explains how its Gabay sa Pamimili price guide helps shoppers compare school essentials. Use the newest DTI guide available when you shop; do not reuse prices from an older school year as if they were current.
+
+### Bag and lunch storage
+
+Measure the largest notebook, folder, or device the learner must carry, then compare those measurements with the bag's listed interior or exterior dimensions. Check both shoulder-strap attachment points, the zipper path, lining, base, and whether a bottle pocket fits the actual bottle. A "school bag" label does not establish capacity or comfort.
+
+For lunch boxes and food containers, confirm dimensions, included pieces, closure design, and the maker's current care instructions. Read recent reviews about the exact variation for fit, missing parts, odor, cracks, or leaks. A seller photo of a filled container is a scale clue, not a promise that it will suit every meal or bag.
+
+### Desk and study accessories
+
+Choose a desk accessory only when it solves a named problem: loose papers, tangled cables, poor book angle, or limited storage. Measure the available desk, shelf, or drawer space. For organizers, compare compartment dimensions with the items going inside. For stands, check the stated device size and load, base footprint, adjustment, and long-term comments about hinges or wobble.
+
+Our [work-from-home desk accessories guide](/blog/best-work-from-home-desk-accessories-under-1000-philippines) has a fuller measure-first method and extra cautions for electrical products.
+
+### Small electronics
+
+A calculator, lamp, fan, cable, or charging accessory needs more evidence than a pencil case. Confirm the exact school requirement or device model, input and output specifications, plug or battery type, warranty or return support, and manufacturer information shown. Read recent reviews about heat, intermittent power, loose connectors, or early failure. Skip a listing when the relevant specifications are missing.
+
+For marketplace seller checks, use the [Shopee PH store guide](/stores/shopee-ph). Stop using an electrical item that becomes damaged, unusually hot, smells burnt, or behaves unpredictably, and follow the maker's current instructions.
+
+## Delivery timing and seller-photo checks
+
+Work backward from the date the item is needed. The estimate shown on a search card can differ from the estimate for the selected variation and address, so check it again at checkout. Leave room for a wrong variation, damaged parcel, or return. For a fixed first-day need, a local in-stock option may be more practical than a tight online estimate.
+
+Use seller photos to confirm what is included, but compare them with the written variation and recent buyer photos. Look for a ruler, notebook, hand, or other scale reference, then verify the stated centimeters. Watch for listing images that combine multiple products, show props not included, or use a different color and size from the selected option. Recent reviews are useful evidence about past orders; they do not guarantee your parcel's condition or arrival date.
+
+## How we assessed this guide
+
+We applied the [SulitScan editorial policy](/editorial-policy) to the current catalog rather than naming one product for every learner. We reviewed Home, Electronics, and Fashion category eligibility plus desk, office, organizer, bag, school, study, and lunch signals. Recommendations exclude inactive listings and suspicious discount percentages, then prioritize one to three catalog entries that match those assigned signals. We did not physically test the products or treat seller claims as verified performance.
+
+## Final school-basket checklist
+
+1. Start with the teacher or school list and mark what is needed first.
+2. Reuse suitable supplies already on hand.
+3. Confirm quantity, size, ruling, color, compatibility, and included pieces.
+4. Compare the final delivered total, not the search-card price.
+5. Check labels, seller details, recent reviews, and buyer photos.
+6. Recheck the delivery estimate for the selected variation and address.
+7. Read damage, wrong-item, and return terms before payment.
+8. Add optional desk accessories only after required items fit the budget.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. We do not physically test every school item or guarantee seller quality or delivery timing. Prices, vouchers, specifications, stock, reviews, and return terms can change. Confirm the exact listing and checkout details before ordering. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Budget Finds",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-19",
+    lastReviewed: "2026-07-19",
+    readTime: 10,
+    tags: ["back-to-school", "school-essentials", "under-500", "study", "shopee", "philippines"],
+    recommendationIntent: {
+      topics: ["school-essentials", "desk-accessories"],
+      platforms: ["Shopee PH", "Temu"],
+      deals: {
+        categories: ["Home", "Electronics", "Fashion"],
+        tags: ["desk", "office", "organizer", "bag", "school", "study", "lunch"],
+        maxPrice: 500,
+      },
+    },
+    coverGradient: "from-sky-500 to-amber-300",
+    coverImage: "/images/guides/back-to-school-essentials-under-500-philippines.jpg",
+    coverImageAlt: "Brand-neutral school notebooks, writing tools, lunch container, backpack, organizer, and measuring tape on a study desk",
+    faqs: [
+      {
+        question: "What should I buy first with a ₱500 school-supply budget?",
+        answer:
+          "Buy the items required on the first day before optional desk accessories. Use the school list, reuse suitable items already on hand, and calculate the final delivered total for the remaining essentials.",
+      },
+      {
+        question: "How do I compare notebook bundles online?",
+        answer:
+          "Compare the exact size, ruling, binding, leaf or page count, paper description, and usable quantity. Divide the final delivered cost only across pieces that meet the requirement.",
+      },
+      {
+        question: "Should shipping count toward the ₱500 limit?",
+        answer:
+          "Yes if ₱500 is your complete spending limit. Add item prices, shipping, and fees, then subtract only a voucher that the checkout confirms applies.",
+      },
+      {
+        question: "How early should I order school supplies online?",
+        answer:
+          "Check the current estimate for your address and selected variation, then leave time for possible damage, a wrong item, or a return. Use a local in-stock option when the required date is too close for that buffer.",
+      },
+      {
+        question: "Are buyer photos enough to confirm a school item's size?",
+        answer:
+          "No. Buyer photos can show scale and past order condition, but you should compare them with the stated dimensions and selected variation. Photos do not guarantee what your parcel will contain.",
+      },
+    ],
+  },
+  {
+    id: "post-022",
+    slug: "cookware-sets-philippines-buying-guide",
+    title: "Cookware Sets Philippines: What to Check Before Buying for a Small Kitchen",
+    excerpt:
+      "Choose cookware by material, useful piece count, stove compatibility, measured storage space, and return terms—not the biggest number printed on the box.",
+    content: `
+A cookware set in the Philippines is a better buy when its material suits how you cook and every counted piece has a job. The bases should match your stove, and the largest pan must fit your burner and cabinet. Check dimensions, handle design, lid count, care instructions, checkout total, and return terms before treating a large piece count as value.
+
+## Quick answer
+
+List the meals and cookware you use in a normal week. Choose the smallest set that covers those jobs without duplicating pieces you already own. Confirm the material and coating description, base compatibility with your actual stove, body and handle dimensions, usable capacity, and what the seller counts as a piece. Read the maker's current use and care instructions plus the seller's damage and return process before ordering.
+
+## Cookware sets in the Philippines: set or individual pieces?
+
+### Choose a set when
+
+- You are starting with little usable cookware and need several different vessel sizes.
+- The listed pots and pans match meals you regularly cook.
+- Shared lids or removable handles reduce storage without making daily use awkward.
+- The complete set fits your burners, sink, drying area, and cabinet.
+- The final total and return route compare well with buying the same useful pieces separately.
+
+### Choose individual pieces when
+
+- You need one specific pan or pot to fill a gap.
+- A set duplicates sizes you already own or includes tools you would not use.
+- You want different materials for different cooking jobs.
+- Your kitchen cannot store the complete set without unstable stacking.
+- You want to replace one worn item without changing the rest of your cookware.
+
+Count functional vessels separately from lids, protectors, utensils, and detachable handles. A listing described as a seven-piece set may not contain seven pots and pans. Write down each included item and assign it a real cooking job; an item without a job is not added value.
+
+Browse [home finds](/categories/home-finds) and [items under ₱1,000](/categories/under-1000) for current catalog options. The budget page is a filter, not a claim that every useful cookware set must fall below that amount.
+
+## Material, stove, and dimension checks
+
+Read the listing's material description for the body, cooking surface, base, handle, and lid. Do not infer the full construction from a word in the title or the color of a product photo. If a coating, metal grade, or layered base matters to you, look for a clear maker specification for the exact model.
+
+Check compatibility against your stove: gas, induction, electric coil, or another surface. "Induction compatible" is a listing claim to verify in the maker's current specifications and recent reviews for the exact variation. Also compare the flat base diameter with the burner or cooking zone instead of using the rim diameter alone.
+
+Capacity labels do not tell you whether a pot fits your sink, refrigerator, or cabinet. Record the rim diameter, body height, base width, total length with the handle, and height with the lid. Allow clearance for knobs, shelves, doors, and neighboring cookware.
+
+## Small-kitchen measurements
+
+Measure the cabinet's internal width, depth, and height. Measure the widest opening on the route into the cabinet and the drawer height if handles must lie flat. Then map the listed cookware dimensions onto that space with paper, tape, or cookware you already own.
+
+For nesting sets, check whether pans truly nest with lids and protectors in place. Stacking saves shelf area but can make the bottom pan inconvenient to reach. A removable handle can reduce total length and help a pan move between stove, table, and storage. Its attachment mechanism also needs clear locking, use, cleaning, and replacement instructions.
+
+Before choosing a removable-handle set, ask whether it can stay attached during your usual cooking tasks. Consider whether two vessels may need handles at the same time and where the loose handle will be stored. Follow the maker's current load, attachment, heat, and use instructions; do not assume another brand's directions apply.
+
+Our [home-organization guide](/blog/best-home-organization-finds-under-500-philippines) offers a measure-first method for shelves, racks, and storage bins around a small kitchen.
+
+## Coating, handle, and lid care
+
+Use the maker's current instructions for initial washing, heat settings, preheating, utensils, oil, cleaning method, dishwasher use, stacking, and replacement. Coatings and constructions differ, so a generic social-media care rule should not override the directions for the exact product.
+
+Check how the handle is fastened and what the maker says about tightening, oven use, heat exposure, and replacement. For a detachable handle, inspect and clean the connection as directed. Stop using a loose or damaged component and contact the maker or seller for the model-specific next step.
+
+For lids, verify the material, fit, knob or handle attachment, vent design if present, and care directions. Read reviews for reports of poor fit, trapped residue, loose hardware, or damage in transit. Those reports help identify questions to ask; they do not prove every unit will behave the same way.
+
+## Overseas orders: total cost and possible import charges
+
+When ordering through [Temu](/stores/temu) or another overseas seller, compare the complete checkout total, dispatch origin, delivery estimate, parcel tracking, and return route. A low item price may sit beside shipping, platform fees, or charges that appear only after the basket is assembled. [Shopee PH](/stores/shopee-ph) also mixes seller and fulfillment arrangements, so confirm whether the selected listing ships locally or across borders.
+
+The Philippine Bureau of Customs publishes [official importation guidance](https://www2.customs.gov.ph/guidelines-on-importation/) covering duties, taxes, exemptions, and entry rules. The treatment of an order can depend on its value, goods, shipment, and current regulations, so confirm official guidance for the actual order instead of relying on a product-page estimate.
+
+For a planning figure, [ImportTaxPH](https://importtaxph.com/temu-import-tax) is a free SulitScan sister tool that can estimate possible Temu import costs. It is not a government calculator, customs ruling, or guarantee of the amount due. Recheck the partner checkout and Bureau of Customs information before ordering.
+
+## How we assessed this guide
+
+We followed the [SulitScan editorial policy](/editorial-policy) and reviewed the Home catalog for cookware, kitchen, pan, pot, and storage signals. Eligible recommendations must be active, below the suspicious-discount threshold, and aligned with those assigned category and tag signals; the page shows no more than three. We compared listing evidence and decision factors only. We did not physically cook with, measure, or certify the products.
+
+## Cookware buying checklist
+
+1. List the pots and pans used in a normal week.
+2. Count vessels separately from lids, handles, protectors, and utensils.
+3. Confirm material, surface, base, stove compatibility, and maker specifications.
+4. Measure burners, sink, drying space, cabinet, and route into storage.
+5. Read current instructions for coating, handle, lid, cleaning, and stacking care.
+6. Check recent reviews for the exact size and variation.
+7. Compare the final delivered total and possible import treatment.
+8. Read damage, missing-piece, and return terms before payment.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. We do not physically test every cookware item or provide product certification, customs advice, or a safety guarantee. Prices, specifications, stock, reviews, delivery, import treatment, and return terms can change. Follow the maker's current instructions and confirm official information for your order. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Home Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-19",
+    lastReviewed: "2026-07-19",
+    readTime: 11,
+    tags: ["cookware", "kitchen", "cookware-sets", "home-finds", "temu", "shopee", "philippines"],
+    recommendationIntent: {
+      topics: ["cookware-buying", "home-organization"],
+      platforms: ["Temu", "Shopee PH"],
+      deals: {
+        categories: ["Home"],
+        tags: ["cookware", "kitchen", "pan", "pot", "storage"],
+        maxPrice: 1000,
+      },
+    },
+    importTaxContext: "temu",
+    coverGradient: "from-orange-500 to-slate-600",
+    coverImage: "/images/guides/cookware-sets-philippines-buying-guide.jpg",
+    coverImageAlt: "Brand-neutral cookware set with pots, pan, lids, detachable handle, induction hob, cabinet outline, and measuring tape",
+    faqs: [
+      {
+        question: "Is a large cookware set better value than buying separate pans?",
+        answer:
+          "Only when most pieces match cooking jobs you perform and fit your stove and storage. Count vessels separately from lids and accessories, then compare the final total with the useful pieces bought individually.",
+      },
+      {
+        question: "How do I know whether cookware works on my stove?",
+        answer:
+          "Check the maker's current compatibility specification for the exact model and compare the flat base diameter with your burner or cooking zone. Do not rely only on a marketplace title.",
+      },
+      {
+        question: "Are removable handles practical in a small kitchen?",
+        answer:
+          "They can reduce stored length, but the locking mechanism, handle availability, load instructions, cleaning, and replacement route add trade-offs. Check how you cook and follow the maker's current directions.",
+      },
+      {
+        question: "What dimensions should I check before buying a cookware set?",
+        answer:
+          "Check rim diameter, flat base width, body height, total length with handles, height with lids, and the nested storage footprint. Compare them with your burners, sink, drying area, and cabinet clearances.",
+      },
+      {
+        question: "Can ImportTaxPH tell me the exact charge on an overseas cookware order?",
+        answer:
+          "No. ImportTaxPH is a free non-official sister-tool estimate. Customs treatment depends on the actual order and current rules, so confirm the checkout and Bureau of Customs guidance.",
+      },
+    ],
+  },
+  {
+    id: "post-023",
+    slug: "bags-under-500-philippines-buying-guide",
+    title: "Bags Under ₱500 Philippines: Size, Straps, and Seller-Photo Checklist",
+    excerpt:
+      "Choose an under-₱500 bag by use case, measured capacity, strap and seam construction, seller evidence, and the final return terms.",
+    content: `
+Bags under ₱500 in the Philippines are easier to compare when you choose the job before the style. A school bag must fit the required notebook or device, while a commute bag needs secure access and comfortable strap placement. An event bag can prioritize a short essentials list. A light-travel bag should fit the items and luggage arrangement you plan to use. One low-cost bag does not need to perform all four roles.
+
+## Quick answer by use case
+
+**For school:** measure the largest notebook, folder, lunch container, or device. Look for a base and strap attachments suited to the intended load, then check whether frequently used items have reachable pockets.
+
+**For commuting:** decide where your phone, wallet, keys, water bottle, and transit items will sit. Check closure placement, zipper travel, strap adjustment, and whether the bag opens too widely in a crowded setting.
+
+**For an event:** write a short packing list and choose a bag that fits it without forcing the closure. Confirm the strap drop, carry options, color, finish, and hardware in unfiltered buyer photos.
+
+**For light travel:** measure the folded clothing, toiletries, or personal item you plan to carry. Check the booked carrier's current limits separately; a listing's words "travel bag" or "carry-on" do not establish airline acceptance.
+
+Browse [fashion](/categories/fashion) and [items under ₱500](/categories/under-500) after you choose the use case. The [gift guide under ₱500](/blog/best-gifts-under-500-philippines) can help when the bag is for someone else and their size or style preference is uncertain.
+
+## Bags under ₱500: measure against something you own
+
+Find a bag, notebook, device sleeve, or box you already own. Measure its width, height, and depth in centimeters. Note whether it is too large, too small, or about right for the intended job. This gives the listing dimensions a real reference.
+
+Next, lay out the items you plan to carry. Measure the largest rigid item and the combined depth of bulky items. Compare those figures with the listing's stated dimensions, allowing for seams, padding, rounded corners, and a zipper opening that may be smaller than the widest exterior point. Exterior measurements do not guarantee the same usable interior space.
+
+If a listing provides only capacity in liters, look for actual length, height, and depth as well. A capacity figure is difficult to validate from photos and does not show whether a laptop, folder, bottle, or rectangular lunch box will pass through the opening.
+
+## Strap, zipper, lining, seam, base, and hardware checks
+
+**Straps and attachments.** Look at where each strap joins the body. Check the width, adjustment range, stitching shown, buckle orientation, and whether recent buyers mention slipping or separation. A padded strap may spread pressure, but only if its placement and length suit the user.
+
+**Zippers and closures.** Inspect the zipper path, pull attachment, opening width, and nearby fabric. Reviews about snagging, teeth separation, or a slider leaving the track are more useful when they name the exact variation and length of use. For snaps, magnets, drawstrings, or hook-and-loop closures, decide whether the access and coverage fit the job.
+
+**Lining and seams.** Zoom in on buyer photos for loose threads, raw edges, puckering, holes near pockets, and whether the lining is attached or loose. A lining can organize the inside, but it can also reduce usable space or hide how the outer material is joined.
+
+**Base and structure.** Check whether the base is flat, reinforced, padded, or designed to fold. A structured base may help a bag stand but adds size; a soft base packs down but may sag. Choose according to the items you carry rather than a styled photo.
+
+**Hardware.** Check buckles, rings, clasps, rivets, feet, and decorative pieces for their role. Hardware color can vary across lighting and batches. Recent photos may reveal scale and finish, but they cannot guarantee how long a part will last.
+
+## Seller photos and recent reviews
+
+Start with the exact selected color, size, and seller. Compare the title, variation name, dimension diagram, material description, included accessories, and seller photos for contradictions. Be cautious when one listing combines many unrelated shapes or when the dimensions appear only in an image that cannot be matched to the selected variation.
+
+Use recent buyer photos to check proportions, opening width, pocket layout, color range, packaging, and common defects. Read lower and middle ratings as well as high ratings, and note whether the seller resolved wrong-item or damaged-item reports. Reviews document other transactions; they do not authenticate a brand, prove a material claim, or guarantee the condition of your order.
+
+The [Shopee PH store guide](/stores/shopee-ph) and [Temu store guide](/stores/temu) explain platform-specific seller, variation, delivery, and return checks.
+
+## Returns, color, and material expectations
+
+Read the current return policy before removing tags, protective film, or packaging. Check the allowed reasons, evidence required, deadline, return route, and whether a preference-based color or size mismatch is eligible. Photograph the sealed parcel, label, selected variation, and any damage before using the bag if you may need to file a claim.
+
+Color can shift with screen settings, studio lighting, filters, and production batches. Compare several recent buyer photos, but expect a range rather than an exact screen match. Material names such as leather-look, canvas-style, nylon, or waterproof need precise listing support. Do not turn a vague title into a claim about fiber content, animal material, water protection, or durability.
+
+For a flight bag, use our [carry-on luggage Philippines guide](/blog/carry-on-luggage-philippines-buying-guide) before ordering. It separates product measurements from airline limits.
+
+## How we assessed this guide
+
+Under the [SulitScan editorial policy](/editorial-policy), we reviewed active Fashion listings tagged with bag, tote, wallet, backpack, or travel signals. The recommendation system removes suspicious discount percentages and returns no more than three items that match the assigned category and topic signals. Our assessment is based on catalog and listing evidence, not physical wear, load, water, or durability testing.
+
+## Bag-buying checklist
+
+1. Choose one primary use: school, commute, event, or light travel.
+2. Write the exact items the bag must carry.
+3. Compare listing dimensions with a bag or object you already own.
+4. Inspect both strap attachments, zipper path, seams, lining, base, and hardware.
+5. Match seller photos and recent reviews to the exact variation.
+6. Treat color and material photos as evidence with limits, not guarantees.
+7. Add shipping and fees, then subtract only an applicable voucher.
+8. Read return terms before removing packaging or tags.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. We do not physically test every bag or guarantee material, authenticity, durability, color, seller performance, or delivery. Prices, variations, reviews, and return terms can change. Confirm the exact listing and checkout before ordering. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Fashion Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-19",
+    lastReviewed: "2026-07-19",
+    readTime: 10,
+    tags: ["bags", "bags-under-500", "fashion", "school-bag", "commute", "travel", "philippines"],
+    recommendationIntent: {
+      topics: ["bag-buying", "gift-planning"],
+      platforms: ["Shopee PH", "Temu"],
+      deals: {
+        categories: ["Fashion"],
+        tags: ["bag", "tote", "wallet", "backpack", "travel"],
+        maxPrice: 500,
+      },
+    },
+    coverGradient: "from-violet-500 to-rose-300",
+    coverImage: "/images/guides/bags-under-500-philippines-buying-guide.jpg",
+    coverImageAlt: "Brand-neutral backpack, tote, crossbody bag, event pouch, wallet, everyday carry items, and measuring tape",
+    faqs: [
+      {
+        question: "What kind of bag under ₱500 should I choose for school?",
+        answer:
+          "Choose by the largest required notebook, folder, device, or lunch container. Compare those measurements with the opening and interior, then inspect the base, strap attachments, seams, and exact variation reviews.",
+      },
+      {
+        question: "How can I judge a bag's size from an online listing?",
+        answer:
+          "Measure a bag or box you already own, note how its size works for you, and compare its width, height, and depth with the listing. Also allow for seams, padding, rounded corners, and a smaller opening.",
+      },
+      {
+        question: "Can buyer photos prove a bag is authentic?",
+        answer:
+          "No. Buyer photos can help you inspect proportions, packaging, color, and past order condition, but they do not prove authenticity, material composition, or the condition of your future order.",
+      },
+      {
+        question: "Why might the bag color differ from the listing?",
+        answer:
+          "Screen settings, studio lighting, filters, and production batches can change how a color appears. Compare several recent buyer photos and read the variation name, but expect some visual difference.",
+      },
+      {
+        question: "Can I use any 20-inch bag as airline carry-on luggage?",
+        answer:
+          "No. A nominal size is not enough. Measure the complete exterior and empty weight, including wheels and handles, then compare them with the booked airline and fare's current rules.",
+      },
+    ],
+  },
+  {
+    id: "post-024",
+    slug: "carry-on-luggage-philippines-buying-guide",
+    title: "Carry-On Luggage Philippines: Size, Weight, and Online-Buying Checklist",
+    excerpt:
+      "A 20-inch label is not enough: measure the complete case and empty weight, then compare both with the booked carrier and fare's current baggage rules.",
+    content: `
+Carry-on luggage in the Philippines should be chosen against the rules for a booked trip, not a seller's "20-inch" label. Measure the complete exterior length, width, and height with wheels and handles included, record the empty weight, and compare every figure with the operating carrier and fare's current baggage page. A familiar cabin-size name is not approval from an airline.
+
+## Quick answer
+
+Open the booked airline's official baggage rules before shopping. Write down its current piece, size, and weight limits for your fare and route. Reject any listing that does not provide complete exterior dimensions and empty weight, or ask the seller for those details in writing. Leave room for the belongings you will add; a case that starts close to the weight limit may leave little usable allowance.
+
+## Carry-on luggage Philippines measure-first method
+
+Use a firm tape measure and keep the case unexpanded unless you plan to fly with it expanded. Stand it as it would sit in an airport bag sizer.
+
+1. Measure the longest external side from the floor or lowest wheel point to the highest fixed handle or shell point.
+2. Measure the widest external side, including fixed side handles, feet, guards, or protruding hardware.
+3. Measure the deepest external side at its fullest point, including front pockets and the expanded section if used.
+4. Weigh the empty case with all removable accessories you plan to keep attached.
+5. Repeat after a trial pack because soft panels, front pockets, and expanders can change the exterior depth.
+
+Do not substitute the internal compartment, body-only height, diagonal, or carton dimensions. If a listing diagram excludes wheels or handles, it is incomplete for an airline comparison. Ask the seller whether the measurements are external and which variation was measured.
+
+Browse [travel](/categories/travel), [fashion](/categories/fashion), and [items under ₱1,000](/categories/under-1000) after you establish the limits. A budget filter does not make an item compliant.
+
+## Official airline examples
+
+The current [Philippine Airlines carry-on baggage page](https://www.philippineairlines.com/ph/en/before-you-fly/baggage-information/baggage-allowance/baggage-allowance-fees/carry-on-baggage.html) states one carry-on piece, a maximum weight of 7 kg, and combined external dimensions of no more than 115 cm. Because a combined measurement does not tell you whether a particular shape fits a cabin or sizer, confirm all details on PAL's page for the actual itinerary.
+
+The current [Cebu Pacific baggage guide](https://help.cebupacificair.com/article/ceb-baggage-guidelines-and-upgrade-options-118500) lists a 7 kg total hand-carry allowance. It describes one overhead item within 56 × 36 × 23 cm and one under-seat personal item within 20 × 20 × 36 cm. Read the complete page for piece and item conditions rather than using the dimensions alone.
+
+These are examples, not a universal Philippine standard. Airline policies, fare inclusions, aircraft constraints, routes, and bookings can differ or change. Recheck the operating carrier and fare shortly before travel, including every segment on a connection or codeshare. When the booking page and a general guide differ, ask the airline to clarify before departure.
+
+## Shell, zipper, wheel, handle, lock, and support checks
+
+### Shell and fabric
+
+Check the exact material description, panel flexibility, corner construction, base, seams, and how the case closes. Hard and soft cases trade structure, flex, pocket access, and repair options differently. Choose according to the contents and handling you expect; a material name alone does not prove impact, scratch, or water performance.
+
+### Zippers and closures
+
+Trace the main zipper around corners and near the wheel housings. Check slider count, pull attachment, stitching, expansion section, and recent reviews about alignment or separation. If the case uses latches, find current instructions for closing, adjustment, and repair.
+
+### Wheels
+
+Confirm whether the listed dimensions include the wheels. Check wheel count, housing attachment, exposed parts, clearance, and whether the seller or maker offers a replacement route. Buyer videos can reveal movement on one surface, but they do not establish long-term performance.
+
+### Telescoping and fixed handles
+
+Check the telescoping handle's extension positions, grip width, rails, and how far it protrudes when closed. Look for wobble or sticking reports from the exact variation, while recognizing that reviews describe individual orders. Fixed top and side handles affect both lifting and external dimensions.
+
+### Lock
+
+Identify the lock type and follow its current setup instructions. Check whether the lock is built in, removable, or merely shown as a prop. A lock does not make a bag loss-proof, damage-proof, or acceptable for every screening process; keep valuables and required documents according to the carrier's current guidance.
+
+### Warranty and returns
+
+Read who provides support, which country or seller handles a claim, what parts and defects are covered, the evidence required, and who pays return shipping. A warranty badge without accessible terms is not enough. Photograph the parcel and test zippers, wheels, handles, and the lock indoors before removing labels or taking the case outside if the return policy allows that inspection.
+
+Compare the seller and fulfillment details through [Temu](/stores/temu) or [Shopee PH](/stores/shopee-ph). The [bags under ₱500 guide](/blog/bags-under-500-philippines-buying-guide) adds a use-case method for backpacks, totes, and personal items.
+
+## Packing organizers are optional
+
+Packing cubes and pouches can separate clothing, cables, or toiletries, but they add their own weight and do not increase an airline allowance. Measure and weigh the packed case after adding organizers. Do not use compression or the luggage expander to push the exterior past the carrier's current dimensions.
+
+Organizers are useful only when they make the contents easier to access or account for. A light packing list, an allowed smaller personal item, or fewer containers may work better than buying another set of pouches.
+
+## How we assessed this guide
+
+We used the [SulitScan editorial policy](/editorial-policy), checked official airline pages for the examples above, and reviewed active Fashion and Travel catalog entries carrying luggage, travel, bag, or organizer signals. Recommendations are limited to one to three items, exclude suspicious discount percentages, and must match the assigned category and tag rules. We did not physically measure, weigh, roll, fly with, or durability-test the listed products.
+
+## Preflight checklist
+
+1. Open the operating carrier and booked fare's current baggage rules.
+2. Record piece, external dimension, and total weight limits.
+3. Measure the full case with wheels, handles, pockets, and expansion included.
+4. Weigh the empty case and run a trial pack.
+5. Inspect shell or fabric, zippers, wheels, handles, lock, and included pieces.
+6. Read warranty, damage, return, and replacement-part terms.
+7. Recheck the packed dimensions and weight before leaving for the airport.
+8. Reconfirm the official rules for every carrier and segment near departure.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. We do not physically test luggage or guarantee airline acceptance, durability, security, warranty service, or delivery. Airline policies, listings, prices, and return terms can change. Confirm the booked carrier's current rules and measure the actual packed bag. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Travel Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-19",
+    lastReviewed: "2026-07-19",
+    readTime: 11,
+    tags: ["carry-on-luggage", "luggage", "travel", "fashion", "airline-baggage", "philippines"],
+    recommendationIntent: {
+      topics: ["carry-on-luggage", "bag-buying"],
+      platforms: ["Temu", "Shopee PH"],
+      deals: {
+        categories: ["Fashion", "Travel"],
+        tags: ["luggage", "travel", "bag", "organizer"],
+        maxPrice: 1000,
+      },
+    },
+    coverGradient: "from-blue-700 to-cyan-400",
+    coverImage: "/images/guides/carry-on-luggage-philippines-buying-guide.jpg",
+    coverImageAlt: "Brand-neutral carry-on suitcase beside a tape measure, luggage scale, airline-rule card, wheel, handle, zipper, and packing cubes",
+    faqs: [
+      {
+        question: "Is 20-inch luggage automatically allowed as carry-on in the Philippines?",
+        answer:
+          "No. The label is not a complete external measurement or airline approval. Measure length, width, and height with wheels and handles, weigh the empty and packed case, and compare with the booked carrier and fare's current rules.",
+      },
+      {
+        question: "Do luggage measurements include wheels and handles?",
+        answer:
+          "Use the complete exterior for airline comparison, including wheels, fixed handles, feet, guards, pockets, and any expanded section. Ask the seller when its diagram does not say what is included.",
+      },
+      {
+        question: "Why does empty luggage weight matter?",
+        answer:
+          "The empty case uses part of the carrier's weight allowance. Weigh it with the accessories you will keep attached so you know how much room remains for belongings.",
+      },
+      {
+        question: "Do packing cubes let me exceed the carry-on limit?",
+        answer:
+          "No. Organizers can separate or compress contents, but they add weight and do not change the airline's size, piece, or weight limits. Measure and weigh the final packed bag.",
+      },
+      {
+        question: "When should I recheck airline baggage rules?",
+        answer:
+          "Check before buying luggage, after booking or changing a fare, and again near departure. Confirm the operating carrier and every segment because policies and booking conditions can differ.",
+      },
+    ],
+  },
+  {
+    id: "post-025",
+    slug: "makeup-brush-sets-philippines-beginner-guide",
+    title: "Makeup Brush Sets Philippines: Beginner Guide to Sets vs Individual Brushes",
+    excerpt:
+      "A beginner needs a few distinct face and eye brush roles, clear materials and care instructions, stable ferrules, and shapes that match the products they use.",
+    content: `
+Makeup brush sets in the Philippines are easier for a beginner to choose when every brush has a distinct job. Start with a small set that covers the face and eye products you already use instead of paying for many near-duplicate shapes. Check the fibers, ferrule, handle, shape, shedding reports, cleaning instructions, seller source, and return restrictions before ordering.
+
+## Quick answer
+
+For a simple routine, choose one brush for the largest face-product job and one smaller face brush for placement or detail. Add one flat or compact eye brush for applying color and one soft blending shape if you use eye shadow. A fine angled or detail brush belongs only in a routine that needs it. The exact count matters less than having non-redundant shapes you can identify, clean, and use.
+
+Browse [beauty](/categories/beauty) after listing the products you apply. The [beauty finds under ₱500 guide](/blog/best-beauty-finds-under-500-philippines) adds checks for formulas, shades, seals, and marketplace evidence.
+
+## Makeup brush sets Philippines: face and eye roles
+
+### Face-brush roles
+
+A broad, soft shape can spread powder over a larger area. A denser or flatter face brush places liquid or cream products differently, while a smaller tapered or angled shape gives more control around cheeks and contours. Product names are not standardized across every brand, so compare the head width, thickness, edge, density description, and the product texture the maker says it suits.
+
+Beginners do not need separate brushes for every label printed on a large set. If two brushes have nearly the same head, density, and edge, decide whether they serve meaningfully different products or only increase cleaning work.
+
+### Eye-brush roles
+
+A flat shader-style brush can place color on the lid. A rounded or tapered blending brush can soften edges. A small angled or fine detail brush can handle a narrow line, brow product, or targeted placement when the maker lists that use. Compare the head in millimeters or against a clear scale photo. An eye brush that looks small in isolation may still be too wide for the area you want to reach.
+
+Choose shapes around your routine, not a tutorial that uses products you do not own. If you apply one eye shadow with a fingertip and only need an edge softened, one blending brush may be enough.
+
+## Fibers, ferrule, handle, shedding, and shape
+
+**Fibers.** Check whether the listing clearly describes the fiber material and recommended product textures. Words such as soft, premium, vegan, or professional do not tell you the density, cut, resilience, or care method. Follow the maker's current directions for use and cleaning.
+
+**Ferrule.** The ferrule joins the brush head and handle. Look for an even shape, no visible gaps, and reviews that mention looseness, rotation, or water entering the joint. Do not soak the entire head or connection unless the maker specifically directs it.
+
+**Handle.** Compare handle length, grip width, finish, printed labels, and storage needs. A long handle may offer reach but can be awkward close to a mirror or inside a small pouch. Check whether the handle and ferrule stay aligned in recent buyer photos.
+
+**Shedding.** A few review photos cannot predict every unit, but repeated recent reports of fibers pulling out during washing or application deserve attention. Distinguish shedding from a damaged parcel, an isolated loose fiber, or adhesive residue, and check how the seller handles defects.
+
+**Shape.** Look at the brush from the front, side, and tip. Check symmetry, edge cut, density, and whether the shape returns after gentle washing according to the maker's instructions. A listing that shows only a complete set from a distance makes shape comparison difficult.
+
+## Set versus individual brushes
+
+Choose a set when you can name a different role for most included shapes and the materials and dimensions are clear. Compare its checkout total with the useful brushes purchased separately. Include the storage case or holder only if you need it and can clean it.
+
+Buy individual brushes when you need one missing shape or already own several usable tools. This route also works when you want different fibers or handles, or cannot identify the purpose of most pieces in a set. Replacing one heavily used brush can be more practical than buying another bundle with duplicates.
+
+Write the set contents in a two-column note: brush shape and the product or step it will handle. Remove every row with no job. The smaller remaining number is your useful set size.
+
+## Cleaning and hygiene
+
+The American Academy of Dermatology's current [makeup-brush cleaning guidance](https://www.aad.org/public/everyday-care/skin-care-secrets/routine/clean-your-makeup-brushes) recommends washing brushes every 7 to 10 days. Its method uses lukewarm running water on the tips plus gentle or clarifying shampoo. Rinse until the water is clear, remove excess moisture with a clean paper towel, and dry brushes flat with the tips over a counter edge. The AAD warns against submerging the whole brush head or drying brushes upright because water can affect the glued connection.
+
+Follow the brush maker's current directions when they are more specific about a material. Keep reusable tools to one user, and do not share brushes. Stop using a brush that irritates the skin or eye area, and seek qualified care for persistent irritation rather than relying on a product review.
+
+Before buying, decide where brushes will dry flat with airflow and where clean tools will be stored away from dirty or damp items. A large set creates more cleaning and drying work, which is another reason to keep only useful shapes.
+
+## Authorized retailer and marketplace context
+
+[Sephora PH](/stores/sephora-ph) is a beauty retailer with its own current catalog, brand relationships, promotions, and return terms. Its source context can be easier to trace, but you still need to confirm the exact item, included pieces, materials, price, stock, and policy. Our [Sephora PH beauty guide](/blog/sephora-ph-beauty-guide) provides the retailer-specific checklist.
+
+[Shopee PH](/stores/shopee-ph) is a marketplace where source, seller identity, fulfillment, and support can vary by listing. Check whether a shop identifies as a brand or authorized retailer, then verify that claim through the brand's own current channel when it matters. Review seller history, exact-item photos, packaging, product codes where relevant, and responses to complaints.
+
+No badge, packaging photo, buyer review, or low price can guarantee authenticity by itself. Avoid listings with unclear brand identity, copied-looking details, missing dimensions or materials, or pricing that is difficult to explain against traceable sellers. Read hygiene-related return restrictions before opening a set.
+
+## How we assessed this guide
+
+Following the [SulitScan editorial policy](/editorial-policy), we reviewed active Beauty and Skincare catalog entries with brush, tools, makeup, and beauty signals. Recommendations must match those assigned signals, exclude suspicious discount percentages, and are limited to three. We also checked AAD's current cleaning page and retailer context. We did not physically apply makeup, wash, shed-test, or authenticate the listed brushes.
+
+## Beginner brush and cleaning checklist
+
+1. List the face and eye products used in your normal routine.
+2. Give every brush shape one distinct job.
+3. Remove duplicate shapes and compare the useful set with individual prices.
+4. Check fibers, head dimensions, ferrule, handle, edge, and maker care instructions.
+5. Read recent exact-item reviews for shedding, loose parts, shape, and packaging.
+6. Verify retailer or marketplace seller context without relying on one authenticity signal.
+7. Read opened-item and hygiene return terms before payment.
+8. Plan to wash on the AAD schedule, rinse the tips, and dry the brushes flat.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. We do not physically test brushes, provide medical advice, or guarantee authenticity, softness, shedding performance, seller quality, or skin compatibility. Prices, stock, specifications, packaging, and return rules can change. Confirm the current listing and follow maker care directions. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Beauty Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-19",
+    lastReviewed: "2026-07-19",
+    readTime: 11,
+    tags: ["makeup-brushes", "makeup-tools", "beauty", "beginner-makeup", "sephora", "shopee", "philippines"],
+    recommendationIntent: {
+      topics: ["makeup-brushes", "beauty-shopping"],
+      platforms: ["Sephora PH", "Shopee PH", "Temu"],
+      deals: {
+        categories: ["Beauty", "Skincare"],
+        tags: ["brush", "tools", "makeup", "beauty"],
+      },
+    },
+    coverGradient: "from-fuchsia-500 to-amber-200",
+    coverImage: "/images/guides/makeup-brush-sets-philippines-beginner-guide.jpg",
+    coverImageAlt: "Brand-neutral small beginner makeup brush set grouped by face and eye roles with ferrule detail, cleaning bowl, and drying towel",
+    faqs: [
+      {
+        question: "How many makeup brushes does a beginner need?",
+        answer:
+          "There is no universal count. Start with the smallest group that gives each product and step a distinct useful shape, often a few face and eye roles rather than a large set of duplicates.",
+      },
+      {
+        question: "Should a beginner buy a brush set or individual brushes?",
+        answer:
+          "Choose a set when most shapes have clear jobs and the useful pieces compare well at checkout. Buy individually when you need one missing role or a set repeats brushes you already own.",
+      },
+      {
+        question: "How often should makeup brushes be cleaned?",
+        answer:
+          "The American Academy of Dermatology recommends washing makeup brushes every 7 to 10 days. Follow its method and any more specific current care directions from the brush maker.",
+      },
+      {
+        question: "What should I check when reviews mention shedding?",
+        answer:
+          "Look for repeated recent reports tied to the exact item, whether fibers came out during washing or application, signs of ferrule looseness, and how the seller handled a defect. One review cannot predict every unit.",
+      },
+      {
+        question: "Does an official-looking marketplace shop guarantee authentic brushes?",
+        answer:
+          "No. Verify authorization through the brand's current channel when it matters, and evaluate seller identity, history, product details, packaging, pricing, and support together. No single signal guarantees authenticity.",
+      },
+    ],
+  },
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
