@@ -1,6 +1,6 @@
 # SulitScan SEO Growth Round 2 Design
 
-Date: 2026-07-19  
+Date: 2026-07-19
 Status: Approved under the user's standing authorization to continue with the recommended approach
 
 ## Objective
@@ -145,4 +145,3 @@ The site will not invent personal expertise or claim that products were physical
 - A site-wide CSP rollout without a dedicated compatibility pass.
 - Forcing ApplyReadyCV into unrelated product guides.
 - Changing the Vercel `www` redirect from application code; this is a domain-setting task.
-

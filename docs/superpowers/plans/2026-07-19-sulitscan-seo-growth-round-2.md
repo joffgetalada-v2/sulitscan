@@ -762,4 +762,3 @@ Verify local `main` and `origin/main` resolve to the same commit.
 - [ ] **Step 8: Verify production after Vercel deploy**
 
 Check all five new article URLs, `/deals?page=2`, the sitemap, the digital-tools robots tag, and both sister-site links on `https://sulitscan.com`. Record that `www` remains a separate Vercel domain-setting action if it still returns 307.
-
