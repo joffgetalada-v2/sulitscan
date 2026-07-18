@@ -344,26 +344,30 @@ const evidenceLedGuides = [
   "makeup-brush-sets-philippines-beginner-guide",
 ]
 
-for (const slug of evidenceLedGuides) {
-  test(`${slug} evidence-led guide renders its banner and trust signals`, async ({ page, request }) => {
-    const response = await page.goto(`/blog/${slug}`)
-    expect(response?.status()).toBe(200)
+test.describe("evidence-led guide routes", () => {
+  test.describe.configure({ mode: "serial" })
 
-    const bannerPath = `/images/guides/${slug}.jpg`
-    await expect(page.locator(`img[src*="${slug}.jpg"]`).first()).toBeVisible()
-    expect((await request.get(bannerPath)).status()).toBe(200)
-    await expect(page.getByRole("heading", { name: "How we assessed this guide", exact: true })).toBeVisible()
-    await expect(page.getByRole("heading", { name: "Frequently asked questions", exact: true })).toBeVisible()
+  for (const slug of evidenceLedGuides) {
+    test(`${slug} evidence-led guide renders its banner and trust signals`, async ({ page, request }) => {
+      const response = await page.goto(`/blog/${slug}`)
+      expect(response?.status()).toBe(200)
 
-    const relatedDeals = page.getByRole("region", { name: "Related deals to check" })
-    await expect(relatedDeals.locator("article").first()).toBeVisible()
-    await expect(page.locator("main").getByText("Affiliate Disclosure:", { exact: false })).toBeVisible()
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
-      "href",
-      `https://sulitscan.com/blog/${slug}`
-    )
-  })
-}
+      const bannerPath = `/images/guides/${slug}.jpg`
+      await expect(page.locator(`img[src*="${slug}.jpg"]`).first()).toBeVisible()
+      expect((await request.get(bannerPath)).status()).toBe(200)
+      await expect(page.getByRole("heading", { name: "How we assessed this guide", exact: true })).toBeVisible()
+      await expect(page.getByRole("heading", { name: "Frequently asked questions", exact: true })).toBeVisible()
+
+      const relatedDeals = page.getByRole("region", { name: "Related deals to check" })
+      await expect(relatedDeals.locator("article").first()).toBeVisible()
+      await expect(page.locator("main").getByText("Affiliate Disclosure:", { exact: false })).toBeVisible()
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        "href",
+        `https://sulitscan.com/blog/${slug}`
+      )
+    })
+  }
+})
 
 test("cookware guide alone renders the ImportTaxPH callout", async ({ page }) => {
   for (const slug of evidenceLedGuides) {
