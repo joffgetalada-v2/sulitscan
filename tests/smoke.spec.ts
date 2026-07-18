@@ -335,3 +335,44 @@ for (const { slug, faqQuestion } of growthPosts) {
     await expect(page.locator("main").getByText("Affiliate Disclosure:", { exact: false })).toBeVisible()
   })
 }
+
+const evidenceLedGuides = [
+  "back-to-school-essentials-under-500-philippines",
+  "cookware-sets-philippines-buying-guide",
+  "bags-under-500-philippines-buying-guide",
+  "carry-on-luggage-philippines-buying-guide",
+  "makeup-brush-sets-philippines-beginner-guide",
+]
+
+for (const slug of evidenceLedGuides) {
+  test(`${slug} evidence-led guide renders its banner and trust signals`, async ({ page, request }) => {
+    const response = await page.goto(`/blog/${slug}`)
+    expect(response?.status()).toBe(200)
+
+    const bannerPath = `/images/guides/${slug}.jpg`
+    await expect(page.locator(`img[src*="${slug}.jpg"]`).first()).toBeVisible()
+    expect((await request.get(bannerPath)).status()).toBe(200)
+    await expect(page.getByRole("heading", { name: "How we assessed this guide", exact: true })).toBeVisible()
+    await expect(page.getByRole("heading", { name: "Frequently asked questions", exact: true })).toBeVisible()
+
+    const relatedDeals = page.getByRole("region", { name: "Related deals to check" })
+    await expect(relatedDeals.locator("article").first()).toBeVisible()
+    await expect(page.locator("main").getByText("Affiliate Disclosure:", { exact: false })).toBeVisible()
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      `https://sulitscan.com/blog/${slug}`
+    )
+  })
+}
+
+test("cookware guide alone renders the ImportTaxPH callout", async ({ page }) => {
+  for (const slug of evidenceLedGuides) {
+    await page.goto(`/blog/${slug}`)
+    const callout = page.getByText("Ordering from overseas?", { exact: true })
+    if (slug === "cookware-sets-philippines-buying-guide") {
+      await expect(callout).toBeVisible()
+    } else {
+      await expect(callout).toHaveCount(0)
+    }
+  }
+})
