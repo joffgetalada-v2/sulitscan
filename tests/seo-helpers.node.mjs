@@ -39,6 +39,12 @@ test("deal SEO titles are unique and no longer than 65 characters", () => {
   assert.ok(titles.every((title) => title.length <= 65))
   assert.ok(titles.every((title) => title.endsWith("| SulitScan PH")))
   assert.ok(
+    titles.every((title) => (title.match(/\(/g) ?? []).length === (title.match(/\)/g) ?? []).length),
+    `active deal title has unbalanced parentheses: ${titles.find(
+      (title) => (title.match(/\(/g) ?? []).length !== (title.match(/\)/g) ?? []).length
+    )}`
+  )
+  assert.ok(
     titles.every((title, index) => {
       const suffix = ` – ${activeDeals[index].platform} | SulitScan PH`
       const phrase = title.slice(0, -suffix.length)
@@ -92,6 +98,36 @@ test("deal SEO title removes trailing punctuation before the platform suffix", (
   assert.equal(
     fixtureSeoModule.buildDealSeoTitle(deal),
     "12345678901234567890123456789012345678901 – Temu | SulitScan PH"
+  )
+})
+
+test("deal SEO title removes an unmatched trailing parenthetical fragment", () => {
+  const deal = {
+    slug: "lunch-bag-parenthetical-truncation",
+    title: "Compact Children Lunch Bag Set (Bag Container and Bottle)",
+    platform: "Shopee PH",
+    category: "Home",
+  }
+  const fixtureSeoModule = loadSeoModuleForDeals([deal])
+
+  assert.equal(
+    fixtureSeoModule.buildDealSeoTitle(deal),
+    "Compact Children Lunch Bag Set – Shopee PH | SulitScan PH"
+  )
+})
+
+test("deal SEO title preserves a complete parenthetical phrase", () => {
+  const deal = {
+    slug: "complete-parenthetical-title",
+    title: "Lunch Bag Set (3 Pieces)",
+    platform: "Temu",
+    category: "Home",
+  }
+  const fixtureSeoModule = loadSeoModuleForDeals([deal])
+
+  assert.equal(
+    fixtureSeoModule.buildDealSeoTitle(deal),
+    "Lunch Bag Set (3 Pieces) – Temu | SulitScan PH"
   )
 })
 

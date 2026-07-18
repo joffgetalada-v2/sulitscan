@@ -22,8 +22,22 @@ function truncateAtWordBoundary(text: string, limit: number): string {
   return phrase.join(" ") || "Item"
 }
 
+function removeUnmatchedTrailingParentheticalFragment(text: string): string {
+  const unmatchedOpenings: number[] = []
+
+  for (let index = 0; index < text.length; index += 1) {
+    if (text[index] === "(") unmatchedOpenings.push(index)
+    if (text[index] === ")" && unmatchedOpenings.length > 0) unmatchedOpenings.pop()
+  }
+
+  return unmatchedOpenings.length > 0 ? text.slice(0, unmatchedOpenings[0]) : text
+}
+
 function cleanTitlePhrase(text: string): string {
-  return text.replace(/[\s\-–—|:;,./\\!?()[\]{}"']+$/gu, "").trim() || "Item"
+  const trailingPunctuation = /[\s\-–—|:;,./\\!?\[\]{}"']+$/gu
+  return removeUnmatchedTrailingParentheticalFragment(text)
+    .replace(trailingPunctuation, "")
+    .trim() || "Item"
 }
 
 function buildTitlePhrase(text: string, limit: number): string {
