@@ -28,6 +28,7 @@ export default function ImportTaxCallout({
           <strong>Ordering from overseas?</strong> Use{" "}
           <TrackedSisterSiteLink
             href={href}
+            destination="importtaxph"
             sourceSlug={sourceSlug}
             placement={placement}
             className="text-blue-700 font-semibold underline hover:text-blue-800"

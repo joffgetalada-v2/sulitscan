@@ -28,12 +28,14 @@ function extractHeadings(content: string): { level: 2 | 3; text: string; id: str
     })
 }
 
-function isImportTaxPhUrl(href: string): boolean {
+function getSisterSiteDestination(href: string): "importtaxph" | "applyreadycv" | null {
   try {
-    const hostname = new URL(href).hostname.toLowerCase()
-    return hostname === "importtaxph.com" || hostname === "www.importtaxph.com"
+    const hostname = new URL(href).hostname.toLowerCase().replace(/^www\./, "")
+    if (hostname === "importtaxph.com") return "importtaxph"
+    if (hostname === "applyreadycv.com") return "applyreadycv"
+    return null
   } catch {
-    return false
+    return null
   }
 }
 
@@ -48,19 +50,20 @@ function renderInline(text: string, post: BlogPost) {
     if (match[1] !== undefined) {
       const href = match[2]
       const isInternal = href.startsWith("/")
-      const isImportTaxPh = isImportTaxPhUrl(href)
-      const trackedHref = isImportTaxPh && post.importTaxContext === "temu"
+      const sisterSiteDestination = getSisterSiteDestination(href)
+      const trackedHref = sisterSiteDestination === "importtaxph" && post.importTaxContext === "temu"
         ? "https://importtaxph.com/temu-import-tax"
         : href
       if (isInternal) {
         result.push(
           <Link key={key++} href={href} className="text-green-600 underline hover:text-green-700">{match[1]}</Link>
         )
-      } else if (isImportTaxPh) {
+      } else if (sisterSiteDestination) {
         result.push(
           <TrackedSisterSiteLink
             key={key++}
             href={trackedHref}
+            destination={sisterSiteDestination}
             sourceSlug={post.slug}
             placement="inline-article"
             className="text-green-600 underline hover:text-green-700"

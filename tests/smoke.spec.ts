@@ -182,6 +182,31 @@ test("tracked Temu ImportTaxPH link emits a sister_site_click event", async ({ p
   })
 })
 
+test("work-from-home guide links naturally to ApplyReadyCV and tracks the destination", async ({ page }) => {
+  await page.addInitScript(() => {
+    ;(window as typeof window & { __events: unknown[] }).__events = []
+    window.va = (type, payload) => {
+      ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
+    }
+  })
+  await page.goto("/blog/best-work-from-home-desk-accessories-under-1000-philippines")
+  const link = page.getByRole("link", { name: /ApplyReadyCV/i })
+  const href = new URL((await link.getAttribute("href")) as string)
+  expect(href.hostname).toBe("applyreadycv.com")
+  expect(href.searchParams.get("utm_source")).toBe("sulitscan")
+  const popupPromise = page.waitForEvent("popup")
+  await link.click()
+  const popup = await popupPromise
+  await popup.close()
+  const events = await page.evaluate(() =>
+    (window as typeof window & { __events: Array<{ payload: { name?: string; data?: Record<string, unknown> } }> }).__events
+  )
+  expect(events.find((event) => event.payload.name === "sister_site_click")?.payload.data).toMatchObject({
+    destination: "applyreadycv",
+    source: "best-work-from-home-desk-accessories-under-1000-philippines",
+  })
+})
+
 test("analytics failure does not block affiliate navigation", async ({ page }) => {
   await page.addInitScript(() => {
     window.va = (type) => {

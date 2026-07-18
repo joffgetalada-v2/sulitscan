@@ -5,12 +5,14 @@ import { track } from "@vercel/analytics/react"
 
 interface TrackedSisterSiteLinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string
+  destination: "importtaxph" | "applyreadycv"
   sourceSlug: string
   placement: string
 }
 
 export default function TrackedSisterSiteLink({
   href,
+  destination,
   sourceSlug,
   placement,
   children,
@@ -32,7 +34,7 @@ export default function TrackedSisterSiteLink({
       onClick={(event) => {
         try {
           track("sister_site_click", {
-            destination: "importtaxph",
+            destination,
             placement,
             source: sourceSlug,
           })
