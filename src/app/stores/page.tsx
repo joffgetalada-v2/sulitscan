@@ -7,7 +7,7 @@ import { BreadcrumbJsonLd, ItemListJsonLd } from "@/components/SeoJsonLd"
 import PartnerBanners from "@/components/PartnerBanners"
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import { stores } from "@/data/stores"
-import { partnerBanners } from "@/data/partner-banners"
+import { activePartnerBanners } from "@/data/partner-banners"
 import { siteConfig } from "@/lib/seo"
 import { Store, ArrowRight, CheckCircle, Truck, ShieldCheck, Clock } from "lucide-react"
 
@@ -194,7 +194,7 @@ export default function StoresPage() {
             headingId="partner-offers-heading"
             title="Featured partner offers"
             subtitle="Sponsored links to partner stores worth checking. These are advertiser offers, and their catalogs are not imported into SulitScan deals, so confirm everything on the partner site before buying."
-            banners={partnerBanners}
+            banners={activePartnerBanners}
           />
         </div>
 

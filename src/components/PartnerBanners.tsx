@@ -17,7 +17,8 @@ const DISCLAIMER =
   "SulitScan may earn a commission when you visit partner stores through these links. Always confirm prices, shipping, availability, and return terms on the partner site."
 
 export default function PartnerBanners({ title, subtitle, banners, headingId }: PartnerBannersProps) {
-  if (banners.length === 0) return null
+  const activeBanners = banners.filter((banner) => banner.status === "active")
+  if (activeBanners.length === 0) return null
 
   return (
     <section aria-labelledby={headingId}>
@@ -31,7 +32,7 @@ export default function PartnerBanners({ title, subtitle, banners, headingId }: 
       {subtitle && <p className="mt-2 text-slate-500 text-sm max-w-2xl">{subtitle}</p>}
 
       <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {banners.map((b) => (
+        {activeBanners.map((b) => (
           <ExternalAffiliateLink
             key={b.id}
             href={b.href}

@@ -31,7 +31,7 @@ export default function PrivacyPolicyPage() {
                 Legal
               </span>
               <h1 className="text-3xl font-black text-slate-900 tracking-tight mb-1">Privacy Policy</h1>
-              <p className="text-sm text-slate-400">Last updated: June 2025</p>
+              <p className="text-sm text-slate-400">Last updated: July 2026</p>
             </div>
           </div>
         </div>
@@ -73,9 +73,11 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-lg font-bold text-slate-900 mb-3">3. Third-Party Links</h2>
             <p>
-              SulitScan PH contains affiliate links to third-party websites (Temu, Shopee PH, and Sephora PH).
-              We are not responsible for the privacy practices of those websites. We encourage you
-              to read the privacy policies of any third-party site you visit.
+              SulitScan PH contains affiliate and sponsored advertiser links to third-party websites.
+              The current commercial relationships are listed in our{" "}
+              <a href="/affiliate-disclosure" className="text-green-600 underline hover:text-green-700">Affiliate Disclosure</a>.
+              We are not responsible for the privacy practices of those websites or their affiliate
+              networks. We encourage you to read the privacy policy of any third-party site you visit.
             </p>
           </section>
 
@@ -105,14 +107,12 @@ export default function PrivacyPolicyPage() {
           <section>
             <h2 className="text-lg font-bold text-slate-900 mb-3">6. Affiliate Link Tracking</h2>
             <p>
-              When you click a Temu, Shopee PH, or Sephora PH affiliate link, those partner sites may use their own
-              cookies or tracking pixels to record the referral. SulitScan PH does not control this
-              tracking. Refer to{" "}
-              <a href="https://www.temu.com/privacy-policy.html" target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">Temu&apos;s Privacy Policy</a>,{" "}
-              <a href="https://shopee.ph/legaldoc/privacy" target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">Shopee PH&apos;s Privacy Policy</a>,{" "}
-              and{" "}
-              <a href="https://www.sephora.ph/privacy" target="_blank" rel="noopener noreferrer" className="text-green-600 underline hover:text-green-700">Sephora PH&apos;s Privacy Policy</a>{" "}
-              for details on how they handle your data.
+              When you click a link marked as affiliate or sponsored, the destination website or an
+              affiliate network, including Involve Asia where applicable, may use cookies or tracking
+              pixels to record the referral. SulitScan PH does not control that third-party tracking.
+              Review the privacy policy on the destination website and our{" "}
+              <a href="/affiliate-disclosure" className="text-green-600 underline hover:text-green-700">Affiliate Disclosure</a>{" "}
+              before using a partner offer.
             </p>
           </section>
 

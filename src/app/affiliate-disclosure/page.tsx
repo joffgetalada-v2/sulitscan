@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
+import { activePartnerBanners } from "@/data/partner-banners"
 import { siteConfig } from "@/lib/seo"
 import { FileText } from "lucide-react"
 
@@ -9,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: `${siteConfig.url}/affiliate-disclosure` },
 }
 
-const partners = [
+const dealPartners = [
   { name: "Temu", note: "" },
   { name: "Shopee PH", note: "via Shopee Affiliate Program" },
   { name: "Sephora PH", note: "via Involve Asia" },
@@ -39,7 +40,7 @@ export default function AffiliateDisclosurePage() {
               <h1 className="text-3xl font-black text-slate-900 tracking-tight mb-1">
                 Affiliate Disclosure
               </h1>
-              <p className="text-sm text-slate-400">Last updated: June 2026</p>
+              <p className="text-sm text-slate-400">Last updated: July 2026</p>
             </div>
           </div>
         </div>
@@ -66,7 +67,7 @@ export default function AffiliateDisclosurePage() {
               SulitScan currently publishes active deal notes for the following stores only:
             </p>
             <ul className="mb-4 space-y-1.5" role="list">
-              {partners.map((p) => (
+              {dealPartners.map((p) => (
                 <li key={p.name} className="flex items-center gap-2 text-sm text-slate-700">
                   <span className="w-1.5 h-1.5 rounded-full bg-green-500 shrink-0" aria-hidden="true" />
                   <span className="font-medium">{p.name}</span>
@@ -82,6 +83,26 @@ export default function AffiliateDisclosurePage() {
                 <strong className="text-slate-700">Coming soon:</strong> Lazada and AliExpress may be added later once product data, affiliate links, and buyer-check information are prepared. They are <strong>not</strong> currently active affiliate partners.
               </p>
             </div>
+
+            <h3 className="mt-7 text-base font-bold text-slate-900">Sponsored Advertiser Offers</h3>
+            <p className="mt-2 mb-4">
+              SulitScan may also show clearly labeled sponsored links to advertisers whose product
+              catalogs are not imported into our deal listings. These links may be supplied through
+              affiliate networks, including Involve Asia. We remove an offer when our access is not active.
+            </p>
+            <ul className="mb-4 space-y-1.5" role="list">
+              {activePartnerBanners.map((partner) => (
+                <li key={partner.id} className="flex items-center gap-2 text-sm text-slate-700">
+                  <span className="w-1.5 h-1.5 rounded-full bg-amber-500 shrink-0" aria-hidden="true" />
+                  <span className="font-medium">{partner.advertiserName}</span>
+                  <span className="text-slate-400 text-xs">sponsored advertiser link</span>
+                </li>
+              ))}
+            </ul>
+            <p>
+              Advertiser availability and permitted promotion methods can change. A listed advertiser
+              is shown only while the corresponding offer is available to SulitScan.
+            </p>
           </section>
 
           <section aria-labelledby="disclosure-links">
@@ -89,8 +110,9 @@ export default function AffiliateDisclosurePage() {
               How to Identify Affiliate Links
             </h2>
             <p>
-              All external affiliate links on SulitScan PH are labeled with button text like
-              &quot;View Deal on [Platform]&quot;. External links use the attributes{" "}
+              External affiliate links on SulitScan PH use labels such as &quot;View Deal on
+              [Platform]&quot;, &quot;Visit [Store]&quot;, or &quot;View [Advertiser] Offers&quot;. Sponsored
+              advertiser cards are also visibly labeled. These links use the attributes{" "}
               <code className="bg-slate-100 px-1.5 py-0.5 rounded text-xs font-mono">rel=&quot;sponsored nofollow noopener noreferrer&quot;</code>{" "}
               and open in a new tab.
             </p>

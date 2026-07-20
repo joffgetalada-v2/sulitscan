@@ -43,19 +43,6 @@ export const partnerBanners: PartnerBanner[] = [
     status: "active",
   },
   {
-    id: "partner-shein",
-    advertiserName: "Shein",
-    title: "Trendy fashion and everyday style",
-    description: "Browse fashion, accessories, and style finds from Shein.",
-    category: "Fashion",
-    imageSrc: "/banners/partners/shein.jpg",
-    imageAlt: "Shein banner showing trendy clothing, bags, shoes, and everyday fashion items",
-    href: "https://miniurl.app/clnkcce",
-    ctaLabel: "View Shein Offers",
-    placement: "home",
-    status: "active",
-  },
-  {
     id: "partner-photobooks",
     advertiserName: "Photobooks",
     title: "Personalized photo gifts and printed memories",
@@ -122,4 +109,6 @@ export const partnerBanners: PartnerBanner[] = [
   },
 ]
 
-export const homePartnerBanners = partnerBanners.filter((b) => b.placement === "home")
+export const activePartnerBanners = partnerBanners.filter((banner) => banner.status === "active")
+
+export const homePartnerBanners = activePartnerBanners.filter((banner) => banner.placement === "home")

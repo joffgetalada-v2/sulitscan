@@ -31,7 +31,7 @@ export default function CookiePolicyPage() {
                 Legal
               </span>
               <h1 className="text-3xl font-black text-slate-900 tracking-tight mb-1">Cookie Policy</h1>
-              <p className="text-sm text-slate-400">Last updated: June 2026</p>
+              <p className="text-sm text-slate-400">Last updated: July 2026</p>
             </div>
           </div>
         </div>
@@ -71,19 +71,22 @@ export default function CookiePolicyPage() {
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
                 <h3 className="text-sm font-semibold text-slate-800 mb-1">Affiliate Tracking</h3>
                 <p className="text-xs text-slate-500">
-                  When you click an affiliate link to Temu or Sephora PH, those partner sites may set their
-                  own tracking cookies to attribute the referral. SulitScan does not control third-party
-                  cookies. Refer to{" "}
-                  <a href="https://www.temu.com/privacy-policy.html" target="_blank" rel="noopener noreferrer" className="text-green-600 underline">Temu&apos;s Privacy Policy</a> and{" "}
-                  <a href="https://www.sephora.ph/privacy" target="_blank" rel="noopener noreferrer" className="text-green-600 underline">Sephora PH&apos;s Privacy Policy</a> for details.
+                  When you click a link marked as affiliate or sponsored, the destination website or an
+                  affiliate network, including Involve Asia where applicable, may set cookies or use
+                  similar technology to attribute the referral. SulitScan does not set those third-party
+                  cookies before you click and does not control them. See our{" "}
+                  <Link href="/affiliate-disclosure" className="text-green-600 underline">Affiliate Disclosure</Link>{" "}
+                  for the current commercial relationships.
                 </p>
               </div>
               <div className="p-4 bg-amber-50 rounded-xl border border-amber-100">
                 <h3 className="text-sm font-semibold text-amber-800 mb-1">Advertising Cookies (Possible Future Use)</h3>
                 <p className="text-xs text-amber-700">
-                  SulitScan PH does not currently run display advertising. If we add Google AdSense or a
-                  similar ad network in the future, this policy will be updated and we will add a cookie
-                  consent notice before enabling advertising cookies.
+                  SulitScan PH does not currently embed a third-party programmatic advertising network.
+                  Clearly labeled sponsored advertiser cards are ordinary affiliate links and do not load
+                  advertiser cookies on SulitScan before a visitor clicks. If we add Google AdSense or a
+                  similar ad network in the future, this policy will be updated and we will add a consent
+                  mechanism before enabling advertising cookies where required.
                 </p>
               </div>
             </div>
