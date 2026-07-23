@@ -101,7 +101,7 @@ export default function StoresPage() {
                     height={store.bannerHeight ?? 412}
                     sizes="(max-width: 640px) 100vw, 50vw"
                     className="w-full h-auto group-hover:opacity-95 transition-opacity"
-                    priority
+                    preload
                   />
                   <h2 className="sr-only">{store.name}</h2>
                   {!store.bannerHasBadge && (

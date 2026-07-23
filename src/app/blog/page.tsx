@@ -47,7 +47,7 @@ export default function BlogPage() {
           fill
           className="object-cover"
           sizes="100vw"
-          priority
+          preload
         />
       </div>
 

@@ -138,14 +138,23 @@ export async function generateMetadata({
   if (!deal) return {}
   const title = buildDealSeoTitle(deal)
   const description = buildDealSeoDescription(deal)
+  const canonical = `${siteConfig.url}/deals/${slug}`
+  const image = deal.imageUrl || siteConfig.ogImage
   return {
     title: { absolute: title },
     description,
-    alternates: { canonical: `${siteConfig.url}/deals/${slug}` },
+    alternates: { canonical },
     openGraph: {
       title,
       description,
-      url: `${siteConfig.url}/deals/${slug}`,
+      url: canonical,
+      images: [image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
     },
   }
 }

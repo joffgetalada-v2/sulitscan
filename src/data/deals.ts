@@ -3582,12 +3582,16 @@ export const deals: Deal[] = [
 
 // ─── Helper functions ──────────────────────────────────────────────────────────
 
-export function getDealBySlug(slug: string): Deal | undefined {
-  return deals.find((d) => d.slug === slug)
-}
-
 // Platforms with active affiliate relationships, shown on public pages
 const ACTIVE_PLATFORMS = new Set(["Sephora PH", "Temu", "Shopee PH"])
+
+export function isPublicDeal(deal: Deal): boolean {
+  return ACTIVE_PLATFORMS.has(deal.platform) && Boolean(deal.imageUrl)
+}
+
+export function getDealBySlug(slug: string): Deal | undefined {
+  return deals.find((deal) => deal.slug === slug && isPublicDeal(deal))
+}
 
 // Discounts at or above this are treated as suspicious. A listed 80%+ "discount"
 // often reflects an inflated original price, so we demote these from the homepage
@@ -3632,9 +3636,7 @@ export function compareDealsForDefault(a: Deal, b: Deal): number {
 
 // All active deals (active platform and has image), in the recommended default order.
 export function getActiveDeals(): Deal[] {
-  return deals
-    .filter(d => ACTIVE_PLATFORMS.has(d.platform) && !!d.imageUrl)
-    .sort(compareDealsForDefault)
+  return deals.filter(isPublicDeal).sort(compareDealsForDefault)
 }
 
 // Curated homepage picks: strong SulitScore and a sensible (non-suspicious) discount,

@@ -29,6 +29,14 @@ test("404 page shows not-found content", async ({ page }) => {
   await expect(page.getByRole("heading", { name: /page not found/i })).toBeVisible()
 })
 
+for (const slug of ["summer-dress-shein", "xiaomi-smart-band-9-shopee"]) {
+  test(`inactive deal ${slug} returns 404 and is noindex`, async ({ page }) => {
+    const response = await page.goto(`/deals/${slug}`)
+    expect(response?.status()).toBe(404)
+    await expect(page.locator('meta[name="robots"][content*="noindex"]')).toHaveCount(1)
+  })
+}
+
 test("affiliate links have correct rel attributes", async ({ page }) => {
   await page.goto("/deals")
   const affiliateLinks = page.locator('a[rel*="sponsored"]')

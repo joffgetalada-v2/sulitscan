@@ -33,14 +33,26 @@ export async function generateMetadata({
   const { slug } = await params
   const store = getStoreBySlug(slug)
   if (!store) return {}
+  const title = `${store.name} Deals Philippines | SulitScan PH`
+  const description = clampMeta(`${store.description} Browse selected ${store.name} deals on SulitScan PH with buyer notes, shipping info, and affiliate disclosure.`)
+  const canonical = `${siteConfig.url}/stores/${slug}`
+  const banner = store.bannerImage && publicImg(store.bannerImage)
+  const image = banner ? `${siteConfig.url}${banner}` : siteConfig.ogImage
   return {
     title: `${store.name} Deals Philippines`,
-    description: clampMeta(`${store.description} Browse selected ${store.name} deals on SulitScan PH with buyer notes, shipping info, and affiliate disclosure.`),
-    alternates: { canonical: `${siteConfig.url}/stores/${slug}` },
+    description,
+    alternates: { canonical },
     openGraph: {
-      title: `${store.name} Deals Philippines | SulitScan PH`,
-      description: store.description,
-      url: `${siteConfig.url}/stores/${slug}`,
+      title,
+      description,
+      url: canonical,
+      images: [image],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image],
     },
   }
 }
@@ -104,7 +116,7 @@ export default async function StoreDetailPage({
               height={store.bannerHeight ?? 412}
               sizes="(max-width: 1280px) 100vw, 1280px"
               className="w-full h-auto"
-              priority
+              preload
             />
           </div>
           <div className="flex items-start justify-between flex-wrap gap-4 mt-5">

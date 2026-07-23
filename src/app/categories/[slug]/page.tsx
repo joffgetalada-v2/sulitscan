@@ -26,18 +26,28 @@ export async function generateMetadata({
   if (!category) return {}
   const content = categoryContent[slug]
   const indexable = category.featured && getDealsByCategory(slug).length > 0
+  const title = `${category.name} Deals Philippines | SulitScan PH`
+  const description = clampMeta(
+    content?.intro ??
+      `${category.description} Browse ${category.name.toLowerCase()} deals from Temu, Shopee PH, and Sephora PH on SulitScan PH.`
+  )
+  const canonical = `${siteConfig.url}/categories/${slug}`
   return {
     title: `${category.name} Deals Philippines`,
-    description: clampMeta(
-      content?.intro ??
-        `${category.description} Browse ${category.name.toLowerCase()} deals from Temu, Shopee PH, and Sephora PH on SulitScan PH.`
-    ),
-    alternates: { canonical: `${siteConfig.url}/categories/${slug}` },
+    description,
+    alternates: { canonical },
     robots: { index: indexable, follow: true },
     openGraph: {
-      title: `${category.name} Deals Philippines | SulitScan PH`,
-      description: category.description,
-      url: `${siteConfig.url}/categories/${slug}`,
+      title,
+      description,
+      url: canonical,
+      images: [siteConfig.ogImage],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [siteConfig.ogImage],
     },
   }
 }

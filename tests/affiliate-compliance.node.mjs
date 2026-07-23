@@ -23,6 +23,13 @@ function loadTypeScriptModule(relativePath) {
 }
 
 const bannersModule = loadTypeScriptModule("src/data/partner-banners.ts")
+const dealsModule = loadTypeScriptModule("src/data/deals.ts")
+
+test("only publicly active deals are exposed by slug", () => {
+  assert.equal(dealsModule.getDealBySlug("summer-dress-shein"), undefined)
+  assert.equal(dealsModule.getDealBySlug("xiaomi-smart-band-9-shopee"), undefined)
+  assert.ok(dealsModule.getDealBySlug(dealsModule.getActiveDeals()[0].slug))
+})
 
 test("only active partner offers are exposed to public pages", () => {
   assert.ok(Array.isArray(bannersModule.activePartnerBanners), "activePartnerBanners export must exist")
