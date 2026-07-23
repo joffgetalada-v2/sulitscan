@@ -266,6 +266,9 @@ test("sitemap contains reviewed canonical guides and excludes the retired guide"
     /<loc>https:\/\/sulitscan\.com\/blog\/how-to-check-shopee-seller-legit-philippines<\/loc>\s*<lastmod>2026-07-12/
   )
   expect(xml).not.toContain("/blog/how-to-check-if-shopee-seller-is-legit")
+  expect(xml).toContain("/categories/under-1000?page=2")
+  expect(xml).toContain("/stores/temu?page=2")
+  expect(xml).not.toContain("?page=1")
 })
 
 test("blog index lists guides newest first", async ({ page }) => {
@@ -310,6 +313,35 @@ test("invalid deal filters normalize visibly but remain noindex", async ({ page 
   await expect(page.locator('select[name="sort"]')).toHaveValue("recommended")
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://sulitscan.com/deals")
 })
+
+for (const entityPath of ["/categories/under-1000", "/stores/temu"]) {
+  test(`${entityPath} exposes crawlable deal pagination`, async ({ page }) => {
+    await page.goto(entityPath)
+    const firstPageDeals = await page.locator("main article h3").allTextContents()
+    await expect(page.getByRole("link", { name: "Next page" })).toHaveAttribute(
+      "href",
+      `${entityPath}?page=2`
+    )
+
+    const response = await page.goto(`${entityPath}?page=2`)
+    expect(response?.status()).toBe(200)
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      `https://sulitscan.com${entityPath}?page=2`
+    )
+    const secondPageDeals = await page.locator("main article h3").allTextContents()
+    expect(secondPageDeals).not.toEqual(firstPageDeals)
+  })
+
+  test(`${entityPath} noindexes an invalid page request`, async ({ page }) => {
+    await page.goto(`${entityPath}?page=garbage`)
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      `https://sulitscan.com${entityPath}`
+    )
+  })
+}
 
 
 test("article uses article-specific Twitter metadata and dateModified", async ({ page }) => {

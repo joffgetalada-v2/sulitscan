@@ -31,6 +31,11 @@ const seoModule = loadTypeScriptModule("src/lib/deal-seo.ts", {
 const listingModule = loadTypeScriptModule("src/lib/deal-listing.ts", {
   "@/data/deals": dealsModule,
 })
+const entityListingModule = loadTypeScriptModule("src/lib/entity-deal-listing.ts")
+
+const entityDealsFixture = Array.from({ length: 50 }, (_, index) => ({
+  id: `deal-${index + 1}`,
+}))
 
 test("deal SEO titles are unique and no longer than 65 characters", () => {
   const activeDeals = dealsModule.getActiveDeals()
@@ -191,4 +196,30 @@ test("deal pagination URLs preserve filters without empty defaults", () => {
     { page: 2 }
   )
   assert.equal(href, "/deals?q=brush&store=Sephora+PH&page=2")
+})
+
+test("entity deal listing returns the second 24-item page canonically", () => {
+  const result = entityListingModule.resolveEntityDealListing(entityDealsFixture, "2")
+
+  assert.equal(result.page, 2)
+  assert.equal(result.pageCount, 3)
+  assert.equal(result.isCanonical, true)
+  assert.deepEqual(result.items.map((deal) => deal.id),
+    entityDealsFixture.slice(24, 48).map((deal) => deal.id))
+})
+
+test("entity deal listing normalizes invalid requests to non-canonical page one", () => {
+  const result = entityListingModule.resolveEntityDealListing(entityDealsFixture, ["garbage", "2"])
+
+  assert.equal(result.page, 1)
+  assert.equal(result.isCanonical, false)
+  assert.deepEqual(result.items.map((deal) => deal.id),
+    entityDealsFixture.slice(0, 24).map((deal) => deal.id))
+})
+
+test("entity pagination hrefs omit page one and include later pages", () => {
+  assert.equal(entityListingModule.buildEntityPageHref("/categories/under-1000", 1),
+    "/categories/under-1000")
+  assert.equal(entityListingModule.buildEntityPageHref("/categories/under-1000", 2),
+    "/categories/under-1000?page=2")
 })

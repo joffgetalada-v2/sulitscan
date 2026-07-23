@@ -5,12 +5,22 @@ import { BreadcrumbJsonLd, ItemListJsonLd, FAQJsonLd } from "@/components/SeoJso
 import { categories, getCategoryBySlug } from "@/data/categories"
 import { getDealsByCategory, isSuspiciousDiscount } from "@/data/deals"
 import { categoryContent } from "@/data/category-content"
-import CategoryDeals from "@/components/CategoryDeals"
+import EntityDeals from "@/components/EntityDeals"
 import TopPicks from "@/components/TopPicks"
 import TrustBar from "@/components/TrustBar"
+import {
+  buildEntityPageHref,
+  ENTITY_DEALS_PAGE_SIZE,
+  resolveEntityDealListing,
+} from "@/lib/entity-deal-listing"
 import { siteConfig } from "@/lib/seo"
 import { formatDealCount, clampMeta } from "@/lib/utils"
 import { ArrowLeft, CheckCircle, BookOpen, AlertCircle } from "lucide-react"
+
+interface CategoryPageProps {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ page?: string | string[] }>
+}
 
 export function generateStaticParams() {
   return categories.filter((c) => c.featured).map((c) => ({ slug: c.slug }))
@@ -18,22 +28,23 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ slug: string }>
-}): Promise<Metadata> {
-  const { slug } = await params
+  searchParams,
+}: CategoryPageProps): Promise<Metadata> {
+  const [{ slug }, query] = await Promise.all([params, searchParams])
   const category = getCategoryBySlug(slug)
   if (!category) return {}
   const content = categoryContent[slug]
-  const indexable = category.featured && getDealsByCategory(slug).length > 0
-  const title = `${category.name} Deals Philippines | SulitScan PH`
+  const listing = resolveEntityDealListing(getDealsByCategory(slug), query.page)
+  const indexable = category.featured && listing.total > 0 && listing.isCanonical
+  const pageSuffix = listing.page > 1 ? ` — Page ${listing.page}` : ""
+  const title = `${category.name} Deals Philippines${pageSuffix} | SulitScan PH`
   const description = clampMeta(
     content?.intro ??
       `${category.description} Browse ${category.name.toLowerCase()} deals from Temu, Shopee PH, and Sephora PH on SulitScan PH.`
   )
-  const canonical = `${siteConfig.url}/categories/${slug}`
+  const canonical = `${siteConfig.url}${buildEntityPageHref(`/categories/${slug}`, listing.page)}`
   return {
-    title: `${category.name} Deals Philippines`,
+    title: `${category.name} Deals Philippines${pageSuffix}`,
     description,
     alternates: { canonical },
     robots: { index: indexable, follow: true },
@@ -54,14 +65,14 @@ export async function generateMetadata({
 
 export default async function CategoryPage({
   params,
-}: {
-  params: Promise<{ slug: string }>
-}) {
-  const { slug } = await params
+  searchParams,
+}: CategoryPageProps) {
+  const [{ slug }, query] = await Promise.all([params, searchParams])
   const category = getCategoryBySlug(slug)
   if (!category) notFound()
 
   const categoryDeals = getDealsByCategory(slug)
+  const listing = resolveEntityDealListing(categoryDeals, query.page)
   const content = categoryContent[slug]
   // Top picks: highest SulitScore, then biggest discount, capped at 8. Suspiciously
   // large discounts (80%+) are excluded so Top Picks stays curated and low-risk.
@@ -83,11 +94,12 @@ export default async function CategoryPage({
       />
       {categoryDeals.length > 0 && (
         <ItemListJsonLd
-          name={`${category.name} Deals Philippines – SulitScan PH`}
-          items={categoryDeals.slice(0, 24).map((d) => ({
+          name={`${category.name} Deals Philippines${listing.page > 1 ? ` — Page ${listing.page}` : ""} – SulitScan PH`}
+          items={listing.items.map((d, index) => ({
             name: d.title,
             url: `${siteConfig.url}/deals/${d.slug}`,
             description: d.reason,
+            position: (listing.page - 1) * ENTITY_DEALS_PAGE_SIZE + index + 1,
           }))}
         />
       )}
@@ -273,8 +285,14 @@ export default async function CategoryPage({
           <section aria-labelledby="deals-section-heading">
             <h2 id="deals-section-heading" className="text-lg font-bold text-slate-900 mb-5">
               {category.name} deals, {categoryDeals.length} available
+              {listing.page > 1 ? ` — Page ${listing.page}` : ""}
             </h2>
-            <CategoryDeals deals={categoryDeals} />
+            <EntityDeals
+              listing={listing}
+              basePath={`/categories/${slug}`}
+              gridClassName="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
+              priceNote="Prices from affiliate datafeeds, confirm on partner store before buying."
+            />
           </section>
         ) : (
           <div className="text-center py-16">

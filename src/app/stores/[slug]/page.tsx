@@ -9,11 +9,21 @@ import { BreadcrumbJsonLd, FAQJsonLd, ItemListJsonLd } from "@/components/SeoJso
 import { stores, getStoreBySlug } from "@/data/stores"
 import { getStoreContent } from "@/data/store-content"
 import { getDealsByPlatform } from "@/data/deals"
+import {
+  buildEntityPageHref,
+  ENTITY_DEALS_PAGE_SIZE,
+  resolveEntityDealListing,
+} from "@/lib/entity-deal-listing"
 import { siteConfig } from "@/lib/seo"
 import { clampMeta } from "@/lib/utils"
-import StoreDeals from "@/components/StoreDeals"
+import EntityDeals from "@/components/EntityDeals"
 import ImportTaxCallout from "@/components/ImportTaxCallout"
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
+
+interface StorePageProps {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ page?: string | string[] }>
+}
 
 // Returns the public URL only if the file actually exists, so a missing banner
 // gracefully falls back to the gradient hero instead of a broken image.
@@ -27,21 +37,23 @@ export function generateStaticParams() {
 
 export async function generateMetadata({
   params,
-}: {
-  params: Promise<{ slug: string }>
-}): Promise<Metadata> {
-  const { slug } = await params
+  searchParams,
+}: StorePageProps): Promise<Metadata> {
+  const [{ slug }, query] = await Promise.all([params, searchParams])
   const store = getStoreBySlug(slug)
   if (!store) return {}
-  const title = `${store.name} Deals Philippines | SulitScan PH`
+  const listing = resolveEntityDealListing(getDealsByPlatform(store.name), query.page)
+  const pageSuffix = listing.page > 1 ? ` — Page ${listing.page}` : ""
+  const title = `${store.name} Deals Philippines${pageSuffix} | SulitScan PH`
   const description = clampMeta(`${store.description} Browse selected ${store.name} deals on SulitScan PH with buyer notes, shipping info, and affiliate disclosure.`)
-  const canonical = `${siteConfig.url}/stores/${slug}`
+  const canonical = `${siteConfig.url}${buildEntityPageHref(`/stores/${slug}`, listing.page)}`
   const banner = store.bannerImage && publicImg(store.bannerImage)
   const image = banner ? `${siteConfig.url}${banner}` : siteConfig.ogImage
   return {
-    title: `${store.name} Deals Philippines`,
+    title: `${store.name} Deals Philippines${pageSuffix}`,
     description,
     alternates: { canonical },
+    robots: { index: listing.total > 0 && listing.isCanonical, follow: true },
     openGraph: {
       title,
       description,
@@ -59,14 +71,14 @@ export async function generateMetadata({
 
 export default async function StoreDetailPage({
   params,
-}: {
-  params: Promise<{ slug: string }>
-}) {
-  const { slug } = await params
+  searchParams,
+}: StorePageProps) {
+  const [{ slug }, query] = await Promise.all([params, searchParams])
   const store = getStoreBySlug(slug)
   if (!store) notFound()
 
   const storeDeals = getDealsByPlatform(store.name)
+  const listing = resolveEntityDealListing(storeDeals, query.page)
   const content = getStoreContent(slug)
   const banner = store.bannerImage && publicImg(store.bannerImage) ? store.bannerImage : null
 
@@ -84,11 +96,12 @@ export default async function StoreDetailPage({
       )}
       {storeDeals.length > 0 && (
         <ItemListJsonLd
-          name={`${store.name} Deals Philippines – SulitScan PH`}
-          items={storeDeals.slice(0, 24).map((d) => ({
+          name={`${store.name} Deals Philippines${listing.page > 1 ? ` — Page ${listing.page}` : ""} – SulitScan PH`}
+          items={listing.items.map((d, index) => ({
             name: d.title,
             url: `${siteConfig.url}/deals/${d.slug}`,
             description: d.reason,
+            position: (listing.page - 1) * ENTITY_DEALS_PAGE_SIZE + index + 1,
           }))}
         />
       )}
@@ -275,10 +288,15 @@ export default async function StoreDetailPage({
             <section aria-labelledby="store-deals-heading">
               <h2 id="store-deals-heading" className="text-xl font-bold text-slate-900 mb-4">
                 {storeDeals.length > 0
-                  ? `${storeDeals.length} curated deal${storeDeals.length !== 1 ? "s" : ""} from ${store.name}`
+                  ? `${storeDeals.length} curated deal${storeDeals.length !== 1 ? "s" : ""} from ${store.name}${listing.page > 1 ? ` — Page ${listing.page}` : ""}`
                   : `Deals from ${store.name}`}
               </h2>
-              <StoreDeals deals={storeDeals} storeName={store.name} />
+              <EntityDeals
+                listing={listing}
+                basePath={`/stores/${slug}`}
+                gridClassName="grid grid-cols-1 sm:grid-cols-2 gap-5"
+                priceNote={`Prices from affiliate datafeed, confirm current price on ${store.name} before buying.`}
+              />
             </section>
 
             {/* FAQs */}

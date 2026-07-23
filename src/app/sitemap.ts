@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next"
-import { getActiveDeals } from "@/data/deals"
+import { getActiveDeals, getDealsByCategory, getDealsByPlatform } from "@/data/deals"
 import { categories } from "@/data/categories"
 import { posts } from "@/data/posts"
 import { stores } from "@/data/stores"
+import { buildEntityPageHref, ENTITY_DEALS_PAGE_SIZE } from "@/lib/entity-deal-listing"
 
 const BASE_URL = "https://sulitscan.com"
 
@@ -84,11 +85,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }))
 
   const featuredCategories = categories.filter((c) => c.featured)
-  const categoryRoutes: MetadataRoute.Sitemap = featuredCategories.map((cat) => ({
-    url: `${BASE_URL}/categories/${cat.slug}`,
-    changeFrequency: "weekly" as const,
-    priority: 0.6,
-  }))
+  const categoryRoutes: MetadataRoute.Sitemap = featuredCategories.flatMap((cat) => {
+    const pageCount = Math.max(
+      1,
+      Math.ceil(getDealsByCategory(cat.slug).length / ENTITY_DEALS_PAGE_SIZE)
+    )
+    return Array.from({ length: pageCount }, (_, index) => ({
+      url: `${BASE_URL}${buildEntityPageHref(`/categories/${cat.slug}`, index + 1)}`,
+      changeFrequency: "weekly" as const,
+      priority: 0.6,
+    }))
+  })
 
   const postRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${BASE_URL}/blog/${post.slug}`,
@@ -97,11 +104,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }))
 
-  const storeRoutes: MetadataRoute.Sitemap = stores.map((store) => ({
-    url: `${BASE_URL}/stores/${store.slug}`,
-    changeFrequency: "weekly" as const,
-    priority: 0.7,
-  }))
+  const storeRoutes: MetadataRoute.Sitemap = stores.flatMap((store) => {
+    const pageCount = Math.max(
+      1,
+      Math.ceil(getDealsByPlatform(store.name).length / ENTITY_DEALS_PAGE_SIZE)
+    )
+    return Array.from({ length: pageCount }, (_, index) => ({
+      url: `${BASE_URL}${buildEntityPageHref(`/stores/${store.slug}`, index + 1)}`,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }))
+  })
 
   return [...staticRoutes, ...dealRoutes, ...categoryRoutes, ...postRoutes, ...storeRoutes]
 }
