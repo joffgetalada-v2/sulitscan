@@ -33,6 +33,7 @@ const slugsOf = (f) => [...read(f).matchAll(/slug:\s*"([^"]+)"/g)].map((m) => m[
 // ── Route table ──────────────────────────────────────────────────────────
 const STATIC = new Set([
   "", "deals", "categories", "stores", "blog", "about", "contact",
+  "tools/checkout-comparison",
   "affiliate-disclosure", "editorial-policy", "privacy-policy", "terms", "cookie-policy",
 ])
 const catSlugs = new Set(slugsOf("src/data/categories.ts"))
