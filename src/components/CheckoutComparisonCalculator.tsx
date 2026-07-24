@@ -76,9 +76,14 @@ function OfferFields({
   values: OfferValues
   onChange: (key: keyof CheckoutOfferInput, value: string) => void
 }) {
+  const currencyDescriptionId = `offer-${name.toLowerCase()}-currency-description`
+
   return (
     <fieldset className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
       <legend className="px-2 text-lg font-black text-slate-900">Offer {name}</legend>
+      <p id={currencyDescriptionId} className="sr-only">
+        Monetary amounts are in Philippine pesos (PHP).
+      </p>
       <div className="grid gap-4 sm:grid-cols-2">
         {fields.map((field) => {
           const id = `offer-${name.toLowerCase()}-${field.key}`
@@ -108,7 +113,13 @@ function OfferFields({
                   className={`w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pr-3 text-sm text-slate-900 outline-none transition focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-100 ${
                     field.key === "quantity" ? "pl-3" : "pl-8"
                   }`}
-                  aria-describedby={field.hint ? `${id}-hint` : undefined}
+                  aria-describedby={
+                    field.key === "quantity"
+                      ? undefined
+                      : [currencyDescriptionId, field.hint ? `${id}-hint` : null]
+                          .filter(Boolean)
+                          .join(" ")
+                  }
                 />
               </div>
               {field.hint && (

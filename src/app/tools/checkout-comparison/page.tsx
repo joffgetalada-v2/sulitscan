@@ -84,7 +84,7 @@ export default function CheckoutComparisonPage() {
         </div>
       </section>
 
-      <main className="bg-white py-12 sm:py-16">
+      <div className="bg-white py-12 sm:py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <CheckoutComparisonCalculator />
 
@@ -186,7 +186,7 @@ export default function CheckoutComparisonPage() {
             </section>
           </div>
         </div>
-      </main>
+      </div>
     </>
   )
 }

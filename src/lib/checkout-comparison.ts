@@ -14,8 +14,10 @@ export interface CheckoutOfferResult {
   perUnit: number
 }
 
+const MAX_NORMALIZED_INPUT = Number.MAX_SAFE_INTEGER
+
 function nonNegativeFinite(value: number): number {
-  return Number.isFinite(value) ? Math.max(0, value) : 0
+  return Number.isFinite(value) ? Math.min(MAX_NORMALIZED_INPUT, Math.max(0, value)) : 0
 }
 
 function normalizeQuantity(value: number): number {

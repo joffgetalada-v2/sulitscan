@@ -96,3 +96,35 @@ test("returns the lower-total offer and a rounded difference", () => {
     { winner: "a", difference: 35.56 }
   )
 })
+
+test("keeps overflow-scale finite inputs comparable without false ties", () => {
+  const offerA = {
+    ...baseOffer,
+    itemPrice: Number.MAX_VALUE,
+    quantity: 2,
+  }
+  const offerB = {
+    ...baseOffer,
+    itemPrice: Number.MAX_VALUE,
+    quantity: 3,
+  }
+
+  const resultA = calculateCheckoutOffer(offerA)
+  const resultB = calculateCheckoutOffer(offerB)
+  const comparison = compareCheckoutOffers(offerA, offerB)
+
+  const derivedValues = [
+    resultA.subtotal,
+    resultA.total,
+    resultA.perUnit,
+    resultB.subtotal,
+    resultB.total,
+    resultB.perUnit,
+  ]
+  for (const value of derivedValues) {
+    assert.equal(Number.isFinite(value), true)
+  }
+  assert.equal(comparison.winner, "a")
+  assert.equal(Number.isFinite(comparison.difference), true)
+  assert.ok(comparison.difference > 0)
+})

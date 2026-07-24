@@ -26,6 +26,17 @@ test("checkout comparison identifies the cheaper final total without tracking en
   await page.goto("/tools/checkout-comparison")
 
   const offerA = page.getByRole("group", { name: "Offer A" })
+  for (const label of [
+    "Item price",
+    "Shipping",
+    "Voucher discount",
+    "Payment discount",
+    "Other fees",
+    "Import cost estimate",
+  ]) {
+    await expect(offerA.getByLabel(label)).toHaveAccessibleDescription(/Philippine pesos \(PHP\)/i)
+  }
+  await expect(offerA.getByLabel("Quantity")).toHaveAccessibleDescription("")
   await offerA.getByLabel("Item price").fill("250")
   await offerA.getByLabel("Quantity").fill("2")
   await offerA.getByLabel("Shipping").fill("50")
@@ -65,6 +76,93 @@ test("checkout comparison identifies the cheaper final total without tracking en
     candidate.type === "event" && candidate.payload.name === "checkout_comparison_completed"
   )
   expect(event?.payload.data).toEqual({ source: "checkout-comparison-tool" })
+})
+
+test("checkout comparison exposes canonical, social, and structured metadata without nested main landmarks", async ({
+  page,
+}) => {
+  await page.goto("/tools/checkout-comparison")
+
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "https://sulitscan.com/tools/checkout-comparison"
+  )
+  await expect(page.locator('meta[property="og:url"]')).toHaveAttribute(
+    "content",
+    "https://sulitscan.com/tools/checkout-comparison"
+  )
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
+    "content",
+    /Checkout Price Comparison Tool Philippines/
+  )
+  await expect(page.locator('meta[name="twitter:card"]')).toHaveAttribute(
+    "content",
+    "summary_large_image"
+  )
+  await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute(
+    "content",
+    /Checkout Price Comparison Tool Philippines/
+  )
+  await expect(page.locator("main")).toHaveCount(1)
+
+  const schemas = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) =>
+    scripts.map((script) => JSON.parse(script.textContent ?? "{}"))
+  )
+  const breadcrumb = schemas.find((schema) => schema["@type"] === "BreadcrumbList")
+  const faq = schemas.find((schema) => schema["@type"] === "FAQPage")
+  expect(breadcrumb?.itemListElement).toEqual([
+    expect.objectContaining({ position: 1, name: "Home", item: "https://sulitscan.com" }),
+    expect.objectContaining({
+      position: 2,
+      name: "Checkout comparison tool",
+      item: "https://sulitscan.com/tools/checkout-comparison",
+    }),
+  ])
+  expect(faq?.mainEntity).toHaveLength(4)
+})
+
+test("checkout comparison ImportTaxPH link uses tracked privacy-safe attribution", async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    ;(window as typeof window & { __events: unknown[] }).__events = []
+    window.va = (type, payload) => {
+      ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
+    }
+  })
+  await page.goto("/tools/checkout-comparison")
+  await page.getByRole("group", { name: "Offer A" }).getByLabel("Item price").fill("918273.45")
+
+  const link = page.getByRole("link", { name: "ImportTaxPH", exact: true })
+  const href = await link.getAttribute("href")
+  expect(href).not.toBeNull()
+  const url = new URL(href as string)
+  expect(url.origin).toBe("https://www.importtaxph.com")
+  expect(url.searchParams.get("utm_source")).toBe("sulitscan")
+  expect(url.searchParams.get("utm_medium")).toBe("referral")
+  expect(url.searchParams.get("utm_campaign")).toBe("cross_site")
+  expect(url.searchParams.get("utm_content")).toBe(
+    "checkout-comparison-tool:checkout-comparison"
+  )
+
+  await link.evaluate((element) =>
+    element.addEventListener("click", (event) => event.preventDefault())
+  )
+  await link.click()
+  const events = await page.evaluate(() =>
+    (window as typeof window & {
+      __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
+    }).__events
+  )
+  const event = events.find((candidate) =>
+    candidate.type === "event" && candidate.payload.name === "sister_site_click"
+  )
+  expect(event?.payload.data).toEqual({
+    destination: "importtaxph",
+    placement: "checkout-comparison",
+    source: "checkout-comparison-tool",
+  })
+  expect(JSON.stringify(event)).not.toContain("918273.45")
 })
 
 test("checkout comparison is discoverable from site navigation and the homepage", async ({ page }) => {
