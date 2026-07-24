@@ -1,5 +1,6 @@
 import assert from "node:assert/strict"
-import { readFileSync } from "node:fs"
+import { createHash } from "node:crypto"
+import { existsSync, readFileSync } from "node:fs"
 import { dirname, resolve } from "node:path"
 import test from "node:test"
 import ts from "typescript"
@@ -123,6 +124,7 @@ const weeklyGuideCases = [
     slug: "online-shoe-size-guide-philippines",
     title: "Online Shoe Size Guide Philippines: How to Measure Before You Buy",
     category: "Fashion Guides",
+    coverImage: "/images/guides/online-shoe-size-guide-philippines.jpg",
     topics: ["shoe-buying", "fashion-buying"],
     expectedPlatforms: ["Temu", "Shopee PH"],
     expectedDeals: {
@@ -138,6 +140,7 @@ const weeklyGuideCases = [
     slug: "unboxing-video-evidence-online-shopping-philippines",
     title: "How to Record Unboxing Evidence for Online Orders in the Philippines",
     category: "Shopping Tips",
+    coverImage: "/images/guides/unboxing-video-evidence-online-shopping-philippines.jpg",
     topics: ["shopping-safety", "returns"],
     expectedPlatforms: undefined,
     expectedDeals: undefined,
@@ -147,6 +150,7 @@ const weeklyGuideCases = [
     slug: "travel-packing-organizers-philippines-buying-guide",
     title: "Travel Packing Organizers Philippines: What to Check Before Buying Online",
     category: "Travel Guides",
+    coverImage: "/images/guides/travel-packing-organizers-philippines-buying-guide.jpg",
     topics: ["travel-planning", "bag-buying", "carry-on-luggage"],
     expectedPlatforms: ["Shopee PH"],
     expectedDeals: {
@@ -164,6 +168,7 @@ const weeklyGuideCases = [
     slug: "first-apartment-essentials-under-1000-philippines",
     title: "First Apartment Essentials Under ₱1,000 Philippines: Buy the Practical Basics First",
     category: "Home Guides",
+    coverImage: "/images/guides/first-apartment-essentials-under-1000-philippines.jpg",
     topics: ["home-organization", "cookware-buying", "first-home"],
     expectedPlatforms: ["Temu", "Shopee PH"],
     expectedDeals: {
@@ -181,6 +186,7 @@ const weeklyGuideCases = [
     slug: "power-bank-buying-guide-philippines",
     title: "Power Bank Buying Guide Philippines: Capacity, Fast Charging, and Airline Rules",
     category: "Tech Guides",
+    coverImage: "/images/guides/power-bank-buying-guide-philippines.jpg",
     topics: ["tech-accessories", "power-bank-buying", "travel-planning"],
     expectedPlatforms: ["Temu", "Shopee PH"],
     expectedDeals: {
@@ -194,6 +200,61 @@ const weeklyGuideCases = [
     maxPrice: 1000,
   },
 ]
+
+function readJpegDimensions(buffer) {
+  assert.equal(buffer.readUInt16BE(0), 0xffd8, "asset must have a JPEG file signature")
+
+  let offset = 2
+  while (offset + 9 < buffer.length) {
+    if (buffer[offset] !== 0xff) {
+      offset += 1
+      continue
+    }
+
+    const marker = buffer[offset + 1]
+    offset += 2
+    if (marker === 0xd8 || marker === 0xd9) continue
+    if (marker === 0xda) break
+
+    const segmentLength = buffer.readUInt16BE(offset)
+    const isStartOfFrame =
+      (marker >= 0xc0 && marker <= 0xc3) ||
+      (marker >= 0xc5 && marker <= 0xc7) ||
+      (marker >= 0xc9 && marker <= 0xcb) ||
+      (marker >= 0xcd && marker <= 0xcf)
+    if (isStartOfFrame) {
+      return {
+        width: buffer.readUInt16BE(offset + 5),
+        height: buffer.readUInt16BE(offset + 3),
+      }
+    }
+    offset += segmentLength
+  }
+
+  assert.fail("asset must contain readable JPEG dimensions")
+}
+
+test("weekly guides use five distinct 1600x900 JPEG cover assets", () => {
+  const coverPaths = []
+  const contentHashes = []
+
+  for (const guideCase of weeklyGuideCases) {
+    const post = postsModule.getPostBySlug(guideCase.slug)
+    assert.ok(post, `${guideCase.slug} fixture must exist`)
+    assert.equal(post.coverImage, guideCase.coverImage)
+    assert.match(post.coverImage, /\.jpg$/i)
+
+    const assetPath = resolve("public", post.coverImage.replace(/^\/+/, ""))
+    assert.ok(existsSync(assetPath), `${post.coverImage} must exist under public/`)
+    const asset = readFileSync(assetPath)
+    assert.deepEqual(readJpegDimensions(asset), { width: 1600, height: 900 })
+    coverPaths.push(post.coverImage)
+    contentHashes.push(createHash("sha256").update(asset).digest("hex"))
+  }
+
+  assert.equal(new Set(coverPaths).size, weeklyGuideCases.length)
+  assert.equal(new Set(contentHashes).size, weeklyGuideCases.length)
+})
 
 test("weekly search-led guides use the required registry metadata and editorial structure", () => {
   const excerpts = []

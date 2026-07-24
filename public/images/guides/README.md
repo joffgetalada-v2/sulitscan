@@ -1,12 +1,23 @@
 # Guide Images
 
-Place the three guide images here before deploying:
+Blog cards and guide heroes use the image path declared in `src/data/posts.ts`. When an image is
+absent, the UI falls back to the post's gradient placeholder.
 
-| Filename | Used on |
+## Weekly guide banners generated 2026-07-24
+
+| Filename | Guide concept |
 |---|---|
-| `fake-discount-check-guide.png` | Blog post: "How to Spot Fake Discounts Online Before You Get Tricked" |
-| `voucher-shipping-return-checklist.png` | Blog post: "Voucher, Shipping, and Return Checklist for Every Online Order" |
-| `final-price-checkout-guide.png` | Blog post: "Why the Final Price at Checkout Is Different from What You Saw" |
+| `online-shoe-size-guide-philippines.jpg` | Plain shoes with unnumbered measurement and foot-outline cues |
+| `unboxing-video-evidence-online-shopping-philippines.jpg` | Parcel documentation with a recording phone and obscured address area |
+| `travel-packing-organizers-philippines-buying-guide.jpg` | Open carry-on with packing cubes, pouches, and a toiletry organizer |
+| `first-apartment-essentials-under-1000-philippines.jpg` | Practical storage, lighting, cookware, and cleaning basics |
+| `power-bank-buying-guide-philippines.jpg` | Generic power bank, USB-C cables, phone, pouch, and abstract capacity cues |
 
-When these files are present, blog cards and blog detail heroes will show the actual images.
-When absent, cards fall back to the gradient placeholder automatically.
+These five original, brand-neutral banners were generated separately with OpenAI's built-in image
+generator. The selected PNG outputs were normalized to 1600x900 JPEG at quality 88 using
+high-quality bicubic resizing. Prompts prohibited logos, trademarks, watermarks, fake interfaces,
+certification marks, and promotional text. Each final JPEG was visually inspected at original
+detail before commit.
+
+Earlier core guide assets in this folder include `fake-discount-check-guide.jpg`,
+`voucher-shipping-return-checklist.jpg`, and `final-price-checkout-guide.jpg`.
