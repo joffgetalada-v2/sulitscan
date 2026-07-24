@@ -124,6 +124,11 @@ const weeklyGuideCases = [
     title: "Online Shoe Size Guide Philippines: How to Measure Before You Buy",
     category: "Fashion Guides",
     topics: ["shoe-buying", "fashion-buying"],
+    expectedPlatforms: ["Temu", "Shopee PH"],
+    expectedDeals: {
+      categories: ["Fashion"],
+      tags: ["shoes", "sandals", "heels", "clogs"],
+    },
     platforms: new Set(["Temu", "Shopee PH"]),
     dealCategories: new Set(["Fashion"]),
     dealTags: new Set(["shoes", "sandals", "heels", "clogs"]),
@@ -134,6 +139,8 @@ const weeklyGuideCases = [
     title: "How to Record Unboxing Evidence for Online Orders in the Philippines",
     category: "Shopping Tips",
     topics: ["shopping-safety", "returns"],
+    expectedPlatforms: undefined,
+    expectedDeals: undefined,
   },
   {
     id: "post-027",
@@ -141,6 +148,12 @@ const weeklyGuideCases = [
     title: "Travel Packing Organizers Philippines: What to Check Before Buying Online",
     category: "Travel Guides",
     topics: ["travel-planning", "bag-buying", "carry-on-luggage"],
+    expectedPlatforms: ["Shopee PH"],
+    expectedDeals: {
+      categories: ["Travel", "Fashion"],
+      tags: ["travel", "organizer", "bag", "packing"],
+      maxPrice: 500,
+    },
     platforms: new Set(["Shopee PH"]),
     dealCategories: new Set(["Travel", "Fashion"]),
     dealTags: new Set(["travel", "organizer", "bag", "packing"]),
@@ -152,6 +165,12 @@ const weeklyGuideCases = [
     title: "First Apartment Essentials Under ₱1,000 Philippines: Buy the Practical Basics First",
     category: "Home Guides",
     topics: ["home-organization", "cookware-buying", "first-home"],
+    expectedPlatforms: ["Temu", "Shopee PH"],
+    expectedDeals: {
+      categories: ["Home"],
+      tags: ["home", "storage", "kitchen", "organizer", "lighting"],
+      maxPrice: 1000,
+    },
     platforms: new Set(["Temu", "Shopee PH"]),
     dealCategories: new Set(["Home"]),
     dealTags: new Set(["home", "storage", "kitchen", "organizer", "lighting"]),
@@ -163,6 +182,12 @@ const weeklyGuideCases = [
     title: "Power Bank Buying Guide Philippines: Capacity, Fast Charging, and Airline Rules",
     category: "Tech Guides",
     topics: ["tech-accessories", "power-bank-buying", "travel-planning"],
+    expectedPlatforms: ["Temu", "Shopee PH"],
+    expectedDeals: {
+      categories: ["Electronics"],
+      tags: ["power-bank", "usb-c", "charger"],
+      maxPrice: 1000,
+    },
     platforms: new Set(["Temu", "Shopee PH"]),
     dealCategories: new Set(["Electronics"]),
     dealTags: new Set(["power-bank", "usb-c", "charger"]),
@@ -180,6 +205,8 @@ test("weekly search-led guides use the required registry metadata and editorial 
     assert.equal(post.title, guideCase.title)
     assert.equal(post.category, guideCase.category)
     assert.deepEqual(post.recommendationIntent?.topics, guideCase.topics)
+    assert.deepEqual(post.recommendationIntent?.platforms, guideCase.expectedPlatforms)
+    assert.deepEqual(post.recommendationIntent?.deals, guideCase.expectedDeals)
     assert.equal(post.publishedAt, "2026-07-23")
     assert.equal(post.lastReviewed, "2026-07-23")
     assert.ok(post.excerpt.length <= 160, `${guideCase.slug} excerpt is ${post.excerpt.length} characters`)
