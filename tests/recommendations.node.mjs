@@ -117,6 +117,139 @@ test("cookware guide uses the production Bureau of Customs importation URL", () 
   assert.ok(!post.content.includes("https://www2.customs.gov.ph/"))
 })
 
+const weeklyGuideCases = [
+  {
+    id: "post-025",
+    slug: "online-shoe-size-guide-philippines",
+    title: "Online Shoe Size Guide Philippines: How to Measure Before You Buy",
+    category: "Fashion Guides",
+    topics: ["shoe-buying", "fashion-buying"],
+    platforms: new Set(["Temu", "Shopee PH"]),
+    dealCategories: new Set(["Fashion"]),
+    dealTags: new Set(["shoes", "sandals", "heels", "clogs"]),
+  },
+  {
+    id: "post-026",
+    slug: "unboxing-video-evidence-online-shopping-philippines",
+    title: "How to Record Unboxing Evidence for Online Orders in the Philippines",
+    category: "Shopping Tips",
+    topics: ["shopping-safety", "returns"],
+  },
+  {
+    id: "post-027",
+    slug: "travel-packing-organizers-philippines-buying-guide",
+    title: "Travel Packing Organizers Philippines: What to Check Before Buying Online",
+    category: "Travel Guides",
+    topics: ["travel-planning", "bag-buying", "carry-on-luggage"],
+    platforms: new Set(["Shopee PH"]),
+    dealCategories: new Set(["Travel", "Fashion"]),
+    dealTags: new Set(["travel", "organizer", "bag", "packing"]),
+    maxPrice: 500,
+  },
+  {
+    id: "post-028",
+    slug: "first-apartment-essentials-under-1000-philippines",
+    title: "First Apartment Essentials Under ₱1,000 Philippines: Buy the Practical Basics First",
+    category: "Home Guides",
+    topics: ["home-organization", "cookware-buying", "first-home"],
+    platforms: new Set(["Temu", "Shopee PH"]),
+    dealCategories: new Set(["Home"]),
+    dealTags: new Set(["home", "storage", "kitchen", "organizer", "lighting"]),
+    maxPrice: 1000,
+  },
+  {
+    id: "post-029",
+    slug: "power-bank-buying-guide-philippines",
+    title: "Power Bank Buying Guide Philippines: Capacity, Fast Charging, and Airline Rules",
+    category: "Tech Guides",
+    topics: ["tech-accessories", "power-bank-buying", "travel-planning"],
+    platforms: new Set(["Temu", "Shopee PH"]),
+    dealCategories: new Set(["Electronics"]),
+    dealTags: new Set(["power-bank", "usb-c", "charger"]),
+    maxPrice: 1000,
+  },
+]
+
+test("weekly search-led guides use the required registry metadata and editorial structure", () => {
+  const excerpts = []
+
+  for (const guideCase of weeklyGuideCases) {
+    const post = postsModule.getPostBySlug(guideCase.slug)
+    assert.ok(post, `${guideCase.slug} fixture must exist`)
+    assert.equal(post.id, guideCase.id)
+    assert.equal(post.title, guideCase.title)
+    assert.equal(post.category, guideCase.category)
+    assert.deepEqual(post.recommendationIntent?.topics, guideCase.topics)
+    assert.equal(post.publishedAt, "2026-07-23")
+    assert.equal(post.lastReviewed, "2026-07-23")
+    assert.ok(post.excerpt.length <= 160, `${guideCase.slug} excerpt is ${post.excerpt.length} characters`)
+    assert.ok((post.content.match(/^## /gm) ?? []).length >= 5, `${guideCase.slug} needs four H2 sections plus disclosure`)
+    assert.match(post.content, /^## Affiliate disclosure$/im)
+    assert.doesNotMatch(`${post.content} ${post.excerpt}`, /shein|applyreadycv|importtaxph/i)
+    excerpts.push(post.excerpt)
+  }
+
+  assert.equal(new Set(excerpts).size, weeklyGuideCases.length, "weekly guide excerpts must be unique")
+})
+
+test("weekly guide deal recommendations remain deterministic and editorially eligible", () => {
+  const activeIds = new Set(dealsModule.getActiveDeals().map((deal) => deal.id))
+
+  for (const guideCase of weeklyGuideCases) {
+    const post = postsModule.getPostBySlug(guideCase.slug)
+    assert.ok(post, `${guideCase.slug} fixture must exist`)
+    const first = recommendationsModule.getRelatedDealsForPost(post, 3)
+    const second = recommendationsModule.getRelatedDealsForPost(post, 3)
+
+    assert.deepEqual(first.map((deal) => deal.id), second.map((deal) => deal.id))
+    assert.equal(new Set(first.map((deal) => deal.id)).size, first.length)
+    assert.ok(first.every((deal) => activeIds.has(deal.id)))
+    assert.ok(first.every((deal) => !dealsModule.isSuspiciousDiscount(deal)))
+
+    if (!guideCase.dealCategories) {
+      assert.deepEqual(first, [], `${guideCase.slug} must not have product-deal recommendations`)
+      continue
+    }
+
+    assert.ok(first.length > 0 && first.length <= 3)
+    assert.ok(first.every((deal) => guideCase.platforms.has(deal.platform)))
+    assert.ok(first.every((deal) => guideCase.dealCategories.has(deal.category)))
+    assert.ok(first.every((deal) => deal.tags.some((tag) => guideCase.dealTags.has(tag.toLowerCase()))))
+    if (guideCase.maxPrice !== undefined) {
+      assert.ok(first.every((deal) => deal.salePrice <= guideCase.maxPrice))
+    }
+  }
+})
+
+test("unboxing guide treats video as optional supporting evidence with platform-specific requirements", () => {
+  const post = postsModule.getPostBySlug("unboxing-video-evidence-online-shopping-philippines")
+  assert.ok(post, "unboxing guide fixture must exist")
+  assert.match(post.content, /requirements vary by platform/i)
+  assert.match(post.content, /optional supporting evidence/i)
+  assert.match(post.content, /not a universal legal requirement/i)
+  assert.ok(post.content.includes("https://bps.dti.gov.ph/press-releases/28-2021/259-dti-issues-national-standard-guidelines-for-e-commerce-transactions"))
+})
+
+test("power-bank guide cites IATA and requires a carrier-policy recheck", () => {
+  const post = postsModule.getPostBySlug("power-bank-buying-guide-philippines")
+  assert.ok(post, "power-bank guide fixture must exist")
+  assert.match(post.content, /https:\/\/www\.iata\.org\//)
+  assert.match(post.content, /recheck (?:your|the) (?:airline|carrier)(?:'s)? (?:current )?policy/i)
+})
+
+test("established guides link reciprocally to the new weekly guides", () => {
+  for (const [sourceSlug, targetSlug] of [
+    ["best-phone-accessories-under-500-philippines", "power-bank-buying-guide-philippines"],
+    ["carry-on-luggage-philippines-buying-guide", "travel-packing-organizers-philippines-buying-guide"],
+    ["bags-under-500-philippines-buying-guide", "online-shoe-size-guide-philippines"],
+    ["voucher-shipping-return-checklist", "unboxing-video-evidence-online-shopping-philippines"],
+  ]) {
+    const post = postsModule.getPostBySlug(sourceSlug)
+    assert.ok(post, `${sourceSlug} fixture must exist`)
+    assert.ok(post.content.includes(`/blog/${targetSlug}`), `${sourceSlug} must link to ${targetSlug}`)
+  }
+})
+
 const finalCatalogCases = [
   {
     slug: "best-home-organization-finds-under-500-philippines",
