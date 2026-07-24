@@ -1,4 +1,13 @@
-import { test, expect } from "@playwright/test"
+import { test, expect, type Page } from "@playwright/test"
+
+async function installAnalyticsCapture(page: Page) {
+  await page.evaluate(() => {
+    ;(window as typeof window & { __events: unknown[] }).__events = []
+    window.va = (type, payload) => {
+      ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
+    }
+  })
+}
 
 const routes = [
   { path: "/",                     title: "SulitScan PH" },
@@ -231,6 +240,7 @@ test("deal card emits an affiliate_click event", async ({ page }) => {
     }
   })
   await page.goto("/deals")
+  await installAnalyticsCapture(page)
   const popupPromise = page.waitForEvent("popup")
   await page.locator('a[rel*="sponsored"]').first().click()
   const popup = await popupPromise
@@ -256,6 +266,7 @@ test("homepage partner banner emits a private affiliate_click event", async ({ p
     }
   })
   await page.goto("/")
+  await installAnalyticsCapture(page)
   const popupPromise = page.waitForEvent("popup")
   await page.getByRole("link", { name: /sponsored partner/i }).first().click()
   const popup = await popupPromise
@@ -283,6 +294,7 @@ test("store-index affiliate link emits a private affiliate_click event", async (
     }
   })
   await page.goto("/stores")
+  await installAnalyticsCapture(page)
   const popupPromise = page.waitForEvent("popup")
   await page.getByRole("link", { name: /Visit Temu \(affiliate link/i }).click()
   const popup = await popupPromise
