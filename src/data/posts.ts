@@ -788,6 +788,8 @@ We are a small, manual operation. Prices in our datafeed update periodically but
 
 ## How to Check the Final Price Before Committing
 
+If you are choosing between stores or sellers, use our [tool to compare two checkout totals](/tools/checkout-comparison). It includes quantity, shipping, vouchers, payment discounts, other fees, and an optional import-cost estimate, then shows the final and per-unit cost for each offer.
+
 1. Click through to the partner store from the deal card or detail page
 2. Select the specific variant you want (size, color, quantity)
 3. Add to cart
@@ -1349,6 +1351,8 @@ Our guide on [how to spot fake discounts](/blog/how-to-spot-fake-discounts) and 
 ## Estimate your landed cost before you order
 
 Want a quick estimate before you buy? We built a free sister tool, **[ImportTaxPH](https://www.importtaxph.com/)**, to help Filipino shoppers estimate possible customs duty, VAT, and total landed cost for overseas orders from stores like Temu, Shein, AliExpress, and Amazon.
+
+After estimating possible import charges, you can [compare two checkout totals](/tools/checkout-comparison) on SulitScan. Enter the estimate with each offer's item price, quantity, shipping, discounts, and other fees to compare the final and per-unit cost.
 
 To get a useful estimate, have these ready: item price and currency, shipping cost, insurance if any, product category, and whether multiple shipments may arrive on the same day. The result is an estimate only, the final assessment depends on official customs valuation and classification, but it helps you decide whether a foreign deal is still worth it after charges. You can try it at [importtaxph.com](https://www.importtaxph.com/).
 

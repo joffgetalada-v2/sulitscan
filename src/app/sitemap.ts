@@ -41,6 +41,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/tools/checkout-comparison`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${BASE_URL}/about`,
       changeFrequency: "monthly",
       priority: 0.5,

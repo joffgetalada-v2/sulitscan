@@ -2,6 +2,7 @@ import { test, expect } from "@playwright/test"
 
 const routes = [
   { path: "/",                     title: "SulitScan PH" },
+  { path: "/tools/checkout-comparison", title: "Checkout Price Comparison" },
   { path: "/deals",                title: "Deals" },
   { path: "/categories",           title: "Categories" },
   { path: "/stores",               title: "Stores" },
@@ -14,6 +15,81 @@ const routes = [
   { path: "/cookie-policy",        title: "Cookie" },
   { path: "/editorial-policy",     title: "Editorial" },
 ]
+
+test("checkout comparison identifies the cheaper final total without tracking entered values", async ({ page }) => {
+  await page.addInitScript(() => {
+    ;(window as typeof window & { __events: unknown[] }).__events = []
+    window.va = (type, payload) => {
+      ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
+    }
+  })
+  await page.goto("/tools/checkout-comparison")
+
+  const offerA = page.getByRole("group", { name: "Offer A" })
+  await offerA.getByLabel("Item price").fill("250")
+  await offerA.getByLabel("Quantity").fill("2")
+  await offerA.getByLabel("Shipping").fill("50")
+  await offerA.getByLabel("Voucher discount").fill("75")
+  await offerA.getByLabel("Payment discount").fill("25")
+  await offerA.getByLabel("Other fees").fill("10")
+  await offerA.getByLabel("Import cost estimate").fill("40")
+
+  const offerB = page.getByRole("group", { name: "Offer B" })
+  await offerB.getByLabel("Item price").fill("260")
+  await offerB.getByLabel("Quantity").fill("2")
+  await offerB.getByLabel("Shipping").fill("40")
+  await offerB.getByLabel("Voucher discount").fill("10")
+  await offerB.getByLabel("Payment discount").fill("0")
+  await offerB.getByLabel("Other fees").fill("5")
+  await offerB.getByLabel("Import cost estimate").fill("0")
+
+  await page.evaluate(() => {
+    ;(window as typeof window & { __events: unknown[] }).__events = []
+    window.va = (type, payload) => {
+      ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
+    }
+  })
+  await page.getByRole("button", { name: "Compare final totals" }).click()
+
+  const result = page.getByRole("status")
+  await expect(result).toContainText("Offer A costs ₱55.00 less")
+  await expect(result).toContainText("₱250.00 per unit")
+  await expect(result).toContainText("₱277.50 per unit")
+
+  const events = await page.evaluate(() =>
+    (window as typeof window & {
+      __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
+    }).__events
+  )
+  const event = events.find((candidate) =>
+    candidate.type === "event" && candidate.payload.name === "checkout_comparison_completed"
+  )
+  expect(event?.payload.data).toEqual({ source: "checkout-comparison-tool" })
+})
+
+test("checkout comparison is discoverable from site navigation and the homepage", async ({ page }) => {
+  await page.goto("/")
+  await expect(page.getByRole("banner").getByRole("link", { name: "Compare Prices" })).toBeVisible()
+  await expect(page.getByRole("contentinfo").getByRole("link", { name: "Checkout Comparison" })).toBeVisible()
+  await expect(page.getByRole("main").getByRole("link", { name: "Compare checkout totals" })).toBeVisible()
+})
+
+test("checkout comparison is included in the sitemap and relevant guides", async ({ page, request }) => {
+  const sitemapResponse = await request.get("/sitemap.xml")
+  expect(await sitemapResponse.text()).toContain(
+    "<loc>https://sulitscan.com/tools/checkout-comparison</loc>"
+  )
+
+  for (const slug of [
+    "why-final-prices-change-at-checkout",
+    "philippine-import-tax-guide-online-shoppers",
+  ]) {
+    await page.goto(`/blog/${slug}`)
+    await expect(
+      page.getByRole("link", { name: /compare (two )?checkout totals/i })
+    ).toHaveAttribute("href", "/tools/checkout-comparison")
+  }
+})
 
 for (const route of routes) {
   test(`${route.path} loads with 200 and contains title`, async ({ page }) => {

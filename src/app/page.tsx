@@ -26,6 +26,7 @@ import {
   Search,
   Zap,
   Clock,
+  Calculator,
 } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -196,6 +197,34 @@ export default function HomePage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ─── Checkout comparison utility ─── */}
+      <section className="border-b border-slate-100 bg-slate-50 py-14" aria-labelledby="checkout-tool-heading">
+        <div className="mx-auto flex max-w-5xl flex-col items-start gap-6 px-4 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+          <div className="flex max-w-2xl items-start gap-4">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-green-100 text-green-700">
+              <Calculator className="h-6 w-6" aria-hidden="true" />
+            </div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-widest text-green-700">Free buyer tool</p>
+              <h2 id="checkout-tool-heading" className="mt-1 text-2xl font-black text-slate-900">
+                Compare what two offers really cost
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600">
+                Add quantity, shipping, vouchers, fees, and estimated import costs to compare final
+                totals and per-unit prices in your browser.
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/tools/checkout-comparison"
+            className="inline-flex shrink-0 items-center gap-2 rounded-full bg-green-600 px-6 py-3 text-sm font-bold text-white transition hover:bg-green-700"
+          >
+            Compare checkout totals
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
         </div>
       </section>
 

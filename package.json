@@ -15,6 +15,7 @@
     "test:recommendations": "node --test tests/recommendations.node.mjs",
     "test:seo": "node --test tests/seo-helpers.node.mjs",
     "test:compliance": "node --test tests/affiliate-compliance.node.mjs",
+    "test:checkout-comparison": "node --test tests/checkout-comparison.node.mjs",
     "test:e2e": "playwright test"
   },
   "dependencies": {
