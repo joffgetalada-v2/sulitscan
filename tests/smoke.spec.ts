@@ -3,9 +3,14 @@ import { test, expect, type Page } from "@playwright/test"
 async function installAnalyticsCapture(page: Page) {
   await page.evaluate(() => {
     ;(window as typeof window & { __events: unknown[] }).__events = []
-    window.va = (type, payload) => {
+    const capture: NonNullable<typeof window.va> = (type, payload) => {
       ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
     }
+    Object.defineProperty(window, "va", {
+      configurable: true,
+      get: () => capture,
+      set: () => undefined,
+    })
   })
 }
 
