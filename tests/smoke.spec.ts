@@ -583,6 +583,30 @@ const evidenceLedGuides = [
   "makeup-brush-sets-philippines-beginner-guide",
 ]
 
+const weeklyGrowthGuides = [
+  "online-shoe-size-guide-philippines",
+  "unboxing-video-evidence-online-shopping-philippines",
+  "travel-packing-organizers-philippines-buying-guide",
+  "first-apartment-essentials-under-1000-philippines",
+  "power-bank-buying-guide-philippines",
+]
+
+test("weekly growth guides fit narrow mobile viewports", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 })
+
+  for (const slug of weeklyGrowthGuides) {
+    await page.goto(`/blog/${slug}`)
+    const layout = await page.evaluate(() => ({
+      clientWidth: document.documentElement.clientWidth,
+      scrollWidth: document.documentElement.scrollWidth,
+    }))
+
+    expect(layout.scrollWidth, `${slug} should not overflow horizontally`).toBe(
+      layout.clientWidth
+    )
+  }
+})
+
 test.describe("evidence-led guide routes", () => {
   test.describe.configure({ mode: "serial" })
 

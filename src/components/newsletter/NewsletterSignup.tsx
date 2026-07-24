@@ -81,7 +81,13 @@ export default function NewsletterSignup({ source = "homepage", variant = "full"
         aria-hidden="true"
       />
 
-      <div className={variant === "compact" ? "flex gap-2" : "flex flex-col sm:flex-row gap-2"}>
+      <div
+        className={
+          variant === "compact"
+            ? "flex w-full flex-col gap-2 sm:flex-row"
+            : "flex flex-col gap-2 sm:flex-row"
+        }
+      >
         <input
           type="email"
           name="email"
@@ -91,7 +97,7 @@ export default function NewsletterSignup({ source = "homepage", variant = "full"
           onChange={e => setEmail(e.target.value)}
           disabled={status === "submitting"}
           autoComplete="email"
-          className="flex-1 px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent disabled:opacity-50 bg-white"
+          className="min-w-0 flex-1 px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent disabled:opacity-50 bg-white"
           aria-label="Email address"
         />
         <button
