@@ -505,34 +505,42 @@ test("invalid deal filters normalize visibly but remain noindex", async ({ page 
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://sulitscan.com/deals")
 })
 
-for (const entityPath of ["/categories/under-1000", "/stores/temu"]) {
-  test(`${entityPath} exposes crawlable deal pagination`, async ({ page }) => {
-    await page.goto(entityPath)
-    const firstPageDeals = await page.locator("main article h3").allTextContents()
-    await expect(page.getByRole("link", { name: "Next page" })).toHaveAttribute(
-      "href",
-      `${entityPath}?page=2`
-    )
+test.describe("entity deal pagination", () => {
+  test.describe.configure({ mode: "serial" })
 
-    const response = await page.goto(`${entityPath}?page=2`)
-    expect(response?.status()).toBe(200)
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
-      "href",
-      `https://sulitscan.com${entityPath}?page=2`
-    )
-    const secondPageDeals = await page.locator("main article h3").allTextContents()
-    expect(secondPageDeals).not.toEqual(firstPageDeals)
-  })
+  for (const entityPath of ["/categories/under-1000", "/stores/temu"]) {
+    test(`${entityPath} exposes crawlable deal pagination`, async ({ page }) => {
+      test.slow()
+      await page.goto(entityPath, { waitUntil: "domcontentloaded" })
+      const firstPageDeals = await page.locator("main article h3").allTextContents()
+      await expect(page.getByRole("link", { name: "Next page" })).toHaveAttribute(
+        "href",
+        `${entityPath}?page=2`
+      )
 
-  test(`${entityPath} noindexes an invalid page request`, async ({ page }) => {
-    await page.goto(`${entityPath}?page=garbage`)
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
-    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
-      "href",
-      `https://sulitscan.com${entityPath}`
-    )
-  })
-}
+      const response = await page.goto(`${entityPath}?page=2`, {
+        waitUntil: "domcontentloaded",
+      })
+      expect(response?.status()).toBe(200)
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        "href",
+        `https://sulitscan.com${entityPath}?page=2`
+      )
+      const secondPageDeals = await page.locator("main article h3").allTextContents()
+      expect(secondPageDeals).not.toEqual(firstPageDeals)
+    })
+
+    test(`${entityPath} noindexes an invalid page request`, async ({ page }) => {
+      test.slow()
+      await page.goto(`${entityPath}?page=garbage`, { waitUntil: "domcontentloaded" })
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        "href",
+        `https://sulitscan.com${entityPath}`
+      )
+    })
+  }
+})
 
 
 test("article uses article-specific Twitter metadata and dateModified", async ({ page }) => {
