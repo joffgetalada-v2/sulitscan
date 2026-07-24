@@ -1,7 +1,8 @@
 # Guide Images
 
-Blog cards and guide heroes use the image path declared in `src/data/posts.ts`. When an image is
-absent, the UI falls back to the post's gradient placeholder.
+Blog cards and guide heroes use the image path declared in `src/data/posts.ts`. Posts without a
+`coverImage` declaration use their gradient placeholder; a declared image path is expected to
+resolve to a real asset.
 
 ## Weekly guide banners generated 2026-07-24
 
