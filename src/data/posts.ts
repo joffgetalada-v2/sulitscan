@@ -140,7 +140,7 @@ We update deals when we notice price changes through our affiliate feeds. But we
 Yes. Every deal detail page has a "Report outdated price" link. Clicking it opens your email client with the deal pre-filled. We review all reports.
 
 **Q: Do you cover Shopee, Lazada, or AliExpress?**
-Shopee PH is now an active store on SulitScan, alongside Temu and Sephora PH. Lazada and AliExpress are not active yet and may be added later once their offers and buyer-check information are prepared.
+Shopee PH is an active SulitScan partner alongside Temu and Sephora PH. SulitScan does not currently publish Lazada or AliExpress affiliate deals; always check the store label and disclosure on each deal page before following an offer.
 
 ## Affiliate Disclosure
 
@@ -690,7 +690,7 @@ Some platforms offer optional purchase protection add-ons. For high-value items,
 
 ## Related on SulitScan
 
-Browse [deals under ₱1,000](/categories/under-1000) or check our [Temu store guide](/stores/temu) and [Sephora PH store guide](/stores/sephora-ph) for more platform-specific buying tips.
+Browse [deals under ₱1,000](/categories/under-1000) or check our [Temu store guide](/stores/temu) and [Sephora PH store guide](/stores/sephora-ph) for more platform-specific buying tips. For products with written coverage, save the claim evidence in our [online purchase warranty guide](/blog/online-purchase-warranty-guide-philippines).
 
 ## Affiliate Disclosure
 
@@ -1608,7 +1608,7 @@ When opening a SulitScan Shopee deal, use its SulitScore, buyer notes, and last-
 
 ## Related Shopee PH guides
 
-Browse [current Shopee deals on SulitScan](/stores/shopee-ph), read our [best Shopee finds under ₱500 guide](/blog/best-shopee-finds-under-500-philippines), and see our [online shopping safety tips](/blog/online-shopping-safety-tips-philippines) for habits that protect you. If you are comparing an overseas seller, you can also [estimate possible import costs with ImportTaxPH](https://www.importtaxph.com/) before comparing the landed price. Its result is for planning only, so confirm official customs rules, courier fees, and seller shipping terms when they matter.
+Browse [current Shopee deals on SulitScan](/stores/shopee-ph), read our [best Shopee finds under ₱500 guide](/blog/best-shopee-finds-under-500-philippines), and use the [online product review checklist](/blog/online-product-review-checklist-philippines) to compare exact variants, recent patterns, and buyer photos. See our [online shopping safety tips](/blog/online-shopping-safety-tips-philippines) for more habits that protect you. If you are comparing an overseas seller, you can also [estimate possible import costs with ImportTaxPH](https://www.importtaxph.com/) before comparing the landed price. Its result is for planning only, so confirm official customs rules, courier fees, and seller shipping terms when they matter.
 
 ## Affiliate disclosure
 
@@ -1663,13 +1663,13 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     content: `
 Shopee, Lazada, and Temu are the three online marketplaces Filipino shoppers compare most often. Each has a different structure, different seller types, and different things to check before you buy. This guide covers the key differences and what to look for on each platform.
 
-SulitScan currently lists deals from Shopee PH and Temu. Lazada coverage may be added after a full review.
+SulitScan currently lists affiliate deals from Shopee PH and Temu. Lazada is included here only for editorial comparison; SulitScan does not publish Lazada affiliate deals.
 
 ## Quick comparison
 
 **Shopee Philippines:** Mostly local sellers shipping within the Philippines, fast delivery on many items, daily platform vouchers and Shopee Coins, large catalog across all categories.
 
-**Lazada Philippines:** Local and brand sellers, Lazada Express delivery options, brand-focused catalog, strong for electronics and branded goods. Not yet active on SulitScan.
+**Lazada Philippines:** Local and brand sellers, Lazada Express delivery options, and a brand-focused catalog. It is discussed here for comparison and is not an active SulitScan affiliate store.
 
 **Temu Philippines:** International marketplace shipping from overseas warehouses, very low prices across everyday categories, longer delivery window, cross-border shipping means customs questions may apply on some orders.
 
@@ -1689,7 +1689,7 @@ For a full Shopee seller check routine, see our [Shopee seller legitimacy guide]
 
 Lazada Philippines has a large catalog of local and brand products. It is known for brand-focused deals, Lazada Express delivery, and voucher stacking.
 
-Lazada is not yet active on SulitScan. When we complete our buyer-check review and prepare Lazada-specific buyer information, we may add coverage. For now, the same core principles apply on any marketplace: check the seller profile, read reviews, calculate the full price with shipping, and confirm return terms before you pay.
+Lazada is not an active SulitScan affiliate store. The same core principles still apply on any marketplace: check the seller profile, read reviews, calculate the full price with shipping, and confirm return terms before you pay.
 
 ## What to check on Temu
 
@@ -1855,7 +1855,7 @@ For any phone accessory under 500, use this checklist before you add to cart:
 
 Browse [tech deals on SulitScan](/categories/tech-deals) for curated picks with buyer notes and SulitScore ratings. You can also browse [items under 500](/categories/under-500) and [items under 1000](/categories/under-1000) for a wider range of everyday buys.
 
-For batteries, start with our [power bank buying guide](/blog/power-bank-buying-guide-philippines) for capacity, charging compatibility, and airline checks. For Shopee-sourced accessories, our [Shopee seller check guide](/blog/how-to-check-shopee-seller-legit-philippines) and [best Shopee finds under 500 guide](/blog/best-shopee-finds-under-500-philippines) are useful starting points. For Temu-sourced accessories, see our [Temu shopping guide](/blog/temu-shopping-guide-philippines) for what to check on sizing and delivery.
+For batteries, start with our [power bank buying guide](/blog/power-bank-buying-guide-philippines) for capacity, charging compatibility, and airline checks. If you are comparing a pre-owned device, use the [refurbished vs used vs open-box checklist](/blog/refurbished-vs-used-vs-open-box-philippines) for condition, battery, lock, warranty, and return evidence. For Shopee-sourced accessories, our [Shopee seller check guide](/blog/how-to-check-shopee-seller-legit-philippines) and [best Shopee finds under 500 guide](/blog/best-shopee-finds-under-500-philippines) are useful starting points. For Temu-sourced accessories, see our [Temu shopping guide](/blog/temu-shopping-guide-philippines) for what to check on sizing and delivery.
 
 ## Affiliate disclosure
 
@@ -2582,6 +2582,8 @@ When ordering through [Temu](/stores/temu) or another overseas seller, compare t
 The Philippine Bureau of Customs publishes [official importation guidance](https://customs.gov.ph/guidelines-on-importation/) covering duties, taxes, exemptions, and entry rules. The treatment of an order can depend on its value, goods, shipment, and current regulations, so confirm official guidance for the actual order instead of relying on a product-page estimate.
 
 For a planning figure, [ImportTaxPH](https://importtaxph.com/temu-import-tax) is a free SulitScan sister tool that can estimate possible Temu import costs. It is not a government calculator, customs ruling, or guarantee of the amount due. Recheck the partner checkout and Bureau of Customs information before ordering.
+
+If you are buying a powered kitchen appliance rather than cookware, use the [energy-efficient appliance buying guide](/blog/energy-efficient-appliance-buying-guide-philippines) to compare the exact model, DOE label, running-cost estimate, fit, installation, and warranty.
 
 ## How we assessed this guide
 
@@ -3345,7 +3347,7 @@ Compare final totals for equivalent dimensions, materials, included pieces, and 
 
 Make one inventory list before each order and cross off items already bought or supplied. Avoid decorative organizers before measuring possessions, cookware that does not match the appliance, and electrical items with unclear specifications or support. For a move-in deadline, prefer a delivery estimate that leaves time to inspect and return an incorrect item.
 
-Read the seller's current return conditions and keep packaging until dimensions, parts, and condition are checked indoors. Do not rely on a promised date for something needed on move-in day; have a local fallback for essentials.
+Read the seller's current return conditions and keep packaging until dimensions, parts, and condition are checked indoors. For bulky items, use the [online furniture measurement guide](/blog/online-furniture-measurement-guide-philippines) to trace the room, door, stair, elevator, package, and assembly clearances. For larger electrical purchases, compare model-specific running cost with the [energy-efficient appliance buying guide](/blog/energy-efficient-appliance-buying-guide-philippines). Do not rely on a promised date for something needed on move-in day; have a local fallback for essentials.
 
 ## First-apartment checklist
 
@@ -3486,6 +3488,741 @@ SulitScan may earn a commission when you click a partner link and complete a pur
         question: "Can a power bank go in checked baggage?",
         answer:
           "IATA's traveler guidance says power banks and spare batteries belong in hand baggage, not checked baggage. Recheck the operating airline's current policy before every trip.",
+      },
+    ],
+  },
+  {
+    id: "post-030",
+    slug: "online-product-review-checklist-philippines",
+    title: "How to Read Online Product Reviews: PH Buyer Checklist",
+    excerpt:
+      "Use review patterns, variant checks, buyer photos, dates, and seller responses to judge a listing instead of trusting its star average alone.",
+    content: `
+A high star rating can make an online product look safe, but the average alone does not answer the questions that matter: Did reviewers buy the same variant? Are the recent orders still consistent? Do the photos match the listing? Did the seller help when something went wrong?
+
+This guide gives Filipino online buyers a repeatable way to read reviews as evidence rather than as a popularity score. It works across marketplaces and direct-to-consumer stores, whether you are comparing a budget organizer, a pair of shoes, a beauty item, or a more expensive device.
+
+## How we assessed this guide
+
+We based the framework on the Philippine National Standard guidance for e-commerce transactions summarized by the Department of Trade and Industry's Bureau of Philippine Standards. The guidance says correct product information, reviews, comparisons, ratings, delivery details, and clear refund or exchange policies can help a customer make an informed decision: [DTI-BPS e-commerce transaction guidelines](https://bps.dti.gov.ph/press-releases/28-2021/259-dti-issues-national-standard-guidelines-for-e-commerce-transactions).
+
+SulitScan does not have access to a platform's fraud-detection systems and cannot certify that an individual review is genuine. The method below looks for several independent signals and treats uncertainty as a reason to verify more, not as proof of wrongdoing.
+
+## Start with the exact variant, not the overall rating
+
+One listing can combine many colors, sizes, materials, capacities, or bundles under a single review total. A five-star review for a small storage pouch does not validate the larger cabinet in the same listing. Before reading comments, select the exact variant you plan to buy and use any available filter for that variation.
+
+Check whether the review identifies:
+
+- The same size, shade, capacity, or model code
+- The same bundle quantity and included accessories
+- The same seller or fulfillment source
+- A purchase date recent enough to reflect the current listing
+
+If a marketplace merges reviews across countries or product generations, give more weight to comments that show the exact model number and packaging. Treat a rating built mostly from unrelated variants as weak evidence.
+
+## Read the distribution, not only the average
+
+A 4.8 average can hide a small but important cluster of repeated failures. Open the lowest ratings first, then compare them with the newest and most helpful reviews. You are not looking for one angry comment. You are looking for the same specific problem appearing independently.
+
+Useful repeated patterns include:
+
+- The same seam, hinge, cable, cap, or clasp failing
+- Measurements consistently differing from the listing
+- A color or material looking different in buyer photos
+- Missing pieces in the same bundle
+- Packaging damage linked to the same delivery method
+- A seller repeatedly refusing the stated return process
+
+Separate product risk from delivery noise. A courier delay says little about product quality. A cracked item can be a packaging problem rather than a design problem. Categorizing complaints prevents one issue from unfairly deciding the whole purchase.
+
+## Use dates to detect listing changes
+
+Sort by newest when possible. A seller can change a supplier, material, formula, accessory bundle, or packaging while keeping the original listing and review count. Older praise may describe a version that is no longer shipped.
+
+Compare recent buyer photos with the current hero image and description. Watch for changes in logos, labels, ports, included accessories, dimensions, ingredient lists, or instruction sheets. If the recent reviews suddenly describe a different product, ask the seller for the current model details before paying.
+
+For seasonal items, also check whether reviews come from the same use conditions. A rain cover praised during light showers may not prove performance in prolonged heavy rain. A fan reviewed in an air-conditioned room may not show how it feels in a hot bedroom.
+
+## Treat photos and videos as verification clues
+
+Buyer media is most useful when it shows information the listing can be checked against. Look for a ruler beside the product, a model label, packaging contents, stitching close-ups, a plug type, or the item in a normal room. A beautiful unboxing photo with no measurable detail is less useful.
+
+Check whether several buyers show the same construction rather than relying on one image. Be cautious when photos appear reused, heavily edited, unrelated to the written comment, or identical across different accounts. Do not assume a photo proves durability; it usually proves only what arrived on that day.
+
+For clothing and shoes, prioritize reviewers who provide body or foot measurements rather than only saying “true to size.” Use the measurement workflow in our [online shoe size guide](/blog/online-shoe-size-guide-philippines) when footwear is involved.
+
+## Read the words for specific, testable details
+
+A helpful review explains what was ordered, how it was used, and what happened. “Nice product” adds little. “The 45 cm shelf measured 43 cm between the mounting holes” gives you something to compare.
+
+Give more weight to reviews that include:
+
+- The exact variant and order context
+- A measurement, duration, compatibility result, or observed material
+- Both a benefit and a limitation
+- An update after days or weeks of use
+- A clear explanation of how the seller handled a problem
+
+Repeated generic phrases, unnatural wording, sudden bursts of near-identical comments, or reviews that discuss shipping only should reduce your confidence. They do not automatically prove manipulation, but they should not carry much weight in your decision.
+
+## Check the seller response and post-purchase evidence
+
+When a buyer reports a real issue, the seller's response can reveal more than another five-star comment. Look for a specific remedy, a request for the right evidence, and a response that matches the platform's process. Copy-pasted blame or requests to move payment or dispute handling outside the platform are warning signs.
+
+Review the store as a separate layer. A product can have good comments while the seller has poor fulfillment or support. Use our [Shopee seller legitimacy checklist](/blog/how-to-check-shopee-seller-legit-philippines) for seller identity, history, and return-policy checks.
+
+Also compare the claimed markdown with normal market pricing. Strong reviews do not make an inflated “original price” genuine. The [fake-discount guide](/blog/how-to-spot-fake-discounts) explains how to compare equivalent specifications and final checkout totals.
+
+## A ten-minute review worksheet
+
+Use this quick sequence before a purchase that would be annoying or expensive to get wrong:
+
+1. Select the exact variant and record its model, size, color, or bundle.
+2. Read five recent low ratings and label each issue: product, packaging, delivery, seller, or buyer mismatch.
+3. Read five recent high or mid ratings and look for measurable details.
+4. Compare at least three buyer photos with the current listing.
+5. Search reviews for the feature that matters most to you, such as “zipper,” “battery,” “shade,” or “size.”
+6. Check whether the seller gives clear, specific responses to problems.
+7. Confirm the return window and required evidence before checkout.
+8. Compare the final price with an equivalent item elsewhere.
+
+If the evidence is thin, the sensible conclusion is not “bad product.” It is “uncertain product.” Reduce the amount at risk, choose a seller with clearer terms, or wait for better information.
+
+## Final review-reading checklist
+
+- I checked reviews for my exact variant
+- I compared newest, lowest, and detailed mid-range reviews
+- I separated product complaints from courier complaints
+- I looked for repeated specific problems, not one dramatic comment
+- I compared buyer media with model numbers, dimensions, and contents
+- I checked the seller's response to returns or defects
+- I confirmed the current return and refund process
+- I compared the final checkout price, not the displayed discount alone
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. We do not verify every marketplace review, physically test every listed product, or guarantee seller claims. Review content, listing details, prices, and platform rules can change. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Safety",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-28",
+    lastReviewed: "2026-07-28",
+    readTime: 12,
+    tags: ["online-reviews", "seller-checking", "shopping-safety", "buyer-photos", "philippines"],
+    recommendationIntent: {
+      topics: ["review-checking", "shopping-safety", "seller-checking"],
+    },
+    coverGradient: "from-indigo-900 to-cyan-300",
+    coverImage: "/images/guides/online-product-review-checklist-philippines.jpg",
+    coverImageAlt: "Filipino online buyer comparing detailed product reviews, variant information, ratings, and buyer photos on a laptop",
+    faqs: [
+      {
+        question: "Does a high star rating mean an online product is safe to buy?",
+        answer:
+          "Not by itself. Check the exact variant, recent review distribution, repeated issues, buyer media, seller responses, and return terms before deciding.",
+      },
+      {
+        question: "Should I trust one-star reviews more than five-star reviews?",
+        answer:
+          "No single rating level is automatically more reliable. Look for specific, repeated, testable details across recent reviews and separate product issues from delivery or buyer-error issues.",
+      },
+      {
+        question: "What if a listing has very few useful reviews?",
+        answer:
+          "Treat the product as uncertain. Reduce the amount at risk, choose a seller with stronger terms, compare another listing, or wait until better evidence is available.",
+      },
+    ],
+  },
+  {
+    id: "post-031",
+    slug: "refurbished-vs-used-vs-open-box-philippines",
+    title: "Refurbished vs Used vs Open-Box: PH Buyer Guide",
+    excerpt:
+      "Compare condition, battery health, locks, parts, warranty, returns, and total cost before choosing a refurbished, used, or open-box device.",
+    content: `
+Refurbished, used, and open-box devices can save money, but the label alone does not tell you what work was done, which parts were replaced, or what happens if the item fails. Sellers may use the same condition word differently, so the practical question is not “Which label is best?” It is “What evidence and protection come with this exact unit?”
+
+This guide focuses on phones, laptops, tablets, cameras, consoles, and small electronics sold online in the Philippines. The same framework can be adapted to other durable goods.
+
+## How we assessed this guide
+
+We used the DTI-BPS summary of Philippine e-commerce transaction guidance, which emphasizes accurate product information, available guarantees or warranties, clear delivery details, and accessible refund and exchange policies: [DTI-BPS e-commerce transaction guidelines](https://bps.dti.gov.ph/press-releases/28-2021/259-dti-issues-national-standard-guidelines-for-e-commerce-transactions).
+
+Condition labels are not treated here as universal grades. SulitScan does not inspect individual units, certify refurbishment work, or verify a seller's parts. The checklist requires unit-specific evidence because that is what a buyer can preserve and compare.
+
+## Understand what each label does not guarantee
+
+An open-box item generally suggests the packaging was opened or the item was returned, displayed, or inspected. It does not guarantee zero use, complete accessories, a full warranty, or perfect cosmetic condition.
+
+A refurbished item suggests someone inspected, repaired, cleaned, tested, or restored it. The important missing details are who performed that work, which tests were run, which parts were replaced, and what warranty supports the result.
+
+A used or pre-owned item indicates prior ownership or use. It may be excellent, but condition can vary from almost new to heavily worn. A “like new” grade is still a seller description until photos, diagnostics, and terms support it.
+
+Ask the seller to define the grade in writing. Save that definition with the listing because marketplace copy can change after checkout.
+
+## Build a unit-specific condition sheet
+
+Before comparing prices, record the exact brand, model number, storage or memory configuration, color, serial or service tag availability, and included accessories. Two listings with the same product name may have different processors, regional models, chargers, keyboard layouts, or network compatibility.
+
+Request clear photos of the actual unit when the listing uses stock images. For higher-value devices, look for:
+
+- Screen condition under a plain light background
+- Corners, hinges, ports, camera lenses, and screws
+- Keyboard, trackpad, buttons, and seals
+- Charger label and cable condition
+- Model number or service tag, with sensitive serial digits partly hidden in public messages
+- Any repair, replacement, or liquid-contact history the seller knows
+
+Do not post a full serial number publicly. Use the manufacturer's official support or warranty-check page where available, and avoid third-party sites that ask for unnecessary account credentials.
+
+## Check battery, locks, and device identity
+
+Battery wear is one of the biggest differences between a new device and a pre-owned one. Ask for the operating system's battery-health or cycle information when available, but remember that screenshots can be outdated or manipulated. Your return window should be long enough to test real runtime and charging behavior.
+
+Confirm that the device will be removed from previous-owner accounts and activation locks. A phone, tablet, laptop, or console that remains tied to another account can be unusable even if the hardware works. The seller should reset it through the manufacturer's normal process, not offer a workaround.
+
+For mobile devices, check whether the model supports the networks, SIM type, eSIM features, and bands you need. For laptops, confirm the exact processor generation, RAM configuration, storage health, ports, charger wattage, and operating-system license status.
+
+## Ask what refurbishment work was actually done
+
+“Professionally refurbished” is meaningful only when the seller identifies the process and stands behind it. Ask:
+
+- Who inspected or repaired the unit?
+- Which components were replaced, and are they original, compatible third-party, or unknown?
+- What diagnostics were performed?
+- Was data securely erased and the operating system reinstalled?
+- Are water resistance or manufacturer seals affected?
+- Is a written test report or grading checklist included?
+
+A replaced screen, battery, keyboard, or storage drive is not automatically bad. The risk comes from unknown parts, unclear workmanship, and no practical remedy if the replacement fails.
+
+## Compare warranty and return protection separately
+
+A return window lets you send an item back under stated conditions. A warranty covers specified faults for a stated period. They are not the same. Record who handles each one: the marketplace, the seller, a refurbishment company, or the original manufacturer.
+
+Before paying, save:
+
+- Warranty length, coverage, exclusions, and claim location
+- Return window and whether change-of-mind returns are allowed
+- Who pays return shipping
+- Required packaging, accessories, seals, or diagnostic evidence
+- Whether repair, replacement, store credit, or refund is the stated remedy
+
+Use the [online purchase warranty guide](/blog/online-purchase-warranty-guide-philippines) to prepare a claim evidence folder before a problem happens.
+
+## Calculate the real saving
+
+Compare the pre-owned unit with a genuinely equivalent new model, not the old launch price. Include charger replacement, battery service, missing accessories, delivery insurance, possible repair time, and the value of a shorter warranty.
+
+For a device shipped from overseas, include the delivered or landed cost rather than only the item price. [ImportTaxPH](https://www.importtaxph.com/) can help estimate potential Philippine duties and taxes for planning; the final customs assessment, classification, courier fees, and exchange rate can differ.
+
+A modest discount may not compensate for an uncertain battery and a seven-day seller warranty. A larger discount with a clear grading report, practical return window, and local support may be easier to justify.
+
+## Inspect and document immediately after delivery
+
+Record the unopened parcel and the complete first inspection in one continuous sequence when practical, while following the platform's current evidence rules. Photograph the label, packaging, accessories, serial or service tag, and visible condition. Our [unboxing evidence guide](/blog/unboxing-video-evidence-online-shopping-philippines) explains how to make useful evidence without claiming that video is a universal legal requirement.
+
+During the return window, test charging, battery drain, display, speakers, microphone, cameras, ports, keyboard or buttons, Wi-Fi, Bluetooth, storage, and shutdown or restart behavior. Do not perform irreversible modifications or repairs until you know the return rules.
+
+Then compare the delivered condition against the listing and review patterns using the [online product review checklist](/blog/online-product-review-checklist-philippines).
+
+## Refurbished-device decision checklist
+
+1. I have the exact model, configuration, and actual-unit condition evidence.
+2. The seller defined the condition grade in writing.
+3. I know who refurbished or inspected it and what work was performed.
+4. Battery information and account-lock status are clear.
+5. Network, charger, keyboard, region, and accessory compatibility are confirmed.
+6. The return window gives enough time for meaningful testing.
+7. Warranty coverage, exclusions, claim location, and shipping responsibility are written.
+8. The total cost includes missing parts, likely service, shipping, and import costs.
+9. The saving is measured against a current equivalent product, not an old launch price.
+10. I will preserve the listing, chat, receipt, and delivery evidence.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. We do not inspect, refurbish, certify, sell, or guarantee any device. Condition, battery readings, parts, locks, warranty, import treatment, prices, and seller policies must be verified for the exact unit. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Tech Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-28",
+    lastReviewed: "2026-07-28",
+    readTime: 13,
+    tags: ["refurbished", "open-box", "used-devices", "electronics", "warranty", "philippines"],
+    recommendationIntent: {
+      topics: ["refurbished-buying", "tech-accessories", "shopping-safety"],
+    },
+    coverGradient: "from-slate-900 to-blue-300",
+    coverImage: "/images/guides/refurbished-vs-used-vs-open-box-philippines.jpg",
+    coverImageAlt: "Refurbished, used, and open-box electronics comparison with a phone, laptop, condition checklist, charger, and packaging",
+    faqs: [
+      {
+        question: "Is refurbished always safer than buying used?",
+        answer:
+          "No. The label is not enough. Compare who performed the work, the written test process, actual-unit condition, battery, return window, and enforceable warranty.",
+      },
+      {
+        question: "What is the most important check for an open-box device?",
+        answer:
+          "Verify the actual unit, complete accessories, account-lock status, battery or diagnostic information, and whether the return and warranty terms differ from a new unit.",
+      },
+      {
+        question: "How much cheaper should a pre-owned device be?",
+        answer:
+          "There is no universal percentage. Compare the delivered cost with a current equivalent new model and price the shorter warranty, wear, missing accessories, and likely service risk.",
+      },
+    ],
+  },
+  {
+    id: "post-032",
+    slug: "online-furniture-measurement-guide-philippines",
+    title: "Online Furniture Measurement Guide for Filipino Buyers",
+    excerpt:
+      "Measure the room, doors, stairs, elevator, packaging, clearances, and delivery route before ordering furniture online.",
+    content: `
+Furniture can fit the room on paper and still fail at the doorway, stair landing, elevator, or final turn. Online listings often emphasize width, height, and depth, but buyers also need packaging size, assembled orientation, leg or back removal options, working clearance, and a complete delivery path.
+
+This guide turns those checks into a simple measurement worksheet for sofas, desks, cabinets, shelves, bed frames, chairs, and storage furniture ordered online in the Philippines.
+
+## How we assessed this guide
+
+The measurement workflow is based on practical fit and delivery geometry, then paired with the DTI-BPS e-commerce guidance that online product descriptions, delivery options, tracking, and post-purchase policies should be clear enough to support informed decisions: [DTI-BPS e-commerce transaction guidelines](https://bps.dti.gov.ph/press-releases/28-2021/259-dti-issues-national-standard-guidelines-for-e-commerce-transactions).
+
+SulitScan does not measure a seller's product, room, building, elevator, or delivery vehicle. Always confirm measurements for the exact variant and ask the seller or courier how the item is packaged and handled.
+
+## Record the product in all useful orientations
+
+Start with the listing's assembled width, depth, and height. Then identify which dimension can become vertical while the item is carried. A sofa may pass through a door on its end if the arm, back, and packaging allow it. A rigid cabinet may not.
+
+Request these measurements when the listing does not show them:
+
+- Fully assembled width, depth, and height
+- Packaged carton dimensions and weight
+- Largest rigid component if the item arrives flat-packed
+- Diagonal depth or corner-to-corner dimension for bulky upholstery
+- Removable legs, arms, backs, doors, shelves, or drawers
+- Space needed to assemble, open doors, extend recliners, or pull out drawers
+
+Do not assume the product title is a measurement. “Two-seater,” “queen,” “compact,” and “20-inch” can describe a category rather than the exact external size.
+
+## Measure the final room and operating clearance
+
+Draw a simple top-down room plan. Mark wall-to-wall dimensions, columns, baseboards, doors, windows, outlets, switches, vents, curtains, and fixed appliances. Record the space that must remain usable, not just the empty rectangle where the furniture will sit.
+
+Examples of working clearance include:
+
+- Space behind a chair so it can slide out
+- Door swing in front of a cabinet
+- Drawer or recliner extension
+- Walking path between a bed and wall
+- Ventilation around an appliance or electronics cabinet
+- Curtain movement and window access
+- Access to outlets, breakers, valves, or cleaning areas
+
+Use painter's tape, newspapers, or cardboard to mark the footprint on the floor. Live with the outline for a day if the item is large. Check whether normal walking, cleaning, opening, and sitting still work.
+
+## Trace the complete delivery route
+
+Measure from the unloading point to the final room. The narrowest or sharpest part decides whether the item can pass.
+
+Record:
+
+1. Building entrance and gate width and height
+2. Hallway width, low ceilings, lights, railings, and corners
+3. Every doorway's clear opening with the door open
+4. Stair width, ceiling height, landing size, and turn angle
+5. Elevator door opening, cabin width, depth, height, and rated load
+6. The final room doorway and the turning space on both sides
+
+Measure the clear opening, not the frame's outside dimension. Door handles, closers, railings, and elevator control panels reduce usable space. Ask building management about delivery schedules, service-elevator rules, loading bays, deposits, and protective requirements before confirming a large order.
+
+## Compare packaged and assembled dimensions
+
+A flat-packed desk may be easy to deliver but require a large clean floor area for assembly. A fully assembled sofa may have a smaller listed footprint than its protective carton. Ask whether delivery staff remove packaging outside, assemble indoors, carry upstairs, or stop at the ground floor.
+
+For modular furniture, confirm the size of the largest module and how pieces connect. For cabinets and shelving, check whether the item must be assembled upright. A tall unit assembled flat may need extra ceiling clearance when it is tilted into position.
+
+Keep a safety margin rather than ordering an item that theoretically clears by a few millimeters. Packaging can bulge, walls can be uneven, and online dimensions may be rounded.
+
+## Check scale, load, and material evidence
+
+Photos can make furniture look larger or smaller than it is. Compare listed dimensions with a familiar object and use the tape outline, not the styled room image, to judge scale.
+
+For shelves, tables, and seating, ask for the seller's stated load limit and assembly instructions. Check buyer photos for joint design, fasteners, back panels, edge finishing, and leg attachment. A product review saying “large” or “sturdy” is less useful than a measured photo or description of real use.
+
+If a sofa cover, organizer, or accessory must fit existing furniture, measure the actual contact area and shape. The related deals below are starting points only; confirm every dimension and material on the partner store.
+
+## Plan delivery, assembly, and damage evidence
+
+Save the listing dimensions, selected variant, delivery promise, assembly scope, and return terms before checkout. Confirm who is responsible if the package cannot pass a route the seller was told about, or if the item arrives damaged.
+
+Clear the path, protect floors and walls, secure pets, and keep the measurement sheet available on delivery day. Inspect the outer packaging before moving it far. Photograph crushed corners, punctures, water exposure, or missing cartons. Our [unboxing evidence guide](/blog/unboxing-video-evidence-online-shopping-philippines) explains how to preserve useful evidence under the platform's current rules.
+
+Do not discard packaging or assemble a damaged item until you understand the return instructions. Some sellers require original cartons, and assembly can complicate a claim.
+
+## Furniture fit worksheet
+
+- Product assembled size: width ___ depth ___ height ___
+- Package size and weight: ___
+- Largest rigid component: ___
+- Removable parts: ___
+- Final room footprint and clearance: ___
+- Narrowest door opening: ___
+- Tightest hallway or stair turn: ___
+- Elevator opening and cabin: ___
+- Assembly floor and ceiling clearance: ___
+- Delivery service level and building rules: ___
+- Return window and packaging requirement: ___
+
+If you are furnishing a new place, pair the measurement sheet with our [first apartment essentials guide](/blog/first-apartment-essentials-under-1000-philippines) so small practical needs are prioritized before decorative purchases.
+
+## Final pre-order checklist
+
+1. I measured the exact product variant and its package.
+2. I marked the final footprint and operating clearances.
+3. I traced every door, hall, stair, elevator, and turn.
+4. I know which parts are removable and who assembles the item.
+5. I checked building delivery rules and service access.
+6. I saved dimensions, seller answers, delivery scope, and return terms.
+7. I left a realistic margin instead of relying on a perfect theoretical fit.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. We do not measure, deliver, assemble, load-test, or guarantee listed furniture. Dimensions, packaging, building access, delivery scope, prices, and return terms can change. Confirm every detail with the seller, courier, and building before ordering. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Home Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-28",
+    lastReviewed: "2026-07-28",
+    readTime: 12,
+    tags: ["furniture", "measurements", "delivery", "small-spaces", "home", "philippines"],
+    recommendationIntent: {
+      topics: ["furniture-buying", "home-organization", "first-home"],
+      platforms: ["Temu", "Shopee PH"],
+      deals: {
+        categories: ["Home"],
+        tags: ["furniture", "sofa", "desk", "storage", "organizer"],
+      },
+    },
+    coverGradient: "from-amber-900 to-orange-200",
+    coverImage: "/images/guides/online-furniture-measurement-guide-philippines.jpg",
+    coverImageAlt: "Online furniture measurement plan with tape measure, sofa, doorway, elevator, room outline, and delivery route",
+    faqs: [
+      {
+        question: "Which furniture measurement matters most for delivery?",
+        answer:
+          "The limiting point is the narrowest opening or tightest turn along the full delivery route, compared with the packaged item or largest rigid component in a workable orientation.",
+      },
+      {
+        question: "How much extra clearance should I leave?",
+        answer:
+          "There is no universal margin, but do not rely on a few millimeters. Listings may round dimensions, packaging can bulge, and real walls or frames may be uneven.",
+      },
+      {
+        question: "Should I measure the package or the assembled furniture?",
+        answer:
+          "Both. Package dimensions determine delivery fit, while assembled dimensions and operating clearances determine whether the item works in the room.",
+      },
+    ],
+  },
+  {
+    id: "post-033",
+    slug: "online-purchase-warranty-guide-philippines",
+    title: "Online Purchase Warranty Guide for Filipino Buyers",
+    excerpt:
+      "Save the warranty promise, seller identity, receipt, listing, delivery evidence, serial details, and claim timeline before an online purchase goes wrong.",
+    content: `
+A warranty is useful only if you can show what was promised, who is responsible, which product you received, and when the problem was reported. Online listings can change, chats can disappear, and a seller warranty may not be the same as a manufacturer warranty.
+
+This guide helps Philippine online buyers build a simple evidence folder before checkout, inspect the order after delivery, and prepare a clear claim if the product does not match the warranty or contract.
+
+## How we assessed this guide
+
+The DTI E-Commerce FAQ explains consumer rights, seller information, complaint channels, and the principle that defective goods may be subject to remedies under the Consumer Act: [DTI E-Commerce FAQs](https://ecommerce.dti.gov.ph/faqs/).
+
+We also reviewed Joint Administrative Order No. 24-03, the implementing rules for the Internet Transactions Act. Its consumer-remedy section addresses repair, replacement, refund, or other remedies where an online product is defective, malfunctions without consumer fault, is lost, or fails to conform with a warranty or seller obligation: [JAO 24-03 PDF](https://ecommerce.dti.gov.ph/wp-content/uploads/2024/06/Joint-Administrative-Order-No.-24-03.pdf).
+
+This is a practical record-keeping guide, not legal advice. The remedy for a specific case depends on the facts, current law, platform process, warranty wording, and responsible business.
+
+## Identify every layer of protection
+
+Write down which protection applies and who provides it:
+
+- Platform return or refund window
+- Seller replacement or repair promise
+- Manufacturer limited warranty
+- Distributor or authorized service-center warranty
+- Payment-provider dispute process
+- Optional protection plan or delivery insurance
+
+These layers can have different deadlines and evidence requirements. A seven-day platform return window does not necessarily define a separate one-year manufacturer warranty. A seller's “service warranty” may offer repair but not replacement. Never merge them into one assumed promise.
+
+Check whether the seller is authorized for the brand if manufacturer coverage matters. A genuine product can still fall outside local warranty coverage when it is a gray-market or overseas unit.
+
+## Save evidence before checkout
+
+Create a folder named with the product, seller, and order date. Save or export:
+
+- Listing title, description, exact variant, model, and price
+- Photos showing included parts and advertised condition
+- Warranty duration, coverage, exclusions, and claim instructions
+- Seller legal or business name, contact details, and store URL
+- Return and refund policy with deadlines and shipping responsibility
+- Seller answers about compatibility, condition, or warranty
+- Final cart showing vouchers, shipping, taxes, and payment method
+
+Screenshots are useful, but include the URL and date where possible. Save text as a PDF or note as well, because a cropped image can lose context. Keep the order confirmation and official receipt or invoice when provided.
+
+For an expensive product, ask before paying where service is performed, whether a serial number is required, and who pays shipping during a valid claim.
+
+## Inspect and register the product after delivery
+
+Document the unopened parcel and first inspection under the platform's current rules. Check the exact model, serial or service tag, accessories, seals, visible condition, and power or compatibility information. Keep sensitive serial details private.
+
+Use the [unboxing evidence guide](/blog/unboxing-video-evidence-online-shopping-philippines) for a practical recording workflow. Video can support a claim, but requirements vary by platform and it is not a universal legal requirement.
+
+If the manufacturer offers product registration, use the official site and save the confirmation. Registration may help organize support, but it should not be treated as proof that every claim will be accepted.
+
+Test the essential functions within the return window. Follow instructions and avoid modifications that could complicate the claim. Keep packaging, labels, accessories, and protective materials until the product is working and the return period has passed.
+
+## Read the warranty for scope, not just duration
+
+“One-year warranty” is incomplete. Find the start date, covered defects, excluded damage, claim location, labor or parts coverage, shipping responsibility, and available remedy.
+
+Common questions include:
+
+- Does coverage begin on purchase, delivery, or registration?
+- Is the warranty local, regional, or seller-only?
+- Are batteries, chargers, screens, accessories, or consumables excluded?
+- Is accidental, liquid, cosmetic, or misuse damage excluded?
+- Must service be performed by an authorized center?
+- Does a repair extend or preserve the remaining warranty?
+- What happens if the same defect returns?
+
+Ask for missing terms in writing. A short clear warranty with a practical local claim path can be more useful than a longer vague promise.
+
+## Build a clean claim timeline
+
+When a problem appears, stop using the product if continued operation could cause more damage or create a safety risk. Record the symptom, date, normal use context, error message, and troubleshooting already attempted.
+
+Contact the responsible party through the official platform or service channel. State:
+
+1. Order number, purchase date, model, and serial reference
+2. The specific fault or mismatch
+3. When it started and how it affects normal use
+4. The warranty or listing promise you are relying on
+5. The remedy you are requesting
+6. The evidence attached
+
+Keep the message factual and concise. Save every reply, case number, courier receipt, diagnostic report, and promised deadline. Do not send passwords, one-time codes, MPINs, or unnecessary identity documents through informal chat.
+
+## Escalate in the right order
+
+Follow the platform or warranty procedure first when it is available and safe. If the seller directs you outside the platform, confirm whether that would affect buyer protection before agreeing.
+
+If the case is unresolved, use the platform escalation, authorized service provider, payment-provider process, or applicable government complaint channel. The DTI FAQ lists consumer complaint information and should be checked for current contact details. Preserve a single chronological file so the reviewer can understand the transaction without reconstructing scattered chats.
+
+Check the [voucher, shipping, and return checklist](/blog/voucher-shipping-return-checklist) before future orders so the post-purchase terms are part of the buying decision, not a surprise after delivery.
+
+## Warranty evidence checklist
+
+- Exact listing, variant, model, and advertised condition
+- Warranty provider, duration, scope, exclusions, and remedy
+- Return window and shipping responsibility
+- Seller identity and official contact channel
+- Cart, order confirmation, receipt, and payment record
+- Delivery label, packaging, serial reference, and inspection evidence
+- Product registration and authorized-service information
+- Dated fault description, photos or video, and troubleshooting record
+- Claim number, replies, promised deadlines, and shipping receipts
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. We are not a seller, platform, manufacturer, service center, lawyer, or government agency, and we cannot decide a warranty claim. Terms, procedures, rights, and contact channels can change; verify the current rules for your transaction. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Safety",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-28",
+    lastReviewed: "2026-07-28",
+    readTime: 12,
+    tags: ["warranty", "returns", "refunds", "consumer-evidence", "online-shopping", "philippines"],
+    recommendationIntent: {
+      topics: ["warranty", "returns", "shopping-safety"],
+    },
+    coverGradient: "from-emerald-900 to-amber-200",
+    coverImage: "/images/guides/online-purchase-warranty-guide-philippines.jpg",
+    coverImageAlt: "Online purchase warranty evidence folder with receipt, serial number, delivery box, checklist, and support chat",
+    faqs: [
+      {
+        question: "Is a seller warranty the same as a manufacturer warranty?",
+        answer:
+          "Not necessarily. They can have different providers, coverage, claim locations, deadlines, exclusions, and remedies. Save the exact wording for each layer.",
+      },
+      {
+        question: "What warranty evidence should I save before checkout?",
+        answer:
+          "Save the exact listing and variant, warranty terms, seller identity, return policy, seller answers, final cart, order confirmation, and receipt or invoice.",
+      },
+      {
+        question: "Where can a Philippine online buyer escalate an unresolved complaint?",
+        answer:
+          "Use the platform and responsible business process first, then check the current DTI E-Commerce FAQ and other applicable official channels for the transaction. Keep a complete chronological evidence file.",
+      },
+    ],
+  },
+  {
+    id: "post-034",
+    slug: "energy-efficient-appliance-buying-guide-philippines",
+    title: "Energy-Efficient Appliance Buying Guide Philippines",
+    excerpt:
+      "Compare the exact DOE energy label, model, capacity, estimated consumption, fit, voltage, delivery, warranty, and total running cost.",
+    content: `
+The cheapest appliance at checkout is not always the lowest-cost appliance to own. Refrigerators, air conditioners, televisions, and other frequently used equipment can add years of electricity cost, while an oversized or poorly matched model can waste money even when its efficiency rating looks good.
+
+This Philippine buyer guide explains how to use the model-specific energy label as one part of a complete online-purchase decision.
+
+## How we assessed this guide
+
+We used the Department of Energy's explanation of the Philippine Energy Label. The label includes a star rating tied to product efficiency, model details, estimated energy consumption, and a QR code for more information: [DOE Philippine Energy Label](https://legacy.doe.gov.ph/pelp/philippine-energy-label).
+
+The DOE also maintains the Philippine Energy Labeling Program product information system. Buyers can use the official [PELP portal](https://pelp.doe.gov.ph/) to look for model-specific records where available.
+
+SulitScan does not test appliances, certify safety, calculate your utility bill, or guarantee that a marketplace photo is the current official label. Coverage and requirements differ by product type and can change, so confirm current DOE information and the exact model before paying.
+
+## Match the label to the exact model
+
+Do not compare a label shown for a different capacity, suffix, or product generation. Record the complete model number from the listing, product label, and DOE record. A family photo can show several sizes while the efficiency and consumption figures apply to only one.
+
+On the energy label, check:
+
+- Brand and complete model number
+- Product type and rated capacity
+- Star rating or efficiency information
+- Estimated energy consumption and the test basis
+- Label issue or validity information where shown
+- QR code or official product-detail reference
+
+If the seller shows a blurry label or only says “inverter” or “energy saving,” ask for the exact model and current label. Marketing words do not replace model-specific consumption information.
+
+## Compare similar capacity and use cases
+
+Efficiency comparisons make sense only between appliances that can do the same job. A small refrigerator may use less electricity but be too small for the household, leading to crowding, poor airflow, or a second appliance. An oversized air conditioner can cost more and may not suit the space even if it has a strong rating.
+
+Define the need first:
+
+- Room size, heat exposure, occupants, and normal use for cooling
+- Household size, food habits, and storage layout for refrigeration
+- Viewing size, brightness, and daily hours for televisions
+- Load size and weekly cycles for washers or dryers
+- Required capacity and frequency for other covered equipment
+
+Compare products within the same useful-capacity range. Then use energy information, warranty, service support, noise, dimensions, and price to choose among them.
+
+## Estimate running cost with your own rate
+
+When the label provides monthly or annual energy consumption in kilowatt-hours, multiply that figure by the electricity rate you want to use.
+
+Estimated monthly electricity cost = monthly kWh × pesos per kWh
+
+For example, if a model's label estimates 30 kWh per month and you use an assumed rate of ₱12 per kWh for planning, the estimate is ₱360 per month. This is not a bill prediction. Actual use can change with temperature, settings, maintenance, loading, household behavior, voltage conditions, and the utility's current rate and charges.
+
+Use the same assumed rate and label basis for every model in your comparison. Do not mix daily, monthly, and annual consumption without converting them to the same period.
+
+Calculate a multi-year planning total, but keep it clearly labeled as an estimate:
+
+Purchase price + delivery and installation + estimated energy cost + expected maintenance
+
+This makes a higher upfront price easier to evaluate without pretending the future is certain.
+
+## Check fit, installation, and electrical details
+
+Measure the appliance and the complete delivery route. Include packaging size, doorways, stairs, elevator, turning space, ventilation clearance, door swing, hose or drain location, and access for cleaning or service.
+
+Confirm:
+
+- Rated voltage and frequency for Philippine use
+- Plug type, grounded outlet, and required circuit or breaker
+- Installation parts and labor included or excluded
+- Ventilation and manufacturer clearance requirements
+- Water, drain, exhaust, mounting, or outdoor-unit needs
+- Delivery floor, stairs, haul-away, and building rules
+
+Do not solve an electrical mismatch with an unverified cheap adapter or extension. Use the manufacturer's instructions and a qualified professional where the installation requires one.
+
+## Verify the online listing before paying
+
+Save the exact model, energy-label image, capacity, dimensions, color, included parts, warranty, seller identity, and service-center information. Confirm whether the item is local stock, gray market, display, open-box, or refurbished because that can affect warranty and label interpretation.
+
+Check recent reviews for noise, fit, delivery damage, missing accessories, and seller support, but use the [online product review checklist](/blog/online-product-review-checklist-philippines) rather than relying on the star average.
+
+For kitchen equipment, the [cookware buying guide](/blog/cookware-sets-philippines-buying-guide) helps separate cookware compatibility from appliance claims. For a first home, use the [first apartment essentials guide](/blog/first-apartment-essentials-under-1000-philippines) to decide whether the appliance is a current need or a later upgrade.
+
+## Compare warranty and service access
+
+An appliance can be efficient and still be a poor online purchase if service is impractical. Ask who honors the warranty, where the nearest authorized service option is, which parts and labor are covered, and who pays transport for a large unit.
+
+Save the warranty terms before checkout. On delivery, inspect the carton, verify the model and serial reference, keep the official receipt, and follow registration instructions. Do not discard packaging until the item is installed, tested, and outside any immediate return check.
+
+Consider parts availability, filter or consumable cost, cleaning access, and technician availability. Energy use is only one part of ownership cost.
+
+## Appliance comparison worksheet
+
+For each candidate, record:
+
+- Exact model and useful capacity
+- Official energy-label record and estimated kWh
+- Planning electricity rate and estimated monthly cost
+- Purchase, delivery, installation, and accessory cost
+- External dimensions, package size, and required clearances
+- Electrical, water, drain, exhaust, or mounting needs
+- Warranty provider, coverage, service location, and transport responsibility
+- Noise, maintenance, filters, parts, and consumable costs
+- Return window and delivery-damage process
+
+## Final appliance-buying checklist
+
+1. The DOE label and listing refer to the exact same model.
+2. I compared models with equivalent useful capacity.
+3. I converted consumption to the same time period and used one planning rate.
+4. I measured the final location and delivery route.
+5. Electrical and installation requirements are confirmed.
+6. Delivery, installation, haul-away, and building fees are included.
+7. Warranty and local service access are practical.
+8. I saved the listing, energy label, receipt, serial details, and seller answers.
+9. I can afford the total ownership estimate, not only the discounted checkout price.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. We do not energy-test, safety-certify, install, repair, sell, or guarantee appliances. Labels, models, rates, consumption, prices, stock, warranty, and service terms can change. Verify the current DOE record, manufacturer instructions, and seller terms. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Home Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-07-28",
+    lastReviewed: "2026-07-28",
+    readTime: 13,
+    tags: ["appliances", "energy-efficiency", "philippine-energy-label", "electricity-cost", "home", "philippines"],
+    recommendationIntent: {
+      topics: ["appliance-buying", "energy-efficiency", "first-home"],
+    },
+    coverGradient: "from-teal-900 to-yellow-200",
+    coverImage: "/images/guides/energy-efficient-appliance-buying-guide-philippines.jpg",
+    coverImageAlt: "Philippine appliance buying comparison with refrigerator, air conditioner, energy label, meter, and monthly cost worksheet",
+    faqs: [
+      {
+        question: "Does a higher Philippine Energy Label star rating always mean the appliance is best for me?",
+        answer:
+          "No. Compare the exact model with similar useful capacity, then consider consumption, fit, installation, warranty, service, noise, and total cost.",
+      },
+      {
+        question: "How do I estimate an appliance's monthly electricity cost?",
+        answer:
+          "Multiply the label's estimated monthly kWh by a chosen peso-per-kWh planning rate. Use the same basis for each model and treat the result as an estimate, not a bill prediction.",
+      },
+      {
+        question: "What if an online appliance listing does not show a readable energy label?",
+        answer:
+          "Ask for the exact model and current label, then check the official DOE PELP information where available. Do not substitute a label from another size or model.",
       },
     ],
   },

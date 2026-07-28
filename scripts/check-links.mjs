@@ -75,6 +75,11 @@ const REQUIRED_GROWTH_POSTS = new Set([
   "bags-under-500-philippines-buying-guide",
   "carry-on-luggage-philippines-buying-guide",
   "makeup-brush-sets-philippines-beginner-guide",
+  "online-product-review-checklist-philippines",
+  "refurbished-vs-used-vs-open-box-philippines",
+  "online-furniture-measurement-guide-philippines",
+  "online-purchase-warranty-guide-philippines",
+  "energy-efficient-appliance-buying-guide-philippines",
 ])
 for (const slug of REQUIRED_GROWTH_POSTS) {
   if (!postSlugs.has(slug)) errors.push(`Missing required growth post: "${slug}"`)

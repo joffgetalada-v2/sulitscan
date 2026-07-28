@@ -12,6 +12,8 @@ import { getRelatedDealsForPost } from "@/lib/blog-recommendations"
 import { siteConfig } from "@/lib/seo"
 import { formatDate, formatTag, clampMeta } from "@/lib/utils"
 import NewsletterSignup from "@/components/newsletter/NewsletterSignup"
+import AdSenseArticleScript from "@/components/AdSenseArticleScript"
+import ArticleTrustPanel from "@/components/ArticleTrustPanel"
 
 function slugifyHeading(text: string): string {
   return text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-").replace(/--+/g, "-").trim()
@@ -158,6 +160,7 @@ export default async function BlogPostPage({
         url={postUrl}
         imageUrl={`${siteConfig.url}${post.coverImage ?? DEFAULT_BLOG_COVER}`}
       />
+      <AdSenseArticleScript />
       {post.faqs && post.faqs.length > 0 && <FAQJsonLd items={post.faqs} />}
 
       {/* Cover / Hero (post cover, or the shared default) */}
@@ -178,13 +181,15 @@ export default async function BlogPostPage({
           {/* Main column */}
           <div className="lg:col-span-3">
             {/* Back */}
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-green-600 mb-6 transition-colors"
-            >
-              <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-              Back to Blog
-            </Link>
+            <div className="mb-6">
+              <Link
+                href="/blog"
+                className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-green-600 transition-colors"
+              >
+                <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+                Back to Blog
+              </Link>
+            </div>
 
             {/* Meta */}
             <span className="text-xs font-semibold text-green-600 uppercase tracking-wide">
@@ -206,6 +211,8 @@ export default async function BlogPostPage({
               )}
               <span>{post.readTime} min read</span>
             </div>
+
+            <ArticleTrustPanel />
 
             {/* Mobile TOC */}
             {headings.length > 2 && (

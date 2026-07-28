@@ -49,6 +49,15 @@ const sections = [
     ],
   },
   {
+    icon: ShieldCheck,
+    title: "Advertising standards",
+    body: [
+      "If Google AdSense is enabled, display ads are limited to substantive editorial article pages during the initial rollout. Deal listings, stores, categories, tools, and legal pages remain outside the article-ad integration.",
+      "Advertising must be distinguishable from editorial content and affiliate buttons. We never ask visitors to click ads, disguise ads as navigation, or place ads beside misleading prompts.",
+      "No page may contain more advertising than publisher content. Affiliate commissions and advertising do not buy a higher SulitScore, a favorable review, or placement in a guide.",
+    ],
+  },
+  {
     icon: RefreshCw,
     title: "Content updates and corrections",
     body: [
@@ -83,7 +92,7 @@ export default function EditorialPolicyPage() {
             This page explains how we select deals, disclose affiliate relationships, and maintain
             accuracy across our content.
           </p>
-          <p className="text-xs text-slate-400 mt-4">Last reviewed: June 2026</p>
+          <p className="text-xs text-slate-400 mt-4">Last reviewed: July 2026</p>
         </div>
       </div>
 

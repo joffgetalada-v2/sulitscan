@@ -53,7 +53,7 @@ export default function PrivacyPolicyPage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-slate-400 shrink-0 mt-0.5">·</span>
-                <span><strong>Cookies:</strong> Basic session cookies and analytics cookies.</span>
+                <span><strong>Advertising data:</strong> When advertising is enabled, Google may process advertising cookies and related device or browser data.</span>
               </li>
             </ul>
           </section>
@@ -85,22 +85,38 @@ export default function PrivacyPolicyPage() {
             <h2 className="text-lg font-bold text-slate-900 mb-3">4. Analytics</h2>
             <p>
               SulitScan PH uses <strong>Vercel Analytics</strong> to collect aggregated, anonymized usage
-              data, such as page views and navigation paths. This service does not use advertising
-              cookies and does not personally identify individual visitors. We use this data only to
-              improve the site experience.
+              data, such as page views and navigation paths. Vercel Analytics does not use cookies and
+              does not personally identify individual visitors. We use this data only to improve the
+              site experience.
             </p>
           </section>
 
           <section>
             <h2 className="text-lg font-bold text-slate-900 mb-3">5. Cookies</h2>
             <p className="mb-3">
-              We use a limited number of cookies. For a full breakdown, see our{" "}
+              SulitScan does not currently set its own session or preference cookies. Third parties may
+              use cookies only in the circumstances described in our{" "}
               <a href="/cookie-policy" className="text-green-600 underline hover:text-green-700">Cookie Policy</a>.
             </p>
+            <p className="mb-3">
+              SulitScan PH uses <strong>Google AdSense</strong> only on substantive editorial article
+              pages when advertising is activated. On those pages, Google and its advertising partners
+              may place or read cookies, use a web beacon, and receive an IP address plus device or
+              browser information to serve, measure, secure, and limit advertising.
+            </p>
             <p>
-              SulitScan PH does <strong>not</strong> currently use advertising cookies or third-party
-              ad networks. If we add advertising in the future, this policy will be updated and a
-              cookie consent notice will be shown before enabling advertising cookies.
+              Depending on your location and consent choices, ads may be personalized or
+              non-personalized. You can review or change Google advertising choices in{" "}
+              <a
+                href="https://myadcenter.google.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-green-600 underline hover:text-green-700"
+              >
+                Google Ad Settings
+              </a>
+              . Where consent is legally required, ad serving will be paired with a Google-certified
+              consent management platform.
             </p>
           </section>
 

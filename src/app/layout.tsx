@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import AdSenseSiteVerification from "@/components/AdSenseSiteVerification"
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/SeoJsonLd"
 import { defaultMetadata } from "@/lib/seo"
 
@@ -47,6 +48,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} scroll-smooth`}
     >
       <head>
+        <AdSenseSiteVerification />
         <OrganizationJsonLd />
         <WebSiteJsonLd />
       </head>

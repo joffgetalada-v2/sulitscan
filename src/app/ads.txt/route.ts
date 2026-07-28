@@ -1,17 +1,12 @@
-/**
- * /ads.txt, dynamic generation.
- *
- * Set ADSENSE_PUBLISHER_ID in your environment to activate.
- * Example: ADSENSE_PUBLISHER_ID=pub-XXXXXXXXXXXXXXXX
- *
- * If the variable is not set, a comment-only file is returned (safe for crawlers).
- */
+import { toAdSensePublisherId } from "@/lib/adsense"
+
+/** Dynamic ads.txt generation without ever publishing a placeholder ID. */
 export function GET() {
-  const publisherId = process.env.ADSENSE_PUBLISHER_ID
+  const publisherId = toAdSensePublisherId(process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID)
 
   const body = publisherId
     ? `google.com, ${publisherId}, DIRECT, f08c47fec0942fa0\n`
-    : `# ads.txt, Google AdSense publisher ID not yet configured.\n# Set ADSENSE_PUBLISHER_ID environment variable to activate.\n`
+    : `# Google AdSense is not configured. Add the real publisher ID in Vercel before requesting review.\n`
 
   return new Response(body, {
     headers: {

@@ -49,23 +49,25 @@ export default function CookiePolicyPage() {
           </section>
 
           <section>
-            <h2 className="text-lg font-bold text-slate-900 mb-3">2. Cookies We Use</h2>
-            <p className="mb-3">SulitScan PH uses a limited number of cookies:</p>
+            <h2 className="text-lg font-bold text-slate-900 mb-3">2. Cookies and Similar Technologies</h2>
+            <p className="mb-3">
+              SulitScan does not currently set its own first-party cookies. The following explains our
+              cookie-free analytics and when third parties may use cookies or similar technologies.
+            </p>
             <div className="space-y-4">
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-                <h3 className="text-sm font-semibold text-slate-800 mb-1">Analytics Cookies</h3>
+                <h3 className="text-sm font-semibold text-slate-800 mb-1">Cookie-Free Analytics</h3>
                 <p className="text-xs text-slate-500">
                   We use <strong>Vercel Analytics</strong> to understand how visitors use the site, such as
                   which pages are most visited and how users navigate. This data is aggregated and does not
-                  personally identify you. Vercel Analytics is privacy-focused and does not use third-party
-                  advertising cookies.
+                  personally identify you. Vercel Analytics does not use cookies.
                 </p>
               </div>
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
-                <h3 className="text-sm font-semibold text-slate-800 mb-1">Strictly Necessary</h3>
+                <h3 className="text-sm font-semibold text-slate-800 mb-1">Site-Operated Cookies</h3>
                 <p className="text-xs text-slate-500">
-                  Session and preference cookies required for the website to function. These cannot be
-                  disabled without breaking site functionality.
+                  SulitScan does not currently set its own session or preference cookies. If this changes,
+                  this policy will be updated to describe their purpose and available controls.
                 </p>
               </div>
               <div className="p-4 bg-slate-50 rounded-xl border border-slate-100">
@@ -80,13 +82,26 @@ export default function CookiePolicyPage() {
                 </p>
               </div>
               <div className="p-4 bg-amber-50 rounded-xl border border-amber-100">
-                <h3 className="text-sm font-semibold text-amber-800 mb-1">Advertising Cookies (Possible Future Use)</h3>
+                <h3 className="text-sm font-semibold text-amber-800 mb-1">Google AdSense Advertising Cookies</h3>
+                <p className="text-xs text-amber-700 mb-2">
+                  When Google AdSense advertising is activated on full editorial articles, Google and its
+                  partners may use cookies or similar technologies to serve, measure, secure, and limit
+                  ads. Personalized ads may use information from your visit when your location and consent
+                  choices permit it; otherwise Google may serve non-personalized or limited ads.
+                </p>
                 <p className="text-xs text-amber-700">
-                  SulitScan PH does not currently embed a third-party programmatic advertising network.
-                  Clearly labeled sponsored advertiser cards are ordinary affiliate links and do not load
-                  advertiser cookies on SulitScan before a visitor clicks. If we add Google AdSense or a
-                  similar ad network in the future, this policy will be updated and we will add a consent
-                  mechanism before enabling advertising cookies where required.
+                  SulitScan will not enable AdSense serving where consent is required until a
+                  Google-certified consent management platform is configured, including for visitors in
+                  the EEA, United Kingdom, and Switzerland. You can also manage Google advertising choices in{" "}
+                  <a
+                    href="https://myadcenter.google.com/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline"
+                  >
+                    Google Ad Settings
+                  </a>
+                  .
                 </p>
               </div>
             </div>

@@ -201,6 +201,93 @@ const weeklyGuideCases = [
   },
 ]
 
+const adsenseBuyerGuideCases = [
+  {
+    id: "post-030",
+    slug: "online-product-review-checklist-philippines",
+    title: "How to Read Online Product Reviews: PH Buyer Checklist",
+    category: "Shopping Safety",
+    coverImage: "/images/guides/online-product-review-checklist-philippines.jpg",
+    topics: ["review-checking", "shopping-safety", "seller-checking"],
+    requiredSources: [
+      "https://bps.dti.gov.ph/press-releases/28-2021/259-dti-issues-national-standard-guidelines-for-e-commerce-transactions",
+    ],
+    requiredLinks: [
+      "/blog/how-to-check-shopee-seller-legit-philippines",
+      "/blog/how-to-spot-fake-discounts",
+    ],
+  },
+  {
+    id: "post-031",
+    slug: "refurbished-vs-used-vs-open-box-philippines",
+    title: "Refurbished vs Used vs Open-Box: PH Buyer Guide",
+    category: "Tech Guides",
+    coverImage: "/images/guides/refurbished-vs-used-vs-open-box-philippines.jpg",
+    topics: ["refurbished-buying", "tech-accessories", "shopping-safety"],
+    requiredSources: [
+      "https://bps.dti.gov.ph/press-releases/28-2021/259-dti-issues-national-standard-guidelines-for-e-commerce-transactions",
+      "https://www.importtaxph.com/",
+    ],
+    requiredLinks: [
+      "/blog/online-product-review-checklist-philippines",
+      "/blog/online-purchase-warranty-guide-philippines",
+    ],
+    allowsImportTaxPh: true,
+  },
+  {
+    id: "post-032",
+    slug: "online-furniture-measurement-guide-philippines",
+    title: "Online Furniture Measurement Guide for Filipino Buyers",
+    category: "Home Guides",
+    coverImage: "/images/guides/online-furniture-measurement-guide-philippines.jpg",
+    topics: ["furniture-buying", "home-organization", "first-home"],
+    platforms: ["Temu", "Shopee PH"],
+    deals: {
+      categories: ["Home"],
+      tags: ["furniture", "sofa", "desk", "storage", "organizer"],
+    },
+    requiredSources: [
+      "https://bps.dti.gov.ph/press-releases/28-2021/259-dti-issues-national-standard-guidelines-for-e-commerce-transactions",
+    ],
+    requiredLinks: [
+      "/blog/first-apartment-essentials-under-1000-philippines",
+      "/blog/unboxing-video-evidence-online-shopping-philippines",
+    ],
+  },
+  {
+    id: "post-033",
+    slug: "online-purchase-warranty-guide-philippines",
+    title: "Online Purchase Warranty Guide for Filipino Buyers",
+    category: "Shopping Safety",
+    coverImage: "/images/guides/online-purchase-warranty-guide-philippines.jpg",
+    topics: ["warranty", "returns", "shopping-safety"],
+    requiredSources: [
+      "https://ecommerce.dti.gov.ph/faqs/",
+      "https://ecommerce.dti.gov.ph/wp-content/uploads/2024/06/Joint-Administrative-Order-No.-24-03.pdf",
+    ],
+    requiredLinks: [
+      "/blog/unboxing-video-evidence-online-shopping-philippines",
+      "/blog/voucher-shipping-return-checklist",
+    ],
+  },
+  {
+    id: "post-034",
+    slug: "energy-efficient-appliance-buying-guide-philippines",
+    title: "Energy-Efficient Appliance Buying Guide Philippines",
+    category: "Home Guides",
+    coverImage: "/images/guides/energy-efficient-appliance-buying-guide-philippines.jpg",
+    topics: ["appliance-buying", "energy-efficiency", "first-home"],
+    requiredSources: [
+      "https://legacy.doe.gov.ph/pelp/philippine-energy-label",
+      "https://pelp.doe.gov.ph/",
+    ],
+    requiredLinks: [
+      "/blog/first-apartment-essentials-under-1000-philippines",
+      "/blog/cookware-sets-philippines-buying-guide",
+    ],
+  },
+]
+
 function readJpegDimensions(buffer) {
   assert.equal(buffer.readUInt16BE(0), 0xffd8, "asset must have a JPEG file signature")
 
@@ -234,6 +321,63 @@ function readJpegDimensions(buffer) {
   assert.fail("asset must contain readable JPEG dimensions")
 }
 
+test("AdSense-readiness buyer guides are substantial, sourced, distinct, and correctly cross-linked", () => {
+  const excerpts = []
+
+  for (const guideCase of adsenseBuyerGuideCases) {
+    const post = postsModule.getPostBySlug(guideCase.slug)
+    assert.ok(post, guideCase.slug + " fixture must exist")
+    assert.equal(post.id, guideCase.id)
+    assert.equal(post.title, guideCase.title)
+    assert.ok(post.title.length <= 60, guideCase.slug + " title should remain concise for search results")
+    assert.equal(post.category, guideCase.category)
+    assert.equal(post.coverImage, guideCase.coverImage)
+    assert.equal(post.publishedAt, "2026-07-28")
+    assert.equal(post.lastReviewed, "2026-07-28")
+    assert.deepEqual(post.recommendationIntent?.topics, guideCase.topics)
+    assert.deepEqual(post.recommendationIntent?.platforms, guideCase.platforms)
+    assert.deepEqual(post.recommendationIntent?.deals, guideCase.deals)
+    assert.ok(post.excerpt.length <= 160, guideCase.slug + " excerpt is too long")
+    assert.ok(post.content.split(/\s+/).length >= 750, guideCase.slug + " must contain at least 750 words")
+    assert.ok((post.content.match(/^## /gm) ?? []).length >= 5, guideCase.slug + " needs at least five H2 sections")
+    assert.match(post.content, /^## How we assessed this guide$/im)
+    assert.match(post.content, /^## Affiliate disclosure$/im)
+    assert.ok(post.faqs?.length >= 3, guideCase.slug + " needs at least three visible FAQs")
+
+    for (const source of guideCase.requiredSources) {
+      assert.ok(post.content.includes(source), guideCase.slug + " must cite " + source)
+    }
+    for (const link of guideCase.requiredLinks) {
+      assert.ok(post.content.includes(link), guideCase.slug + " must link to " + link)
+    }
+
+    const sisterSites = post.content + " " + post.excerpt
+    assert.doesNotMatch(sisterSites, /shein|applyreadycv|lazada|aliexpress/i)
+    if (guideCase.allowsImportTaxPh) {
+      assert.equal((sisterSites.match(/https:\/\/www\.importtaxph\.com\//gi) ?? []).length, 1)
+    } else {
+      assert.doesNotMatch(sisterSites, /importtaxph/i)
+    }
+    excerpts.push(post.excerpt)
+  }
+
+  assert.equal(new Set(excerpts).size, adsenseBuyerGuideCases.length)
+})
+
+test("established guides point readers into the new buyer-evidence cluster", () => {
+  for (const [sourceSlug, targetSlug] of [
+    ["how-to-check-shopee-seller-legit-philippines", "online-product-review-checklist-philippines"],
+    ["best-phone-accessories-under-500-philippines", "refurbished-vs-used-vs-open-box-philippines"],
+    ["first-apartment-essentials-under-1000-philippines", "online-furniture-measurement-guide-philippines"],
+    ["voucher-shipping-return-checklist", "online-purchase-warranty-guide-philippines"],
+    ["cookware-sets-philippines-buying-guide", "energy-efficient-appliance-buying-guide-philippines"],
+  ]) {
+    const post = postsModule.getPostBySlug(sourceSlug)
+    assert.ok(post, sourceSlug + " fixture must exist")
+    assert.ok(post.content.includes("/blog/" + targetSlug), sourceSlug + " must link to " + targetSlug)
+  }
+})
+
 test("weekly guides use five distinct 1600x900 JPEG cover assets", () => {
   const coverPaths = []
   const contentHashes = []
@@ -254,6 +398,23 @@ test("weekly guides use five distinct 1600x900 JPEG cover assets", () => {
 
   assert.equal(new Set(coverPaths).size, weeklyGuideCases.length)
   assert.equal(new Set(contentHashes).size, weeklyGuideCases.length)
+})
+
+test("AdSense-readiness buyer guides use five distinct 1600x900 JPEG cover assets", () => {
+  const coverPaths = []
+  const contentHashes = []
+
+  for (const guideCase of adsenseBuyerGuideCases) {
+    const assetPath = resolve("public", guideCase.coverImage.replace(/^\/+/, ""))
+    assert.ok(existsSync(assetPath), guideCase.coverImage + " must exist under public/")
+    const asset = readFileSync(assetPath)
+    assert.deepEqual(readJpegDimensions(asset), { width: 1600, height: 900 })
+    coverPaths.push(guideCase.coverImage)
+    contentHashes.push(createHash("sha256").update(asset).digest("hex"))
+  }
+
+  assert.equal(new Set(coverPaths).size, adsenseBuyerGuideCases.length)
+  assert.equal(new Set(contentHashes).size, adsenseBuyerGuideCases.length)
 })
 
 test("weekly search-led guides use the required registry metadata and editorial structure", () => {
@@ -343,7 +504,7 @@ const finalCatalogCases = [
     slug: "best-home-organization-finds-under-500-philippines",
     allowedCategories: new Set(["Home"]),
     requiredDealTags: new Set(["storage", "organizer"]),
-    requiredRelatedSlug: "best-shopee-finds-under-500-philippines",
+    requiredRelatedSlug: "online-furniture-measurement-guide-philippines",
     rejectedRelatedSlugs: new Set([
       "best-beauty-finds-under-500-philippines",
       "best-phone-accessories-under-500-philippines",

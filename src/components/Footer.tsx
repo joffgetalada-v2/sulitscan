@@ -24,7 +24,6 @@ const footerLinks = {
 }
 
 const activePlatforms = ["Temu", "Shopee PH", "Sephora PH"]
-const comingSoonPlatforms = ["Lazada", "AliExpress"]
 
 export default function Footer() {
   return (
@@ -111,13 +110,6 @@ export default function Footer() {
               <p className="flex items-center gap-2 text-[11px] text-slate-400 mb-4">
                 <span className="w-1 h-1 rounded-full bg-green-500 shrink-0" aria-hidden="true" />
                 {activePlatforms.join(", ")}
-              </p>
-              <p className="text-[10px] font-semibold text-slate-500 uppercase tracking-widest mb-2">
-                Coming Soon
-              </p>
-              <p className="flex items-center gap-2 text-[11px] text-slate-600">
-                <span className="w-1 h-1 rounded-full bg-slate-700 shrink-0" aria-hidden="true" />
-                {comingSoonPlatforms.join(", ")}
               </p>
             </div>
           </div>

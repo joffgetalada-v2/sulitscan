@@ -68,12 +68,7 @@ test("checkout comparison identifies the cheaper final total without tracking en
   await offerB.getByLabel("Other fees").fill("5")
   await offerB.getByLabel("Import cost estimate").fill("0")
 
-  await page.evaluate(() => {
-    ;(window as typeof window & { __events: unknown[] }).__events = []
-    window.va = (type, payload) => {
-      ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
-    }
-  })
+  await installAnalyticsCapture(page)
   await page.getByRole("button", { name: "Compare final totals" }).click()
 
   const result = page.getByRole("status")
@@ -162,6 +157,7 @@ test("checkout comparison ImportTaxPH link uses tracked privacy-safe attribution
   await link.evaluate((element) =>
     element.addEventListener("click", (event) => event.preventDefault())
   )
+  await installAnalyticsCapture(page)
   await link.click()
   const events = await page.evaluate(() =>
     (window as typeof window & {
@@ -604,6 +600,14 @@ const weeklyGrowthGuides = [
   "power-bank-buying-guide-philippines",
 ]
 
+const adsenseReadinessGuides = [
+  "online-product-review-checklist-philippines",
+  "refurbished-vs-used-vs-open-box-philippines",
+  "online-furniture-measurement-guide-philippines",
+  "online-purchase-warranty-guide-philippines",
+  "energy-efficient-appliance-buying-guide-philippines",
+]
+
 test("weekly growth guides fit narrow mobile viewports", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
 
@@ -643,6 +647,114 @@ test.describe("evidence-led guide routes", () => {
       )
     })
   }
+})
+
+test("article navigation and category are visually separated", async ({ page }) => {
+  await page.goto("/blog/online-product-review-checklist-philippines", {
+    waitUntil: "domcontentloaded",
+  })
+  const backLink = page.getByRole("link", { name: "Back to Blog", exact: true })
+  const category = page.getByText("Shopping Safety", { exact: true }).first()
+  const backBox = await backLink.boundingBox()
+  const categoryBox = await category.boundingBox()
+
+  expect(backBox).not.toBeNull()
+  expect(categoryBox).not.toBeNull()
+  expect(categoryBox!.y).toBeGreaterThan(backBox!.y + backBox!.height)
+})
+
+test.describe("AdSense-readiness buyer guides", () => {
+  test.describe.configure({ mode: "serial" })
+
+  for (const slug of adsenseReadinessGuides) {
+    test(`${slug} renders original media and transparent trust signals`, async ({ page, request }) => {
+      test.slow()
+      const response = await page.goto(`/blog/${slug}`, { waitUntil: "domcontentloaded" })
+      expect(response?.status()).toBe(200)
+
+      await expect(page.locator(`img[src*="${slug}.jpg"]`).first()).toBeVisible()
+      expect((await request.get(`/images/guides/${slug}.jpg`)).status()).toBe(200)
+      await expect(page.getByRole("heading", { name: "About this guide", exact: true })).toBeVisible()
+      await expect(page.getByRole("link", { name: "Editorial process", exact: true })).toHaveAttribute(
+        "href",
+        "/editorial-policy"
+      )
+      await expect(page.getByRole("link", { name: "Request a correction", exact: true })).toHaveAttribute(
+        "href",
+        "/contact"
+      )
+      await expect(page.getByRole("heading", { name: "How we assessed this guide", exact: true })).toBeVisible()
+      await expect(page.getByRole("heading", { name: "Frequently asked questions", exact: true })).toBeVisible()
+      expect(await page.locator("summary").count()).toBeGreaterThanOrEqual(3)
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        "href",
+        `https://sulitscan.com/blog/${slug}`
+      )
+      await expect(page.locator('script[src*="pagead2.googlesyndication.com"]')).toHaveCount(0)
+    })
+  }
+
+  test("new guides are in the sitemap and remain usable on mobile", async ({ page, request }) => {
+    test.slow()
+    const sitemap = await (await request.get("/sitemap.xml")).text()
+    for (const slug of adsenseReadinessGuides) {
+      expect(sitemap).toContain(`<loc>https://sulitscan.com/blog/${slug}</loc>`)
+    }
+
+    await page.setViewportSize({ width: 390, height: 844 })
+    for (const slug of adsenseReadinessGuides) {
+      await page.goto(`/blog/${slug}`, { waitUntil: "domcontentloaded" })
+      const layout = await page.evaluate(() => ({
+        clientWidth: document.documentElement.clientWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+      }))
+      expect(layout.scrollWidth, `${slug} should not overflow horizontally`).toBe(layout.clientWidth)
+    }
+  })
+})
+
+test("AdSense configuration stays consistent and article-only", async ({ page, request }) => {
+  const configuredId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID?.trim()
+  const normalizedClientId = /^ca-pub-\d{16}$/.test(configuredId ?? "")
+    ? configuredId
+    : /^pub-\d{16}$/.test(configuredId ?? "")
+      ? `ca-${configuredId}`
+      : undefined
+  const servingEnabled =
+    Boolean(normalizedClientId) && process.env.NEXT_PUBLIC_ADSENSE_ADS_ENABLED?.trim() === "true"
+
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+  const verification = page.locator('meta[name="google-adsense-account"]')
+  if (normalizedClientId) {
+    await expect(verification).toHaveAttribute("content", normalizedClientId)
+  } else {
+    await expect(verification).toHaveCount(0)
+  }
+  await expect(page.locator('script[src*="pagead2.googlesyndication.com"]')).toHaveCount(0)
+
+  const adsText = await (await request.get("/ads.txt")).text()
+  if (normalizedClientId) {
+    expect(adsText).toBe(`google.com, ${normalizedClientId.replace(/^ca-/, "")}, DIRECT, f08c47fec0942fa0\n`)
+  } else {
+    expect(adsText).toContain("Google AdSense is not configured")
+    expect(adsText).not.toContain("DIRECT")
+  }
+
+  await page.goto("/blog/online-product-review-checklist-philippines", {
+    waitUntil: "domcontentloaded",
+  })
+  const articleAdScript = page.locator('script[src*="pagead2.googlesyndication.com"]')
+  await expect(articleAdScript).toHaveCount(servingEnabled ? 1 : 0)
+  if (servingEnabled) {
+    await expect(articleAdScript).toHaveAttribute("src", new RegExp(`client=${normalizedClientId}$`))
+  }
+
+  await page.goto("/privacy-policy", { waitUntil: "domcontentloaded" })
+  await expect(page.getByText("Google AdSense", { exact: false }).first()).toBeVisible()
+  await page.goto("/cookie-policy", { waitUntil: "domcontentloaded" })
+  await expect(page.getByText("Google-certified Consent Management Platform", { exact: false }).first()).toBeVisible()
+  await page.goto("/editorial-policy", { waitUntil: "domcontentloaded" })
+  await expect(page.getByRole("heading", { name: "Advertising standards", exact: true })).toBeVisible()
 })
 
 test("cookware guide keeps one contextual ImportTaxPH link without a duplicate callout", async ({ page }) => {

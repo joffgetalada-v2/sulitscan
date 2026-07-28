@@ -78,12 +78,6 @@ export default function AffiliateDisclosurePage() {
             <p className="text-sm">
               SulitScan PH may earn a commission when you click affiliate links for active partner stores and make a purchase. This does not affect your price.
             </p>
-            <div className="mt-4 p-4 bg-slate-50 border border-slate-100 rounded-xl">
-              <p className="text-sm text-slate-500">
-                <strong className="text-slate-700">Coming soon:</strong> Lazada and AliExpress may be added later once product data, affiliate links, and buyer-check information are prepared. They are <strong>not</strong> currently active affiliate partners.
-              </p>
-            </div>
-
             <h3 className="mt-7 text-base font-bold text-slate-900">Sponsored Advertiser Offers</h3>
             <p className="mt-2 mb-4">
               SulitScan may also show clearly labeled sponsored links to advertisers whose product
