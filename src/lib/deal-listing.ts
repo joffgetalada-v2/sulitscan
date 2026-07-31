@@ -23,6 +23,7 @@ export interface DealListingResult extends NormalizedDealFilters {
   total: number
   pageCount: number
   isFiltered: boolean
+  isCanonical: boolean
 }
 
 export const DEALS_PAGE_SIZE = 24
@@ -78,7 +79,8 @@ export function resolveDealListing(deals: Deal[], raw: DealSearchParams): DealLi
   })
   const total = filtered.length
   const pageCount = Math.max(1, Math.ceil(total / DEALS_PAGE_SIZE))
-  const page = total === 0 ? 1 : Math.min(normalizePage(firstValue(raw.page)), pageCount)
+  const rawPage = raw.page
+  const page = total === 0 ? 1 : Math.min(normalizePage(firstValue(rawPage)), pageCount)
   const start = (page - 1) * DEALS_PAGE_SIZE
 
   return {
@@ -91,6 +93,9 @@ export function resolveDealListing(deals: Deal[], raw: DealSearchParams): DealLi
     total,
     pageCount,
     isFiltered: hasRawFilters,
+    isCanonical: rawPage === undefined || (
+      typeof rawPage === "string" && page > 1 && rawPage === String(page)
+    ),
   }
 }
 

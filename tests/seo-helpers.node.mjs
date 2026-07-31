@@ -165,6 +165,21 @@ test("deal listing clamps invalid pages and returns 24 products", () => {
   assert.ok(result.items.length > 0 && result.items.length <= 24)
 })
 
+test("deal listing only treats a normalized scalar later-page request as canonical", () => {
+  const deals = dealsModule.getActiveDeals()
+
+  assert.equal(listingModule.resolveDealListing(deals, {}).isCanonical, true)
+  assert.equal(listingModule.resolveDealListing(deals, { page: "2" }).isCanonical, true)
+
+  for (const page of ["1", "02", "0", "-1", "garbage", ["2"], ["2", "3"], "9999"]) {
+    assert.equal(
+      listingModule.resolveDealListing(deals, { page }).isCanonical,
+      false,
+      `expected page=${JSON.stringify(page)} to be non-canonical`
+    )
+  }
+})
+
 test("deal listing filters and sorts deterministically", () => {
   const result = listingModule.resolveDealListing(dealsModule.getActiveDeals(), {
     q: "brush", store: "Sephora PH", sort: "price-asc", page: "1",

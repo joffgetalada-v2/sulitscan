@@ -4,6 +4,7 @@ import { categories } from "@/data/categories"
 import { posts } from "@/data/posts"
 import { stores } from "@/data/stores"
 import { buildEntityPageHref, ENTITY_DEALS_PAGE_SIZE } from "@/lib/entity-deal-listing"
+import { DEALS_PAGE_SIZE } from "@/lib/deal-listing"
 
 const BASE_URL = "https://sulitscan.com"
 
@@ -89,6 +90,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }))
 
+  const dealListingRoutes: MetadataRoute.Sitemap = Array.from(
+    { length: Math.max(0, Math.ceil(activeDeals.length / DEALS_PAGE_SIZE) - 1) },
+    (_, index) => ({
+      url: `${BASE_URL}/deals?page=${index + 2}`,
+      changeFrequency: "daily" as const,
+      priority: 0.8,
+    })
+  )
+
   const featuredCategories = categories.filter((c) => c.featured)
   const categoryRoutes: MetadataRoute.Sitemap = featuredCategories.flatMap((cat) => {
     const pageCount = Math.max(
@@ -121,5 +131,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   })
 
-  return [...staticRoutes, ...dealRoutes, ...categoryRoutes, ...postRoutes, ...storeRoutes]
+  return [
+    ...staticRoutes,
+    ...dealRoutes,
+    ...dealListingRoutes,
+    ...categoryRoutes,
+    ...postRoutes,
+    ...storeRoutes,
+  ]
 }

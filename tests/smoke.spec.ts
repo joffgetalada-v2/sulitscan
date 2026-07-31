@@ -750,11 +750,37 @@ test("deals page exposes crawlable server pagination", async ({ page }) => {
   await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
   await expect(page.getByRole("link", { name: "Previous page" })).toHaveAttribute("href", "/deals")
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://sulitscan.com/deals?page=2")
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /index, follow/i)
   await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", /Deals.*Page 2/i)
   await expect(page.locator('meta[property="og:url"]')).toHaveAttribute("content", "https://sulitscan.com/deals?page=2")
   await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute("content", /Deals.*Page 2/i)
   await expect(page.locator('meta[name="twitter:description"]')).toHaveAttribute("content", /curated online deals/i)
   expect(await page.locator("main article").count()).toBeLessThanOrEqual(24)
+})
+
+test("out-of-range deal pages retain their normalized canonical but are noindex", async ({ page }) => {
+  await page.goto("/deals?page=99")
+
+  await expect(page.locator("p").filter({ hasText: /^Page \d+ of \d+$/ })).toBeVisible()
+  await expect(page.locator('link[rel="canonical"]')).not.toHaveAttribute(
+    "href",
+    "https://sulitscan.com/deals?page=99"
+  )
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
+})
+
+test("sitemap contains each canonical unfiltered all-deals page", async ({ page, request }) => {
+  await page.goto("/deals?page=99")
+  const pageCount = Number((await page.getByText(/Page \d+ of \d+/).textContent())?.match(/of (\d+)/)?.[1])
+  expect(pageCount).toBeGreaterThan(1)
+
+  const xml = await (await request.get("/sitemap.xml")).text()
+  const pages = [...xml.matchAll(/<loc>https:\/\/sulitscan\.com\/deals\?page=(\d+)<\/loc>/g)]
+    .map((match) => Number(match[1]))
+    .sort((a, b) => a - b)
+
+  expect(pages).toEqual(Array.from({ length: pageCount - 1 }, (_, index) => index + 2))
+  expect(xml).not.toContain("/deals?page=99")
 })
 
 test("filtered deals are noindex and preserve URL state", async ({ page }) => {
@@ -808,6 +834,37 @@ test.describe("entity deal pagination", () => {
       )
     })
   }
+
+  test("later category and store pages keep deal results while omitting page-one-only content", async ({ page }) => {
+    test.slow()
+
+    await page.goto("/categories/under-500", { waitUntil: "domcontentloaded" })
+    const categoryPageOneDescription = await page.locator('meta[name="description"]').getAttribute("content")
+
+    await page.goto("/categories/under-500?page=2", { waitUntil: "domcontentloaded" })
+    await expect(page.locator('main article')).not.toHaveCount(0)
+    await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
+    expect((await page.locator('script[type="application/ld+json"]').allTextContents())
+      .some((schema) => schema.includes('"@type":"FAQPage"'))).toBe(false)
+    await expect(page.getByRole("heading", { name: /Top picks in/i })).toHaveCount(0)
+    await expect(page.getByRole("heading", { name: /deals in the Philippines/i })).toHaveCount(0)
+    const categoryPageTwoDescription = await page.locator('meta[name="description"]').getAttribute("content")
+    expect(categoryPageTwoDescription).toContain("Page 2")
+    expect(categoryPageTwoDescription).not.toBe(categoryPageOneDescription)
+
+    await page.goto("/stores/temu", { waitUntil: "domcontentloaded" })
+    const storePageOneDescription = await page.locator('meta[name="description"]').getAttribute("content")
+
+    await page.goto("/stores/temu?page=2", { waitUntil: "domcontentloaded" })
+    await expect(page.locator('main article')).not.toHaveCount(0)
+    await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
+    expect((await page.locator('script[type="application/ld+json"]').allTextContents())
+      .some((schema) => schema.includes('"@type":"FAQPage"'))).toBe(false)
+    await expect(page.getByRole("heading", { name: /Frequently asked questions about Temu/i })).toHaveCount(0)
+    const storePageTwoDescription = await page.locator('meta[name="description"]').getAttribute("content")
+    expect(storePageTwoDescription).toContain("Page 2")
+    expect(storePageTwoDescription).not.toBe(storePageOneDescription)
+  })
 })
 
 

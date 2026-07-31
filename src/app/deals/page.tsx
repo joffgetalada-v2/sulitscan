@@ -28,7 +28,7 @@ export async function generateMetadata({ searchParams }: DealsPageProps): Promis
     title,
     description: DEALS_DESCRIPTION,
     alternates: { canonical },
-    robots: { index: !listing.isFiltered, follow: true },
+    robots: { index: !listing.isFiltered && listing.isCanonical, follow: true },
     openGraph: {
       type: "website",
       locale: siteConfig.locale,

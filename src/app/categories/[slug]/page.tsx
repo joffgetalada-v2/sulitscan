@@ -38,10 +38,15 @@ export async function generateMetadata({
   const indexable = category.featured && listing.total > 0 && listing.isCanonical
   const pageSuffix = listing.page > 1 ? ` — Page ${listing.page}` : ""
   const title = `${category.name} Deals Philippines${pageSuffix} | SulitScan PH`
-  const description = clampMeta(
-    content?.intro ??
-      `${category.description} Browse ${category.name.toLowerCase()} deals from Temu, Shopee PH, and Sephora PH on SulitScan PH.`
-  )
+  const description = listing.page > 1
+    ? clampMeta(
+        `${category.name} deals in the Philippines — Page ${listing.page}. Browse the current ` +
+        `curated listings with buyer notes on SulitScan PH.`
+      )
+    : clampMeta(
+        content?.intro ??
+          `${category.description} Browse ${category.name.toLowerCase()} deals from Temu, Shopee PH, and Sephora PH on SulitScan PH.`
+      )
   const canonical = `${siteConfig.url}${buildEntityPageHref(`/categories/${slug}`, listing.page)}`
   return {
     title: `${category.name} Deals Philippines${pageSuffix}`,
@@ -74,6 +79,7 @@ export default async function CategoryPage({
   const categoryDeals = getDealsByCategory(slug)
   const listing = resolveEntityDealListing(categoryDeals, query.page)
   const content = categoryContent[slug]
+  const isFirstPage = listing.page === 1
   // Top picks: highest SulitScore, then biggest discount, capped at 8. Suspiciously
   // large discounts (80%+) are excluded so Top Picks stays curated and low-risk.
   const topPicks = categoryDeals.length > 8
@@ -103,7 +109,7 @@ export default async function CategoryPage({
           }))}
         />
       )}
-      {content?.faqs && <FAQJsonLd items={content.faqs} />}
+      {isFirstPage && content?.faqs && <FAQJsonLd items={content.faqs} />}
 
       {/* Back nav */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
@@ -146,7 +152,7 @@ export default async function CategoryPage({
         <TrustBar className="mb-8" />
 
         {/* Top Picks */}
-        {topPicks.length > 0 && (
+        {isFirstPage && topPicks.length > 0 && (
           <TopPicks
             headingId="top-picks-heading"
             title={`Top picks in ${category.name}`}
@@ -156,7 +162,7 @@ export default async function CategoryPage({
         )}
 
         {/* SEO intro content */}
-        {content && (
+        {isFirstPage && content && (
           <div className="mb-10 grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Left: intro + buyer guidance */}
             <div className="lg:col-span-2 space-y-8">
@@ -311,7 +317,7 @@ export default async function CategoryPage({
         )}
 
         {/* FAQ section */}
-        {content?.faqs && content.faqs.length > 0 && (
+        {isFirstPage && content?.faqs && content.faqs.length > 0 && (
           <section className="mt-16" aria-labelledby="faq-heading">
             <h2 id="faq-heading" className="text-lg font-bold text-slate-900 mb-5">
               Frequently asked questions

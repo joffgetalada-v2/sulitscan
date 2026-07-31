@@ -45,7 +45,14 @@ export async function generateMetadata({
   const listing = resolveEntityDealListing(getDealsByPlatform(store.name), query.page)
   const pageSuffix = listing.page > 1 ? ` — Page ${listing.page}` : ""
   const title = `${store.name} Deals Philippines${pageSuffix} | SulitScan PH`
-  const description = clampMeta(`${store.description} Browse selected ${store.name} deals on SulitScan PH with buyer notes, shipping info, and affiliate disclosure.`)
+  const description = listing.page > 1
+    ? clampMeta(
+        `${store.name} deals in the Philippines — Page ${listing.page}. Browse the current ` +
+        `curated listings with buyer notes on SulitScan PH.`
+      )
+    : clampMeta(
+        `${store.description} Browse selected ${store.name} deals on SulitScan PH with buyer notes, shipping info, and affiliate disclosure.`
+      )
   const canonical = `${siteConfig.url}${buildEntityPageHref(`/stores/${slug}`, listing.page)}`
   const banner = store.bannerImage && publicImg(store.bannerImage)
   const image = banner ? `${siteConfig.url}${banner}` : siteConfig.ogImage
@@ -81,6 +88,7 @@ export default async function StoreDetailPage({
   const listing = resolveEntityDealListing(storeDeals, query.page)
   const content = getStoreContent(slug)
   const banner = store.bannerImage && publicImg(store.bannerImage) ? store.bannerImage : null
+  const isFirstPage = listing.page === 1
 
   return (
     <>
@@ -91,7 +99,7 @@ export default async function StoreDetailPage({
           { name: store.name, url: `${siteConfig.url}/stores/${slug}` },
         ]}
       />
-      {content?.faqs && content.faqs.length > 0 && (
+      {isFirstPage && content?.faqs && content.faqs.length > 0 && (
         <FAQJsonLd items={content.faqs} />
       )}
       {storeDeals.length > 0 && (
@@ -235,7 +243,7 @@ export default async function StoreDetailPage({
           <div className="lg:col-span-2 space-y-10">
 
             {/* Store intro */}
-            {content?.intro && (
+            {isFirstPage && content?.intro && (
               <section>
                 <div className="prose prose-sm prose-slate max-w-none">
                   {content.intro.trim().split("\n\n").map((para, i) => (
@@ -246,7 +254,7 @@ export default async function StoreDetailPage({
             )}
 
             {/* Good for / Be careful */}
-            {content && (
+            {isFirstPage && content && (
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="bg-green-50 border border-green-100 rounded-2xl p-5">
                   <h2 className="text-sm font-bold text-green-900 mb-3 flex items-center gap-2">
@@ -280,7 +288,7 @@ export default async function StoreDetailPage({
             )}
 
             {/* Overseas import-tax callout (Temu ships internationally) */}
-            {slug === "temu" && (
+            {isFirstPage && slug === "temu" && (
               <ImportTaxCallout sourceSlug="store-temu" platform="temu" placement="store-main" />
             )}
 
@@ -300,7 +308,7 @@ export default async function StoreDetailPage({
             </section>
 
             {/* FAQs */}
-            {content?.faqs && content.faqs.length > 0 && (
+            {isFirstPage && content?.faqs && content.faqs.length > 0 && (
               <section aria-labelledby="faq-heading">
                 <h2 id="faq-heading" className="text-xl font-bold text-slate-900 mb-5">
                   Frequently asked questions about {store.name}
@@ -325,7 +333,7 @@ export default async function StoreDetailPage({
           {/* Right: store info sidebar */}
           <div className="space-y-6">
             {/* Buyer reminders */}
-            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+            {isFirstPage && <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
               <h3 className="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
                 <CheckCircle className="w-4 h-4 text-green-500" aria-hidden="true" />
                 Buyer Reminders
@@ -338,25 +346,25 @@ export default async function StoreDetailPage({
                   </li>
                 ))}
               </ul>
-            </div>
+            </div>}
 
             {/* Shipping */}
-            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+            {isFirstPage && <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
               <h3 className="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
                 <Truck className="w-4 h-4 text-blue-500" aria-hidden="true" />
                 Shipping to Philippines
               </h3>
               <p className="text-xs text-slate-500 leading-relaxed">{store.shippingNote}</p>
-            </div>
+            </div>}
 
             {/* Returns */}
-            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+            {isFirstPage && <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
               <h3 className="text-sm font-bold text-slate-900 mb-3 flex items-center gap-2">
                 <RotateCcw className="w-4 h-4 text-amber-500" aria-hidden="true" />
                 Returns & Refunds
               </h3>
               <p className="text-xs text-slate-500 leading-relaxed">{store.returnNote}</p>
-            </div>
+            </div>}
 
             {/* Price disclaimer */}
             <div className="bg-amber-50 rounded-2xl border border-amber-100 p-5">
@@ -404,7 +412,7 @@ export default async function StoreDetailPage({
             </div>
 
             {/* Related links */}
-            <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
+            {isFirstPage && <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
               <h3 className="text-sm font-bold text-slate-900 mb-3">Explore more</h3>
               <ul className="space-y-2" role="list">
                 {store.relatedGuideSlug && (
@@ -425,7 +433,7 @@ export default async function StoreDetailPage({
                   <Link href="/blog" className="text-xs text-green-600 hover:underline">Shopping guides →</Link>
                 </li>
               </ul>
-            </div>
+            </div>}
           </div>
         </div>
       </div>
