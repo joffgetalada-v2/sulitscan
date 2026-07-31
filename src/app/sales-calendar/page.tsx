@@ -193,6 +193,7 @@ export default function SalesCalendarPage() {
                   platform={store.name}
                   offerId={store.slug}
                   placement="sales-calendar-store"
+                  aria-label={`Check ${store.name} current terms (affiliate link, new tab)`}
                   className="inline-flex items-center gap-2 rounded-full bg-slate-950 px-5 py-2.5 text-sm font-bold text-white transition hover:bg-slate-800"
                 >
                   Check {store.name}

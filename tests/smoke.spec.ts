@@ -24,6 +24,13 @@ async function newsletterEvents(page: Page) {
   )
 }
 
+async function getAllDealsPageCount(page: Page) {
+  await page.goto("/deals", { waitUntil: "domcontentloaded" })
+  const pageCount = Number((await page.locator("p").filter({ hasText: /^Page \d+ of \d+$/ }).textContent())?.match(/of (\d+)/)?.[1])
+  expect(pageCount).toBeGreaterThan(1)
+  return pageCount
+}
+
 const routes = [
   { path: "/",                     title: "SulitScan PH" },
   { path: "/tools/checkout-comparison", title: "Checkout Price Comparison" },
@@ -44,6 +51,7 @@ test("sales calendar exposes indexable metadata, buyer guidance, image, and stru
   test.slow()
   const response = await page.goto("/sales-calendar", { waitUntil: "domcontentloaded" })
   expect(response?.status()).toBe(200)
+  await expect(page).toHaveTitle("Philippines Online Shopping Sale Calendar 2026")
 
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
     "href",
@@ -75,6 +83,9 @@ test("sales calendar exposes indexable metadata, buyer guidance, image, and stru
   await expect.poll(() => heroImage.evaluate((image) => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
 
   await expect(page.getByText(/sale dates, vouchers, stock, prices, eligibility, and merchant participation can change/i)).toBeVisible()
+  await expect(page.locator('ol[aria-label="Common double-day dates"] > li > span:first-child')).toHaveText([
+    "1.1", "2.2", "3.3", "4.4", "5.5", "6.6", "7.7", "8.8", "9.9", "10.10", "11.11", "12.12",
+  ])
   for (const href of ["/deals", "/stores", "/blog", "/tools/checkout-comparison"]) {
     await expect(page.locator(`a[href="${href}"]`).first()).toBeVisible()
   }
@@ -89,7 +100,15 @@ test("sales calendar exposes indexable metadata, buyer guidance, image, and stru
     expect.objectContaining({ position: 2, item: "https://sulitscan.com/sales-calendar" }),
   ])
   expect(faq?.mainEntity).toHaveLength(4)
-  await expect(page.locator("details")).toHaveCount(4)
+  const visibleFaqs = page.locator("details")
+  await expect(visibleFaqs).toHaveCount(4)
+  for (const [index, item] of (faq?.mainEntity ?? []).entries()) {
+    const visibleFaq = visibleFaqs.nth(index)
+    await expect(visibleFaq.locator("summary")).toHaveText(item.name)
+    await visibleFaq.locator("summary").click()
+    await expect(visibleFaq.locator("p")).toHaveText(item.acceptedAnswer.text)
+    await expect(visibleFaq.locator("p")).toBeVisible()
+  }
 })
 
 test("sales calendar partner CTAs use approved affiliate destinations and privacy-safe events", async ({ page }) => {
@@ -106,7 +125,7 @@ test("sales calendar partner CTAs use approved affiliate destinations and privac
   for (const [index, partner] of partners.entries()) {
     const link = page.locator(`a[href="${partner.href}"]`)
     await expect(link).toHaveAttribute("href", partner.href)
-    await expect(link).toHaveAccessibleName(new RegExp(partner.name))
+    await expect(link).toHaveAccessibleName(`Check ${partner.name} current terms (affiliate link, new tab)`)
     await expect(link).toHaveAttribute("rel", "sponsored nofollow noopener noreferrer")
     await link.evaluate((element) => element.addEventListener("click", (event) => event.preventDefault()))
     await link.click()
@@ -143,6 +162,22 @@ test("sales calendar is discoverable from navigation, homepage, and sitemap", as
   expect(sitemap).toContain("<changefreq>weekly</changefreq>")
   expect(sitemap).toContain("<priority>0.8</priority>")
   expect(sitemap).toContain("<image:loc>https://sulitscan.com/images/guides/shopping-sale-calendar-philippines.webp</image:loc>")
+})
+
+test.describe("sales calendar mobile navigation", () => {
+  test.use({ viewport: { width: 390, height: 844 } })
+
+  test("opens the menu and navigates to the sale calendar", async ({ page }) => {
+    await page.goto("/", { waitUntil: "domcontentloaded" })
+    await page.getByRole("button", { name: "Open menu" }).click()
+
+    const saleCalendarLink = page.getByRole("navigation", { name: "Mobile navigation" }).getByRole("link", { name: "Sale Calendar" })
+    await expect(saleCalendarLink).toBeVisible()
+    await expect(saleCalendarLink).toHaveAttribute("href", "/sales-calendar")
+    await saleCalendarLink.click()
+    await expect(page).toHaveURL(/\/sales-calendar$/)
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Philippines Online Shopping Sale Calendar 2026")
+  })
 })
 
 test("newsletter signup requires consent before it sends a request", async ({ page }) => {
@@ -864,20 +899,22 @@ test("deals page exposes crawlable server pagination", async ({ page }) => {
 })
 
 test("out-of-range deal pages retain their normalized canonical but are noindex", async ({ page }) => {
-  await page.goto("/deals?page=99")
+  const pageCount = await getAllDealsPageCount(page)
+  const outOfRangePage = pageCount + 1
+  await page.goto(`/deals?page=${outOfRangePage}`, { waitUntil: "domcontentloaded" })
 
   await expect(page.locator("p").filter({ hasText: /^Page \d+ of \d+$/ })).toBeVisible()
   await expect(page.locator('link[rel="canonical"]')).not.toHaveAttribute(
     "href",
-    "https://sulitscan.com/deals?page=99"
+    `https://sulitscan.com/deals?page=${outOfRangePage}`
   )
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
 })
 
 test("sitemap contains each canonical unfiltered all-deals page", async ({ page, request }) => {
-  await page.goto("/deals?page=99")
-  const pageCount = Number((await page.getByText(/Page \d+ of \d+/).textContent())?.match(/of (\d+)/)?.[1])
-  expect(pageCount).toBeGreaterThan(1)
+  const pageCount = await getAllDealsPageCount(page)
+  const outOfRangePage = pageCount + 1
+  await page.goto(`/deals?page=${outOfRangePage}`, { waitUntil: "domcontentloaded" })
 
   const xml = await (await request.get("/sitemap.xml")).text()
   const pages = [...xml.matchAll(/<loc>https:\/\/sulitscan\.com\/deals\?page=(\d+)<\/loc>/g)]
@@ -885,7 +922,7 @@ test("sitemap contains each canonical unfiltered all-deals page", async ({ page,
     .sort((a, b) => a - b)
 
   expect(pages).toEqual(Array.from({ length: pageCount - 1 }, (_, index) => index + 2))
-  expect(xml).not.toContain("/deals?page=99")
+  expect(xml).not.toContain(`/deals?page=${outOfRangePage}`)
 })
 
 test("filtered deals are noindex and preserve URL state", async ({ page }) => {
