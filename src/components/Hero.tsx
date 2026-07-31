@@ -13,14 +13,14 @@ const trustItems = [
   "Curated manually for Filipino shoppers.",
 ]
 
-const stats = [
-  { value: String(stores.length),                          label: "Partner Stores", color: "text-green-600" },
-  { value: "100+",                                          label: "Curated Deals",  color: "text-slate-900" },
-  { value: String(categories.filter((c) => c.featured).length), label: "Categories", color: "text-slate-900" },
-  { value: "₱0",                                           label: "Cost to You",    color: "text-amber-600" },
-]
+export default function Hero({ activeDealCount }: { activeDealCount: number }) {
+  const stats = [
+    { value: String(stores.length), label: "Partner Stores", color: "text-green-600" },
+    { value: String(activeDealCount), label: "Active Listings", color: "text-slate-900" },
+    { value: String(categories.filter((c) => c.featured).length), label: "Categories", color: "text-slate-900" },
+    { value: "₱0", label: "Cost to You", color: "text-amber-600" },
+  ]
 
-export default function Hero() {
   return (
     <section
       className="relative overflow-hidden bg-white py-16 sm:py-20 lg:py-28"

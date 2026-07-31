@@ -170,7 +170,7 @@ export default function HomePage() {
       <FAQJsonLd items={faqItems} />
 
       {/* ─── Hero ─── */}
-      <Hero />
+      <Hero activeDealCount={activeDeals.length} />
 
       {/* ─── Affiliate Disclosure strip ─── */}
       <div className="bg-amber-50 border-b border-amber-200 py-3 px-4 text-center">

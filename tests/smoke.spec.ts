@@ -181,6 +181,31 @@ test("homepage describes reference listings and buyer checks without live-price 
   await expect(main).not.toContainText("Maximum Reference Age")
 })
 
+test("homepage deal preview applies reference-price treatment to the first June fixture", async ({ page }) => {
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const preview = page.getByRole("region", { name: "Deal preview" })
+  await expect(preview.getByRole("heading", {
+    name: "Foldable Silicone Water Bottle (Leak-Proof, Reusable)",
+    exact: true,
+  })).toBeVisible()
+  await expect(preview).toContainText("Reference price")
+  await expect(preview).toContainText("₱107")
+  await expect(preview).not.toContainText("₱289")
+  await expect(preview).not.toContainText(/63%/)
+  await expect(preview).not.toContainText(/Save|Saved/)
+  await expect(preview).not.toContainText("Live")
+})
+
+test("homepage hero reports the server-computed active listing count", async ({ page }) => {
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const hero = page.getByRole("region", { name: /Check deals before you click buy/i })
+  await expect(hero.getByText("169", { exact: true })).toBeVisible()
+  await expect(hero.getByText("Active Listings", { exact: true })).toBeVisible()
+  await expect(hero).not.toContainText("100+")
+})
+
 test.describe("sales calendar mobile navigation", () => {
   test.use({ viewport: { width: 390, height: 844 } })
 

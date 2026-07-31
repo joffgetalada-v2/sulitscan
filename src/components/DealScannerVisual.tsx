@@ -5,6 +5,7 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 import { CheckCircle, ExternalLink, Tag, Zap, Shield, TrendingDown } from "lucide-react"
 import { getActiveDeals } from "@/data/deals"
+import { getDealFreshness } from "@/lib/deal-freshness"
 import { formatPrice } from "@/lib/utils"
 
 function getSlides() {
@@ -37,18 +38,27 @@ export default function DealScannerVisual() {
   const deal = slides[current]
   if (!deal) return null
 
+  const freshness = getDealFreshness(deal.lastChecked)
+  const isCurrent = freshness.status === "current"
   const saved = deal.originalPrice - deal.salePrice
   const scoreLabel = deal.sulitScore >= 9 ? "Excellent" : deal.sulitScore >= 7 ? "Good Deal" : "Fair"
+  const freshnessLabel = isCurrent
+    ? "Recently checked"
+    : freshness.status === "reference"
+      ? "Reference listing"
+      : "Price check needed"
 
   const signalData = [
-    { icon: TrendingDown, label: "Discount",     value: `${deal.discount}% off`,       good: true },
+    ...(isCurrent
+      ? [{ icon: TrendingDown, label: "Discount", value: `${deal.discount}% off`, good: true }]
+      : []),
     { icon: Shield,       label: "Curated Pick",  value: "SulitScan reviewed",          good: true },
     { icon: Tag,          label: "Affiliate Link", value: "Clearly disclosed",           good: true },
     { icon: Zap,          label: "SulitScore",    value: `${deal.sulitScore}/10`,        good: true },
   ]
 
   return (
-    <div className="relative w-full max-w-md mx-auto select-none">
+    <section aria-label="Deal preview" className="relative w-full max-w-md mx-auto select-none">
       {/* Glow halo */}
       <div
         className="absolute -inset-6 bg-gradient-to-br from-green-300/20 via-emerald-200/10 to-transparent rounded-3xl blur-2xl pointer-events-none"
@@ -68,8 +78,8 @@ export default function DealScannerVisual() {
             sulitscan.com/deals
           </div>
           <div className="flex items-center gap-1.5 shrink-0">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse-dot" aria-hidden="true" />
-            <span className="text-xs text-green-400 font-semibold">Live</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-amber-400" aria-hidden="true" />
+            <span className="text-xs text-amber-300 font-semibold">{freshnessLabel}</span>
           </div>
         </div>
 
@@ -103,17 +113,21 @@ export default function DealScannerVisual() {
                     backgroundSize: "16px 16px",
                   }}
                 />
-                <div className="absolute inset-0 flex flex-col items-center justify-center">
-                  <span className="text-6xl font-black text-white/[0.15] leading-none">{deal.discount}%</span>
-                  <span className="text-sm text-white/[0.15] -mt-1 font-bold">OFF</span>
-                </div>
+                {isCurrent && (
+                  <div className="absolute inset-0 flex flex-col items-center justify-center">
+                    <span className="text-6xl font-black text-white/[0.15] leading-none">{deal.discount}%</span>
+                    <span className="text-sm text-white/[0.15] -mt-1 font-bold">OFF</span>
+                  </div>
+                )}
               </>
             )}
 
             {/* Discount badge */}
-            <div className="absolute top-2.5 left-2.5 bg-green-500 rounded-full px-2.5 py-1 shadow-sm">
-              <span className="text-xs font-bold text-white">−{deal.discount}% OFF</span>
-            </div>
+            {isCurrent && (
+              <div className="absolute top-2.5 left-2.5 bg-green-500 rounded-full px-2.5 py-1 shadow-sm">
+                <span className="text-xs font-bold text-white">−{deal.discount}% OFF</span>
+              </div>
+            )}
 
             {/* Category badge */}
             <div className="absolute top-2.5 right-2.5 bg-white/90 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm">
@@ -152,12 +166,23 @@ export default function DealScannerVisual() {
               <h3 className="text-sm font-bold text-slate-900 line-clamp-1 mb-1.5">
                 {deal.title}
               </h3>
-              <div className="flex items-baseline gap-2.5">
-                <span className="text-2xl font-black text-slate-900">{formatPrice(deal.salePrice)}</span>
-                <span className="text-sm text-slate-400 line-through">{formatPrice(deal.originalPrice)}</span>
-                <span className="ml-auto text-xs font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded-lg border border-green-100">
-                  Save {formatPrice(saved)}
-                </span>
+              <div className="flex items-baseline gap-2.5" aria-live="polite">
+                {isCurrent ? (
+                  <>
+                    <span className="text-2xl font-black text-slate-900">{formatPrice(deal.salePrice)}</span>
+                    <span className="text-sm text-slate-400 line-through">{formatPrice(deal.originalPrice)}</span>
+                    <span className="ml-auto text-xs font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded-lg border border-green-100">
+                      Save {formatPrice(saved)}
+                    </span>
+                  </>
+                ) : freshness.status === "reference" ? (
+                  <>
+                    <span className="text-xs font-semibold text-amber-700">Reference price</span>
+                    <span className="text-2xl font-black text-slate-900">{formatPrice(deal.salePrice)}</span>
+                  </>
+                ) : (
+                  <span className="text-sm font-semibold text-amber-700">Check live price</span>
+                )}
               </div>
             </div>
 
@@ -210,25 +235,29 @@ export default function DealScannerVisual() {
       </div>
 
       {/* Floating discount pill */}
-      <motion.div
-        className="absolute -top-4 -right-3 bg-white border border-amber-200 rounded-full px-3 py-1.5 shadow-lg z-20 flex items-center gap-1.5"
-        animate={{ y: [-4, 4, -4] }}
-        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-        aria-hidden="true"
-      >
-        <Tag className="w-3 h-3 text-amber-600" />
-        <span className="text-xs font-bold text-amber-700">−{deal.discount}% OFF</span>
-      </motion.div>
+      {isCurrent && (
+        <motion.div
+          className="absolute -top-4 -right-3 bg-white border border-amber-200 rounded-full px-3 py-1.5 shadow-lg z-20 flex items-center gap-1.5"
+          animate={{ y: [-4, 4, -4] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          aria-hidden="true"
+        >
+          <Tag className="w-3 h-3 text-amber-600" />
+          <span className="text-xs font-bold text-amber-700">−{deal.discount}% OFF</span>
+        </motion.div>
+      )}
 
       {/* Floating savings pill */}
-      <motion.div
-        className="absolute -bottom-3 -left-3 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full px-3 py-1.5 shadow-lg z-20"
-        animate={{ y: [4, -4, 4] }}
-        transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
-        aria-hidden="true"
-      >
-        <span className="text-xs font-bold text-white">{formatPrice(saved)} Saved</span>
-      </motion.div>
+      {isCurrent && (
+        <motion.div
+          className="absolute -bottom-3 -left-3 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full px-3 py-1.5 shadow-lg z-20"
+          animate={{ y: [4, -4, 4] }}
+          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+          aria-hidden="true"
+        >
+          <span className="text-xs font-bold text-white">{formatPrice(saved)} Saved</span>
+        </motion.div>
+      )}
 
       {/* Score pill */}
       <motion.div
@@ -240,6 +269,6 @@ export default function DealScannerVisual() {
         <span className="text-base font-black text-green-600 leading-none">{deal.sulitScore}</span>
         <span className="text-[9px] text-slate-400 font-medium">Score</span>
       </motion.div>
-    </div>
+    </section>
   )
 }
