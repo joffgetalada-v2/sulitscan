@@ -10,6 +10,7 @@ const navLinks = [
   { label: "Deals",      href: "/deals" },
   { label: "Categories", href: "/categories" },
   { label: "Stores",     href: "/stores" },
+  { label: "Sale Calendar", href: "/sales-calendar" },
   { label: "Compare Prices", href: "/tools/checkout-comparison" },
   { label: "Blog",       href: "/blog" },
   { label: "About",      href: "/about" },

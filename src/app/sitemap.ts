@@ -47,6 +47,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${BASE_URL}/sales-calendar`,
+      lastModified: "2026-07-31",
+      changeFrequency: "weekly",
+      priority: 0.8,
+      images: [`${BASE_URL}/images/guides/shopping-sale-calendar-philippines.webp`],
+    },
+    {
       url: `${BASE_URL}/about`,
       changeFrequency: "monthly",
       priority: 0.5,

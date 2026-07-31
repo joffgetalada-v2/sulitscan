@@ -40,6 +40,111 @@ const routes = [
   { path: "/editorial-policy",     title: "Editorial" },
 ]
 
+test("sales calendar exposes indexable metadata, buyer guidance, image, and structured data", async ({ page }) => {
+  test.slow()
+  const response = await page.goto("/sales-calendar", { waitUntil: "domcontentloaded" })
+  expect(response?.status()).toBe(200)
+
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    "https://sulitscan.com/sales-calendar"
+  )
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /index/)
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "Philippines Online Shopping Sale Calendar 2026"
+  )
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
+    "content",
+    "Philippines Online Shopping Sale Calendar 2026"
+  )
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+    "content",
+    "https://sulitscan.com/images/guides/shopping-sale-calendar-philippines.webp"
+  )
+  await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute(
+    "content",
+    "Philippines Online Shopping Sale Calendar 2026"
+  )
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute(
+    "content",
+    "https://sulitscan.com/images/guides/shopping-sale-calendar-philippines.webp"
+  )
+
+  const heroImage = page.getByAltText("Calendar planning for common Philippine online shopping sale dates")
+  await expect(heroImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
+  await expect.poll(() => heroImage.evaluate((image) => (image as HTMLImageElement).naturalWidth)).toBeGreaterThan(0)
+
+  await expect(page.getByText(/sale dates, vouchers, stock, prices, eligibility, and merchant participation can change/i)).toBeVisible()
+  for (const href of ["/deals", "/stores", "/blog", "/tools/checkout-comparison"]) {
+    await expect(page.locator(`a[href="${href}"]`).first()).toBeVisible()
+  }
+
+  const schemas = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) =>
+    scripts.map((script) => JSON.parse(script.textContent ?? "{}"))
+  )
+  const breadcrumb = schemas.find((schema) => schema["@type"] === "BreadcrumbList")
+  const faq = schemas.find((schema) => schema["@type"] === "FAQPage")
+  expect(breadcrumb?.itemListElement).toEqual([
+    expect.objectContaining({ position: 1, name: "Home", item: "https://sulitscan.com" }),
+    expect.objectContaining({ position: 2, item: "https://sulitscan.com/sales-calendar" }),
+  ])
+  expect(faq?.mainEntity).toHaveLength(4)
+  await expect(page.locator("details")).toHaveCount(4)
+})
+
+test("sales calendar partner CTAs use approved affiliate destinations and privacy-safe events", async ({ page }) => {
+  await page.goto("/sales-calendar", { waitUntil: "domcontentloaded" })
+  await installAnalyticsCapture(page)
+  await page.waitForTimeout(1500)
+
+  const partners = [
+    { name: "Temu", href: "https://temu.to/k/ge7hcjmmrb4", offerId: "temu" },
+    { name: "Shopee PH", href: "https://invl.me/clnkccq", offerId: "shopee-ph" },
+    { name: "Sephora PH", href: "https://invl.me/clnkccv", offerId: "sephora-ph" },
+  ]
+
+  for (const [index, partner] of partners.entries()) {
+    const link = page.locator(`a[href="${partner.href}"]`)
+    await expect(link).toHaveAttribute("href", partner.href)
+    await expect(link).toHaveAccessibleName(new RegExp(partner.name))
+    await expect(link).toHaveAttribute("rel", "sponsored nofollow noopener noreferrer")
+    await link.evaluate((element) => element.addEventListener("click", (event) => event.preventDefault()))
+    await link.click()
+    await expect.poll(() => page.evaluate(() =>
+      (window as typeof window & {
+        __events: Array<{ type: string; payload: { name?: string } }>
+      }).__events.filter((event) => event.type === "event" && event.payload.name === "affiliate_click").length
+    )).toBe(index + 1)
+  }
+
+  const affiliateEvents = await page.evaluate(() =>
+    (window as typeof window & {
+      __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
+    }).__events.filter((event) => event.type === "event" && event.payload.name === "affiliate_click")
+  )
+  expect(affiliateEvents).toHaveLength(3)
+  for (const event of affiliateEvents) {
+    expect(event.payload.data).toMatchObject({ placement: "sales-calendar-store", source: "sales-calendar" })
+    expect(Object.keys(event.payload.data ?? {}).sort()).toEqual(["offerId", "placement", "platform", "source"])
+  }
+  expect(affiliateEvents.map((event) => event.payload.data?.offerId).sort()).toEqual(["sephora-ph", "shopee-ph", "temu"])
+})
+
+test("sales calendar is discoverable from navigation, homepage, and sitemap", async ({ page, request }) => {
+  await page.goto("/")
+  await expect(page.getByRole("banner").getByRole("link", { name: "Sale Calendar" })).toBeVisible()
+  await expect(page.getByRole("contentinfo").getByRole("link", { name: "Sale Calendar" })).toBeVisible()
+  await expect(page.getByRole("main").getByRole("link", { name: /plan around common sale dates/i })).toHaveAttribute("href", "/sales-calendar")
+
+  const sitemapResponse = await request.get("/sitemap.xml")
+  const sitemap = await sitemapResponse.text()
+  expect(sitemap).toContain("<loc>https://sulitscan.com/sales-calendar</loc>")
+  expect(sitemap).toContain("<lastmod>2026-07-31</lastmod>")
+  expect(sitemap).toContain("<changefreq>weekly</changefreq>")
+  expect(sitemap).toContain("<priority>0.8</priority>")
+  expect(sitemap).toContain("<image:loc>https://sulitscan.com/images/guides/shopping-sale-calendar-philippines.webp</image:loc>")
+})
+
 test("newsletter signup requires consent before it sends a request", async ({ page }) => {
   let newsletterRequests = 0
   page.on("request", (request) => {

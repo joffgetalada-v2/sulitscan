@@ -7,6 +7,7 @@ const footerLinks = {
     { label: "All Deals",      href: "/deals" },
     { label: "Categories",     href: "/categories" },
     { label: "Partner Stores", href: "/stores" },
+    { label: "Sale Calendar", href: "/sales-calendar" },
     { label: "Checkout Comparison", href: "/tools/checkout-comparison" },
     { label: "Shopping Blog",  href: "/blog" },
   ],

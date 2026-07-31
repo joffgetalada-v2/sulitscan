@@ -228,6 +228,20 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="border-b border-slate-100 bg-white py-14" aria-labelledby="sale-calendar-heading">
+        <div className="mx-auto flex max-w-5xl flex-col items-start gap-6 px-4 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+          <div className="max-w-2xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-green-700">Plan before you browse</p>
+            <h2 id="sale-calendar-heading" className="mt-1 text-2xl font-black text-slate-900">Build a calmer shopping plan</h2>
+            <p className="mt-2 text-sm leading-relaxed text-slate-600">Use common Philippine shopping-date patterns to prepare a shortlist and a delivered-total budget. Always confirm current store terms before you buy.</p>
+          </div>
+          <Link href="/sales-calendar" className="inline-flex shrink-0 items-center gap-2 rounded-full border border-green-700 px-6 py-3 text-sm font-bold text-green-800 transition hover:bg-green-50">
+            Plan around common sale dates
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
       {/* ─── Stats strip ─── */}
       <section
         className="py-14 bg-gradient-to-r from-green-700 via-green-600 to-emerald-600 relative overflow-hidden"
