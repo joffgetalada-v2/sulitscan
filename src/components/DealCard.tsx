@@ -9,9 +9,10 @@ import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 interface DealCardProps {
   deal: Deal
   imagePriority?: boolean
+  position?: number
 }
 
-export default function DealCard({ deal, imagePriority = false }: DealCardProps) {
+export default function DealCard({ deal, imagePriority = false, position }: DealCardProps) {
   const suspicious = isSuspiciousDiscount(deal)
   return (
     <article className="group relative flex flex-col bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-green-100 transition-all overflow-hidden">
@@ -133,6 +134,8 @@ export default function DealCard({ deal, imagePriority = false }: DealCardProps)
           href={deal.affiliateLink}
           platform={deal.platform}
           placement="deal-card"
+          offerId={deal.slug}
+          position={position}
           className="flex items-center justify-center gap-2 w-full py-2.5 px-4 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-xl transition-colors shadow-sm hover:shadow-md focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           aria-label={`Check current price on ${deal.platform}: ${deal.title} (opens in new tab)`}
         >

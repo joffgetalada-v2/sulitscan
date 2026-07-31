@@ -38,6 +38,7 @@ export default function PartnerBanners({ title, subtitle, banners, headingId }: 
             href={b.href}
             platform={b.advertiserName}
             placement="partner-banner"
+            offerId={b.id}
             aria-label={`${b.advertiserName}: ${b.title}, sponsored partner, opens in a new tab`}
             className="group flex flex-col bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-lg hover:border-green-100 transition-all overflow-hidden focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
           >

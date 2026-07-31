@@ -341,8 +341,16 @@ test("deal card emits an affiliate_click event", async ({ page }) => {
   })
   await page.goto("/deals")
   await installAnalyticsCapture(page)
+  const affiliateLink = page.locator('a[rel*="sponsored"]').first()
+  const detailHref = await affiliateLink
+    .locator("xpath=ancestor::article")
+    .locator('a[href^="/deals/"]')
+    .first()
+    .getAttribute("href")
+  const offerId = detailHref?.split("/").pop()
+  expect(offerId).toBeTruthy()
   const popupPromise = page.waitForEvent("popup")
-  await page.locator('a[rel*="sponsored"]').first().click()
+  await affiliateLink.click()
   const popup = await popupPromise
   await popup.close()
   const events = await page.evaluate(() =>
@@ -354,11 +362,19 @@ test("deal card emits an affiliate_click event", async ({ page }) => {
     candidate.type === "event" && candidate.payload.name === "affiliate_click"
   )
   expect(event).toBeDefined()
-  expect(Object.keys(event?.payload.data ?? {}).sort()).toEqual(["placement", "platform", "source"])
-  expect(event?.payload.data).toMatchObject({ placement: "deal-card", source: "deals" })
+  expect(Object.keys(event?.payload.data ?? {}).sort()).toEqual(["offerId", "placement", "platform", "position", "source"])
+  expect(event?.payload.data).toMatchObject({
+    offerId,
+    placement: "deal-card",
+    position: 1,
+    source: "deals",
+  })
+  for (const privateProperty of ["href", "url", "query", "title", "email"]) {
+    expect(event?.payload.data).not.toHaveProperty(privateProperty)
+  }
 })
 
-test("homepage partner banner emits a private affiliate_click event", async ({ page }) => {
+test("homepage partner banner emits an affiliate_click event with its public offer ID", async ({ page }) => {
   await page.addInitScript(() => {
     ;(window as typeof window & { __events: unknown[] }).__events = []
     window.va = (type, payload) => {
@@ -380,10 +396,14 @@ test("homepage partner banner emits a private affiliate_click event", async ({ p
     candidate.type === "event" && candidate.payload.name === "affiliate_click"
   )
   expect(event?.payload.data).toEqual({
+    offerId: "partner-shopee",
     platform: "Shopee",
     placement: "partner-banner",
     source: "home",
   })
+  for (const privateProperty of ["href", "url", "query", "title", "email"]) {
+    expect(event?.payload.data).not.toHaveProperty(privateProperty)
+  }
 })
 
 test("store-index affiliate link emits a private affiliate_click event", async ({ page }) => {

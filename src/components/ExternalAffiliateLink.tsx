@@ -7,6 +7,8 @@ interface ExternalAffiliateLinkProps extends AnchorHTMLAttributes<HTMLAnchorElem
   href: string
   platform: string
   placement?: string
+  offerId?: string
+  position?: number
 }
 
 /**
@@ -18,6 +20,8 @@ export function ExternalAffiliateLink({
   href,
   platform,
   placement,
+  offerId,
+  position,
   children,
   className,
   "aria-label": ariaLabel,
@@ -31,6 +35,8 @@ export function ExternalAffiliateLink({
         platform,
         placement: placement ?? "affiliate-link",
         source,
+        ...(offerId !== undefined ? { offerId } : {}),
+        ...(position !== undefined ? { position } : {}),
       })
     } catch {
       // Analytics must never prevent outbound navigation.
