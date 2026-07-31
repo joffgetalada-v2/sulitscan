@@ -109,8 +109,9 @@ Do not configure AdSense with a placeholder. Obtain your real publisher/client I
 
 1. In Vercel, set `NEXT_PUBLIC_ADSENSE_CLIENT_ID` to the real ID and keep `NEXT_PUBLIC_ADSENSE_ADS_ENABLED=false` for verification and review. A valid client ID enables the homepage verification meta tag and `/ads.txt`.
 2. Deploy, then verify the homepage meta tag and the `/ads.txt` line. Submit the site for review and wait for Google's decision; this documentation does not promise an approval time.
-3. Set `NEXT_PUBLIC_ADSENSE_ADS_ENABLED=true` only after approval. The existing `AdSenseArticleScript` then loads the Google script on full article pages only. If desired, configure Auto ads in AdSense.
-4. No layout edit or placeholder component is needed for the existing verification and article-only loader.
+3. Before enabling serving, configure and verify a Google-certified consent management platform for regions where consent is required, including the EEA, United Kingdom, and Switzerland. The repository does not provide this CMP.
+4. Set `NEXT_PUBLIC_ADSENSE_ADS_ENABLED=true` only after approval and after the required CMP is configured and verified. The existing `AdSenseArticleScript` then loads the Google script on full article pages only. If desired, configure Auto ads in AdSense.
+5. No layout edit or placeholder component is needed for the existing verification and article-only loader.
 
 **AdSense placement and policy cautions:**
 - Do not place ads beside fake buttons, arrows, or product CTAs

@@ -256,7 +256,7 @@ export default function HomePage() {
             {[
               { value: "3",      label: "Partner Stores",   note: "Temu, Shopee PH, Sephora PH" },
               { value: String(activeDeals.length), label: "Active/Reference Listings", note: "Confirm live store price" },
-              { value: "90 days", label: "Maximum Reference Age", note: "Automatic retirement" },
+              { value: "90 days", label: "After Source Date/Period", note: "Then retired automatically" },
               { value: "100%",   label: "Free for shoppers", note: "No premium plan" },
             ].map(({ value, label, note }) => (
               <div key={label}>

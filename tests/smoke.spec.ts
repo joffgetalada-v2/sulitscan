@@ -171,11 +171,14 @@ test("homepage describes reference listings and buyer checks without live-price 
   await expect(main).toContainText(/affiliate-datafeed listings/i)
   await expect(main).toContainText(/Reference Listings/i)
   await expect(main).toContainText(/Confirm live store price/i)
+  await expect(main).toContainText("After Source Date/Period")
+  await expect(main).toContainText("Then retired automatically")
   await expect(main).toContainText(/vouchers, sizing, seller evidence, shipping, returns, and quality/i)
   await expect(main).not.toContainText("We monitor")
   await expect(main).not.toContainText("shipping estimates")
   await expect(main).not.toContainText("30–75%")
   await expect(main).not.toContainText("Discounts shown")
+  await expect(main).not.toContainText("Maximum Reference Age")
 })
 
 test.describe("sales calendar mobile navigation", () => {
