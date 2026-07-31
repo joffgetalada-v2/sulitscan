@@ -24,7 +24,10 @@ function loadTypeScriptModule(relativePath, dependencies = {}) {
   return moduleRecord.exports
 }
 
-const dealsModule = loadTypeScriptModule("src/data/deals.ts")
+const freshnessModule = loadTypeScriptModule("src/lib/deal-freshness.ts")
+const dealsModule = loadTypeScriptModule("src/data/deals.ts", {
+  "@/lib/deal-freshness": freshnessModule,
+})
 const seoModule = loadTypeScriptModule("src/lib/deal-seo.ts", {
   "@/data/deals": dealsModule,
 })

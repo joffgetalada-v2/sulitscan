@@ -26,7 +26,10 @@ function loadTypeScriptModule(relativePath, dependencies = {}) {
 }
 
 const postsModule = loadTypeScriptModule("src/data/posts.ts")
-const dealsModule = loadTypeScriptModule("src/data/deals.ts")
+const freshnessModule = loadTypeScriptModule("src/lib/deal-freshness.ts")
+const dealsModule = loadTypeScriptModule("src/data/deals.ts", {
+  "@/lib/deal-freshness": freshnessModule,
+})
 const recommendationsModule = loadTypeScriptModule("src/lib/blog-recommendations.ts", {
   "@/data/deals": dealsModule,
 })

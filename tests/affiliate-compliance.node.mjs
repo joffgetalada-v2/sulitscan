@@ -4,7 +4,7 @@ import { dirname, resolve } from "node:path"
 import test from "node:test"
 import ts from "typescript"
 
-function loadTypeScriptModule(relativePath) {
+function loadTypeScriptModule(relativePath, dependencies = {}) {
   const filename = resolve(relativePath)
   const source = readFileSync(filename, "utf8")
   const { outputText } = ts.transpileModule(source, {
@@ -15,15 +15,20 @@ function loadTypeScriptModule(relativePath) {
     fileName: filename,
   })
   const moduleRecord = { exports: {} }
+  const localRequire = (specifier) => {
+    if (Object.hasOwn(dependencies, specifier)) return dependencies[specifier]
+    throw new Error(`Unexpected dependency ${specifier} from ${relativePath}`)
+  }
   const evaluate = new Function("exports", "require", "module", "__filename", "__dirname", outputText)
-  evaluate(moduleRecord.exports, () => {
-    throw new Error(`Unexpected dependency from ${relativePath}`)
-  }, moduleRecord, filename, dirname(filename))
+  evaluate(moduleRecord.exports, localRequire, moduleRecord, filename, dirname(filename))
   return moduleRecord.exports
 }
 
 const bannersModule = loadTypeScriptModule("src/data/partner-banners.ts")
-const dealsModule = loadTypeScriptModule("src/data/deals.ts")
+const freshnessModule = loadTypeScriptModule("src/lib/deal-freshness.ts")
+const dealsModule = loadTypeScriptModule("src/data/deals.ts", {
+  "@/lib/deal-freshness": freshnessModule,
+})
 const storesModule = loadTypeScriptModule("src/data/stores.ts")
 
 test("only publicly active deals are exposed by slug", () => {

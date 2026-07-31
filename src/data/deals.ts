@@ -18,6 +18,8 @@
   tags: string[]
 }
 
+import { isDealExpired } from "@/lib/deal-freshness"
+
 export const deals: Deal[] = [
   // ── Old demo deals (hidden from public, no active affiliate relationship) ──
   {
@@ -3636,7 +3638,7 @@ export function compareDealsForDefault(a: Deal, b: Deal): number {
 
 // All active deals (active platform and has image), in the recommended default order.
 export function getActiveDeals(): Deal[] {
-  return deals.filter(isPublicDeal).sort(compareDealsForDefault)
+  return deals.filter((deal) => isPublicDeal(deal) && !isDealExpired(deal)).sort(compareDealsForDefault)
 }
 
 // Curated homepage picks: strong SulitScore and a sensible (non-suspicious) discount,
