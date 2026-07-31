@@ -86,3 +86,18 @@ test("uses one publisher ID source and scopes the serving script to full article
   assert.match(articleScript, /NEXT_PUBLIC_ADSENSE_ADS_ENABLED/)
   assert.match(adsenseLibrary, /pagead2\.googlesyndication\.com/)
 })
+
+test("documents the implemented verification and article-only serving controls", () => {
+  const readme = readFileSync(resolve("README.md"), "utf8")
+
+  assert.match(readme, /NEXT_PUBLIC_ADSENSE_CLIENT_ID/)
+  assert.match(readme, /NEXT_PUBLIC_ADSENSE_ADS_ENABLED/)
+  assert.match(readme, /AdSenseArticleScript/)
+  assert.doesNotMatch(readme, /ADSENSE_PUBLISHER_ID/)
+  assert.doesNotMatch(readme, /AdSensePlaceholder/)
+  assert.doesNotMatch(readme, /Add AdSense Script to Layout/)
+  assert.doesNotMatch(readme, /Approval typically takes/i)
+  assert.match(readme, /valid client ID.*verification.*\/ads\.txt/i)
+  assert.match(readme, /NEXT_PUBLIC_ADSENSE_ADS_ENABLED=true.*after approval/i)
+  assert.match(readme, /article-only/i)
+})

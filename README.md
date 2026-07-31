@@ -2,7 +2,7 @@
 
 **Check deals before you click buy.**
 
-SulitScan PH is a curated deals discovery site for Filipino shoppers, focused on **Temu** and **Sephora PH** affiliate deals. Honest notes, SulitScore ratings, and clear affiliate disclosure on every page.
+SulitScan PH is a curated deals discovery site for Filipino shoppers, focused on **Temu**, **Shopee PH**, and **Sephora PH** affiliate deals. Honest notes, SulitScore ratings, and clear affiliate disclosure appear on every page.
 
 ---
 
@@ -47,7 +47,7 @@ src/
 │   ├── CategoryCard.tsx
 │   ├── DealsGrid.tsx
 │   ├── ExternalAffiliateLink.tsx  # Enforces correct rel attributes on all affiliate links
-│   ├── AdSensePlaceholder.tsx     # AdSense scaffold (disabled by default)
+│   ├── AdSenseArticleScript.tsx   # Optional article-only AdSense loader
 │   ├── SeoJsonLd.tsx
 │   └── ...
 ├── data/
@@ -90,70 +90,33 @@ npm run lint
 
 | Variable | Required | Description |
 |---|---|---|
-| `NEXT_PUBLIC_ADSENSE_CLIENT_ID` | No | Google AdSense publisher ID for client-side ad rendering. Set to enable AdSense. |
-| `ADSENSE_PUBLISHER_ID` | No | Server-side AdSense publisher ID used to generate `/ads.txt`. |
+| `NEXT_PUBLIC_ADSENSE_CLIENT_ID` | No | Real AdSense client ID used for the homepage verification meta tag and `/ads.txt` generation. Accepts `ca-pub-` or `pub-` plus 16 digits. |
+| `NEXT_PUBLIC_ADSENSE_ADS_ENABLED` | No | Keep `false` for verification and review; set to the exact value `true` only after approval to enable the existing article-only loader. |
 
 ### `.env.local` example
 
 ```env
-# AdSense — leave blank until your account is approved
+# AdSense — do not use a placeholder ID
 NEXT_PUBLIC_ADSENSE_CLIENT_ID=
-ADSENSE_PUBLISHER_ID=
+NEXT_PUBLIC_ADSENSE_ADS_ENABLED=false
 ```
 
 ---
 
-## AdSense Setup (When Ready)
+## AdSense Operations
 
-SulitScan is structured for AdSense approval. Follow these steps when ready to monetize:
+Do not configure AdSense with a placeholder. Obtain your real publisher/client ID from Google AdSense first.
 
-### Step 1 — Apply for AdSense
+1. In Vercel, set `NEXT_PUBLIC_ADSENSE_CLIENT_ID` to the real ID and keep `NEXT_PUBLIC_ADSENSE_ADS_ENABLED=false` for verification and review. A valid client ID enables the homepage verification meta tag and `/ads.txt`.
+2. Deploy, then verify the homepage meta tag and the `/ads.txt` line. Submit the site for review and wait for Google's decision; this documentation does not promise an approval time.
+3. Set `NEXT_PUBLIC_ADSENSE_ADS_ENABLED=true` only after approval. The existing `AdSenseArticleScript` then loads the Google script on full article pages only. If desired, configure Auto ads in AdSense.
+4. No layout edit or placeholder component is needed for the existing verification and article-only loader.
 
-Ensure the site has:
-- Active `/about`, `/contact`, `/privacy-policy`, `/affiliate-disclosure`, and `/cookie-policy` pages
-- Sufficient content (blog posts, deal pages)
-- No auto-redirects, fake buttons, or misleading CTAs
-
-### Step 2 — Get Approved
-
-Submit https://sulitscan.com to Google AdSense. Approval typically takes 1–14 days.
-
-### Step 3 — Configure Environment Variables
-
-In Vercel Dashboard → Settings → Environment Variables, add:
-```
-NEXT_PUBLIC_ADSENSE_CLIENT_ID = ca-pub-XXXXXXXXXXXXXXXX
-ADSENSE_PUBLISHER_ID = pub-XXXXXXXXXXXXXXXX
-```
-
-### Step 4 — Add AdSense Script to Layout
-
-In `src/app/layout.tsx`, add inside `<head>`:
-```tsx
-<script
-  async
-  src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID}`}
-  crossOrigin="anonymous"
-/>
-```
-
-### Step 5 — Place Ad Units
-
-Use the `AdSensePlaceholder` component in `src/components/AdSensePlaceholder.tsx`.
-Replace the placeholder `div` with the real `ins.adsbygoogle` element.
-
-**AdSense placement rules — do not violate:**
+**AdSense placement and policy cautions:**
 - Do not place ads beside fake buttons, arrows, or product CTAs
 - Do not place ads where they could be confused with affiliate "View Deal" buttons
 - Keep affiliate CTAs clearly separate from ad units
 - Do not write "click ads to support us"
-
-### Step 6 — Verify ads.txt
-
-After deploying with `ADSENSE_PUBLISHER_ID` set, visit https://sulitscan.com/ads.txt to confirm it outputs:
-```
-google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
-```
 
 ---
 

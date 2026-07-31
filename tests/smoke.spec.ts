@@ -164,6 +164,20 @@ test("sales calendar is discoverable from navigation, homepage, and sitemap", as
   expect(sitemap).toContain("<image:loc>https://sulitscan.com/images/guides/shopping-sale-calendar-philippines.webp</image:loc>")
 })
 
+test("homepage describes reference listings and buyer checks without live-price claims", async ({ page }) => {
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const main = page.getByRole("main")
+  await expect(main).toContainText(/affiliate-datafeed listings/i)
+  await expect(main).toContainText(/Reference Listings/i)
+  await expect(main).toContainText(/Confirm live store price/i)
+  await expect(main).toContainText(/vouchers, sizing, seller evidence, shipping, returns, and quality/i)
+  await expect(main).not.toContainText("We monitor")
+  await expect(main).not.toContainText("shipping estimates")
+  await expect(main).not.toContainText("30–75%")
+  await expect(main).not.toContainText("Discounts shown")
+})
+
 test.describe("sales calendar mobile navigation", () => {
   test.use({ viewport: { width: 390, height: 844 } })
 

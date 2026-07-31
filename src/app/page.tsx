@@ -84,14 +84,14 @@ const howItWorks = [
   {
     step: "01",
     icon: Search,
-    title: "We find deals",
-    body: "We monitor Temu, Shopee PH, and Sephora PH through affiliate programs for value picks worth checking.",
+    title: "We review listings",
+    body: "We review and curate affiliate-datafeed listings from Temu, Shopee PH, and Sephora PH as reference listings worth checking.",
   },
   {
     step: "02",
     icon: Shield,
-    title: "We add context",
-    body: "Buyer notes, voucher reminders, shipping estimates, and an honest SulitScore for every deal.",
+    title: "We add buyer checks",
+    body: "Buyer checks cover vouchers, sizing, seller evidence, shipping, returns, and quality before you decide whether to visit the store.",
   },
   {
     step: "03",
@@ -255,9 +255,9 @@ export default function HomePage() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
               { value: "3",      label: "Partner Stores",   note: "Temu, Shopee PH, Sephora PH" },
-              { value: "100+",   label: "Curated Deals",    note: "Manually selected" },
-              { value: "30–75%", label: "Discounts shown",  note: "Listed by the partner store" },
-              { value: "100%",   label: "Free forever",     note: "No premium plan" },
+              { value: String(activeDeals.length), label: "Active/Reference Listings", note: "Confirm live store price" },
+              { value: "90 days", label: "Maximum Reference Age", note: "Automatic retirement" },
+              { value: "100%",   label: "Free for shoppers", note: "No premium plan" },
             ].map(({ value, label, note }) => (
               <div key={label}>
                 <div className="text-4xl sm:text-5xl font-black text-white mb-1 tabular">
