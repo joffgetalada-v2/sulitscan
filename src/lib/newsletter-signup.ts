@@ -17,11 +17,20 @@ export interface NewsletterContactsClient {
   create(input: { email: string; unsubscribed: false }): Promise<NewsletterProviderResponse<NewsletterCreatedContact>>
 }
 
-export type NewsletterResult = {
-  status: 200 | 400 | 422 | 503
-  body: { success: true } | { error: string }
-  headers: { "Cache-Control": "no-store" }
-}
+export type NewsletterFailureCategory = "missing_configuration" | "provider_unavailable"
+
+export type NewsletterResult =
+  | {
+      status: 200 | 400 | 422
+      body: { success: true } | { error: string }
+      headers: { "Cache-Control": "no-store" }
+    }
+  | {
+      status: 503
+      body: { error: string }
+      headers: { "Cache-Control": "no-store" }
+      category: NewsletterFailureCategory
+    }
 
 const headers = { "Cache-Control": "no-store" } as const
 const validSources = new Set(["homepage", "blog-index", "blog-article"])
@@ -38,11 +47,12 @@ function invalid(): NewsletterResult {
   return { status: 422, body: { error: "Invalid newsletter signup." }, headers }
 }
 
-function unavailable(): NewsletterResult {
+function unavailable(category: NewsletterFailureCategory): NewsletterResult {
   return {
     status: 503,
     body: { error: "Newsletter signup is temporarily unavailable. Please try again." },
     headers,
+    category,
   }
 }
 
@@ -62,6 +72,9 @@ function normalizeEmail(value: unknown): string | null {
     return null
   }
 
+  const localPart = email.slice(0, email.indexOf("@"))
+  if (/[?#/]/.test(localPart)) return null
+
   return email
 }
 
@@ -77,12 +90,15 @@ export async function handleNewsletterSignup(
     return invalid()
   }
 
-  if (!contacts) return unavailable()
+  if (!contacts) return unavailable("missing_configuration")
 
   try {
     const existing = await contacts.get({ email })
-    if (existing.data) return success()
-    if (!isNotFoundError(existing.error)) return unavailable()
+    if (existing.data) {
+      const confirmed = await contacts.get({ email })
+      return confirmed.data ? success() : unavailable("provider_unavailable")
+    }
+    if (!isNotFoundError(existing.error)) return unavailable("provider_unavailable")
 
     try {
       const created = await contacts.create({ email, unsubscribed: false })
@@ -92,9 +108,9 @@ export async function handleNewsletterSignup(
     }
 
     const recovered = await contacts.get({ email })
-    return recovered.data ? success() : unavailable()
+    return recovered.data ? success() : unavailable("provider_unavailable")
   } catch {
-    return unavailable()
+    return unavailable("provider_unavailable")
   }
 }
 

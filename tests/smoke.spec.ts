@@ -19,7 +19,7 @@ async function newsletterEvents(page: Page) {
     (window as typeof window & {
       __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
     }).__events.filter(
-      (event) => event.type === "event" && event.payload.name === "newsletter_signup_completed"
+      (event) => event.type === "event" && event.payload.name?.startsWith("newsletter_signup")
     )
   )
 }
@@ -55,7 +55,7 @@ test("newsletter signup requires consent before it sends a request", async ({ pa
   expect(newsletterRequests).toBe(0)
 })
 
-test("newsletter signup tracks one completion after an API-confirmed success", async ({ page }) => {
+test("newsletter signup tracks one request completion after an API-confirmed success", async ({ page }) => {
   await page.route("**/api/newsletter", (route) =>
     route.fulfill({
       status: 200,
@@ -71,9 +71,11 @@ test("newsletter signup tracks one completion after an API-confirmed success", a
   await signup.getByLabel(/I agree to receive SulitScan deal alerts/i).check()
   await signup.getByRole("button", { name: "Join Free Deal Alerts" }).click()
 
-  await expect(page.getByText("You're in!", { exact: true })).toBeVisible()
+  await expect(page.getByText("Request received", { exact: true })).toBeVisible()
+  await expect(page.getByText("Thanks for your interest in SulitScan deal alerts.", { exact: true })).toBeVisible()
   const events = await newsletterEvents(page)
   expect(events).toHaveLength(1)
+  expect(events[0]?.payload.name).toBe("newsletter_signup_request_completed")
   expect(events[0]?.payload.data).toEqual({ source: "homepage" })
 })
 

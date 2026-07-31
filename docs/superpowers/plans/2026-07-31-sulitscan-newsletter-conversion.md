@@ -13,7 +13,10 @@
 - Do not expose or log an email address, contact ID, API key, or provider message.
 - Preserve a prior global unsubscribe; a public signup must not silently reactivate it.
 - Return the same success body for new, existing, unsubscribed, and honeypot submissions.
+- Keep ordinary successful new and existing-contact paths to two provider operations: get/create for new contacts and get/get for existing contacts.
+- Reject `?`, `#`, and `/` in the email local part while preserving common plus-addressing.
 - Never return success when the provider or configuration failed.
+- Serialize no failure category; log only a stable prefix and `{ category, status }` using `missing_configuration` or `provider_unavailable`.
 - Follow the installed Next.js 16 Route Handler and environment-variable documentation.
 
 ---
@@ -32,7 +35,7 @@
 
 - [ ] **Step 1: Write failing service tests**
 
-Add literal test cases for trimmed/lower-cased valid email, invalid/overlong email, strict boolean consent, source allow-listing, honeypot, active existing contact, existing unsubscribed contact, new contact creation, concurrent-create recovery, missing configuration, SDK error responses, and thrown network failures. Fakes must return complete `{ data, error, headers }` response objects. Assert exact public status/body pairs and a `Cache-Control: no-store` header.
+Add literal test cases for trimmed/lower-cased valid email, invalid/overlong email, rejected `?`/`#`/`/` local parts, preserved plus-addressing, strict boolean consent, source allow-listing, honeypot, active existing contact, existing unsubscribed contact, new contact creation, concurrent-create recovery, missing configuration, SDK error responses, and thrown network failures. Fakes must return complete `{ data, error, headers }` response objects. Assert exact public status/body pairs, internal failure categories, provider-operation sequences, and a `Cache-Control: no-store` header.
 
 - [ ] **Step 2: Run the new suite and verify RED**
 
@@ -42,7 +45,7 @@ Expected: failure because `src/lib/newsletter-signup.ts` does not exist.
 
 - [ ] **Step 3: Implement the minimal service**
 
-Implement strict validation and generic results. Look up with `contacts.get({ email })`; create missing contacts with `{ email, unsubscribed: false }`; if creation fails, perform one final lookup to recover a concurrent create. Treat an existing unsubscribed contact as processed without changing it. Convert SDK error values and thrown failures into a sanitized provider-unavailable result.
+Implement strict validation and generic results. Look up with `contacts.get({ email })`; confirm existing contacts with a second identical lookup; create missing contacts with `{ email, unsubscribed: false }`; if creation fails, perform one final lookup to recover a concurrent create. Treat an existing unsubscribed contact as processed without changing it. Convert missing configuration to `missing_configuration` and SDK/thrown provider failures to `provider_unavailable`, retaining categories only as non-serialized internal result metadata.
 
 - [ ] **Step 4: Run the service suite and verify GREEN**
 
@@ -75,7 +78,7 @@ Expected: failure because `handleNewsletterRequest` does not exist.
 
 - [ ] **Step 2: Add the request parser and replace the webhook placeholder**
 
-Add the dependency-free request parser so malformed JSON returns 400, then delegates valid JSON to `handleNewsletterSignup`. In the route, instantiate `Resend` only when `RESEND_API_KEY` exists, pass `resend.contacts` to the request parser, and return its body/status with `Cache-Control: no-store`. Do not log email, contact ID, API key, or provider messages.
+Add the dependency-free request parser so malformed JSON returns 400, then delegates valid JSON to `handleNewsletterSignup`. In the route, instantiate `Resend` only when `RESEND_API_KEY` exists, pass `resend.contacts` to the request parser, and return its body/status with `Cache-Control: no-store`. For 503 results, log only a stable prefix and `{ category, status }`; do not log or serialize email, contact ID, API key, or provider messages.
 
 - [ ] **Step 3: Verify route types and service behavior**
 
@@ -91,11 +94,11 @@ Expected: both commands exit 0.
 
 **Interfaces:**
 - Consumes: API `{ success: true }` or `{ error: string }` responses.
-- Produces: `newsletter_signup_completed` with `{ source }` only after success.
+- Produces: `newsletter_signup_request_completed` with `{ source }` only after generic success.
 
 - [ ] **Step 1: Write failing browser tests**
 
-Add one test that submits an email without consent and expects a visible `role="alert"` with zero newsletter requests. Add one intercepted-success test that expects the success UI and exactly one `newsletter_signup_completed` event whose properties equal `{ source: "homepage" }`. Add a 503 test that expects an error and no completion event.
+Add one test that submits an email without consent and expects a visible `role="alert"` with zero newsletter requests. Add one intercepted-success test that expects neutral request-received UI and exactly one `newsletter_signup_request_completed` event whose properties equal `{ source: "homepage" }`. Add a 503 test that expects an error and no completion event.
 
 - [ ] **Step 2: Run the focused browser tests and verify RED**
 
@@ -105,7 +108,7 @@ Expected: the consent-error and analytics assertions fail against the old compon
 
 - [ ] **Step 3: Implement the minimal client behavior**
 
-Remove the pending status and copy, set error status when consent is missing, and call `track("newsletter_signup_completed", { source })` only after an API-confirmed success. Keep analytics in a try/catch so it never blocks signup UI.
+Remove the pending status and copy, set error status when consent is missing, show neutral request-received copy after generic success, and call `track("newsletter_signup_request_completed", { source })` only after an API-confirmed success. Keep analytics in a try/catch so it never blocks signup UI.
 
 - [ ] **Step 4: Run the focused browser tests and verify GREEN**
 

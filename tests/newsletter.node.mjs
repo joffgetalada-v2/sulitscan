@@ -4,7 +4,7 @@ import { dirname, resolve } from "node:path"
 import test from "node:test"
 import ts from "typescript"
 
-function loadTypeScriptModule(relativePath) {
+function loadTypeScriptModule(relativePath, dependencies = {}) {
   const filename = resolve(relativePath)
   const source = readFileSync(filename, "utf8")
   const { outputText } = ts.transpileModule(source, {
@@ -19,6 +19,7 @@ function loadTypeScriptModule(relativePath) {
   evaluate(
     moduleRecord.exports,
     (specifier) => {
+      if (Object.hasOwn(dependencies, specifier)) return dependencies[specifier]
       throw new Error(`Unexpected dependency ${specifier} from ${relativePath}`)
     },
     moduleRecord,
@@ -28,13 +29,16 @@ function loadTypeScriptModule(relativePath) {
   return moduleRecord.exports
 }
 
-const { handleNewsletterRequest, handleNewsletterSignup } = loadTypeScriptModule("src/lib/newsletter-signup.ts")
+const newsletterModule = loadTypeScriptModule("src/lib/newsletter-signup.ts")
+const { handleNewsletterRequest, handleNewsletterSignup } = newsletterModule
 
 const SUCCESS = { success: true }
 const INVALID_REQUEST = { error: "Invalid newsletter request." }
 const INVALID = { error: "Invalid newsletter signup." }
 const UNAVAILABLE = { error: "Newsletter signup is temporarily unavailable. Please try again." }
 const NO_STORE = { "Cache-Control": "no-store" }
+const MISSING_CONFIGURATION = "missing_configuration"
+const PROVIDER_UNAVAILABLE = "provider_unavailable"
 const baseSubmission = {
   email: "reader@example.com",
   consent: true,
@@ -71,8 +75,13 @@ function createdContact() {
   return response({ id: "contact_123", object: "contact" })
 }
 
-function assertResult(result, status, body) {
-  assert.deepEqual(result, { status, body, headers: NO_STORE })
+function assertResult(result, status, body, category) {
+  assert.deepEqual(result, {
+    status,
+    body,
+    headers: NO_STORE,
+    ...(category ? { category } : {}),
+  })
 }
 
 test("rejects malformed JSON without contacting the newsletter provider", async () => {
@@ -122,6 +131,47 @@ test("normalizes a valid email before creating a contact", async () => {
   assertResult(result, 200, SUCCESS)
   assert.deepEqual(getCalls, [{ email: "reader@example.com" }])
   assert.deepEqual(createCalls, [{ email: "reader@example.com", unsubscribed: false }])
+})
+
+test("rejects path delimiters in email local parts without contacting the provider", async () => {
+  const contacts = {
+    async get() {
+      throw new Error("provider must not be called")
+    },
+    async create() {
+      throw new Error("provider must not be called")
+    },
+  }
+
+  for (const email of ["reader?tag@example.com", "reader#tag@example.com", "reader/path@example.com"]) {
+    const result = await handleNewsletterSignup({ ...baseSubmission, email }, contacts)
+    assertResult(result, 422, INVALID)
+  }
+})
+
+test("preserves plus addressing in valid email local parts", async () => {
+  const operations = []
+  const contacts = {
+    async get(input) {
+      operations.push({ method: "get", input })
+      return missingContact()
+    },
+    async create(input) {
+      operations.push({ method: "create", input })
+      return createdContact()
+    },
+  }
+
+  const result = await handleNewsletterSignup(
+    { ...baseSubmission, email: "Reader+Deals@Example.COM" },
+    contacts
+  )
+
+  assertResult(result, 200, SUCCESS)
+  assert.deepEqual(operations, [
+    { method: "get", input: { email: "reader+deals@example.com" } },
+    { method: "create", input: { email: "reader+deals@example.com", unsubscribed: false } },
+  ])
 })
 
 test("rejects malformed and overlong emails without contacting the provider", async () => {
@@ -194,8 +244,10 @@ test("silently accepts honeypot submissions without contacting the provider", as
 
 test("treats an existing active contact as a generic success", async () => {
   const createCalls = []
+  const getCalls = []
   const contacts = {
-    async get() {
+    async get(input) {
+      getCalls.push(input)
       return existingContact(false)
     },
     async create(input) {
@@ -207,13 +259,16 @@ test("treats an existing active contact as a generic success", async () => {
   const result = await handleNewsletterSignup(baseSubmission, contacts)
 
   assertResult(result, 200, SUCCESS)
+  assert.deepEqual(getCalls, [{ email: "reader@example.com" }, { email: "reader@example.com" }])
   assert.deepEqual(createCalls, [])
 })
 
 test("preserves an existing unsubscribe while returning a generic success", async () => {
   const createCalls = []
+  const getCalls = []
   const contacts = {
-    async get() {
+    async get(input) {
+      getCalls.push(input)
       return existingContact(true)
     },
     async create(input) {
@@ -225,17 +280,19 @@ test("preserves an existing unsubscribe while returning a generic success", asyn
   const result = await handleNewsletterSignup(baseSubmission, contacts)
 
   assertResult(result, 200, SUCCESS)
+  assert.deepEqual(getCalls, [{ email: "reader@example.com" }, { email: "reader@example.com" }])
   assert.deepEqual(createCalls, [])
 })
 
 test("creates a missing contact as subscribed", async () => {
-  const createCalls = []
+  const operations = []
   const contacts = {
-    async get() {
+    async get(input) {
+      operations.push({ method: "get", input })
       return missingContact()
     },
     async create(input) {
-      createCalls.push(input)
+      operations.push({ method: "create", input })
       return createdContact()
     },
   }
@@ -243,7 +300,10 @@ test("creates a missing contact as subscribed", async () => {
   const result = await handleNewsletterSignup(baseSubmission, contacts)
 
   assertResult(result, 200, SUCCESS)
-  assert.deepEqual(createCalls, [{ email: "reader@example.com", unsubscribed: false }])
+  assert.deepEqual(operations, [
+    { method: "get", input: { email: "reader@example.com" } },
+    { method: "create", input: { email: "reader@example.com", unsubscribed: false } },
+  ])
 })
 
 test("recovers a concurrent create by checking for the contact once more", async () => {
@@ -280,7 +340,7 @@ test("returns unavailable when create fails and the final lookup remains missing
 
   const result = await handleNewsletterSignup(baseSubmission, contacts)
 
-  assertResult(result, 503, UNAVAILABLE)
+  assertResult(result, 503, UNAVAILABLE, PROVIDER_UNAVAILABLE)
   assert.deepEqual(getCalls, [{ email: "reader@example.com" }, { email: "reader@example.com" }])
   assert.deepEqual(createCalls, [{ email: "reader@example.com", unsubscribed: false }])
 })
@@ -288,7 +348,7 @@ test("returns unavailable when create fails and the final lookup remains missing
 test("reports a missing contacts client as temporarily unavailable", async () => {
   const result = await handleNewsletterSignup(baseSubmission, null)
 
-  assertResult(result, 503, UNAVAILABLE)
+  assertResult(result, 503, UNAVAILABLE, MISSING_CONFIGURATION)
 })
 
 test("sanitizes SDK error responses", async () => {
@@ -303,7 +363,7 @@ test("sanitizes SDK error responses", async () => {
 
   const result = await handleNewsletterSignup(baseSubmission, contacts)
 
-  assertResult(result, 503, UNAVAILABLE)
+  assertResult(result, 503, UNAVAILABLE, PROVIDER_UNAVAILABLE)
 })
 
 test("sanitizes thrown provider failures", async () => {
@@ -318,5 +378,91 @@ test("sanitizes thrown provider failures", async () => {
 
   const result = await handleNewsletterSignup(baseSubmission, contacts)
 
-  assertResult(result, 503, UNAVAILABLE)
+  assertResult(result, 503, UNAVAILABLE, PROVIDER_UNAVAILABLE)
+})
+
+test("route serializes a generic 503 and logs only the missing-configuration category", async () => {
+  const routeModule = loadTypeScriptModule("src/app/api/newsletter/route.ts", {
+    "server-only": {},
+    resend: {
+      Resend: class {
+        constructor() {
+          throw new Error("Resend must not be constructed without configuration")
+        }
+      },
+    },
+    "@/lib/newsletter-signup": newsletterModule,
+  })
+  const originalApiKey = process.env.RESEND_API_KEY
+  const originalConsoleError = console.error
+  const errorCalls = []
+
+  delete process.env.RESEND_API_KEY
+  console.error = (...args) => errorCalls.push(args)
+  try {
+    const response = await routeModule.POST(
+      new Request("https://sulitscan.com/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(baseSubmission),
+      })
+    )
+
+    assert.equal(response.status, 503)
+    assert.deepEqual(await response.json(), UNAVAILABLE)
+    assert.deepEqual(errorCalls, [
+      ["[newsletter-signup-failure]", { category: MISSING_CONFIGURATION, status: 503 }],
+    ])
+  } finally {
+    console.error = originalConsoleError
+    if (originalApiKey === undefined) delete process.env.RESEND_API_KEY
+    else process.env.RESEND_API_KEY = originalApiKey
+  }
+})
+
+test("route serializes a generic 503 and logs only the provider-unavailable category", async () => {
+  const routeModule = loadTypeScriptModule("src/app/api/newsletter/route.ts", {
+    "server-only": {},
+    resend: {
+      Resend: class {
+        contacts = {
+          async get() {
+            return providerError("invalid_api_key", "invalid API key: secret-value", 401)
+          },
+          async create() {
+            throw new Error("create must not be called")
+          },
+        }
+      },
+    },
+    "@/lib/newsletter-signup": newsletterModule,
+  })
+  const originalApiKey = process.env.RESEND_API_KEY
+  const originalConsoleError = console.error
+  const errorCalls = []
+
+  process.env.RESEND_API_KEY = "secret-api-key"
+  console.error = (...args) => errorCalls.push(args)
+  try {
+    const response = await routeModule.POST(
+      new Request("https://sulitscan.com/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...baseSubmission, email: "private-contact@example.com" }),
+      })
+    )
+
+    assert.equal(response.status, 503)
+    assert.deepEqual(await response.json(), UNAVAILABLE)
+    assert.deepEqual(errorCalls, [
+      ["[newsletter-signup-failure]", { category: PROVIDER_UNAVAILABLE, status: 503 }],
+    ])
+    assert.equal(JSON.stringify(errorCalls).includes("private-contact@example.com"), false)
+    assert.equal(JSON.stringify(errorCalls).includes("secret-api-key"), false)
+    assert.equal(JSON.stringify(errorCalls).includes("invalid API key"), false)
+  } finally {
+    console.error = originalConsoleError
+    if (originalApiKey === undefined) delete process.env.RESEND_API_KEY
+    else process.env.RESEND_API_KEY = originalApiKey
+  }
 })

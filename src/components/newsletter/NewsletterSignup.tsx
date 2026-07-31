@@ -38,7 +38,7 @@ export default function NewsletterSignup({ source = "homepage", variant = "full"
       if (res.ok && data.success) {
         setStatus("success")
         try {
-          track("newsletter_signup_completed", { source })
+          track("newsletter_signup_request_completed", { source })
         } catch {
           // Analytics must never prevent a completed signup from reaching the user.
         }
@@ -56,8 +56,8 @@ export default function NewsletterSignup({ source = "homepage", variant = "full"
     return (
       <div className="flex flex-col items-center gap-3 py-6 text-center">
         <CheckCircle className="w-8 h-8 text-green-600" aria-hidden="true" />
-        <p className="text-sm font-bold text-slate-900">You&apos;re in!</p>
-        <p className="text-xs text-slate-500">Watch your inbox for SulitScan weekly deal alerts.</p>
+        <p className="text-sm font-bold text-slate-900">Request received</p>
+        <p className="text-xs text-slate-500">Thanks for your interest in SulitScan deal alerts.</p>
       </div>
     )
   }

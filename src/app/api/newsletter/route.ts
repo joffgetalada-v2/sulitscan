@@ -9,5 +9,9 @@ export async function POST(request: Request) {
   const contacts = apiKey ? new Resend(apiKey).contacts : null
   const result = await handleNewsletterRequest(request, contacts)
 
+  if (result.status === 503) {
+    console.error("[newsletter-signup-failure]", { category: result.category, status: result.status })
+  }
+
   return Response.json(result.body, { status: result.status, headers: result.headers })
 }
