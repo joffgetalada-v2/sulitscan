@@ -137,3 +137,17 @@ test("only noncurrent price-sensitive reasons are neutralized", () => {
     "Only ₱499 today."
   )
 })
+
+test("a rendered deal can reuse its shared freshness result for the neutral reason", () => {
+  const deal = {
+    lastChecked: "Checked July 31, 2026",
+    category: "Beauty",
+    platform: "Sephora PH",
+    reason: "30% off today.",
+  }
+
+  assert.equal(
+    freshness.getFreshnessSafeReason(deal, new Date("2026-07-31T00:00:00Z"), { status: "reference" }),
+    "Explore Beauty options from Sephora PH and review the live listing, seller details, and delivery terms before buying."
+  )
+})

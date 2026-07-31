@@ -85,9 +85,10 @@ const PRICE_SENSITIVE_REASON = /(?:₱\s?\d|\bPHP\s*\d|\b\d+(?:[,.]\d+)?\s*pesos
 
 export function getFreshnessSafeReason(
   deal: Pick<{ lastChecked: string; reason: string; category: string; platform: string }, "lastChecked" | "reason" | "category" | "platform">,
-  now = new Date()
+  now = new Date(),
+  freshness = getDealFreshness(deal.lastChecked, now)
 ): string {
-  if (getDealFreshness(deal.lastChecked, now).status === "current" || !PRICE_SENSITIVE_REASON.test(deal.reason)) {
+  if (freshness.status === "current" || !PRICE_SENSITIVE_REASON.test(deal.reason)) {
     return deal.reason
   }
   return `Explore ${deal.category} options from ${deal.platform} and review the live listing, seller details, and delivery terms before buying.`

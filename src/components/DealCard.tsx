@@ -3,6 +3,7 @@ import Link from "next/link"
 import { ExternalLink, Zap } from "lucide-react"
 import type { Deal } from "@/data/deals"
 import { isSuspiciousDiscount, SUSPICIOUS_DISCOUNT_NOTE } from "@/data/deals"
+import { getDealFreshness, getFreshnessSafeReason } from "@/lib/deal-freshness"
 import { formatPrice, formatScore, getSulitScoreBg, getSulitScoreLabel } from "@/lib/utils"
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 
@@ -13,6 +14,8 @@ interface DealCardProps {
 }
 
 export default function DealCard({ deal, imagePriority = false, position }: DealCardProps) {
+  const freshness = getDealFreshness(deal.lastChecked)
+  const isCurrent = freshness.status === "current"
   const suspicious = isSuspiciousDiscount(deal)
   return (
     <article className="group relative flex flex-col bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:border-green-100 transition-all overflow-hidden">
@@ -42,15 +45,19 @@ export default function DealCard({ deal, imagePriority = false, position }: Deal
               }}
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              <span className="text-6xl font-black text-white opacity-20 leading-none select-none">
-                {deal.discount}%
-              </span>
-              <span className="text-sm text-white opacity-20 font-semibold -mt-1 select-none">OFF</span>
+              {isCurrent && deal.discount > 0 && (
+                <>
+                  <span className="text-6xl font-black text-white opacity-20 leading-none select-none">
+                    {deal.discount}%
+                  </span>
+                  <span className="text-sm text-white opacity-20 font-semibold -mt-1 select-none">OFF</span>
+                </>
+              )}
             </div>
           </>
         )}
 
-        {deal.discount > 0 && (
+        {isCurrent && deal.discount > 0 && (
           suspicious ? (
             <div className="absolute top-3 left-3 flex items-center gap-1 bg-amber-50/95 backdrop-blur-sm rounded-full px-2.5 py-1 shadow-sm">
               <Zap className="w-3 h-3 text-amber-600" aria-hidden="true" />
@@ -76,15 +83,26 @@ export default function DealCard({ deal, imagePriority = false, position }: Deal
           </h3>
         </Link>
 
-        <div className="flex items-baseline gap-2 mb-3">
-          <span className="text-xl font-black text-slate-900">{formatPrice(deal.salePrice)}</span>
-          {deal.discount > 0 && !suspicious && (
-            <span className="text-sm text-slate-400 line-through">{formatPrice(deal.originalPrice)}</span>
-          )}
-          {deal.discount > 0 && !suspicious && (
-            <span className="ml-auto text-xs font-bold text-green-600 bg-green-50 px-1.5 py-0.5 rounded-md">
-              Save {formatPrice(deal.originalPrice - deal.salePrice)}
-            </span>
+        <div className="flex items-baseline gap-2 mb-3" aria-live="polite">
+          {isCurrent ? (
+            <>
+              <span className="text-xl font-black text-slate-900">{formatPrice(deal.salePrice)}</span>
+              {deal.discount > 0 && !suspicious && (
+                <span className="text-sm text-slate-400 line-through">{formatPrice(deal.originalPrice)}</span>
+              )}
+              {deal.discount > 0 && !suspicious && (
+                <span className="ml-auto text-xs font-bold text-green-600 bg-green-50 px-1.5 py-0.5 rounded-md">
+                  Save {formatPrice(deal.originalPrice - deal.salePrice)}
+                </span>
+              )}
+            </>
+          ) : freshness.status === "reference" ? (
+            <>
+              <span className="text-xs font-semibold text-amber-700">Reference price</span>
+              <span className="text-xl font-black text-slate-900">{formatPrice(deal.salePrice)}</span>
+            </>
+          ) : (
+            <span className="text-sm font-semibold text-amber-700">Check live price</span>
           )}
         </div>
 
@@ -107,10 +125,10 @@ export default function DealCard({ deal, imagePriority = false, position }: Deal
         </div>
 
         <p className="text-xs text-slate-500 leading-relaxed flex-1 mb-3 line-clamp-2">
-          {deal.reason}
+          {getFreshnessSafeReason(deal, undefined, freshness)}
         </p>
 
-        {suspicious && (
+        {isCurrent && suspicious && (
           <p className="text-[10px] text-amber-600 leading-relaxed mb-3 -mt-1">
             {SUSPICIOUS_DISCOUNT_NOTE}
           </p>

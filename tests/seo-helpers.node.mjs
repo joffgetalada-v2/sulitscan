@@ -250,3 +250,29 @@ test("entity pagination hrefs omit page one and include later pages", () => {
   assert.equal(entityListingModule.buildEntityPageHref("/categories/under-1000", 2),
     "/categories/under-1000?page=2")
 })
+
+test("date-dependent deal routes revalidate daily and sitemap explicitly omits expired deals", () => {
+  const routeSources = [
+    "src/app/page.tsx",
+    "src/app/deals/page.tsx",
+    "src/app/categories/[slug]/page.tsx",
+    "src/app/stores/[slug]/page.tsx",
+    "src/app/deals/[slug]/page.tsx",
+    "src/app/sitemap.ts",
+  ].map((path) => [path, readFileSync(resolve(path), "utf8")])
+
+  for (const [path, source] of routeSources) {
+    assert.match(source, /export const revalidate = 86400/, `${path} should refresh daily`)
+  }
+
+  const sitemapSource = routeSources.find(([path]) => path === "src/app/sitemap.ts")?.[1]
+  assert.match(sitemapSource, /isDealExpired/)
+  assert.match(sitemapSource, /getActiveDeals\(\)\.filter\(\(deal\) => !isDealExpired\(deal\)\)/)
+})
+
+test("expired deal metadata stays crawlable to links but is excluded from indexing", () => {
+  const detailSource = readFileSync(resolve("src/app/deals/[slug]/page.tsx"), "utf8")
+
+  assert.match(detailSource, /getDealFreshness\(deal\.lastChecked\)/)
+  assert.match(detailSource, /robots:\s*\{\s*index:\s*freshness\.status !== "expired",\s*follow:\s*true\s*\}/)
+})

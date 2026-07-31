@@ -10,6 +10,9 @@ import DealCard from "@/components/DealCard"
 import { siteConfig } from "@/lib/seo"
 import { buildDealSeoDescription, buildDealSeoTitle } from "@/lib/deal-seo"
 import { formatPrice, getSulitScoreBg, getSulitScoreLabel, formatTag } from "@/lib/utils"
+import { getDealFreshness, getFreshnessSafeReason } from "@/lib/deal-freshness"
+
+export const revalidate = 86400
 
 function getBuyerChecklist(deal: { platform: string; category: string }): string[] {
   const cat = deal.category.toLowerCase()
@@ -156,12 +159,14 @@ export async function generateMetadata({
   if (!deal) return {}
   const title = buildDealSeoTitle(deal)
   const description = buildDealSeoDescription(deal)
+  const freshness = getDealFreshness(deal.lastChecked)
   const canonical = `${siteConfig.url}/deals/${slug}`
   const image = deal.imageUrl || siteConfig.ogImage
   return {
     title: { absolute: title },
     description,
     alternates: { canonical },
+    robots: { index: freshness.status !== "expired", follow: true },
     openGraph: {
       title,
       description,
@@ -186,6 +191,8 @@ export default async function DealDetailPage({
   const deal = getDealBySlug(slug)
   if (!deal) notFound()
 
+  const freshness = getDealFreshness(deal.lastChecked)
+  const isCurrent = freshness.status === "current"
   const suspicious = isSuspiciousDiscount(deal)
   const relatedDeals = getRelatedDealsForDeal(deal, 3)
 
@@ -224,7 +231,7 @@ export default async function DealDetailPage({
                 className={`w-full h-full bg-gradient-to-br ${deal.imageGradient} flex items-center justify-center`}
                 aria-hidden="true"
               >
-                {deal.discount > 0 && (
+                {isCurrent && deal.discount > 0 && (
                   <span className="text-7xl font-black text-white/25 select-none">{deal.discount}%</span>
                 )}
               </div>
@@ -253,32 +260,41 @@ export default async function DealDetailPage({
               {deal.title}
             </h1>
 
-            {/* Price. A suspiciously high discount (80%+) is softened: no inflated
-                strikethrough, and a neutral "Big listed drop" badge instead of the number. */}
-            <div className="flex items-baseline gap-3 mb-4 flex-wrap">
-              <span className="text-3xl font-black text-slate-900">
-                {formatPrice(deal.salePrice)}
-              </span>
-              {deal.discount > 0 && (
-                suspicious ? (
-                  <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-sm font-bold rounded-full">
-                    Big listed drop
+            <section aria-label="Price information" className="flex items-baseline gap-3 mb-4 flex-wrap" aria-live="polite">
+              {isCurrent ? (
+                <>
+                  <span className="text-3xl font-black text-slate-900">
+                    {formatPrice(deal.salePrice)}
                   </span>
-                ) : (
-                  <>
-                    <span className="text-lg text-slate-400 line-through">
-                      {formatPrice(deal.originalPrice)}
-                    </span>
-                    <span className="px-2 py-0.5 bg-green-100 text-green-700 text-sm font-bold rounded-full">
-                      −{deal.discount}%
-                    </span>
-                  </>
-                )
+                  {deal.discount > 0 && (
+                    suspicious ? (
+                      <span className="px-2 py-0.5 bg-amber-100 text-amber-700 text-sm font-bold rounded-full">
+                        Big listed drop
+                      </span>
+                    ) : (
+                      <>
+                        <span className="text-lg text-slate-400 line-through">
+                          {formatPrice(deal.originalPrice)}
+                        </span>
+                        <span className="px-2 py-0.5 bg-green-100 text-green-700 text-sm font-bold rounded-full">
+                          −{deal.discount}%
+                        </span>
+                      </>
+                    )
+                  )}
+                </>
+              ) : freshness.status === "reference" ? (
+                <>
+                  <span className="text-sm font-semibold text-amber-700">Reference price</span>
+                  <span className="text-3xl font-black text-slate-900">{formatPrice(deal.salePrice)}</span>
+                </>
+              ) : (
+                <span className="text-base font-semibold text-amber-700">Check live price</span>
               )}
-            </div>
+            </section>
 
             {/* Suspicious-discount warning */}
-            {suspicious && (
+            {isCurrent && suspicious && (
               <div className="flex items-start gap-2 p-3 bg-amber-50 border border-amber-200 rounded-xl mb-4">
                 <AlertCircle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" aria-hidden="true" />
                 <p className="text-xs text-amber-700 leading-relaxed">{SUSPICIOUS_DISCOUNT_NOTE}</p>
@@ -296,7 +312,7 @@ export default async function DealDetailPage({
             {/* Why picked */}
             <div className="flex items-start gap-2 p-4 bg-green-50 rounded-xl mb-4">
               <ShieldCheck className="w-5 h-5 text-green-600 shrink-0 mt-0.5" aria-hidden="true" />
-              <p className="text-sm text-green-800 leading-relaxed">{deal.reason}</p>
+              <p className="text-sm text-green-800 leading-relaxed">{getFreshnessSafeReason(deal, undefined, freshness)}</p>
             </div>
 
             {/* Price disclaimer */}

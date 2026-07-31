@@ -5,6 +5,9 @@ import { posts } from "@/data/posts"
 import { stores } from "@/data/stores"
 import { buildEntityPageHref, ENTITY_DEALS_PAGE_SIZE } from "@/lib/entity-deal-listing"
 import { DEALS_PAGE_SIZE } from "@/lib/deal-listing"
+import { isDealExpired } from "@/lib/deal-freshness"
+
+export const revalidate = 86400
 
 const BASE_URL = "https://sulitscan.com"
 
@@ -90,7 +93,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ]
 
-  const activeDeals = getActiveDeals()
+  const activeDeals = getActiveDeals().filter((deal) => !isDealExpired(deal))
   const dealRoutes: MetadataRoute.Sitemap = activeDeals.map((deal) => ({
     url: `${BASE_URL}/deals/${deal.slug}`,
     changeFrequency: "weekly" as const,

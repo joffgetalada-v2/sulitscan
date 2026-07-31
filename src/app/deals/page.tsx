@@ -7,6 +7,9 @@ import { DEALS_PAGE_SIZE, resolveDealListing, type DealSearchParams } from "@/li
 import { siteConfig } from "@/lib/seo"
 import { ShoppingBag } from "lucide-react"
 import { formatDealCount } from "@/lib/utils"
+import { getFreshnessSafeReason } from "@/lib/deal-freshness"
+
+export const revalidate = 86400
 
 interface DealsPageProps {
   searchParams: Promise<DealSearchParams>
@@ -75,7 +78,7 @@ export default async function DealsPage({ searchParams }: DealsPageProps) {
         items={listing.items.map((deal, index) => ({
           name: deal.title,
           url: `${siteConfig.url}/deals/${deal.slug}`,
-          description: deal.reason,
+          description: getFreshnessSafeReason(deal),
           position: (listing.page - 1) * DEALS_PAGE_SIZE + index + 1,
         }))}
       />

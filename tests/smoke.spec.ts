@@ -667,6 +667,44 @@ test("deal detail links its store and category while tracking only its public of
   ])
 })
 
+test("reference prices retire stale discount claims while retaining the Temu affiliate link", async ({ page }) => {
+  const slug = "jockmail-padded-boxer-briefs-temu"
+  const title = "JOCKMAIL Men's Padded Boxer Briefs – Breathable Mesh Hip Support"
+
+  await page.goto("/deals?q=jockmail", { waitUntil: "domcontentloaded" })
+  const card = page.locator("article").filter({
+    has: page.getByRole("heading", { name: title, exact: true }),
+  })
+  await expect(card).toContainText("Reference price")
+  await expect(card).toContainText("₱147")
+  await expect(card).not.toContainText("₱299")
+  await expect(card).not.toContainText(/51%/)
+  await expect(card).not.toContainText("Save")
+
+  const itemLists = (await page.locator('script[type="application/ld+json"]').allTextContents())
+    .map((value) => JSON.parse(value))
+    .filter((value) => value["@type"] === "ItemList")
+  expect(itemLists.flatMap((itemList) => itemList.itemListElement.map((item: { description?: string }) => item.description)))
+    .not.toContain(expect.stringMatching(/(?:₱147|51%|\b(?:price|discount|save|cost)\b)/i))
+
+  await page.goto(`/deals/${slug}`, { waitUntil: "domcontentloaded" })
+  const priceInformation = page.getByRole("region", { name: "Price information" })
+  await expect(priceInformation).toContainText("Reference price")
+  await expect(priceInformation).toContainText("₱147")
+  await expect(priceInformation).not.toContainText("₱299")
+  await expect(page.getByRole("main")).not.toContainText(/At ₱147/i)
+  await expect(priceInformation).not.toContainText("Save")
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    `https://sulitscan.com/deals/${slug}`
+  )
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /index, follow/i)
+  await expect(page.getByRole("link", {
+    name: "Check the current price on Temu (affiliate link, opens in new tab)",
+    exact: true,
+  })).toHaveAttribute("rel", /sponsored/)
+})
+
 test("homepage partner banner emits an affiliate_click event with its public offer ID", async ({ page }) => {
   await page.addInitScript(() => {
     ;(window as typeof window & { __events: unknown[] }).__events = []

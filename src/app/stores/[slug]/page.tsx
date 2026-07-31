@@ -19,6 +19,9 @@ import { clampMeta } from "@/lib/utils"
 import EntityDeals from "@/components/EntityDeals"
 import ImportTaxCallout from "@/components/ImportTaxCallout"
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
+import { getFreshnessSafeReason } from "@/lib/deal-freshness"
+
+export const revalidate = 86400
 
 interface StorePageProps {
   params: Promise<{ slug: string }>
@@ -108,7 +111,7 @@ export default async function StoreDetailPage({
           items={listing.items.map((d, index) => ({
             name: d.title,
             url: `${siteConfig.url}/deals/${d.slug}`,
-            description: d.reason,
+            description: getFreshnessSafeReason(d),
             position: (listing.page - 1) * ENTITY_DEALS_PAGE_SIZE + index + 1,
           }))}
         />

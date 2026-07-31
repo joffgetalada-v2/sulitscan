@@ -13,6 +13,7 @@ import { getFeaturedDeals, getActiveDeals, getDealsByCategory } from "@/data/dea
 import { categories } from "@/data/categories"
 import { getRecentPosts } from "@/data/posts"
 import { siteConfig } from "@/lib/seo"
+import { getFreshnessSafeReason } from "@/lib/deal-freshness"
 import {
   TrendingDown,
   Shield,
@@ -28,6 +29,8 @@ import {
   Clock,
   Calculator,
 } from "lucide-react"
+
+export const revalidate = 86400
 
 export const metadata: Metadata = {
   title: { absolute: "SulitScan PH | Curated Online Deals and Shopping Guides for Filipino Shoppers" },
@@ -161,7 +164,7 @@ export default function HomePage() {
         items={featuredDeals.map((d) => ({
           name: d.title,
           url: `${siteConfig.url}/deals/${d.slug}`,
-          description: d.reason,
+          description: getFreshnessSafeReason(d),
         }))}
       />
       <FAQJsonLd items={faqItems} />

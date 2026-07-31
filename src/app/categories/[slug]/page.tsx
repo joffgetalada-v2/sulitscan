@@ -15,7 +15,10 @@ import {
 } from "@/lib/entity-deal-listing"
 import { siteConfig } from "@/lib/seo"
 import { formatDealCount, clampMeta } from "@/lib/utils"
+import { getFreshnessSafeReason } from "@/lib/deal-freshness"
 import { ArrowLeft, CheckCircle, BookOpen, AlertCircle } from "lucide-react"
+
+export const revalidate = 86400
 
 interface CategoryPageProps {
   params: Promise<{ slug: string }>
@@ -104,7 +107,7 @@ export default async function CategoryPage({
           items={listing.items.map((d, index) => ({
             name: d.title,
             url: `${siteConfig.url}/deals/${d.slug}`,
-            description: d.reason,
+            description: getFreshnessSafeReason(d),
             position: (listing.page - 1) * ENTITY_DEALS_PAGE_SIZE + index + 1,
           }))}
         />
