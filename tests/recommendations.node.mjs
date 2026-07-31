@@ -89,6 +89,44 @@ test("deal recommendations are active, non-suspicious, unique, and deterministic
   assert.equal(new Set(ids).size, ids.length)
 })
 
+test("deal-detail recommendations stay in-category and use deterministic relevance tie-breakers", () => {
+  const current = dealsModule.getDealBySlug("tanle-silicone-foldable-water-bottle-is-leak-proof-a-702052")
+  assert.ok(current, "public Home deal fixture must exist")
+
+  const first = dealsModule.getRelatedDealsForDeal(current, 3)
+  const second = dealsModule.getRelatedDealsForDeal(current, 3)
+
+  assert.deepEqual(
+    first.map((deal) => deal.slug),
+    [
+      "tumbler-hot-and-cold-thermos-double-wall-vacuum-insu-634012",
+      "food-grade-fresh-keeping-box-refrigerator-storage-bo-443059",
+      "triangle-coat-rack-floor-bedroom-multi-function-clot-181276",
+    ]
+  )
+  assert.deepEqual(first.map((deal) => deal.slug), second.map((deal) => deal.slug))
+  assert.ok(first.every((deal) => deal.category === current.category))
+  assert.ok(first.every((deal) => deal.slug !== current.slug))
+  assert.ok(first.every((deal) => !dealsModule.isSuspiciousDiscount(deal)))
+  assert.equal(new Set(first.map((deal) => deal.id)).size, first.length)
+})
+
+test("deal-detail recommendations normalize count to an integer from zero through three", () => {
+  const current = dealsModule.getDealBySlug("tanle-silicone-foldable-water-bottle-is-leak-proof-a-702052")
+  assert.ok(current, "public Home deal fixture must exist")
+
+  for (const [count, expected] of [
+    [-1, 0],
+    [0, 0],
+    [Number.NaN, 0],
+    [Number.POSITIVE_INFINITY, 0],
+    [1.9, 1],
+    [99, 3],
+  ]) {
+    assert.equal(dealsModule.getRelatedDealsForDeal(current, count).length, expected)
+  }
+})
+
 test("back-to-school guide cites the current DTI 2026–2027 source instead of the 2025 release", () => {
   const post = postsModule.getPostBySlug("back-to-school-essentials-under-500-philippines")
   const currentDtiSource =

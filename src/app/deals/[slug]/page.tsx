@@ -4,7 +4,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { ExternalLink, ArrowLeft, Clock, Star, Tag, ShieldCheck, AlertCircle, CheckCircle, MinusCircle } from "lucide-react"
 import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
-import { getActiveDeals, getDealBySlug, getFeaturedDeals, isSuspiciousDiscount, SUSPICIOUS_DISCOUNT_NOTE } from "@/data/deals"
+import { getActiveDeals, getDealBySlug, getRelatedDealsForDeal, isSuspiciousDiscount, SUSPICIOUS_DISCOUNT_NOTE } from "@/data/deals"
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import DealCard from "@/components/DealCard"
 import { siteConfig } from "@/lib/seo"
@@ -90,6 +90,24 @@ function getBuyerChecklist(deal: { platform: string; category: string }): string
   ]
 }
 
+function getStorePath(platform: string): string {
+  const storePaths: Record<string, string> = {
+    Temu: "/stores/temu",
+    "Shopee PH": "/stores/shopee-ph",
+    "Sephora PH": "/stores/sephora-ph",
+  }
+  return storePaths[platform] ?? "/stores"
+}
+
+function getCategoryPath(category: string): string {
+  if (category === "Electronics") return "/categories/tech-deals"
+  if (category === "Home" || category === "Outdoor") return "/categories/home-finds"
+  if (category === "Beauty" || category === "Skincare") return "/categories/beauty"
+  if (category === "Fashion") return "/categories/fashion"
+  if (category === "Travel") return "/categories/travel"
+  return "/categories"
+}
+
 // Honest, category-based guidance, helps a buyer self-select (no invented claims).
 function getBestForSkipIf(deal: { category: string }): { bestFor: string[]; skipIf: string[] } {
   const cat = deal.category.toLowerCase()
@@ -169,7 +187,7 @@ export default async function DealDetailPage({
   if (!deal) notFound()
 
   const suspicious = isSuspiciousDiscount(deal)
-  const relatedDeals = getFeaturedDeals(4).filter((d) => d.id !== deal.id).slice(0, 3)
+  const relatedDeals = getRelatedDealsForDeal(deal, 3)
 
   return (
     <>
@@ -217,10 +235,18 @@ export default async function DealDetailPage({
           <div>
             {/* Store + category */}
             <div className="flex items-center gap-2 mb-2 flex-wrap">
-              <span className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full">
+              <Link
+                href={getStorePath(deal.platform)}
+                className="text-xs font-semibold px-2.5 py-1 bg-slate-100 text-slate-600 rounded-full hover:bg-slate-200 transition-colors"
+              >
                 {deal.platform}
-              </span>
-              <span className="text-xs text-slate-400">{deal.category}</span>
+              </Link>
+              <Link
+                href={getCategoryPath(deal.category)}
+                className="text-xs text-slate-400 hover:text-green-600 transition-colors"
+              >
+                {deal.category}
+              </Link>
             </div>
 
             <h1 className="text-xl font-black text-slate-900 mb-4 leading-snug">
@@ -315,6 +341,7 @@ export default async function DealDetailPage({
               href={deal.affiliateLink}
               platform={deal.platform}
               placement="deal-detail-primary"
+              offerId={deal.slug}
               aria-label={`Check the current price on ${deal.platform} (affiliate link, opens in new tab)`}
               className="flex items-center justify-center gap-2 w-full py-3.5 px-6 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold rounded-xl shadow-md hover:shadow-green-200 transition-all focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
             >

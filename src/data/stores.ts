@@ -47,7 +47,7 @@ export const stores: Store[] = [
     trustLevel: "medium",
     gradient: "from-orange-400 to-orange-600",
     bannerImage: "/banners/stores/temu.jpg",
-    affiliateLink: "https://temu.com",
+    affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
     relatedGuideSlug: "best-temu-finds-under-500-philippines",
     isDemo: false,
     buyerNotes: [
@@ -75,7 +75,7 @@ export const stores: Store[] = [
     trustLevel: "high",
     gradient: "from-slate-800 to-slate-950",
     bannerImage: "/banners/stores/sephora-ph.jpg",
-    affiliateLink: "https://www.sephora.ph",
+    affiliateLink: "https://invl.me/clnkccv",
     relatedGuideSlug: "sephora-ph-beauty-guide",
     isDemo: false,
     buyerNotes: [
@@ -106,6 +106,7 @@ export const stores: Store[] = [
     bannerWidth: 1810,
     bannerHeight: 869,
     bannerHasBadge: true,
+    affiliateLink: "https://invl.me/clnkccq",
     relatedGuideSlug: "best-shopee-finds-under-500-philippines",
     isDemo: false,
     buyerNotes: [

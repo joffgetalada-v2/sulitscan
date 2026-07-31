@@ -3651,6 +3651,35 @@ export function getFeaturedDeals(count = 6): Deal[] {
   return pool.slice(0, count)
 }
 
+export function getRelatedDealsForDeal(current: Deal, count: number): Deal[] {
+  if (!Number.isFinite(count) || count <= 0) return []
+
+  const limit = Math.min(Math.floor(count), 3)
+  const currentTags = new Set(current.tags)
+  const sharedTagCount = (deal: Deal) => deal.tags.filter((tag) => currentTags.has(tag)).length
+
+  return getActiveDeals()
+    .filter(
+      (deal) =>
+        deal.id !== current.id &&
+        deal.category === current.category &&
+        !isSuspiciousDiscount(deal)
+    )
+    .sort((a, b) => {
+      const aMatchesPlatform = a.platform === current.platform ? 1 : 0
+      const bMatchesPlatform = b.platform === current.platform ? 1 : 0
+      if (aMatchesPlatform !== bMatchesPlatform) return bMatchesPlatform - aMatchesPlatform
+
+      const aSharedTags = sharedTagCount(a)
+      const bSharedTags = sharedTagCount(b)
+      if (aSharedTags !== bSharedTags) return bSharedTags - aSharedTags
+      if (a.sulitScore !== b.sulitScore) return b.sulitScore - a.sulitScore
+      if (a.discount !== b.discount) return b.discount - a.discount
+      return a.slug.localeCompare(b.slug)
+    })
+    .slice(0, limit)
+}
+
 // All category labels present in active deals (for filter tabs)
 export function getActiveCategories(): string[] {
   const cats = new Set(getActiveDeals().map(d => d.category))

@@ -482,6 +482,51 @@ test("deal card emits an affiliate_click event", async ({ page }) => {
   }
 })
 
+test("deal detail links its store and category while tracking only its public offer ID", async ({ page }) => {
+  const offerId = "tanle-silicone-foldable-water-bottle-is-leak-proof-a-702052"
+  await page.goto(`/deals/${offerId}`)
+  await installAnalyticsCapture(page)
+
+  await expect(page.getByRole("link", { name: "Shopee PH", exact: true })).toHaveAttribute(
+    "href",
+    "/stores/shopee-ph"
+  )
+  await expect(page.getByRole("link", { name: "Home", exact: true })).toHaveAttribute(
+    "href",
+    "/categories/home-finds"
+  )
+
+  const primaryAffiliateLink = page.getByRole("link", {
+    name: "Check the current price on Shopee PH (affiliate link, opens in new tab)",
+    exact: true,
+  })
+  await primaryAffiliateLink.evaluate((element) =>
+    element.addEventListener("click", (event) => event.preventDefault())
+  )
+  await primaryAffiliateLink.click()
+
+  const events = await page.evaluate(() =>
+    (window as typeof window & {
+      __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
+    }).__events
+  )
+  const event = events.find((candidate) =>
+    candidate.type === "event" && candidate.payload.name === "affiliate_click"
+  )
+  expect(event?.payload.data).toEqual({
+    offerId,
+    placement: "deal-detail-primary",
+    platform: "Shopee PH",
+    source: offerId,
+  })
+  expect(Object.keys(event?.payload.data ?? {}).sort()).toEqual([
+    "offerId",
+    "placement",
+    "platform",
+    "source",
+  ])
+})
+
 test("homepage partner banner emits an affiliate_click event with its public offer ID", async ({ page }) => {
   await page.addInitScript(() => {
     ;(window as typeof window & { __events: unknown[] }).__events = []

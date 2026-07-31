@@ -24,6 +24,7 @@ function loadTypeScriptModule(relativePath) {
 
 const bannersModule = loadTypeScriptModule("src/data/partner-banners.ts")
 const dealsModule = loadTypeScriptModule("src/data/deals.ts")
+const storesModule = loadTypeScriptModule("src/data/stores.ts")
 
 test("only publicly active deals are exposed by slug", () => {
   assert.equal(dealsModule.getDealBySlug("summer-dress-shein"), undefined)
@@ -36,6 +37,17 @@ test("only active partner offers are exposed to public pages", () => {
   assert.ok(bannersModule.activePartnerBanners.every((banner) => banner.status === "active"))
   assert.ok(bannersModule.homePartnerBanners.every((banner) => banner.status === "active"))
   assert.ok(!bannersModule.activePartnerBanners.some((banner) => /shein|clnkcce/i.test(`${banner.advertiserName} ${banner.href}`)))
+})
+
+test("active stores use the approved tracked affiliate destinations", () => {
+  assert.deepEqual(
+    Object.fromEntries(storesModule.stores.map((store) => [store.name, store.affiliateLink])),
+    {
+      Temu: "https://temu.to/k/ge7hcjmmrb4",
+      "Shopee PH": "https://invl.me/clnkccq",
+      "Sephora PH": "https://invl.me/clnkccv",
+    }
+  )
 })
 
 test("blocked SHEIN creative is not published as a public asset", () => {
