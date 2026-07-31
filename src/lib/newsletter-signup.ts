@@ -18,7 +18,7 @@ export interface NewsletterContactsClient {
 }
 
 export type NewsletterResult = {
-  status: 200 | 422 | 503
+  status: 200 | 400 | 422 | 503
   body: { success: true } | { error: string }
   headers: { "Cache-Control": "no-store" }
 }
@@ -28,6 +28,10 @@ const validSources = new Set(["homepage", "blog-index", "blog-article"])
 
 function success(): NewsletterResult {
   return { status: 200, body: { success: true }, headers }
+}
+
+function invalidRequest(): NewsletterResult {
+  return { status: 400, body: { error: "Invalid newsletter request." }, headers }
 }
 
 function invalid(): NewsletterResult {
@@ -92,4 +96,19 @@ export async function handleNewsletterSignup(
   } catch {
     return unavailable()
   }
+}
+
+export async function handleNewsletterRequest(
+  request: Request,
+  contacts: NewsletterContactsClient | null
+): Promise<NewsletterResult> {
+  let body: unknown
+
+  try {
+    body = await request.json()
+  } catch {
+    return invalidRequest()
+  }
+
+  return handleNewsletterSignup(body, contacts)
 }

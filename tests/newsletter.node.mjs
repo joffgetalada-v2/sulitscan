@@ -28,9 +28,10 @@ function loadTypeScriptModule(relativePath) {
   return moduleRecord.exports
 }
 
-const { handleNewsletterSignup } = loadTypeScriptModule("src/lib/newsletter-signup.ts")
+const { handleNewsletterRequest, handleNewsletterSignup } = loadTypeScriptModule("src/lib/newsletter-signup.ts")
 
 const SUCCESS = { success: true }
+const INVALID_REQUEST = { error: "Invalid newsletter request." }
 const INVALID = { error: "Invalid newsletter signup." }
 const UNAVAILABLE = { error: "Newsletter signup is temporarily unavailable. Please try again." }
 const NO_STORE = { "Cache-Control": "no-store" }
@@ -73,6 +74,31 @@ function createdContact() {
 function assertResult(result, status, body) {
   assert.deepEqual(result, { status, body, headers: NO_STORE })
 }
+
+test("rejects malformed JSON without contacting the newsletter provider", async () => {
+  let providerContacted = false
+  const contacts = {
+    async get() {
+      providerContacted = true
+      throw new Error("provider must not be called")
+    },
+    async create() {
+      providerContacted = true
+      throw new Error("provider must not be called")
+    },
+  }
+
+  const result = await handleNewsletterRequest(
+    new Request("https://sulitscan.com/api/newsletter", {
+      method: "POST",
+      body: "{not valid JSON",
+    }),
+    contacts
+  )
+
+  assertResult(result, 400, INVALID_REQUEST)
+  assert.equal(providerContacted, false)
+})
 
 test("normalizes a valid email before creating a contact", async () => {
   const getCalls = []
