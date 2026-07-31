@@ -302,6 +302,36 @@ test("affiliate links have correct rel attributes", async ({ page }) => {
   }
 })
 
+test("optimized deal images load the first listing eagerly and defer the second", async ({ page }) => {
+  await page.goto("/deals", { waitUntil: "domcontentloaded" })
+
+  const images = page.locator('main article a[aria-hidden="true"] img')
+  expect(await images.count()).toBeGreaterThanOrEqual(2)
+
+  const firstImage = images.nth(0)
+  const secondImage = images.nth(1)
+
+  await expect(firstImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
+  await expect(firstImage).toHaveAttribute("loading", "eager")
+  await expect(firstImage).toHaveAttribute("fetchpriority", "high")
+  await expect(secondImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
+  await expect(secondImage).toHaveAttribute("loading", "lazy")
+  await expect(secondImage).not.toHaveAttribute("fetchpriority", "high")
+
+  await expect
+    .poll(() => firstImage.evaluate((image) => {
+      const renderedImage = image as HTMLImageElement
+      return renderedImage.complete && renderedImage.naturalWidth > 0
+    }))
+    .toBe(true)
+  await expect
+    .poll(() => secondImage.evaluate((image) => {
+      const renderedImage = image as HTMLImageElement
+      return renderedImage.complete && renderedImage.naturalWidth > 0
+    }))
+    .toBe(true)
+})
+
 test("deal card emits an affiliate_click event", async ({ page }) => {
   await page.addInitScript(() => {
     ;(window as typeof window & { __events: unknown[] }).__events = []

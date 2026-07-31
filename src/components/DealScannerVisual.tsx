@@ -91,7 +91,6 @@ export default function DealScannerVisual() {
                 alt={deal.title}
                 fill
                 className="object-cover"
-                unoptimized
                 preload
               />
             ) : (

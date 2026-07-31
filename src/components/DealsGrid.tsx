@@ -91,7 +91,7 @@ export default function DealsGrid({ listing, categories, stores }: DealsGridProp
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {listing.items.map((deal, index) => (
-              <DealCard key={deal.id} deal={deal} imagePriority={index < 4} />
+              <DealCard key={deal.id} deal={deal} imagePriority={index === 0} />
             ))}
           </div>
 
