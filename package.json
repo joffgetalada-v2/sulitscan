@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
-    "check": "npm run lint && npm run typecheck && npm run test:recommendations && npm run test:seo && npm run test:compliance && npm run test:adsense && npm run test:checkout-comparison && npm run check:links && npm run check:affiliate-products && npm run check:product-quality && npm run build",
+    "check": "npm run lint && npm run typecheck && npm run test:recommendations && npm run test:seo && npm run test:compliance && npm run test:adsense && npm run test:checkout-comparison && npm run test:newsletter && npm run check:links && npm run check:affiliate-products && npm run check:product-quality && npm run build",
     "check:links": "node scripts/check-links.mjs",
     "check:affiliate-products": "node scripts/check-affiliate-products.mjs",
     "check:product-quality": "node scripts/check-product-quality.mjs",
@@ -17,6 +17,7 @@
     "test:compliance": "node --test tests/affiliate-compliance.node.mjs",
     "test:adsense": "node --test tests/adsense.node.mjs",
     "test:checkout-comparison": "node --test tests/checkout-comparison.node.mjs",
+    "test:newsletter": "node --test tests/newsletter.node.mjs",
     "test:e2e": "playwright test"
   },
   "dependencies": {
