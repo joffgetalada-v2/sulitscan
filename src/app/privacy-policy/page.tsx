@@ -137,9 +137,10 @@ export default function PrivacyPolicyPage() {
             <p>
               If you sign up for SulitScan Weekly Deal Alerts, we collect your email address and your
               consent confirmation. We use this to send you deal alerts, shopping tips, and price-check
-              reminders. You can unsubscribe at any time by clicking the unsubscribe link in any email.
-              We do not sell, rent, or share your email address with third parties for marketing
-              purposes. Your email is stored securely and used only for SulitScan communications.
+              reminders. Resend processes and stores subscriber email addresses on SulitScan&apos;s behalf.
+              We do not sell your email address. We honor the unsubscribe link in every broadcast email,
+              and you may request deletion of your subscriber address through our{" "}
+              <a href="/contact" className="text-green-600 underline hover:text-green-700">contact page</a>.
             </p>
           </section>
 
