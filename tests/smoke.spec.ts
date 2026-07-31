@@ -865,6 +865,17 @@ test.describe("entity deal pagination", () => {
     expect(storePageTwoDescription).toContain("Page 2")
     expect(storePageTwoDescription).not.toBe(storePageOneDescription)
   })
+
+  test("duplicate entity page parameters remain noindex after display normalization", async ({ page }) => {
+    test.slow()
+
+    for (const entityPath of ["/categories/under-500", "/stores/temu"]) {
+      await page.goto(`${entityPath}?page=2&page=3`, { waitUntil: "domcontentloaded" })
+
+      await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
+    }
+  })
 })
 
 

@@ -232,6 +232,15 @@ test("entity deal listing normalizes invalid requests to non-canonical page one"
     entityDealsFixture.slice(0, 24).map((deal) => deal.id))
 })
 
+test("entity deal listing keeps duplicate later-page requests non-canonical", () => {
+  const result = entityListingModule.resolveEntityDealListing(entityDealsFixture, ["2", "3"])
+
+  assert.equal(result.page, 2)
+  assert.equal(result.isCanonical, false)
+  assert.deepEqual(result.items.map((deal) => deal.id),
+    entityDealsFixture.slice(24, 48).map((deal) => deal.id))
+})
+
 test("entity pagination hrefs omit page one and include later pages", () => {
   assert.equal(entityListingModule.buildEntityPageHref("/categories/under-1000", 1),
     "/categories/under-1000")

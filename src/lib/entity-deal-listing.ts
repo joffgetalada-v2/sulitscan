@@ -29,7 +29,9 @@ export function resolveEntityDealListing(
     page,
     pageCount,
     total: deals.length,
-    isCanonical: value === "" || (page > 1 && value === String(page)),
+    isCanonical: rawPage === undefined || (
+      typeof rawPage === "string" && page > 1 && rawPage === String(page)
+    ),
   }
 }
 
