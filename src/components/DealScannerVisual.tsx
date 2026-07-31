@@ -91,6 +91,7 @@ export default function DealScannerVisual() {
                 alt={deal.title}
                 fill
                 className="object-cover"
+                sizes="(max-width: 480px) calc(100vw - 2rem), 448px"
                 preload
               />
             ) : (

@@ -332,6 +332,114 @@ test("optimized deal images load the first listing eagerly and defer the second"
     .toBe(true)
 })
 
+for (const { entityPath, dealsSectionId } of [
+  { entityPath: "/categories/under-1000", dealsSectionId: "deals-section-heading" },
+  { entityPath: "/stores/temu", dealsSectionId: "store-deals-heading" },
+]) {
+  test(`${entityPath} optimizes entity deal images and tracks their public position`, async ({ page }) => {
+    test.slow()
+    await page.addInitScript(() => {
+      ;(window as typeof window & { __events: unknown[] }).__events = []
+      window.va = (type, payload) => {
+        ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
+      }
+    })
+    await page.goto(entityPath, { waitUntil: "domcontentloaded" })
+    await installAnalyticsCapture(page)
+
+    const cards = page.locator(`section[aria-labelledby="${dealsSectionId}"] article`)
+    expect(await cards.count()).toBeGreaterThanOrEqual(2)
+    const firstImage = cards.nth(0).locator('a[aria-hidden="true"] img')
+    const secondImage = cards.nth(1).locator('a[aria-hidden="true"] img')
+
+    await expect(firstImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
+    await expect(firstImage).toHaveAttribute("loading", "eager")
+    await expect(firstImage).toHaveAttribute("fetchpriority", "high")
+    await expect(secondImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
+    await expect(secondImage).toHaveAttribute("loading", "lazy")
+    await expect(secondImage).not.toHaveAttribute("fetchpriority", "high")
+
+    for (const image of [firstImage, secondImage]) {
+      await expect
+        .poll(() => image.evaluate((element) => {
+          const renderedImage = element as HTMLImageElement
+          return renderedImage.complete && renderedImage.naturalWidth > 0
+        }))
+        .toBe(true)
+    }
+
+    const secondCard = cards.nth(1)
+    const detailHref = await secondCard.locator('a[href^="/deals/"]').first().getAttribute("href")
+    const offerId = detailHref?.split("/").pop()
+    expect(offerId).toBeTruthy()
+    const affiliateLink = secondCard.locator('a[rel*="sponsored"]')
+    await affiliateLink.evaluate((element) =>
+      element.addEventListener("click", (event) => event.preventDefault())
+    )
+    await affiliateLink.click()
+
+    const events = await page.evaluate(() =>
+      (window as typeof window & {
+        __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
+      }).__events
+    )
+    const event = events.find((candidate) =>
+      candidate.type === "event" && candidate.payload.name === "affiliate_click"
+    )
+    expect(event?.payload.data).toMatchObject({
+      offerId,
+      placement: "deal-card",
+      position: 2,
+      source: entityPath.split("/").pop(),
+    })
+    expect(Object.keys(event?.payload.data ?? {}).sort()).toEqual([
+      "offerId",
+      "placement",
+      "platform",
+      "position",
+      "source",
+    ])
+    for (const privateProperty of ["href", "url", "query", "title", "email"]) {
+      expect(event?.payload.data).not.toHaveProperty(privateProperty)
+    }
+  })
+}
+
+test("homepage scanner image is optimized, bounded, loaded, and server discoverable", async ({
+  page,
+  request,
+}) => {
+  const response = await request.get("/")
+  expect(response.status()).toBe(200)
+  const html = await response.text()
+  const scannerRegion = html.match(/>sulitscan\.com\/deals<\/div>[\s\S]{0,3000}/)?.[0]
+  expect(scannerRegion).toBeDefined()
+  const serverImage = scannerRegion?.match(/<img[^>]+>/)?.[0]
+  expect(serverImage).toContain('sizes="(max-width: 480px) calc(100vw - 2rem), 448px"')
+  const scannerAsset = serverImage?.match(/\/_next\/image\?url=([^&"]+)/)?.[1]
+  expect(scannerAsset).toBeTruthy()
+  const scannerPreload = html.match(/<link[^>]+rel="preload"[^>]+as="image"[^>]+>/g)?.find(
+    (link) => link.includes(scannerAsset as string)
+  )
+  expect(scannerPreload).toContain(
+    'imageSizes="(max-width: 480px) calc(100vw - 2rem), 448px"'
+  )
+
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+  const scannerImage = page.locator('section[aria-labelledby="hero-heading"] img').first()
+  await expect(scannerImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
+  await expect(scannerImage).toHaveAttribute(
+    "sizes",
+    "(max-width: 480px) calc(100vw - 2rem), 448px"
+  )
+  await expect
+    .poll(() => scannerImage.evaluate((element) => {
+      const renderedImage = element as HTMLImageElement
+      return renderedImage.complete && renderedImage.naturalWidth > 0
+    }))
+    .toBe(true)
+})
+
 test("deal card emits an affiliate_click event", async ({ page }) => {
   await page.addInitScript(() => {
     ;(window as typeof window & { __events: unknown[] }).__events = []

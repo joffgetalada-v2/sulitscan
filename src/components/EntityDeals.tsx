@@ -52,7 +52,12 @@ export default function EntityDeals({
 
       <div className={gridClassName}>
         {listing.items.map((deal, index) => (
-          <DealCard key={deal.id} deal={deal} imagePriority={index < 4} />
+          <DealCard
+            key={deal.id}
+            deal={deal}
+            imagePriority={index === 0}
+            position={index + 1}
+          />
         ))}
       </div>
 

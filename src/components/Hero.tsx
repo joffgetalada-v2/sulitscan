@@ -1,22 +1,11 @@
 "use client"
 
 import Link from "next/link"
-import dynamic from "next/dynamic"
 import { motion } from "framer-motion"
 import { ShoppingBag, ArrowRight, CheckCircle } from "lucide-react"
+import DealScannerVisual from "@/components/DealScannerVisual"
 import { stores } from "@/data/stores"
 import { categories } from "@/data/categories"
-
-const DealScannerVisual = dynamic(() => import("./DealScannerVisual"), {
-  ssr: false,
-  loading: () => (
-    <div
-      className="w-full max-w-md mx-auto rounded-2xl bg-gradient-to-br from-slate-100 to-slate-200 animate-pulse"
-      style={{ height: 480 }}
-      aria-hidden="true"
-    />
-  ),
-})
 
 const trustItems = [
   "No checkout. No hidden redirects.",

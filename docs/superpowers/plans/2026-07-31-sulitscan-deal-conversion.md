@@ -104,3 +104,58 @@ Expected: all Playwright tests pass.
 - [ ] **Step 3: Commit the deal-conversion subproject**
 
 Run: `git add src/components/ExternalAffiliateLink.tsx src/components/DealCard.tsx src/components/DealScannerVisual.tsx src/components/DealsGrid.tsx src/components/PartnerBanners.tsx tests/smoke.spec.ts docs/superpowers/specs/2026-07-31-sulitscan-deal-conversion-design.md docs/superpowers/plans/2026-07-31-sulitscan-deal-conversion.md && git commit -m "perf: optimize deal discovery and attribution"`
+
+---
+
+### Task 4: Final Important findings — entity parity
+
+**Files:**
+- Modify: `src/components/EntityDeals.tsx`
+- Modify: `tests/smoke.spec.ts`
+
+**Interfaces:**
+- Produces: first-only eager/high loading on category and store entity grids.
+- Produces: public deal slug plus 1-based entity-list position in `affiliate_click`.
+
+- [x] **Step 1: Write category/store browser regressions**
+
+For `/categories/under-1000` and `/stores/temu`, scope to the labeled entity deal section. Assert optimized first and second images, eager/high only on the first, successful nonzero image loads, and a second-card event containing the public offer slug with `position: 2` and no private fields.
+
+- [x] **Step 2: Verify RED**
+
+Run: `npx playwright test tests/smoke.spec.ts --grep "optimizes entity deal images|homepage scanner image" --workers=1`
+
+Observed: both entity regressions failed on the legacy priority behavior before production changes.
+
+- [x] **Step 3: Implement entity parity and verify GREEN**
+
+Change `imagePriority` to `index === 0` and pass `position={index + 1}` from `EntityDeals`.
+
+### Task 5: Final Important findings — server-rendered scanner
+
+**Files:**
+- Modify: `src/components/DealScannerVisual.tsx`
+- Modify: `src/components/Hero.tsx`
+- Modify: `tests/smoke.spec.ts`
+
+**Interfaces:**
+- Produces: a bounded responsive scanner source selection.
+- Produces: scanner-specific optimized image/preload markup in the initial server HTML.
+
+- [x] **Step 1: Write the homepage browser/server regression and verify RED**
+
+Assert the optimized URL, exact `sizes`, successful image load, and a server HTML preload tied to the scanner image found after its unique `sulitscan.com/deals` browser-bar marker.
+
+Observed: the server HTML had no scanner image while `Hero` used `dynamic(..., { ssr: false })`.
+
+- [x] **Step 2: Implement bounded server rendering and verify GREEN**
+
+Add `sizes="(max-width: 480px) calc(100vw - 2rem), 448px"` to the scanner image and replace the no-SSR dynamic import with a static import. Preserve `DealScannerVisual` as a Client Component so its animation and controls remain unchanged.
+
+### Task 6: Final fix verification and commit
+
+- [x] Run the focused deal browser tests serially.
+- [x] Run `npm run lint` and `npm run typecheck`.
+- [x] Self-review the complete final-fix diff against both Important findings.
+- [x] Record strict RED/GREEN evidence in `.superpowers/sdd/2026-07-31-sulitscan-deal-conversion/final-fix-report.md`.
+- [x] Commit the final fix, regression tests, design, plan, and report together.
