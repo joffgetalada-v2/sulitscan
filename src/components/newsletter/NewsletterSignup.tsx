@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { Mail, CheckCircle, Loader2 } from "lucide-react"
+import { CheckCircle, Loader2 } from "lucide-react"
+import { track } from "@vercel/analytics/react"
 import Link from "next/link"
 
 interface Props {
@@ -9,7 +10,7 @@ interface Props {
   variant?: "full" | "compact"
 }
 
-type Status = "idle" | "submitting" | "success" | "pending" | "error"
+type Status = "idle" | "submitting" | "success" | "error"
 
 export default function NewsletterSignup({ source = "homepage", variant = "full" }: Props) {
   const [email, setEmail] = useState("")
@@ -22,6 +23,7 @@ export default function NewsletterSignup({ source = "homepage", variant = "full"
     e.preventDefault()
     if (!consent) {
       setErrorMsg("Please check the consent box to continue.")
+      setStatus("error")
       return
     }
     setStatus("submitting")
@@ -33,10 +35,13 @@ export default function NewsletterSignup({ source = "homepage", variant = "full"
         body: JSON.stringify({ email, consent, source, hp }),
       })
       const data = await res.json()
-      if (data.pending) {
-        setStatus("pending")
-      } else if (res.ok && data.success) {
+      if (res.ok && data.success) {
         setStatus("success")
+        try {
+          track("newsletter_signup_completed", { source })
+        } catch {
+          // Analytics must never prevent a completed signup from reaching the user.
+        }
       } else {
         setErrorMsg(data.error ?? "Something went wrong. Please try again.")
         setStatus("error")
@@ -53,16 +58,6 @@ export default function NewsletterSignup({ source = "homepage", variant = "full"
         <CheckCircle className="w-8 h-8 text-green-600" aria-hidden="true" />
         <p className="text-sm font-bold text-slate-900">You&apos;re in!</p>
         <p className="text-xs text-slate-500">Watch your inbox for SulitScan weekly deal alerts.</p>
-      </div>
-    )
-  }
-
-  if (status === "pending") {
-    return (
-      <div className="flex flex-col items-center gap-3 py-6 text-center">
-        <Mail className="w-8 h-8 text-amber-500" aria-hidden="true" />
-        <p className="text-sm font-bold text-slate-900">Almost ready!</p>
-        <p className="text-xs text-slate-500">Email alerts are almost ready. Please try again soon.</p>
       </div>
     )
   }

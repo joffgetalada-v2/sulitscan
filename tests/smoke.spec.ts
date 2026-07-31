@@ -14,6 +14,16 @@ async function installAnalyticsCapture(page: Page) {
   })
 }
 
+async function newsletterEvents(page: Page) {
+  return page.evaluate(() =>
+    (window as typeof window & {
+      __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
+    }).__events.filter(
+      (event) => event.type === "event" && event.payload.name === "newsletter_signup_completed"
+    )
+  )
+}
+
 const routes = [
   { path: "/",                     title: "SulitScan PH" },
   { path: "/tools/checkout-comparison", title: "Checkout Price Comparison" },
@@ -29,6 +39,63 @@ const routes = [
   { path: "/cookie-policy",        title: "Cookie" },
   { path: "/editorial-policy",     title: "Editorial" },
 ]
+
+test("newsletter signup requires consent before it sends a request", async ({ page }) => {
+  let newsletterRequests = 0
+  page.on("request", (request) => {
+    if (new URL(request.url()).pathname === "/api/newsletter") newsletterRequests += 1
+  })
+
+  await page.goto("/")
+  const signup = page.getByRole("form", { name: "Newsletter signup" })
+  await signup.getByLabel("Email address").fill("member@example.com")
+  await signup.getByRole("button", { name: "Join Free Deal Alerts" }).click()
+
+  await expect(signup.getByRole("alert")).toContainText("Please check the consent box to continue.")
+  expect(newsletterRequests).toBe(0)
+})
+
+test("newsletter signup tracks one completion after an API-confirmed success", async ({ page }) => {
+  await page.route("**/api/newsletter", (route) =>
+    route.fulfill({
+      status: 200,
+      contentType: "application/json",
+      body: JSON.stringify({ success: true }),
+    })
+  )
+  await page.goto("/")
+  await installAnalyticsCapture(page)
+
+  const signup = page.getByRole("form", { name: "Newsletter signup" })
+  await signup.getByLabel("Email address").fill("member@example.com")
+  await signup.getByLabel(/I agree to receive SulitScan deal alerts/i).check()
+  await signup.getByRole("button", { name: "Join Free Deal Alerts" }).click()
+
+  await expect(page.getByText("You're in!", { exact: true })).toBeVisible()
+  const events = await newsletterEvents(page)
+  expect(events).toHaveLength(1)
+  expect(events[0]?.payload.data).toEqual({ source: "homepage" })
+})
+
+test("newsletter signup shows an API error without tracking a completion", async ({ page }) => {
+  await page.route("**/api/newsletter", (route) =>
+    route.fulfill({
+      status: 503,
+      contentType: "application/json",
+      body: JSON.stringify({ error: "Service unavailable. Please try again." }),
+    })
+  )
+  await page.goto("/")
+  await installAnalyticsCapture(page)
+
+  const signup = page.getByRole("form", { name: "Newsletter signup" })
+  await signup.getByLabel("Email address").fill("member@example.com")
+  await signup.getByLabel(/I agree to receive SulitScan deal alerts/i).check()
+  await signup.getByRole("button", { name: "Join Free Deal Alerts" }).click()
+
+  await expect(signup.getByRole("alert")).toContainText("Service unavailable. Please try again.")
+  expect(await newsletterEvents(page)).toHaveLength(0)
+})
 
 test("checkout comparison identifies the cheaper final total without tracking entered values", async ({ page }) => {
   await page.addInitScript(() => {
