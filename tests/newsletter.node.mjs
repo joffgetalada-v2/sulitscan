@@ -42,11 +42,15 @@ const baseSubmission = {
 }
 
 function response(data, error = null) {
-  return { data, error, headers: new Headers() }
+  return { data, error, headers: {} }
+}
+
+function providerError(name, message, statusCode) {
+  return response(null, { name, message, statusCode })
 }
 
 function missingContact() {
-  return response(null)
+  return providerError("not_found", "Contact not found", 404)
 }
 
 function existingContact(unsubscribed = false) {
@@ -224,7 +228,7 @@ test("recovers a concurrent create by checking for the contact once more", async
       return getCalls.length === 1 ? missingContact() : existingContact()
     },
     async create() {
-      return response(null, { message: "already exists" })
+      return providerError("validation_error", "Contact already exists", 409)
     },
   }
 
@@ -232,6 +236,27 @@ test("recovers a concurrent create by checking for the contact once more", async
 
   assertResult(result, 200, SUCCESS)
   assert.deepEqual(getCalls, [{ email: "reader@example.com" }, { email: "reader@example.com" }])
+})
+
+test("returns unavailable when create fails and the final lookup remains missing", async () => {
+  const getCalls = []
+  const createCalls = []
+  const contacts = {
+    async get(input) {
+      getCalls.push(input)
+      return missingContact()
+    },
+    async create(input) {
+      createCalls.push(input)
+      return providerError("internal_server_error", "provider unavailable", 500)
+    },
+  }
+
+  const result = await handleNewsletterSignup(baseSubmission, contacts)
+
+  assertResult(result, 503, UNAVAILABLE)
+  assert.deepEqual(getCalls, [{ email: "reader@example.com" }, { email: "reader@example.com" }])
+  assert.deepEqual(createCalls, [{ email: "reader@example.com", unsubscribed: false }])
 })
 
 test("reports a missing contacts client as temporarily unavailable", async () => {
@@ -243,7 +268,7 @@ test("reports a missing contacts client as temporarily unavailable", async () =>
 test("sanitizes SDK error responses", async () => {
   const contacts = {
     async get() {
-      return response(null, { message: "invalid API key: secret-value" })
+      return providerError("invalid_api_key", "invalid API key: secret-value", 401)
     },
     async create() {
       throw new Error("create must not be called")

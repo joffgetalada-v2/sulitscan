@@ -46,6 +46,10 @@ function isRecord(value: unknown): value is Record<string, unknown> {
   return typeof value === "object" && value !== null && !Array.isArray(value)
 }
 
+function isNotFoundError(error: unknown): boolean {
+  return isRecord(error) && error.name === "not_found"
+}
+
 function normalizeEmail(value: unknown): string | null {
   if (typeof value !== "string") return null
 
@@ -73,8 +77,8 @@ export async function handleNewsletterSignup(
 
   try {
     const existing = await contacts.get({ email })
-    if (existing.error) return unavailable()
     if (existing.data) return success()
+    if (!isNotFoundError(existing.error)) return unavailable()
 
     try {
       const created = await contacts.create({ email, unsubscribed: false })
@@ -84,7 +88,7 @@ export async function handleNewsletterSignup(
     }
 
     const recovered = await contacts.get({ email })
-    return recovered.error || !recovered.data ? unavailable() : success()
+    return recovered.data ? success() : unavailable()
   } catch {
     return unavailable()
   }
