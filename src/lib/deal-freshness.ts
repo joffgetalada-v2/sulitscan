@@ -28,7 +28,8 @@ function parseMonth(monthName: string): number | undefined {
 }
 
 export function parseDealLastChecked(lastChecked: string): ParsedDealLastChecked | undefined {
-  const exactMatch = /\bchecked\s+([a-z]+)\s+(\d{1,2}),\s*(\d{4})\b/i.exec(lastChecked)
+  const label = lastChecked.trim()
+  const exactMatch = /^Checked\s+([a-z]+)\s+(\d{1,2}),\s*(\d{4})$/i.exec(label)
   if (exactMatch) {
     const month = parseMonth(exactMatch[1])
     const day = Number(exactMatch[2])
@@ -42,7 +43,7 @@ export function parseDealLastChecked(lastChecked: string): ParsedDealLastChecked
     return undefined
   }
 
-  const monthMatch = /\b([a-z]+)\s+(\d{4})\b/i.exec(lastChecked)
+  const monthMatch = /^Affiliate datafeed price,\s+([a-z]+)\s+(\d{4})(?:\. Confirm current price on [a-z][a-z ]* before buying\.)?$/i.exec(label)
   if (!monthMatch) return undefined
 
   const month = parseMonth(monthMatch[1])
@@ -80,7 +81,7 @@ export function isDealExpired(deal: Pick<{ lastChecked: string }, "lastChecked">
   return getDealFreshness(deal.lastChecked, now).status === "expired"
 }
 
-const PRICE_SENSITIVE_REASON = /(?:₱\s?\d|\b\d+(?:\.\d+)?\s*%|\b(?:price|discounts?|save|saves|saved|saving|costs?)\b)/i
+const PRICE_SENSITIVE_REASON = /(?:₱\s?\d|\bPHP\s*\d|\b\d+(?:[,.]\d+)?\s*pesos?\b|\b\d+(?:\.\d+)?\s*%|\b(?:price|discounts?|save|saves|saved|saving|costs?)\b)/i
 
 export function getFreshnessSafeReason(
   deal: Pick<{ lastChecked: string; reason: string; category: string; platform: string }, "lastChecked" | "reason" | "category" | "platform">,
