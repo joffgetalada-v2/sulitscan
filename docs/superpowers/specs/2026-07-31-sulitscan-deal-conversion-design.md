@@ -1,0 +1,22 @@
+# SulitScan Deal Discovery and Attribution Design
+
+**Date:** 2026-07-31
+
+## Problem
+
+Two measurable gaps remain on the affiliate path:
+
+1. Deal listing cards bypass Next image optimization even though their Shopee domains are configured. A sampled live asset was about 604 KB from the source CDN and about 16 KB through the existing `/_next/image` path. The first four cards are also eager/high-priority, increasing initial transfer contention.
+2. Every product click from `/deals` currently produces the same affiliate analytics dimensions. SulitScan can see that Shopee was clicked but not which deal attracted the click, making it difficult to improve merchandising around commission intent.
+
+## Design
+
+Remove `unoptimized` from deal-card and homepage scanner images so the configured Next optimizer can resize and compress them. Only the first listing card receives eager/high priority; all remaining cards use lazy loading. Remote image allow-listing is unchanged.
+
+Extend `ExternalAffiliateLink` with optional privacy-safe `offerId` and numeric `position`. Include only defined values in the Vercel Analytics event. Deal cards pass the public deal slug and 1-based listing position; partner banners pass the public banner ID. No product title, destination URL, user data, or query string is tracked.
+
+## Verification
+
+- Node/browser tests prove a deal listing image is served through `/_next/image`, the first card is prioritized, and subsequent cards are lazy.
+- Existing affiliate analytics tests are extended to assert deal/banner identifiers and position without changing outbound navigation behavior.
+- Full release and browser gates must pass before committing.
