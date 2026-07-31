@@ -98,3 +98,54 @@ exit 0
 
 - The second existing-contact lookup adds one intentional provider read and its latency. This is the required tradeoff for equalizing ordinary successful operation counts.
 - No finding is blocked. The unrelated untracked deal-conversion design and plan files were left untouched and are not part of this fix wave.
+
+## Residual hardening pass
+
+### Findings resolved
+
+1. Whole-address delimiter rejection
+
+   - Validation now rejects `/`, `?`, or `#` anywhere in the trimmed, lower-cased email before any provider operation.
+   - Literal coverage includes local-part, domain, query/fragment, slash-path, and `reader@example.com/../../domains/target#` inputs.
+   - `Reader+Deals@Example.COM` continues to normalize and pass as `reader+deals@example.com`.
+
+2. Configured success-response timing floor
+
+   - `handleNewsletterRequest` now holds configured HTTP 200 outcomes to request start plus 900ms plus one independently sampled integer jitter from 0 through 200ms when provider work finishes under the target.
+   - The dependency-free boundary accepts injected `now`, `delay`, and `jitter` functions. Deterministic tests advance virtual time and complete instantly.
+   - Existing GET/GET work taking 200ms and new GET/POST work taking 550ms receive compensating delays of 775ms and 425ms with the same 75ms jitter, producing the same 975ms total.
+   - Malformed, 422, and 503 responses do not sample jitter or call the delay function.
+
+### Residual RED evidence
+
+Command:
+
+```powershell
+node --test tests/newsletter.node.mjs
+```
+
+Result before residual production changes: exit 1; 21 tests total, 18 passed, 3 failed.
+
+The three expected failures proved that domain/path delimiters still reached the provider, different provider durations received no compensating delay, and the 900ms plus jitter bounds were absent. The plus-address and invalid/503 no-delay tests passed as preservation contracts.
+
+### Residual GREEN evidence
+
+The direct Node command passed 21/21 after the minimal implementation.
+
+Fresh residual gates:
+
+```text
+npm run typecheck
+exit 0; tsc --noEmit
+
+npx playwright test tests/smoke.spec.ts --grep "newsletter" --workers=1
+exit 0; 3 tests, 3 passed
+
+npm run lint
+exit 0; eslint
+```
+
+### Residual concerns
+
+- Successful configured requests now intentionally retain a timer for up to 900–1100ms minus provider elapsed time. This adds bounded latency and serverless execution time in exchange for reducing the observable distinction between ordinary existing and new provider paths.
+- Provider work that already exceeds the sampled target is not delayed further, so unusually slow provider behavior can still produce longer response times; the floor only equalizes work that completes under the target, as designed.

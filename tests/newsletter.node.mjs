@@ -84,6 +84,32 @@ function assertResult(result, status, body, category) {
   })
 }
 
+function timingHarness(jitterMs) {
+  let elapsed = 0
+  let jitterCalls = 0
+  const delays = []
+
+  return {
+    timing: {
+      now: () => elapsed,
+      delay: async (milliseconds) => {
+        delays.push(milliseconds)
+        elapsed += milliseconds
+      },
+      jitter: () => {
+        jitterCalls += 1
+        return jitterMs
+      },
+    },
+    advance(milliseconds) {
+      elapsed += milliseconds
+    },
+    delays,
+    elapsed: () => elapsed,
+    jitterCalls: () => jitterCalls,
+  }
+}
+
 test("rejects malformed JSON without contacting the newsletter provider", async () => {
   let providerContacted = false
   const contacts = {
@@ -133,7 +159,7 @@ test("normalizes a valid email before creating a contact", async () => {
   assert.deepEqual(createCalls, [{ email: "reader@example.com", unsubscribed: false }])
 })
 
-test("rejects path delimiters in email local parts without contacting the provider", async () => {
+test("rejects path delimiters anywhere in normalized emails without contacting the provider", async () => {
   const contacts = {
     async get() {
       throw new Error("provider must not be called")
@@ -143,7 +169,17 @@ test("rejects path delimiters in email local parts without contacting the provid
     },
   }
 
-  for (const email of ["reader?tag@example.com", "reader#tag@example.com", "reader/path@example.com"]) {
+  for (const email of [
+    "reader?tag@example.com",
+    "reader#tag@example.com",
+    "reader/path@example.com",
+    "reader@example?path.com",
+    "reader@example#fragment.com",
+    "reader@example.com/path",
+    "reader@example.com?next=target",
+    "reader@example.com#fragment",
+    "reader@example.com/../../domains/target#",
+  ]) {
     const result = await handleNewsletterSignup({ ...baseSubmission, email }, contacts)
     assertResult(result, 422, INVALID)
   }
@@ -172,6 +208,124 @@ test("preserves plus addressing in valid email local parts", async () => {
     { method: "get", input: { email: "reader+deals@example.com" } },
     { method: "create", input: { email: "reader+deals@example.com", unsubscribed: false } },
   ])
+})
+
+test("compensates different provider durations to the same success-response target", async () => {
+  const existingTiming = timingHarness(75)
+  const existingContacts = {
+    async get() {
+      existingTiming.advance(100)
+      return existingContact()
+    },
+    async create() {
+      throw new Error("existing contacts must not be created")
+    },
+  }
+  const newTiming = timingHarness(75)
+  const newContacts = {
+    async get() {
+      newTiming.advance(300)
+      return missingContact()
+    },
+    async create() {
+      newTiming.advance(250)
+      return createdContact()
+    },
+  }
+
+  const existingResult = await handleNewsletterRequest(
+    new Request("https://sulitscan.com/api/newsletter", {
+      method: "POST",
+      body: JSON.stringify(baseSubmission),
+    }),
+    existingContacts,
+    existingTiming.timing
+  )
+  const newResult = await handleNewsletterRequest(
+    new Request("https://sulitscan.com/api/newsletter", {
+      method: "POST",
+      body: JSON.stringify(baseSubmission),
+    }),
+    newContacts,
+    newTiming.timing
+  )
+
+  assertResult(existingResult, 200, SUCCESS)
+  assertResult(newResult, 200, SUCCESS)
+  assert.deepEqual(existingTiming.delays, [775])
+  assert.deepEqual(newTiming.delays, [425])
+  assert.equal(existingTiming.elapsed(), 975)
+  assert.equal(newTiming.elapsed(), 975)
+  assert.equal(existingTiming.jitterCalls(), 1)
+  assert.equal(newTiming.jitterCalls(), 1)
+})
+
+test("uses a 900ms success floor with zero-to-200ms jitter", async () => {
+  for (const [jitter, expectedDelay] of [[0, 900], [200, 1100]]) {
+    const harness = timingHarness(jitter)
+    const contacts = {
+      async get() {
+        return existingContact()
+      },
+      async create() {
+        throw new Error("existing contacts must not be created")
+      },
+    }
+
+    const result = await handleNewsletterRequest(
+      new Request("https://sulitscan.com/api/newsletter", {
+        method: "POST",
+        body: JSON.stringify(baseSubmission),
+      }),
+      contacts,
+      harness.timing
+    )
+
+    assertResult(result, 200, SUCCESS)
+    assert.deepEqual(harness.delays, [expectedDelay])
+    assert.equal(harness.elapsed(), expectedDelay)
+    assert.equal(harness.jitterCalls(), 1)
+  }
+})
+
+test("does not delay invalid or provider-unavailable responses", async () => {
+  const timing = {
+    now: () => 0,
+    delay: async () => {
+      throw new Error("non-success responses must not be delayed")
+    },
+    jitter: () => {
+      throw new Error("non-success responses must not sample jitter")
+    },
+  }
+  const contacts = {
+    async get() {
+      return providerError("invalid_api_key", "invalid API key: secret-value", 401)
+    },
+    async create() {
+      throw new Error("create must not be called")
+    },
+  }
+
+  const invalidResult = await handleNewsletterRequest(
+    new Request("https://sulitscan.com/api/newsletter", {
+      method: "POST",
+      body: JSON.stringify({ ...baseSubmission, consent: false }),
+    }),
+    contacts,
+    timing
+  )
+  const unavailableResult = await handleNewsletterRequest(
+    new Request("https://sulitscan.com/api/newsletter", {
+      method: "POST",
+      body: JSON.stringify(baseSubmission),
+    }),
+    contacts,
+    timing
+  )
+
+  assertResult(invalidResult, 422, INVALID)
+  assertResult(unavailableResult, 503, UNAVAILABLE, PROVIDER_UNAVAILABLE)
 })
 
 test("rejects malformed and overlong emails without contacting the provider", async () => {

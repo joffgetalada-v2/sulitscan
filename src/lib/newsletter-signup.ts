@@ -17,6 +17,12 @@ export interface NewsletterContactsClient {
   create(input: { email: string; unsubscribed: false }): Promise<NewsletterProviderResponse<NewsletterCreatedContact>>
 }
 
+export interface NewsletterTiming {
+  now(): number
+  delay(milliseconds: number): Promise<void>
+  jitter(): number
+}
+
 export type NewsletterFailureCategory = "missing_configuration" | "provider_unavailable"
 
 export type NewsletterResult =
@@ -34,6 +40,13 @@ export type NewsletterResult =
 
 const headers = { "Cache-Control": "no-store" } as const
 const validSources = new Set(["homepage", "blog-index", "blog-article"])
+const successFloorMs = 900
+const maximumJitterMs = 200
+const defaultTiming: NewsletterTiming = {
+  now: () => Date.now(),
+  delay: (milliseconds) => new Promise((resolve) => setTimeout(resolve, milliseconds)),
+  jitter: () => Math.floor(Math.random() * (maximumJitterMs + 1)),
+}
 
 function success(): NewsletterResult {
   return { status: 200, body: { success: true }, headers }
@@ -68,12 +81,14 @@ function normalizeEmail(value: unknown): string | null {
   if (typeof value !== "string") return null
 
   const email = value.trim().toLowerCase()
-  if (email.length === 0 || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  if (
+    email.length === 0 ||
+    email.length > 254 ||
+    /[/?#]/.test(email) ||
+    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+  ) {
     return null
   }
-
-  const localPart = email.slice(0, email.indexOf("@"))
-  if (/[?#/]/.test(localPart)) return null
 
   return email
 }
@@ -116,8 +131,10 @@ export async function handleNewsletterSignup(
 
 export async function handleNewsletterRequest(
   request: Request,
-  contacts: NewsletterContactsClient | null
+  contacts: NewsletterContactsClient | null,
+  timing: NewsletterTiming = defaultTiming
 ): Promise<NewsletterResult> {
+  const startedAt = timing.now()
   let body: unknown
 
   try {
@@ -126,5 +143,13 @@ export async function handleNewsletterRequest(
     return invalidRequest()
   }
 
-  return handleNewsletterSignup(body, contacts)
+  const result = await handleNewsletterSignup(body, contacts)
+
+  if (contacts && result.status === 200) {
+    const jitterMs = Math.min(maximumJitterMs, Math.max(0, Math.floor(timing.jitter())))
+    const remainingMs = successFloorMs + jitterMs - (timing.now() - startedAt)
+    if (remainingMs > 0) await timing.delay(remainingMs)
+  }
+
+  return result
 }

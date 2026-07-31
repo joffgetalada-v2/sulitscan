@@ -14,7 +14,8 @@
 - Preserve a prior global unsubscribe; a public signup must not silently reactivate it.
 - Return the same success body for new, existing, unsubscribed, and honeypot submissions.
 - Keep ordinary successful new and existing-contact paths to two provider operations: get/create for new contacts and get/get for existing contacts.
-- Reject `?`, `#`, and `/` in the email local part while preserving common plus-addressing.
+- Reject `?`, `#`, and `/` anywhere in the normalized email while preserving common plus-addressing.
+- Hold configured HTTP 200 results to a 900ms floor plus independently sampled 0–200ms jitter when provider work finishes under the target; do not delay invalid or 503 results.
 - Never return success when the provider or configuration failed.
 - Serialize no failure category; log only a stable prefix and `{ category, status }` using `missing_configuration` or `provider_unavailable`.
 - Follow the installed Next.js 16 Route Handler and environment-variable documentation.
@@ -35,7 +36,7 @@
 
 - [ ] **Step 1: Write failing service tests**
 
-Add literal test cases for trimmed/lower-cased valid email, invalid/overlong email, rejected `?`/`#`/`/` local parts, preserved plus-addressing, strict boolean consent, source allow-listing, honeypot, active existing contact, existing unsubscribed contact, new contact creation, concurrent-create recovery, missing configuration, SDK error responses, and thrown network failures. Fakes must return complete `{ data, error, headers }` response objects. Assert exact public status/body pairs, internal failure categories, provider-operation sequences, and a `Cache-Control: no-store` header.
+Add literal test cases for trimmed/lower-cased valid email, invalid/overlong email, rejected `?`/`#`/`/` characters anywhere in the normalized address (including domain/path-injection literals), preserved plus-addressing, strict boolean consent, source allow-listing, honeypot, active existing contact, existing unsubscribed contact, new contact creation, concurrent-create recovery, missing configuration, SDK error responses, and thrown network failures. Fakes must return complete `{ data, error, headers }` response objects. Assert exact public status/body pairs, internal failure categories, provider-operation sequences, and a `Cache-Control: no-store` header.
 
 - [ ] **Step 2: Run the new suite and verify RED**
 
@@ -66,11 +67,11 @@ Add `"test:newsletter": "node --test tests/newsletter.node.mjs"` and invoke it f
 
 **Interfaces:**
 - Consumes: `handleNewsletterSignup` and `NewsletterContactsClient` from Task 1.
-- Produces: `POST /api/newsletter` with 200/400/422/503 semantics and `Cache-Control: no-store`.
+- Produces: `POST /api/newsletter` with 200/400/422/503 semantics, `Cache-Control: no-store`, and a 900ms plus 0–200ms timing window for configured success responses.
 
 - [ ] **Step 1: Write a failing malformed-request test**
 
-Add a test for `handleNewsletterRequest(request, contacts)` using a Web `Request` whose JSON body is malformed. Assert status 400, `{ error: "Invalid newsletter request." }`, and `Cache-Control: no-store` without contacting the provider.
+Add tests for `handleNewsletterRequest(request, contacts, timing)`: use a Web `Request` whose JSON body is malformed and assert status 400, `{ error: "Invalid newsletter request." }`, and `Cache-Control: no-store` without contacting the provider; use injected clock/delay/jitter seams to prove different successful provider durations receive compensating delays to the same `900ms + jitter` total; assert 0ms and 200ms jitter boundaries; and prove invalid and 503 results are not delayed.
 
 Run: `node --test tests/newsletter.node.mjs`
 
@@ -78,7 +79,7 @@ Expected: failure because `handleNewsletterRequest` does not exist.
 
 - [ ] **Step 2: Add the request parser and replace the webhook placeholder**
 
-Add the dependency-free request parser so malformed JSON returns 400, then delegates valid JSON to `handleNewsletterSignup`. In the route, instantiate `Resend` only when `RESEND_API_KEY` exists, pass `resend.contacts` to the request parser, and return its body/status with `Cache-Control: no-store`. For 503 results, log only a stable prefix and `{ category, status }`; do not log or serialize email, contact ID, API key, or provider messages.
+Add the dependency-free request parser so malformed JSON returns 400, then delegates valid JSON to `handleNewsletterSignup`. For configured status-200 results, wait until request-start time plus 900ms plus an independently sampled 0–200ms jitter; accept injected timing functions so tests remain instant and deterministic. Do not apply the timing floor to invalid or 503 results. In the route, instantiate `Resend` only when `RESEND_API_KEY` exists, pass `resend.contacts` to the request parser, and return its body/status with `Cache-Control: no-store`. For 503 results, log only a stable prefix and `{ category, status }`; do not log or serialize email, contact ID, API key, or provider messages.
 
 - [ ] **Step 3: Verify route types and service behavior**
 
