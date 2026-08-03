@@ -564,12 +564,12 @@ test("August guide-to-guide recommendations stay specific to each workflow", () 
     {
       slug: "shopee-return-refund-guide-philippines",
       required: ["online-purchase-warranty-guide-philippines", "unboxing-video-evidence-online-shopping-philippines"],
-      rejected: [],
+      rejected: ["temu-returns-refunds-price-adjustment-philippines"],
     },
     {
       slug: "temu-returns-refunds-price-adjustment-philippines",
       required: ["online-purchase-warranty-guide-philippines", "unboxing-video-evidence-online-shopping-philippines"],
-      rejected: [],
+      rejected: ["shopee-return-refund-guide-philippines"],
     },
     {
       slug: "how-to-check-skincare-makeup-legit-philippines",

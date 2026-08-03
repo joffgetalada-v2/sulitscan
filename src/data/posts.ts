@@ -4980,11 +4980,14 @@ export function getRelatedPosts(current: BlogPost, count = 3): BlogPost[] {
     .map((candidate) => {
       const candidateIntent = candidate.recommendationIntent
       const topicMatches = candidateIntent?.topics.filter((topic) => currentTopics.has(topic)).length ?? 0
-      const platformMatches = candidateIntent?.platforms?.filter((platform) => currentPlatforms.has(platform)).length ?? 0
+      const candidatePlatforms = candidateIntent?.platforms ?? []
+      const platformMatches = candidatePlatforms.filter((platform) => currentPlatforms.has(platform)).length
+      const hasExplicitPlatformConflict =
+        currentPlatforms.size > 0 && candidatePlatforms.length > 0 && platformMatches === 0
       return {
         candidate,
-        // Platform/category relationships refine a real topic match; they never create one.
-        score: topicMatches > 0
+        // Explicitly different platforms are unrelated; neutral candidates can still match by topic.
+        score: topicMatches > 0 && !hasExplicitPlatformConflict
           ? topicMatches * 6 + platformMatches * 2 + (candidate.category === current.category ? 1 : 0)
           : 0,
       }
