@@ -301,6 +301,8 @@ No. SulitScan is a deal discovery site. We link you to Temu and you complete the
 
 Browse [Temu deals](/deals) on SulitScan, or explore by category: [Home Finds](/categories/home-finds), [Tech Deals](/categories/tech-deals), [Fashion](/categories/fashion), [Under ₱500](/categories/under-500).
 
+Before relying on a post-purchase remedy, read the current [Temu returns, refunds, and price-adjustment workflow](/blog/temu-returns-refunds-price-adjustment-philippines).
+
 ## Affiliate Disclosure
 
 SulitScan may earn a commission when you click a Temu affiliate link and complete a purchase. This does not affect your price.
@@ -821,14 +823,14 @@ On most platforms, adding to cart does not lock in a price. The price at checkou
 Go all the way to the payment confirmation page before finalizing. Review the itemized total, product price, shipping, taxes, and any discounts applied, before entering payment details.
 
 **Q: Is the checkout price fixed after I confirm the order?**
-Yes, once an order is confirmed, the price at confirmation is the price you pay. Subsequent price drops on the platform do not retroactively apply to completed orders.
+The charged order total is recorded when you confirm, and a later price drop does not automatically change it. A platform may offer a separate conditional remedy. For Temu, check the live order against our [returns, refunds, and price-adjustment guide](/blog/temu-returns-refunds-price-adjustment-philippines).
 
 **Q: What if I notice the wrong price was charged after payment?**
 Contact the platform's customer support with your order details. Keep all order confirmations and receipts. Most platforms have a process for billing dispute resolution.
 
 ## Related on SulitScan
 
-Read our guide on [how to spot fake discounts](/blog/how-to-spot-fake-discounts) and our [voucher and shipping checklist](/blog/voucher-shipping-return-checklist). Browse [current deals](/deals) on SulitScan.
+Read our guide on [how to spot fake discounts](/blog/how-to-spot-fake-discounts), use the [Shopee voucher-stacking workflow](/blog/how-to-stack-shopee-vouchers-philippines) for cap and minimum-spend math, and finish with our [voucher and shipping checklist](/blog/voucher-shipping-return-checklist). Browse [current deals](/deals) on SulitScan.
 
 ## Affiliate Disclosure
 
@@ -1608,7 +1610,7 @@ When opening a SulitScan Shopee deal, use its SulitScore, buyer notes, and last-
 
 ## Related Shopee PH guides
 
-Browse [current Shopee deals on SulitScan](/stores/shopee-ph), read our [best Shopee finds under ₱500 guide](/blog/best-shopee-finds-under-500-philippines), and use the [online product review checklist](/blog/online-product-review-checklist-philippines) to compare exact variants, recent patterns, and buyer photos. See our [online shopping safety tips](/blog/online-shopping-safety-tips-philippines) for more habits that protect you. If you are comparing an overseas seller, you can also [estimate possible import costs with ImportTaxPH](https://www.importtaxph.com/) before comparing the landed price. Its result is for planning only, so confirm official customs rules, courier fees, and seller shipping terms when they matter.
+Browse [current Shopee deals on SulitScan](/stores/shopee-ph), read our [best Shopee finds under ₱500 guide](/blog/best-shopee-finds-under-500-philippines), and use the [online product review checklist](/blog/online-product-review-checklist-philippines) to compare exact variants, recent patterns, and buyer photos. If an order arrives wrong, damaged, or incomplete, follow the [Shopee return and refund workflow](/blog/shopee-return-refund-guide-philippines) while the live order control is available. See our [online shopping safety tips](/blog/online-shopping-safety-tips-philippines) for more habits that protect you. If you are comparing an overseas seller, you can also [estimate possible import costs with ImportTaxPH](https://www.importtaxph.com/) before comparing the landed price. Its result is for planning only, so confirm official customs rules, courier fees, and seller shipping terms when they matter.
 
 ## Affiliate disclosure
 
@@ -2346,7 +2348,7 @@ Compare the final amount for the same authentic product and size: item price plu
 
 ## Related deals
 
-Browse [beauty](/categories/beauty) and [items under 500](/categories/under-500), then compare the current seller details through [Shopee PH](/stores/shopee-ph) or [Sephora PH](/stores/sephora-ph). Our [Sephora PH beauty guide](/blog/sephora-ph-beauty-guide) adds retailer-specific checks for products, rewards, shipping, and returns.
+Browse [beauty](/categories/beauty) and [items under 500](/categories/under-500), then compare the current seller details through [Shopee PH](/stores/shopee-ph) or [Sephora PH](/stores/sephora-ph). Use the [skincare and makeup legitimacy workflow](/blog/how-to-check-skincare-makeup-legit-philippines) to separate an FDA notification from seller and physical-item authentication. Our [Sephora PH beauty guide](/blog/sephora-ph-beauty-guide) adds retailer-specific checks for products, rewards, shipping, and returns.
 
 ## Affiliate disclosure
 
@@ -4156,7 +4158,7 @@ Save the exact model, energy-label image, capacity, dimensions, color, included 
 
 Check recent reviews for noise, fit, delivery damage, missing accessories, and seller support, but use the [online product review checklist](/blog/online-product-review-checklist-philippines) rather than relying on the star average.
 
-For kitchen equipment, the [cookware buying guide](/blog/cookware-sets-philippines-buying-guide) helps separate cookware compatibility from appliance claims. For a first home, use the [first apartment essentials guide](/blog/first-apartment-essentials-under-1000-philippines) to decide whether the appliance is a current need or a later upgrade.
+For kitchen equipment, the [cookware buying guide](/blog/cookware-sets-philippines-buying-guide) helps separate cookware compatibility from appliance claims. For covered electrical products, use the [PS and ICC appliance-safety workflow](/blog/online-electrical-appliance-safety-ps-icc-philippines) to check certification records, the exact model, voltage, plug condition, and seller evidence. For a first home, use the [first apartment essentials guide](/blog/first-apartment-essentials-under-1000-philippines) to decide whether the appliance is a current need or a later upgrade.
 
 ## Compare warranty and service access
 
@@ -4223,6 +4225,731 @@ SulitScan may earn a commission when you click an eligible partner link and comp
         question: "What if an online appliance listing does not show a readable energy label?",
         answer:
           "Ask for the exact model and current label, then check the official DOE PELP information where available. Do not substitute a label from another size or model.",
+      },
+    ],
+  },
+  {
+    id: "post-035",
+    slug: "how-to-stack-shopee-vouchers-philippines",
+    title: "How to Stack Shopee Vouchers in the Philippines",
+    excerpt:
+      "Calculate Shopee shop and platform vouchers in the right order, compare caps and minimum spend, and confirm the live checkout total.",
+    content: `
+Shopee voucher stacking is not a matter of collecting every badge shown on a listing. The useful question is narrower: which eligible shop voucher and platform voucher produce the lowest final total for the exact cart in your account?
+
+This Philippine workflow shows how to compare minimum spend, percentage discounts, discount caps, shipping, and Coins without treating a promotional example as a live offer.
+
+## How we assessed this guide
+
+We reviewed Shopee Philippines' current instructions for [using saved vouchers at checkout](https://help.shopee.ph/portal/4/article/81188-How-do-I-use-saved-Vouchers-during-checkout), its explanation of [how voucher promotions are calculated](https://help.shopee.ph/portal/4/article/82304-%5BVouchers%5D-How-are-voucher-promotions-calculated-at-checkout), and its [voucher-code FAQ](https://help.shopee.ph/portal/4/article/81532-Other-FAQs-related-to-voucher-codes).
+
+Shopee's current help flow supports one eligible Shop Voucher per shop plus one Shopee platform voucher in a checkout. The platform slot may be Free Shipping, Discount, or Coins Cashback; it is not a promise that all three platform types can be used together. Shopee Coins appear as a separate checkout control, but availability and usable amount vary.
+
+Voucher rules, inventory, account eligibility, payment methods, and shipping methods can change. We did not place a test order, and the live checkout screen for your account is the deciding record.
+
+## Know the voucher slots before doing the math
+
+A Shop Voucher is offered by a participating shop and applies only to eligible products from that shop. In a mixed-shop cart, each shop is assessed separately. Current guidance allows one eligible Shop Voucher per shop, so do not assume two seller codes from the same shop will combine.
+
+A Shopee platform voucher occupies a different slot. Choose the one platform benefit that produces the best usable result for the order: a merchandise discount, free or reduced shipping, or Coins Cashback. A large percentage printed on a banner can lose to a smaller percentage with a higher discount cap, or to a shipping voucher when delivery is expensive.
+
+Shopee Coins are separate from those voucher slots, but they are not a guaranteed extra discount. The amount you can apply may depend on the order, item, account, and current rules. Treat the Coins amount shown at checkout as the usable amount, not the balance you hoped to spend.
+
+## Check eligibility before comparing headline percentages
+
+Open the voucher details and record the conditions for the exact voucher:
+
+- Eligible shop, product, category, and variation
+- Minimum spend and which order value is used to test it
+- Percentage or fixed discount and the discount cap
+- Expiry and remaining redemption availability
+- Required payment or shipping method
+- Account, campaign, or usage restrictions
+
+Select the exact item variation first. A voucher displayed on a search card may not apply to every size, color, bundle, or seller. In a mixed cart, remove ineligible items from your mental calculation rather than using the whole cart subtotal.
+
+If you are comparing a listing's crossed-out price, use the [final-price guide](/blog/why-final-prices-change-at-checkout) to separate a real checkout saving from an inflated reference price.
+
+## Calculate minimum spend and the discount cap
+
+For a percentage voucher, calculate both the percentage result and the cap:
+
+Potential discount = eligible amount × voucher percentage
+
+Usable discount = the smaller of the potential discount and the discount cap
+
+Then check minimum spend at the stage shown by Shopee. Current calculation guidance applies shop or seller discounts first, the chosen Shopee platform discount second, and an applicable shipping discount last. This order matters because an earlier discount can change the amount considered by a later condition.
+
+Do not add two headline percentages and call the total your savings. A 10% Shop Voucher plus an 8% platform voucher does not automatically mean 18% off the original subtotal. Each discount has its own base, minimum, cap, and eligibility.
+
+## Worked voucher-stack example
+
+This is invented arithmetic for planning, not a current Shopee promotion. Suppose one shop's eligible items total ₱1,800, shipping is ₱95, and checkout shows a 10% Shop Voucher capped at ₱120 plus an 8% platform Discount Voucher capped at ₱100. Assume the live rules show both minimum-spend conditions remain satisfied after each step.
+
+1. Calculate the Shop Voucher: 10% of ₱1,800 is ₱180, but the discount cap limits the usable shop discount to ₱120.
+2. Subtract the shop discount: ₱1,800 minus ₱120 leaves a merchandise subtotal of ₱1,680.
+3. Calculate the platform voucher on the displayed eligible base: 8% of ₱1,680 is ₱134.40, but its cap limits the usable platform discount to ₱100.
+4. Subtract the platform discount: the merchandise subtotal becomes ₱1,580.
+5. Apply the shipping result shown last. If no shipping voucher occupies the platform slot in this option, add the displayed ₱95 shipping for a ₱1,675 planning total before any separately usable Coins.
+6. Compare that ₱1,675 result with the alternative checkout using an eligible shipping voucher instead of the platform Discount Voucher. Choose the lower live payable total, not the option with the louder percentage.
+
+If the platform voucher's minimum spend were ₱1,700 and the live rule tested the ₱1,680 amount after the shop discount, that platform voucher would fail. This is why adding a low-value filler can be poor value: spending more to cross a threshold is useful only when the extra cost is lower than the genuine additional saving and the item is needed.
+
+## Run a clean checkout comparison
+
+Save or activate the vouchers you may use, then make one change at a time:
+
+1. Confirm the exact items, quantities, shop, and variations.
+2. Record the no-voucher merchandise subtotal and shipping shown for the selected address.
+3. Apply the best eligible Shop Voucher for each shop.
+4. Try each eligible Shopee platform voucher separately.
+5. Record merchandise discount, shipping, Coins used or earned, payment condition, and final payable total.
+6. Recheck the delivery address, payment method, and shipping option before choosing.
+7. Save the final order breakdown or receipt after payment.
+
+The [voucher, shipping, and return checklist](/blog/voucher-shipping-return-checklist) helps you compare the saving with delivery and return terms. A lower total is not useful if it requires the wrong variation, an unsuitable payment method, or a delivery option that misses your deadline.
+
+## Common reasons a voucher does not apply
+
+A voucher can disappear or fail because the exact item is excluded, minimum spend is not met, the voucher expired, redemptions ran out, the payment or shipping method changed, the account already used it, or another voucher occupies the same slot. A seller may also change a listing or eligible assortment.
+
+Read the message shown in checkout. Do not move payment outside Shopee, install unofficial tools, buy voucher codes from strangers, or share account credentials to unlock a supposed stack. The [Shopee seller-check guide](/blog/how-to-check-shopee-seller-legit-philippines) covers seller and listing checks before you optimize a discount.
+
+## Shopee voucher checklist
+
+1. I selected the exact item, variation, quantity, and shop.
+2. I opened every voucher's minimum spend, cap, expiry, and eligibility rules.
+3. I used no more than one eligible Shop Voucher per shop.
+4. I compared platform Discount, Free Shipping, and Coins Cashback options one at a time.
+5. I calculated percentage savings against the correct base and applied the discount cap.
+6. I treated Shopee Coins as a separate, variable control shown by checkout.
+7. I compared final payable totals including shipping and payment conditions.
+8. I checked delivery and return terms before confirming.
+9. I saved the order breakdown and receipt.
+
+For the post-purchase route, keep the [Shopee return and refund guide](/blog/shopee-return-refund-guide-philippines) available before the live order deadline expires.
+
+## Limitations and live-policy check
+
+This guide was reviewed on 2026-08-03 and explains a calculation workflow, not a coupon promise. It does not supply live voucher codes, fixed caps, campaign schedules, VIP claims, or guaranteed Coins usage. Eligibility may differ by account, product, shop, payment, shipping method, expiry, and redemption availability.
+
+Always reopen the voucher details and final order breakdown immediately before payment. If this guide and the live checkout differ, follow the current Shopee control and official help page.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. We do not issue Shopee vouchers, control eligibility, or guarantee a saving. Prices, vouchers, caps, stock, shipping, Coins, and checkout rules can change. Confirm the live total and terms in Shopee before paying. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Platform Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-03",
+    lastReviewed: "2026-08-03",
+    readTime: 13,
+    tags: ["shopee", "vouchers", "voucher-stacking", "checkout", "discount-caps", "philippines"],
+    recommendationIntent: {
+      topics: ["voucher-stacking", "checkout-checklist", "shopee-shopping"],
+      platforms: ["Shopee PH"],
+      deals: { tags: ["shopee"], maxPrice: 1000 },
+    },
+    coverGradient: "from-orange-600 to-amber-200",
+    faqs: [
+      {
+        question: "Can I use a Shop Voucher and a Shopee voucher together?",
+        answer:
+          "Current Shopee guidance allows one eligible Shop Voucher per shop plus one eligible Shopee platform voucher. The live checkout and each voucher's conditions decide whether the combination applies.",
+      },
+      {
+        question: "Can I stack Free Shipping, a Discount Voucher, and Coins Cashback?",
+        answer:
+          "Free Shipping, Discount, and Coins Cashback are platform-voucher options, so do not assume all three platform types stack. Compare each eligible option in checkout. Shopee Coins are a separate control, but their usable amount varies.",
+      },
+      {
+        question: "How do I compare percentage vouchers with different caps?",
+        answer:
+          "Multiply the eligible amount by each percentage, limit the result to that voucher's cap, and compare the final payable total after shipping and other live conditions.",
+      },
+    ],
+  },
+  {
+    id: "post-036",
+    slug: "shopee-return-refund-guide-philippines",
+    title: "Shopee Return and Refund Guide Philippines",
+    excerpt:
+      "Use Shopee's live Return/Refund control, build issue-specific evidence, meet every displayed step, and keep a complete claim record.",
+    content: `
+A Shopee return or refund request is easier to assess when it tells one clear story: what the listing promised, what arrived, what is wrong, when you reported it, and which remedy you requested. A long chat without the right photos, labels, or deadline can be weaker than a short organized file.
+
+This workflow is for buyers in the Philippines. It explains the current in-app route and evidence habits without promising that a claim will be accepted.
+
+## How we assessed this guide
+
+We reviewed Shopee Philippines' current [return and refund request instructions](https://help.shopee.ph/portal/4/article/81231?seo=1), its [Refunds and Return Policy](https://help.shopee.ph/portal/4/article/77279-Refunds-and-Return-Policy), and its guide to [effective supporting documents](https://help.shopee.ph/portal/4/article/81183-%5BReturn-Refund%5D-What-are-the-effective-supporting-documents-I-can-submit-as-evidence-for-my-refund%2Freturn-request%3F-%28ENG%29).
+
+We also checked Shopee's [returning-products conditions](https://help.shopee.ph/portal/4/article/81061-%5BReturn-Refund%5D-What-are-the-terms-and-conditions-for-returning-products), its statement that [direct exchange is not offered](https://help.shopee.ph/portal/4/article/81293-%5BReturn-Refund%5D-Can-I-request-for-an-exchange), and the Philippine [Internet Transactions Act, Republic Act No. 11967](https://lawphil.net/statutes/repacts/ra2023/ra_11967_2023.html).
+
+Platform help pages, order controls, evidence prompts, and logistics can change. This is general information, not legal advice, and SulitScan cannot decide a case.
+
+## Find the live deadline on the exact order
+
+Open My Purchases, select the order, and look for the active Return/Refund control and displayed deadline. As reviewed on 2026-08-03, Shopee's formal policy tables state seven days from delivery for ordinary or Preferred sellers and 15 days for Mall sellers. However, an example beneath one current table reverses those values.
+
+Because that published example conflicts with the formal table, do not calculate your case from a blog, screenshot, or memory. The deadline shown on the live order controls is the operational deadline to follow. Capture it and act early. Current guidance indicates a request may still be possible after tapping Order Received when the order remains within its displayed window, but do not use that as a reason to delay.
+
+If the Return/Refund control is absent, use Shopee's official support route promptly and save the screen showing the order status and date. Do not invent a reason, alter timestamps, or move the dispute into an unverified chat channel.
+
+## Preserve evidence before opening or using the item
+
+Before breaking a seal, throwing away packaging, installing, washing, or using the product, record the parcel's condition. The useful evidence depends on the issue, but a practical file can include:
+
+- The exact listing, selected variation, description, and seller promise
+- Outer and inner packaging from all sides
+- A readable airway bill before opening, with personal details protected in public copies
+- Seals, labels, model, serial reference, batch, quantity, and included parts
+- Wide and close photos of damage, mismatch, missing parts, or leakage
+- A continuous video when it helps show the condition or opening sequence
+- Relevant seller chat and delivery status
+- Pre-return photos of the item and repacked parcel
+- Return receipt, tracking, and delivery confirmation
+
+Shopee expressly asks for video for some faulty-product claims. That does not mean video is required for every request or case. Read the evidence prompt for your selected reason. The [unboxing evidence workflow](/blog/unboxing-video-evidence-online-shopping-philippines) explains how to record useful context without claiming video is a universal legal requirement.
+
+Keep originals. Crop or annotate a copy only when needed, and do not expose your address, phone number, tracking barcode, passwords, one-time codes, or payment credentials in public posts.
+
+## Choose the reason and remedy that match the facts
+
+Select the closest truthful reason in the app: wrong item, missing item, damaged item, faulty product, not as described, or another available category. State the observable mismatch instead of guessing at a technical cause.
+
+Ask for the remedy supported by the live workflow. A refund without return, return and refund, repair, or another outcome may depend on the item and case. Direct exchange is not offered through the current Shopee route; when you still want the product, the published path is return or refund followed by a separate new purchase.
+
+RA 11967 and other applicable consumer rules can provide remedies beyond a platform screen, depending on the facts. The Act generally expects the platform's internal redress mechanism to be used first where applicable. Preserve your full record if escalation becomes necessary.
+
+## Worked return-request example
+
+Suppose you ordered a 220-volt appliance in one color and model, but received a visibly different model with a damaged plug. The app still shows Return/Refund and a deadline.
+
+1. Stop using or energizing the item because continued use could create a safety issue or worsen damage.
+2. Save the listing, selected variation, order page, live deadline, seller identity, and delivery record.
+3. Photograph the sealed parcel, airway bill, inner packaging, received model label, plug damage, and all included parts. Keep the original files.
+4. Open Return/Refund, choose the most accurate displayed reason, and write a short comparison between ordered and received model plus the visible damage.
+5. Upload the evidence requested for that reason and ask for the remedy available in the live workflow. Save the submission and case number.
+6. If Shopee instructs you to return the item, follow the generated method, packaging instruction, selection deadline, and dispatch deadline rather than choosing a courier from an old guide.
+7. Save the return receipt and tracking until the case, refund, and payment record are complete.
+
+The goal is not to produce the longest complaint. It is to connect each claim to a dated piece of evidence.
+
+## Follow every return instruction shown in the case
+
+When return is required, wait for the official method and address generated for the case. Current guidance may require selecting a return method within two days of notice and dispatching within five days, but the in-app instruction controls. Take action before the displayed cutoff.
+
+Repack the exact item with the accessories, freebies, documents, and protective materials requested. Photograph the condition immediately before closing the parcel, the sealed package, and the return label. Do not substitute another product or omit parts.
+
+Use only the generated return method. Keep the receipt and tracking number, monitor the case, and answer official requests on time. A seller message does not replace a step shown in the case. If instructions conflict, ask Shopee support through the official channel and preserve the reply.
+
+## Keep communication factual and inside official channels
+
+Organize the request in this order:
+
+1. Order and exact variation
+2. Listing promise
+3. Received condition
+4. Specific mismatch or fault
+5. Evidence files
+6. Requested remedy
+7. Deadline or next required step
+
+Avoid insults, unsupported accusations, copied legal threats, and repeated messages that hide the useful facts. Do not cancel a case, mark it resolved, pay a fee, or send an item to a different address solely because an unverified message tells you to.
+
+The [online purchase warranty guide](/blog/online-purchase-warranty-guide-philippines) helps separate a short platform return window from a seller or manufacturer warranty. The [Shopee seller-check guide](/blog/how-to-check-shopee-seller-legit-philippines) shows which listing and seller details to save before ordering.
+
+## Shopee return and refund checklist
+
+1. Open the exact order and capture the live Return/Refund deadline.
+2. Stop using an unsafe or damage-sensitive item.
+3. Save the listing, variation, receipt, seller details, and delivery status.
+4. Preserve outer packaging, inner packaging, airway bill, labels, and accessories.
+5. Match photos or video to the selected issue and evidence prompt.
+6. Submit through the official Return/Refund control before the deadline.
+7. Save the case number, submission, chats, and every requested response.
+8. If return is required, follow the generated method and displayed selection and dispatch cutoffs.
+9. Photograph the repacked parcel and keep the return receipt and tracking.
+10. Confirm the case and payment record are complete before deleting evidence.
+
+## Limitations and live-policy check
+
+This guide was reviewed on 2026-08-03. Shopee can change eligibility, deadlines, evidence categories, return methods, inspection steps, and refund processing. Seller type, product category, reason, condition, and order history can affect the route. A request is not a guaranteed approval or full refund.
+
+Always follow the live order control and case instruction. For a serious legal dispute or safety incident, consider qualified advice and the current official government channel rather than relying only on this article.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. We are not Shopee, a seller, courier, payment provider, lawyer, or government agency. We cannot file, assess, expedite, or guarantee a return or refund. Verify the live order instructions and current official policy. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Safety",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-03",
+    lastReviewed: "2026-08-03",
+    readTime: 14,
+    tags: ["shopee", "returns", "refunds", "buyer-evidence", "shopping-safety", "philippines"],
+    recommendationIntent: {
+      topics: ["returns", "shopping-safety", "shopee-shopping"],
+      platforms: ["Shopee PH"],
+    },
+    coverGradient: "from-orange-800 to-rose-200",
+    faqs: [
+      {
+        question: "Can I request a Shopee return after tapping Order Received?",
+        answer:
+          "Current guidance indicates a request can still be possible when the order remains within the deadline shown by its live Return/Refund control. Open the exact order immediately and follow the displayed route.",
+      },
+      {
+        question: "Is an unboxing video required for every Shopee refund?",
+        answer:
+          "No. Shopee expressly requires video for some faulty-product claims, but evidence varies by reason. Follow the prompt for your case and preserve clear photos, packaging, labels, chats, and return records where relevant.",
+      },
+      {
+        question: "Can Shopee exchange my item directly?",
+        answer:
+          "Shopee's current help guidance says direct exchange is not offered. The published route is return or refund, then a separate new purchase if you still want the item.",
+      },
+    ],
+  },
+  {
+    id: "post-037",
+    slug: "temu-returns-refunds-price-adjustment-philippines",
+    title: "Temu Returns, Refunds, and Price Adjustments Philippines",
+    excerpt:
+      "Separate Temu return, refund, and price-adjustment routes, check item eligibility, meet live deadlines, and preserve order evidence.",
+    content: `
+A lower price after checkout, an unwanted item, and an item that arrives damaged are three different Temu situations. Choosing the wrong route can waste time or create a return you did not need.
+
+This Philippine workflow separates a return, a refund claim, and an eligible price adjustment. It uses dated policy information and repeatedly points back to the live order because item-level terms can differ.
+
+## How we assessed this guide
+
+We reviewed Temu Philippines' [Return and Refund Policy](https://www.temu.com/ph/return-and-refund-policy.html), which states that the policy was updated 2026-03-23. We also reviewed Temu's current explanation of [price adjustment](https://www.temu.com/ph/support/c3/what-is--price-adjustment--f-60-s-945.html) and its [support route](https://www.temu.com/ph/support/c3/support-f-50-s-199.html).
+
+The policy describes general windows and exclusions, but the exact order, seller, product, variation, reason, and generated return method control a real case. We did not place or return an order, inspect a product, or measure processing time. This guide does not promise eligibility, a full refund, free shipping, or a deadline beyond what your live order shows.
+
+## Choose the right route first
+
+Use a return or refund request when the product itself is unwanted, wrong, damaged, defective, incomplete, not as described, or otherwise covered by the available order reasons. Temu may require the item back before assessing the refund.
+
+Use price adjustment only when the product is still acceptable and the live order presents an eligible lower-price route. It is not a substitute for reporting damage, a missing part, or the wrong variation.
+
+Use official support when the expected control is missing, instructions conflict, or the order presents an issue not covered by the available reason. Keep the discussion connected to the order number and do not move payment, fees, or account access into an unofficial channel.
+
+## Check whether the item is returnable
+
+Under the policy updated 2026-03-23, most returnable items have a window of up to 90 days from purchase. That is not a promise that every item has a 90-day return. Most electronics use seller-specific 45-, 60-, or 90-day windows, and the product page or order may show a different applicable period.
+
+Current exclusions include goods that have been used, worn, washed, or damaged by the consumer; goods with removed tags or hygiene seals; food and grocery products; some health and personal-care items; customized products; some underwear; gifts; and products explicitly marked non-returnable. The exact exclusion depends on the item and condition.
+
+Before opening, assembling, installing, washing, or using a return-sensitive item, check its live policy. Preserve labels, hygiene seals, accessories, manuals, packaging, and included gifts until you are satisfied it is correct.
+
+## Build the return or refund record
+
+Open Your Orders, choose the exact order and item, and record the available reason, deadline, remedy, and return instruction. Save the listing and variation so you can show what you selected.
+
+Collect evidence that matches the issue:
+
+- Order page, item title, seller, variation, quantity, and paid total
+- Listing description and photos relevant to the mismatch
+- Outer and inner packaging plus delivery label
+- Wide and close photos of damage, wrong item, or missing parts
+- Model, size, color, serial reference, seal, or batch where relevant
+- A short video when motion, sound, leakage, or an opening sequence matters
+- Support messages, case confirmation, return label, receipt, and tracking
+
+The [unboxing evidence guide](/blog/unboxing-video-evidence-online-shopping-philippines) gives a privacy-aware recording sequence. Evidence should show the issue, not merely produce a large file. Do not share passwords, one-time codes, full payment details, or unnecessary identity documents.
+
+## Follow the generated return instruction
+
+Current policy says the first return of one or more returnable items from an order is free within the applicable window. A subsequent return from the same order currently deducts a PHP 75 shipping fee. These are dated terms, not a permanent promise, so group eligible items into the first return only when you have checked all items and doing so will not cause you to miss a deadline.
+
+After submitting a return, the current policy requires the package to be postmarked within 14 days. The live instruction controls. Use the generated method and address rather than a courier name or route copied from a foreign guide.
+
+Photograph the item and included parts before packing, then photograph the sealed package and readable return label. Keep the receipt and tracking. Improper packaging can reduce value or create transit damage, so follow the item-specific instructions and protect the product appropriately.
+
+## Understand refund assessment
+
+A submitted request is not the same as an approved full refund. Current policy allows receipt and quality inspection before the final refund. The amount can be reduced for lost value, missing parts, damage, or improper return packaging that was not caused by Temu or the seller.
+
+Use the payment or refund method offered in the live case and read the current estimate there. Bank, card, wallet, and platform-credit timing can differ, and SulitScan cannot verify or accelerate it. Keep the order, case, return receipt, and refund confirmation until the payment record matches the resolved amount.
+
+For a product fault that may also involve a seller or manufacturer promise, the [online purchase warranty guide](/blog/online-purchase-warranty-guide-philippines) helps you separate the short return route from longer warranty coverage.
+
+## Check 30-day price adjustment eligibility
+
+Temu's current help page describes a conditional 30-day price adjustment after payment. The comparison generally needs the same item, same variation, same seller, and same region. Promotional or unavailable products may be excluded, and shipping fees are not part of the adjustment.
+
+Open Your Orders, choose the eligible order, and look for Price adjustment. If that control is present, review the items and amount shown before submitting. Do not compare a different color, bundle, seller, region, coupon combination, or shipping charge and assume it qualifies.
+
+A lower advertised price does not guarantee an adjustment. Save the order result, but avoid repeatedly cancelling and reordering without checking stock, payment reversal, voucher loss, shipping, and return consequences.
+
+## Worked remedy decision
+
+Consider three invented situations. The live order still decides each result.
+
+1. The exact lamp variation is intact and acceptable, but the same item from the same seller and region now shows a lower eligible price 12 days after payment. Look for Price adjustment in Your Orders; do not create a damage return.
+2. A storage set arrived in the wrong size and the order shows Return/Refund. Photograph the listing variation, received dimensions, labels, and packaging, then use the matching reason and follow any generated return instruction.
+3. An electronic item stopped working, but its order shows a seller-specific return window rather than the general 90-day period. Stop unsafe use, preserve evidence, follow that displayed window, and check warranty terms if the return route is unavailable.
+4. Two returnable items from one order have different problems. Check both promptly and, when the live instructions allow, include both in the first submitted return to avoid a later same-order fee without sacrificing either deadline.
+5. The package has been accepted for return. Keep the postmark, tracking, and item-condition photos until inspection and the final refund record are complete.
+
+This decision sequence keeps a price change separate from a product problem and prevents the broadest policy headline from replacing item-level terms.
+
+## Temu remedy checklist
+
+1. Identify whether the issue is a lower price, unwanted item, wrong item, damage, fault, or missing part.
+2. Open the exact order and capture its available control and deadline.
+3. Check item-specific returnability, electronics window, and exclusions.
+4. Preserve the listing, variation, packaging, labels, accessories, and issue evidence.
+5. Use Price adjustment only when the live order shows an eligible match.
+6. Use Return/Refund for the truthful item issue and requested remedy.
+7. Follow the generated method and ensure a submitted return is postmarked within the live cutoff.
+8. Photograph the repacked item and keep the return receipt and tracking.
+9. Monitor inspection and compare the final refund with the payment record.
+10. Keep every confirmation until the case is resolved.
+
+New to the platform? Read the [Temu Philippines shopping guide](/blog/temu-shopping-guide-philippines) before checkout so seller, product, delivery, and return questions are considered together.
+
+## Limitations and live-policy check
+
+This guide was reviewed on 2026-08-03 against a Temu policy marked updated 2026-03-23. Product exclusions, windows, first-return shipping, subsequent-return fees, postmark requirements, price-adjustment eligibility, inspection, refund methods, and support paths can change.
+
+Do not rely on “90-day free returns” or “30-day price adjustment” as universal promises. Read the exact product and order terms, generated instruction, and current policy before acting.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. We are not Temu, a seller, courier, payment provider, or dispute resolver. We cannot determine eligibility, approve a remedy, or promise timing or amount. Verify the live order and current official policy. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Safety",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-03",
+    lastReviewed: "2026-08-03",
+    readTime: 14,
+    tags: ["temu", "returns", "refunds", "price-adjustment", "buyer-evidence", "philippines"],
+    recommendationIntent: {
+      topics: ["returns", "shopping-safety", "temu-buying"],
+      platforms: ["Temu"],
+    },
+    coverGradient: "from-orange-700 to-sky-200",
+    faqs: [
+      {
+        question: "Does every Temu item have a 90-day free return?",
+        answer:
+          "No. Most returnable items use a period up to 90 days under the dated policy, but exclusions apply and most electronics use seller-specific 45-, 60-, or 90-day windows. The live item and order terms control.",
+      },
+      {
+        question: "When does Temu charge the PHP 75 return-shipping fee?",
+        answer:
+          "Under the policy reviewed here, the first return of returnable items from an order is free within the applicable window, while a subsequent return from the same order deducts PHP 75. Recheck the live policy before acting.",
+      },
+      {
+        question: "What qualifies for a Temu price adjustment?",
+        answer:
+          "The current route is conditional and generally requires the same item, variation, seller, and region within 30 days after payment. Promotional or unavailable products may be excluded, shipping is excluded, and the live Price adjustment control decides eligibility.",
+      },
+    ],
+  },
+  {
+    id: "post-038",
+    slug: "how-to-check-skincare-makeup-legit-philippines",
+    title: "How to Check if Skincare or Makeup Is Legit in PH",
+    excerpt:
+      "Check the exact FDA cosmetic notification, responsible company, seller identity, packaging, batch clues, price, and purchase record together.",
+    content: `
+Finding a cosmetic name in an official database is useful, but it does not authenticate the bottle, tube, palette, or seller in front of you. A counterfeit can copy a legitimate product name or number, while a genuine listing can be difficult to find because the search term, variant, or portal record differs.
+
+The safest practical approach is layered: check the Philippine FDA notification, trace the responsible company and seller, inspect the exact packaging and batch details, compare the price and listing, and keep a receipt.
+
+## How we assessed this guide
+
+We reviewed the Philippine FDA [Cosmetic Product Notification search](https://verification.fda.gov.ph/cosmetic_product_notificationsrch.php) and FDA's advisory on [using the Verification Portal](https://www.fda.gov.ph/fda-advisory-no-2023-2238-utilization-of-the-food-and-drug-administration-fda-verification-portal/).
+
+We also used the FDA's [FAQ on cosmetic notification under the ASEAN framework](https://www.fda.gov.ph/wp-content/uploads/2021/03/FAQ_Notification.pdf). It explains that accepting a notification is not product approval or confirmation that every requirement has been met; post-market surveillance still applies. An FDA advisory about an [unauthorized cosmetic product](https://www.fda.gov.ph/fda-advisory-no-2021-0692-the-food-and-drug-administration-fda-warns-the-public-from-purchasing-and-using-the-unauthorized-cosmetic-product-ar-vitamin-e-sweat-protect-moisturizing-roll-on/) illustrates why buyers should use current official records rather than a seller's claim alone.
+
+This guide does not laboratory-test, authenticate, or medically assess a product. Portal entries, packaging, sellers, and advisories can change, so recheck the current record before buying or using a product.
+
+## Understand FDA-notified, not FDA-approved
+
+For a cosmetic, use the phrase FDA-notified, not FDA-approved. A matching notification means the named product and responsible company appear in the portal under the displayed record and validity information. It is a regulatory signal, not a guarantee about the physical item, seller, batch, ingredient accuracy, or suitability for your skin.
+
+The ASEAN notification framework places responsibility on the company and allows post-market monitoring. Acceptance does not mean the regulator individually endorsed the cosmetic or confirmed every claim. Avoid listings that turn “notified” into “approved,” “certified authentic,” or a medical promise.
+
+A portal match is not proof of authenticity for the physical product. Counterfeit packaging can copy a real brand, notification number, barcode, or batch format. Continue with seller and item checks even after finding a record.
+
+## Search the FDA portal precisely
+
+Start with the exact text on the listing or package, not a shortened social-media name. Search available fields and compare:
+
+- Product or brand name
+- Exact shade, scent, strength, set, or variant where recorded
+- Cosmetic product notification or registration reference
+- Responsible company, importer, distributor, or market authorization holder shown
+- Notification and validity dates
+- Product details in the record versus the label and listing
+
+Try careful spelling variations, punctuation, spacing, and the responsible company if the first search fails. Do not substitute a record for another shade, formula, size, or similarly named product.
+
+Open the result and save the official page or a dated screenshot. Then compare it with the physical label and seller's claim. A seller-provided screenshot can be outdated or edited, so repeat the search yourself through the official portal.
+
+## Verify the seller and supply trail
+
+Identify who is selling the item and how that seller connects to the brand or responsible company. Useful checks include:
+
+- Brand-owned Philippine store or a retailer named through the brand's official channel
+- Marketplace shop legal or business identity and contact information
+- Consistent invoice or receipt details
+- Local importer or distributor matching the portal and label where applicable
+- Recent exact-item reviews that show packaging, batch, seal, and seller handling
+- A clear return route for a wrong, damaged, leaking, opened, or missing item
+
+A marketplace badge, follower count, high rating, or “authentic” word is not conclusive by itself. Follow the [Shopee seller legitimacy workflow](/blog/how-to-check-shopee-seller-legit-philippines) and the [online product review checklist](/blog/online-product-review-checklist-philippines) to separate seller history from exact-item evidence.
+
+For a traceable retailer context, the [Sephora PH beauty guide](/blog/sephora-ph-beauty-guide) explains how to check the exact product, price, stock, ingredients, and current return terms. A recognizable retailer still does not remove the need to choose the correct item and check suitability.
+
+## Inspect the exact item and packaging
+
+Compare the received item with current official brand information where available. Check the product name, shade or variant, net content, ingredient list, directions, warnings, responsible company, batch or lot marking, seal, print quality, container, and included leaflet.
+
+One packaging difference is not automatic proof of a counterfeit. Brands can redesign packaging, different markets can use different labels, and batches can vary. Ask the brand or responsible company through an official channel when a material discrepancy cannot be explained.
+
+Treat a copied-looking barcode or QR code cautiously. A code can lead to a real page while being printed on a fake item. The code, batch, seller, packaging, receipt, and portal record should tell a consistent story.
+
+Do not use smell, color, texture, or skin reaction as an authenticity test. These can vary and testing an unknown product on yourself can cause harm. If a seal is broken, the product looks contaminated, or use causes irritation, stop and seek appropriate professional advice.
+
+## Compare price and listing claims without jumping to conclusions
+
+A very low price is a reason to investigate, not standalone proof. Compare the same size, variant, bundle, seller type, and current official price context. Samples, old packaging, near-expiry stock, parallel imports, and promotions can affect price, but the seller should be able to explain what is being sold.
+
+Walk away when several risks appear together: unclear seller identity, copied brand text, a notification record for a different variant, missing batch or responsible-company details, altered seals, impossible medical claims, pressure to pay outside the platform, and a price far below traceable sources without explanation.
+
+Save the listing before checkout. If it changes after purchase, your screenshot, order confirmation, receipt, and packaging photos establish the transaction you actually made.
+
+## Worked cosmetic-check decision
+
+Suppose a marketplace listing offers a serum at a steep discount and displays an FDA number in one image.
+
+1. Search the exact serum name, variant, and responsible company in the FDA portal instead of trusting the listing image.
+2. Confirm that the portal result is current and matches the formula or variant, company, and label details. Do not treat a similarly named serum as the same record.
+3. Check the brand's official Philippine channel for the seller or distributor relationship. If none is shown, ask for a traceable explanation and receipt.
+4. Compare current packaging references with the listing's seal, batch placement, net content, ingredient panel, and responsible-company text.
+5. Compare the same size and variant with traceable sellers. Record whether the price difference has a credible explanation.
+6. If the portal matches but the seller and physical-item trail do not, do not call the item authentic. Choose a more traceable source or ask the responsible company.
+7. If the portal has no result, do not automatically label the product counterfeit. Recheck spelling, variant, and company, then contact the FDA or responsible company when the gap remains.
+
+The decision is based on agreement across layers. No single badge, number, review, or packaging clue carries the whole conclusion.
+
+## What to do when there is no result or a mismatch
+
+A no result is not automatically proof of a counterfeit. Search terms can be incomplete, portal entries can be corrected, and the exact variant may use a different record. Save what you searched, then verify with the FDA or responsible company through current official contact information.
+
+When the portal result belongs to another product, company, or validity period, do not let the seller substitute it as evidence. Ask for the record corresponding to the exact item. If a delivered product is wrong, damaged, leaking, unsealed, or materially different from the listing, stop use, preserve the parcel and item, and use the platform's official remedy route.
+
+For suspected unauthorized or unsafe cosmetics, check current FDA advisories and reporting channels. Avoid public accusations based on one uncertain clue; share organized evidence with the platform, responsible company, or authority able to assess it.
+
+## Cosmetic legitimacy checklist
+
+1. Record the exact product, size, shade, variant, and seller.
+2. Search the official FDA portal yourself.
+3. Match the responsible company and validity details.
+4. Confirm the seller or distributor relationship through an official channel where possible.
+5. Compare packaging, label, batch, seal, ingredients, and net content.
+6. Compare the same product and size with traceable price references.
+7. Read exact-item reviews and the return policy without treating reviews as authentication.
+8. Save the listing, seller page, receipt, order confirmation, and parcel evidence.
+9. Do not use an unknown cosmetic as a test of whether it is genuine.
+10. Escalate unresolved records or safety concerns through current official channels.
+
+## Limitations and live-policy check
+
+This guide was reviewed on 2026-08-03. The FDA portal, notification validity, advisories, company relationships, packaging, formulas, seller status, and platform policies can change. A database check is neither a laboratory test nor a physical authentication service.
+
+Recheck the exact product and current official record at the time of purchase. For allergies, irritation, pregnancy-related questions, medication interactions, or skin disease, ask a qualified health professional rather than relying on a listing or this guide.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. We do not manufacture, sell, laboratory-test, notify, approve, or authenticate cosmetics, and we cannot guarantee a seller or item. Confirm the current FDA record, brand or responsible-company information, seller details, ingredients, and return terms before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Beauty Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-03",
+    lastReviewed: "2026-08-03",
+    readTime: 14,
+    tags: ["skincare", "makeup", "cosmetics", "fda-notification", "authenticity", "philippines"],
+    recommendationIntent: {
+      topics: ["cosmetic-authenticity", "seller-checking"],
+      platforms: ["Shopee PH", "Sephora PH"],
+      deals: { categories: ["Beauty", "Skincare"], tags: ["beauty", "skincare", "makeup"] },
+    },
+    coverGradient: "from-fuchsia-800 to-rose-200",
+    faqs: [
+      {
+        question: "Does an FDA cosmetic notification prove that my item is authentic?",
+        answer:
+          "No. It is a useful regulatory signal for the named product and responsible company, but a counterfeit can copy a real name or number. Check seller identity, packaging, batch and seal clues, price, and receipt too.",
+      },
+      {
+        question: "Should I call a cosmetic FDA-approved?",
+        answer:
+          "Use FDA-notified for a cosmetic record. Under the ASEAN framework, accepting a notification is not product approval or confirmation that every requirement has been met.",
+      },
+      {
+        question: "Does no FDA portal result mean skincare or makeup is fake?",
+        answer:
+          "Not automatically. Recheck the exact spelling, variant, responsible company, and validity details. If the gap remains, ask the FDA or responsible company through a current official channel and avoid using an uncertain item.",
+      },
+    ],
+  },
+  {
+    id: "post-039",
+    slug: "online-electrical-appliance-safety-ps-icc-philippines",
+    title: "Online Electrical Appliance Safety: PS and ICC Guide Philippines",
+    excerpt:
+      "Check whether an electrical product is covered, verify its PS or ICC record, and confirm the exact model, seller, voltage, plug, warranty, and instructions.",
+    content: `
+A PS mark, ICC sticker, or QR image can be a useful checkpoint when buying an electrical appliance online in the Philippines. It is not enough to judge a product from a blurry seller photo or to assume every electrical item follows the same certification route.
+
+This workflow starts with the current mandatory-product list, then connects the mark or sticker to the exact model and seller before checking voltage, plug condition, installation, warranty, and recall information.
+
+## How we assessed this guide
+
+We reviewed the DTI-Bureau of Philippine Standards [live list of products under mandatory certification](https://bps.dti.gov.ph/index.php/product-certification/list-of-products-under-mandatory-certification), the official explanation of [PS and ICC marks](https://bps.dti.gov.ph/index.php/product-certification/ps-and-icc-marks), and the [DTI-BPS product certification overview](https://bps.dti.gov.ph/product-certification).
+
+We also checked the DTI-BPS [certified-products resources](https://bps.dti.gov.ph/index.php/product-certification/certified-products) and a DTI enforcement report involving [unsafe appliances and misleading or nonconforming marks](https://fairtrade.dti.gov.ph/press-release/dti-removes-%E2%82%B153m-in-unsafe-appliances-ceramic-wares-to-safeguard-consumers/).
+
+SulitScan does not inspect, electrically test, certify, install, repair, or recall products. Certification coverage and records can change. Use the current official list and verification channel for the exact model rather than a copied count or marketplace claim.
+
+## First decide whether the product is covered
+
+Only product types under a current mandatory certification scheme require the applicable PS mark or ICC sticker. Do not demand one from every electrical or electronic product, and do not assume that an unlisted product has been certified merely because it plugs in.
+
+The current live list includes many household appliances and electronics, lighting and wiring devices, plugs and socket-outlets, extension cord sets, flexible cords, wires, and cables. Coverage can be defined by product type, standard, scope, or technical characteristics, so compare the listing with the current official entry.
+
+Record the exact product type, brand, full model, rating, and intended use. If the seller uses a broad phrase such as “home appliance” while the actual item is specialized, ask the DTI-BPS verification contact which scope applies instead of guessing.
+
+Do not publish or rely on a total number of covered products. Official pages can show different counts while the live list changes; the entries and scope on the current list matter more than a headline total.
+
+## Understand PS and ICC without oversimplifying
+
+The Philippine Standard Quality or Safety Certification Mark, usually called the PS mark, can cover qualifying local or foreign manufacturers and products under the applicable certification route. It is not simply shorthand for “made in the Philippines.”
+
+The Import Commodity Clearance sticker, or ICC sticker, is issued to importers for covered imported products shown to conform through the applicable inspection and testing route. It is not a general customs-payment sticker and does not authenticate every seller listing that displays its image.
+
+The mark or sticker is normally found on the product. DTI-BPS rules allow placement on packaging in specified or impracticable cases, so packaging placement alone is neither automatic proof nor automatic failure. Check the applicable product rule and exact record.
+
+## Verify the exact mark, model, and responsible business
+
+Ask the seller for clear, current images of the actual product label, complete model number, electrical rating, PS mark or ICC sticker where applicable, and packaging. Then verify rather than merely view them.
+
+Use the official DTI-BPS ICC verification app for an ICC sticker and compare every returned detail with the item. For a PS mark, use DTI-BPS Standards Conformity Division guidance and the current certified-product records. Save the dated result and the official page you used.
+
+Compare:
+
+- Brand, manufacturer, importer, or responsible company
+- Full model and suffix, not only the product family
+- Product type and certification scope
+- Certificate, license, or sticker details shown by the official route
+- Electrical rating and other identifying information
+- Current status or validity where displayed
+
+A visible sticker is not conclusive, and a visible mark is not proof by itself. DTI enforcement has found fake or misleading marks and QR results tied to the wrong model or a product outside the returned scope. If the seller's image, QR result, and official record disagree, pause the purchase and ask DTI-BPS or the responsible company.
+
+## Check safety details beyond certification
+
+Certification verification complements the product decision; it does not replace it. Confirm the exact rated voltage and frequency against the intended Philippine installation and the manufacturer's instructions. Check plug shape, grounding, cord length and condition, power rating, required circuit, and whether an adapter or transformer is needed.
+
+Avoid solving a mismatch with an unverified adapter, extension, or altered plug. High-load, heating, cooling, motor, and permanently installed equipment may need a suitable outlet, breaker, clearance, ventilation, mounting, or qualified installer.
+
+Also review:
+
+- Official instructions and warnings in a language you understand
+- Product dimensions, clearances, moisture or indoor-use limits
+- Warranty provider, service location, and spare-part access
+- Seller legal identity, receipt or invoice, and return route
+- Manufacturer or government safety notices and recalls
+- Damage, overheating, loose connections, unusual sound, or odor reported for the exact model
+
+The [energy-efficient appliance guide](/blog/energy-efficient-appliance-buying-guide-philippines) adds DOE label, capacity, consumption, fit, and running-cost checks. An efficient model can still be unsuitable if its certification, voltage, installation, or service route cannot be verified.
+
+## Worked PS-or-ICC decision
+
+Suppose an online seller lists an imported extension cord set and shows a small QR sticker in one product photo.
+
+1. Check the current DTI-BPS mandatory list and confirm whether the exact product type and scope are covered.
+2. Record the brand, full model, cord rating, plug and socket details, importer, and listing seller before comparing the sticker.
+3. Ask for a clear photo of the sticker and product label from the actual stock, not a generic catalog render.
+4. Use the official DTI-BPS ICC verification app and compare the returned product, model, importer, and scope with the listing.
+5. If the QR returns a different model or unrelated product, do not accept the sticker as evidence. Save the mismatch and ask the seller and DTI-BPS for clarification.
+6. Even if the record matches, check voltage, maximum load, wire and plug condition, instructions, warranty, receipt, and seller return route.
+7. If the product arrives with a damaged cord, loose socket, altered label, or different model, do not energize it. Preserve parcel evidence and use the official remedy channel.
+
+For a locally manufactured covered product using a PS mark, the workflow changes at step four: check the mark through current DTI-BPS Standards Conformity Division guidance and certified-product records instead of treating the ICC app as the PS verification tool.
+
+## Verify the seller and listing evidence
+
+A legitimate certificate connected to one model does not make every item in a seller's catalog safe. Use the [online product review checklist](/blog/online-product-review-checklist-philippines) to find exact-model complaints and the [online purchase warranty guide](/blog/online-purchase-warranty-guide-philippines) to save the seller, warranty, serial, and claim terms.
+
+Ask whether the listing is local stock, imported stock, refurbished, open-box, display, or used. Condition can affect cord integrity, missing guards, accessories, warranty, and certification interpretation. Require the exact variation and model on the order confirmation.
+
+Keep payment and support inside the marketplace or retailer's official route. Do not send money to a personal account or share one-time codes because a seller says certification requires a separate release fee.
+
+## Inspect delivery before first use
+
+Photograph the unopened parcel, label, packaging, product, model plate, plug, cord, accessories, and any mark or sticker. Compare the received model with the order and the record you checked.
+
+Do not plug in an item with a crushed case, exposed wire, bent or loose pin, moisture, burning smell, damaged insulation, missing guard, or unexplained model mismatch. Follow manufacturer instructions. For installation or electrical work beyond ordinary plug-in use, use a qualified professional.
+
+Keep the packaging, receipt, seller answers, verification result, serial reference, and warranty record until the product has been safely inspected and the immediate return period has passed. If a safety notice or recall applies, follow the current manufacturer or authority instruction.
+
+## Electrical appliance safety checklist
+
+1. Identify the exact product type, brand, model, rating, and intended use.
+2. Check the current DTI-BPS mandatory-product list and scope.
+3. Determine whether the applicable route uses a PS mark or ICC sticker.
+4. Obtain clear actual-stock photos of the product label and mark or sticker.
+5. Verify ICC through the official app or PS through current DTI-BPS records and guidance.
+6. Match the returned company, product type, model, and scope.
+7. Confirm voltage, frequency, plug, grounding, power, circuit, and installation needs.
+8. Check seller identity, receipt, warranty, service, returns, and current safety notices.
+9. Inspect the delivered item before energizing it.
+10. Stop and escalate any model, record, label, or physical-safety mismatch.
+
+## Limitations and live-policy check
+
+This guide was reviewed on 2026-08-03. Mandatory-product scope, standards, certification status, app behavior, records, labeling rules, sellers, models, recalls, and installation instructions can change. A matching record does not guarantee freedom from damage, misuse, counterfeiting, wrong-model delivery, or future failure.
+
+Use current DTI-BPS and manufacturer information for the exact item. When the scope or record is unclear, ask DTI-BPS before purchase. When an item appears damaged or unsafe, do not test it merely to create evidence.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. We are not DTI-BPS, a testing laboratory, certifier, seller, importer, manufacturer, electrician, or service center. We cannot certify a product or guarantee safety. Verify the exact model, current official record, instructions, seller, voltage, installation, warranty, and recall status before buying or using it. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Safety",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-03",
+    lastReviewed: "2026-08-03",
+    readTime: 14,
+    tags: ["electrical-safety", "appliances", "ps-mark", "icc-sticker", "dti-bps", "philippines"],
+    recommendationIntent: {
+      topics: ["appliance-buying", "electrical-safety"],
+    },
+    coverGradient: "from-slate-900 to-yellow-200",
+    faqs: [
+      {
+        question: "Does every electrical product in the Philippines need a PS mark or ICC sticker?",
+        answer:
+          "No. Only product types within the current mandatory certification scheme require the applicable mark or sticker. Check the live DTI-BPS list and product scope for the exact item.",
+      },
+      {
+        question: "How do I verify an ICC sticker or PS mark?",
+        answer:
+          "Use the official DTI-BPS verification app for an ICC sticker and compare the returned model, company, and scope. For a PS mark, follow current DTI-BPS Standards Conformity Division guidance and certified-product records.",
+      },
+      {
+        question: "Is a matching PS or ICC record enough to prove an appliance is safe?",
+        answer:
+          "No. It is one regulatory check. Also confirm the delivered model, voltage, plug and cord condition, instructions, seller, warranty, installation, damage, and current safety notices or recalls.",
       },
     ],
   },

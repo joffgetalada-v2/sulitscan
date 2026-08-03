@@ -329,6 +329,272 @@ const adsenseBuyerGuideCases = [
   },
 ]
 
+const augustBuyerGuideCases = [
+  {
+    id: "post-035",
+    slug: "how-to-stack-shopee-vouchers-philippines",
+    titlePattern: /stack shopee vouchers/i,
+    workedHeading: "## Worked voucher-stack example",
+    topics: ["voucher-stacking", "checkout-checklist", "shopee-shopping"],
+    platforms: ["Shopee PH"],
+    deals: { tags: ["shopee"], maxPrice: 1000 },
+    requiredSources: [
+      "https://help.shopee.ph/portal/4/article/81188-How-do-I-use-saved-Vouchers-during-checkout",
+      "https://help.shopee.ph/portal/4/article/82304-%5BVouchers%5D-How-are-voucher-promotions-calculated-at-checkout",
+      "https://help.shopee.ph/portal/4/article/81532-Other-FAQs-related-to-voucher-codes",
+    ],
+    requiredLinks: [
+      "/blog/why-final-prices-change-at-checkout",
+      "/blog/voucher-shipping-return-checklist",
+      "/blog/shopee-return-refund-guide-philippines",
+    ],
+  },
+  {
+    id: "post-036",
+    slug: "shopee-return-refund-guide-philippines",
+    titlePattern: /shopee return.*refund/i,
+    workedHeading: "## Worked return-request example",
+    topics: ["returns", "shopping-safety", "shopee-shopping"],
+    platforms: ["Shopee PH"],
+    deals: undefined,
+    requiredSources: [
+      "https://help.shopee.ph/portal/4/article/81231?seo=1",
+      "https://help.shopee.ph/portal/4/article/81183-%5BReturn-Refund%5D-What-are-the-effective-supporting-documents-I-can-submit-as-evidence-for-my-refund%2Freturn-request%3F-%28ENG%29",
+      "https://lawphil.net/statutes/repacts/ra2023/ra_11967_2023.html",
+    ],
+    requiredLinks: [
+      "/blog/unboxing-video-evidence-online-shopping-philippines",
+      "/blog/online-purchase-warranty-guide-philippines",
+      "/blog/how-to-check-shopee-seller-legit-philippines",
+    ],
+  },
+  {
+    id: "post-037",
+    slug: "temu-returns-refunds-price-adjustment-philippines",
+    titlePattern: /temu returns.*refunds.*price adjustment/i,
+    workedHeading: "## Worked remedy decision",
+    topics: ["returns", "shopping-safety", "temu-buying"],
+    platforms: ["Temu"],
+    deals: undefined,
+    requiredSources: [
+      "https://www.temu.com/ph/return-and-refund-policy.html",
+      "https://www.temu.com/ph/support/c3/what-is--price-adjustment--f-60-s-945.html",
+      "https://www.temu.com/ph/support/c3/support-f-50-s-199.html",
+    ],
+    requiredLinks: [
+      "/blog/temu-shopping-guide-philippines",
+      "/blog/unboxing-video-evidence-online-shopping-philippines",
+      "/blog/online-purchase-warranty-guide-philippines",
+    ],
+  },
+  {
+    id: "post-038",
+    slug: "how-to-check-skincare-makeup-legit-philippines",
+    titlePattern: /check.*skincare.*makeup.*legit/i,
+    workedHeading: "## Worked cosmetic-check decision",
+    topics: ["cosmetic-authenticity", "seller-checking"],
+    platforms: ["Shopee PH", "Sephora PH"],
+    deals: { categories: ["Beauty", "Skincare"], tags: ["beauty", "skincare", "makeup"] },
+    requiredSources: [
+      "https://verification.fda.gov.ph/cosmetic_product_notificationsrch.php",
+      "https://www.fda.gov.ph/fda-advisory-no-2023-2238-utilization-of-the-food-and-drug-administration-fda-verification-portal/",
+      "https://www.fda.gov.ph/wp-content/uploads/2021/03/FAQ_Notification.pdf",
+    ],
+    requiredLinks: [
+      "/blog/online-product-review-checklist-philippines",
+      "/blog/how-to-check-shopee-seller-legit-philippines",
+      "/blog/sephora-ph-beauty-guide",
+    ],
+  },
+  {
+    id: "post-039",
+    slug: "online-electrical-appliance-safety-ps-icc-philippines",
+    titlePattern: /electrical appliance.*ps.*icc/i,
+    workedHeading: "## Worked PS-or-ICC decision",
+    topics: ["appliance-buying", "electrical-safety"],
+    platforms: undefined,
+    deals: undefined,
+    requiredSources: [
+      "https://bps.dti.gov.ph/index.php/product-certification/list-of-products-under-mandatory-certification",
+      "https://bps.dti.gov.ph/index.php/product-certification/ps-and-icc-marks",
+      "https://bps.dti.gov.ph/index.php/product-certification/certified-products",
+    ],
+    requiredLinks: [
+      "/blog/energy-efficient-appliance-buying-guide-philippines",
+      "/blog/online-purchase-warranty-guide-philippines",
+      "/blog/online-product-review-checklist-philippines",
+    ],
+  },
+]
+
+test("August buyer guides use the exact ordered registry contract and substantive structure", () => {
+  assert.deepEqual(
+    postsModule.posts.slice(-augustBuyerGuideCases.length).map((post) => post.slug),
+    augustBuyerGuideCases.map((guideCase) => guideCase.slug)
+  )
+
+  const titles = []
+  const excerpts = []
+
+  for (const guideCase of augustBuyerGuideCases) {
+    const post = postsModule.getPostBySlug(guideCase.slug)
+    assert.ok(post, `${guideCase.slug} fixture must exist`)
+    assert.equal(post.id, guideCase.id)
+    assert.match(post.title, guideCase.titlePattern)
+    assert.equal(post.publishedAt, "2026-08-03")
+    assert.equal(post.lastReviewed, "2026-08-03")
+    assert.ok(post.excerpt.length <= 160, `${guideCase.slug} excerpt is too long`)
+    assert.ok(post.content.split(/\s+/).length >= 800, `${guideCase.slug} must contain at least 800 words`)
+    assert.ok((post.content.match(/^## /gm) ?? []).length >= 5, `${guideCase.slug} needs at least five H2 sections`)
+    assert.match(post.content, /^## How we assessed this guide$/im)
+    assert.ok(post.content.includes(guideCase.workedHeading), `${guideCase.slug} needs its worked decision section`)
+    const workedBlock = post.content.split(guideCase.workedHeading)[1]?.split("\n\n## ")[0] ?? ""
+    assert.ok((workedBlock.match(/^\d+\. /gm) ?? []).length >= 3, `${guideCase.slug} worked section needs a numbered workflow`)
+    assert.match(post.content, /^## .*checklist$/im)
+    assert.match(post.content, /^## Limitations and live-policy check$/im)
+    assert.match(post.content, /^## Affiliate disclosure$/im)
+    assert.ok(post.faqs?.length >= 3, `${guideCase.slug} needs at least three visible FAQs`)
+    assert.deepEqual(post.recommendationIntent?.topics, guideCase.topics)
+    assert.deepEqual(post.recommendationIntent?.platforms, guideCase.platforms)
+    assert.deepEqual(post.recommendationIntent?.deals, guideCase.deals)
+
+    for (const source of guideCase.requiredSources) {
+      assert.ok(post.content.includes(source), `${guideCase.slug} must cite ${source}`)
+    }
+    for (const link of guideCase.requiredLinks) {
+      assert.ok(post.content.includes(link), `${guideCase.slug} must link to ${link}`)
+    }
+
+    assert.doesNotMatch(`${post.content} ${post.excerpt}`, /shein|lazada|aliexpress|importtaxph|applyreadycv/i)
+    titles.push(post.title)
+    excerpts.push(post.excerpt)
+  }
+
+  assert.equal(new Set(titles).size, augustBuyerGuideCases.length, "August guide titles must be distinct")
+  assert.equal(new Set(excerpts).size, augustBuyerGuideCases.length, "August guide excerpts must be distinct")
+})
+
+test("August buyer guides preserve the fact sheet's decision-critical cautions", () => {
+  const voucher = postsModule.getPostBySlug("how-to-stack-shopee-vouchers-philippines")
+  const shopeeReturn = postsModule.getPostBySlug("shopee-return-refund-guide-philippines")
+  const temuReturn = postsModule.getPostBySlug("temu-returns-refunds-price-adjustment-philippines")
+  const cosmetics = postsModule.getPostBySlug("how-to-check-skincare-makeup-legit-philippines")
+  const electrical = postsModule.getPostBySlug("online-electrical-appliance-safety-ps-icc-philippines")
+
+  assert.ok(voucher && shopeeReturn && temuReturn && cosmetics && electrical)
+  assert.match(voucher.content, /one eligible Shop Voucher per shop/i)
+  assert.match(voucher.content, /one Shopee platform voucher/i)
+  assert.match(voucher.content, /minimum spend/i)
+  assert.match(voucher.content, /discount cap/i)
+  assert.match(voucher.content, /Shopee Coins.*separate/i)
+
+  assert.match(shopeeReturn.content, /deadline shown.*live order/i)
+  assert.match(shopeeReturn.content, /video.*not.*every (?:request|case|claim)/i)
+  assert.match(shopeeReturn.content, /direct exchange.*not (?:available|offered)/i)
+
+  assert.match(temuReturn.content, /updated (?:on )?2026-03-23/i)
+  assert.match(temuReturn.content, /45.*60.*90-day/i)
+  assert.match(temuReturn.content, /postmarked within 14 days/i)
+  assert.match(temuReturn.content, /30-day price adjustment/i)
+  assert.match(temuReturn.content, /(?:PHP|₱)\s?75/i)
+
+  assert.match(cosmetics.content, /FDA-notified/i)
+  assert.match(cosmetics.content, /not FDA-approved/i)
+  assert.match(cosmetics.content, /not.*proof of authenticity/i)
+  assert.match(cosmetics.content, /no result.*not automatically/i)
+
+  assert.match(electrical.content, /only product types.*mandatory certification/i)
+  assert.match(electrical.content, /official DTI-BPS.*verification app/i)
+  assert.match(electrical.content, /visible (?:mark|sticker).*not (?:proof|conclusive)/i)
+  assert.match(electrical.content, /voltage/i)
+})
+
+test("established guides link contextually into the August buyer-workflow cluster", () => {
+  for (const [sourceSlug, targetSlug] of [
+    ["why-final-prices-change-at-checkout", "how-to-stack-shopee-vouchers-philippines"],
+    ["how-to-check-shopee-seller-legit-philippines", "shopee-return-refund-guide-philippines"],
+    ["temu-shopping-guide-philippines", "temu-returns-refunds-price-adjustment-philippines"],
+    ["best-beauty-finds-under-500-philippines", "how-to-check-skincare-makeup-legit-philippines"],
+    ["energy-efficient-appliance-buying-guide-philippines", "online-electrical-appliance-safety-ps-icc-philippines"],
+  ]) {
+    const post = postsModule.getPostBySlug(sourceSlug)
+    assert.ok(post, `${sourceSlug} fixture must exist`)
+    assert.ok(post.content.includes(`/blog/${targetSlug}`), `${sourceSlug} must link to ${targetSlug}`)
+  }
+})
+
+test("checkout-price guidance preserves Temu's separate conditional adjustment route", () => {
+  const post = postsModule.getPostBySlug("why-final-prices-change-at-checkout")
+  assert.ok(post, "checkout-price guide fixture must exist")
+  assert.doesNotMatch(post.content, /subsequent price drops.*do not retroactively apply/i)
+  assert.ok(post.content.includes("/blog/temu-returns-refunds-price-adjustment-philippines"))
+})
+
+test("August guide deal recommendations match assigned editorial eligibility", () => {
+  const activeIds = new Set(dealsModule.getActiveDeals().map((deal) => deal.id))
+
+  for (const guideCase of augustBuyerGuideCases) {
+    const post = postsModule.getPostBySlug(guideCase.slug)
+    assert.ok(post, `${guideCase.slug} fixture must exist`)
+    const relatedDeals = recommendationsModule.getRelatedDealsForPost(post, 3)
+
+    if (!guideCase.deals) {
+      assert.deepEqual(relatedDeals, [], `${guideCase.slug} must not recommend product deals`)
+      continue
+    }
+
+    assert.ok(relatedDeals.length > 0 && relatedDeals.length <= 3)
+    assert.ok(relatedDeals.every((deal) => activeIds.has(deal.id)))
+    assert.ok(relatedDeals.every((deal) => !dealsModule.isSuspiciousDiscount(deal)))
+    assert.ok(relatedDeals.every((deal) => guideCase.platforms.includes(deal.platform)))
+    if (guideCase.deals.categories) {
+      assert.ok(relatedDeals.every((deal) => guideCase.deals.categories.includes(deal.category)))
+    }
+    assert.ok(relatedDeals.every((deal) => deal.tags.some((tag) => guideCase.deals.tags.includes(tag.toLowerCase()))))
+  }
+})
+
+test("August guide-to-guide recommendations stay specific to each workflow", () => {
+  for (const guideCase of [
+    {
+      slug: "how-to-stack-shopee-vouchers-philippines",
+      required: ["why-final-prices-change-at-checkout"],
+      rejected: [],
+    },
+    {
+      slug: "shopee-return-refund-guide-philippines",
+      required: ["online-purchase-warranty-guide-philippines", "unboxing-video-evidence-online-shopping-philippines"],
+      rejected: [],
+    },
+    {
+      slug: "temu-returns-refunds-price-adjustment-philippines",
+      required: ["online-purchase-warranty-guide-philippines", "unboxing-video-evidence-online-shopping-philippines"],
+      rejected: [],
+    },
+    {
+      slug: "how-to-check-skincare-makeup-legit-philippines",
+      required: ["online-product-review-checklist-philippines"],
+      rejected: ["shopee-return-refund-guide-philippines", "temu-returns-refunds-price-adjustment-philippines"],
+    },
+    {
+      slug: "online-electrical-appliance-safety-ps-icc-philippines",
+      required: ["energy-efficient-appliance-buying-guide-philippines"],
+      rejected: ["shopee-return-refund-guide-philippines", "temu-returns-refunds-price-adjustment-philippines"],
+    },
+  ]) {
+    const post = postsModule.getPostBySlug(guideCase.slug)
+    assert.ok(post, `${guideCase.slug} fixture must exist`)
+    const relatedSlugs = new Set(postsModule.getRelatedPosts(post, 3).map((candidate) => candidate.slug))
+
+    for (const requiredSlug of guideCase.required) {
+      assert.ok(relatedSlugs.has(requiredSlug), `${guideCase.slug} must recommend ${requiredSlug}`)
+    }
+    for (const rejectedSlug of guideCase.rejected) {
+      assert.ok(!relatedSlugs.has(rejectedSlug), `${guideCase.slug} must not recommend ${rejectedSlug}`)
+    }
+  }
+})
+
 function readJpegDimensions(buffer) {
   assert.equal(buffer.readUInt16BE(0), 0xffd8, "asset must have a JPEG file signature")
 

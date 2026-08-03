@@ -81,9 +81,34 @@ const REQUIRED_GROWTH_POSTS = new Set([
   "online-furniture-measurement-guide-philippines",
   "online-purchase-warranty-guide-philippines",
   "energy-efficient-appliance-buying-guide-philippines",
+  "how-to-stack-shopee-vouchers-philippines",
+  "shopee-return-refund-guide-philippines",
+  "temu-returns-refunds-price-adjustment-philippines",
+  "how-to-check-skincare-makeup-legit-philippines",
+  "online-electrical-appliance-safety-ps-icc-philippines",
 ])
 for (const slug of REQUIRED_GROWTH_POSTS) {
   if (!postSlugs.has(slug)) errors.push(`Missing required growth post: "${slug}"`)
+}
+
+// Cover assets are introduced by the image task after the registry entries exist.
+const REQUIRED_GROWTH_POST_COVERS = new Set([
+  "best-home-organization-finds-under-500-philippines",
+  "best-gifts-under-500-philippines",
+  "best-work-from-home-desk-accessories-under-1000-philippines",
+  "best-beauty-finds-under-500-philippines",
+  "back-to-school-essentials-under-500-philippines",
+  "cookware-sets-philippines-buying-guide",
+  "bags-under-500-philippines-buying-guide",
+  "carry-on-luggage-philippines-buying-guide",
+  "makeup-brush-sets-philippines-beginner-guide",
+  "online-product-review-checklist-philippines",
+  "refurbished-vs-used-vs-open-box-philippines",
+  "online-furniture-measurement-guide-philippines",
+  "online-purchase-warranty-guide-philippines",
+  "energy-efficient-appliance-buying-guide-philippines",
+])
+for (const slug of REQUIRED_GROWTH_POST_COVERS) {
   const expectedCover = `coverImage: "/images/guides/${slug}.jpg"`
   if (!postsSrc.includes(expectedCover)) errors.push(`Missing required cover entry for: "${slug}"`)
 }
