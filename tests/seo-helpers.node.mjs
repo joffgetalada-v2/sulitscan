@@ -60,6 +60,12 @@ test("blog SEO titles are unique, branded, and no longer than 65 characters", ()
   assert.equal(new Set(titles).size, titles.length)
   assert.ok(titles.every((title) => title.length <= 65))
   assert.ok(titles.every((title) => title.endsWith("| SulitScan PH")))
+  assert.ok(
+    titles.every((title) => !/\bFilipino \| SulitScan PH$/.test(title)),
+    `blog SEO title ends with an incomplete audience phrase: ${titles.find(
+      (title) => /\bFilipino \| SulitScan PH$/.test(title)
+    )}`
+  )
 })
 
 test("blog SEO titles preserve the subject of representative long guides", () => {
@@ -72,6 +78,19 @@ test("blog SEO titles preserve the subject of representative long guides", () =>
   assert.equal(
     buildBlogSeoTitle(importTaxGuide),
     "Philippine Import Tax Guide for Online Shoppers | SulitScan PH"
+  )
+})
+
+test("blog SEO title keeps the complete audience for the furniture guide", () => {
+  const buildBlogSeoTitle = requireFunction(blogSeoModule, "buildBlogSeoTitle")
+  const furnitureGuide = postsModule.posts.find(
+    (post) => post.slug === "online-furniture-measurement-guide-philippines"
+  )
+
+  assert.ok(furnitureGuide)
+  assert.equal(
+    buildBlogSeoTitle(furnitureGuide),
+    "Online Furniture Measurement Guide for PH Buyers | SulitScan PH"
   )
 })
 

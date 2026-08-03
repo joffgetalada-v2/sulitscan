@@ -45,7 +45,10 @@ export function buildBlogSeoTitle(post: BlogPost): string {
   const availableLength = TITLE_LIMIT - SITE_SUFFIX.length
   if (normalizedTitle.length <= availableLength) return `${normalizedTitle}${SITE_SUFFIX}`
 
-  const subject = normalizedTitle.split(":", 1)[0]
-  const titleSource = subject.length <= availableLength ? subject : normalizedTitle
+  const compactTitle = normalizedTitle.replace(/\bFilipino Buyers\b/gu, "PH Buyers")
+  if (compactTitle.length <= availableLength) return `${compactTitle}${SITE_SUFFIX}`
+
+  const subject = compactTitle.split(":", 1)[0]
+  const titleSource = subject.length <= availableLength ? subject : compactTitle
   return `${truncateAtWordBoundary(titleSource, availableLength)}${SITE_SUFFIX}`
 }

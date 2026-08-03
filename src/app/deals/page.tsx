@@ -25,7 +25,8 @@ export async function generateMetadata({ searchParams }: DealsPageProps): Promis
     ? `Latest Online Deals Philippines — Page ${listing.page}`
     : "Latest Online Deals Philippines"
   const socialTitle = `${title} | SulitScan PH`
-  const description = buildDealsPageDescription(listing.page)
+  const descriptionPage = !listing.isFiltered && listing.isCanonical ? listing.page : 1
+  const description = buildDealsPageDescription(descriptionPage)
 
   return {
     title,

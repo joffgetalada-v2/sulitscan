@@ -25,16 +25,17 @@ function getSlides() {
 export default function DealScannerVisual() {
   const slides = getSlides()
   const [current, setCurrent] = useState(0)
+  const [rotationPaused, setRotationPaused] = useState(false)
 
   const advance = useCallback(() => {
     setCurrent((i) => (i + 1) % slides.length)
   }, [slides.length])
 
   useEffect(() => {
-    if (slides.length <= 1) return
+    if (slides.length <= 1 || rotationPaused) return
     const timer = setInterval(advance, 4000)
     return () => clearInterval(timer)
-  }, [advance, slides.length])
+  }, [advance, rotationPaused, slides.length])
 
   const deal = slides[current]
   if (!deal) return null
@@ -59,7 +60,16 @@ export default function DealScannerVisual() {
   ]
 
   return (
-    <section aria-label="Deal preview" className="relative w-full max-w-md mx-auto select-none">
+    <section
+      aria-label="Deal preview"
+      className="relative w-full max-w-md mx-auto select-none"
+      onFocusCapture={() => setRotationPaused(true)}
+      onBlurCapture={(event) => {
+        if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
+          setRotationPaused(false)
+        }
+      }}
+    >
       {/* Glow halo */}
       <div
         className="absolute -inset-6 bg-gradient-to-br from-green-300/20 via-emerald-200/10 to-transparent rounded-3xl blur-2xl pointer-events-none"
@@ -231,7 +241,7 @@ export default function DealScannerVisual() {
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
               <p className="text-center text-[11px] text-slate-400 mt-2 leading-snug">
-                Affiliate link, clearly disclosed. You decide when to visit.
+                Review the deal details first. The detail page contains the clearly disclosed partner link.
               </p>
             </div>
           </motion.div>

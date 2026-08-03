@@ -207,6 +207,40 @@ test("homepage scanner opens the active internal deal detail page", async ({ pag
   )
 })
 
+test("homepage scanner explains that its detail page contains the partner link", async ({ page }) => {
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const preview = page.getByRole("region", { name: "Deal preview" })
+  await expect(preview).toContainText(
+    "Review the deal details first. The detail page contains the clearly disclosed partner link."
+  )
+})
+
+test("homepage scanner keeps its focused deal link stable past auto-rotation", async ({ page }) => {
+  test.slow()
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const preview = page.getByRole("region", { name: "Deal preview" })
+  const detailLink = preview.getByRole("link", { name: "View Deal Details" })
+  const initialHref = await detailLink.getAttribute("href")
+  expect(initialHref).toMatch(/^\/deals\/[a-z0-9-]+$/)
+  await expect.poll(
+    () => detailLink.getAttribute("href"),
+    { timeout: 6000 }
+  ).not.toBe(initialHref)
+
+  const focusedHref = await detailLink.getAttribute("href")
+  const focusedNode = await detailLink.elementHandle()
+  expect(focusedNode).not.toBeNull()
+  await detailLink.focus()
+  await expect(detailLink).toBeFocused()
+  await page.waitForTimeout(4500)
+
+  expect(await focusedNode!.evaluate((element) => document.activeElement === element)).toBe(true)
+  await expect(detailLink).toBeFocused()
+  await expect(detailLink).toHaveAttribute("href", focusedHref as string)
+})
+
 test("header guide announcement links to the blog", async ({ page }) => {
   await page.goto("/", { waitUntil: "domcontentloaded" })
 
@@ -1038,6 +1072,18 @@ test("filtered deals are noindex and preserve URL state", async ({ page }) => {
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
   await expect(page.locator('input[name="q"]')).toHaveValue("brush")
   await expect(page.locator('select[name="store"]')).toHaveValue("Sephora PH")
+})
+
+test("filtered and noncanonical later deal URLs keep the page-one description", async ({ page }) => {
+  const pageOneDescription = "Browse curated online deals from Temu, Shopee PH, and Sephora PH with buyer notes on every listing."
+
+  for (const path of ["/deals?store=Temu&page=2", "/deals?page=02"]) {
+    await page.goto(path, { waitUntil: "domcontentloaded" })
+    await expect(page.locator('meta[name="description"]')).toHaveAttribute(
+      "content",
+      pageOneDescription
+    )
+  }
 })
 
 test("invalid deal filters normalize visibly but remain noindex", async ({ page }) => {
