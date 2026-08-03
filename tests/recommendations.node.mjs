@@ -333,6 +333,8 @@ const augustBuyerGuideCases = [
   {
     id: "post-035",
     slug: "how-to-stack-shopee-vouchers-philippines",
+    coverImage: "/images/guides/how-to-stack-shopee-vouchers-philippines.jpg",
+    coverImageAlt: "Philippine shopper comparing a generic phone checkout with blank voucher cards, a calculator, and a receipt",
     titlePattern: /stack shopee vouchers/i,
     workedHeading: "## Worked voucher-stack example",
     topics: ["voucher-stacking", "checkout-checklist", "shopee-shopping"],
@@ -352,6 +354,8 @@ const augustBuyerGuideCases = [
   {
     id: "post-036",
     slug: "shopee-return-refund-guide-philippines",
+    coverImage: "/images/guides/shopee-return-refund-guide-philippines.jpg",
+    coverImageAlt: "Parcel return evidence scene with a phone, sealed box, receipt, and organized photo documentation",
     titlePattern: /shopee return.*refund/i,
     workedHeading: "## Worked return-request example",
     topics: ["returns", "shopping-safety", "shopee-shopping"],
@@ -371,6 +375,8 @@ const augustBuyerGuideCases = [
   {
     id: "post-037",
     slug: "temu-returns-refunds-price-adjustment-philippines",
+    coverImage: "/images/guides/temu-returns-refunds-price-adjustment-philippines.jpg",
+    coverImageAlt: "Brand-neutral cross-border parcel with blank return and price-comparison cards beside a calculator",
     titlePattern: /temu returns.*refunds.*price adjustment/i,
     workedHeading: "## Worked remedy decision",
     topics: ["returns", "shopping-safety", "temu-buying"],
@@ -390,6 +396,8 @@ const augustBuyerGuideCases = [
   {
     id: "post-038",
     slug: "how-to-check-skincare-makeup-legit-philippines",
+    coverImage: "/images/guides/how-to-check-skincare-makeup-legit-philippines.jpg",
+    coverImageAlt: "Skincare and makeup verification desk with generic products, magnifier, laptop search, batch, and seal clues",
     titlePattern: /check.*skincare.*makeup.*legit/i,
     workedHeading: "## Worked cosmetic-check decision",
     topics: ["cosmetic-authenticity", "seller-checking"],
@@ -409,6 +417,8 @@ const augustBuyerGuideCases = [
   {
     id: "post-039",
     slug: "online-electrical-appliance-safety-ps-icc-philippines",
+    coverImage: "/images/guides/online-electrical-appliance-safety-ps-icc-philippines.jpg",
+    coverImageAlt: "Shopper inspecting a generic charger and small appliance with a magnifier, voltage shapes, and safety checklist",
     titlePattern: /electrical appliance.*ps.*icc/i,
     workedHeading: "## Worked PS-or-ICC decision",
     topics: ["appliance-buying", "electrical-safety"],
@@ -426,6 +436,15 @@ const augustBuyerGuideCases = [
     ],
   },
 ]
+
+test("August buyer guides declare the exact cover registry contract", () => {
+  for (const guideCase of augustBuyerGuideCases) {
+    const post = postsModule.getPostBySlug(guideCase.slug)
+    assert.ok(post, `${guideCase.slug} fixture must exist`)
+    assert.equal(post.coverImage, guideCase.coverImage)
+    assert.equal(post.coverImageAlt, guideCase.coverImageAlt)
+  }
+})
 
 test("August buyer guides use the exact ordered registry contract and substantive structure", () => {
   assert.deepEqual(
@@ -722,6 +741,23 @@ test("AdSense-readiness buyer guides use five distinct 1600x900 JPEG cover asset
 
   assert.equal(new Set(coverPaths).size, adsenseBuyerGuideCases.length)
   assert.equal(new Set(contentHashes).size, adsenseBuyerGuideCases.length)
+})
+
+test("August buyer guides use five distinct 1600x900 JPEG cover assets", () => {
+  const coverPaths = []
+  const contentHashes = []
+
+  for (const guideCase of augustBuyerGuideCases) {
+    const assetPath = resolve("public", guideCase.coverImage.replace(/^\/+/, ""))
+    assert.ok(existsSync(assetPath), `${guideCase.coverImage} must exist under public/`)
+    const asset = readFileSync(assetPath)
+    assert.deepEqual(readJpegDimensions(asset), { width: 1600, height: 900 })
+    coverPaths.push(guideCase.coverImage)
+    contentHashes.push(createHash("sha256").update(asset).digest("hex"))
+  }
+
+  assert.equal(new Set(coverPaths).size, augustBuyerGuideCases.length)
+  assert.equal(new Set(contentHashes).size, augustBuyerGuideCases.length)
 })
 
 test("weekly search-led guides use the required registry metadata and editorial structure", () => {

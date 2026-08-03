@@ -1244,6 +1244,29 @@ const adsenseReadinessGuides = [
   "energy-efficient-appliance-buying-guide-philippines",
 ]
 
+const augustBuyerGuides = [
+  {
+    slug: "how-to-stack-shopee-vouchers-philippines",
+    coverAlt: "Philippine shopper comparing a generic phone checkout with blank voucher cards, a calculator, and a receipt",
+  },
+  {
+    slug: "shopee-return-refund-guide-philippines",
+    coverAlt: "Parcel return evidence scene with a phone, sealed box, receipt, and organized photo documentation",
+  },
+  {
+    slug: "temu-returns-refunds-price-adjustment-philippines",
+    coverAlt: "Brand-neutral cross-border parcel with blank return and price-comparison cards beside a calculator",
+  },
+  {
+    slug: "how-to-check-skincare-makeup-legit-philippines",
+    coverAlt: "Skincare and makeup verification desk with generic products, magnifier, laptop search, batch, and seal clues",
+  },
+  {
+    slug: "online-electrical-appliance-safety-ps-icc-philippines",
+    coverAlt: "Shopper inspecting a generic charger and small appliance with a magnifier, voltage shapes, and safety checklist",
+  },
+]
+
 test("weekly growth guides fit narrow mobile viewports", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
 
@@ -1347,6 +1370,69 @@ test.describe("AdSense-readiness buyer guides", () => {
       expect(layout.scrollWidth, `${slug} should not overflow horizontally`).toBe(layout.clientWidth)
     }
   })
+})
+
+test.describe("August buyer guide routes", () => {
+  test.describe.configure({ mode: "serial" })
+
+  for (const { slug, coverAlt } of augustBuyerGuides) {
+    test(`August buyer guide ${slug} protects media, trust, schema, discovery, and mobile layout`, async ({
+      page,
+      request,
+    }) => {
+      test.slow()
+      await page.setViewportSize({ width: 390, height: 844 })
+
+      const response = await page.goto(`/blog/${slug}`, { waitUntil: "domcontentloaded" })
+      expect(response?.status()).toBe(200)
+
+      const documentTitle = await page.title()
+      expect(documentTitle).toContain("SulitScan PH")
+      expect(documentTitle.length).toBeLessThanOrEqual(65)
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        "href",
+        `https://sulitscan.com/blog/${slug}`
+      )
+
+      const bannerPath = `/images/guides/${slug}.jpg`
+      const banner = page.getByAltText(coverAlt, { exact: true }).first()
+      await expect(banner).toBeVisible()
+      await expect(banner).toHaveAttribute("src", new RegExp(`${slug}\\.jpg`))
+      await expect.poll(() =>
+        banner.evaluate((image) => (image as HTMLImageElement).naturalWidth)
+      ).toBeGreaterThan(0)
+      expect((await request.get(bannerPath)).status()).toBe(200)
+
+      await expect(page.getByRole("heading", { name: "About this guide", exact: true })).toBeVisible()
+      await expect(page.getByRole("link", { name: "Editorial process", exact: true })).toHaveAttribute(
+        "href",
+        "/editorial-policy"
+      )
+      await expect(page.getByRole("link", { name: "Request a correction", exact: true })).toHaveAttribute(
+        "href",
+        "/contact"
+      )
+
+      const schemas = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) =>
+        scripts.map((script) => JSON.parse(script.textContent ?? "{}"))
+      )
+      const faqSchema = schemas.find((schema) => schema["@type"] === "FAQPage")
+      expect(faqSchema?.mainEntity.length).toBeGreaterThanOrEqual(3)
+      expect(await page.locator("details").count()).toBe(faqSchema.mainEntity.length)
+
+      const relatedGuides = page.getByRole("region", { name: "More shopping guides" })
+      await expect(relatedGuides.getByRole("link").first()).toBeVisible()
+
+      const sitemap = await (await request.get("/sitemap.xml")).text()
+      expect(sitemap).toContain(`<loc>https://sulitscan.com/blog/${slug}</loc>`)
+
+      const layout = await page.evaluate(() => ({
+        clientWidth: document.documentElement.clientWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+      }))
+      expect(layout.scrollWidth, `${slug} should not overflow horizontally`).toBe(layout.clientWidth)
+    })
+  }
 })
 
 test("AdSense configuration stays consistent and article-only", async ({ page, request }) => {

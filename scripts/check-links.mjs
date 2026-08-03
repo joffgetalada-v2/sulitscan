@@ -107,6 +107,11 @@ const REQUIRED_GROWTH_POST_COVERS = new Set([
   "online-furniture-measurement-guide-philippines",
   "online-purchase-warranty-guide-philippines",
   "energy-efficient-appliance-buying-guide-philippines",
+  "how-to-stack-shopee-vouchers-philippines",
+  "shopee-return-refund-guide-philippines",
+  "temu-returns-refunds-price-adjustment-philippines",
+  "how-to-check-skincare-makeup-legit-philippines",
+  "online-electrical-appliance-safety-ps-icc-philippines",
 ])
 for (const slug of REQUIRED_GROWTH_POST_COVERS) {
   const expectedCover = `coverImage: "/images/guides/${slug}.jpg"`

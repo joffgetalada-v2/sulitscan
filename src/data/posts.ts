@@ -4351,6 +4351,8 @@ SulitScan may earn a commission when you click an eligible partner link and comp
       deals: { tags: ["shopee"], maxPrice: 1000 },
     },
     coverGradient: "from-orange-600 to-amber-200",
+    coverImage: "/images/guides/how-to-stack-shopee-vouchers-philippines.jpg",
+    coverImageAlt: "Philippine shopper comparing a generic phone checkout with blank voucher cards, a calculator, and a receipt",
     faqs: [
       {
         question: "Can I use a Shop Voucher and a Shopee voucher together?",
@@ -4494,6 +4496,8 @@ SulitScan may earn a commission when you click an eligible partner link and comp
       platforms: ["Shopee PH"],
     },
     coverGradient: "from-orange-800 to-rose-200",
+    coverImage: "/images/guides/shopee-return-refund-guide-philippines.jpg",
+    coverImageAlt: "Parcel return evidence scene with a phone, sealed box, receipt, and organized photo documentation",
     faqs: [
       {
         question: "Can I request a Shopee return after tapping Order Received?",
@@ -4633,6 +4637,8 @@ SulitScan may earn a commission when you click an eligible partner link and comp
       platforms: ["Temu"],
     },
     coverGradient: "from-orange-700 to-sky-200",
+    coverImage: "/images/guides/temu-returns-refunds-price-adjustment-philippines.jpg",
+    coverImageAlt: "Brand-neutral cross-border parcel with blank return and price-comparison cards beside a calculator",
     faqs: [
       {
         question: "Does every Temu item have a 90-day free return?",
@@ -4783,6 +4789,8 @@ SulitScan may earn a commission when you click an eligible partner link and comp
       deals: { categories: ["Beauty", "Skincare"], tags: ["beauty", "skincare", "makeup"] },
     },
     coverGradient: "from-fuchsia-800 to-rose-200",
+    coverImage: "/images/guides/how-to-check-skincare-makeup-legit-philippines.jpg",
+    coverImageAlt: "Skincare and makeup verification desk with generic products, magnifier, laptop search, batch, and seal clues",
     faqs: [
       {
         question: "Does an FDA cosmetic notification prove that my item is authentic?",
@@ -4935,6 +4943,8 @@ SulitScan may earn a commission when you click an eligible partner link and comp
       topics: ["appliance-buying", "electrical-safety"],
     },
     coverGradient: "from-slate-900 to-yellow-200",
+    coverImage: "/images/guides/online-electrical-appliance-safety-ps-icc-philippines.jpg",
+    coverImageAlt: "Shopper inspecting a generic charger and small appliance with a magnifier, voltage shapes, and safety checklist",
     faqs: [
       {
         question: "Does every electrical product in the Philippines need a PS mark or ICC sticker?",
