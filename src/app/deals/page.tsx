@@ -8,14 +8,13 @@ import { siteConfig } from "@/lib/seo"
 import { ShoppingBag } from "lucide-react"
 import { formatDealCount } from "@/lib/utils"
 import { getFreshnessSafeReason } from "@/lib/deal-freshness"
+import { buildDealsPageDescription } from "@/lib/deal-seo"
 
 export const revalidate = 86400
 
 interface DealsPageProps {
   searchParams: Promise<DealSearchParams>
 }
-
-const DEALS_DESCRIPTION = "Browse curated online deals from Temu, Shopee PH, and Sephora PH with buyer notes on every listing."
 
 export async function generateMetadata({ searchParams }: DealsPageProps): Promise<Metadata> {
   const listing = resolveDealListing(getActiveDeals(), await searchParams)
@@ -26,10 +25,11 @@ export async function generateMetadata({ searchParams }: DealsPageProps): Promis
     ? `Latest Online Deals Philippines — Page ${listing.page}`
     : "Latest Online Deals Philippines"
   const socialTitle = `${title} | SulitScan PH`
+  const description = buildDealsPageDescription(listing.page)
 
   return {
     title,
-    description: DEALS_DESCRIPTION,
+    description,
     alternates: { canonical },
     robots: { index: !listing.isFiltered && listing.isCanonical, follow: true },
     openGraph: {
@@ -38,7 +38,7 @@ export async function generateMetadata({ searchParams }: DealsPageProps): Promis
       url: canonical,
       siteName: siteConfig.name,
       title: socialTitle,
-      description: DEALS_DESCRIPTION,
+      description,
       images: [
         {
           url: siteConfig.ogImage,
@@ -51,7 +51,7 @@ export async function generateMetadata({ searchParams }: DealsPageProps): Promis
     twitter: {
       card: "summary_large_image",
       title: socialTitle,
-      description: DEALS_DESCRIPTION,
+      description,
       images: [siteConfig.ogImage],
       creator: siteConfig.twitterHandle,
       site: siteConfig.twitterHandle,

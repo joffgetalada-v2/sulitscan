@@ -3,6 +3,7 @@ import { getActiveDeals, type Deal } from "@/data/deals"
 const SITE_SUFFIX = " | SulitScan PH"
 const TITLE_LIMIT = 65
 const DESCRIPTION_LIMIT = 160
+const DEALS_PAGE_DESCRIPTION = "Browse curated online deals from Temu, Shopee PH, and Sephora PH with buyer notes on every listing."
 
 function truncateAtWordBoundary(text: string, limit: number): string {
   const normalized = text.replace(/\s+/g, " ").trim()
@@ -92,4 +93,8 @@ export function buildDealSeoDescription(deal: Deal): string {
   const buyerNote = `Practical ${deal.category.toLowerCase()} pick for shoppers`
   const ending = ` on ${deal.platform}: ${buyerNote}. Confirm current price, shipping, and availability before buying.`
   return `${truncateAtWordBoundary(deal.title, DESCRIPTION_LIMIT - ending.length - hashSuffix.length)}${hashSuffix}${ending}`
+}
+
+export function buildDealsPageDescription(page: number): string {
+  return page > 1 ? `Page ${page}: ${DEALS_PAGE_DESCRIPTION}` : DEALS_PAGE_DESCRIPTION
 }

@@ -197,6 +197,34 @@ test("homepage deal preview applies reference-price treatment to the first June 
   await expect(preview).not.toContainText("Live")
 })
 
+test("homepage scanner opens the active internal deal detail page", async ({ page }) => {
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const preview = page.getByRole("region", { name: "Deal preview" })
+  await expect(preview.getByRole("link", { name: "View Deal Details" })).toHaveAttribute(
+    "href",
+    "/deals/tanle-silicone-foldable-water-bottle-is-leak-proof-a-702052"
+  )
+})
+
+test("header guide announcement links to the blog", async ({ page }) => {
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  await expect(
+    page.getByRole("banner").getByRole("link", { name: /Browse what's fresh/i })
+  ).toHaveAttribute("href", "/blog")
+})
+
+test("homepage trust signals promise no automatic redirects", async ({ page }) => {
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const hero = page.getByRole("region", { name: /Check deals before you click buy/i })
+  await expect(hero).toContainText("No checkout. No automatic redirects.")
+  await expect(
+    page.locator('main section[aria-label="Trust signals"]')
+  ).toContainText("No automatic redirects")
+})
+
 test("homepage hero reports the server-computed active listing count", async ({ page }) => {
   await page.goto("/", { waitUntil: "domcontentloaded" })
 

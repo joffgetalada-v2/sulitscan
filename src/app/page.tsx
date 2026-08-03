@@ -189,7 +189,7 @@ export default function HomePage() {
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
             {[
               { icon: "🛒", label: "No checkout or cart" },
-              { icon: "🔒", label: "No hidden redirects" },
+              { icon: "🔒", label: "No automatic redirects" },
               { icon: "📢", label: "Affiliate links disclosed" },
               { icon: "✋", label: "Curated manually" },
               { icon: "🏪", label: "3 partner stores" },

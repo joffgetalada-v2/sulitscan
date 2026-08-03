@@ -1,5 +1,5 @@
 import assert from "node:assert/strict"
-import { readFileSync } from "node:fs"
+import { existsSync, readFileSync } from "node:fs"
 import { dirname, resolve } from "node:path"
 import test from "node:test"
 import ts from "typescript"
@@ -31,6 +31,10 @@ const dealsModule = loadTypeScriptModule("src/data/deals.ts", {
 const seoModule = loadTypeScriptModule("src/lib/deal-seo.ts", {
   "@/data/deals": dealsModule,
 })
+const postsModule = loadTypeScriptModule("src/data/posts.ts")
+const blogSeoModule = existsSync(resolve("src/lib/blog-seo.ts"))
+  ? loadTypeScriptModule("src/lib/blog-seo.ts")
+  : {}
 const listingModule = loadTypeScriptModule("src/lib/deal-listing.ts", {
   "@/data/deals": dealsModule,
 })
@@ -39,6 +43,46 @@ const entityListingModule = loadTypeScriptModule("src/lib/entity-deal-listing.ts
 const entityDealsFixture = Array.from({ length: 50 }, (_, index) => ({
   id: `deal-${index + 1}`,
 }))
+
+function requireFunction(moduleRecord, exportName) {
+  assert.equal(
+    typeof moduleRecord[exportName],
+    "function",
+    `${exportName} should be exported`
+  )
+  return moduleRecord[exportName]
+}
+
+test("blog SEO titles are unique, branded, and no longer than 65 characters", () => {
+  const buildBlogSeoTitle = requireFunction(blogSeoModule, "buildBlogSeoTitle")
+  const titles = postsModule.posts.map(buildBlogSeoTitle)
+
+  assert.equal(new Set(titles).size, titles.length)
+  assert.ok(titles.every((title) => title.length <= 65))
+  assert.ok(titles.every((title) => title.endsWith("| SulitScan PH")))
+})
+
+test("blog SEO titles preserve the subject of representative long guides", () => {
+  const buildBlogSeoTitle = requireFunction(blogSeoModule, "buildBlogSeoTitle")
+  const importTaxGuide = postsModule.posts.find(
+    (post) => post.slug === "philippine-import-tax-guide-online-shoppers"
+  )
+
+  assert.ok(importTaxGuide)
+  assert.equal(
+    buildBlogSeoTitle(importTaxGuide),
+    "Philippine Import Tax Guide for Online Shoppers | SulitScan PH"
+  )
+})
+
+test("deal listing descriptions retain page one copy and identify later pages", () => {
+  const buildDealsPageDescription = requireFunction(seoModule, "buildDealsPageDescription")
+  const pageOne = "Browse curated online deals from Temu, Shopee PH, and Sephora PH with buyer notes on every listing."
+
+  assert.equal(buildDealsPageDescription(1), pageOne)
+  assert.equal(buildDealsPageDescription(2), `Page 2: ${pageOne}`)
+  assert.notEqual(buildDealsPageDescription(2), buildDealsPageDescription(3))
+})
 
 test("deal SEO titles are unique and no longer than 65 characters", () => {
   const activeDeals = dealsModule.getActiveDeals()

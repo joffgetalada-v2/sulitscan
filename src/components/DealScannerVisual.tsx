@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useCallback } from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { CheckCircle, ExternalLink, Tag, Zap, Shield, TrendingDown } from "lucide-react"
+import { ArrowRight, CheckCircle, Tag, Zap, Shield, TrendingDown } from "lucide-react"
 import { getActiveDeals } from "@/data/deals"
 import { getDealFreshness } from "@/lib/deal-freshness"
 import { formatPrice } from "@/lib/utils"
@@ -222,10 +223,13 @@ export default function DealScannerVisual() {
 
             {/* CTA */}
             <div className="px-4 pb-4">
-              <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl text-white text-sm font-bold shadow-sm shadow-green-200">
-                <span>View Deal on Partner Store</span>
-                <ExternalLink className="w-4 h-4" aria-hidden="true" />
-              </div>
+              <Link
+                href={`/deals/${deal.slug}`}
+                className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl text-white text-sm font-bold shadow-sm shadow-green-200"
+              >
+                <span>View Deal Details</span>
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
               <p className="text-center text-[11px] text-slate-400 mt-2 leading-snug">
                 Affiliate link, clearly disclosed. You decide when to visit.
               </p>

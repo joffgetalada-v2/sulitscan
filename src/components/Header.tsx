@@ -34,7 +34,7 @@ export default function Header() {
         <Sparkles className="inline w-3 h-3 mr-1 opacity-80" aria-hidden="true" />
         New shopping guides added weekly,{" "}
         <Link
-          href="/deals"
+          href="/blog"
           className="font-bold underline underline-offset-2 hover:opacity-80 transition-opacity"
         >
           Browse what&apos;s fresh →

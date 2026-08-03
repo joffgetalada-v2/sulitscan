@@ -8,7 +8,7 @@ import { stores } from "@/data/stores"
 import { categories } from "@/data/categories"
 
 const trustItems = [
-  "No checkout. No hidden redirects.",
+  "No checkout. No automatic redirects.",
   "Affiliate links clearly disclosed.",
   "Curated manually for Filipino shoppers.",
 ]

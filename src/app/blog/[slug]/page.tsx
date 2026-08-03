@@ -9,6 +9,7 @@ import ImportTaxCallout from "@/components/ImportTaxCallout"
 import TrackedSisterSiteLink from "@/components/TrackedSisterSiteLink"
 import { posts, getPostBySlug, getRelatedPosts, DEFAULT_BLOG_COVER, DEFAULT_BLOG_COVER_ALT, type BlogPost } from "@/data/posts"
 import { getRelatedDealsForPost } from "@/lib/blog-recommendations"
+import { buildBlogSeoTitle } from "@/lib/blog-seo"
 import { siteConfig } from "@/lib/seo"
 import { formatDate, formatTag, clampMeta } from "@/lib/utils"
 import NewsletterSignup from "@/components/newsletter/NewsletterSignup"
@@ -103,12 +104,13 @@ export async function generateMetadata({
   const { slug } = await params
   const post = getPostBySlug(slug)
   if (!post) return {}
+  const title = buildBlogSeoTitle(post)
   return {
-    title: post.title,
+    title: { absolute: title },
     description: clampMeta(post.excerpt),
     alternates: { canonical: `${siteConfig.url}/blog/${slug}` },
     openGraph: {
-      title: `${post.title} | SulitScan PH`,
+      title,
       description: post.excerpt,
       url: `${siteConfig.url}/blog/${slug}`,
       type: "article",
@@ -119,7 +121,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${post.title} | SulitScan PH`,
+      title,
       description: clampMeta(post.excerpt),
       images: [`${siteConfig.url}${post.coverImage ?? DEFAULT_BLOG_COVER}`],
       creator: siteConfig.twitterHandle,
