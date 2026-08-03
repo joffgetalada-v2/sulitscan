@@ -4638,7 +4638,7 @@ SulitScan may earn a commission when you click an eligible partner link and comp
     },
     coverGradient: "from-orange-700 to-sky-200",
     coverImage: "/images/guides/temu-returns-refunds-price-adjustment-philippines.jpg",
-    coverImageAlt: "Brand-neutral cross-border parcel with blank return and price-comparison cards beside a calculator",
+    coverImageAlt: "Unbranded parcel with blank comparison cards, plain coins, and an unmarked calculator on a home desk",
     faqs: [
       {
         question: "Does every Temu item have a 90-day free return?",
@@ -4790,7 +4790,7 @@ SulitScan may earn a commission when you click an eligible partner link and comp
     },
     coverGradient: "from-fuchsia-800 to-rose-200",
     coverImage: "/images/guides/how-to-check-skincare-makeup-legit-philippines.jpg",
-    coverImageAlt: "Skincare and makeup verification desk with generic products, magnifier, laptop search, batch, and seal clues",
+    coverImageAlt: "Shopper inspecting blank skincare and makeup packaging with a magnifying glass beside an abstract registry screen",
     faqs: [
       {
         question: "Does an FDA cosmetic notification prove that my item is authentic?",
@@ -4944,7 +4944,7 @@ SulitScan may earn a commission when you click an eligible partner link and comp
     },
     coverGradient: "from-slate-900 to-yellow-200",
     coverImage: "/images/guides/online-electrical-appliance-safety-ps-icc-philippines.jpg",
-    coverImageAlt: "Shopper inspecting a generic charger and small appliance with a magnifier, voltage shapes, and safety checklist",
+    coverImageAlt: "Shopper inspecting an unplugged cord housing with a magnifying glass beside a charger, fan, and blank checklist",
     faqs: [
       {
         question: "Does every electrical product in the Philippines need a PS mark or ICC sticker?",

@@ -335,6 +335,7 @@ const augustBuyerGuideCases = [
     slug: "how-to-stack-shopee-vouchers-philippines",
     coverImage: "/images/guides/how-to-stack-shopee-vouchers-philippines.jpg",
     coverImageAlt: "Philippine shopper comparing a generic phone checkout with blank voucher cards, a calculator, and a receipt",
+    coverImageSha256: "9c865c5866dc2344275f32a8651d567b1efc787596a91c04270475e6581ec7f5",
     titlePattern: /stack shopee vouchers/i,
     workedHeading: "## Worked voucher-stack example",
     topics: ["voucher-stacking", "checkout-checklist", "shopee-shopping"],
@@ -356,6 +357,7 @@ const augustBuyerGuideCases = [
     slug: "shopee-return-refund-guide-philippines",
     coverImage: "/images/guides/shopee-return-refund-guide-philippines.jpg",
     coverImageAlt: "Parcel return evidence scene with a phone, sealed box, receipt, and organized photo documentation",
+    coverImageSha256: "e040e1a69abbdda42ec381ae9ee3c85fc5fabcdaa11117b5d90847964d956933",
     titlePattern: /shopee return.*refund/i,
     workedHeading: "## Worked return-request example",
     topics: ["returns", "shopping-safety", "shopee-shopping"],
@@ -376,7 +378,8 @@ const augustBuyerGuideCases = [
     id: "post-037",
     slug: "temu-returns-refunds-price-adjustment-philippines",
     coverImage: "/images/guides/temu-returns-refunds-price-adjustment-philippines.jpg",
-    coverImageAlt: "Brand-neutral cross-border parcel with blank return and price-comparison cards beside a calculator",
+    coverImageAlt: "Unbranded parcel with blank comparison cards, plain coins, and an unmarked calculator on a home desk",
+    coverImageSha256: "123745875851f1190a96cb2a9d4a1cc1e94e32f41dd030a7245689417a0d28a3",
     titlePattern: /temu returns.*refunds.*price adjustment/i,
     workedHeading: "## Worked remedy decision",
     topics: ["returns", "shopping-safety", "temu-buying"],
@@ -397,7 +400,8 @@ const augustBuyerGuideCases = [
     id: "post-038",
     slug: "how-to-check-skincare-makeup-legit-philippines",
     coverImage: "/images/guides/how-to-check-skincare-makeup-legit-philippines.jpg",
-    coverImageAlt: "Skincare and makeup verification desk with generic products, magnifier, laptop search, batch, and seal clues",
+    coverImageAlt: "Shopper inspecting blank skincare and makeup packaging with a magnifying glass beside an abstract registry screen",
+    coverImageSha256: "df62c6cc8acc2cbd6ef335168dd69562ba3a40f704bdf5daeab8edfe601f80e9",
     titlePattern: /check.*skincare.*makeup.*legit/i,
     workedHeading: "## Worked cosmetic-check decision",
     topics: ["cosmetic-authenticity", "seller-checking"],
@@ -418,7 +422,8 @@ const augustBuyerGuideCases = [
     id: "post-039",
     slug: "online-electrical-appliance-safety-ps-icc-philippines",
     coverImage: "/images/guides/online-electrical-appliance-safety-ps-icc-philippines.jpg",
-    coverImageAlt: "Shopper inspecting a generic charger and small appliance with a magnifier, voltage shapes, and safety checklist",
+    coverImageAlt: "Shopper inspecting an unplugged cord housing with a magnifying glass beside a charger, fan, and blank checklist",
+    coverImageSha256: "cbf53b711f374bf29035871066e8d01f29ec45b36ce2e0f36cefc905ec3380f8",
     titlePattern: /electrical appliance.*ps.*icc/i,
     workedHeading: "## Worked PS-or-ICC decision",
     topics: ["appliance-buying", "electrical-safety"],
@@ -753,7 +758,9 @@ test("August buyer guides use five distinct 1600x900 JPEG cover assets", () => {
     const asset = readFileSync(assetPath)
     assert.deepEqual(readJpegDimensions(asset), { width: 1600, height: 900 })
     coverPaths.push(guideCase.coverImage)
-    contentHashes.push(createHash("sha256").update(asset).digest("hex"))
+    const contentHash = createHash("sha256").update(asset).digest("hex")
+    assert.equal(contentHash, guideCase.coverImageSha256, `${guideCase.coverImage} must match its accepted SHA-256`)
+    contentHashes.push(contentHash)
   }
 
   assert.equal(new Set(coverPaths).size, augustBuyerGuideCases.length)

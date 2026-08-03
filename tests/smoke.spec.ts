@@ -1255,15 +1255,15 @@ const augustBuyerGuides = [
   },
   {
     slug: "temu-returns-refunds-price-adjustment-philippines",
-    coverAlt: "Brand-neutral cross-border parcel with blank return and price-comparison cards beside a calculator",
+    coverAlt: "Unbranded parcel with blank comparison cards, plain coins, and an unmarked calculator on a home desk",
   },
   {
     slug: "how-to-check-skincare-makeup-legit-philippines",
-    coverAlt: "Skincare and makeup verification desk with generic products, magnifier, laptop search, batch, and seal clues",
+    coverAlt: "Shopper inspecting blank skincare and makeup packaging with a magnifying glass beside an abstract registry screen",
   },
   {
     slug: "online-electrical-appliance-safety-ps-icc-philippines",
-    coverAlt: "Shopper inspecting a generic charger and small appliance with a magnifier, voltage shapes, and safety checklist",
+    coverAlt: "Shopper inspecting an unplugged cord housing with a magnifying glass beside a charger, fan, and blank checklist",
   },
 ]
 

@@ -39,22 +39,26 @@ marks, marketplace interfaces, watermarks, and fake certifications.
 
 ## August buyer-workflow banners generated 2026-08-03
 
-| Filename | Guide concept | Accepted built-in generation output |
-|---|---|---|
-| `how-to-stack-shopee-vouchers-philippines.jpg` | Generic phone checkout with blank voucher cards, covered calculator, and blank receipt | `exec-63cbd4f4-af14-460b-95d7-26b62a3465bd.png` |
-| `shopee-return-refund-guide-philippines.jpg` | Parcel evidence workflow with a sealed box, camera phone, blank receipt, and evidence cards | `exec-6f5a2755-65da-45c3-9ff7-d9cc4daad8bf.png` |
-| `temu-returns-refunds-price-adjustment-philippines.jpg` | Neutral orange-accented cross-border parcel with blank remedy cards and calculator | `exec-8c63dc58-9aef-43d2-a1b3-09738a89288b.png` |
-| `how-to-check-skincare-makeup-legit-philippines.jpg` | Blank-label cosmetics, magnifier, abstract registry screen, sealed carton, and batch/seal clues | `exec-4a4ff9b3-3e6c-458f-a750-07b80179a7a3.png` |
-| `online-electrical-appliance-safety-ps-icc-philippines.jpg` | Unplugged charger, rear plug housing, small fan, magnifier, blank rating shapes, and safety checklist | `exec-6bb7d937-0a4a-4396-87ef-50fe7fd887b2.png` |
+| Filename | Guide concept | Accepted built-in generation output | Final JPEG SHA-256 |
+|---|---|---|---|
+| `how-to-stack-shopee-vouchers-philippines.jpg` | Generic phone checkout with blank voucher cards, covered calculator, and blank receipt | `exec-63cbd4f4-af14-460b-95d7-26b62a3465bd.png` | `9c865c5866dc2344275f32a8651d567b1efc787596a91c04270475e6581ec7f5` |
+| `shopee-return-refund-guide-philippines.jpg` | Parcel evidence workflow with a sealed box, camera phone, blank receipt, and evidence cards | `exec-6f5a2755-65da-45c3-9ff7-d9cc4daad8bf.png` | `e040e1a69abbdda42ec381ae9ee3c85fc5fabcdaa11117b5d90847964d956933` |
+| `temu-returns-refunds-price-adjustment-philippines.jpg` | Neutral orange-accented parcel with blank remedy cards, plain coins, and an unmarked calculator | `exec-fe0782c7-fe57-4f8b-8ff6-6d9c24c50efb.png` | `123745875851f1190a96cb2a9d4a1cc1e94e32f41dd030a7245689417a0d28a3` |
+| `how-to-check-skincare-makeup-legit-philippines.jpg` | Blank-label cosmetics, magnifier, abstract registry screen, sealed carton, and batch/seal clues | `exec-4a4ff9b3-3e6c-458f-a750-07b80179a7a3.png` | `df62c6cc8acc2cbd6ef335168dd69562ba3a40f704bdf5daeab8edfe601f80e9` |
+| `online-electrical-appliance-safety-ps-icc-philippines.jpg` | Unplugged charger, rear plug housing, small fan, magnifier, blank rating shapes, and safety checklist | `exec-6bb7d937-0a4a-4396-87ef-50fe7fd887b2.png` | `cbf53b711f374bf29035871066e8d01f29ec45b36ce2e0f36cefc905ec3380f8` |
 
-Each banner was generated as a separate brand-new image with OpenAI's built-in image generator.
+Each banner began as a separate brand-new image generated with OpenAI's built-in image generator.
 The photorealistic-natural prompts required a wide crop-safe editorial composition and prohibited
 text, letters, numbers, logos, trademarks, marketplace UI, barcodes, QR codes, certification marks,
 and watermarks. The electrical prompt additionally prohibited any PS, ICC, DTI-BPS, or official-mark
 imitation. Three earlier drafts were rejected because a calculator or laptop keyboard introduced
-visible key glyphs or a plug had implausible blade geometry; only the clean replacements listed
-above were used. Every generated output, including the rejected drafts, was inspected at original
-detail. Accepted PNGs were mechanically resized and
+visible key glyphs or a plug had implausible blade geometry. During review, the original Temu source
+`exec-8c63dc58-9aef-43d2-a1b3-09738a89288b.png` was superseded because its calculator retained a
+plus sign and a faint key symbol. A first cleanup edit,
+`exec-2ba4ff8b-0199-46d7-a8c4-28c17a5359f9.png`, removed those marks but was rejected because a faint
+ring impression remained. The accepted second edit listed above preserves the scene while leaving
+every calculator key and coin face blank and unmarked. Every generated output, including the
+rejected drafts, was inspected at original detail. Accepted PNGs were mechanically resized and
 center-cropped to 1600x900 with Lanczos3, then encoded as progressive JPEG at quality 88 with 4:4:4
 chroma sampling.
 
