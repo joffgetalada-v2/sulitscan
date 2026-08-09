@@ -4233,27 +4233,29 @@ SulitScan may earn a commission when you click an eligible partner link and comp
     slug: "how-to-stack-shopee-vouchers-philippines",
     title: "How to Stack Shopee Vouchers in the Philippines",
     excerpt:
-      "Calculate Shopee shop and platform vouchers in the right order, compare caps and minimum spend, and confirm the live checkout total.",
+      "Test Shopee shop, shipping, discount, and cashback voucher controls, compare caps and minimum spend, and confirm the live checkout total.",
     content: `
-Shopee voucher stacking is not a matter of collecting every badge shown on a listing. The useful question is narrower: which eligible shop voucher and platform voucher produce the lowest final total for the exact cart in your account?
+Shopee voucher stacking is not a matter of collecting every badge shown on a listing. The useful question is narrower: which eligible voucher combination produces the lowest final total for the exact cart in your account?
 
 This Philippine workflow shows how to compare minimum spend, percentage discounts, discount caps, shipping, and Coins without treating a promotional example as a live offer.
 
 ## How we assessed this guide
 
-We reviewed Shopee Philippines' current instructions for [using saved vouchers at checkout](https://help.shopee.ph/portal/4/article/81188-How-do-I-use-saved-Vouchers-during-checkout), its explanation of [how voucher promotions are calculated](https://help.shopee.ph/portal/4/article/82304-%5BVouchers%5D-How-are-voucher-promotions-calculated-at-checkout), and its [voucher-code FAQ](https://help.shopee.ph/portal/4/article/81532-Other-FAQs-related-to-voucher-codes).
+We reviewed Shopee Philippines' current pages for [using saved vouchers at checkout](https://help.shopee.ph/portal/4/article/81188-How-do-I-use-saved-Vouchers-during-checkout), [voucher types](https://help.shopee.ph/portal/4/article/81031-%5BVouchers%5D-What-vouchers-are-there-on-Shopee%3F-%28ENG%29), and [applying vouchers at checkout](https://help.shopee.ph/portal/4/article/82323-%5BVouchers%5D-How-do-I-apply-vouchers-at-checkout). We also checked its explanation of [how voucher promotions are calculated](https://help.shopee.ph/portal/4/article/82304-%5BVouchers%5D-How-are-voucher-promotions-calculated-at-checkout).
 
-Shopee's current help flow supports one eligible Shop Voucher per shop plus one Shopee platform voucher in a checkout. The platform slot may be Free Shipping, Discount, or Coins Cashback; it is not a promise that all three platform types can be used together. Shopee Coins appear as a separate checkout control, but availability and usable amount vary.
+The official Shopee help pages currently conflict. The saved-vouchers page says a checkout can use up to 2 voucher types: one Free Shipping Discount, Discount, or Coins Cashback voucher plus one Shop Voucher per shop. The voucher-types page instead describes up to 3 vouchers: Free Shipping plus Discount or Cashback plus a Seller Voucher. The checkout-application page similarly lists a Seller Voucher, Shipping Discount Voucher, and Shopee Discount or Cashback Voucher as stackable.
 
-Voucher rules, inventory, account eligibility, payment methods, and shipping methods can change. We did not place a test order, and the live checkout screen for your account is the deciding record.
+Voucher rules, inventory, account eligibility, payment methods, and shipping methods can change. We did not place a test order, so the live checkout is authoritative for the exact account and cart. This guide explains how to test the controls that appear; it does not promise that a three-voucher stack will be eligible.
 
-## Know the voucher slots before doing the math
+## Know the checkout controls before doing the math
 
 A Shop Voucher is offered by a participating shop and applies only to eligible products from that shop. In a mixed-shop cart, each shop is assessed separately. Current guidance allows one eligible Shop Voucher per shop, so do not assume two seller codes from the same shop will combine.
 
-A Shopee platform voucher occupies a different slot. Choose the one platform benefit that produces the best usable result for the order: a merchandise discount, free or reduced shipping, or Coins Cashback. A large percentage printed on a banner can lose to a smaller percentage with a higher discount cap, or to a shipping voucher when delivery is expensive.
+A Discount or Coins Cashback voucher may appear under a Shopee control, while an eligible Free Shipping voucher may appear with it or as a separate selectable control. Because Shopee's own pages disagree about whether those benefits share one choice or can be combined, do not force the checkout into a fixed slot model. When both controls appear, test an eligible Free Shipping voucher together with an eligible Discount or Coins Cashback voucher. If checkout rejects that pair, compare the eligible alternatives separately.
 
-Shopee Coins are separate from those voucher slots, but they are not a guaranteed extra discount. The amount you can apply may depend on the order, item, account, and current rules. Treat the Coins amount shown at checkout as the usable amount, not the balance you hoped to spend.
+A large percentage printed on a banner can lose to a smaller percentage with a higher discount cap, or to a shipping voucher when delivery is expensive. Acceptance for one account and cart does not prove the same combination will work for another order.
+
+Shopee Coins that you spend at checkout are separate from voucher selection, but they are not a guaranteed extra discount. The amount you can apply may depend on the order, item, account, and current rules. Treat the Coins amount shown at checkout as the usable amount, not the balance you hoped to spend or the Coins Cashback a voucher may award later.
 
 ## Check eligibility before comparing headline percentages
 
@@ -4284,14 +4286,15 @@ Do not add two headline percentages and call the total your savings. A 10% Shop 
 
 ## Worked voucher-stack example
 
-This is invented arithmetic for planning, not a current Shopee promotion. Suppose one shop's eligible items total ₱1,800, shipping is ₱95, and checkout shows a 10% Shop Voucher capped at ₱120 plus an 8% platform Discount Voucher capped at ₱100. Assume the live rules show both minimum-spend conditions remain satisfied after each step.
+This is invented arithmetic for planning, not a current Shopee promotion. Suppose one shop's eligible items total ₱1,800, shipping is ₱95, and checkout shows a 10% Shop Voucher capped at ₱120 plus an 8% Discount Voucher capped at ₱100. It also displays an eligible Free Shipping control. Assume the live rules show both minimum-spend conditions remain satisfied after each step.
 
 1. Calculate the Shop Voucher: 10% of ₱1,800 is ₱180, but the discount cap limits the usable shop discount to ₱120.
 2. Subtract the shop discount: ₱1,800 minus ₱120 leaves a merchandise subtotal of ₱1,680.
 3. Calculate the platform voucher on the displayed eligible base: 8% of ₱1,680 is ₱134.40, but its cap limits the usable platform discount to ₱100.
 4. Subtract the platform discount: the merchandise subtotal becomes ₱1,580.
-5. Apply the shipping result shown last. If no shipping voucher occupies the platform slot in this option, add the displayed ₱95 shipping for a ₱1,675 planning total before any separately usable Coins.
-6. Compare that ₱1,675 result with the alternative checkout using an eligible shipping voucher instead of the platform Discount Voucher. Choose the lower live payable total, not the option with the louder percentage.
+5. With the Discount Voucher alone, add the displayed ₱95 shipping for a ₱1,675 planning total before any separately usable Coins.
+6. When both controls appear, test the eligible Free Shipping voucher together with the Discount Voucher. If checkout accepts it and reduces the invented ₱95 shipping charge to ₱0, the displayed planning total becomes ₱1,580. That result is an example, not an eligibility promise.
+7. Compare each voucher alone with the accepted combination. In this example, a Free-Shipping-only alternative after the Shop Voucher would be ₱1,680, while the Discount-only result would be ₱1,675. Choose the lowest live payable total that checkout actually accepts, not the option with the louder percentage.
 
 If the platform voucher's minimum spend were ₱1,700 and the live rule tested the ₱1,680 amount after the shop discount, that platform voucher would fail. This is why adding a low-value filler can be poor value: spending more to cross a threshold is useful only when the extra cost is lower than the genuine additional saving and the item is needed.
 
@@ -4302,10 +4305,12 @@ Save or activate the vouchers you may use, then make one change at a time:
 1. Confirm the exact items, quantities, shop, and variations.
 2. Record the no-voucher merchandise subtotal and shipping shown for the selected address.
 3. Apply the best eligible Shop Voucher for each shop.
-4. Try each eligible Shopee platform voucher separately.
-5. Record merchandise discount, shipping, Coins used or earned, payment condition, and final payable total.
-6. Recheck the delivery address, payment method, and shipping option before choosing.
-7. Save the final order breakdown or receipt after payment.
+4. Try each eligible Discount or Coins Cashback voucher separately.
+5. When both controls appear, test an eligible Free Shipping voucher together with the eligible Discount or Coins Cashback voucher.
+6. Compare each voucher alone with the accepted combination rather than assuming that a pair will work.
+7. Record merchandise discount, shipping, Coins used or earned, payment condition, and final payable total for each accepted option.
+8. Recheck the delivery address, payment method, and shipping option before choosing.
+9. Save the final order breakdown or receipt after payment.
 
 The [voucher, shipping, and return checklist](/blog/voucher-shipping-return-checklist) helps you compare the saving with delivery and return terms. A lower total is not useful if it requires the wrong variation, an unsuitable payment method, or a delivery option that misses your deadline.
 
@@ -4319,19 +4324,21 @@ Read the message shown in checkout. Do not move payment outside Shopee, install 
 
 1. I selected the exact item, variation, quantity, and shop.
 2. I opened every voucher's minimum spend, cap, expiry, and eligibility rules.
-3. I used no more than one eligible Shop Voucher per shop.
-4. I compared platform Discount, Free Shipping, and Coins Cashback options one at a time.
-5. I calculated percentage savings against the correct base and applied the discount cap.
-6. I treated Shopee Coins as a separate, variable control shown by checkout.
-7. I compared final payable totals including shipping and payment conditions.
-8. I checked delivery and return terms before confirming.
-9. I saved the order breakdown and receipt.
+3. I noted that Shopee's official help pages conflict and treated live checkout as authoritative.
+4. I used no more than one eligible Shop Voucher per shop.
+5. I tried Discount or Coins Cashback options one at a time.
+6. When both controls appeared, I tested eligible Free Shipping together with the eligible Discount or Cashback option without assuming it would be accepted.
+7. I compared each option alone with any accepted combination.
+8. I calculated percentage savings against the correct base and applied the discount cap.
+9. I treated Shopee Coins as a separate, variable control shown by checkout.
+10. I compared final payable totals including shipping and payment conditions.
+11. I checked delivery and return terms before confirming and saved the order breakdown and receipt.
 
 For the post-purchase route, keep the [Shopee return and refund guide](/blog/shopee-return-refund-guide-philippines) available before the live order deadline expires.
 
 ## Limitations and live-policy check
 
-This guide was reviewed on 2026-08-03 and explains a calculation workflow, not a coupon promise. It does not supply live voucher codes, fixed caps, campaign schedules, VIP claims, or guaranteed Coins usage. Eligibility may differ by account, product, shop, payment, shipping method, expiry, and redemption availability.
+This guide was reviewed on 2026-08-09 and explains a calculation workflow, not a coupon promise. It does not supply live voucher codes, fixed caps, campaign schedules, VIP claims, or guaranteed Coins usage. Eligibility may differ by account, product, shop, payment, shipping method, expiry, and redemption availability.
 
 Always reopen the voucher details and final order breakdown immediately before payment. If this guide and the live checkout differ, follow the current Shopee control and official help page.
 
@@ -4342,7 +4349,7 @@ SulitScan may earn a commission when you click an eligible partner link and comp
     category: "Platform Guides",
     author: "SulitScan Team",
     publishedAt: "2026-08-03",
-    lastReviewed: "2026-08-03",
+    lastReviewed: "2026-08-09",
     readTime: 13,
     tags: ["shopee", "vouchers", "voucher-stacking", "checkout", "discount-caps", "philippines"],
     recommendationIntent: {
@@ -4357,12 +4364,12 @@ SulitScan may earn a commission when you click an eligible partner link and comp
       {
         question: "Can I use a Shop Voucher and a Shopee voucher together?",
         answer:
-          "Current Shopee guidance allows one eligible Shop Voucher per shop plus one eligible Shopee platform voucher. The live checkout and each voucher's conditions decide whether the combination applies.",
+          "Shopee's saved-vouchers page describes one eligible Shop Voucher per shop plus one eligible Free Shipping, Discount, or Coins Cashback voucher. Other official pages describe a separate shipping-plus-discount or cashback combination. The live checkout and each voucher's conditions decide what applies.",
       },
       {
         question: "Can I stack Free Shipping, a Discount Voucher, and Coins Cashback?",
         answer:
-          "Free Shipping, Discount, and Coins Cashback are platform-voucher options, so do not assume all three platform types stack. Compare each eligible option in checkout. Shopee Coins are a separate control, but their usable amount varies.",
+          "Shopee's official help pages conflict: one groups Free Shipping, Discount, and Cashback as one choice, while others describe Free Shipping plus either Discount or Cashback alongside a Seller Voucher. When both controls appear, test Free Shipping together with the eligible Discount or Cashback option and compare each alone. An accepted checkout is not a guarantee that a three-voucher stack—or all three platform benefits—will work on another order.",
       },
       {
         question: "How do I compare percentage vouchers with different caps?",
@@ -4545,7 +4552,14 @@ Use official support when the expected control is missing, instructions conflict
 
 Under the policy updated 2026-03-23, most returnable items have a window of up to 90 days from purchase. That is not a promise that every item has a 90-day return. Most electronics use seller-specific 45-, 60-, or 90-day windows, and the product page or order may show a different applicable period.
 
-Current exclusions include goods that have been used, worn, washed, or damaged by the consumer; goods with removed tags or hygiene seals; food and grocery products; some health and personal-care items; customized products; some underwear; gifts; and products explicitly marked non-returnable. The exact exclusion depends on the item and condition.
+The policy's exclusions use category-specific wording, so preserve its qualifiers instead of treating every condition as a universal rule:
+
+- The clothing-specific exclusion covers clothing that has been worn, washed, or damaged after delivery, or that has had tags or hygiene stickers removed.
+- Grocery and food products are listed as non-returnable.
+- The policy lists some health and personal-care items, some free gifts, some customized products, and some underwear orders rather than declaring every item in those categories non-returnable.
+- Sellers may mark certain items as not eligible for return, subject to Temu's policy. Check the product detail page and live order.
+
+Those returnability exclusions are different from Temu's separate quality-inspection and reduced-refund rule. An item that arrived damaged should be reported truthfully and documented before use; that is different from buyer-caused damage after delivery. For an otherwise returnable item, the policy says a refund may be reduced when the returned item is used or damaged, is missing parts or accessories, or is damaged by improper return packaging, when that loss is not due to Temu or the seller. Preserve arrival evidence so Temu- or seller-caused damage is not confused with later condition loss.
 
 Before opening, assembling, installing, washing, or using a return-sensitive item, check its live policy. Preserve labels, hygiene seals, accessories, manuals, packaging, and included gifts until you are satisfied it is correct.
 
@@ -4575,7 +4589,9 @@ Photograph the item and included parts before packing, then photograph the seale
 
 ## Understand refund assessment
 
-A submitted request is not the same as an approved full refund. Current policy allows receipt and quality inspection before the final refund. The amount can be reduced for lost value, missing parts, damage, or improper return packaging that was not caused by Temu or the seller.
+A submitted request is not the same as an approved full refund. This inspection rule is separate from the item-category exclusions above. Current policy allows receipt and quality inspection before the final refund and says the amount may be reduced when a returned item is used or damaged, has missing parts or accessories, or was damaged through improper return packaging, when the issue was not due to Temu or the seller.
+
+If the item arrived wrong or damaged, record that condition before using it and choose the matching truthful reason. If damage occurred through buyer use or return packing, do not describe it as delivered damage. The policy distinguishes cause; SulitScan cannot decide how the platform will assess the evidence or final amount.
 
 Use the payment or refund method offered in the live case and read the current estimate there. Bank, card, wallet, and platform-credit timing can differ, and SulitScan cannot verify or accelerate it. Keep the order, case, return receipt, and refund confirmation until the payment record matches the resolved amount.
 
@@ -4595,9 +4611,10 @@ Consider three invented situations. The live order still decides each result.
 
 1. The exact lamp variation is intact and acceptable, but the same item from the same seller and region now shows a lower eligible price 12 days after payment. Look for Price adjustment in Your Orders; do not create a damage return.
 2. A storage set arrived in the wrong size and the order shows Return/Refund. Photograph the listing variation, received dimensions, labels, and packaging, then use the matching reason and follow any generated return instruction.
-3. An electronic item stopped working, but its order shows a seller-specific return window rather than the general 90-day period. Stop unsafe use, preserve evidence, follow that displayed window, and check warranty terms if the return route is unavailable.
-4. Two returnable items from one order have different problems. Check both promptly and, when the live instructions allow, include both in the first submitted return to avoid a later same-order fee without sacrificing either deadline.
-5. The package has been accepted for return. Keep the postmark, tracking, and item-condition photos until inspection and the final refund record are complete.
+3. A shirt arrives with a tear before it has been worn or washed. Photograph the delivered condition, packaging, tags, and hygiene sticker, then choose the matching damage reason. Do not confuse that arrival issue with clothing damaged after delivery through buyer use.
+4. An electronic item stopped working, but its order shows a seller-specific return window rather than the general 90-day period. Stop unsafe use, preserve evidence, follow that displayed window, and check warranty terms if the return route is unavailable.
+5. Two returnable items from one order have different problems. Check both promptly and, when the live instructions allow, include both in the first submitted return to avoid a later same-order fee without sacrificing either deadline.
+6. The package has been accepted for return. Keep the postmark, tracking, and item-condition photos until inspection and the final refund record are complete.
 
 This decision sequence keeps a price change separate from a product problem and prevents the broadest policy headline from replacing item-level terms.
 
@@ -4605,20 +4622,21 @@ This decision sequence keeps a price change separate from a product problem and 
 
 1. Identify whether the issue is a lower price, unwanted item, wrong item, damage, fault, or missing part.
 2. Open the exact order and capture its available control and deadline.
-3. Check item-specific returnability, electronics window, and exclusions.
-4. Preserve the listing, variation, packaging, labels, accessories, and issue evidence.
-5. Use Price adjustment only when the live order shows an eligible match.
-6. Use Return/Refund for the truthful item issue and requested remedy.
-7. Follow the generated method and ensure a submitted return is postmarked within the live cutoff.
-8. Photograph the repacked item and keep the return receipt and tracking.
-9. Monitor inspection and compare the final refund with the payment record.
-10. Keep every confirmation until the case is resolved.
+3. Check item-specific returnability, the clothing-specific exclusion, every “some” category qualifier, and the electronics window.
+4. Preserve the listing, variation, packaging, labels, accessories, and evidence showing whether damage was present on arrival.
+5. Keep returnability separate from the later quality inspection and possible reduced-refund assessment.
+6. Use Price adjustment only when the live order shows an eligible match.
+7. Use Return/Refund for the truthful item issue and requested remedy.
+8. Follow the generated method and ensure a submitted return is postmarked within the live cutoff.
+9. Package the item carefully, photograph it, and keep the return receipt and tracking.
+10. Monitor inspection and compare the final refund with the payment record.
+11. Keep every confirmation until the case is resolved.
 
 New to the platform? Read the [Temu Philippines shopping guide](/blog/temu-shopping-guide-philippines) before checkout so seller, product, delivery, and return questions are considered together.
 
 ## Limitations and live-policy check
 
-This guide was reviewed on 2026-08-03 against a Temu policy marked updated 2026-03-23. Product exclusions, windows, first-return shipping, subsequent-return fees, postmark requirements, price-adjustment eligibility, inspection, refund methods, and support paths can change.
+This guide was reviewed on 2026-08-09 against a Temu policy marked updated 2026-03-23. Product exclusions, windows, first-return shipping, subsequent-return fees, postmark requirements, price-adjustment eligibility, inspection, refund methods, and support paths can change.
 
 Do not rely on “90-day free returns” or “30-day price adjustment” as universal promises. Read the exact product and order terms, generated instruction, and current policy before acting.
 
@@ -4629,7 +4647,7 @@ SulitScan may earn a commission when you click an eligible partner link and comp
     category: "Shopping Safety",
     author: "SulitScan Team",
     publishedAt: "2026-08-03",
-    lastReviewed: "2026-08-03",
+    lastReviewed: "2026-08-09",
     readTime: 14,
     tags: ["temu", "returns", "refunds", "price-adjustment", "buyer-evidence", "philippines"],
     recommendationIntent: {
@@ -4654,6 +4672,11 @@ SulitScan may earn a commission when you click an eligible partner link and comp
         question: "What qualifies for a Temu price adjustment?",
         answer:
           "The current route is conditional and generally requires the same item, variation, seller, and region within 30 days after payment. Promotional or unavailable products may be excluded, shipping is excluded, and the live Price adjustment control decides eligibility.",
+      },
+      {
+        question: "What Temu return exclusions should I check?",
+        answer:
+          "The policy has a clothing-specific exclusion for clothing worn, washed, damaged after delivery, or missing tags or hygiene stickers; excludes grocery and food; and lists some health and personal-care, free-gift, customized, and underwear categories. Seller-marked exclusions may also apply. The live product and order terms control.",
       },
     ],
   },

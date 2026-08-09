@@ -341,10 +341,12 @@ const augustBuyerGuideCases = [
     topics: ["voucher-stacking", "checkout-checklist", "shopee-shopping"],
     platforms: ["Shopee PH"],
     deals: { tags: ["shopee"], maxPrice: 1000 },
+    lastReviewed: "2026-08-09",
     requiredSources: [
       "https://help.shopee.ph/portal/4/article/81188-How-do-I-use-saved-Vouchers-during-checkout",
+      "https://help.shopee.ph/portal/4/article/81031-%5BVouchers%5D-What-vouchers-are-there-on-Shopee%3F-%28ENG%29",
+      "https://help.shopee.ph/portal/4/article/82323-%5BVouchers%5D-How-do-I-apply-vouchers-at-checkout",
       "https://help.shopee.ph/portal/4/article/82304-%5BVouchers%5D-How-are-voucher-promotions-calculated-at-checkout",
-      "https://help.shopee.ph/portal/4/article/81532-Other-FAQs-related-to-voucher-codes",
     ],
     requiredLinks: [
       "/blog/why-final-prices-change-at-checkout",
@@ -385,6 +387,7 @@ const augustBuyerGuideCases = [
     topics: ["returns", "shopping-safety", "temu-buying"],
     platforms: ["Temu"],
     deals: undefined,
+    lastReviewed: "2026-08-09",
     requiredSources: [
       "https://www.temu.com/ph/return-and-refund-policy.html",
       "https://www.temu.com/ph/support/c3/what-is--price-adjustment--f-60-s-945.html",
@@ -466,7 +469,7 @@ test("August buyer guides use the exact ordered registry contract and substantiv
     assert.equal(post.id, guideCase.id)
     assert.match(post.title, guideCase.titlePattern)
     assert.equal(post.publishedAt, "2026-08-03")
-    assert.equal(post.lastReviewed, "2026-08-03")
+    assert.equal(post.lastReviewed, guideCase.lastReviewed ?? "2026-08-03")
     assert.ok(post.excerpt.length <= 160, `${guideCase.slug} excerpt is too long`)
     assert.ok(post.content.split(/\s+/).length >= 800, `${guideCase.slug} must contain at least 800 words`)
     assert.ok((post.content.match(/^## /gm) ?? []).length >= 5, `${guideCase.slug} needs at least five H2 sections`)
@@ -507,7 +510,8 @@ test("August buyer guides preserve the fact sheet's decision-critical cautions",
 
   assert.ok(voucher && shopeeReturn && temuReturn && cosmetics && electrical)
   assert.match(voucher.content, /one eligible Shop Voucher per shop/i)
-  assert.match(voucher.content, /one Shopee platform voucher/i)
+  assert.match(voucher.content, /official Shopee help pages currently conflict/i)
+  assert.match(voucher.content, /live checkout is authoritative/i)
   assert.match(voucher.content, /minimum spend/i)
   assert.match(voucher.content, /discount cap/i)
   assert.match(voucher.content, /Shopee Coins.*separate/i)
@@ -531,6 +535,60 @@ test("August buyer guides preserve the fact sheet's decision-critical cautions",
   assert.match(electrical.content, /official DTI-BPS.*verification app/i)
   assert.match(electrical.content, /visible (?:mark|sticker).*not (?:proof|conclusive)/i)
   assert.match(electrical.content, /voltage/i)
+})
+
+test("Shopee voucher guidance exposes the official stacking conflict and defers to live checkout", () => {
+  const post = postsModule.getPostBySlug("how-to-stack-shopee-vouchers-philippines")
+  assert.ok(post)
+
+  for (const source of [
+    "https://help.shopee.ph/portal/4/article/81188-How-do-I-use-saved-Vouchers-during-checkout",
+    "https://help.shopee.ph/portal/4/article/81031-%5BVouchers%5D-What-vouchers-are-there-on-Shopee%3F-%28ENG%29",
+    "https://help.shopee.ph/portal/4/article/82323-%5BVouchers%5D-How-do-I-apply-vouchers-at-checkout",
+  ]) {
+    assert.ok(post.content.includes(source), `voucher guide must cite ${source}`)
+  }
+
+  assert.equal(post.lastReviewed, "2026-08-09")
+  assert.match(post.content, /official Shopee help pages currently conflict/i)
+  assert.match(post.content, /up to 2 voucher types/i)
+  assert.match(post.content, /up to 3 vouchers/i)
+  assert.match(post.content, /live checkout is authoritative/i)
+  assert.match(
+    post.content,
+    /when both controls appear, test an eligible Free Shipping voucher together with an eligible Discount or Coins Cashback voucher/i
+  )
+  assert.match(post.content, /compare each voucher alone with the accepted combination/i)
+  assert.match(post.content, /does not promise that a three-voucher stack will be eligible/i)
+  assert.doesNotMatch(post.content, /one Shopee platform voucher/i)
+
+  const stackFaq = post.faqs?.find((faq) => /Free Shipping.*Discount.*Cashback/i.test(faq.question))
+  assert.ok(stackFaq, "voucher guide must keep a visible platform-voucher stacking FAQ")
+  assert.match(stackFaq.answer, /official help pages conflict/i)
+  assert.match(stackFaq.answer, /test.*together/i)
+  assert.match(stackFaq.answer, /not a guarantee/i)
+})
+
+test("Temu return guidance preserves category qualifiers and separates inspection from fault", () => {
+  const post = postsModule.getPostBySlug("temu-returns-refunds-price-adjustment-philippines")
+  assert.ok(post)
+
+  assert.equal(post.lastReviewed, "2026-08-09")
+  assert.match(post.content, /clothing-specific exclusion/i)
+  assert.match(post.content, /some health and personal-care items/i)
+  assert.match(post.content, /some free gifts/i)
+  assert.match(post.content, /some customized products/i)
+  assert.match(post.content, /some underwear orders/i)
+  assert.match(post.content, /separate quality-inspection and reduced-refund rule/i)
+  assert.match(post.content, /not due to Temu or the seller/i)
+  assert.match(post.content, /arrived damaged.*buyer-caused damage/is)
+  assert.match(post.content, /improper return packaging.*Temu- or seller-caused damage/is)
+
+  const exclusionsFaq = post.faqs?.find((faq) => /return exclusions/i.test(faq.question))
+  assert.ok(exclusionsFaq, "Temu guide must expose a visible exclusions FAQ")
+  assert.match(exclusionsFaq.answer, /clothing/i)
+  assert.match(exclusionsFaq.answer, /some health and personal-care, free-gift, customized, and underwear/i)
+  assert.match(exclusionsFaq.answer, /live product and order terms control/i)
 })
 
 test("established guides link contextually into the August buyer-workflow cluster", () => {
