@@ -301,7 +301,7 @@ No. SulitScan is a deal discovery site. We link you to Temu and you complete the
 
 Browse [Temu deals](/deals) on SulitScan, or explore by category: [Home Finds](/categories/home-finds), [Tech Deals](/categories/tech-deals), [Fashion](/categories/fashion), [Under ₱500](/categories/under-500).
 
-Before relying on a post-purchase remedy, read the current [Temu returns, refunds, and price-adjustment workflow](/blog/temu-returns-refunds-price-adjustment-philippines).
+Before relying on a post-purchase remedy, read the current [Temu returns, refunds, and price-adjustment workflow](/blog/temu-returns-refunds-price-adjustment-philippines). If checkout displays a cart minimum, use the [Temu minimum-order decision guide](/blog/temu-minimum-order-philippines) before adding anything you did not already need.
 
 ## Affiliate Disclosure
 
@@ -314,7 +314,7 @@ SulitScan may earn a commission when you click a Temu affiliate link and complet
     readTime: 9,
     tags: ["temu", "shopping-guide", "philippines", "tips", "buyer-guide"],
     recommendationIntent: {
-      topics: ["temu-buying"],
+      topics: ["temu-buying", "temu-checkout"],
       platforms: ["Temu"],
       deals: { tags: ["temu"], maxPrice: 1000 },
     },
@@ -842,7 +842,7 @@ SulitScan may earn a commission when you click partner links and complete a purc
     lastReviewed: "2026-06-08",
     readTime: 9,
     tags: ["checkout", "pricing", "tips", "buyer-protection", "transparency"],
-    recommendationIntent: { topics: ["checkout-checklist"] },
+    recommendationIntent: { topics: ["checkout-checklist", "voucher-stacking"] },
     coverGradient: "from-violet-400 to-purple-600",
     coverImage: "/images/guides/final-price-checkout-guide.jpg",
     coverImageAlt: "Illustration of a checkout summary showing product price, shipping, vouchers, and final total",
@@ -1185,6 +1185,8 @@ Our full guide on [how to spot fake discounts](/blog/how-to-spot-fake-discounts)
 - **Avoid sellers who ask you to move to a chat app** to "complete payment", a common scam pattern.
 - **Watch for phishing.** Legitimate stores will not ask for your password or full card details by message or email.
 - **Use payment methods with buyer protection** where available.
+
+Before scanning a seller-sent code, follow the [fake QR payment checks](/blog/fake-qr-code-payment-scams-philippines) and keep marketplace payment on-platform. Tell everyone who accepts deliveries at your address to use the [unexpected COD parcel protocol](/blog/fake-cod-parcel-scam-philippines) before handing over cash.
 
 ## Understand Shipping and Returns Before Paying
 
@@ -1610,7 +1612,7 @@ When opening a SulitScan Shopee deal, use its SulitScore, buyer notes, and last-
 
 ## Related Shopee PH guides
 
-Browse [current Shopee deals on SulitScan](/stores/shopee-ph), read our [best Shopee finds under ₱500 guide](/blog/best-shopee-finds-under-500-philippines), and use the [online product review checklist](/blog/online-product-review-checklist-philippines) to compare exact variants, recent patterns, and buyer photos. If an order arrives wrong, damaged, or incomplete, follow the [Shopee return and refund workflow](/blog/shopee-return-refund-guide-philippines) while the live order control is available. See our [online shopping safety tips](/blog/online-shopping-safety-tips-philippines) for more habits that protect you. If you are comparing an overseas seller, you can also [estimate possible import costs with ImportTaxPH](https://www.importtaxph.com/) before comparing the landed price. Its result is for planning only, so confirm official customs rules, courier fees, and seller shipping terms when they matter.
+Browse [current Shopee deals on SulitScan](/stores/shopee-ph), read our [best Shopee finds under ₱500 guide](/blog/best-shopee-finds-under-500-philippines), and use the [online product review checklist](/blog/online-product-review-checklist-philippines) to compare exact variants, recent patterns, and buyer photos. If a seller displays a government registration badge, use the [DTI Trustmark and BIR Registration Seal verification workflow](/blog/dti-trustmark-bir-registration-seal-online-sellers) as one additional signal rather than a product-quality verdict. If an order arrives wrong, damaged, or incomplete, follow the [Shopee return and refund workflow](/blog/shopee-return-refund-guide-philippines) while the live order control is available. See our [online shopping safety tips](/blog/online-shopping-safety-tips-philippines) for more habits that protect you. If you are comparing an overseas seller, you can also [estimate possible import costs with ImportTaxPH](https://www.importtaxph.com/) before comparing the landed price. Its result is for planning only, so confirm official customs rules, courier fees, and seller shipping terms when they matter.
 
 ## Affiliate disclosure
 
@@ -3180,7 +3182,7 @@ Shipping labels can expose a name, address, phone number, tracking number, and b
 6. Submit factual notes and original files through the official claim route.
 7. Save confirmation screens and protect personal data.
 
-Use our [online shopping safety guide](/blog/online-shopping-safety-tips-philippines) to avoid off-platform payment and support scams. For marketplace orders, the [Shopee seller-check guide](/blog/how-to-check-shopee-seller-legit-philippines) adds seller and listing checks before purchase.
+Use our [online shopping safety guide](/blog/online-shopping-safety-tips-philippines) to avoid off-platform payment and support scams. For marketplace orders, the [Shopee seller-check guide](/blog/how-to-check-shopee-seller-legit-philippines) adds seller and listing checks before purchase. If an unexpected cash-on-delivery parcel appears, follow the [COD household verification protocol](/blog/fake-cod-parcel-scam-philippines) before payment; do not open a parcel at the door when the carrier's current rule prohibits it.
 
 ## Affiliate disclosure
 
@@ -4983,6 +4985,679 @@ SulitScan may earn a commission when you click an eligible partner link and comp
         question: "Is a matching PS or ICC record enough to prove an appliance is safe?",
         answer:
           "No. It is one regulatory check. Also confirm the delivered model, voltage, plug and cord condition, instructions, seller, warranty, installation, damage, and current safety notices or recalls.",
+      },
+    ],
+  },
+  {
+    id: "post-040",
+    slug: "shopee-9-9-sale-philippines-2026-checklist",
+    title: "Shopee 9.9 Sale Philippines 2026: Smart Checkout Checklist",
+    excerpt:
+      "Prepare a Shopee 9.9 cart with a price baseline, live-checkout comparison, spending limit, and post-order record instead of trusting a sale headline.",
+    content: `
+Prepare your Shopee 9.9 cart by listing only needed items, recording a normal-price baseline, and comparing the final payable total in live checkout. The campaign headline is not the amount you will pay, and skipping the purchase is a valid result when the cart no longer fits your needs or budget.
+
+This dated workflow complements the year-round [Philippine sale calendar](/sales-calendar). The calendar identifies planning dates; this guide shows how to make one evidence-based checkout decision for the current 9.9 campaign.
+
+## How we assessed this guide
+
+On 2026-08-09, we reviewed the [official Shopee 9.9 campaign page](https://shopee.ph/m/9-9). The official campaign page currently says the event runs from September 1 through 10. It also promotes campaign-dependent offers, including lower-than-reference prices and an installment message, but the page does not establish the exact eligibility, value, stock, schedule, or payable total for every account and cart.
+
+Campaign wording and checkout controls can change after review. The live campaign page and checkout are authoritative for the exact account, item variation, delivery address, seller, payment method, and moment of purchase. We did not place an order or test every account segment. This guide therefore does not guarantee any voucher value, stacking, or flash-sale times.
+
+## Start with needs and a hard spending limit
+
+Write down the item, exact variation, quantity, and latest acceptable delivery date before opening promotional pages. Separate genuine needs from upgrades and curiosity. A sale does not turn an unplanned item into a saving, and a countdown should not decide whether the household can afford the order.
+
+Set a complete spending limit that includes merchandise, delivery, payment charges, and any other amount displayed before confirmation. Do not define the limit as the largest amount a lender or installment control allows. This guide does not recommend borrowing merely because a campaign advertises an installment offer. Interest labels, eligibility, fees, repayment dates, and consequences belong in a separate affordability decision based on the live terms.
+
+For every shortlisted item, record an acceptable substitute and a walk-away condition. Examples include the needed color being unavailable, delivery arriving after the use date, a seller change, an unsuitable warranty route, or the complete total exceeding the limit. A written exit rule reduces pressure when a timer or stock message appears.
+
+## Build a pre-campaign price baseline
+
+Save the exact listing URL, seller, variation, quantity, ordinary listed price, shipping estimate, and available checkout total before the campaign. A screenshot is useful only when its date and selected variation are clear. Do not compare a sale price for a small size with a baseline for a larger size or compare one seller's bundle with another seller's single item.
+
+Use the [fake-discount guide](/blog/how-to-spot-fake-discounts) to compare the offer with realistic market alternatives rather than a crossed-out number. Check at least one comparable product or retailer when the item is costly enough to matter. If the listing changes seller, bundle, accessories, warranty, or model suffix, create a new comparison row instead of treating it as the same item.
+
+Your baseline is a decision aid, not proof of misconduct or a promise that the earlier price will return. Stock, shipping, and seller terms can legitimately change. The useful question is whether the live delivered total for the same useful item is better than the alternatives available when you are ready to buy.
+
+## Test live vouchers without assuming a stack
+
+Open the cart with the final address, shipping option, payment method, and exact variations selected. Apply one eligible control at a time and record what checkout accepts. Minimum spend, cap, category, seller, account, payment, shipping, expiry, and redemption availability can all affect the result.
+
+The [Shopee voucher-stacking workflow](/blog/how-to-stack-shopee-vouchers-philippines) explains why official help pages and live controls can differ. Treat an accepted combination as evidence only for that cart at that moment. Do not add an unwanted item merely to chase a threshold until you compare the added cost with the real additional benefit.
+
+Record discounts and shipping separately. A larger merchandise discount can still produce a worse delivered total when shipping, quantity, seller, or payment conditions change. Coins or later rewards should not be subtracted as though they were immediate cash unless the current checkout actually applies them to the amount due.
+
+## Compare the final payable total and terms
+
+Use the [checkout comparison tool](/tools/checkout-comparison) or a simple table with three columns: the saved baseline, each accepted live configuration, and the chosen final order. Include the exact item, seller, delivery, payment condition, return route, warranty information, and total due now.
+
+The [final-price guide](/blog/why-final-prices-change-at-checkout) covers common reasons the listing and payment screen differ. Recheck quantity, variation, delivery address, shipping choice, seller voucher, platform voucher, payment restriction, and any preselected protection or service. Do not call a percentage the saving until the final total is compared against the matching baseline.
+
+A lower total does not compensate for the wrong model, late delivery, weak seller evidence, missing local warranty, or an unaffordable payment obligation. Choose the option that meets the original need at an acceptable complete cost. If none does, keep the baseline and wait rather than turning the campaign into a deadline.
+
+## Worked 9.9 checkout decision
+
+Suppose a household needs one replacement item before a known date and has saved a baseline for the exact variation. The live campaign cart shows several voucher controls and an installment message.
+
+1. Confirm the live listing still matches the baseline: same seller, model or variation, quantity, included parts, warranty representation, and delivery window. Remove the item from consideration if a decision-critical detail changed.
+2. Record the no-voucher delivered total, then test each eligible voucher alone and only the combinations checkout accepts. Keep shipping and payment conditions beside each result rather than copying the largest percentage.
+3. Compare the lowest accepted live total with the baseline and a current substitute. Count only immediate reductions shown in checkout, not a future reward that may expire or require another purchase.
+4. Check that the selected payment method fits the household budget without relying on an advertised installment offer. Review the live terms separately if financing is being considered.
+5. Buy only if the exact item remains needed, the complete terms are acceptable, and the total is within the preset limit. Otherwise save the comparison and leave the cart.
+
+After purchase, save the order breakdown beside the baseline. That third snapshot shows what was actually ordered and paid, which is more useful for a later price comparison or support question than a campaign banner.
+
+## Preserve a clean post-order record
+
+Save the order number, seller, exact variation, quantities, item subtotal, applied discounts, shipping, payment method description, delivery estimate, and total. Do not publish a screenshot that exposes an address, phone number, account identifier, barcode, or payment information.
+
+When the order arrives, compare it with the saved order rather than the campaign page. Inspect the parcel under the current platform and carrier rules. If the item is wrong, damaged, incomplete, or not delivered, use the order's official support route and live deadline. A sale campaign does not create a separate promise beyond the applicable listing, order, and policy.
+
+Keep the baseline and receipt long enough to learn whether the purchase met the need. The most useful outcome is not a large claimed percentage; it is an item that was needed, arrived under acceptable terms, and stayed within the complete budget.
+
+## 9.9 checkout checklist
+
+1. Write the needed item, exact variation, quantity, and deadline before browsing the campaign.
+2. Set a complete delivered-total limit and a clear walk-away condition.
+3. Save a dated baseline for the same seller, variation, bundle, shipping, and warranty context.
+4. Recheck the official 9.9 page and the live campaign dates instead of relying on an old screenshot.
+5. Record the no-voucher checkout total with the final address and shipping option.
+6. Test eligible vouchers individually and only combine controls that checkout accepts.
+7. Compare the final payable total, not the crossed-out price or loudest percentage.
+8. Check seller, delivery, return, warranty, and payment terms before confirming.
+9. Do not borrow solely because the campaign advertises an installment option.
+10. Save the final order breakdown and protect personal information in screenshots.
+
+## Limitations and live-policy check
+
+This guide was assessed on 2026-08-09. The official page then displayed a September 1–10 campaign window, but dates, participating sellers, stock, prices, vouchers, redemption limits, payment eligibility, installment terms, shipping, and flash-sale schedules can change. Recheck the live campaign page, listing, voucher details, and final checkout immediately before payment.
+
+SulitScan does not control Shopee, sellers, vouchers, financing, delivery, or returns. This workflow does not guarantee a discount, stack, stock allocation, delivery date, approval, or post-purchase remedy. It provides a repeatable comparison method for information the reader can see live.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. That relationship does not change the checklist: buy only a needed item at an acceptable final total and current terms. We do not issue campaign offers or guarantee savings. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Tips",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-09",
+    lastReviewed: "2026-08-09",
+    readTime: 11,
+    tags: ["shopee", "9-9-sale", "sale-planning", "checkout-checklist", "price-comparison", "philippines"],
+    recommendationIntent: {
+      topics: ["sale-planning", "checkout-checklist", "shopee-shopping"],
+      platforms: ["Shopee PH"],
+      deals: { tags: ["shopee"] },
+    },
+    coverGradient: "from-amber-400 to-orange-500",
+    faqs: [
+      {
+        question: "When is Shopee 9.9 in the Philippines in 2026?",
+        answer:
+          "The official page reviewed on August 9, 2026 displayed September 1 through 10. Campaign details can change, so confirm the live Shopee page and checkout before relying on those dates or any offer.",
+      },
+      {
+        question: "Can I assume Shopee 9.9 vouchers will stack?",
+        answer:
+          "No. Test the eligible controls shown for your account and exact cart, and compare only combinations accepted by live checkout. This guide does not guarantee voucher value, stacking, or availability.",
+      },
+      {
+        question: "Should I use installments because a 9.9 page advertises them?",
+        answer:
+          "Not merely because they are advertised. Keep the purchase within your budget and assess the current eligibility, fees, repayment dates, and consequences separately before accepting financing.",
+      },
+    ],
+  },
+  {
+    id: "post-041",
+    slug: "fake-qr-code-payment-scams-philippines",
+    title: "Fake QR Code Payment Scams Philippines: Checks Before You Scan",
+    excerpt:
+      "Stop before scanning a seller-sent QR code, verify the source and live order, keep payment on-platform, and preserve evidence if anything looks wrong.",
+    content: `
+Do not scan or pay through a QR code sent by an online seller outside the marketplace's official checkout. Stop, verify the request through an independently opened official channel, and keep Shopee payments on-platform; a familiar logo or convincing preview cannot establish that a code is legitimate.
+
+If you already scanned, separate what happened—opening a page, entering credentials, installing something, or completing a transfer—because each event needs a different response. Act quickly, preserve evidence, and use verified contact details rather than replying to the suspicious sender.
+
+## How we assessed this guide
+
+On 2026-08-09, we reviewed [Shopee Philippines' scam guidance](https://help.shopee.ph/portal/4/article/142074-Safety-exercises-to-protect-yourself-against-each-type-of-scam). It says Shopee will not ask users to send money outside its platform, advises against scanning codes from messages, and tells buyers to complete marketplace transactions in the app. Its QR-scam example describes a supposed seller moving a buyer to another messaging channel and sending a false payment code.
+
+We also reviewed the [BSP Verifier and fraud guidance](https://www.bsp.gov.ph/SitePages/FinancialStability/BSPVerifier.aspx). BSP defines quishing as malicious QR codes used to lead people to false sites, collect information, or cause malware downloads. BSP says report first to the bank or e-money issuer when a suspicious financial transaction is involved; its complaint path asks for the financial institution's report reference.
+
+A [July 2026 Philippine News Agency report](https://www.pna.gov.ph/articles/1280220) provides current public-warning context, but it does not replace Shopee's transaction rules, the bank's incident process, or BSP instructions. Policies and contact routes can change, so reopen the official pages when acting.
+
+## Why a QR image cannot prove legitimacy
+
+A QR code is only a compact way to encode data. Its printed appearance does not tell you whether the destination is honest, whether a recipient account belongs to the claimed seller, or whether the amount matches your order. Criminals can place a malicious code over a genuine one, copy official-looking colors, or send an image beside a believable story.
+
+Visual inspection alone cannot prove a QR code, destination, or recipient is legitimate. A phone preview may help expose an obvious unrelated domain, but a similar spelling, shortened address, redirect, or compromised legitimate page can still mislead. Do not treat the scanner's check mark, a sender name, or a marketplace logo as authorization to pay.
+
+The strongest check is transaction context. Did you initiate an order in the official app? Does the app show the same seller, item, amount, and payment step? Did you reach support by opening the official app yourself? If a message asks you to bypass that trail for a special discount, refund, release fee, or account fix, stop.
+
+## Use seven checks before any scan or payment
+
+Apply these checks to the request without opening its code:
+
+- **Source:** Was the request expected, and did it arrive through the official order or support flow you opened yourself?
+- **Destination:** Can you independently navigate to the required action in the official app instead of scanning?
+- **Recipient:** Does live checkout identify the authorized payment route? A name beside a code is not proof by itself.
+- **Amount:** Does the amount match the order total currently displayed, with no unexplained release or verification fee?
+- **Order state:** Does My Purchases show a real unpaid order or support case corresponding to the message?
+- **Credentials:** Does the page request a password, OTP, PIN, card security code, remote access, or installation? Stop if it does.
+- **Independent confirmation:** Can official customer service, reached from the app or typed official site, confirm the request without using links supplied by the sender?
+
+For a marketplace purchase, an independently opened checkout is safer than trying to authenticate a code image. Use the [general online-shopping safety guide](/blog/online-shopping-safety-tips-philippines) for account, seller, and payment habits that support these checks.
+
+## Keep the marketplace order and payment trail together
+
+Shopee payments must stay on-platform through the controls Shopee provides for the live order. Do not transfer to a personal bank or e-wallet account because a supposed seller offers a private discount, says checkout is broken, or asks you to cancel first. Moving the transaction outside the platform separates payment from the order record you may need for support.
+
+Check the seller independently with the [Shopee seller legitimacy workflow](/blog/how-to-check-shopee-seller-legit-philippines). A good seller profile does not validate a code sent from a compromised account, and a registration badge does not validate a payment recipient. If a badge is displayed, the [DTI Trustmark and BIR seal guide](/blog/dti-trustmark-bir-registration-seal-online-sellers) explains how to verify the official domain while keeping registration separate from product and payment judgment.
+
+Never share an OTP, marketplace password, ShopeePay PIN, full card details, or device access in response to a code-linked page. A person who already has a convincing order detail may still be attempting account takeover or payment diversion.
+
+## Respond according to what already happened
+
+If you only received the image, do not scan it. Save the message, sender identifier, date, and order context; then report the account or message through the platform's current route.
+
+If you scanned but did not enter anything, close the page. Do not download a file or grant permissions. Check the browser download list and device permissions, update the operating system and security tools, and monitor the relevant accounts. Do not revisit the link merely to create more evidence.
+
+If you entered a password, PIN, OTP, card information, or recovery data, use a clean device and independently opened official channel to secure the affected account. Change reused credentials, revoke unfamiliar sessions where possible, contact the bank or e-money issuer, and monitor transactions. Tell support exactly what data was entered and when.
+
+If money moved, immediately contact the bank or e-money issuer using the number in its official app, website, or the back of the physical card—not a number in the suspicious message. Ask for an incident reference and follow its evidence instructions. Report the related marketplace account through official support and consider the current police or cybercrime reporting route for the circumstances.
+
+## Worked suspicious-QR response
+
+Suppose a buyer with a real Shopee order receives a chat-app message claiming the seller must cancel the order and accept a QR payment to preserve a discount.
+
+1. Do not scan the image. Open Shopee independently, check My Purchases, and confirm that the existing order and official payment state do not request the outside transfer.
+2. Save the sender profile, message, image, time, claimed amount, and matching order context without forwarding sensitive account data. Report the seller request through Shopee's current customer-service path.
+3. If the buyer already opened the QR destination but entered nothing, close it, check downloads and permissions, and monitor accounts. If credentials were entered, secure those accounts from a clean route and inform the relevant provider.
+4. If a transfer was completed, contact the bank or e-money issuer first, obtain the report reference, and provide accurate transaction evidence. Then follow the marketplace and appropriate authority reporting routes.
+5. Do not negotiate with the sender or pay a second fee said to unlock, verify, or recover the first transfer.
+
+Recovery or reversal is not promised. Speed and complete evidence can help a provider assess the incident, but the result depends on transaction status, provider rules, recipient movement, investigation, and applicable process.
+
+## Preserve useful evidence without spreading the code
+
+Keep original screenshots of the message thread, sender profile, QR image, displayed destination preview, order page, transaction record, and support reference. Record the date and time, amount, recipient details shown by the financial app, and a short factual timeline. Preserve original files rather than editing the only copy.
+
+Do not post a scannable code, full transaction number, phone number, address, account balance, card detail, OTP, or identity document publicly. Share evidence only through verified provider, platform, or authority channels. If you warn family members, describe the tactic or use a safely redacted image instead of circulating an active payment or malicious code.
+
+An incident note should distinguish what you observed from what you infer. Write “the destination requested my password” rather than declaring who operated it unless an authority has confirmed that fact.
+
+## QR payment safety checklist
+
+1. Confirm that you initiated a real order or support request in the official app.
+2. Refuse any seller request to move a Shopee payment outside the platform.
+3. Open the official app or type the official address instead of scanning a message-sent code.
+4. Compare the live order, amount, seller, and payment state independently.
+5. Stop if a page requests an OTP, PIN, password, card security data, installation, or remote access.
+6. Confirm suspicious requests with support reached through an official channel you opened yourself.
+7. Preserve the message, sender, code image, destination preview, order context, and time.
+8. If credentials were exposed, secure the affected accounts from a clean route.
+9. If money moved, report first to the bank or e-money issuer and keep the reference number.
+10. Do not pay a second supposed recovery, release, or verification fee.
+
+The [fake COD parcel guide](/blog/fake-cod-parcel-scam-philippines) covers a related household problem in which a payment request arrives at the door rather than through a code.
+
+## Limitations and live-policy check
+
+This guide was reviewed on 2026-08-09 and cannot inspect a reader's code, device, sender, financial account, or transaction. Scanner previews, malware warnings, recipient names, and institution listings are useful signals, not guarantees. Shopee, bank, e-money issuer, BSP, and law-enforcement processes can change.
+
+Use the official app and current provider contacts for the specific event. Do not delay an urgent financial report while trying to identify the scammer yourself. This guide does not promise account recovery, transfer reversal, reimbursement, investigation outcome, or legal remedy.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when a reader follows an eligible partner link and completes a purchase, at no extra cost to the reader. No commission justifies leaving a marketplace's official payment flow. We do not process payments, investigate scams, or recover funds. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Safety",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-09",
+    lastReviewed: "2026-08-09",
+    readTime: 12,
+    tags: ["qr-scam", "quishing", "payment-safety", "shopee", "fraud-response", "philippines"],
+    recommendationIntent: {
+      topics: ["qr-scam", "payment-safety", "shopping-safety"],
+      platforms: ["Shopee PH"],
+      deals: { tags: ["shopee"] },
+    },
+    coverGradient: "from-blue-700 to-cyan-400",
+    faqs: [
+      {
+        question: "Can I tell whether a payment QR code is safe by looking at it?",
+        answer:
+          "No. Visual inspection and a destination preview may expose obvious problems, but they cannot prove legitimacy. Verify the request through an independently opened official app or channel and keep marketplace payments on-platform.",
+      },
+      {
+        question: "What should I do first after a suspicious QR payment?",
+        answer:
+          "Contact the bank or e-money issuer through its verified app, website, or card number, report the transaction, and keep the reference. Also preserve evidence and report the related marketplace account through official support.",
+      },
+      {
+        question: "Does quick reporting guarantee that a QR transfer will be reversed?",
+        answer:
+          "No. Quick, accurate reporting is important, but recovery or reversal depends on the transaction and provider process and is not promised.",
+      },
+    ],
+  },
+  {
+    id: "post-042",
+    slug: "dti-trustmark-bir-registration-seal-online-sellers",
+    title: "DTI Trustmark and BIR Registration Seal: Verify Online Sellers",
+    excerpt:
+      "Verify a displayed DTI Trustmark or BIR Registration Seal on the exact official domain, then treat the result as one seller signal—not a quality guarantee.",
+    content: `
+Verify a displayed DTI Trustmark or BIR Registration Seal by scanning it cautiously, checking the exact official domain, reading the live result, and matching its business details with the seller. A badge is one registration or compliance signal; it does not prove who controls a marketplace account or guarantee the product, transaction, warranty, or payment request.
+
+Use this workflow beside the broader [Shopee seller legitimacy checklist](/blog/how-to-check-shopee-seller-legit-philippines). Seller history, exact-item reviews, listing evidence, support behavior, payment route, and current order terms remain separate checks.
+
+## How we assessed this guide
+
+On 2026-08-09, we reviewed the [DTI Trustmark FAQ](https://trustmark.dti.gov.ph/faqs). DTI says an issued Trustmark has a unique QR code that directs users to its official Trustmark site, where a user can view details such as the store name, registration information, and online platforms used. The FAQ also distinguishes a government-issued Trustmark from a marketplace's performance badge.
+
+We reviewed the BIR [RMC No. 38-2026 digest](https://bir-cdn.bir.gov.ph/BIR/pdf/RMC%20No.%2038-2026%20Digest.pdf), which says the circular was issued on 2026-04-29. It describes the BIR Registration Seal Badge for online display and instructs relying parties who scan its QR code to ensure that the displayed URL uses the official path [https://verify.bir.gov.ph/correspondence/](https://verify.bir.gov.ph/correspondence/) before relying on the displayed verification result.
+
+That bare BIR URL is not a general seller lookup. During review, opening it without QR-supplied correspondence data produced an invalid-result state. Treat the exact domain and path as a necessary anti-spoofing check, then assess the QR-supplied result and matching business details. A correct hostname alone does not validate a badge or seller.
+
+## Preserve the DTI FAQ conflict instead of guessing
+
+The DTI FAQ observed on 2026-08-09 contains conflicting mandatory and voluntary answers. One early answer says covered online merchants, marketplaces, e-retailers, and digital platforms must be Trustmark-registered to conduct e-commerce. A later answer to whether the Trustmark is mandatory says application is voluntary but strongly encouraged.
+
+We do not resolve this conflict or contradiction by assumption. The page does not give readers a safe basis to select one answer as the final legal interpretation while ignoring the other. Anyone who needs a compliance determination for a business should check current DTI guidance or ask DTI directly rather than relying on this buyer workflow.
+
+For shoppers, the practical consequence is narrower: absence of a badge alone is not proof of fraud, illegality, or non-registration. Presence is also not proof that the person operating a marketplace account is the registered business shown. Keep the badge result as one line in a larger evidence table.
+
+## Verify a DTI Trustmark result
+
+Start from the seller's displayed badge only when the listing or shop clearly identifies it as the DTI Trustmark. Do not scan while distracted or grant a page permissions it does not need. Preview the destination where the device allows it, and require the official hostname to be exactly trustmark.dti.gov.ph rather than a look-alike spelling, extra subdomain, or shortened address.
+
+On the official result, compare the store or business name, registration information, status or validity shown, and listed online platforms with the shop you are considering. A record for a real business does not establish that an unrelated account, copied badge, or similar shop name belongs to it. Where the seller relationship remains unclear, contact the business using information independently found on its official presence, not a number embedded in a suspicious message.
+
+Save a dated screenshot or note of the result without exposing unnecessary identifiers. Do not publish the full QR or personal information. If the badge points away from the official DTI hostname, shows mismatched details, or produces no usable result, pause and ask DTI or the named business through current official channels.
+
+## Verify a BIR Registration Seal result
+
+For a BIR seal, scan only in a controlled context and inspect the complete destination before relying on the result. The RMC digest requires the official BIR verification domain and path https://verify.bir.gov.ph/correspondence/. Reject look-alike domains, shortened links, screenshots offered instead of a live result, or a page that merely copies government styling.
+
+Do not open the bare URL and interpret its invalid state as a finding about a seller. The verification request needs the correspondence data carried by a valid QR. After a scan reaches the exact official path, read the result shown and match the taxpayer or business information with the seller's disclosed identity. A correct domain is necessary but not sufficient: a copied QR could lead to a genuine record belonging to a different business.
+
+The BIR result addresses registration-document authenticity or the validity/current status described by the official result. It does not authenticate merchandise, prove marketplace-account control, decide warranty coverage, confirm beneficial ownership, or approve a payment recipient.
+
+## Keep government, platform, and product signals separate
+
+Use a small matrix so one strong-looking symbol does not carry conclusions it cannot support:
+
+- **DTI Trustmark:** check the official Trustmark result and matching business/platform details; do not turn it into a product verdict.
+- **BIR Registration Seal:** check the exact official QR-result domain, result state, and matching business information; do not call it a seller-quality score.
+- **Marketplace badge:** read the platform's current definition and seller performance evidence; do not call it government registration.
+- **Account control:** confirm the shop, official business contact, order trail, and payment route; a copied badge cannot prove who controls an account.
+- **Product evidence:** compare the exact model, variation, recent reviews, seller answers, regulatory records where relevant, and delivered item.
+- **Warranty and complaints:** identify who promises the warranty, how a complaint is filed, and whether the business responds through a verifiable channel.
+
+DTI's FAQ expressly says the Trustmark does not constitute endorsement or certification of quality for a specific business, product, or service. BIR registration verification is likewise not a product-quality endorsement. Use the [online product review checklist](/blog/online-product-review-checklist-philippines) and [online purchase warranty guide](/blog/online-purchase-warranty-guide-philippines) for those separate questions.
+
+## Worked seller-verification decision
+
+Suppose a Shopee shop displays images labeled as a DTI Trustmark and BIR Registration Seal while selling a branded appliance at an unusually low price.
+
+1. Record the shop name, stated business identity, exact listing, seller history, price context, and badge images. Do not pay or move to an outside chat while verification is incomplete.
+2. Scan the DTI badge cautiously and require trustmark.dti.gov.ph. Compare the official result's store, registration, and platform details with the shop instead of trusting the badge image alone.
+3. Scan the BIR seal and require the exact https://verify.bir.gov.ph/correspondence/ domain/path. Read the QR-supplied result and compare its business details; do not use the bare invalid page as a seller lookup.
+4. Keep any matching results in separate rows from product authenticity, seller performance, warranty, and payment. Review exact-item evidence and contact the named business independently if account control remains uncertain.
+5. If a result is mismatched, copied, expired, invalid, or on a look-alike domain, pause the transaction and preserve factual evidence for the platform or relevant agency. Avoid public accusations that exceed what the result shows.
+
+Even if both results match, continue checking the listing, exact model, recent buyer evidence, return route, warranty provider, and on-platform payment. Verification reduces uncertainty; it does not eliminate it.
+
+## Respond to absence, mismatch, or a suspicious code
+
+Badge absence alone is not proof of fraud, especially while the DTI FAQ itself contains conflicting wording about mandatory registration and voluntary application. Ask the seller for its disclosed business identity and current official verification route, then weigh other seller and transaction evidence.
+
+A mismatch deserves a pause, not an improvised legal conclusion. Save the official result, seller claim, URL, date, and exact differences. Report a suspected copied badge or misleading shop through the marketplace and the current DTI or BIR channel as appropriate. State what you observed rather than claiming intent you cannot prove.
+
+If a badge arrives through a message alongside a payment request, treat the payment separately. The [fake QR payment guide](/blog/fake-qr-code-payment-scams-philippines) explains why a government-looking QR or valid registration record cannot authorize an off-platform transfer.
+
+## Seller verification checklist
+
+1. Record the exact seller account, disclosed business name, listing, and date.
+2. Distinguish a DTI Trustmark, BIR Registration Seal, and marketplace performance badge.
+3. Preview a QR destination and reject shortened or look-alike domains.
+4. For DTI, require trustmark.dti.gov.ph and match the live result details with the seller.
+5. For BIR, require https://verify.bir.gov.ph/correspondence/ and use the QR-supplied result, not the bare page.
+6. Compare business name, status, and platform or shop details shown by the official result.
+7. Verify account control independently when a copied badge or similar name remains possible.
+8. Keep product authenticity, reviews, warranty, complaint response, and payment as separate checks.
+9. Do not treat absence alone as proof of fraud or presence as a quality endorsement.
+10. Preserve factual evidence and use current official reporting channels for a mismatch.
+
+## Limitations and live-policy check
+
+This guide was reviewed on 2026-08-09. DTI and BIR rules, FAQ wording, records, result screens, badge status, marketplace displays, and official contact routes can change. The unresolved DTI mandatory/voluntary conflict is reported as observed; this article is not a legal interpretation or compliance opinion.
+
+SulitScan cannot establish who controls an account, authenticate physical goods, audit a company, or certify a transaction. Recheck the exact official domain and current result. Ask the responsible agency or a qualified adviser when a legal or registration question materially affects a decision.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when a reader follows an eligible partner link and completes a purchase, at no extra cost to the reader. Commission does not make a seller, badge, product, warranty, or payment safe. We do not issue or verify government registrations and cannot guarantee seller legitimacy or product quality. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Safety",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-09",
+    lastReviewed: "2026-08-09",
+    readTime: 13,
+    tags: ["dti-trustmark", "bir-registration-seal", "seller-verification", "business-registration", "shopee", "philippines"],
+    recommendationIntent: {
+      topics: ["seller-verification", "business-registration", "shopping-safety"],
+      platforms: ["Shopee PH"],
+      deals: { tags: ["shopee"] },
+    },
+    coverGradient: "from-emerald-900 to-amber-200",
+    faqs: [
+      {
+        question: "Is the DTI Trustmark mandatory for every online seller?",
+        answer:
+          "The DTI FAQ observed on August 9, 2026 conflicts: one answer says covered merchants must register, while another says application is voluntary. This guide does not resolve that conflict; check current DTI guidance for a compliance decision.",
+      },
+      {
+        question: "Does opening the BIR verification URL verify an online seller?",
+        answer:
+          "No. The bare path can show an invalid state without QR correspondence data. Scan the seal, require the exact official domain/path, read the supplied result, and match its business details with the seller.",
+      },
+      {
+        question: "Does a verified DTI or BIR badge prove a product is genuine or high quality?",
+        answer:
+          "No. Registration or compliance verification is one seller signal. It does not prove marketplace-account control, product authenticity, warranty performance, payment safety, or product quality.",
+      },
+    ],
+  },
+  {
+    id: "post-043",
+    slug: "fake-cod-parcel-scam-philippines",
+    title: "Fake COD Parcel Scam Philippines: What to Do Before Paying",
+    excerpt:
+      "Do not pay for an unordered COD parcel. Check the household order log, live order history, buyer, amount, label, and current carrier rules first.",
+    content: `
+Do not pay for a cash-on-delivery parcel nobody in the household ordered. Keep it unopened, check the household order log and live marketplace history, and use a calm recipient script while the buyer confirms the name, amount, seller, platform, and airway-bill details.
+
+An unordered parcel is different from a real wrong or damaged order. The first calls for verification and possible refusal under current carrier or platform rules; the second normally follows the marketplace's official return or refund process after receipt rather than an at-door inspection of the contents.
+
+## How we assessed this guide
+
+On 2026-08-09, we reviewed [Shopee's receiving guidance](https://help.shopee.ph/portal/4/article/81483-What-to-do-when-receiving-an-order). It tells COD recipients to prepare payment and identification, limits refusal in that flow to specified exterior or airway-bill problems, says opened parcels cannot be returned to the rider, and directs incomplete, wrong, or damaged-item cases to the in-app Return/Refund route.
+
+We also reviewed [Ninja Van Philippines' parcel-scams advisory](https://www.ninjavan.co/en-ph/support/consignee-support/parcel-scams-advisory). It tells people not to pay for parcels they did not buy, to reject and report suspicious deliveries, and to inform household members about expected COD orders. Its FAQ says recipients cannot open COD parcels before payment and may refuse parcels they did not purchase or that appear suspicious.
+
+Because this workflow uses Shopee-specific order-history and proxy-recipient advice, we also checked [Shopee's scam guidance](https://help.shopee.ph/portal/4/article/142074-Safety-exercises-to-protect-yourself-against-each-type-of-scam). It says buyers should verify COD transactions in My Purchases and inform anyone receiving parcels on their behalf about expected deliveries.
+
+Carrier and marketplace instructions can differ. Check the current rule for the parcel in front of you; do not turn one company's refusal criteria into a universal policy.
+
+## Keep a household order log
+
+Use a shared note that contains only what a recipient needs: buyer first name or household identifier, marketplace or retailer, expected courier where known, item description, COD amount, delivery window, and order status. Avoid copying passwords, full account details, identity documents, or complete payment information into the log.
+
+Update the entry if the order is canceled, prepaid, split into several parcels, or assigned a different amount after an authorized change. Mark which person can approve COD payment when the buyer is away. For frequent deliveries, archive completed entries so a recipient can distinguish today's expected parcel from an old screenshot.
+
+The log is a household control, not an official Shopee or courier document. The live order page still controls. A matching amount alone is not enough when the buyer name, seller, platform, or tracking record does not match.
+
+## Use a calm recipient script
+
+Give relatives, guards, helpers, or reception staff a short recipient script:
+
+> “Please wait while I check our order list and contact the named buyer. I cannot pay for or open an unconfirmed COD parcel. If we cannot verify it under the current order and carrier rules, we will refuse it and contact official support.”
+
+The recipient should not accuse the rider, argue about the sender's intent, or hand over money simply to avoid inconvenience. Many last-mile personnel collect cash and deliver parcels on behalf of other parties. Ninja Van explains that a delivery provider may have limited contact with the seller or scammer.
+
+Do not blame the rider or ask the rider to personally reimburse, investigate, or open the parcel. Ask for the courier name and the non-sensitive label details needed to check the order, then use the carrier's current support route if confirmation is not possible.
+
+## Verify before money changes hands
+
+Keep the parcel sealed while checking:
+
+- Does the buyer name match someone who placed an order?
+- Does the live marketplace or retailer history show an expected COD order?
+- Do seller, platform, amount, tracking reference, and delivery status agree?
+- Does the airway bill point to this household and the intended recipient?
+- Is the exterior intact, with no unexplained tampering or damage?
+- Was a supposed prepaid order changed into COD without the buyer authorizing it?
+- Can the named buyer confirm using the independently opened official app?
+
+Do not rely on an SMS link, sender-provided phone number, or screenshot sent by an unknown person. Open My Purchases or the retailer account directly. If the parcel is supposedly from a marketplace but no order exists, treat the mismatch as decision-critical.
+
+Do not open a COD parcel before payment when the current platform or carrier rule prohibits it. Exterior verification, order history, and label matching are not the same as opening the contents. Never break a seal merely to prove the parcel is suspicious.
+
+## Decide between refusal, escalation, and acceptance
+
+For a clearly unordered or suspicious parcel, explain that no matching purchase can be confirmed and follow the current carrier procedure for refusal. Record the courier, visible tracking reference, date, time, and reason without photographing the rider unnecessarily. Contact the carrier through its official website or app if the rider needs a support instruction.
+
+If a Shopee parcel's exterior appears tampered or damaged, or its airway-bill information indicates it is not yours, use Shopee's current receiving guidance. Do not generalize those exact grounds to another carrier. If there is uncertainty rather than a clear match, pause and ask official support what the recipient may do before money changes hands.
+
+If the live order, recipient, amount, tracking, and carrier rules all match, the buyer may decide to accept and pay. Acceptance is not a finding that the unseen contents are correct. Preserve the parcel and follow the platform's evidence rules when opening.
+
+## Handle a genuine wrong or damaged order separately
+
+A real order can contain the wrong variation, missing parts, damage, or a product that does not match the listing. That is not automatically an unordered COD parcel. Shopee says opened parcels cannot be returned to the rider and directs incomplete, wrong, or damaged items through its in-app Return/Refund process.
+
+Follow the [unboxing evidence workflow](/blog/unboxing-video-evidence-online-shopping-philippines) after accepting under the applicable rules. Photograph the sealed parcel and label, preserve packaging, compare the item with the saved order, and use the reason and evidence prompt shown in the current claim flow. Do not ask the rider to judge the contents or fund the remedy.
+
+The [Shopee return and refund guide](/blog/shopee-return-refund-guide-philippines) explains how to act within the live order deadline. A valid order trail can support a claim, but it does not guarantee that every request will be approved.
+
+## Worked COD doorstep decision
+
+Suppose a guard receives a sealed COD parcel addressed to a resident, but the shared log shows no expected payment for that amount.
+
+1. Keep the parcel sealed and use the recipient script. Record the marketplace or courier, named recipient, visible amount, and tracking reference without copying unrelated personal data.
+2. Contact the resident through the household's saved number. The resident independently opens the marketplace accounts and finds no matching COD order, split shipment, or authorized family purchase.
+3. Tell the rider calmly that the household cannot verify the purchase and will follow the carrier's current refusal process. Do not accuse the rider or demand that the package be opened.
+4. Save a short factual incident note and report a suspicious parcel through the courier's official support route. If the label claims a marketplace seller, report through that marketplace's official channel as well.
+5. Warn household recipients about the attempted delivery without publishing the full label, address, phone number, barcode, or rider image.
+
+If the resident instead finds a matching genuine order, the next decision follows the current receiving rule. If a problem with the contents appears only after permitted opening, use the platform claim route rather than treating it as the same unordered-parcel event.
+
+## Preserve evidence and protect people
+
+For an unverified parcel, record the date, time, named recipient, claimed sender or platform, COD amount, courier, tracking reference, and the reason it did not match the order log. Photograph the parcel only where useful and lawful, and cover household address, phone number, barcode, or identity information before sharing outside official support.
+
+Do not post the rider's face or accuse a delivery worker publicly based on one parcel. The sender, freight forwarder, and last-mile provider may be different parties. Give official support the facts needed to trace the shipment.
+
+If someone already paid, keep the receipt, packaging, label, contents, communications, and support reference. Contact the carrier and relevant marketplace through verified channels. A refund or reimbursement is not promised or guaranteed; provider policies, sender traceability, evidence, and investigation determine the result.
+
+## COD parcel checklist
+
+1. Keep a current household order log with expected COD amounts and buyer names.
+2. Give every proxy recipient the same calm script and authority limits.
+3. Keep the parcel unopened while checking the live order history.
+4. Match buyer, seller, platform, amount, tracking, delivery status, and airway-bill details.
+5. Check exterior tampering or damage under the current platform and carrier rules.
+6. Do not open before payment where the current rule prohibits it.
+7. Refuse an unordered or suspicious parcel only through the applicable carrier process.
+8. Do not blame the rider or ask the rider to personally resolve or reimburse the case.
+9. Treat a genuine wrong, incomplete, or damaged order through the official claim route.
+10. Save factual evidence while protecting household and delivery-worker personal data.
+
+For related payment requests, use the [fake QR scam response](/blog/fake-qr-code-payment-scams-philippines). The [general shopping-safety guide](/blog/online-shopping-safety-tips-philippines) adds account, seller, and off-platform payment checks.
+
+## Limitations and live-policy check
+
+This guide was reviewed on 2026-08-09. Marketplace and carrier refusal criteria, opening restrictions, identification requirements, support routes, return deadlines, and refund processes can change. Check the live order and the current instructions of the marketplace and actual carrier before deciding.
+
+SulitScan cannot identify a sender, direct a rider, refuse a parcel for the reader, or decide a claim. This guide does not promise that refusal will always be available, that a suspicious parcel will be traced, or that payment will be refunded.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when a reader follows an eligible partner link and completes a purchase, at no extra cost to the reader. That relationship does not change the household rule: do not pay for an order that cannot be verified, and use official routes for a genuine order problem. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Safety",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-09",
+    lastReviewed: "2026-08-09",
+    readTime: 12,
+    tags: ["cod-scam", "parcel-safety", "cash-on-delivery", "household-protocol", "shopee", "philippines"],
+    recommendationIntent: {
+      topics: ["cod-scam", "parcel-safety", "shopping-safety"],
+      platforms: ["Shopee PH"],
+      deals: { tags: ["shopee"] },
+    },
+    coverGradient: "from-orange-500 to-slate-600",
+    faqs: [
+      {
+        question: "Should I pay for a COD parcel if nobody remembers ordering it?",
+        answer:
+          "No. Keep it sealed, check every buyer's live order history and the household log, match the label and amount, and follow the current carrier process if no purchase can be verified.",
+      },
+      {
+        question: "Can I open a suspicious COD parcel before paying?",
+        answer:
+          "Not when the current platform or carrier rule prohibits it. Verify the exterior, label, order history, buyer, amount, and tracking instead, then follow the applicable refusal or support process.",
+      },
+      {
+        question: "Is a genuine order with a wrong or damaged item handled at the door?",
+        answer:
+          "Usually it is a separate post-receipt case under the platform's current process. Preserve parcel evidence and use the live return or refund route; do not expect the rider to inspect or reimburse the contents.",
+      },
+    ],
+  },
+  {
+    id: "post-044",
+    slug: "temu-minimum-order-philippines",
+    title: "Temu Minimum Order Philippines: Checkout Without Overspending",
+    excerpt:
+      "There is no reliable fixed PHP minimum to publish for every Temu cart. Compare your live message with actual needs, the final total, and a stop option.",
+    content: `
+There is no reliable fixed PHP minimum that SulitScan can publish for every Temu Philippines cart. Use the amount, if any, displayed in your own live checkout, add only items you already need, and keep “buy nothing today” as a valid decision when meeting the message would increase waste or overspending.
+
+Do not treat another shopper's screenshot, an old forum answer, or a progress bar from a different account as your rule. The useful question is not “How do I beat the minimum?” but “Does the complete cart still make sense after I compare the requirement with my needs and final payable total?”
+
+## How we assessed this guide
+
+On 2026-08-09, we reviewed Temu's [Philippines buying-support page](https://www.temu.com/ph/support/c2/buying-on-temu-f-44.html). Temu's PH support has listed a “Minimum Order Value” topic, but the fresh public page reviewed did not publish one universal Philippine peso amount, calculation, rationale, waiver, or workaround.
+
+We therefore do not state that Temu always has a minimum, that every shopper sees the same value, or that a particular factor causes the message. The exact account and live checkout message is authoritative for the cart in front of the reader. Reopen the help page and checkout because the public rendering and terms can change.
+
+The needs-first comparison below is SulitScan's editorial method, not a Temu formula or official workaround. It uses only values and item details the reader can see live.
+
+## Read the live message precisely
+
+Record the displayed minimum or required gap exactly as shown, the merchandise subtotal it appears to use, the selected delivery address, voucher state, shipping, taxes or fees shown, and final payable total. If the screen does not explain which value counts, do not invent a calculation rule. Change one control at a time and observe the result without placing an order merely to test it.
+
+Take a dated screenshot for your own comparison, but cover account, address, phone, payment, and order identifiers before sharing it. A screenshot documents one moment; it does not create a universal policy.
+
+Do not assume why Temu assigned a threshold. The reviewed source does not establish that a value is caused by account status, location, shipping cost, promotions, item mix, fraud controls, or an experiment. Customer reports may describe experiences, but they cannot supply the missing first-party rationale for your checkout.
+
+## Rebuild the cart from needs, not from the gap
+
+Remove every optional item and start with the products you intended to buy before seeing the minimum message. For each intended item, write the purpose, required size or variation, quantity, current seller or listing evidence, delivery deadline, and acceptable substitute. If an item has no current use, it should not become necessary merely because it moves a progress bar.
+
+Check quality, measurements, materials, voltage, safety, reviews, delivery, and return restrictions just as you would without a minimum. The [Temu shopping guide](/blog/temu-shopping-guide-philippines) provides a wider platform checklist. A minimum-order condition does not improve the suitability of an extra product or make a weak listing stronger.
+
+Calculate the cost of the intended cart before any addition. If the intended cart is already unaffordable, stop. The existence of a gap is not a reason to stretch the household budget.
+
+## Evaluate any genuinely useful addition
+
+Sometimes another household need is already planned. Evaluate it as a separate purchase, not as filler. Confirm its exact variation, useful quantity, price, shipping effect, return terms, and whether a local or later purchase would be better. Count the entire extra cost, not only the portion that closes the displayed gap.
+
+Ask four questions:
+
+- Would I buy this item at this total if there were no minimum message?
+- Will it be used within a reasonable period, in the selected quantity and variation?
+- Is its added cost lower than the value it genuinely provides, not merely lower than a promotional claim?
+- Does adding it change shipping, voucher eligibility, returns, delivery timing, or the final total in an unfavorable way?
+
+If the answer to the first question is no, remove it. Spending more than intended is not a saving, even when checkout becomes available.
+
+## Compare stop, wait, and continue outcomes
+
+Create three rows using the [checkout comparison tool](/tools/checkout-comparison) or a note:
+
+- **Stop today:** pay nothing, keep the product list, and revisit only when a genuine need or policy change occurs.
+- **Wait and combine real needs:** postpone the order until another planned item is needed, while rechecking prices, stock, and the live minimum later.
+- **Continue now:** buy only when the intended cart plus any independently useful addition meets the live rule, fits the budget, and has acceptable delivery and return terms.
+
+Compare the final payable total, not the item subtotal alone. The [final-price guide](/blog/why-final-prices-change-at-checkout) explains why shipping, voucher conditions, quantities, and payment choices can change the result. A voucher may change what is due, but this guide does not promise that it changes the qualifying amount or makes the order worthwhile.
+
+Do not split, combine, cancel, or reorder purchases as an evasion tactic. This guide does not recommend filler-item or post-checkout cancellation workarounds. Those tactics can create unwanted charges, return complications, policy issues, or waste and are not supported by the reviewed public source.
+
+## Worked Temu cart decision
+
+Suppose a shopper intended to buy two practical household items. Checkout displays a minimum-order message, and the shopper is considering an unrelated accessory solely to proceed.
+
+1. Record the live minimum message, intended-item subtotal, displayed gap, shipping, voucher state, and final total. Do not copy a threshold from another account or infer why it appeared.
+2. Remove the unrelated accessory. Confirm that the two intended products still meet a real need, have the correct variations, and remain good value compared with alternatives.
+3. List any other already-planned household need. Compare its complete cost and usefulness independently. If it would not be purchased without the minimum message, do not add it.
+4. Compare the three outcomes: stop today, wait until another real need exists, or continue with a genuinely useful cart that the live checkout accepts.
+5. Choose continue only if the final total fits the preset budget and every item passes the ordinary product, delivery, and return checks. Otherwise choose “buy nothing today,” which remains a valid result.
+
+The decision does not require predicting whether the minimum will be higher, lower, or absent later. It protects the shopper from turning an unexplained checkout condition into unnecessary spending now.
+
+## Keep returns and price changes separate
+
+Do not add something with a plan to cancel or return it after the main order is accepted. Return eligibility, first-return treatment, shipping, refund method, condition rules, and processing can vary. The [Temu returns, refunds, and price-adjustment guide](/blog/temu-returns-refunds-price-adjustment-philippines) explains those routes, but none should be treated as a minimum-order workaround.
+
+Save the final cart and order breakdown if you proceed. Compare the received variations and quantities with the order, preserve evidence under the live claim instructions, and use the official support route for a genuine problem.
+
+This guide does not promise that customer support will waive or change a minimum. A reader may ask support to explain a live message through Temu's current channel, but the answer and available options must come from that channel rather than from SulitScan.
+
+## Separate checkout minimum from landed cost
+
+A marketplace minimum-order message is a checkout condition, not a Philippine customs threshold. Cross-border delivery can involve separate classification, value, courier, and official-assessment questions that should not be mixed into the progress bar.
+
+For a broader introduction, read the [Philippine import-tax guide](/blog/philippine-import-tax-guide-online-shoppers). Where a planning estimate is useful, [ImportTaxPH](https://www.importtaxph.com/) can provide a landed-cost estimate. ImportTaxPH is an estimate, not a customs threshold or official assessment, and it does not decide whether Temu will accept the cart.
+
+Keep the two lines separate in the comparison: the live marketplace total currently shown, and any clearly labeled cross-border planning estimate. Confirm official customs information and courier charges where they materially affect the order.
+
+## Minimum-order checkout checklist
+
+1. Read and record the exact live minimum-order message, if one appears.
+2. Do not copy a fixed PHP amount or rationale from another shopper's screenshot.
+3. Remove optional items and rebuild the cart from genuine current needs.
+4. Confirm each intended item's variation, quantity, quality evidence, delivery, and return terms.
+5. Evaluate any additional item as an independent purchase, never as disposable filler.
+6. Compare stop today, wait for another real need, and continue-now outcomes.
+7. Review the complete payable total after shipping, vouchers, and other displayed charges.
+8. Do not use filler-and-cancel, split-order, or return plans as a workaround.
+9. Treat a support explanation as current only for the account and message discussed.
+10. Keep “buy nothing today” as a valid result when the cart no longer makes sense.
+
+## Limitations and live-policy check
+
+This guide was reviewed on 2026-08-09. The live Temu support rendering, checkout message, qualifying calculation, prices, vouchers, shipping, items, and support options can change. The reviewed public page did not provide a universal Philippine peso minimum or a reason for a threshold.
+
+SulitScan cannot see the reader's account, determine why a message appears, change a minimum, or guarantee that support will waive it. Use the exact current checkout and official support response. Do not infer a universal rule from this article or from another cart.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when a reader follows an eligible partner link and completes a purchase, at no extra cost to the reader. Commission does not make an unnecessary item useful. This guide keeps stopping or waiting as legitimate outcomes and does not promise a saving, threshold, waiver, or checkout acceptance. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Tips",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-09",
+    lastReviewed: "2026-08-09",
+    readTime: 12,
+    tags: ["temu", "minimum-order", "checkout-value", "cart-planning", "cross-border", "philippines"],
+    recommendationIntent: {
+      topics: ["temu-checkout", "minimum-order", "checkout-value"],
+      platforms: ["Temu"],
+      deals: { tags: ["temu"] },
+    },
+    importTaxContext: "temu",
+    coverGradient: "from-indigo-500 to-violet-600",
+    faqs: [
+      {
+        question: "What is the Temu minimum order in the Philippines?",
+        answer:
+          "There is no reliable fixed PHP amount to publish for every cart. Use the minimum, if any, displayed in your own live checkout and recheck current Temu support.",
+      },
+      {
+        question: "Should I add filler to reach a Temu minimum?",
+        answer:
+          "No. Add an item only if it is a genuine current need that passes its own value, quality, delivery, and return checks. Otherwise stopping or waiting is a valid choice.",
+      },
+      {
+        question: "Will Temu support waive a minimum-order message?",
+        answer:
+          "This guide cannot promise that. Ask through Temu's current official support route for an explanation of your live message, and base the decision on the option actually offered to your account.",
       },
     ],
   },

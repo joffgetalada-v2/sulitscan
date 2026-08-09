@@ -445,6 +445,262 @@ const augustBuyerGuideCases = [
   },
 ]
 
+const saleSafetyGuideCases = [
+  {
+    id: "post-040",
+    slug: "shopee-9-9-sale-philippines-2026-checklist",
+    title: "Shopee 9.9 Sale Philippines 2026: Smart Checkout Checklist",
+    category: "Shopping Tips",
+    workedHeading: "## Worked 9.9 checkout decision",
+    checklistHeading: "## 9.9 checkout checklist",
+    directAnswerPattern: /prepare.*cart|record.*baseline|compare.*final payable/i,
+    requiredSources: ["https://shopee.ph/m/9-9"],
+    requiredLinks: [
+      "/sales-calendar",
+      "/blog/how-to-stack-shopee-vouchers-philippines",
+      "/blog/how-to-spot-fake-discounts",
+      "/blog/why-final-prices-change-at-checkout",
+      "/tools/checkout-comparison",
+    ],
+    topics: ["sale-planning", "checkout-checklist", "shopee-shopping"],
+    platforms: ["Shopee PH"],
+    deals: { tags: ["shopee"] },
+  },
+  {
+    id: "post-041",
+    slug: "fake-qr-code-payment-scams-philippines",
+    title: "Fake QR Code Payment Scams Philippines: Checks Before You Scan",
+    category: "Shopping Safety",
+    workedHeading: "## Worked suspicious-QR response",
+    checklistHeading: "## QR payment safety checklist",
+    directAnswerPattern: /do not scan|stop before scanning|keep.*payment.*platform/i,
+    requiredSources: [
+      "https://help.shopee.ph/portal/4/article/142074-Safety-exercises-to-protect-yourself-against-each-type-of-scam",
+      "https://www.bsp.gov.ph/SitePages/FinancialStability/BSPVerifier.aspx",
+      "https://www.pna.gov.ph/articles/1280220",
+    ],
+    requiredLinks: [
+      "/blog/online-shopping-safety-tips-philippines",
+      "/blog/how-to-check-shopee-seller-legit-philippines",
+      "/blog/dti-trustmark-bir-registration-seal-online-sellers",
+      "/blog/fake-cod-parcel-scam-philippines",
+    ],
+    topics: ["qr-scam", "payment-safety", "shopping-safety"],
+    platforms: ["Shopee PH"],
+    deals: { tags: ["shopee"] },
+  },
+  {
+    id: "post-042",
+    slug: "dti-trustmark-bir-registration-seal-online-sellers",
+    title: "DTI Trustmark and BIR Registration Seal: Verify Online Sellers",
+    category: "Shopping Safety",
+    workedHeading: "## Worked seller-verification decision",
+    checklistHeading: "## Seller verification checklist",
+    directAnswerPattern: /verify.*official|check.*official.*domain|badge.*one signal/i,
+    requiredSources: [
+      "https://trustmark.dti.gov.ph/faqs",
+      "https://bir-cdn.bir.gov.ph/BIR/pdf/RMC%20No.%2038-2026%20Digest.pdf",
+      "https://verify.bir.gov.ph/correspondence/",
+    ],
+    requiredLinks: [
+      "/blog/how-to-check-shopee-seller-legit-philippines",
+      "/blog/online-purchase-warranty-guide-philippines",
+      "/blog/online-product-review-checklist-philippines",
+      "/blog/fake-qr-code-payment-scams-philippines",
+    ],
+    topics: ["seller-verification", "business-registration", "shopping-safety"],
+    platforms: ["Shopee PH"],
+    deals: { tags: ["shopee"] },
+  },
+  {
+    id: "post-043",
+    slug: "fake-cod-parcel-scam-philippines",
+    title: "Fake COD Parcel Scam Philippines: What to Do Before Paying",
+    category: "Shopping Safety",
+    workedHeading: "## Worked COD doorstep decision",
+    checklistHeading: "## COD parcel checklist",
+    directAnswerPattern: /do not pay|check.*order history|refuse.*unordered/i,
+    requiredSources: [
+      "https://help.shopee.ph/portal/4/article/81483-What-to-do-when-receiving-an-order",
+      "https://www.ninjavan.co/en-ph/support/consignee-support/parcel-scams-advisory",
+    ],
+    requiredLinks: [
+      "/blog/unboxing-video-evidence-online-shopping-philippines",
+      "/blog/shopee-return-refund-guide-philippines",
+      "/blog/online-shopping-safety-tips-philippines",
+      "/blog/fake-qr-code-payment-scams-philippines",
+    ],
+    topics: ["cod-scam", "parcel-safety", "shopping-safety"],
+    platforms: ["Shopee PH"],
+    deals: { tags: ["shopee"] },
+  },
+  {
+    id: "post-044",
+    slug: "temu-minimum-order-philippines",
+    title: "Temu Minimum Order Philippines: Checkout Without Overspending",
+    category: "Shopping Tips",
+    workedHeading: "## Worked Temu cart decision",
+    checklistHeading: "## Minimum-order checkout checklist",
+    directAnswerPattern: /no reliable fixed PHP minimum|buy nothing today|do not add.*unwanted/i,
+    requiredSources: ["https://www.temu.com/ph/support/c2/buying-on-temu-f-44.html"],
+    requiredLinks: [
+      "/blog/temu-shopping-guide-philippines",
+      "/blog/why-final-prices-change-at-checkout",
+      "/tools/checkout-comparison",
+      "/blog/temu-returns-refunds-price-adjustment-philippines",
+      "/blog/philippine-import-tax-guide-online-shoppers",
+      "https://www.importtaxph.com/",
+    ],
+    topics: ["temu-checkout", "minimum-order", "checkout-value"],
+    platforms: ["Temu"],
+    deals: { tags: ["temu"] },
+  },
+]
+
+test("sale-season safety guides use the exact ordered registry and substantive structure", () => {
+  assert.deepEqual(
+    postsModule.posts.slice(-saleSafetyGuideCases.length).map((post) => post.slug),
+    saleSafetyGuideCases.map((guideCase) => guideCase.slug)
+  )
+
+  const titles = []
+  const excerpts = []
+
+  for (const guideCase of saleSafetyGuideCases) {
+    const post = postsModule.getPostBySlug(guideCase.slug)
+    assert.ok(post, `${guideCase.slug} fixture must exist`)
+    assert.equal(post.id, guideCase.id)
+    assert.equal(post.title, guideCase.title)
+    assert.equal(post.category, guideCase.category)
+    assert.equal(post.publishedAt, "2026-08-09")
+    assert.equal(post.lastReviewed, "2026-08-09")
+    assert.ok(post.excerpt.length <= 160, `${guideCase.slug} excerpt is too long`)
+    assert.ok(post.content.split(/\s+/).length >= 1000, `${guideCase.slug} must contain at least 1,000 words`)
+    assert.ok((post.content.match(/^## /gm) ?? []).length >= 7, `${guideCase.slug} needs at least seven H2 sections`)
+
+    const introduction = post.content.split(/^## /m)[0].trim()
+    const firstParagraph = introduction.split(/\n\s*\n/).find((paragraph) => paragraph.trim()) ?? ""
+    assert.ok(firstParagraph.length >= 60, `${guideCase.slug} must open with a useful direct answer`)
+    assert.match(firstParagraph, guideCase.directAnswerPattern)
+    assert.doesNotMatch(firstParagraph, /^(?:welcome|online shopping (?:is|has become)|in this guide)/i)
+
+    assert.match(post.content, /^## How we assessed this guide$/im)
+    assert.ok(post.content.includes(guideCase.workedHeading), `${guideCase.slug} needs its worked decision section`)
+    const workedBlock = post.content.split(guideCase.workedHeading)[1]?.split("\n\n## ")[0] ?? ""
+    assert.ok((workedBlock.match(/^\d+\. /gm) ?? []).length >= 3, `${guideCase.slug} worked section needs at least three numbered steps`)
+    assert.ok(post.content.includes(guideCase.checklistHeading), `${guideCase.slug} needs its exact checklist heading`)
+    const checklistBlock = post.content.split(guideCase.checklistHeading)[1]?.split("\n\n## ")[0] ?? ""
+    assert.ok((checklistBlock.match(/^\d+\. /gm) ?? []).length >= 5, `${guideCase.slug} checklist needs at least five numbered items`)
+    assert.match(post.content, /^## Limitations and live-policy check$/im)
+    assert.match(post.content, /^## Affiliate disclosure$/im)
+    assert.ok(post.faqs?.length >= 3, `${guideCase.slug} needs at least three visible FAQs`)
+    assert.deepEqual(post.recommendationIntent?.topics, guideCase.topics)
+    assert.deepEqual(post.recommendationIntent?.platforms, guideCase.platforms)
+    assert.deepEqual(post.recommendationIntent?.deals, guideCase.deals)
+
+    for (const source of guideCase.requiredSources) {
+      assert.ok(post.content.includes(source), `${guideCase.slug} must cite ${source}`)
+    }
+    for (const link of guideCase.requiredLinks) {
+      assert.ok(post.content.includes(link), `${guideCase.slug} must link to ${link}`)
+    }
+
+    titles.push(post.title)
+    excerpts.push(post.excerpt)
+  }
+
+  assert.equal(new Set(titles).size, saleSafetyGuideCases.length, "sale-safety guide titles must be distinct")
+  assert.equal(new Set(excerpts).size, saleSafetyGuideCases.length, "sale-safety guide excerpts must be distinct")
+})
+
+test("sale-season safety guides preserve decision-critical cautions", () => {
+  const sale = postsModule.getPostBySlug("shopee-9-9-sale-philippines-2026-checklist")
+  const qr = postsModule.getPostBySlug("fake-qr-code-payment-scams-philippines")
+  const verification = postsModule.getPostBySlug("dti-trustmark-bir-registration-seal-online-sellers")
+  const cod = postsModule.getPostBySlug("fake-cod-parcel-scam-philippines")
+  const temu = postsModule.getPostBySlug("temu-minimum-order-philippines")
+
+  assert.ok(sale && qr && verification && cod && temu)
+
+  assert.match(sale.content, /official campaign page.*September 1 (?:through|to|–) 10/i)
+  assert.match(sale.content, /live (?:sale|campaign) page and (?:the )?checkout (?:are|remain) authoritative/i)
+  assert.match(sale.content, /does not guarantee.*voucher value.*stacking.*flash-sale times/i)
+  assert.match(sale.content, /does not recommend borrowing.*installment offer/i)
+
+  assert.match(qr.content, /visual inspection (?:alone )?cannot prove.*legitim/i)
+  assert.match(qr.content, /Shopee payments.*(?:stay|remain|complete).*on-platform/i)
+  assert.match(qr.content, /BSP.*report first.*bank or e-money issuer/i)
+  assert.match(qr.content, /(?:recovery|reversal).*not (?:promised|guaranteed)/i)
+
+  assert.match(verification.content, /DTI FAQ.*observed.*2026-08-09.*conflict/is)
+  assert.match(verification.content, /mandatory.*voluntary|voluntary.*mandatory/i)
+  assert.match(verification.content, /do not resolve.*(?:conflict|contradiction).*assumption/i)
+  assert.match(verification.content, /absence.*(?:badge|Trustmark).*not proof of fraud/i)
+  assert.match(verification.content, /not.*(?:endorsement|certification) of (?:product )?quality/i)
+  assert.ok(verification.content.includes("https://verify.bir.gov.ph/correspondence/"))
+
+  assert.match(cod.content, /unordered parcel.*(?:real|genuine).*(?:wrong|damaged) order|(?:real|genuine).*(?:wrong|damaged) order.*unordered parcel/is)
+  assert.match(cod.content, /household order log/i)
+  assert.match(cod.content, /recipient script/i)
+  assert.match(cod.content, /do not open.*(?:prohibit|before payment)/i)
+  assert.match(cod.content, /do not blame.*rider/i)
+  assert.match(cod.content, /(?:refund|reimbursement).*not (?:promised|guaranteed)/i)
+
+  assert.match(temu.content, /no reliable fixed PHP minimum/i)
+  assert.match(temu.content, /do not assume.*(?:why|reason).*threshold/i)
+  assert.match(temu.content, /does not recommend.*(?:filler|cancel)/i)
+  assert.match(temu.content, /does not promise.*support.*waive/i)
+  assert.match(temu.content, /buy nothing today.*valid/i)
+  assert.match(temu.content, /ImportTaxPH.*estimate.*not.*customs threshold.*official assessment/is)
+})
+
+test("established guides link into the sale-season safety cluster", () => {
+  for (const [sourceSlug, targetSlug] of [
+    ["how-to-check-shopee-seller-legit-philippines", "dti-trustmark-bir-registration-seal-online-sellers"],
+    ["online-shopping-safety-tips-philippines", "fake-qr-code-payment-scams-philippines"],
+    ["online-shopping-safety-tips-philippines", "fake-cod-parcel-scam-philippines"],
+    ["unboxing-video-evidence-online-shopping-philippines", "fake-cod-parcel-scam-philippines"],
+    ["temu-shopping-guide-philippines", "temu-minimum-order-philippines"],
+  ]) {
+    const post = postsModule.getPostBySlug(sourceSlug)
+    assert.ok(post, `${sourceSlug} fixture must exist`)
+    assert.ok(post.content.includes(`/blog/${targetSlug}`), `${sourceSlug} must link to ${targetSlug}`)
+  }
+
+  const salesCalendarSource = readFileSync(resolve("src/app/sales-calendar/page.tsx"), "utf8")
+  assert.ok(
+    salesCalendarSource.includes('href="/blog/shopee-9-9-sale-philippines-2026-checklist"'),
+    "sales calendar must link to the dated Shopee 9.9 checkout workflow"
+  )
+})
+
+test("sale-season safety guide deal recommendations match assigned tags and platforms", () => {
+  const activeDeals = dealsModule.getActiveDeals()
+  const activeIds = new Set(activeDeals.map((deal) => deal.id))
+
+  for (const guideCase of saleSafetyGuideCases) {
+    const post = postsModule.getPostBySlug(guideCase.slug)
+    assert.ok(post, `${guideCase.slug} fixture must exist`)
+    const relatedDeals = recommendationsModule.getRelatedDealsForPost(post, 3)
+    const eligibleDeals = activeDeals.filter(
+      (deal) =>
+        !dealsModule.isSuspiciousDiscount(deal) &&
+        guideCase.platforms.includes(deal.platform) &&
+        deal.tags.some((tag) => guideCase.deals.tags.includes(tag.toLowerCase()))
+    )
+
+    if (eligibleDeals.length > 0) {
+      assert.ok(relatedDeals.length > 0, `${guideCase.slug} must return an eligible deal when one exists`)
+    } else {
+      assert.deepEqual(relatedDeals, [], `${guideCase.slug} may be empty only when the catalog has no eligible deal`)
+    }
+    assert.ok(relatedDeals.every((deal) => activeIds.has(deal.id)))
+    assert.ok(relatedDeals.every((deal) => !dealsModule.isSuspiciousDiscount(deal)))
+    assert.ok(relatedDeals.every((deal) => guideCase.platforms.includes(deal.platform)))
+    assert.ok(relatedDeals.every((deal) => deal.tags.some((tag) => guideCase.deals.tags.includes(tag.toLowerCase()))))
+  }
+})
+
 test("August buyer guides declare the exact cover registry contract", () => {
   for (const guideCase of augustBuyerGuideCases) {
     const post = postsModule.getPostBySlug(guideCase.slug)
@@ -456,7 +712,9 @@ test("August buyer guides declare the exact cover registry contract", () => {
 
 test("August buyer guides use the exact ordered registry contract and substantive structure", () => {
   assert.deepEqual(
-    postsModule.posts.slice(-augustBuyerGuideCases.length).map((post) => post.slug),
+    postsModule.posts
+      .slice(-(augustBuyerGuideCases.length + saleSafetyGuideCases.length), -saleSafetyGuideCases.length)
+      .map((post) => post.slug),
     augustBuyerGuideCases.map((guideCase) => guideCase.slug)
   )
 
@@ -1029,10 +1287,9 @@ for (const catalogCase of finalCatalogCases) {
 
 test("canonical Shopee seller guide keeps Shopee-specific guides and deals", () => {
   const relatedPosts = postsModule.getRelatedPosts(currentPost, 3)
-  const shopeeNamedPosts = relatedPosts.filter((post) => /shopee/i.test(`${post.slug} ${post.title}`))
   assert.ok(
-    shopeeNamedPosts.length >= 2,
-    `expected at least two Shopee-named guides, received ${relatedPosts.map((post) => post.slug).join(", ")}`
+    relatedPosts.every((post) => post.recommendationIntent?.platforms?.includes("Shopee PH")),
+    `expected Shopee-specific guide intents, received ${relatedPosts.map((post) => post.slug).join(", ")}`
   )
 
   const relatedDeals = recommendationsModule.getRelatedDealsForPost(currentPost, 3)

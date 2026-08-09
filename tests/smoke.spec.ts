@@ -1337,6 +1337,29 @@ const augustBuyerGuides = [
   },
 ]
 
+const saleSafetyGuides = [
+  {
+    slug: "shopee-9-9-sale-philippines-2026-checklist",
+    title: "Shopee 9.9 Sale Philippines 2026: Smart Checkout Checklist",
+  },
+  {
+    slug: "fake-qr-code-payment-scams-philippines",
+    title: "Fake QR Code Payment Scams Philippines: Checks Before You Scan",
+  },
+  {
+    slug: "dti-trustmark-bir-registration-seal-online-sellers",
+    title: "DTI Trustmark and BIR Registration Seal: Verify Online Sellers",
+  },
+  {
+    slug: "fake-cod-parcel-scam-philippines",
+    title: "Fake COD Parcel Scam Philippines: What to Do Before Paying",
+  },
+  {
+    slug: "temu-minimum-order-philippines",
+    title: "Temu Minimum Order Philippines: Checkout Without Overspending",
+  },
+]
+
 test("weekly growth guides fit narrow mobile viewports", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 })
 
@@ -1472,6 +1495,58 @@ test.describe("August buyer guide routes", () => {
         banner.evaluate((image) => (image as HTMLImageElement).naturalWidth)
       ).toBeGreaterThan(0)
       expect((await request.get(bannerPath)).status()).toBe(200)
+
+      await expect(page.getByRole("heading", { name: "About this guide", exact: true })).toBeVisible()
+      await expect(page.getByRole("link", { name: "Editorial process", exact: true })).toHaveAttribute(
+        "href",
+        "/editorial-policy"
+      )
+      await expect(page.getByRole("link", { name: "Request a correction", exact: true })).toHaveAttribute(
+        "href",
+        "/contact"
+      )
+
+      const schemas = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) =>
+        scripts.map((script) => JSON.parse(script.textContent ?? "{}"))
+      )
+      const faqSchema = schemas.find((schema) => schema["@type"] === "FAQPage")
+      expect(faqSchema?.mainEntity.length).toBeGreaterThanOrEqual(3)
+      expect(await page.locator("details").count()).toBe(faqSchema.mainEntity.length)
+
+      const relatedGuides = page.getByRole("region", { name: "More shopping guides" })
+      await expect(relatedGuides.getByRole("link").first()).toBeVisible()
+
+      const sitemap = await (await request.get("/sitemap.xml")).text()
+      expect(sitemap).toContain(`<loc>https://sulitscan.com/blog/${slug}</loc>`)
+
+      const layout = await page.evaluate(() => ({
+        clientWidth: document.documentElement.clientWidth,
+        scrollWidth: document.documentElement.scrollWidth,
+      }))
+      expect(layout.scrollWidth, `${slug} should not overflow horizontally`).toBe(layout.clientWidth)
+    })
+  }
+})
+
+test.describe("sale-season safety guide routes", () => {
+  test.describe.configure({ mode: "serial" })
+
+  for (const { slug, title } of saleSafetyGuides) {
+    test(`${slug} protects metadata, trust, schema, discovery, and mobile layout`, async ({ page, request }) => {
+      test.slow()
+      await page.setViewportSize({ width: 390, height: 844 })
+
+      const response = await page.goto(`/blog/${slug}`, { waitUntil: "domcontentloaded" })
+      expect(response?.status()).toBe(200)
+
+      const documentTitle = await page.title()
+      expect(documentTitle).toContain("SulitScan PH")
+      expect(documentTitle.length).toBeLessThanOrEqual(65)
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        "href",
+        `https://sulitscan.com/blog/${slug}`
+      )
+      await expect(page.getByRole("heading", { level: 1, name: title, exact: true })).toBeVisible()
 
       await expect(page.getByRole("heading", { name: "About this guide", exact: true })).toBeVisible()
       await expect(page.getByRole("link", { name: "Editorial process", exact: true })).toHaveAttribute(

@@ -118,7 +118,7 @@ export default function SalesCalendarPage() {
                 Twelve double-day planning anchors
               </h2>
               <p className="mt-3 leading-relaxed text-slate-600">
-                These dates are common calendar patterns that can help you prepare a shortlist. They do not indicate that any named retailer participates or that a discount will be available.
+                These dates are common calendar patterns that can help you prepare a shortlist. They do not indicate that any named retailer participates or that a discount will be available. For the current event-specific process, use the dated <Link href="/blog/shopee-9-9-sale-philippines-2026-checklist" className="font-semibold text-green-700 underline underline-offset-2">Shopee 9.9 checkout workflow</Link> and confirm its live campaign page and checkout before paying.
               </p>
             </div>
             <ol className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6" aria-label="Common double-day dates">
