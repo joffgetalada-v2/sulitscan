@@ -1,13 +1,29 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect, useCallback, useSyncExternalStore } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
-import { ArrowRight, CheckCircle, Tag, Zap, Shield, TrendingDown } from "lucide-react"
+import { ArrowRight, CheckCircle, Pause, Play, Tag, Zap, Shield, TrendingDown } from "lucide-react"
 import { getActiveDeals } from "@/data/deals"
 import { getDealFreshness } from "@/lib/deal-freshness"
 import { formatPrice } from "@/lib/utils"
+
+const reducedMotionQuery = "(prefers-reduced-motion: reduce)"
+
+function subscribeToReducedMotion(onStoreChange: () => void) {
+  const mediaQuery = window.matchMedia(reducedMotionQuery)
+  mediaQuery.addEventListener("change", onStoreChange)
+  return () => mediaQuery.removeEventListener("change", onStoreChange)
+}
+
+function getReducedMotionSnapshot() {
+  return window.matchMedia(reducedMotionQuery).matches
+}
+
+function getReducedMotionServerSnapshot() {
+  return false
+}
 
 function getSlides() {
   const deals = getActiveDeals()
@@ -25,7 +41,22 @@ function getSlides() {
 export default function DealScannerVisual() {
   const slides = getSlides()
   const [current, setCurrent] = useState(0)
-  const [rotationPaused, setRotationPaused] = useState(false)
+  const [playbackOverride, setPlaybackOverride] = useState<"auto" | "paused" | "playing">("auto")
+  const [focusPaused, setFocusPaused] = useState(false)
+  const [hoverPaused, setHoverPaused] = useState(false)
+  const prefersReducedMotion = useSyncExternalStore(
+    subscribeToReducedMotion,
+    getReducedMotionSnapshot,
+    getReducedMotionServerSnapshot
+  )
+  const preferencePaused = Boolean(prefersReducedMotion) && playbackOverride === "auto"
+  const controlPaused = playbackOverride === "paused" || preferencePaused
+  const rotationPaused = controlPaused || focusPaused || hoverPaused
+  const decorativeMotionActive = !rotationPaused && !prefersReducedMotion
+
+  const togglePlayback = () => {
+    setPlaybackOverride(controlPaused ? "playing" : "paused")
+  }
 
   const advance = useCallback(() => {
     setCurrent((i) => (i + 1) % slides.length)
@@ -62,11 +93,14 @@ export default function DealScannerVisual() {
   return (
     <section
       aria-label="Deal preview"
+      data-decorative-motion={decorativeMotionActive ? "on" : "off"}
       className="relative w-full max-w-md mx-auto select-none"
-      onFocusCapture={() => setRotationPaused(true)}
+      onMouseEnter={() => setHoverPaused(true)}
+      onMouseLeave={() => setHoverPaused(false)}
+      onFocusCapture={() => setFocusPaused(true)}
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget as Node | null)) {
-          setRotationPaused(false)
+          setFocusPaused(false)
         }
       }}
     >
@@ -76,36 +110,53 @@ export default function DealScannerVisual() {
         aria-hidden="true"
       />
 
-      <div className="relative bg-white rounded-2xl shadow-2xl shadow-slate-200/80 border border-slate-100 overflow-hidden">
+      <div
+        data-scanner-card
+        className="relative bg-white rounded-2xl shadow-2xl shadow-slate-200/80 border border-slate-100 overflow-hidden"
+      >
 
         {/* Browser bar */}
-        <div className="bg-slate-900 px-4 py-2.5 flex items-center gap-3">
-          <div className="flex gap-1.5" aria-hidden="true">
+        <div className="flex items-center gap-2 bg-slate-900 px-3 py-2.5 sm:gap-3 sm:px-4">
+          <div className="hidden gap-1.5 sm:flex" aria-hidden="true">
             <div className="w-2.5 h-2.5 rounded-full bg-red-400/80" />
             <div className="w-2.5 h-2.5 rounded-full bg-yellow-400/80" />
             <div className="w-2.5 h-2.5 rounded-full bg-green-400/80" />
           </div>
-          <div className="flex-1 bg-slate-800 rounded-md px-3 py-1 text-xs text-slate-400 font-mono truncate">
+          <div className="min-w-0 flex-1 truncate rounded-md bg-slate-800 px-3 py-1 font-mono text-xs text-slate-400">
             sulitscan.com/deals
           </div>
           <div className="flex items-center gap-1.5 shrink-0">
             <span className="w-1.5 h-1.5 rounded-full bg-amber-400" aria-hidden="true" />
             <span className="text-xs text-amber-300 font-semibold">{freshnessLabel}</span>
           </div>
+          <button
+            type="button"
+            onClick={togglePlayback}
+            className="inline-flex shrink-0 items-center gap-1 rounded-md border border-slate-600 px-2 py-1 text-xs font-semibold text-slate-100 transition-colors hover:bg-slate-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-300"
+            aria-label={`${controlPaused ? "Play" : "Pause"} deal preview`}
+          >
+            {controlPaused ? (
+              <Play className="h-3 w-3" aria-hidden="true" />
+            ) : (
+              <Pause className="h-3 w-3" aria-hidden="true" />
+            )}
+            <span>{controlPaused ? "Play" : "Pause"}</span>
+          </button>
         </div>
 
         {/* Product image */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`img-${current}`}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.45 }}
-            className={`relative bg-gradient-to-br ${deal.imageGradient} overflow-hidden`}
-            style={{ height: 168 }}
-            aria-hidden="true"
-          >
+        <div className="relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`img-${current}`}
+              initial={prefersReducedMotion ? false : { opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.45 }}
+              className={`relative bg-gradient-to-br ${deal.imageGradient} overflow-hidden`}
+              style={{ height: 168 }}
+              aria-hidden="true"
+            >
             {deal.imageUrl ? (
               <Image
                 src={deal.imageUrl}
@@ -145,30 +196,37 @@ export default function DealScannerVisual() {
               <span className="text-xs font-semibold text-slate-700">{deal.category}</span>
             </div>
 
-            {/* Slide dots */}
-            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5">
-              {slides.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrent(i)}
+            </motion.div>
+          </AnimatePresence>
+          <div className="absolute bottom-0.5 left-1/2 z-10 flex -translate-x-1/2 gap-0.5">
+            {slides.map((_, i) => (
+              <button
+                type="button"
+                key={i}
+                onClick={() => setCurrent(i)}
+                className="grid h-6 w-6 place-items-center rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-300"
+                aria-label={`Show slide ${i + 1}`}
+                aria-current={i === current ? "true" : undefined}
+              >
+                <span
                   className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === current ? "bg-white w-4" : "bg-white/50 w-1.5"
+                    i === current ? "w-4 bg-white" : "w-1.5 bg-white/50"
                   }`}
-                  aria-label={`Show slide ${i + 1}`}
+                  aria-hidden="true"
                 />
-              ))}
-            </div>
-          </motion.div>
-        </AnimatePresence>
+              </button>
+            ))}
+          </div>
+        </div>
 
         {/* Product info */}
         <AnimatePresence mode="wait">
           <motion.div
             key={`info-${current}`}
-            initial={{ opacity: 0, y: 8 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.35 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.35 }}
           >
             <div className="px-4 pt-3.5 pb-0">
               <p className="text-[10px] text-slate-400 font-semibold uppercase tracking-widest mb-0.5">
@@ -208,9 +266,9 @@ export default function DealScannerVisual() {
               <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
                 <motion.div
                   className="h-full bg-gradient-to-r from-green-400 to-emerald-500 rounded-full"
-                  initial={{ width: 0 }}
+                  initial={prefersReducedMotion ? false : { width: 0 }}
                   animate={{ width: `${deal.sulitScore * 10}%` }}
-                  transition={{ duration: 0.9, ease: "easeOut" }}
+                  transition={{ duration: prefersReducedMotion ? 0 : 0.9, ease: "easeOut" }}
                 />
               </div>
             </div>
@@ -252,8 +310,10 @@ export default function DealScannerVisual() {
       {isCurrent && (
         <motion.div
           className="absolute -top-4 -right-3 bg-white border border-amber-200 rounded-full px-3 py-1.5 shadow-lg z-20 flex items-center gap-1.5"
-          animate={{ y: [-4, 4, -4] }}
-          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          animate={decorativeMotionActive ? { y: [-4, 4, -4] } : { y: 0 }}
+          transition={decorativeMotionActive
+            ? { duration: 3, repeat: Infinity, ease: "easeInOut" }
+            : { duration: 0 }}
           aria-hidden="true"
         >
           <Tag className="w-3 h-3 text-amber-600" />
@@ -265,8 +325,10 @@ export default function DealScannerVisual() {
       {isCurrent && (
         <motion.div
           className="absolute -bottom-3 -left-3 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full px-3 py-1.5 shadow-lg z-20"
-          animate={{ y: [4, -4, 4] }}
-          transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }}
+          animate={decorativeMotionActive ? { y: [4, -4, 4] } : { y: 0 }}
+          transition={decorativeMotionActive
+            ? { duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 0.6 }
+            : { duration: 0 }}
           aria-hidden="true"
         >
           <span className="text-xs font-bold text-white">{formatPrice(saved)} Saved</span>
@@ -276,8 +338,10 @@ export default function DealScannerVisual() {
       {/* Score pill */}
       <motion.div
         className="absolute top-1/2 -left-14 -translate-y-1/2 bg-white border border-green-200 rounded-xl px-2.5 py-1.5 shadow-lg z-20 hidden lg:flex flex-col items-center"
-        animate={{ x: [-2, 2, -2] }}
-        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+        animate={decorativeMotionActive ? { x: [-2, 2, -2] } : { x: 0 }}
+        transition={decorativeMotionActive
+          ? { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }
+          : { duration: 0 }}
         aria-hidden="true"
       >
         <span className="text-base font-black text-green-600 leading-none">{deal.sulitScore}</span>

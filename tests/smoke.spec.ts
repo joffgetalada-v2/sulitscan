@@ -234,11 +234,79 @@ test("homepage scanner keeps its focused deal link stable past auto-rotation", a
   expect(focusedNode).not.toBeNull()
   await detailLink.focus()
   await expect(detailLink).toBeFocused()
+  await expect(preview).toHaveAttribute("data-decorative-motion", "off")
   await page.waitForTimeout(4500)
 
   expect(await focusedNode!.evaluate((element) => document.activeElement === element)).toBe(true)
   await expect(detailLink).toBeFocused()
   await expect(detailLink).toHaveAttribute("href", focusedHref as string)
+})
+
+test("homepage scanner keeps an explicit pause after focus leaves", async ({ page }) => {
+  test.slow()
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const preview = page.getByRole("region", { name: "Deal preview" })
+  const detailLink = preview.getByRole("link", { name: "View Deal Details" })
+  await preview.getByRole("button", { name: "Pause deal preview" }).click()
+  const pausedHref = await detailLink.getAttribute("href")
+
+  await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur())
+  await page.waitForTimeout(4500)
+
+  await expect(preview.getByRole("button", { name: "Play deal preview" })).toBeVisible()
+  await expect(detailLink).toHaveAttribute("href", pausedHref as string)
+
+  await preview.getByRole("button", { name: "Play deal preview" }).click()
+  await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur())
+  await page.mouse.move(0, 0)
+  await expect.poll(
+    () => detailLink.getAttribute("href"),
+    { timeout: 6000 }
+  ).not.toBe(pausedHref)
+})
+
+test("homepage scanner pauses while hovered and resumes after the pointer leaves", async ({ page }) => {
+  test.slow()
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const preview = page.getByRole("region", { name: "Deal preview" })
+  const detailLink = preview.getByRole("link", { name: "View Deal Details" })
+  await preview.hover()
+  await expect(preview).toHaveAttribute("data-decorative-motion", "off")
+  const hoveredHref = await detailLink.getAttribute("href")
+  await page.waitForTimeout(4500)
+  await expect(detailLink).toHaveAttribute("href", hoveredHref as string)
+
+  await page.mouse.move(0, 0)
+  await expect(preview).toHaveAttribute("data-decorative-motion", "on")
+  await expect.poll(
+    () => detailLink.getAttribute("href"),
+    { timeout: 6000 }
+  ).not.toBe(hoveredHref)
+})
+
+test("homepage scanner defaults to paused with reduced motion", async ({ page }) => {
+  test.slow()
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.emulateMedia({ reducedMotion: "reduce" })
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const preview = page.getByRole("region", { name: "Deal preview" })
+  const detailLink = preview.getByRole("link", { name: "View Deal Details" })
+  const initialHref = await detailLink.getAttribute("href")
+  await expect(preview.getByRole("button", { name: "Play deal preview" })).toBeVisible()
+  await page.waitForTimeout(4500)
+
+  await expect(detailLink).toHaveAttribute("href", initialHref as string)
+  await expect(preview).toHaveAttribute("data-decorative-motion", "off")
+  await expect.poll(() => preview.locator("[data-scanner-card]").evaluate(
+    (card) => card.scrollWidth <= card.clientWidth
+  )).toBe(true)
+  const firstSlideControl = preview.getByRole("button", { name: "Show slide 1" })
+  const controlBox = await firstSlideControl.boundingBox()
+  expect(controlBox?.width).toBeGreaterThanOrEqual(24)
+  expect(controlBox?.height).toBeGreaterThanOrEqual(24)
 })
 
 test("header guide announcement links to the blog", async ({ page }) => {
@@ -656,7 +724,9 @@ test("homepage scanner image is optimized, bounded, loaded, and server discovera
   const response = await request.get("/")
   expect(response.status()).toBe(200)
   const html = await response.text()
-  const scannerRegion = html.match(/>sulitscan\.com\/deals<\/div>[\s\S]{0,3000}/)?.[0]
+  const scannerRegion = html.match(
+    /<section[^>]*aria-label="Deal preview"[^>]*>[\s\S]*?<\/section>/
+  )?.[0]
   expect(scannerRegion).toBeDefined()
   const serverImage = scannerRegion?.match(/<img[^>]+>/)?.[0]
   expect(serverImage).toContain('sizes="(max-width: 480px) calc(100vw - 2rem), 448px"')
