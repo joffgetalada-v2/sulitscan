@@ -1091,10 +1091,21 @@ test("blog index lists guides newest first", async ({ page }) => {
   expect(dates).toEqual([...dates].sort((a, b) => b.localeCompare(a)))
 })
 
-test("Shopee seller guide recommends related Shopee content", async ({ page }) => {
-  await page.goto("/blog/how-to-check-shopee-seller-legit-philippines")
+test("Shopee seller guide renders the exact ordered related guides", async ({ page }) => {
+  await page.goto("/blog/how-to-check-shopee-seller-legit-philippines", { waitUntil: "domcontentloaded" })
   const related = page.getByRole("region", { name: "More shopping guides" })
-  await expect(related.getByRole("link", { name: /Shopee/i }).first()).toBeVisible()
+  const relatedLinks = related.getByRole("link")
+  const expectedHrefs = [
+    "/blog/fake-cod-parcel-scam-philippines",
+    "/blog/dti-trustmark-bir-registration-seal-online-sellers",
+    "/blog/fake-qr-code-payment-scams-philippines",
+  ]
+
+  await expect(relatedLinks).toHaveCount(expectedHrefs.length)
+  for (const [index, href] of expectedHrefs.entries()) {
+    await expect(relatedLinks.nth(index)).toBeVisible()
+    await expect(relatedLinks.nth(index)).toHaveAttribute("href", href)
+  }
 })
 
 test("deals page exposes crawlable server pagination", async ({ page }) => {
