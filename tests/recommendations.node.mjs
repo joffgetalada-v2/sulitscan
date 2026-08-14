@@ -451,6 +451,9 @@ const saleSafetyGuideCases = [
     slug: "shopee-9-9-sale-philippines-2026-checklist",
     title: "Shopee 9.9 Sale Philippines 2026: Smart Checkout Checklist",
     category: "Shopping Tips",
+    readTime: 11,
+    tags: ["shopee", "9-9-sale", "sale-planning", "checkout-checklist", "price-comparison", "philippines"],
+    coverGradient: "from-amber-400 to-orange-500",
     workedHeading: "## Worked 9.9 checkout decision",
     checklistHeading: "## 9.9 checkout checklist",
     directAnswerPattern: /prepare.*cart|record.*baseline|compare.*final payable/i,
@@ -465,12 +468,20 @@ const saleSafetyGuideCases = [
     topics: ["sale-planning", "checkout-checklist", "shopee-shopping"],
     platforms: ["Shopee PH"],
     deals: { tags: ["shopee"] },
+    expectedRelatedSlugs: [
+      "how-to-stack-shopee-vouchers-philippines",
+      "shopee-return-refund-guide-philippines",
+      "best-gifts-under-500-philippines",
+    ],
   },
   {
     id: "post-041",
     slug: "fake-qr-code-payment-scams-philippines",
     title: "Fake QR Code Payment Scams Philippines: Checks Before You Scan",
     category: "Shopping Safety",
+    readTime: 12,
+    tags: ["qr-scam", "quishing", "payment-safety", "shopee", "fraud-response", "philippines"],
+    coverGradient: "from-blue-700 to-cyan-400",
     workedHeading: "## Worked suspicious-QR response",
     checklistHeading: "## QR payment safety checklist",
     directAnswerPattern: /do not scan|stop before scanning|keep.*payment.*platform/i,
@@ -488,12 +499,20 @@ const saleSafetyGuideCases = [
     topics: ["qr-scam", "payment-safety", "shopping-safety"],
     platforms: ["Shopee PH"],
     deals: { tags: ["shopee"] },
+    expectedRelatedSlugs: [
+      "fake-cod-parcel-scam-philippines",
+      "dti-trustmark-bir-registration-seal-online-sellers",
+      "shopee-return-refund-guide-philippines",
+    ],
   },
   {
     id: "post-042",
     slug: "dti-trustmark-bir-registration-seal-online-sellers",
     title: "DTI Trustmark and BIR Registration Seal: Verify Online Sellers",
     category: "Shopping Safety",
+    readTime: 13,
+    tags: ["dti-trustmark", "bir-registration-seal", "seller-verification", "business-registration", "shopee", "philippines"],
+    coverGradient: "from-emerald-900 to-amber-200",
     workedHeading: "## Worked seller-verification decision",
     checklistHeading: "## Seller verification checklist",
     directAnswerPattern: /verify.*official|check.*official.*domain|badge.*one signal/i,
@@ -511,18 +530,27 @@ const saleSafetyGuideCases = [
     topics: ["seller-verification", "business-registration", "shopping-safety"],
     platforms: ["Shopee PH"],
     deals: { tags: ["shopee"] },
+    expectedRelatedSlugs: [
+      "fake-cod-parcel-scam-philippines",
+      "fake-qr-code-payment-scams-philippines",
+      "shopee-return-refund-guide-philippines",
+    ],
   },
   {
     id: "post-043",
     slug: "fake-cod-parcel-scam-philippines",
     title: "Fake COD Parcel Scam Philippines: What to Do Before Paying",
     category: "Shopping Safety",
+    readTime: 12,
+    tags: ["cod-scam", "parcel-safety", "cash-on-delivery", "household-protocol", "shopee", "philippines"],
+    coverGradient: "from-orange-500 to-slate-600",
     workedHeading: "## Worked COD doorstep decision",
     checklistHeading: "## COD parcel checklist",
     directAnswerPattern: /do not pay|check.*order history|refuse.*unordered/i,
     requiredSources: [
       "https://help.shopee.ph/portal/4/article/81483-What-to-do-when-receiving-an-order",
       "https://www.ninjavan.co/en-ph/support/consignee-support/parcel-scams-advisory",
+      "https://help.shopee.ph/portal/4/article/142074-Safety-exercises-to-protect-yourself-against-each-type-of-scam",
     ],
     requiredLinks: [
       "/blog/unboxing-video-evidence-online-shopping-philippines",
@@ -533,12 +561,20 @@ const saleSafetyGuideCases = [
     topics: ["cod-scam", "parcel-safety", "shopping-safety"],
     platforms: ["Shopee PH"],
     deals: { tags: ["shopee"] },
+    expectedRelatedSlugs: [
+      "dti-trustmark-bir-registration-seal-online-sellers",
+      "fake-qr-code-payment-scams-philippines",
+      "shopee-return-refund-guide-philippines",
+    ],
   },
   {
     id: "post-044",
     slug: "temu-minimum-order-philippines",
     title: "Temu Minimum Order Philippines: Checkout Without Overspending",
     category: "Shopping Tips",
+    readTime: 12,
+    tags: ["temu", "minimum-order", "checkout-value", "cart-planning", "cross-border", "philippines"],
+    coverGradient: "from-indigo-500 to-violet-600",
     workedHeading: "## Worked Temu cart decision",
     checklistHeading: "## Minimum-order checkout checklist",
     directAnswerPattern: /no reliable fixed PHP minimum|buy nothing today|do not add.*unwanted/i,
@@ -554,6 +590,7 @@ const saleSafetyGuideCases = [
     topics: ["temu-checkout", "minimum-order", "checkout-value"],
     platforms: ["Temu"],
     deals: { tags: ["temu"] },
+    expectedRelatedSlugs: ["temu-shopping-guide-philippines"],
   },
 ]
 
@@ -565,6 +602,7 @@ test("sale-season safety guides use the exact ordered registry and substantive s
 
   const titles = []
   const excerpts = []
+  const coverGradients = []
 
   for (const guideCase of saleSafetyGuideCases) {
     const post = postsModule.getPostBySlug(guideCase.slug)
@@ -572,6 +610,12 @@ test("sale-season safety guides use the exact ordered registry and substantive s
     assert.equal(post.id, guideCase.id)
     assert.equal(post.title, guideCase.title)
     assert.equal(post.category, guideCase.category)
+    assert.equal(post.readTime, guideCase.readTime)
+    assert.deepEqual(post.tags, guideCase.tags)
+    assert.equal(new Set(post.tags).size, post.tags.length, `${guideCase.slug} tags must be distinct`)
+    assert.equal(post.coverGradient, guideCase.coverGradient)
+    assert.equal(Object.hasOwn(post, "coverImage"), false, `${guideCase.slug} must not declare coverImage before Task 2`)
+    assert.equal(Object.hasOwn(post, "coverImageAlt"), false, `${guideCase.slug} must not declare coverImageAlt before Task 2`)
     assert.equal(post.publishedAt, "2026-08-09")
     assert.equal(post.lastReviewed, "2026-08-09")
     assert.ok(post.excerpt.length <= 160, `${guideCase.slug} excerpt is too long`)
@@ -594,12 +638,22 @@ test("sale-season safety guides use the exact ordered registry and substantive s
     assert.match(post.content, /^## Limitations and live-policy check$/im)
     assert.match(post.content, /^## Affiliate disclosure$/im)
     assert.ok(post.faqs?.length >= 3, `${guideCase.slug} needs at least three visible FAQs`)
+    const normalizedQuestions = post.faqs.map(({ question }) =>
+      question.normalize("NFKC").trim().replace(/\s+/g, " ").toLowerCase()
+    )
+    const normalizedAnswers = post.faqs.map(({ answer }) =>
+      answer.normalize("NFKC").trim().replace(/\s+/g, " ").toLowerCase()
+    )
+    assert.ok(normalizedQuestions.every(Boolean), `${guideCase.slug} FAQ questions must be non-empty`)
+    assert.ok(normalizedAnswers.every(Boolean), `${guideCase.slug} FAQ answers must be non-empty`)
+    assert.equal(new Set(normalizedQuestions).size, post.faqs.length, `${guideCase.slug} FAQ questions must be distinct`)
+    assert.equal(new Set(normalizedAnswers).size, post.faqs.length, `${guideCase.slug} FAQ answers must be distinct`)
     assert.deepEqual(post.recommendationIntent?.topics, guideCase.topics)
     assert.deepEqual(post.recommendationIntent?.platforms, guideCase.platforms)
     assert.deepEqual(post.recommendationIntent?.deals, guideCase.deals)
 
     for (const source of guideCase.requiredSources) {
-      assert.ok(post.content.includes(source), `${guideCase.slug} must cite ${source}`)
+      assert.ok(post.content.includes(`](${source})`), `${guideCase.slug} must cite the exact link target ${source}`)
     }
     for (const link of guideCase.requiredLinks) {
       assert.ok(post.content.includes(link), `${guideCase.slug} must link to ${link}`)
@@ -607,10 +661,53 @@ test("sale-season safety guides use the exact ordered registry and substantive s
 
     titles.push(post.title)
     excerpts.push(post.excerpt)
+    coverGradients.push(post.coverGradient)
   }
 
   assert.equal(new Set(titles).size, saleSafetyGuideCases.length, "sale-safety guide titles must be distinct")
   assert.equal(new Set(excerpts).size, saleSafetyGuideCases.length, "sale-safety guide excerpts must be distinct")
+  assert.equal(new Set(coverGradients).size, saleSafetyGuideCases.length, "sale-safety guide gradients must be distinct")
+})
+
+test("sale-season safety guides return exact compatible related-guide sets", () => {
+  const safetyRelatedOrders = []
+
+  for (const guideCase of saleSafetyGuideCases) {
+    const post = postsModule.getPostBySlug(guideCase.slug)
+    assert.ok(post, `${guideCase.slug} fixture must exist`)
+
+    const relatedPosts = postsModule.getRelatedPosts(post, 3)
+    const relatedSlugs = relatedPosts.map((relatedPost) => relatedPost.slug)
+    assert.ok(relatedSlugs.length > 0, `${guideCase.slug} must return at least one related guide`)
+    assert.ok(relatedSlugs.length <= 3, `${guideCase.slug} must return no more than three related guides`)
+    assert.equal(new Set(relatedSlugs).size, relatedSlugs.length, `${guideCase.slug} related guides must be unique`)
+    assert.deepEqual(relatedSlugs, guideCase.expectedRelatedSlugs, `${guideCase.slug} related-guide order changed`)
+
+    for (const relatedPost of relatedPosts) {
+      const sharedTopics = relatedPost.recommendationIntent?.topics.filter((topic) => guideCase.topics.includes(topic)) ?? []
+      assert.ok(sharedTopics.length > 0, `${guideCase.slug} returned ${relatedPost.slug} without a compatible topic`)
+
+      const relatedPlatforms = relatedPost.recommendationIntent?.platforms ?? []
+      if (guideCase.platforms.length > 0 && relatedPlatforms.length > 0) {
+        assert.ok(
+          relatedPlatforms.some((platform) => guideCase.platforms.includes(platform)),
+          `${guideCase.slug} returned ${relatedPost.slug} without a compatible platform`
+        )
+      }
+    }
+
+    if (guideCase.category === "Shopping Safety") safetyRelatedOrders.push(relatedSlugs)
+  }
+
+  assert.equal(
+    new Set(safetyRelatedOrders.map((slugs) => JSON.stringify(slugs))).size,
+    safetyRelatedOrders.length,
+    "the three safety guides must not collapse to the same related-guide order"
+  )
+
+  const temuCase = saleSafetyGuideCases.find(({ slug }) => slug === "temu-minimum-order-philippines")
+  assert.ok(temuCase)
+  assert.deepEqual(temuCase.expectedRelatedSlugs, ["temu-shopping-guide-philippines"])
 })
 
 test("sale-season safety guides preserve decision-critical cautions", () => {
@@ -638,6 +735,13 @@ test("sale-season safety guides preserve decision-critical cautions", () => {
   assert.match(verification.content, /absence.*(?:badge|Trustmark).*not proof of fraud/i)
   assert.match(verification.content, /not.*(?:endorsement|certification) of (?:product )?quality/i)
   assert.ok(verification.content.includes("https://verify.bir.gov.ph/correspondence/"))
+  assert.match(verification.content, /bare BIR (?:URL|path).*not (?:a )?(?:general )?seller lookup/is)
+  assert.match(verification.content, /without QR-supplied correspondence data.*invalid-result state/is)
+  assert.match(verification.content, /QR-supplied result.*match(?:ing)? business details/is)
+  assert.match(
+    verification.content,
+    /correct (?:host(?:name)?|domain)(?: and path)? alone.*(?:does not|cannot).*(?:validate|verify|prove).*(?:badge|seller)/is
+  )
 
   assert.match(cod.content, /unordered parcel.*(?:real|genuine).*(?:wrong|damaged) order|(?:real|genuine).*(?:wrong|damaged) order.*unordered parcel/is)
   assert.match(cod.content, /household order log/i)
@@ -1287,6 +1391,7 @@ for (const catalogCase of finalCatalogCases) {
 
 test("canonical Shopee seller guide keeps Shopee-specific guides and deals", () => {
   const relatedPosts = postsModule.getRelatedPosts(currentPost, 3)
+  assert.equal(relatedPosts.length, 3, "canonical Shopee seller guide must return three related guides")
   assert.ok(
     relatedPosts.every((post) => post.recommendationIntent?.platforms?.includes("Shopee PH")),
     `expected Shopee-specific guide intents, received ${relatedPosts.map((post) => post.slug).join(", ")}`

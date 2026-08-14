@@ -1341,22 +1341,43 @@ const saleSafetyGuides = [
   {
     slug: "shopee-9-9-sale-philippines-2026-checklist",
     title: "Shopee 9.9 Sale Philippines 2026: Smart Checkout Checklist",
+    expectedRelatedSlugs: [
+      "how-to-stack-shopee-vouchers-philippines",
+      "shopee-return-refund-guide-philippines",
+      "best-gifts-under-500-philippines",
+    ],
   },
   {
     slug: "fake-qr-code-payment-scams-philippines",
     title: "Fake QR Code Payment Scams Philippines: Checks Before You Scan",
+    expectedRelatedSlugs: [
+      "fake-cod-parcel-scam-philippines",
+      "dti-trustmark-bir-registration-seal-online-sellers",
+      "shopee-return-refund-guide-philippines",
+    ],
   },
   {
     slug: "dti-trustmark-bir-registration-seal-online-sellers",
     title: "DTI Trustmark and BIR Registration Seal: Verify Online Sellers",
+    expectedRelatedSlugs: [
+      "fake-cod-parcel-scam-philippines",
+      "fake-qr-code-payment-scams-philippines",
+      "shopee-return-refund-guide-philippines",
+    ],
   },
   {
     slug: "fake-cod-parcel-scam-philippines",
     title: "Fake COD Parcel Scam Philippines: What to Do Before Paying",
+    expectedRelatedSlugs: [
+      "dti-trustmark-bir-registration-seal-online-sellers",
+      "fake-qr-code-payment-scams-philippines",
+      "shopee-return-refund-guide-philippines",
+    ],
   },
   {
     slug: "temu-minimum-order-philippines",
     title: "Temu Minimum Order Philippines: Checkout Without Overspending",
+    expectedRelatedSlugs: ["temu-shopping-guide-philippines"],
   },
 ]
 
@@ -1531,7 +1552,7 @@ test.describe("August buyer guide routes", () => {
 test.describe("sale-season safety guide routes", () => {
   test.describe.configure({ mode: "serial" })
 
-  for (const { slug, title } of saleSafetyGuides) {
+  for (const { slug, title, expectedRelatedSlugs } of saleSafetyGuides) {
     test(`${slug} protects metadata, trust, schema, discovery, and mobile layout`, async ({ page, request }) => {
       test.slow()
       await page.setViewportSize({ width: 390, height: 844 })
@@ -1548,25 +1569,62 @@ test.describe("sale-season safety guide routes", () => {
       )
       await expect(page.getByRole("heading", { level: 1, name: title, exact: true })).toBeVisible()
 
-      await expect(page.getByRole("heading", { name: "About this guide", exact: true })).toBeVisible()
-      await expect(page.getByRole("link", { name: "Editorial process", exact: true })).toHaveAttribute(
-        "href",
-        "/editorial-policy"
-      )
-      await expect(page.getByRole("link", { name: "Request a correction", exact: true })).toHaveAttribute(
-        "href",
-        "/contact"
-      )
+      const trustPanel = page.locator('section[aria-labelledby="about-this-guide"]')
+      await expect(trustPanel.getByRole("heading", { name: "About this guide", exact: true })).toBeVisible()
+      const editorialProcessLink = trustPanel.getByRole("link", { name: "Editorial process", exact: true })
+      const correctionLink = trustPanel.getByRole("link", { name: "Request a correction", exact: true })
+      await expect(editorialProcessLink).toBeVisible()
+      await expect(editorialProcessLink).toHaveAttribute("href", "/editorial-policy")
+      await expect(correctionLink).toBeVisible()
+      await expect(correctionLink).toHaveAttribute("href", "/contact")
 
       const schemas = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) =>
         scripts.map((script) => JSON.parse(script.textContent ?? "{}"))
       )
       const faqSchema = schemas.find((schema) => schema["@type"] === "FAQPage")
       expect(faqSchema?.mainEntity.length).toBeGreaterThanOrEqual(3)
-      expect(await page.locator("details").count()).toBe(faqSchema.mainEntity.length)
+
+      const normalizeFaqText = (value: string) => value.trim().replace(/\s+/g, " ")
+      const faqSection = page.locator('section[aria-labelledby="post-faq-heading"]')
+      await expect(faqSection).toBeVisible()
+      const faqDetails = faqSection.locator("details")
+      await expect(faqDetails).toHaveCount(faqSchema.mainEntity.length)
+
+      const visibleFaqPairs: Array<{ question: string; answer: string }> = []
+      for (let index = 0; index < (await faqDetails.count()); index += 1) {
+        const detail = faqDetails.nth(index)
+        const question = detail.locator("summary")
+        const answer = detail.locator("p")
+        await expect(question).toBeVisible()
+        await question.click()
+        await expect(answer).toBeVisible()
+        const visibleQuestionText = await question.evaluate((summary) => {
+          const visibleText = summary.cloneNode(true) as HTMLElement
+          visibleText.querySelectorAll('[aria-hidden="true"]').forEach((node) => node.remove())
+          return visibleText.textContent ?? ""
+        })
+        visibleFaqPairs.push({
+          question: normalizeFaqText(visibleQuestionText),
+          answer: normalizeFaqText(await answer.innerText()),
+        })
+      }
+
+      const schemaFaqPairs = faqSchema.mainEntity.map(
+        (entity: { name: string; acceptedAnswer: { text: string } }) => ({
+          question: normalizeFaqText(entity.name),
+          answer: normalizeFaqText(entity.acceptedAnswer.text),
+        })
+      )
+      expect(visibleFaqPairs).toEqual(schemaFaqPairs)
 
       const relatedGuides = page.getByRole("region", { name: "More shopping guides" })
-      await expect(relatedGuides.getByRole("link").first()).toBeVisible()
+      const relatedGuideLinks = relatedGuides.getByRole("link")
+      await expect(relatedGuideLinks).toHaveCount(expectedRelatedSlugs.length)
+      for (let index = 0; index < expectedRelatedSlugs.length; index += 1) {
+        const relatedLink = relatedGuideLinks.nth(index)
+        await expect(relatedLink).toBeVisible()
+        await expect(relatedLink).toHaveAttribute("href", `/blog/${expectedRelatedSlugs[index]}`)
+      }
 
       const sitemap = await (await request.get("/sitemap.xml")).text()
       expect(sitemap).toContain(`<loc>https://sulitscan.com/blog/${slug}</loc>`)
