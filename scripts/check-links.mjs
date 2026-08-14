@@ -117,6 +117,11 @@ const REQUIRED_GROWTH_POST_COVERS = new Set([
   "temu-returns-refunds-price-adjustment-philippines",
   "how-to-check-skincare-makeup-legit-philippines",
   "online-electrical-appliance-safety-ps-icc-philippines",
+  "shopee-9-9-sale-philippines-2026-checklist",
+  "fake-qr-code-payment-scams-philippines",
+  "dti-trustmark-bir-registration-seal-online-sellers",
+  "fake-cod-parcel-scam-philippines",
+  "temu-minimum-order-philippines",
 ])
 for (const slug of REQUIRED_GROWTH_POST_COVERS) {
   const expectedCover = `coverImage: "/images/guides/${slug}.jpg"`

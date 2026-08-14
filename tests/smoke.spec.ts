@@ -1341,6 +1341,7 @@ const saleSafetyGuides = [
   {
     slug: "shopee-9-9-sale-philippines-2026-checklist",
     title: "Shopee 9.9 Sale Philippines 2026: Smart Checkout Checklist",
+    coverAlt: "Filipino shopper planning a sale checkout with a blank phone cart, calendar, calculator, and price checklist",
     expectedRelatedSlugs: [
       "how-to-stack-shopee-vouchers-philippines",
       "shopee-return-refund-guide-philippines",
@@ -1350,6 +1351,7 @@ const saleSafetyGuides = [
   {
     slug: "fake-qr-code-payment-scams-philippines",
     title: "Fake QR Code Payment Scams Philippines: Checks Before You Scan",
+    coverAlt: "Shopper inspecting a non-scannable abstract QR pattern on a phone beside a shield and payment checklist",
     expectedRelatedSlugs: [
       "fake-cod-parcel-scam-philippines",
       "dti-trustmark-bir-registration-seal-online-sellers",
@@ -1359,6 +1361,7 @@ const saleSafetyGuides = [
   {
     slug: "dti-trustmark-bir-registration-seal-online-sellers",
     title: "DTI Trustmark and BIR Registration Seal: Verify Online Sellers",
+    coverAlt: "Magnifying glass checking abstract seller verification cards beside a laptop and official-domain checklist",
     expectedRelatedSlugs: [
       "fake-cod-parcel-scam-philippines",
       "fake-qr-code-payment-scams-philippines",
@@ -1368,6 +1371,7 @@ const saleSafetyGuides = [
   {
     slug: "fake-cod-parcel-scam-philippines",
     title: "Fake COD Parcel Scam Philippines: What to Do Before Paying",
+    coverAlt: "Household member comparing an unopened COD parcel with a phone order list before payment",
     expectedRelatedSlugs: [
       "dti-trustmark-bir-registration-seal-online-sellers",
       "fake-qr-code-payment-scams-philippines",
@@ -1377,6 +1381,7 @@ const saleSafetyGuides = [
   {
     slug: "temu-minimum-order-philippines",
     title: "Temu Minimum Order Philippines: Checkout Without Overspending",
+    coverAlt: "Shopper comparing an online cart minimum with a calculator and a short needs checklist",
     expectedRelatedSlugs: ["temu-shopping-guide-philippines"],
   },
 ]
@@ -1552,7 +1557,7 @@ test.describe("August buyer guide routes", () => {
 test.describe("sale-season safety guide routes", () => {
   test.describe.configure({ mode: "serial" })
 
-  for (const { slug, title, expectedRelatedSlugs } of saleSafetyGuides) {
+  for (const { slug, title, coverAlt, expectedRelatedSlugs } of saleSafetyGuides) {
     test(`${slug} protects metadata, trust, schema, discovery, and mobile layout`, async ({ page, request }) => {
       test.slow()
       await page.setViewportSize({ width: 390, height: 844 })
@@ -1568,6 +1573,13 @@ test.describe("sale-season safety guide routes", () => {
         `https://sulitscan.com/blog/${slug}`
       )
       await expect(page.getByRole("heading", { level: 1, name: title, exact: true })).toBeVisible()
+
+      const coverImage = page.getByRole("img", { name: coverAlt, exact: true }).first()
+      await expect(coverImage).toBeVisible()
+      await expect(coverImage).toHaveAttribute("src", new RegExp(`${slug}\\.jpg`))
+      await expect.poll(() => coverImage.evaluate((image: HTMLImageElement) => image.naturalWidth)).toBeGreaterThan(0)
+      const coverResponse = await request.get(`/images/guides/${slug}.jpg`)
+      expect(coverResponse.status()).toBe(200)
 
       const trustPanel = page.locator('section[aria-labelledby="about-this-guide"]')
       await expect(trustPanel.getByRole("heading", { name: "About this guide", exact: true })).toBeVisible()

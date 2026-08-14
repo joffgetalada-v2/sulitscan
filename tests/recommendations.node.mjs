@@ -468,6 +468,10 @@ const saleSafetyGuideCases = [
     topics: ["sale-planning", "checkout-checklist", "shopee-shopping"],
     platforms: ["Shopee PH"],
     deals: { tags: ["shopee"] },
+    coverImage: "/images/guides/shopee-9-9-sale-philippines-2026-checklist.jpg",
+    coverImageAlt:
+      "Filipino shopper planning a sale checkout with a blank phone cart, calendar, calculator, and price checklist",
+    coverImageSha256: "58e7f951d9c9ab97abb754f5a8ecf591692a732ba40a9b340e9fb6a45bca232b",
     expectedRelatedSlugs: [
       "how-to-stack-shopee-vouchers-philippines",
       "shopee-return-refund-guide-philippines",
@@ -499,6 +503,10 @@ const saleSafetyGuideCases = [
     topics: ["qr-scam", "payment-safety", "shopping-safety"],
     platforms: ["Shopee PH"],
     deals: { tags: ["shopee"] },
+    coverImage: "/images/guides/fake-qr-code-payment-scams-philippines.jpg",
+    coverImageAlt:
+      "Shopper inspecting a non-scannable abstract QR pattern on a phone beside a shield and payment checklist",
+    coverImageSha256: "76fa03a5ee79098c8518623a776ee67d5a73fd321c7862448d297a758791826d",
     expectedRelatedSlugs: [
       "fake-cod-parcel-scam-philippines",
       "dti-trustmark-bir-registration-seal-online-sellers",
@@ -530,6 +538,10 @@ const saleSafetyGuideCases = [
     topics: ["seller-verification", "business-registration", "shopping-safety"],
     platforms: ["Shopee PH"],
     deals: { tags: ["shopee"] },
+    coverImage: "/images/guides/dti-trustmark-bir-registration-seal-online-sellers.jpg",
+    coverImageAlt:
+      "Magnifying glass checking abstract seller verification cards beside a laptop and official-domain checklist",
+    coverImageSha256: "94f0d4082bed2f38f40d5a35cd4625b170f3e8ea6b68d86282e4e15415912147",
     expectedRelatedSlugs: [
       "fake-cod-parcel-scam-philippines",
       "fake-qr-code-payment-scams-philippines",
@@ -561,6 +573,10 @@ const saleSafetyGuideCases = [
     topics: ["cod-scam", "parcel-safety", "shopping-safety"],
     platforms: ["Shopee PH"],
     deals: { tags: ["shopee"] },
+    coverImage: "/images/guides/fake-cod-parcel-scam-philippines.jpg",
+    coverImageAlt:
+      "Household member comparing an unopened COD parcel with a phone order list before payment",
+    coverImageSha256: "0ffced5a9af02110cf2d03d793fb6999eb77385599b8692af8bd244025aecef9",
     expectedRelatedSlugs: [
       "dti-trustmark-bir-registration-seal-online-sellers",
       "fake-qr-code-payment-scams-philippines",
@@ -590,6 +606,10 @@ const saleSafetyGuideCases = [
     topics: ["temu-checkout", "minimum-order", "checkout-value"],
     platforms: ["Temu"],
     deals: { tags: ["temu"] },
+    coverImage: "/images/guides/temu-minimum-order-philippines.jpg",
+    coverImageAlt:
+      "Shopper comparing an online cart minimum with a calculator and a short needs checklist",
+    coverImageSha256: "ad3aecda2df5738c548ff3117921cae4b28203eadf6c5434511310ec73fdf630",
     expectedRelatedSlugs: ["temu-shopping-guide-philippines"],
   },
 ]
@@ -614,8 +634,8 @@ test("sale-season safety guides use the exact ordered registry and substantive s
     assert.deepEqual(post.tags, guideCase.tags)
     assert.equal(new Set(post.tags).size, post.tags.length, `${guideCase.slug} tags must be distinct`)
     assert.equal(post.coverGradient, guideCase.coverGradient)
-    assert.equal(Object.hasOwn(post, "coverImage"), false, `${guideCase.slug} must not declare coverImage before Task 2`)
-    assert.equal(Object.hasOwn(post, "coverImageAlt"), false, `${guideCase.slug} must not declare coverImageAlt before Task 2`)
+    assert.equal(post.coverImage, guideCase.coverImage)
+    assert.equal(post.coverImageAlt, guideCase.coverImageAlt)
     assert.equal(post.publishedAt, "2026-08-09")
     assert.equal(post.lastReviewed, "2026-08-09")
     assert.ok(post.excerpt.length <= 160, `${guideCase.slug} excerpt is too long`)
@@ -1185,6 +1205,31 @@ test("August buyer guides use five distinct 1600x900 JPEG cover assets", () => {
 
   assert.equal(new Set(coverPaths).size, augustBuyerGuideCases.length)
   assert.equal(new Set(contentHashes).size, augustBuyerGuideCases.length)
+})
+
+test("sale-season safety guides use five accepted distinct 1600x900 JPEG covers", () => {
+  const coverPaths = []
+  const contentHashes = []
+
+  for (const guideCase of saleSafetyGuideCases) {
+    const post = postsModule.getPostBySlug(guideCase.slug)
+    assert.ok(post, `${guideCase.slug} fixture must exist`)
+    assert.equal(post.coverImage, guideCase.coverImage)
+    assert.equal(post.coverImageAlt, guideCase.coverImageAlt)
+    assert.match(post.coverImage, /\.jpg$/i)
+
+    const assetPath = resolve("public", post.coverImage.replace(/^\/+/, ""))
+    assert.ok(existsSync(assetPath), `${post.coverImage} must exist under public/`)
+    const asset = readFileSync(assetPath)
+    assert.deepEqual(readJpegDimensions(asset), { width: 1600, height: 900 })
+    coverPaths.push(post.coverImage)
+    const contentHash = createHash("sha256").update(asset).digest("hex")
+    assert.equal(contentHash, guideCase.coverImageSha256, `${post.coverImage} must match its accepted SHA-256`)
+    contentHashes.push(contentHash)
+  }
+
+  assert.equal(new Set(coverPaths).size, saleSafetyGuideCases.length)
+  assert.equal(new Set(contentHashes).size, saleSafetyGuideCases.length)
 })
 
 test("weekly search-led guides use the required registry metadata and editorial structure", () => {

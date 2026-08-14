@@ -5092,6 +5092,9 @@ SulitScan may earn a commission when you click an eligible partner link and comp
       deals: { tags: ["shopee"] },
     },
     coverGradient: "from-amber-400 to-orange-500",
+    coverImage: "/images/guides/shopee-9-9-sale-philippines-2026-checklist.jpg",
+    coverImageAlt:
+      "Filipino shopper planning a sale checkout with a blank phone cart, calendar, calculator, and price checklist",
     faqs: [
       {
         question: "When is Shopee 9.9 in the Philippines in 2026?",
@@ -5226,6 +5229,9 @@ SulitScan may earn a commission when a reader follows an eligible partner link a
       deals: { tags: ["shopee"] },
     },
     coverGradient: "from-blue-700 to-cyan-400",
+    coverImage: "/images/guides/fake-qr-code-payment-scams-philippines.jpg",
+    coverImageAlt:
+      "Shopper inspecting a non-scannable abstract QR pattern on a phone beside a shield and payment checklist",
     faqs: [
       {
         question: "Can I tell whether a payment QR code is safe by looking at it?",
@@ -5355,6 +5361,9 @@ SulitScan may earn a commission when a reader follows an eligible partner link a
       deals: { tags: ["shopee"] },
     },
     coverGradient: "from-emerald-900 to-amber-200",
+    coverImage: "/images/guides/dti-trustmark-bir-registration-seal-online-sellers.jpg",
+    coverImageAlt:
+      "Magnifying glass checking abstract seller verification cards beside a laptop and official-domain checklist",
     faqs: [
       {
         question: "Is the DTI Trustmark mandatory for every online seller?",
@@ -5501,6 +5510,9 @@ SulitScan may earn a commission when a reader follows an eligible partner link a
       deals: { tags: ["shopee"] },
     },
     coverGradient: "from-orange-500 to-slate-600",
+    coverImage: "/images/guides/fake-cod-parcel-scam-philippines.jpg",
+    coverImageAlt:
+      "Household member comparing an unopened COD parcel with a phone order list before payment",
     faqs: [
       {
         question: "Should I pay for a COD parcel if nobody remembers ordering it?",
@@ -5643,6 +5655,9 @@ SulitScan may earn a commission when a reader follows an eligible partner link a
     },
     importTaxContext: "temu",
     coverGradient: "from-indigo-500 to-violet-600",
+    coverImage: "/images/guides/temu-minimum-order-philippines.jpg",
+    coverImageAlt:
+      "Shopper comparing an online cart minimum with a calculator and a short needs checklist",
     faqs: [
       {
         question: "What is the Temu minimum order in the Philippines?",
