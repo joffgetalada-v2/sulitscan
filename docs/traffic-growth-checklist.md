@@ -13,6 +13,27 @@
 6. Confirm production Open Graph, Twitter, canonical, robots, and JSON-LD output in a rendered
    browser, not from a text-only fetch.
 
+## August 9 release indexing order
+
+Do not request indexing until the production deployment is verified. Then request these exact URLs
+in order:
+
+1. `https://sulitscan.com/blog/shopee-9-9-sale-philippines-2026-checklist`
+2. `https://sulitscan.com/blog/fake-qr-code-payment-scams-philippines`
+3. `https://sulitscan.com/blog/dti-trustmark-bir-registration-seal-online-sellers`
+4. `https://sulitscan.com/blog/fake-cod-parcel-scam-philippines`
+5. `https://sulitscan.com/blog/temu-minimum-order-philippines`
+
+Keep the existing `https://sulitscan.com/sitemap.xml` submission in Google Search Console and Bing
+Webmaster Tools. Refresh or resubmit that same sitemap after verified deployment; **never remove or
+recreate it**.
+
+Before each request, confirm the deployed page returns HTTP 200, has a self-canonical, remains
+indexable, appears in the live sitemap, loads its exact local banner, has BlogPosting and FAQPage
+schema that matches the rendered page, includes its intended internal links, and has no horizontal
+overflow at 390px. Record deployment, sitemap, indexing, impression, click, and ranking results only
+after the applicable production or search-platform verification.
+
 ## August 3 release indexing order
 
 Do not request indexing until the production deployment is verified. Then request these exact URLs
@@ -108,6 +129,19 @@ page-2+ URLs. If manual quota remains, inspect the materially updated guides lis
 - Articles that receive visits but few deal clicks: improve matching and calls to action.
 - Compare week 4 with the first three weeks, week 8 with the prior four weeks, and close the initial
   review at week 12. Do not guarantee rankings, orders, or commission.
+
+## Weekly content operating cadence
+
+- Publish two original source-backed guides when query evidence and source freshness support them.
+- Complete one substantial refresh based on a changed policy or a real Search Console query mismatch.
+- Hold one internal-linking and value-first distribution session.
+- Hold one measurement and quality-review session.
+
+This five-post launch is a cluster batch, not a commitment to five net-new posts every week. Prefer
+16 new guides and eight substantial refreshes across the next eight weeks, subject to query evidence
+and source freshness. Keep the 8â€“12 week measurement window above, and compare new, refreshed, and
+unchanged cohorts before changing the cadence. This operating plan does not guarantee rankings,
+revenue, orders, or traffic.
 
 ## Distribution
 
