@@ -105,7 +105,7 @@ test("deal-detail recommendations stay in-category and use deterministic relevan
     [
       "tumbler-hot-and-cold-thermos-double-wall-vacuum-insu-634012",
       "food-grade-fresh-keeping-box-refrigerator-storage-bo-443059",
-      "triangle-coat-rack-floor-bedroom-multi-function-clot-181276",
+      "videveckmal-dish-brush-with-soap-dispenser-527858",
     ]
   )
   assert.deepEqual(first.map((deal) => deal.slug), second.map((deal) => deal.slug))
@@ -474,9 +474,9 @@ const saleSafetyGuideCases = [
       "Filipino shopper planning a sale checkout with a blank phone cart, calendar, calculator, and price checklist",
     coverImageSha256: "58e7f951d9c9ab97abb754f5a8ecf591692a732ba40a9b340e9fb6a45bca232b",
     expectedRelatedSlugs: [
+      "shopee-9-9-vs-11-11-vs-12-12-which-sale-cheapest",
+      "shopee-coins-guide-philippines",
       "how-to-stack-shopee-vouchers-philippines",
-      "shopee-return-refund-guide-philippines",
-      "best-gifts-under-500-philippines",
     ],
   },
   {
@@ -509,9 +509,9 @@ const saleSafetyGuideCases = [
       "Shopper inspecting a non-scannable abstract QR pattern on a phone beside a shield and payment checklist",
     coverImageSha256: "76fa03a5ee79098c8518623a776ee67d5a73fd321c7862448d297a758791826d",
     expectedRelatedSlugs: [
+      "safest-payment-methods-online-shopping-philippines",
       "fake-cod-parcel-scam-philippines",
       "dti-trustmark-bir-registration-seal-online-sellers",
-      "shopee-return-refund-guide-philippines",
     ],
   },
   {
@@ -1022,8 +1022,10 @@ test("August guide deal recommendations match assigned editorial eligibility", (
 test("August guide-to-guide recommendations stay specific to each workflow", () => {
   for (const guideCase of [
     {
+      // The coins guide (Aug 2026) is the closest checkout-rewards workflow;
+      // it displaced why-final-prices-change-at-checkout from the top three.
       slug: "how-to-stack-shopee-vouchers-philippines",
-      required: ["why-final-prices-change-at-checkout"],
+      required: ["shopee-coins-guide-philippines"],
       rejected: [],
     },
     {

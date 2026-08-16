@@ -345,5 +345,20 @@ test("expired deal metadata stays crawlable to links but is excluded from indexi
   const detailSource = readFileSync(resolve("src/app/deals/[slug]/page.tsx"), "utf8")
 
   assert.match(detailSource, /getDealFreshness\(deal\.lastChecked\)/)
-  assert.match(detailSource, /robots:\s*\{\s*index:\s*freshness\.status !== "expired",\s*follow:\s*true\s*\}/)
+  // The index gate is isDealIndexable: it requires unique editorial content
+  // AND non-expired freshness, so expired deals stay excluded as before.
+  assert.match(detailSource, /robots:\s*\{\s*index:\s*isDealIndexable\(deal,\s*freshness\),\s*follow:\s*true\s*\}/)
+
+  // Freshness passed explicitly so these assertions never depend on today's date.
+  const expired = { status: "expired" }
+  const current = { status: "current" }
+  const described = { lastChecked: "ignored", description: "Unique editorial content." }
+  assert.equal(seoModule.isDealIndexable(described, expired), false, "expired deals must never be indexable")
+  assert.equal(seoModule.isDealIndexable({ lastChecked: "ignored" }, current), false, "deals without unique content must not be indexable")
+  assert.equal(seoModule.isDealIndexable(described, current), true, "fresh deals with unique content must be indexable")
+  assert.equal(
+    seoModule.isDealIndexable({ ...described, noindex: true }, current),
+    false,
+    "noindex must force-exclude even described deals"
+  )
 })
