@@ -3,7 +3,9 @@ import { notFound } from "next/navigation"
 import Link from "next/link"
 import Image from "next/image"
 import { ExternalLink, ArrowLeft, Clock, Star, Tag, ShieldCheck, AlertCircle, CheckCircle, MinusCircle } from "lucide-react"
-import { BreadcrumbJsonLd } from "@/components/SeoJsonLd"
+import { BookOpen } from "lucide-react"
+import { BreadcrumbJsonLd, ProductJsonLd } from "@/components/SeoJsonLd"
+import { getRelatedGuidesForDeal } from "@/lib/blog-recommendations"
 import { getActiveDeals, getDealBySlug, getRelatedDealsForDeal, isSuspiciousDiscount, SUSPICIOUS_DISCOUNT_NOTE } from "@/data/deals"
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import DealCard from "@/components/DealCard"
@@ -195,6 +197,7 @@ export default async function DealDetailPage({
   const isCurrent = freshness.status === "current"
   const suspicious = isSuspiciousDiscount(deal)
   const relatedDeals = getRelatedDealsForDeal(deal, 3)
+  const relatedGuides = getRelatedGuidesForDeal(deal, 2)
 
   return (
     <>
@@ -204,6 +207,14 @@ export default async function DealDetailPage({
           { name: "Deals", url: `${siteConfig.url}/deals` },
           { name: deal.title, url: `${siteConfig.url}/deals/${slug}` },
         ]}
+      />
+      <ProductJsonLd
+        name={deal.title}
+        description={buildDealSeoDescription(deal)}
+        url={`${siteConfig.url}/deals/${slug}`}
+        imageUrl={deal.imageUrl}
+        price={deal.salePrice}
+        platform={deal.platform}
       />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -442,6 +453,35 @@ export default async function DealDetailPage({
             </div>
           )
         })()}
+
+        {/* Related guides: connect catalog pages into editorial content */}
+        {relatedGuides.length > 0 && (
+          <section aria-labelledby="related-guides-heading" className="mb-10">
+            <h2 id="related-guides-heading" className="text-lg font-bold text-slate-900 mb-5">
+              Guides worth reading first
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {relatedGuides.map((post) => (
+                <Link
+                  key={post.id}
+                  href={`/blog/${post.slug}`}
+                  className="group flex items-start gap-3 p-5 bg-white border border-slate-100 rounded-2xl shadow-sm hover:border-green-100 hover:shadow-md transition-all"
+                >
+                  <span className="w-9 h-9 rounded-xl bg-green-50 text-green-600 flex items-center justify-center shrink-0" aria-hidden="true">
+                    <BookOpen className="w-4 h-4" />
+                  </span>
+                  <span>
+                    <span className="block text-sm font-bold text-slate-900 leading-snug group-hover:text-green-700 transition-colors">
+                      {post.title}
+                    </span>
+                    <span className="block text-xs text-slate-500 mt-1 line-clamp-2">{post.excerpt}</span>
+                    <span className="block text-[10px] text-slate-400 mt-1.5">{post.readTime} min read</span>
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Related deals */}
         {relatedDeals.length > 0 && (

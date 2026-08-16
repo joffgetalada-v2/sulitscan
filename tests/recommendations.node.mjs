@@ -32,6 +32,7 @@ const dealsModule = loadTypeScriptModule("src/data/deals.ts", {
 })
 const recommendationsModule = loadTypeScriptModule("src/lib/blog-recommendations.ts", {
   "@/data/deals": dealsModule,
+  "@/data/posts": postsModule,
 })
 
 const currentPost = postsModule.getPostBySlug("how-to-check-shopee-seller-legit-philippines")

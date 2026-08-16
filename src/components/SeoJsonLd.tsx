@@ -152,6 +152,47 @@ export function BlogPostingJsonLd({
   )
 }
 
+interface ProductJsonLdProps {
+  name: string
+  description: string
+  url: string
+  imageUrl?: string
+  price: number
+  platform: string
+}
+
+/**
+ * Product + Offer schema for deal pages. Deliberately minimal and honest:
+ * no aggregateRating (SulitScore is editorial, not user reviews) and no
+ * availability claim (we don't verify live stock on the partner store).
+ */
+export function ProductJsonLd({ name, description, url, imageUrl, price, platform }: ProductJsonLdProps) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name,
+    description,
+    url,
+    ...(imageUrl ? { image: imageUrl } : {}),
+    offers: {
+      "@type": "Offer",
+      price: price.toFixed(2),
+      priceCurrency: "PHP",
+      url,
+      seller: {
+        "@type": "Organization",
+        name: platform,
+      },
+    },
+  }
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: safeJson(schema) }}
+    />
+  )
+}
+
 interface FAQItem {
   question: string
   answer: string

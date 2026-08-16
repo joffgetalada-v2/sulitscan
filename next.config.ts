@@ -24,6 +24,10 @@ const nextConfig: NextConfig = {
     ]
   },
   images: {
+    // Source product images from partner CDNs are ~500-1600px wide, so the
+    // default srcset ceiling (3840) only produces oversized upscale requests.
+    // Capping at 1920 covers desktop + retina without the 2048/3840 variants.
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     remotePatterns: [
       // Temu product images
       { protocol: "https", hostname: "aimg.kwcdn.com" },
