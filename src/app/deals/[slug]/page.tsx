@@ -217,7 +217,42 @@ export default async function DealDetailPage({
         platform={deal.platform}
       />
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      {/* Mobile sticky CTA: keeps the partner-store action above the fold on
+          phones, where the product image otherwise pushes it 2+ screens down. */}
+      <div
+        className="fixed bottom-0 inset-x-0 z-40 md:hidden bg-white/95 backdrop-blur-sm border-t border-slate-200 px-4 pt-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))]"
+      >
+        <div className="flex items-center gap-3">
+          <div className="min-w-0">
+            {isCurrent ? (
+              <>
+                <p className="text-base font-black text-slate-900 leading-tight">{formatPrice(deal.salePrice)}</p>
+                <p className="text-[10px] text-slate-400 leading-tight">Confirm on {deal.platform}</p>
+              </>
+            ) : freshness.status === "reference" ? (
+              <>
+                <p className="text-base font-black text-slate-900 leading-tight">{formatPrice(deal.salePrice)}</p>
+                <p className="text-[10px] text-amber-600 leading-tight">Reference price</p>
+              </>
+            ) : (
+              <p className="text-xs font-semibold text-amber-700 leading-tight">Check live price</p>
+            )}
+          </div>
+          <ExternalAffiliateLink
+            href={deal.affiliateLink}
+            platform={deal.platform}
+            placement="deal-detail-sticky-mobile"
+            offerId={deal.slug}
+            aria-label={`Check the current price on ${deal.platform} (affiliate link, opens in new tab)`}
+            className="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-4 bg-gradient-to-r from-green-500 to-green-600 text-white text-sm font-bold rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+          >
+            Check Price on {deal.platform}
+            <ExternalLink className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
+          </ExternalAffiliateLink>
+        </div>
+      </div>
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 pb-28 md:pb-10">
         <Link
           href="/deals"
           className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-green-600 mb-6 transition-colors"
