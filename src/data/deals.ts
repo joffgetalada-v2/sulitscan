@@ -2886,7 +2886,7 @@ export const deals: Deal[] = [
     affiliateLink: "https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.ph%2Fproduct%2F1035911700%2F24741702052%3Fgads_t_sig%3DgqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMfaLqlfFS4JwQPCoOJZHE2YMfq1tWF61pnIIHqGuyOlpkjBotHu7Xpb0YRK1tULWVZdcpI_r9hw6jgE9CqmNpcGhlcnRleHTEcgAAAAxd__v4p4PUXGjwNiLSNfKn7wHVSM-jp2Z9A8DS1fDV70qo6e2IcPw2tpnoPlzd3llwqCZPyEVPZTQ3Ew-BrgQm0LxOhoeEc61_qxD0tx3PrwpzEk-W0Ifp1xx6FNGQgCNL7BY4MvBMrt6IX13T_w",
     lastChecked: "Checked June 27, 2026",
     isDemo: false,
-    tags: ["shopee","home","under-500"],
+    tags: ["shopee","home","kitchen","drinkware","under-500"],
   },
   {
     id: "shopee-003",
@@ -2909,7 +2909,7 @@ export const deals: Deal[] = [
     affiliateLink: "https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.ph%2Fproduct%2F629219720%2F19000634012%3Fgads_t_sig%3DgqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMfaLqlfFS4JwQPCoOJZHE2YMfq1tWF61pnIIHqGuyOlpkjBotHu7Xpb0YRK1tULWVZdcpI_r9hw6jgE9CqmNpcGhlcnRleHTEcAAAAAwOGfoSKlfM6TRHgwuaHtN9eNFqJkPb8If7mOR-qSGN3bMzDte-jUlQRCObBsn94TkQ3zyS0y8KhF3CtE9dJ4DNZHFwBEMvCPQptgX6pcgxUclQ_AH5JMXt7vsL5-63dE7A1htRUAWt2Z5QZAE",
     lastChecked: "Checked June 27, 2026",
     isDemo: false,
-    tags: ["shopee","home","under-500"],
+    tags: ["shopee","home","kitchen","drinkware","tumbler","under-500"],
   },
   {
     id: "shopee-004",
@@ -2932,7 +2932,7 @@ export const deals: Deal[] = [
     affiliateLink: "https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.ph%2Fproduct%2F688050510%2F17803181276%3Fgads_t_sig%3DgqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMfaLqlfFS4JwQPCoOJZHE2YMfq1tWF61pnIIHqGuyOlpkjBotHu7Xpb0YRK1tULWVZdcpI_r9hw6jgE9CqmNpcGhlcnRleHTEcAAAAAwBVQp9Q2II-0IWiTeyIsE1uP-cafPao5MC73mwdG1j7j2mSxRzi9AHry6lQv-puJGeKzYqZFHL2nDgNdT7Tlx2rtXaKu_wn6vUnb-FuzNwBEQN6W4wsCDbjA0gcdJNYxaF0LRp2vPKkM9kd00",
     lastChecked: "Checked June 27, 2026",
     isDemo: false,
-    tags: ["shopee","home","under-500"],
+    tags: ["shopee","home","storage","organizer","under-500"],
   },
   {
     id: "shopee-005",
@@ -3088,7 +3088,7 @@ export const deals: Deal[] = [
     affiliateLink: "https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.ph%2Fproduct%2F1135839104%2F22090527858%3Fgads_t_sig%3DgqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMfaLqlfFS4JwQPCoOJZHE2YMfq1tWF61pnIIHqGuyOlpkjBotHu7Xpb0YRK1tULWVZdcpI_r9hw6jgE9CqmNpcGhlcnRleHTEcgAAAAziGnBCkpuAGz17HS3TADhjaBec3kFyFj9N1jRnbGdYu2nu6Ix5J8joBiwK3uep_5LQMclqng67ujJnKcl48Yjf1zqzf6nKX13DaezEd4h2ViAWDO5rB6s_dd8kIpLPmbooMoK8x0LZozaDOfDy2w",
     lastChecked: "Checked June 27, 2026",
     isDemo: false,
-    tags: ["shopee","home","under-500"],
+    tags: ["shopee","home","kitchen","cleaning","under-500"],
   },
   {
     id: "shopee-013",
@@ -3149,7 +3149,7 @@ export const deals: Deal[] = [
     affiliateLink: "https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.ph%2Fproduct%2F407106866%2F27312443059%3Fgads_t_sig%3DgqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMfaLqlfFS4JwQPCoOJZHE2YMfq1tWF61pnIIHqGuyOlpkjBotHu7Xpb0YRK1tULWVZdcpI_r9hw6jgE9CqmNpcGhlcnRleHTEcAAAAAyJYYdsTLvisYMowRaSh2oDGAj02X_0kKuIpG_IS85XNt-yDVSH1Uti79M-_jJyhwy40P5xBZ8Toutwh8o3rszYEaP-p4J887tTTp1Lnnw9Hvz9r_JvDO_1m46fpFtQj2D_RyNZtBTB8Nc0OTE",
     lastChecked: "Checked June 27, 2026",
     isDemo: false,
-    tags: ["shopee","home","under-500"],
+    tags: ["shopee","home","kitchen","storage","organizer","under-500"],
   },
   {
     id: "shopee-016",
@@ -3172,7 +3172,7 @@ export const deals: Deal[] = [
     affiliateLink: "https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.ph%2Fproduct%2F697699629%2F27731281926%3Fgads_t_sig%3DgqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMfaLqlfFS4JwQPCoOJZHE2YMfq1tWF61pnIIHqGuyOlpkjBotHu7Xpb0YRK1tULWVZdcpI_r9hw6jgE9CqmNpcGhlcnRleHTEcAAAAAxFChROEp6JE-Ff6Ij2n-nOph6Jr1tS2NB7KW_gRgkFaTRzs3fn-FPf2FXVhZJtaoZs9dikulK-Qdtk2kcJKJAocd3CWJgelFRBNRQh2LDjI5ovcOgyJ1geubzteF0NwV7BviuIosoa6pfcHds",
     lastChecked: "Checked June 27, 2026",
     isDemo: false,
-    tags: ["shopee","home","under-500"],
+    tags: ["shopee","home","bathroom","organizer","under-500"],
   },
   {
     id: "shopee-017",
@@ -3195,7 +3195,7 @@ export const deals: Deal[] = [
     affiliateLink: "https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.ph%2Fproduct%2F50099410%2F43710600118%3Fgads_t_sig%3DgqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMfaLqlfFS4JwQPCoOJZHE2YMfq1tWF61pnIIHqGuyOlpkjBotHu7Xpb0YRK1tULWVZdcpI_r9hw6jgE9CqmNpcGhlcnRleHTEbgAAAAwRbxEZCrTfvxl7X1tr75eccoxR1wl6Yu_GRsfuKZFzIgSAKdspizkACxQnfN9azS8c-srI-3vi02JDmaHi7G3_8g66C5kWSqNpnlu5QcwSzrKynvVI7-k0X16Ut1FX6shrg9ND8wkN6Mew",
     lastChecked: "Checked June 27, 2026",
     isDemo: false,
-    tags: ["shopee","fashion","under-500"],
+    tags: ["shopee","fashion","women","bag","under-500"],
   },
   {
     id: "shopee-018",
@@ -3237,7 +3237,7 @@ export const deals: Deal[] = [
     affiliateLink: "https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.ph%2Fproduct%2F691660933%2F28792765230%3Fgads_t_sig%3DgqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMfaLqlfFS4JwQPCoOJZHE2YMfq1tWF61pnIIHqGuyOlpkjBotHu7Xpb0YRK1tULWVZdcpI_r9hw6jgE9CqmNpcGhlcnRleHTEcAAAAAwWpJDSFL80wjLM8j7CbQZUOa0Og349U2J_QDsGPyYy8lrfUlfGAY7ySRhJzk1gdL26UhUKk_mQI-Ufozs4aGv7OxQFoZjtOZCV4V3m4LuwLJIuseb3ObritLLfV1s0xseNU8WbSJx3b9fzYZ0",
     lastChecked: "Checked June 27, 2026",
     isDemo: false,
-    tags: ["shopee","fashion","under-500"],
+    tags: ["shopee","fashion","bag","under-500"],
   },
   {
     id: "shopee-020",
@@ -3260,7 +3260,7 @@ export const deals: Deal[] = [
     affiliateLink: "https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.ph%2Fproduct%2F426377685%2F26931421038%3Fgads_t_sig%3DgqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMfaLqlfFS4JwQPCoOJZHE2YMfq1tWF61pnIIHqGuyOlpkjBotHu7Xpb0YRK1tULWVZdcpI_r9hw6jgE9CqmNpcGhlcnRleHTEcAAAAAzmpLBVIdqMxPXdB0ZZ-hdHJDpO87VTh9su7sgoKCZ0aJ9PXGS30k4v7REpfjrgypiizUYBWcfbCUv9vnTYreUnf5f-pQacOt4avmsIldnLMlOuOP6QBFv5OOG2sw8H9MoZhqCnTdBZA1qtPS4",
     lastChecked: "Checked June 27, 2026",
     isDemo: false,
-    tags: ["shopee","fashion","under-500"],
+    tags: ["shopee","fashion","women","bag","under-500"],
   },
   {
     id: "shopee-021",
@@ -3321,7 +3321,7 @@ export const deals: Deal[] = [
     affiliateLink: "https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.ph%2Fproduct%2F234967162%2F17446233350%3Fgads_t_sig%3DgqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMfaLqlfFS4JwQPCoOJZHE2YMfq1tWF61pnIIHqGuyOlpkjBotHu7Xpb0YRK1tULWVZdcpI_r9hw6jgE9CqmNpcGhlcnRleHTEcAAAAAwTdzoGTSlgbFCo-0dk0vlxpJTEbJbsG58iGe9I6TGt97QXdkRxErC_BGrLpgtpNBLAQK8GC23_yOMivnyXWP-FkyDT3HEvObRoKb0av8rpl6kXchvXoSIcLzIiwGZM3K6gV0_9pI40pkFc3ok",
     lastChecked: "Checked June 27, 2026",
     isDemo: false,
-    tags: ["shopee","fashion","under-500"],
+    tags: ["shopee","fashion","accessories","under-500"],
   },
   {
     id: "shopee-024",
@@ -3363,7 +3363,7 @@ export const deals: Deal[] = [
     affiliateLink: "https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.ph%2Fproduct%2F1286085191%2F28688197484%3Fgads_t_sig%3DgqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMfaLqlfFS4JwQPCoOJZHE2YMfq1tWF61pnIIHqGuyOlpkjBotHu7Xpb0YRK1tULWVZdcpI_r9hw6jgE9CqmNpcGhlcnRleHTEcgAAAAwHbIiV92XBK1Ig5HQS9l802T0sIuXKFU-fBk5vqAFHZDUZLNq_rk28J7beVMih7JpZOOjx4neGK0qRp3ia630P9O12N51WV44DRUEYFRgSlOE86k-CWDYN5Qqltqh6Jv58yvrpb8b39eFCkEXQBw",
     lastChecked: "Checked June 27, 2026",
     isDemo: false,
-    tags: ["shopee","fashion","under-500"],
+    tags: ["shopee","fashion","women","basics","under-500"],
   },
   {
     id: "shopee-026",
@@ -3386,7 +3386,7 @@ export const deals: Deal[] = [
     affiliateLink: "https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.ph%2Fproduct%2F882527617%2F26055189941%3Fgads_t_sig%3DgqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMfaLqlfFS4JwQPCoOJZHE2YMfq1tWF61pnIIHqGuyOlpkjBotHu7Xpb0YRK1tULWVZdcpI_r9hw6jgE9CqmNpcGhlcnRleHTEcAAAAAy60_BSQg7wh_mNZekVU4JuWyrBMHboZudIQO4xczv1_9tQHJ-jU_nfNkSu1zCN7G_5zN5WGGOlx_nAYnfrNgXJBHG9eA0Oxf0Ka0EUe2eKU31uXpWVGARn_9tAVnUP2BT7ufLwpTPhyb1rwyg",
     lastChecked: "Checked June 27, 2026",
     isDemo: false,
-    tags: ["shopee","fashion","under-500"],
+    tags: ["shopee","fashion","women","accessories","under-500"],
   },
   {
     id: "shopee-027",
@@ -3428,7 +3428,7 @@ export const deals: Deal[] = [
     affiliateLink: "https://shope.ee/an_redir?origin_link=https%3A%2F%2Fshopee.ph%2Fproduct%2F1618636290%2F55809664776%3Fgads_t_sig%3DgqRjZGVrxHCFomtpsTE0MjUxOnRzc19zZGtfa2V5omt20QABpGFsZ2_SAAAAZKNkZWvAomN0xEAAAAAMfaLqlfFS4JwQPCoOJZHE2YMfq1tWF61pnIIHqGuyOlpkjBotHu7Xpb0YRK1tULWVZdcpI_r9hw6jgE9CqmNpcGhlcnRleHTEcgAAAAyccpldNO_DQB-n5bhWUBeydj2owUCqx9BVl8wLXF-E3ur1GoeuPasTUBwmbOVOGVGbOVa2GCWDXlKJfJZJuvZfLQqCZnK0P9jJfUXS4GA2ZkcbtjdvJNBmK0VX9_rE-PlubLBuQ5iKfuO6yG5qhw",
     lastChecked: "Checked June 27, 2026",
     isDemo: false,
-    tags: ["shopee","fashion","under-500"],
+    tags: ["shopee","fashion","outdoor","sports","accessories","under-500"],
   },
   {
     id: "shopee-029",

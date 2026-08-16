@@ -5676,6 +5676,568 @@ SulitScan may earn a commission when a reader follows an eligible partner link a
       },
     ],
   },
+  {
+    id: "post-045",
+    slug: "temu-vs-shopee-philippines",
+    title: "Temu vs Shopee Philippines: Price, Shipping, Returns",
+    excerpt:
+      "A Temu vs Shopee Philippines comparison: catalogs, delivered totals, shipping timelines, returns, and buyer protection, with checks to run before you pay.",
+    content: `
+A Temu vs Shopee Philippines comparison is less about which app is cheaper and more about which retail model fits the item you need right now. Temu is a cross-border marketplace that ships most orders to the Philippines from overseas warehouses, while Shopee PH is dominated by local and nearby regional sellers with shorter delivery routes. Neither platform wins every purchase, and the only numbers worth trusting are the delivered totals and terms shown live in each app at checkout.
+
+This guide compares the two platforms by mechanism: catalogs, pricing behavior, shipping, returns, and buyer protection. We deliberately avoid quoting specific fees, voucher values, thresholds, or promo dates, because those change frequently and differ by account, address, and cart. Track curated offers for both platforms on our [Temu store page](/stores/temu) and [Shopee PH store page](/stores/shopee-ph), and treat the live listing and checkout as the only authoritative source for any number.
+
+## What each catalog is built for
+
+Temu concentrates on low-cost general merchandise from cross-border sellers: home organizers, kitchen tools, craft supplies, phone accessories, small gadgets, and basic apparel. Most listings are unbranded or lightly branded, and the same product often appears in several near-identical versions. What you will rarely find is an official local brand store, a Philippine warranty card, or a local service route.
+
+Shopee PH carries a much wider spread: local sellers, official brand stores, imported goods, groceries, phones and appliances with local warranty representations, and preloved items. That breadth cuts both ways. You can buy a branded appliance from an official store and a questionable lookalike from an anonymous shop in the same search results, so the seller you choose matters as much as the platform.
+
+The practical split: when the item needs a warranty, authenticity, or an exact model number, Shopee has seller types that can support that. When the item is generic and low-cost, both catalogs can serve it and the comparison moves to delivered price and waiting time.
+
+## Pricing mechanics: listed discounts vs delivered totals
+
+Temu leans on aggressive reference pricing. Listings commonly show a large crossed-out number and a claimed percentage off, plus rotating sitewide promotions. Treat those labels as marketing, not as evidence of value. The meaningful figure is the order total after shipping and any handling amounts are applied at checkout, compared against what the same useful item costs elsewhere. Temu has also used minimum-order mechanics in some regions, so confirm on the live app whether a threshold applies to your account before planning a single-item order.
+
+Shopee prices are set per seller, then modified by platform vouchers, seller vouchers, shipping discounts, coins, and payment-method offers. The listed price is a starting point; the payable total appears only after your address, shipping option, payment method, and vouchers are applied in checkout. Two carts with the same items can produce different totals for different accounts.
+
+On both platforms, the honest comparison method is the same: same item, same quantity, final address selected, delivered total against delivered total. For a three-platform view that adds Lazada, see our [Shopee vs Lazada vs Temu comparison](/blog/shopee-vs-lazada-vs-temu-philippines). For small-ticket purchases where either platform could win, our [Under 500 category](/categories/under-500) lists curated low-price finds you can use as a reference point.
+
+## Shipping to the Philippines: speed and fees
+
+This is the clearest structural difference. Temu orders ship internationally, and standard delivery to the Philippines typically takes somewhere in the range of one to three weeks, with the live estimate on your order page being the figure that matters. Our [Temu Philippines shipping guide](/blog/temu-philippines-shipping-guide) walks through the full timeline, what the tracking stages mean, and what can add cost or delay.
+
+Shopee orders from local sellers move through domestic couriers, so delivery is usually measured in days rather than weeks, faster in Metro Manila and longer for provincial addresses. Shopee also hosts overseas sellers whose orders take international timelines, so check the seller location and delivery estimate on the listing rather than assuming every Shopee order is fast.
+
+On fees, both platforms display a shipping amount before you confirm payment, and both run free-shipping or discounted-shipping mechanics that depend on thresholds, vouchers, and eligibility that change over time. Read the fee line in your own checkout, and treat a free-shipping label as unverified until the payment screen shows it applied.
+
+## Returns, refunds, and buyer protection
+
+Shopee returns are generally the more practical process for Philippine buyers. You file a return or refund request within the order window, document the problem, and the item can physically travel back to a local seller through a local courier when a return is required. Disputes have a defined flow with seller response and platform mediation. The steps, evidence, and deadlines are covered in our [Shopee return and refund guide](/blog/shopee-return-refund-guide-philippines), and the live order page is where your actual deadline and options appear.
+
+Temu handles issues through its in-app support flow. Because shipping an item back across a border is often uneconomical, low-value problems are frequently resolved with a refund or credit without a physical return, but that is an observed pattern, not a promise. Eligibility, windows, and whether a return shipment is required vary by item, so read the return policy on the specific listing before ordering.
+
+Both platforms hold your payment in an escrow-style arrangement, releasing it to the seller after delivery or after the protection window passes. On both, the protection is procedural: it works when you inspect the parcel promptly, document problems with photos, and file within the live deadline. It does not rescue a missed window.
+
+## Seller trust signals on each platform
+
+Shopee exposes more seller-level information: shop ratings, review counts and photos, shop age, chat response rate, follower counts, and badges for official or preferred sellers. None of these is proof of quality, and ratings can be inflated, but recent reviews with buyer photos for the exact variation you want are useful evidence. You can also message the seller before buying.
+
+Temu presents a more uniform storefront where the platform, rather than the individual seller, fronts the experience. Item ratings and reviews exist and are worth reading, but seller identity is less prominent. In practice you are trusting Temu the platform more than any one seller, which simplifies some decisions and removes information you might want for others.
+
+## Temu vs Shopee Philippines: which to use for which purchase
+
+Lean toward Shopee PH when the item is needed soon, carries a warranty or authenticity concern, is fragile or bulky, is a branded electronic or appliance, or is something you may realistically need to return. Local sellers, faster couriers, and a workable physical return route all favor it.
+
+Consider Temu when the item is generic, inexpensive, and genuinely non-urgent, and when you would accept a refund rather than a replacement if it arrives disappointing. Waiting one to three weeks is the price of the model, so anything with a deadline is a poor fit.
+
+For items both platforms carry, run the comparison instead of picking a favorite: same item, delivered total against delivered total, waiting time and return route included in the decision.
+
+## Decision checklist before you choose a platform
+
+1. Write down the exact item, variation, and quantity you need before opening either app.
+2. Set the latest acceptable delivery date. If it is within about a week, cross-border shipping is a poor fit.
+3. Decide whether a warranty, authenticity, or an exact brand and model matters. If yes, favor sellers who state it clearly, which usually means Shopee official or established stores.
+4. Check the delivered total on each platform with your real address and payment method selected, not the listed price or the claimed discount.
+5. Confirm the shipping fee line and any minimum-order requirement in the live checkout before judging which cart is cheaper.
+6. Read the return policy on the specific listing, including the window and whether a physical return is required.
+7. Review recent buyer feedback with photos for the exact variation, and on Shopee, check the seller signals as well.
+8. Ask whether you would accept a refund instead of a working item. If the answer is no, favor the platform and seller with the stronger return route.
+9. Include the cost of being wrong: a cheap item that arrives late, unusable, or unreturnable is not a saving.
+10. If neither cart beats what you can buy locally at an acceptable total, skip both. Not buying is a valid result.
+
+If you want a starting point rather than a blank search bar, [browse the current curated deals](/deals) on SulitScan and compare any candidate against the live listing before you pay.
+
+## Limitations
+
+This comparison describes how the two platforms are structured as of August 2026 and deliberately avoids specific fees, voucher values, thresholds, and campaign dates, because those change and vary by account, address, and cart. We did not test every category, seller type, or dispute outcome, and observed patterns such as refund-without-return handling are not guarantees. The live listing, checkout, and order pages in each app are authoritative for your purchase. SulitScan does not control Temu, Shopee, their sellers, pricing, shipping, or dispute decisions, and nothing here guarantees a price, delivery date, refund, or savings.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. That relationship does not change the advice above: choose the platform that fits the purchase, verify the delivered total and return terms live, and skip any order that does not hold up. We do not set prices or issue offers on either platform. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Platform Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-16",
+    lastReviewed: "2026-08-16",
+    readTime: 11,
+    tags: ["temu", "shopee", "comparison", "shipping", "returns", "philippines"],
+    recommendationIntent: {
+      topics: ["platform-comparison", "temu-shopping", "shopee-shopping"],
+      platforms: ["Temu", "Shopee PH"],
+      deals: { tags: ["shopee", "home", "under-500"] },
+    },
+    coverGradient: "from-orange-400 to-rose-500",
+    faqs: [
+      {
+        question: "Is Temu cheaper than Shopee in the Philippines?",
+        answer:
+          "Sometimes, especially for generic low-cost items, but not reliably. Compare the delivered total in each live checkout for the exact item and your address, since vouchers, shipping fees, and thresholds change and differ by account.",
+      },
+      {
+        question: "How long does Temu take to deliver to the Philippines?",
+        answer:
+          "Standard Temu delivery to the Philippines typically takes around one to three weeks because orders ship internationally. The estimate on your live order page is the figure to trust for a specific purchase.",
+      },
+      {
+        question: "Which is better for returns, Temu or Shopee?",
+        answer:
+          "Shopee is generally more practical because local sellers make physical returns workable, while Temu often resolves low-value issues with refunds instead of returns. Check the return policy on the specific listing and your live order page before relying on either.",
+      },
+    ],
+  },
+  {
+    id: "post-046",
+    slug: "sephora-beauty-pass-philippines-guide",
+    title: "Sephora PH Beauty Pass: Points, Tiers, Smart Use",
+    excerpt:
+      "How points and tiers work in the Sephora Beauty Pass Philippines program, when to redeem before expiry, and why points should not drive an unplanned purchase.",
+    content: `
+The Sephora Beauty Pass Philippines program is a free-to-join loyalty membership that records qualifying purchases, awards points, and assigns a tier with escalating perks. Used carefully, it is a small deferred rebate on beauty spending you had already planned. Used as a goal, it becomes a reason to overspend. This guide explains the mechanics we could verify, names the numbers we deliberately do not state, and shows how to collect the value that exists without letting points decide your purchases.
+
+This guide pairs with the broader [Sephora PH beauty guide](/blog/sephora-ph-beauty-guide), which covers product selection and price comparison. Here the focus is only the loyalty layer: how earning works, what tiers change, when redeeming beats waiting, and when to ignore the program entirely.
+
+## What we verified and what we do not state
+
+On 2026-08-16, we reviewed the official Sephora Philippines Beauty Pass help center. As of August 2026, those pages confirm three tiers named White, Black, and Gold, a birthday gift mechanism across the tiers, a published points expiry policy, and a rule that redeeming points does not reduce tier progress or qualification, which instead depends on meeting a yearly minimum spend.
+
+What we did not verify matters just as much. We could not confirm an earning rate, tier spend threshold, or peso redemption value that we can promise applies to your account today, so this guide states none. Loyalty terms change, sometimes quietly and mid-year. The authoritative sources are the official Sephora PH Beauty Pass page and the points and tier summary inside your own account dashboard, read on the day you plan to buy or redeem.
+
+## How the Sephora Beauty Pass Philippines program works
+
+Beauty Pass follows the standard retail loyalty pattern. You register an account, purchases made while signed in accrue points in proportion to what you spend, and your spending over a defined period determines your tier. Promotions sometimes award bonus or multiplied points, but treat every specific figure as unconfirmed until your own dashboard or the official PH page displays it.
+
+Two properties deserve emphasis. A point is a conditional rebate, not cash: it has value only if redeemed against something you would have bought anyway, before it expires. And points reward past spending; they are not a discount on a purchase you have not yet justified.
+
+### Tiers and escalating perks
+
+The official PH help center names three tiers, White, Black, and Gold, and higher tiers are reached through spending. Perks generally escalate with tier: better birthday gifts, event invitations, and earlier or deeper access to member sale windows are the usual pattern, with the current perk list on the official Beauty Pass page. The one tier rule we verified is genuinely useful: redeeming your points does not push you down a tier or slow your qualification. Keeping a tier depends on a yearly minimum spend, so there is no strategic reason to hoard points as tier protection.
+
+Do not reverse-engineer a spending plan from a tier. If your normal budget reaches one, the perks arrive as a byproduct; spending extra to cross a threshold converts a perk into a self-inflicted price increase.
+
+### Birthday gifts and member sale windows
+
+The PH help center confirms a birthday gift mechanism for White, Black, and Gold members. Gifts of this kind usually carry claim windows and conditions, so check the current mechanics in your account before a trip or order that assumes one. Member sale windows work similarly: loyalty programs commonly give members early or exclusive access to promotions, but the dates, depth, and eligibility of any specific window are only knowable from the live announcement.
+
+### Redeeming points versus letting them expire
+
+The official PH help center publishes a points expiry policy, which means unredeemed points eventually become worth exactly zero. We did not verify the current schedule, so check two things in your dashboard: your point balance and the earliest expiry date attached to it. Then plan redemption around purchases you already intend to make; a replenishment order you were placing anyway is the ideal moment. Buying an unneeded product to use expiring points converts a small rebate into a full-price loss. Letting a small balance lapse is sometimes the genuinely cheaper outcome, and it costs you nothing else, since redemption and tier standing are independent.
+
+## Time purchases to sale windows you already planned
+
+Because most beauty products are replenishable, timing is the highest-value lever the program offers. If a serum or foundation repurchase can wait a few weeks, aligning it with a member sale window earns the same points at a lower price. The [Sephora PH sale guide](/blog/sephora-ph-sale-guide) covers preparing for those events with a price baseline, and the same discipline applies here: record the ordinary price of your repurchase items now, so a sale price can be checked against evidence instead of a banner.
+
+The reverse move is the trap: do not let an announced sale window create a purchase that was not on your list. A sale on an unneeded item is not a saving at any tier.
+
+## Why the authorized channel matters for premium skincare
+
+A loyalty program only has value on top of authentic products. Premium skincare and makeup are heavily counterfeited on open marketplaces in the Philippines, and a fake serum is not a bargain at any discount, because the risk lands on your skin and not only your wallet. Buying through Sephora PH as an authorized channel is partly a points decision but mostly an authenticity decision. Our guide on [how to check if skincare and makeup are legit in the Philippines](/blog/how-to-check-skincare-makeup-legit-philippines) explains verification habits that apply whichever store you use, and our curated [beauty category](/categories/beauty) lists offers from pages we have actually reviewed.
+
+When comparing a marketplace price against a Sephora PH price, compare like with like. An authorized-channel price includes authenticity assurance and a clear support route; a gray-market listing includes neither.
+
+## Stacking points with sales, where allowed
+
+Earning points on an item already discounted in a member sale is the cleanest form of stacking, and bonus-point events can improve a planned repurchase further. Whether a specific promotion combines with point earning or redemption is a live-terms question: exclusions exist in most loyalty programs, and only the checkout screen and the stated promotion conditions are authoritative for your cart. Treat an accepted combination as evidence for that order only, and do not add items to reach a bonus threshold without comparing the added cost against the realistic added value.
+
+## When Beauty Pass should not drive the purchase
+
+A loyalty program is a tiebreaker, not a reason. The moments to ignore it:
+
+- The product is not on your planned list. Points on an unneeded item are a rebate on money you did not need to spend.
+- You are spending to reach a tier or bonus threshold. That is paying extra now for an unverified perk later.
+- Expiring points are pushing you toward a purchase. Compare the redemption value against the full price; a lapsed balance is often cheaper.
+- A cheaper authentic channel exists for the same item. Points rarely outweigh a genuine price difference, so check the live totals before loyalty decides.
+
+## Beauty Pass value checklist
+
+1. Read the official Sephora PH Beauty Pass page and your account dashboard for the current earning rate, tier rules, and expiry dates before trusting any figure in any guide, including this one.
+2. Write a replenishment list of the products you genuinely reuse, with sizes and last-paid prices.
+3. Record ordinary prices for those items now, so a later sale price can be compared against evidence.
+4. Sign in before buying so planned purchases earn their points.
+5. Time flexible repurchases toward member sale windows instead of buying at full price out of habit.
+6. Check your point balance and earliest expiry date monthly, and plan redemption against an already-planned order.
+7. Claim the birthday gift within whatever window the live terms give, without adding an unplanned order to do it.
+8. Refuse threshold-chasing: never add items to reach a tier, bonus, or minimum spend without pricing the addition honestly.
+9. Keep authenticity checks ahead of points whenever a purchase drifts outside authorized channels.
+
+If the checklist says buy nothing this month, that is the program working in your favor, not a missed opportunity.
+
+When something on your replenishment list does need buying, you can [browse the current curated Sephora PH deals](/stores/sephora-ph) or scan [all deals](/deals) to see whether a reviewed offer matches it.
+
+## Limitations and live-policy check
+
+This guide was assessed on 2026-08-16 against official Sephora Philippines Beauty Pass help pages. Program structure, tiers, earning mechanics, expiry schedules, birthday gift terms, sale windows, and eligibility can change after review, and account-specific conditions can differ from public pages. We did not verify point rates, tier spend thresholds, or peso redemption values. Recheck the official Beauty Pass page, your account dashboard, and the live checkout before relying on any benefit.
+
+SulitScan is not affiliated with the administration of the Beauty Pass program and does not control Sephora PH pricing, promotions, stock, points, tiers, gifts, or redemption. Nothing here guarantees a perk, a discount, or a redemption outcome.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. That relationship does not change the advice: join a loyalty program only when it is free, and buy only items you planned at prices you have checked. We do not administer Beauty Pass and do not guarantee points, tiers, or savings. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Beauty Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-16",
+    lastReviewed: "2026-08-16",
+    readTime: 11,
+    tags: ["sephora", "beauty-pass", "loyalty-program", "beauty", "skincare", "philippines"],
+    recommendationIntent: {
+      topics: ["sephora-shopping", "beauty-loyalty", "beauty-deals"],
+      platforms: ["Sephora PH"],
+      deals: { tags: ["skincare", "beauty"] },
+    },
+    coverGradient: "from-pink-400 to-fuchsia-600",
+    faqs: [
+      {
+        question: "Do Sephora Beauty Pass points expire in the Philippines?",
+        answer:
+          "Yes. The official Sephora PH help center publishes a points expiry policy, reviewed August 2026, but we did not verify the current schedule. Check your account dashboard and the official help pages for the exact dates that apply to your points.",
+      },
+      {
+        question: "Is the Sephora Beauty Pass free to join in the Philippines?",
+        answer:
+          "Sephora PH presents Beauty Pass as a free loyalty membership, with higher tiers reached through spending rather than fees. Confirm the current signup terms on the official Beauty Pass page, since we did not test registration for this guide.",
+      },
+      {
+        question: "Can I use Beauty Pass points during a Sephora PH sale?",
+        answer:
+          "Redeeming points does not affect your tier progress, per the official PH help center. Whether points combine with a specific promotion depends on that promotion's live terms, so treat the checkout screen as the final answer for your cart.",
+      },
+    ],
+  },
+  {
+    id: "post-047",
+    slug: "safest-payment-methods-online-shopping-philippines",
+    title: "GCash, Card, or COD: Paying Safely for Online Orders",
+    excerpt:
+      "The safest payment method for online shopping in the Philippines is the one that stays inside official checkout; compare disputes, exposure, and scam patterns.",
+    content: `
+There is no single safest payment method for online shopping in the Philippines. E-wallets such as GCash and Maya, debit and credit cards, cash on delivery, and direct bank transfers each block some failures and stay exposed to others. The variable that matters more than the instrument is location: whether payment happens inside the platform's official checkout, where an order record and a dispute route exist, or outside it, where most reported Philippine online-shopping scams actually operate.
+
+This guide compares those options on disputes, exposure after a compromise, the scams that target each method, and platform protection. It is general consumer-safety information, not financial advice, and it recommends no specific bank, wallet, or card.
+
+## How we scoped this guide
+
+We describe mechanisms that are broadly stable: escrow-style platform payments, dispute and chargeback routes, and the scams that target each method. We did not verify any provider's current fees, transfer limits, dispute deadlines, or coverage terms for this article, so none are stated here. Those details change and differ by account type; the authoritative source is your provider's live app, published terms, and official support channels.
+
+Nothing below tells you which provider to sign up for. If a mechanism matters to your decision, confirm it with the provider before relying on it.
+
+## What is the safest payment method for online shopping in the Philippines?
+
+The honest answer: the safest payment method for online shopping in the Philippines is whichever one keeps your money inside the platform's official checkout and comes with a dispute route you have confirmed exists. A card charged through a marketplace checkout sits behind both the platform's order-based refund process and the card network's dispute process. The same card number typed into a payment link a stranger sent through chat has neither working for you.
+
+Fix the location rule first: pay inside official checkout and treat any request to move payment elsewhere as a stop signal. The comparisons below hold only under that rule.
+
+## E-wallets: GCash and Maya
+
+E-wallets are fast and widely accepted, and the major providers publish in-app processes for reporting unauthorized transactions. The structural weakness: a transfer to another person is designed to be immediate and final. If you are tricked into sending money to a scammer yourself, the system treats it as authorized, and recovery depends on reports and investigation, not automatic reversal. Report it anyway, through official channels, but do not assume the money returns.
+
+An attacker who obtains your login and a one-time password can reach your balance and any linked accounts. That is why OTP phishing is the dominant attack: a caller or message impersonates the provider, invents an urgency, and asks for the code. No legitimate process requires you to read an OTP to a human. Enable the transaction PIN and biometric locks the app offers, open the app directly instead of following links, and hold only a balance you have consciously decided to keep there.
+
+## Debit and credit cards
+
+Card networks operate dispute processes, commonly called chargebacks, for problems such as unauthorized charges or paid-but-undelivered orders. Mechanically, a credit card dispute contests a bill you have not yet settled, while a debit card dispute chases money already taken from your deposit balance. Whether a purchase qualifies, what deadlines apply, and how provisional credits work are questions only your issuing bank can answer, so ask through its official channels before you need to.
+
+The everyday risks are about handling. A card saved on a shared device can be used by anyone who unlocks it, and a card typed into a counterfeit checkout page is compromised regardless of network protection. If you save a card at all, save it only on a device that only you can unlock, and prefer checkouts that ask for a fresh confirmation on each charge.
+
+## Cash on delivery
+
+COD keeps account credentials out of the transaction entirely, and exposure is capped at the cash you hand over for one parcel. The cap is real but narrower than most people assume. Paying the rider is not the same as inspecting the item, and on major platforms your return rights follow the order record and its policies, not the doorstep exchange. Confirm the platform's current rules on opening and returning COD parcels rather than assuming payment preserved your options.
+
+COD also carries its own scam: parcels you never ordered arriving with a modest charge, counting on someone in the household paying without checking. Our [fake COD parcel guide](/blog/fake-cod-parcel-scam-philippines) covers the pattern in detail. The short version: keep a list of your open orders, refuse deliveries that match nothing on it, and never pay a surprise charge just because the box carries your name.
+
+## Bank transfer
+
+A direct transfer to a stranger's bank account has the weakest practical recovery path for shopping. Like a wallet send, it is authorized by you and designed to settle. Unlike a platform checkout, it creates no order record, no escrow, and no platform dispute route.
+
+That does not make bank transfers unsafe in general; it makes them unsuited to paying strangers for goods. A seller who asks for a direct transfer to release stock, skip fees, or lock a price is asking you to drop every protection layer at once; inside a marketplace, the request usually breaks platform rules too.
+
+## The theme that outranks the rest: stay inside checkout
+
+When you pay inside a marketplace checkout, the platform records the payment against your order, and escrow-style marketplaces hold the money until delivery is confirmed under their current policy. If the item never ships or arrives wrong, the refund route runs through that order. Move payment off-platform, by chat QR code, direct transfer, or an external link, and that structure disappears; the platform's accurate answer to your complaint becomes that no covered transaction exists.
+
+Off-platform payment requests are the common thread across most Philippine online-shopping scams we have covered, from fake sellers to fake couriers. Our [online shopping safety guide](/blog/online-shopping-safety-tips-philippines) treats this as the first-order rule: the choice among GCash, card, and COD matters far less than the choice between inside checkout and outside it.
+
+One more pattern targets the payment moment itself. A QR code is only an instruction to pay someone; it carries no evidence of who that someone is. Codes sent through chat or embedded in fake payment pages route money to accounts you cannot verify. The [fake QR payment scam guide](/blog/fake-qr-code-payment-scams-philippines) covers current variants; the durable defense is to scan only inside official apps and read the recipient name the app displays before entering any PIN.
+
+## Check the amount, not just the method
+
+Payment safety includes paying the right total. Shipping, payment-method surcharges, voucher changes, and preselected add-ons can all move the number on the final screen. The [final-price guide](/blog/why-final-prices-change-at-checkout) explains the common causes, and the [checkout comparison tool](/tools/checkout-comparison) gives you a place to record the totals different payment selections produce for the same cart.
+
+## Safe checkout checklist
+
+1. Pay inside the platform's official checkout; treat any request to move payment to chat, QR, or direct transfer as a stop signal.
+2. Confirm the merchant or recipient name on the payment screen before entering a PIN or OTP.
+3. Never read an OTP to anyone, and never type one anywhere except the screen that triggered it.
+4. Enable the transaction PIN, app lock, and biometric options your wallet or bank app provides.
+5. Do not save cards on shared or family devices, and periodically review where your saved methods live.
+6. Compare the final payable total across payment options before confirming, not the listed price.
+7. Save the order confirmation and payment reference immediately after paying.
+8. Keep a household list of open orders so COD arrivals can be checked before anyone pays.
+9. Learn your dispute route before you need it: the order page for platform purchases, your provider's official channels for account issues.
+10. When anything feels off, stop. An order can be placed again later; a completed payment often cannot be reversed.
+
+## If a payment has already gone wrong
+
+Move fast and stay on official channels. For a platform order, report through the order page and in-app support so the complaint attaches to the transaction record. For a compromised account or a transfer you were tricked into sending, contact the provider through the contact points listed inside its own app or website, never through numbers or links from messages. Keep screenshots, references, and timestamps, and consider a report to the authorities for documented fraud. None of this guarantees recovery, which is why the checklist focuses on prevention.
+
+The same discipline applies before you reach a payment screen: verify first. Browse our [curated deals with buyer notes](/deals) to start from listings we have annotated with the checks we ran and the ones still yours to run.
+
+## Limitations
+
+Payment terms, dispute processes, protection programs, fees, and limits change, and we did not verify any provider's current figures for this guide. SulitScan does not provide financial advice and does not recommend specific banks, wallets, or cards; this article describes mechanisms so you can ask your own provider the right questions. Confirm dispute routes, coverage, and current terms with your provider and the live platform pages before relying on them.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. That relationship does not change this guide: use a payment method you can dispute, keep the transaction inside official checkout, and confirm current terms with your own provider. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Safety",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-16",
+    lastReviewed: "2026-08-16",
+    readTime: 11,
+    tags: ["payment-safety", "gcash", "cod", "credit-card", "online-shopping", "philippines"],
+    recommendationIntent: {
+      topics: ["payment-safety", "shopping-safety", "checkout-decisions"],
+    },
+    coverGradient: "from-emerald-500 to-teal-700",
+    faqs: [
+      {
+        question: "Is COD safer than GCash for online shopping?",
+        answer:
+          "Neither is safest in every case. COD caps your exposure at the cash for one parcel but has its own parcel scams and does not by itself grant inspection or return rights, while a wallet paid inside official platform checkout keeps the order-based dispute route. The bigger risk with either is paying outside the platform.",
+      },
+      {
+        question: "What should I do if I paid a scammer via QR code?",
+        answer:
+          "Report it immediately to your wallet or bank through the support channels listed inside its own app, and report the seller or listing to the platform with screenshots and reference numbers. Transfers are designed to be final, so recovery is not guaranteed; speed and official channels give you the best chance, and you can also file a report with the authorities.",
+      },
+      {
+        question: "Is it safe to save my card on Shopee?",
+        answer:
+          "Saving a card trades convenience for dependence on your account security, so it is a personal risk decision rather than a yes or no. If you do save one, use a strong unique password, enable the extra confirmation options the platform offers, and never save cards on shared devices; check the platform's current security settings since features change.",
+      },
+    ],
+  },
+  {
+    id: "post-048",
+    slug: "shopee-coins-guide-philippines",
+    title: "Shopee Coins: How to Earn, Use, and Not Waste Them",
+    excerpt:
+      "Shopee Coins Philippines guide: how coins are earned, the checkout toggle and caps, expiry rules as of August 2026, and how to avoid coin-chasing buys.",
+    content: `
+Shopee Coins Philippines shoppers earn through cashback vouchers, daily check-ins, and in-app games are a rebate the platform designed to bring you back for another order, not money you own. Used deliberately, a coin balance can lower the delivered total on an item you already planned to buy. Chased for its own sake, it quietly justifies purchases you never needed. This guide explains how the program worked when we reviewed it in August 2026 and how to spend coins without letting them spend you.
+
+The numbers below are a dated snapshot, not a promise. Shopee can change coin values, caps, and expiry windows at any time; the figures your own coins page and checkout show are the ones that count.
+
+## How we verified this guide
+
+On 2026-08-16, we reviewed the Shopee PH Help Center articles covering what Shopee Coins are, how they are earned, and how they are used at checkout. Every specific figure below comes from those pages, as of August 2026. We did not place test orders across account segments, and help pages can differ from what an individual account is offered. Treat the live coins page, voucher wallet, and payment screen as authoritative for your account.
+
+## Shopee Coins Philippines basics, as of August 2026
+
+As of August 2026, Shopee PH help pages state that each Shopee Coin equals ₱1 and reduces the transaction amount when you switch on the coins toggle in the cart. Coins cannot be converted to cash and cannot be transferred to a ShopeePay balance. If an order is cancelled, the help pages say redeemed coins are returned within 24 hours.
+
+Coins lapse. The stated rule at review time: coins expire at the end of the third month after they are earned, with the earning month counted as the first. Under that rule, coins earned any time in August would disappear at the end of October. Expiry mechanics change quietly, so check the dates on your own coins page rather than this snapshot.
+
+Two redemption limits also appeared on the pages we reviewed: coins could cover up to 25% of a checkout amount, and a daily usage limit of 200 coins applied, refreshing 24 hours after the last purchase. If your checkout accepts a different amount, your account's live limit wins.
+
+## Common earning routes
+
+The help pages we reviewed listed several routes, most of them small:
+
+- Coins Cashback vouchers. Orders completed with a coins-cashback promotion earned 1 coin for every ₱100 spent, computed on the amount after discounts and excluding shipping.
+- Daily check-ins on the coins rewards page, with extra coins for consecutive days.
+- In-app games and Shopee Live sessions where sellers give out coins.
+- Product ratings. A rating over 50 characters with both images and video earned up to 0.4 coins.
+- Payments to ShopeePay merchants offering coins cashback.
+
+Notice the scale. A thorough photo-and-video review earns less than half a peso. A ₱1,000 cashback-eligible order earns about ₱10 in coins that will expire within roughly three months. These routes are engagement mechanics first and rebates second.
+
+## How redemption works at checkout
+
+Redemption is a toggle in the cart. Turn it on, and eligible coins reduce the amount due, subject to whatever caps your account carries. The reliable way to learn what coins are worth in a specific order is to compare the payable total with the toggle off and then on, on the final payment screen, with your real address, shipping option, and payment method selected. Listing prices, voucher banners, and coin balances all describe inputs; only the payable total describes the outcome. The [final-price guide](/blog/why-final-prices-change-at-checkout) covers why those screens routinely differ.
+
+Do not subtract a future coins-cashback reward from today's total as though it were cash. Coins awarded after this order only matter if you redeem them on a later purchase you would have made anyway, before they expire.
+
+## A rebate designed to bring you back
+
+The honest math on any points program starts with who designed it. Shopee funds coins because they raise the chance of a next order: balances expire, cannot be withdrawn, and are capped at checkout, which means the only way to extract value is to keep buying. None of that makes coins a scam. A rebate on spending you already planned is real money off. It does make them a marketing instrument, and the correct posture is to collect passively and redeem deliberately, never to shop because a balance exists.
+
+## When coins genuinely lower a delivered total
+
+Coins help when three things are already true: the item was planned before you opened the app, the delivered total with coins applied beats your comparison price, and redemption does not push you into a bigger cart than the plan called for. Modest balances go furthest on small planned purchases, the kind we curate in our [under ₱500 picks](/categories/under-500), though caps still bind: under the 25% limit we saw at review time, a ₱400 checkout could absorb at most ₱100 in coins. On a small planned item that is a visible reduction; spread across an inflated cart it is noise.
+
+## When chasing coins becomes overspending
+
+Watch for the reversals, where the coin mechanism starts selecting your purchases:
+
+- Adding items to reach a cashback voucher's minimum spend. The added item costs full price today; the reward is a small, expiring rebate later.
+- Maintaining check-in streaks or playing coin games out of loss aversion. Your time is a cost, and coins you never redeem before expiry are worth zero.
+- Panic-spending an expiring balance. Letting ₱40 in coins lapse is cheaper than spending ₱500 on something unplanned to rescue them.
+- Treating the balance as savings. It is a discount contingent on future spending at one platform, with an expiry clock.
+
+## Coins and vouchers: test the live checkout
+
+Coins sit alongside seller vouchers, platform vouchers, and shipping discounts, and the interaction between those controls is not something to assume. Apply one change at a time and record what the payment screen accepts, the same discipline as the [Shopee voucher-stacking workflow](/blog/how-to-stack-shopee-vouchers-philippines). Note also the order of computation we saw documented: coins cashback was calculated after voucher discounts and coin redemption, so stacking a large voucher can shrink the coins an order earns. An accepted combination is evidence for that cart at that moment, nothing more.
+
+## Expiry hygiene before big sale days
+
+Check the balance and nearest expiry date on the coins page about a week before a major campaign, then fold whatever is genuinely available into the sale plan; the [9.9 checkout checklist](/blog/shopee-9-9-sale-philippines-2026-checklist) covers exactly this step. Working the other direction, noticing expiring coins and inventing a purchase to use them, is the program working as designed and your budget working against you. If nothing on your list justifies an order before the coins lapse, let them lapse.
+
+## Checklist: use coins without overspending
+
+1. Check your coins page for the balance and nearest expiry date before any sale event, not under checkout pressure.
+2. Shop from a written list, and open the coins toggle only after the cart already matches something you planned.
+3. Compare the payable total with the toggle on and off, and treat the difference, not the balance, as the coins' actual value.
+4. Test coins alongside vouchers one change at a time and keep only combinations the live checkout accepts.
+5. Never add an item to reach a cashback voucher minimum without pricing the added item as a full-cost purchase.
+6. Treat expiring coins as a small discount on a planned purchase, never as a deadline to buy something new.
+7. Skip games and streak mechanics on days with no planned purchase; coins that expire unredeemed are worth nothing.
+8. Save the final order breakdown so a later return or price check compares against what you actually paid.
+
+If a planned purchase is already on your list, start from a vetted shortlist instead of the app's promotional feed: [browse curated Shopee PH deals](/stores/shopee-ph) or scan [all deals](/deals) and compare delivered totals before any coin math.
+
+## Limitations
+
+This guide reflects Shopee PH Help Center pages reviewed on 2026-08-16. Coin values, earning rates, redemption caps, daily limits, expiry rules, and eligibility can change without notice, can vary by account, and can differ between a help article and what checkout actually accepts. SulitScan does not control Shopee, its coins program, vouchers, sellers, or checkout behavior, and nothing here guarantees a specific coin rate, redemption amount, stack, or saving. Confirm the live coins page and your own payment screen before relying on any number in this article.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. That relationship does not change the advice here: coins are only worth redeeming against an item you already planned to buy at an acceptable delivered total. We do not issue coins or vouchers and cannot guarantee savings. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Platform Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-16",
+    lastReviewed: "2026-08-16",
+    readTime: 10,
+    tags: ["shopee", "shopee-coins", "vouchers", "rewards", "checkout", "philippines"],
+    recommendationIntent: {
+      topics: ["shopee-shopping", "checkout-checklist", "platform-rewards"],
+      platforms: ["Shopee PH"],
+      deals: { tags: ["shopee"] },
+    },
+    coverGradient: "from-amber-400 to-yellow-600",
+    faqs: [
+      {
+        question: "Do Shopee Coins expire in the Philippines?",
+        answer:
+          "Yes. The Shopee PH help pages we reviewed in August 2026 stated coins expire at the end of the third month after they are earned, with the earning month counted as the first. Check the expiry dates on your own coins page, since the rule can change.",
+      },
+      {
+        question: "Can I convert Shopee Coins to cash?",
+        answer:
+          "No. As of August 2026, Shopee PH help pages stated coins cannot be converted to cash or transferred to ShopeePay; they only reduce eligible transaction amounts. Confirm current rules on the live help pages before relying on them.",
+      },
+      {
+        question: "Can I use Shopee Coins together with vouchers?",
+        answer:
+          "Often, but treat your live checkout as the authority. Apply one control at a time, watch the payable total, and remember that caps such as the 25% redemption limit we saw in August 2026 can restrict how much coins cover in any single order.",
+      },
+    ],
+  },
+  {
+    id: "post-049",
+    slug: "shopee-9-9-vs-11-11-vs-12-12-which-sale-cheapest",
+    title: "9.9 vs 11.11 vs 12.12: Which PH Sale Is Cheapest?",
+    excerpt:
+      "No Philippine mega-sale is always cheapest. How 9.9 vs 11.11 vs 12.12 really differ, and why a tracked price baseline beats waiting for a magic date.",
+    content: `
+Search which Shopee sale is biggest in the Philippines and most results name a date with complete confidence: 9.9, 11.11, or 12.12. We cannot honestly name one. Based on how these campaigns are structured, the accurate answer is that no Philippine mega-sale, whether 9.9, 10.10, 11.11, 12.12, or a quieter payday sale, is universally cheapest. The price you actually pay depends on the specific listing, whether the seller joined the campaign, the vouchers allocated to your account, and where the item's category sits in its demand cycle on that date.
+
+This guide explains the mechanics behind that answer so you can plan purchases around evidence instead of a date. It complements the year-round [Philippine sale calendar](/sales-calendar), which lists the campaign windows worth marking, and the dated [Shopee 9.9 checkout checklist](/blog/shopee-9-9-sale-philippines-2026-checklist), which walks one campaign cart from a saved baseline to a final decision.
+
+## 9.9 vs 11.11 vs 12.12: why there is no single winner
+
+The question assumes each sale carries one discount level that applies across the platform. Campaigns do not work that way. A mega-sale is a bundle of separate mechanisms: platform vouchers with budgets and caps, seller vouchers that each store chooses to fund, flash-sale slots with limited stock, shipping subsidies with their own rules, and bank or wallet promotions with separate eligibility. Each mechanism varies by account, item, seller, and time slot within the same event.
+
+That is why two shoppers can check out the same item on the same sale day and pay different totals, and why the same item can be cheaper on a quiet Tuesday than during a flagship event once a seller voucher lapses. Any claim that one date is reliably cheaper than another would need tracked prices for the exact listing across events, which most shoppers, and most articles making the claim, do not have. We do not have that data either, which is why this guide reasons from mechanisms and shows you how to build your own comparison instead.
+
+## Why platforms keep running double-digit sales
+
+Repeating date-based sales exist because the rhythm works for the platform, not because each event is progressively cheaper. A predictable calendar of campaigns trains shoppers to return, gives sellers recurring windows to clear stock, and concentrates marketing spend on dates that are easy to remember. If one event were consistently and verifiably the cheapest, the others would lose their purpose. The system is designed so that every campaign offers a plausible reason to buy now.
+
+The countdown framing does the rest. A timer converts an ordinary purchasing decision into a deadline, and deadlines discourage exactly the checks that protect your budget: comparing sellers, testing vouchers, and questioning the reference price.
+
+## Reference prices make headline discounts unreliable
+
+The percentage on a sale banner is measured against a reference price, and reference prices can drift upward before campaigns. When that happens, the discount number grows while the payable price stays flat or even rises. This is the core reason a bigger advertised discount does not mean a cheaper sale, and it applies to every event on the calendar equally. The [fake-discount guide](/blog/how-to-spot-fake-discounts) covers how to compare an offer against realistic market alternatives instead of a crossed-out number.
+
+The practical consequence: you cannot rank 9.9 against 11.11 by their banners. You can only rank them by the final payable totals for the exact item you track, and that requires a baseline recorded before either event begins.
+
+## December demand cuts both ways
+
+12.12 sits inside the Christmas shopping season, and that changes its economics. Campaigns earlier in the year push discounts to create demand that would not otherwise exist. December campaigns meet demand that already exists: gifts, toys, food, and party supplies sell in volume regardless of promotions. A seller holding an item that holiday buyers already want has less reason to cut deeply, and prices in gift-heavy categories can hold firm or climb as stock tightens near the holidays.
+
+That does not make 12.12 a bad sale. Vouchers and shipping promotions still apply, and some sellers still discount to compete for holiday budgets. It means the December edition should be treated as a convenient window for gift shopping under a real deadline, not as the year's price floor. If you are buying presents, working from a shortlist such as our [gift ideas](/categories/gift-ideas) collection, with a baseline saved per item, protects you better than assuming holiday pricing is generous.
+
+## Category tendencies worth verifying
+
+Treat these as tendencies to test against your own tracked prices, not as facts:
+
+- Electronics and appliances: stock-up events such as 9.9 and 11.11 are often used for volume pushes on gadgets and home appliances, especially older models making room for newer releases. Verify the exact model number; a similar-looking variant is not the same item.
+- Gift-oriented categories: toys, beauty sets, and packaged food face their strongest demand in December, so 12.12 discounts in these categories deserve extra scrutiny against a baseline saved well before November.
+- Everyday consumables: household supplies and personal care items appear in mid-month and end-of-month payday sales all year. These quieter events draw less attention, which may mean less pressure on reference prices, but only your own comparison can confirm that for a given listing.
+
+None of these patterns is stable enough to replace checking. Sellers change strategies between years, categories overlap, and one campaign's behavior does not bind the next.
+
+## A tracked baseline beats a magic date
+
+The reliable way to know whether any sale is cheap is boring: record the ordinary price of the exact listing you want, then compare the final payable total in live checkout during the campaign. A useful baseline includes the listing URL, seller, variation, quantity, ordinary price, and shipping estimate, saved with a date. With that in hand, every campaign becomes one simple question: is the delivered total for the same item lower than what I recorded, and lower than the current alternatives?
+
+Vouchers are part of that test, never an assumption. Allocation differs by account, and stacking behavior can differ between help pages and live checkout, which the [voucher-stacking workflow](/blog/how-to-stack-shopee-vouchers-philippines) explains in detail. Only the combination your own checkout accepts, for your cart, at that moment, counts as evidence.
+
+## Sale-date decision checklist
+
+1. List the items you genuinely plan to buy this quarter, with exact variation and quantity, before opening any campaign page.
+2. Record a dated baseline for each: listing URL, seller, variation, ordinary price, and shipping estimate.
+3. Note the deadline for each item. Buy at the sale that comes before you need it; a bigger event after your deadline is worth nothing.
+4. Mark upcoming campaign windows from the [sale calendar](/sales-calendar) rather than letting banner ads decide your timing.
+5. Set a complete spending limit per item, as a delivered total including shipping and fees, before the campaign starts.
+6. During the campaign, test vouchers one at a time in live checkout and record only what checkout accepts.
+7. Compare the final payable total against your baseline and one current alternative, not against the crossed-out price.
+8. Write a walk-away rule: if the delivered total is not clearly below baseline, or the variation changed, skip the purchase and keep the baseline.
+9. If you skip, keep tracking. The next campaign, or a quiet non-sale week, may beat the date everyone told you was biggest.
+
+If you keep one idea from this guide, keep this: the cheapest sale for you is the one where your tracked item's final total actually drops, and that can be any date on the calendar. Mark the windows on the [Philippine sale calendar](/sales-calendar), and [browse curated deals](/deals) when you want a starting point we have already checked against listed prices.
+
+## Limitations
+
+This guide was written on 2026-08-16 and describes campaign mechanics, not measured prices. We did not track price histories across events, and we do not claim that any specific sale is cheaper than another for any item, category, or year. Voucher systems, campaign formats, reference-price behavior, and event dates change without notice, and platforms can restructure or rename events entirely. Confirm the live campaign page, listing, voucher terms, and final checkout total for your own account before acting on any tendency described here. SulitScan does not control Shopee, sellers, vouchers, pricing, or stock, and nothing in this guide guarantees a discount or a savings outcome.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. That relationship does not change the advice: no sale date is universally cheapest, and only your own baseline comparison shows whether an offer is real. We do not run campaigns or guarantee savings. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Tips",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-16",
+    lastReviewed: "2026-08-16",
+    readTime: 10,
+    tags: ["sale-comparison", "9-9-sale", "11-11-sale", "12-12-sale", "sale-planning", "philippines"],
+    recommendationIntent: {
+      topics: ["sale-planning", "checkout-checklist", "shopee-shopping"],
+      platforms: ["Shopee PH"],
+      deals: { tags: ["shopee", "under-500"] },
+    },
+    coverGradient: "from-red-500 to-orange-600",
+    faqs: [
+      {
+        question: "Is 11.11 cheaper than 12.12 in the Philippines?",
+        answer:
+          "Not reliably for any specific item. 11.11 is a stock-up style event while 12.12 meets existing Christmas demand, so results vary by category, seller participation, and the vouchers your account receives. Compare the final checkout total against a price baseline you saved before either sale.",
+      },
+      {
+        question: "When is the biggest Shopee sale of the year?",
+        answer:
+          "Biggest usually refers to marketing scale, and year-end events like 11.11 and 12.12 tend to be the most heavily promoted. A bigger campaign is not evidence of a lower price for your item, so confirm the live campaign page and your own checkout total instead of relying on the label.",
+      },
+      {
+        question: "Should I wait for 11.11 to buy something I need sooner?",
+        answer:
+          "No. Buy at the sale that falls before your deadline, because a larger event after you needed the item saves you nothing, and there is no guarantee the later price would have been lower. A saved baseline lets you judge whichever campaign arrives in time.",
+      },
+    ],
+  },
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
