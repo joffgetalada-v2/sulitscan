@@ -6,6 +6,7 @@ import { stores } from "@/data/stores"
 import { buildEntityPageHref, ENTITY_DEALS_PAGE_SIZE } from "@/lib/entity-deal-listing"
 import { DEALS_PAGE_SIZE } from "@/lib/deal-listing"
 import { isDealExpired } from "@/lib/deal-freshness"
+import { isDealIndexable } from "@/lib/deal-seo"
 
 export const revalidate = 86400
 
@@ -94,11 +95,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   const activeDeals = getActiveDeals().filter((deal) => !isDealExpired(deal))
-  const dealRoutes: MetadataRoute.Sitemap = activeDeals.map((deal) => ({
-    url: `${BASE_URL}/deals/${deal.slug}`,
-    changeFrequency: "weekly" as const,
-    priority: 0.7,
-  }))
+  // Only deal pages with unique editorial content are indexable; noindexed
+  // pages are left out of the sitemap so Google isn't invited to thin pages.
+  const dealRoutes: MetadataRoute.Sitemap = activeDeals
+    .filter((deal) => isDealIndexable(deal))
+    .map((deal) => ({
+      url: `${BASE_URL}/deals/${deal.slug}`,
+      changeFrequency: "weekly" as const,
+      priority: 0.7,
+    }))
 
   const dealListingRoutes: MetadataRoute.Sitemap = Array.from(
     { length: Math.max(0, Math.ceil(activeDeals.length / DEALS_PAGE_SIZE) - 1) },

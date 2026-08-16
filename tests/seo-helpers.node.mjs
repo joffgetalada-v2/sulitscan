@@ -30,6 +30,7 @@ const dealsModule = loadTypeScriptModule("src/data/deals.ts", {
 })
 const seoModule = loadTypeScriptModule("src/lib/deal-seo.ts", {
   "@/data/deals": dealsModule,
+  "@/lib/deal-freshness": freshnessModule,
 })
 const postsModule = loadTypeScriptModule("src/data/posts.ts")
 const blogSeoModule = existsSync(resolve("src/lib/blog-seo.ts"))
@@ -115,8 +116,11 @@ test("deal SEO titles are unique and no longer than 65 characters", () => {
       (title) => (title.match(/\(/g) ?? []).length !== (title.match(/\)/g) ?? []).length
     )}`
   )
+  // Suffix-shape check only applies to template-generated titles; deals with a
+  // hand-written seoTitle set their own structure (uniqueness/length still hold).
   assert.ok(
     titles.every((title, index) => {
+      if (activeDeals[index].seoTitle) return true
       const suffix = ` – ${activeDeals[index].platform} | SulitScan PH`
       const phrase = title.slice(0, -suffix.length)
       return !/[\s\-–—|:;,./\\!?()[\]{}"']$/u.test(phrase)
@@ -130,7 +134,10 @@ test("deal SEO descriptions are unique product-specific snippets", () => {
   const descriptions = active.map(seoModule.buildDealSeoDescription)
   assert.equal(new Set(descriptions).size, descriptions.length)
   assert.ok(descriptions.every((description) => description.length <= 160))
+  // First-token containment is a proxy that only makes sense for generated
+  // descriptions; hand-written seoDescription copy is product-specific by design.
   assert.ok(active.every((deal, index) =>
+    deal.seoDescription !== undefined ||
     descriptions[index].toLowerCase().includes(deal.title.split(/\s+/)[0].toLowerCase())
   ))
 })
@@ -138,6 +145,7 @@ test("deal SEO descriptions are unique product-specific snippets", () => {
 function loadSeoModuleForDeals(activeDeals) {
   return loadTypeScriptModule("src/lib/deal-seo.ts", {
     "@/data/deals": { getActiveDeals: () => activeDeals },
+    "@/lib/deal-freshness": freshnessModule,
   })
 }
 

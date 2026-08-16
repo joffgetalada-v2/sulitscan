@@ -1,4 +1,5 @@
 import { getActiveDeals, type Deal } from "@/data/deals"
+import { getDealFreshness, type DealFreshness } from "@/lib/deal-freshness"
 
 const SITE_SUFFIX = " | SulitScan PH"
 const TITLE_LIMIT = 65
@@ -74,7 +75,25 @@ function hasDescriptionCollision(deal: Deal): boolean {
   return getActiveDeals().filter((candidate) => buildDescriptionWithoutHash(candidate) === description).length > 1
 }
 
+/**
+ * A deal page is indexable only when an editor has written unique content for
+ * it (deal.description) and the deal is not expired. Pages without unique
+ * content stay browsable but send noindex and are left out of the sitemap, so
+ * templated pages never dilute the site's quality signals.
+ *
+ * Reversing is per page: add a description → indexed again automatically.
+ * Setting noindex: true force-excludes a page even when it has a description.
+ */
+export function isDealIndexable(deal: Deal, freshness: DealFreshness = getDealFreshness(deal.lastChecked)): boolean {
+  if (deal.noindex) return false
+  if (freshness.status === "expired") return false
+  return typeof deal.description === "string" && deal.description.trim().length > 0
+}
+
 export function buildDealSeoTitle(deal: Deal): string {
+  if (deal.seoTitle) {
+    return deal.seoTitle.endsWith(SITE_SUFFIX) ? deal.seoTitle : `${deal.seoTitle}${SITE_SUFFIX}`
+  }
   const collisions = getTitleCollisions(deal)
   if (collisions.length < 2) return buildTitleWithoutHash(deal)
 
@@ -87,6 +106,7 @@ export function buildDealSeoTitle(deal: Deal): string {
 }
 
 export function buildDealSeoDescription(deal: Deal): string {
+  if (deal.seoDescription) return deal.seoDescription
   if (!hasDescriptionCollision(deal)) return buildDescriptionWithoutHash(deal)
 
   const hashSuffix = ` (${stableHash(deal.slug)})`

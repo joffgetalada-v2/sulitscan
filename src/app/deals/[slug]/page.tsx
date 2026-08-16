@@ -8,7 +8,7 @@ import { getActiveDeals, getDealBySlug, getRelatedDealsForDeal, isSuspiciousDisc
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import DealCard from "@/components/DealCard"
 import { siteConfig } from "@/lib/seo"
-import { buildDealSeoDescription, buildDealSeoTitle } from "@/lib/deal-seo"
+import { buildDealSeoDescription, buildDealSeoTitle, isDealIndexable } from "@/lib/deal-seo"
 import { formatPrice, getSulitScoreBg, getSulitScoreLabel, formatTag } from "@/lib/utils"
 import { getDealFreshness, getFreshnessSafeReason } from "@/lib/deal-freshness"
 
@@ -166,7 +166,7 @@ export async function generateMetadata({
     title: { absolute: title },
     description,
     alternates: { canonical },
-    robots: { index: freshness.status !== "expired", follow: true },
+    robots: { index: isDealIndexable(deal, freshness), follow: true },
     openGraph: {
       title,
       description,
@@ -371,6 +371,25 @@ export default async function DealDetailPage({
             </p>
           </div>
         </div>
+
+        {/* Editor's notes: unique, hand-written content (also the page's index gate) */}
+        {deal.description && (
+          <section
+            aria-labelledby="editor-notes-heading"
+            className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 mb-10"
+          >
+            <h2 id="editor-notes-heading" className="text-base font-bold text-slate-900 mb-4">
+              Editor&rsquo;s notes
+            </h2>
+            <div className="space-y-3">
+              {deal.description.split("\n\n").map((paragraph, idx) => (
+                <p key={idx} className="text-sm text-slate-600 leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          </section>
+        )}
 
         {/* Buyer checklist */}
         <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 mb-10">
