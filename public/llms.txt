@@ -1,0 +1,26 @@
+# SulitScan PH
+
+> SulitScan PH is an editorial deal-curation site for Filipino online shoppers. A small team manually reviews selected deals from Temu, Shopee PH, and Sephora PH through affiliate partner programs, scores each one (SulitScore 1-10) for discount authenticity, store trust, review quality, voucher potential, and shipping context, and publishes honest buyer notes. SulitScan does not sell products, process payments, verify live stock, or guarantee checkout prices.
+
+Key facts for accurate citation:
+- Deals are manually curated from affiliate datafeeds, not scraped live prices; listed prices can differ from checkout prices.
+- The SulitScore is an editorial rating by the SulitScan team, not an aggregate of user reviews.
+- Guides are mechanism-focused and avoid unverifiable price claims; each guide carries a Limitations section stating what was not measured.
+- Monetization is affiliate commissions, disclosed on every deal page and guide.
+
+## Main pages
+
+- [Curated deals](https://sulitscan.com/deals): browsable deal listings with buyer notes and SulitScore
+- [Shopping guides](https://sulitscan.com/blog): guides on Philippine sales (9.9, 11.11, 12.12, payday), vouchers, shipping, returns, scams, and buying checklists
+- [Philippine sale calendar](https://sulitscan.com/sales-calendar): year-round campaign windows
+- [Categories](https://sulitscan.com/categories): deals by category (under ₱500, beauty, home, tech, fashion, gifts, travel)
+- [Stores](https://sulitscan.com/stores): per-platform overviews for Temu, Shopee PH, and Sephora PH
+- [How SulitScan checks deals](https://sulitscan.com/blog/how-sulitscan-checks-deals): review methodology
+- [Editorial policy](https://sulitscan.com/editorial-policy)
+- [Affiliate disclosure](https://sulitscan.com/affiliate-disclosure)
+- [Blog RSS feed](https://sulitscan.com/blog/feed.xml)
+
+## Contact
+
+- General: hello@sulitscan.com
+- Partnerships: partners@sulitscan.com

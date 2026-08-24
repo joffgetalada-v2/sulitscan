@@ -80,5 +80,13 @@ export const defaultMetadata = {
   },
   alternates: {
     canonical: siteConfig.url,
+    types: {
+      "application/rss+xml": `${siteConfig.url}/blog/feed.xml`,
+    },
   },
+  // Emits the Search Console meta tag only once the env var is set in the
+  // hosting environment, so DNS/file verification is never a deploy blocker.
+  ...(process.env.GOOGLE_SITE_VERIFICATION
+    ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } }
+    : {}),
 }

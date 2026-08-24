@@ -10,7 +10,7 @@ export function OrganizationJsonLd() {
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
-    logo: `${siteConfig.url}/og-image.svg`,
+    logo: `${siteConfig.url}/logo-mark.svg`,
     description: siteConfig.description,
     sameAs: [
       `https://twitter.com/sulitscanph`,
