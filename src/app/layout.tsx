@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import Header from "@/components/Header"
 import Footer from "@/components/Footer"
+import SulitAssistant from "@/components/assistant/SulitAssistant"
 import AdSenseSiteVerification from "@/components/AdSenseSiteVerification"
 import { OrganizationJsonLd, WebSiteJsonLd } from "@/components/SeoJsonLd"
 import { defaultMetadata } from "@/lib/seo"
@@ -64,6 +65,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <SulitAssistant />
         <Analytics />
         <SpeedInsights />
       </body>
