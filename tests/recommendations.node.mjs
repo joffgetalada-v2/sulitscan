@@ -474,9 +474,12 @@ const saleSafetyGuideCases = [
       "Filipino shopper planning a sale checkout with a blank phone cart, calendar, calculator, and price checklist",
     coverImageSha256: "58e7f951d9c9ab97abb754f5a8ecf591692a732ba40a9b340e9fb6a45bca232b",
     expectedRelatedSlugs: [
+      // The Aug 2026 sale-season planning guides (11.11 cart-building, 10.10)
+      // share all three topics and displaced the coins/voucher workflows: a
+      // 9.9 reader's next step is the next campaign window, not rewards mechanics.
+      "11-11-sale-philippines-cart-building-checklist",
+      "10-10-sale-philippines-guide",
       "shopee-9-9-vs-11-11-vs-12-12-which-sale-cheapest",
-      "shopee-coins-guide-philippines",
-      "how-to-stack-shopee-vouchers-philippines",
     ],
   },
   {

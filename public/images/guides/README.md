@@ -99,3 +99,44 @@ replacement is listed above. No other draft required replacement. Accepted origi
 mechanically center-cropped and resized with Sharp's Lanczos3 kernel to exactly 1600x900, then
 encoded as progressive JPEG at quality 88 with 4:4:4 chroma sampling. Every final JPEG was inspected
 again at original detail before its lowercase SHA-256 was pinned to the corresponding test fixture.
+
+## August sale-season planning banners generated 2026-08-24
+
+| Filename | Guide concept | Final JPEG SHA-256 |
+|---|---|---|
+| `shopee-9-9-home-kitchen-worth-buying-philippines.jpg` | Kitchen counter with cookware and storage beside a magnifier, blank calendar, and line-only checklist | `3bb151f63feece4485c4fba7797c1a0b6454882d69e9265043919549c14da983` |
+| `temu-9-9-season-delivery-time-philippines.jpg` | Cross-border parcel route with plane, customs arch, delivery van, numberless clock, and blank calendar | `ca12027b0c2eca3621fc637f762d8f1ba31c01a4650116e1fe73f30796df47ce` |
+| `10-10-sale-philippines-guide.jpg` | Large quiet calendar with one highlighted blank tile, resting megaphone, and small shopping bag | `cb2c190eda781a0f79f2c26b12aeb5485c87231350eedfac774a7ec50c80f66f` |
+| `payday-sale-philippines-strategy.jpg` | Wallet with blank bills and coins, two calendar cards, restock basket, and line-only budget list | `30358e9c8047fc662be750308efb8660ea94eba4022b2db407a5e64c5ae909d4` |
+| `11-11-sale-philippines-cart-building-checklist.jpg` | Cart receiving item cards beside a line-only checklist, blank price tags, and numberless clock | `69139801060be6134d58cde65748f4ef0749a10d9b2e27ee109f1599a07cd990` |
+
+Unlike earlier photorealistic batches, these five banners (and the eight backfill banners below)
+are original flat editorial vector illustrations authored as SVG in a shared design system
+(consistent ink, paper, and line tokens; per-guide accent palettes) and rasterized locally with the
+repository's own Sharp to exactly 1600x900 progressive JPEG at quality 88 with 4:4:4 chroma
+sampling. No AI image generator or external service was involved. The compositions follow the
+established prompt rules: no readable or pseudo-readable text, letters, numbers, glyphs, logos,
+trademarks, marketplace UI, watermarks, barcodes, QR codes, currency marks, or certification
+imagery; calendars, checklists, receipts, bills, and screens are blank or line-only. Every final
+JPEG was inspected at original detail before commit; the 11.11 checklist card and the kitchen
+scene's object spacing were corrected after first-render review.
+
+## Backfill banners for existing guides generated 2026-08-24
+
+Same illustration system and constraints as above; these close the gap for the eight guides that
+previously fell back to the default gradient/blog cover.
+
+| Filename | Guide concept |
+|---|---|
+| `how-to-check-shopee-seller-legit-philippines.jpg` | Seller profile card with avatar and star shapes under a magnifier beside a plain trust shield |
+| `shopee-vs-lazada-vs-temu-philippines.jpg` | Three neutral shopping bags on podium blocks with a comparison checklist |
+| `best-phone-accessories-under-500-philippines.jpg` | Phone, case, cable, earbuds, and a blank price tag |
+| `temu-vs-shopee-philippines.jpg` | Split scene: cargo plane and parcel vs local bag and van over a balance scale |
+| `sephora-beauty-pass-philippines-guide.jpg` | Cosmetics beside three stacked loyalty tier cards with star accents |
+| `safest-payment-methods-online-shopping-philippines.jpg` | Phone with shield, blank payment card, coins, and a COD parcel |
+| `shopee-coins-guide-philippines.jpg` | Phone wallet screen with a large coin, coin stacks, and a coin jar |
+| `shopee-9-9-vs-11-11-vs-12-12-which-sale-cheapest.jpg` | Three calendars highlighting different blank dates above a balance weighing two blank tags |
+
+The Sephora banner was regenerated after first review because the lipstick silhouette read as a
+signboard against the checklist card and the perfume cap geometry was malformed; the accepted
+version separates the objects and simplifies the cap. All eight were inspected at original detail.

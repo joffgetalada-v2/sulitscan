@@ -1630,6 +1630,9 @@ SulitScan may earn a commission when you click a partner link and complete a pur
       deals: { tags: ["shopee"] },
     },
     coverGradient: "from-orange-500 to-amber-600",
+    coverImage: "/images/guides/how-to-check-shopee-seller-legit-philippines.jpg",
+    coverImageAlt:
+      "Seller profile card with avatar and rating stars under a magnifying glass beside a trust shield and verification checklist",
     faqs: [
       {
         question: "How do I know if a Shopee seller is legit?",
@@ -1753,6 +1756,9 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     },
     importTaxContext: "general",
     coverGradient: "from-indigo-500 to-violet-600",
+    coverImage: "/images/guides/shopee-vs-lazada-vs-temu-philippines.jpg",
+    coverImageAlt:
+      "Three shopping bags in different colors on podium blocks beside a marketplace comparison checklist and a blank price tag",
     faqs: [
       {
         question: "Which is better, Shopee, Lazada, or Temu?",
@@ -1878,6 +1884,9 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     },
     importTaxContext: "temu",
     coverGradient: "from-slate-600 to-slate-900",
+    coverImage: "/images/guides/best-phone-accessories-under-500-philippines.jpg",
+    coverImageAlt:
+      "Phone beside a protective case, charging cable, earbuds, and a blank price tag in a flat illustration",
     faqs: [
       {
         question: "What phone accessories under 500 are worth buying?",
@@ -4322,6 +4331,9 @@ SulitScan may earn a commission when you click an eligible partner link and comp
       deals: { tags: ["shopee", "home", "under-500"] },
     },
     coverGradient: "from-orange-400 to-rose-500",
+    coverImage: "/images/guides/temu-vs-shopee-philippines.jpg",
+    coverImageAlt:
+      "Split scene weighing cross-border delivery with a cargo plane and parcel against local delivery with a shopping bag and van on a balance scale",
     faqs: [
       {
         question: "Is Temu cheaper than Shopee in the Philippines?",
@@ -4440,6 +4452,9 @@ SulitScan may earn a commission when you click an eligible partner link and comp
       deals: { tags: ["skincare", "beauty"] },
     },
     coverGradient: "from-pink-400 to-fuchsia-600",
+    coverImage: "/images/guides/sephora-beauty-pass-philippines-guide.jpg",
+    coverImageAlt:
+      "Skincare bottles and a cream jar beside three stacked loyalty tier cards with sparkle accents",
     faqs: [
       {
         question: "Do Sephora Beauty Pass points expire in the Philippines?",
@@ -4554,6 +4569,9 @@ SulitScan may earn a commission when you click an eligible partner link and comp
       topics: ["payment-safety", "shopping-safety", "checkout-decisions"],
     },
     coverGradient: "from-emerald-500 to-teal-700",
+    coverImage: "/images/guides/safest-payment-methods-online-shopping-philippines.jpg",
+    coverImageAlt:
+      "Phone showing a security shield beside a blank payment card, coins, a cash-on-delivery parcel, and a payment checklist",
     faqs: [
       {
         question: "Is COD safer than GCash for online shopping?",
@@ -4671,6 +4689,9 @@ SulitScan may earn a commission when you click an eligible partner link and comp
       deals: { tags: ["shopee"] },
     },
     coverGradient: "from-amber-400 to-yellow-600",
+    coverImage: "/images/guides/shopee-coins-guide-philippines.jpg",
+    coverImageAlt:
+      "Phone wallet screen with a large coin beside stacked coins and a jar of coins in a flat illustration",
     faqs: [
       {
         question: "Do Shopee Coins expire in the Philippines?",
@@ -4774,6 +4795,9 @@ SulitScan may earn a commission when you click an eligible partner link and comp
       deals: { tags: ["shopee", "under-500"] },
     },
     coverGradient: "from-red-500 to-orange-600",
+    coverImage: "/images/guides/shopee-9-9-vs-11-11-vs-12-12-which-sale-cheapest.jpg",
+    coverImageAlt:
+      "Three calendar cards highlighting different blank sale dates above a balance scale weighing two blank price tags",
     faqs: [
       {
         question: "Is 11.11 cheaper than 12.12 in the Philippines?",
@@ -4789,6 +4813,430 @@ SulitScan may earn a commission when you click an eligible partner link and comp
         question: "Should I wait for 11.11 to buy something I need sooner?",
         answer:
           "No. Buy at the sale that falls before your deadline, because a larger event after you needed the item saves you nothing, and there is no guarantee the later price would have been lower. A saved baseline lets you judge whichever campaign arrives in time.",
+      },
+    ],
+  },
+  {
+    id: "post-045",
+    slug: "shopee-9-9-home-kitchen-worth-buying-philippines",
+    title: "Shopee 9.9 Home & Kitchen: Worth Buying vs Skipping",
+    excerpt:
+      "Which home and kitchen buys actually benefit from Shopee 9.9, which are fine to buy any week, and the checks that separate the two.",
+    content: `
+Home and kitchen is one of the most tempting categories during Shopee 9.9, because the products are cheap enough that a countdown timer can talk you into a whole cartload. It is also the category where a sale changes the least: a ₱150 drawer organizer does not have much room to get dramatically cheaper, while a bulky air fryer's real cost depends as much on shipping and voucher caps as on the listed discount.
+
+This guide sorts home and kitchen purchases into ones where waiting for 9.9 plausibly helps, ones where it usually does not, and the checks that tell you which side a specific listing lands on. It pairs with the step-by-step [Shopee 9.9 checkout checklist](/blog/shopee-9-9-sale-philippines-2026-checklist), which covers vouchers and final totals for any cart, and with our [home finds collection](/categories/home-finds) if you want a starting shortlist.
+
+## Why home and kitchen behaves differently in a sale
+
+Sale mechanics reward some categories more than others. Big campaign discounts tend to concentrate where sellers need to clear stock in volume or where a platform wants a headline number: electronics generations, fashion seasons, beauty bundles. Everyday home goods sit at stable price points year-round because demand is constant, margins are already thin, and nobody upgrades a dish rack on a product cycle.
+
+That has two practical consequences. First, the gap between a home item's ordinary price and its 9.9 price is often small, so the value of waiting is small. Second, when a home listing does show a dramatic discount, the crossed-out reference price deserves more suspicion than usual, because steep genuine markdowns are less common in this category. The [fake-discount guide](/blog/how-to-spot-fake-discounts) shows how to sanity-check a discount against similar listings instead of trusting the banner.
+
+## Where 9.9 plausibly helps: bundles, bulk, and big-ticket
+
+The purchases where a campaign window can genuinely move the total share one trait: the order is large enough for percentage vouchers and shipping subsidies to matter.
+
+- Multi-piece sets. Cookware sets, container sets, and bedding sets have higher cart values, so a capped percentage voucher gets closer to its full value. If a set is on your list anyway, pricing it during a campaign costs nothing. Our [cookware set buying guide](/blog/cookware-sets-philippines-buying-guide) covers the material and piece-count checks that matter more than the discount.
+- Stock-up consumables. Trash bags, sponges, zip pouches, and cleaning refills are easy to buy in multiples, which pushes the cart over voucher minimums you would not reach with a single item.
+- Bulky items where shipping stings. For air fryers, storage racks, and laundry organizers, the shipping fee can rival the discount. A campaign shipping subsidy, if your cart qualifies, is sometimes worth more than the listed price cut. Check the shipping line in checkout, not the product page.
+- Small appliances a seller is clearing. Older models of kettles, blenders, and rice cookers do get real clearance pricing when new variants arrive. Verify the exact model designation, and search whether a newer version explains the markdown.
+
+## Where 9.9 usually does not help
+
+- Single low-priced organizers and tools. A ₱99–₱300 item has little absolute room to drop. If you need it, the difference between buying today and buying on 9.9 is usually smaller than one shipping fee.
+- Anything you need before the sale date. A drying rack you need this week should be bought this week. Paying a few pesos more beats living without the item to chase an unverified discount.
+- Trend-driven decor. Viral decor pieces face their highest demand during sale seasons, which is exactly when sellers have the least reason to cut deeply.
+- "Sale-only" listings with no history. A listing created shortly before a campaign has no ordinary price to compare against, so its discount percentage is unverifiable. Prefer sellers whose listing has visible review history spread over months.
+
+## The five checks that decide a specific listing
+
+1. Record the ordinary price now. Before the campaign, save the listing URL, seller, variation, and current price. This baseline is the only honest way to know whether 9.9 changed anything.
+2. Compare against equivalents, not the crossed-out price. Search the same item type, sort by sales, and see what similar listings charge on a normal day.
+3. Check the delivered total. Add the item to your cart and view shipping to your address. A cheaper item with a heavier shipping fee loses to a pricier listing with subsidized delivery.
+4. Verify variation and specification. Home listings often bundle wildly different sizes and piece counts under one product page. The advertised price frequently belongs to the smallest variation.
+5. Read the low-star reviews with photos. For kitchen items, buyer photos reveal the true size, plastic thickness, and coating quality far better than styled listing images.
+
+## A worth-buying shortlist logic you can reuse
+
+Instead of asking "is this discounted?", ask three questions in order. Would I buy this at its ordinary price if I had to? Does my cart reach the voucher minimum without padding it with things I do not want? Is the delivered total, after vouchers, clearly below the baseline I recorded? Three yes answers make a purchase worth it on 9.9, or honestly, on any day the numbers line up. Anything that needs the countdown timer to feel justified is a skip.
+
+If you want a starting point that has already been through a manual check, browse the [home finds collection](/categories/home-finds) or the wider [deals page](/deals), then run the same five checks above on anything you shortlist.
+
+## Limitations
+
+This guide was written on 2026-08-24 and describes category mechanics, not measured prices. We did not track price histories for specific home and kitchen listings across campaigns, and we do not claim any individual product will or will not be cheaper on 9.9. Campaign formats, voucher rules, shipping subsidies, and seller behavior change without notice. Confirm the live listing, variation, shipping fee, and final checkout total for your own account before buying. SulitScan does not control Shopee, sellers, pricing, or stock, and nothing here guarantees a discount or savings.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. That relationship does not change the advice: most small home items gain little from waiting for a sale date, and only your own baseline comparison shows whether a 9.9 price is real. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Home Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-24",
+    lastReviewed: "2026-08-24",
+    readTime: 9,
+    tags: ["shopee", "9-9-sale", "home", "kitchen", "sale-planning", "philippines"],
+    recommendationIntent: {
+      topics: ["sale-planning", "home-finds", "shopee-shopping"],
+      platforms: ["Shopee PH"],
+      deals: { tags: ["kitchen", "home", "organizer"] },
+    },
+    coverGradient: "from-orange-400 to-rose-500",
+    coverImage: "/images/guides/shopee-9-9-home-kitchen-worth-buying-philippines.jpg",
+    coverImageAlt:
+      "Kitchen counter with cookware, storage organizers, a blank calendar, and a line-only checklist weighing which sale purchases are worth it",
+    faqs: [
+      {
+        question: "Are home and kitchen items really cheaper during Shopee 9.9?",
+        answer:
+          "Sometimes, but less often than the banners suggest. Everyday home goods hold stable prices year-round, so the gap between the ordinary price and the 9.9 price is often small. Bundles, bulk consumables, and bulky items that qualify for shipping subsidies are where a campaign most plausibly helps. Compare the final checkout total against a price you recorded before the sale.",
+      },
+      {
+        question: "What home purchases are worth waiting for until 9.9?",
+        answer:
+          "Multi-piece sets and larger carts benefit most, because percentage vouchers and shipping subsidies scale with cart value. Small single items under a few hundred pesos rarely drop enough to justify waiting, especially if you need them sooner. Anything essential you need before the sale date is worth buying when you need it.",
+      },
+      {
+        question: "How do I know if a 9.9 kitchen discount is genuine?",
+        answer:
+          "Save the listing's ordinary price before the campaign, then compare the 9.9 delivered total, including shipping, against that baseline and against similar listings from other sellers. Ignore the crossed-out reference price, check that the advertised price matches the variation you actually want, and read low-star reviews with buyer photos.",
+      },
+    ],
+  },
+  {
+    id: "post-046",
+    slug: "temu-9-9-season-delivery-time-philippines",
+    title: "Temu During 9.9 Season: Will Your Order Arrive in Time?",
+    excerpt:
+      "How sale-season volume affects Temu delivery to the Philippines, what parts of the route slow down, and how to time cross-border orders.",
+    content: `
+Temu does not run the Philippine 9.9 calendar, but its parcels still land in the same country, in the same weeks, through many of the same couriers that carry every 9.9 order. If you are planning a Temu order in early September, the honest question is not whether Temu joins the sale, it is whether the delivery route your parcel travels gets slower while the whole market surges.
+
+This guide breaks the route into its stages, explains which stages are exposed to sale-season volume and which are not, and gives you a timing approach for orders that need to arrive by a specific date. For the route itself in normal weeks, start with our [Temu Philippines shipping guide](/blog/temu-philippines-shipping-guide); this article focuses on what changes when local volume spikes.
+
+## The route, and which parts sale season can touch
+
+A Temu order to the Philippines moves through roughly four stages: seller processing and consolidation overseas, international transit, customs clearance, and local last-mile delivery. The first two stages are driven by Temu's own logistics and are largely indifferent to a Philippine marketplace campaign. Customs processing time varies for its own reasons year-round.
+
+The stage most exposed to 9.9 is the last mile. Local couriers surge-staff for campaign weeks, but a large spike in domestic parcels can still stretch delivery times for everything they carry, including cross-border parcels that entered the country mid-surge. The practical takeaway: your Temu estimate's early stages behave normally, while the final leg carries the seasonal risk.
+
+## What the delivery estimate does and does not promise
+
+Temu shows an estimated delivery window at checkout, and that window is the only figure worth planning around, not a screenshot from someone else's order or a typical range quoted in a review. Estimates differ by item, warehouse, shipping option, and week. During heavy local volume, treat the far end of the window as your planning date, not the near end.
+
+Temu has historically offered compensation mechanics when parcels miss the stated window, but the terms, amounts, and eligibility change and differ by region. Check the live shipping policy on your own order page before relying on it, and treat any credit as a consolation, not a plan. A voucher does not make a birthday gift arrive on time.
+
+## Timing rules for orders that have a deadline
+
+1. Work backward from your need-by date. Take the far end of the checkout estimate, then add a personal buffer of several days if your date falls inside a campaign-heavy stretch like the first half of September.
+2. Order before the surge, not during it. A parcel that clears customs before local volume peaks rides a calmer last mile. If your deadline is mid-September, ordering in late August beats ordering on September 8.
+3. Do not split urgent and casual items in one order. One slow item holds shared shipments. Order the deadline item separately, even if that means giving up a small combined-shipping saving.
+4. Watch the minimum-order rules without padding. If you are topping up a cart just to hit Temu's checkout threshold, our [Temu minimum order guide](/blog/temu-minimum-order-philippines) covers how to do that without buying filler you do not want.
+5. Track at the stage level. When you check tracking, look at which stage the parcel is in. An order sitting in local sorting during a campaign week is normal and usually resolves; an order that has not left the origin warehouse after several days is worth a support inquiry regardless of season.
+
+## When Temu is the wrong tool for the job
+
+Cross-border shipping has a floor measured in weeks, not days. If your need-by date is inside that floor, no amount of planning fixes it, and a locally stocked alternative is the honest answer even at a higher price. This is also true for anything you cannot afford to receive in a wrong size or variant, because a cross-border replacement cycle adds weeks on top. For event-critical items, buy local; use Temu for the flexible rest.
+
+The reverse also holds. If your purchase has no deadline at all, sale-season congestion barely matters to you, and early September is as good a time as any, especially if a Temu promotion happens to run alongside the local campaigns. Browse the [Temu deals we have checked](/stores/temu) if you want a shortlist that has been through a manual review.
+
+## A quick pre-order checklist for September orders
+
+- Confirm the checkout delivery window for your address, item by item.
+- Plan on the far end of the window, plus a buffer if the last mile will be busy.
+- Separate deadline orders from casual orders.
+- Screenshot the estimate and order date, so any late-delivery claim is easy to document.
+- Check the live shipping policy for what compensation, if any, currently applies to missed windows.
+
+## Limitations
+
+This guide was written on 2026-08-24 and reasons from how cross-border logistics and Philippine campaign seasons are structured. We did not measure Temu delivery times during past 9.9 periods, and we do not claim a specific delay will or will not occur. Delivery estimates, shipping options, compensation policies, customs processing, and courier capacity all change without notice and vary by order. Confirm the delivery window and shipping terms shown in your own checkout before ordering, especially for anything with a fixed deadline. SulitScan does not control Temu, its logistics partners, or local couriers.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. That relationship does not change the advice: cross-border orders with hard deadlines deserve extra buffer or a local alternative, whatever a promotion says. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Platform Guides",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-24",
+    lastReviewed: "2026-08-24",
+    readTime: 9,
+    tags: ["temu", "shipping", "9-9-sale", "delivery-time", "philippines"],
+    recommendationIntent: {
+      topics: ["temu-buying", "cross-border-shipping", "sale-planning"],
+      platforms: ["Temu"],
+      deals: { tags: ["under-500"] },
+    },
+    importTaxContext: "temu",
+    coverGradient: "from-sky-500 to-indigo-600",
+    coverImage: "/images/guides/temu-9-9-season-delivery-time-philippines.jpg",
+    coverImageAlt:
+      "Parcel route illustration with a cargo plane, customs checkpoint, delivery van, blank calendar, and a clock without numbers",
+    faqs: [
+      {
+        question: "Does Shopee 9.9 slow down Temu deliveries in the Philippines?",
+        answer:
+          "It can affect the final delivery leg. Temu's overseas processing and international transit are separate from Philippine campaigns, but local couriers handle the last mile for both, and a nationwide parcel surge can stretch delivery for everything in the network. Plan on the far end of your checkout estimate during campaign-heavy weeks.",
+      },
+      {
+        question: "How early should I order from Temu for a mid-September deadline?",
+        answer:
+          "Work backward: take the far end of the delivery window shown at your own checkout, then add a buffer of several days for sale-season congestion. In practice that usually means ordering in late August rather than during the campaign itself. If the math does not fit, buy the item locally instead.",
+      },
+      {
+        question: "Does Temu compensate late deliveries in the Philippines?",
+        answer:
+          "Temu has offered credits for parcels that miss the stated delivery window, but the terms, amounts, and eligibility change over time and by region. Check the live shipping policy attached to your own order before relying on it, and treat any credit as a consolation rather than a reason to cut your timeline close.",
+      },
+    ],
+  },
+  {
+    id: "post-047",
+    slug: "10-10-sale-philippines-guide",
+    title: "10.10 Sale Philippines: The Quiet Sale Nobody Plans For",
+    excerpt:
+      "10.10 gets a fraction of the noise of 9.9 and 11.11. What that quiet actually means for prices, vouchers, and how to use the window well.",
+    content: `
+Between the 9.9 blitz and the 11.11 avalanche sits 10.10, a sale most Philippine shoppers could not name a plan for. Marketing budgets treat it as a bridge event, group chats barely mention it, and that quiet is exactly what makes it interesting. This guide explains what a low-hype campaign window actually changes, what it does not, and how to use October 10 as a second chance instead of another impulse date.
+
+If you have not read it yet, the [9.9 vs 11.11 vs 12.12 comparison](/blog/shopee-9-9-vs-11-11-vs-12-12-which-sale-cheapest) explains why no sale date is universally cheapest. Everything there applies to 10.10 too; this article covers what is specific to the quiet middle child.
+
+## What 10.10 actually is
+
+Philippine marketplaces run a double-digit campaign every month, and October 10 is the one between the two flagship events. Platforms still publish voucher drops, flash slots, and shipping promotions for it, and sellers can still opt in. What is smaller is the marketing push around it, the airtime, and the shopper attention. The mechanics are the same machine running at lower volume.
+
+That matters because the loud parts of a sale, the countdowns and banner percentages, are the parts most likely to mislead. A quieter event gives you the same voucher mechanics with less pressure, which is a better environment for the checks that protect your budget.
+
+## What less hype plausibly changes
+
+We want to be careful here, because "quieter sale means better deals" would be exactly the kind of unverifiable claim we criticize elsewhere. What can be said from mechanics:
+
+- Less contested vouchers, possibly. Platform vouchers have budgets and per-user allocations. Fewer active shoppers can mean claimable vouchers survive longer into the day, instead of vanishing at midnight. Whether that holds for your account on a given 10.10 is only knowable by checking that day.
+- Less reference-price theater, possibly. Sellers prepare their most aggressive crossed-out pricing for the events with the most eyeballs. A bridge event gives less incentive for pre-sale price inflation, though it does not eliminate it.
+- Calmer last mile. Courier networks are under less strain than during flagship events, so delivery estimates are less likely to stretch.
+- The same caps and minimums. Voucher caps, minimum spends, and stacking rules do not relax for quiet events. The [voucher-stacking workflow](/blog/how-to-stack-shopee-vouchers-philippines) works identically on 10.10.
+
+## 10.10 as your 9.9 retest window
+
+The most concrete use of 10.10 has nothing to do with its own promotions: it is the first structured retest after 9.9. If you tracked items into 9.9 and skipped some because the final total did not beat your baseline, that baseline is still fresh in October. Re-run the same comparison: same listing, same variation, delivered total against recorded price.
+
+This is where a quiet sale quietly shines. Sellers who missed their 9.9 volume targets have inventory and a new campaign window to move it. You will not know which sellers those are in advance, but your tracked list tells you within minutes whether anything on it actually dropped. Skipped items that dropped, buy. Items that are again not cheaper, skip again, and the list rolls forward to 11.11.
+
+## How to run the window in under an hour
+
+1. Open your tracked list from 9.9, or start one now with exact listings, variations, and current prices. The [sale calendar](/sales-calendar) shows the windows worth marking for the rest of the year.
+2. Check delivered totals for your top three tracked items in live checkout, vouchers applied one at a time.
+3. Claim, but do not chase. Collect the platform vouchers relevant to your list. Skip the ones that need cart padding to reach a minimum.
+4. Compare each total against your baseline, not against the discount banner.
+5. Buy what clears the bar, close the app, and let the rest roll to November. A quiet sale is easiest to walk away from, use that.
+
+## Who should skip 10.10 entirely
+
+If you have no tracked list, no pending need, and no baseline, 10.10 offers you nothing that a normal Tuesday does not. Skipping a sale is a valid strategy, and this is the easiest one on the calendar to skip. The [curated deals page](/deals) is there when a real need shows up; a campaign date is not a reason to invent one.
+
+## Limitations
+
+This guide was written on 2026-08-24 and reasons from how Philippine marketplace campaigns are structured. We did not measure prices, voucher availability, or delivery times during past 10.10 events, and phrases like "possibly" above are deliberate: we cannot verify how any specific 10.10 will behave for your account, items, or sellers. Campaign formats, voucher budgets, and event dates change without notice, and platforms may promote or shrink this event in any given year. Confirm the live campaign page, listing prices, and your own checkout totals before buying. SulitScan does not control any marketplace, seller, or courier.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. That relationship does not change the advice: a quiet sale is only worth your time if your own tracked prices actually drop, and skipping it is often the right call. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Tips",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-24",
+    lastReviewed: "2026-08-24",
+    readTime: 8,
+    tags: ["10-10-sale", "sale-planning", "sale-comparison", "shopee", "philippines"],
+    recommendationIntent: {
+      topics: ["sale-planning", "checkout-checklist", "shopee-shopping"],
+      platforms: ["Shopee PH"],
+      deals: { tags: ["shopee", "under-500"] },
+    },
+    coverGradient: "from-violet-500 to-fuchsia-500",
+    coverImage: "/images/guides/10-10-sale-philippines-guide.jpg",
+    coverImageAlt:
+      "Large blank calendar with one softly highlighted tile between busy sale dates, a resting megaphone, and a small shopping bag",
+    faqs: [
+      {
+        question: "Is the 10.10 sale in the Philippines worth it?",
+        answer:
+          "It can be, but mainly as a retest window. The voucher mechanics are the same as bigger sales at lower marketing volume, so use it to re-check items you tracked into 9.9 and skipped. If a delivered total now beats the baseline you recorded, buy; if not, roll the list forward to 11.11. Without a tracked list, 10.10 offers little over a normal day.",
+      },
+      {
+        question: "Are vouchers easier to get on 10.10 than on 9.9 or 11.11?",
+        answer:
+          "Possibly, because voucher budgets face fewer competing shoppers during quieter events, but this is not guaranteed and varies by account and campaign. The caps, minimum spends, and stacking rules stay the same. The only way to know is to check the claimable vouchers against your own cart on the day.",
+      },
+      {
+        question: "Should I wait for 11.11 instead of buying on 10.10?",
+        answer:
+          "Not if 10.10 already beats your recorded baseline for the item you need, and not if you need the item before November. A later, louder sale is not evidence of a lower price, and waiting past your own deadline saves nothing. Buy whichever window first clears your baseline comparison.",
+      },
+    ],
+  },
+  {
+    id: "post-048",
+    slug: "payday-sale-philippines-strategy",
+    title: "Payday Sale Strategy PH: 15th vs 30th, What Actually Drops",
+    excerpt:
+      "Payday sales run twice a month, every month. How kinsenas and katapusan campaigns differ from mega sales, and a strategy that fits a salary cycle.",
+    content: `
+Every 15th and end of month, Philippine marketplaces run payday sales timed to kinsenas and katapusan salary releases. They are the least glamorous events on the sale calendar, no year-defining hype, no record-breaking claims, and they are also the most frequent: twenty-plus windows a year against a handful of mega sales. This guide covers what payday campaigns are actually built to do, how the 15th and 30th differ in practice, and a strategy that works with a salary cycle instead of against it.
+
+For where these windows sit among everything else, keep the [Philippine sale calendar](/sales-calendar) handy; for the mega-sale mechanics, the [sale comparison guide](/blog/shopee-9-9-vs-11-11-vs-12-12-which-sale-cheapest) is the companion read.
+
+## What a payday sale is designed to do
+
+Mega sales are built to create demand: the platform spends on marketing to make you plan purchases around its date. Payday sales work the other way, they harvest demand that salary timing already created. The campaign exists because money arrives on those dates, not because discounts are deeper on them.
+
+That design shows in what gets promoted: consumables, groceries, personal care, baby supplies, pet food, household refills. These are things people restock when cash arrives, and campaign vouchers for them lean toward minimum-spend thresholds an ordinary restock cart already meets. The event is shaped for replenishment, which is exactly how to use it.
+
+## 15th vs 30th: is one better?
+
+Mechanically, the two windows run the same playbook, and we know of no evidence that either is consistently cheaper. The real differences are practical:
+
+- The month-end window sometimes stretches longer, blending into the following month's first days, or into a double-digit campaign that lands nearby. A longer window means less pressure to check out on one specific evening.
+- Your own cash flow differs. The salary period that carries your rent or tuition payment leaves a different disposable amount than the other one. The better payday sale is the one after your fixed obligations clear, which no platform can know.
+- Month-end can collide with bigger events. When katapusan runs into a major campaign's warm-up, seller attention and voucher budgets shift toward the flagship. The payday label persists, but the interesting mechanics may be in the bigger event's pages.
+
+Treat "which is better" as a question about your own budget cycle, not about the platform's discounts.
+
+## The replenishment strategy
+
+The payday windows reward a boring, powerful habit: a standing restock list.
+
+1. Keep one list of things your household genuinely re-buys: detergent, toothpaste, coffee, pet food, school supplies. Note the pack size and the price you last paid.
+2. Restock on payday windows, not on impulse days. The point is not that payday prices are always lower; it is that vouchers aimed at restock categories, plus a cart that naturally meets minimum spends, plus money that actually exists, line up twice a month.
+3. Never stock past your storage or expiry horizon. A discount on a fourth bottle of fabric softener you will not use until next year is storage rent, not savings.
+4. Run totals through the same discipline as any sale: vouchers tested one at a time in live checkout, final total against the price you last paid. The [voucher-stacking workflow](/blog/how-to-stack-shopee-vouchers-philippines) applies unchanged, and the [final-price guide](/blog/why-final-prices-change-at-checkout) explains why the cart total moves as you toggle options.
+5. Keep durables out of it. Phones, appliances, and furniture deserve the tracked-baseline treatment across bigger windows, where their sellers concentrate genuine campaign pricing.
+
+## The budgeting edge nobody markets
+
+Payday sales have one advantage no mega sale can match: they synchronize spending with income. A 12.12 purchase on credit is a January problem; a katapusan restock is paid with money that arrived that week. Set your restock budget as a fixed amount per payday, spend against the list, and the sale calendar starts working like a household system instead of a temptation engine.
+
+If you buy essentials with an e-wallet or card, payday windows are also when bank and wallet promotions tend to refresh. Check the payment page's live offers before checkout, and stick to payment methods you already use; our [payment safety guide](/blog/safest-payment-methods-online-shopping-philippines) covers the trade-offs.
+
+## Limitations
+
+This guide was written on 2026-08-24 and reasons from how payday campaigns are structured and scheduled. We did not measure prices across payday windows, and we do not claim payday pricing is lower than any other day for any item. Campaign timing, voucher rules, featured categories, and bank promotions change without notice and vary by account. Confirm the live campaign page and your own checkout totals before buying. SulitScan does not control any marketplace, seller, or payment provider, and nothing here is financial advice.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. That relationship does not change the advice: payday windows are for planned restocks paid with money you have, and only your own checkout comparison shows whether a price is good. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Tips",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-24",
+    lastReviewed: "2026-08-24",
+    readTime: 8,
+    tags: ["payday-sale", "sale-planning", "budgeting", "shopee", "philippines"],
+    recommendationIntent: {
+      topics: ["sale-planning", "voucher-stacking", "shopee-shopping"],
+      platforms: ["Shopee PH"],
+      deals: { tags: ["shopee", "under-200"] },
+    },
+    coverGradient: "from-emerald-500 to-cyan-500",
+    coverImage: "/images/guides/payday-sale-philippines-strategy.jpg",
+    coverImageAlt:
+      "Wallet with blank peso bills and coins beside two calendar cards, a household restock basket, and a line-only budget list",
+    faqs: [
+      {
+        question: "Are payday sales in the Philippines actually cheaper?",
+        answer:
+          "Not reliably, and that is not their design. Payday campaigns are timed to kinsenas and katapusan salary releases to capture restock spending, with vouchers leaning toward consumables and minimum spends a normal restock cart meets. Compare your final checkout total against the price you last paid rather than assuming the date itself lowers prices.",
+      },
+      {
+        question: "Which is better, the 15th or the 30th payday sale?",
+        answer:
+          "Mechanically they run the same playbook, and neither is consistently cheaper. The practical answer depends on your own cash flow: the window that falls after your fixed obligations clear is the better one for you. Month-end windows sometimes run longer or collide with bigger campaigns, which changes the noise level more than the prices.",
+      },
+      {
+        question: "What should I buy during payday sales vs mega sales?",
+        answer:
+          "Use payday windows for planned replenishment: household consumables, personal care, pet and baby supplies, bought against a standing list and a fixed budget. Leave durables like appliances and gadgets to the bigger campaign windows where their sellers concentrate genuine promotional pricing, tracked with a saved baseline either way.",
+      },
+    ],
+  },
+  {
+    id: "post-049",
+    slug: "11-11-sale-philippines-cart-building-checklist",
+    title: "11.11 Sale Philippines: Cart-Building Checklist",
+    excerpt:
+      "Build your 11.11 cart weeks ahead: shortlist, baseline prices, voucher claim windows, and a checkout rehearsal that beats midnight improvisation.",
+    content: `
+11.11 is the loudest shopping event on the Philippine calendar, and the loudest events are where improvised carts do the most damage. The shoppers who come out of November 11 with genuine savings are rarely the fastest tappers at midnight; they are the ones whose cart was researched, priced, and rehearsed before the campaign began. This guide is that preparation, structured as a checklist you can start weeks ahead.
+
+It builds on two companion reads: the [9.9 checkout checklist](/blog/shopee-9-9-sale-philippines-2026-checklist), which covers the checkout-day mechanics that apply to any campaign, and the [sale comparison guide](/blog/shopee-9-9-vs-11-11-vs-12-12-which-sale-cheapest), which explains why a bigger event is not automatically a cheaper one.
+
+## Weeks before: build the shortlist
+
+An 11.11 cart should start as a list of needs, not a reaction to banners.
+
+1. Write the list away from the app. Note each item, the exact specification or size you need, and a realistic ceiling price. A list written inside the app inherits the app's suggestions.
+2. Find the exact listings. For each item, pick one or two candidate listings from sellers with long, photo-backed review histories. Save the URL and the variation you want, since campaign pages bury search results under promoted tiles.
+3. Record baselines now. For every candidate listing, save today's price, the seller, the variation, and the shipping estimate to your address, with the date. This is the number the 11.11 price must beat. Without it, the crossed-out price will happily play the role of your memory.
+4. Watch for reference-price drift. Reference prices sometimes climb in the weeks before flagship events, making campaign discounts look deeper. If a tracked listing's ordinary price rises in late October, that is information about the seller worth keeping.
+
+## The week before: vouchers and rehearsal
+
+1. Claim vouchers as they release, but read the caps. Campaign vouchers publish minimum spends and maximum discounts. A voucher capped at a small amount changes a big-ticket total by that small amount, not by its headline percentage. The [voucher-stacking workflow](/blog/how-to-stack-shopee-vouchers-philippines) shows how combinations behave in live checkout.
+2. Rehearse the checkout. Days before the event, run your real cart to the payment page without paying. You will see the true shipping fees, which vouchers actually apply, and what the delivered total looks like before any event pricing. That rehearsal number, compared against your baselines, is the honest preview of what 11.11 must beat.
+3. Sort the cart into tiers. Tier one: items you will buy if the total merely matches baseline, because you need them. Tier two: items that need a genuine drop to justify. Tier three: temptations that need a dramatic, verified drop. Decide the tiers before the countdown, while you are still the calm version of yourself.
+4. Set the walk-away rules. For each tier, write the number that means no. An 11.11 cart without written limits is a negotiation you hold at midnight against a professional counterparty.
+
+## On the day: execute, don't browse
+
+Open the app to your cart, not to the homepage. Apply vouchers one at a time and read the total after each. Compare each item's delivered total against its baseline, buy what clears its tier's bar, and remove what does not. Every minute spent browsing beyond the list is the event selling to you, not you shopping. If big-ticket home items are on your list, the same delivered-total logic applies with more zeros; our [home finds collection](/categories/home-finds) covers the category checks that matter beyond price.
+
+## After the event: close the loop
+
+Keep the baseline file. Note what you bought, at what delivered total, and what you skipped. Skipped items roll forward to 12.12 with their baselines intact, and the [sale calendar](/sales-calendar) shows what else is left in the year. If a seller's reference price theater burned you, note the shop name. Your list gets smarter every campaign; the banners never do.
+
+## The one-line version
+
+A good 11.11 is decided in October: shortlist, baselines, claimed vouchers, a rehearsed checkout, and written walk-away numbers, then a short, boring execution on the day. If you want a starting point for the shortlist itself, [browse the deals we have already checked](/deals) and run anything you like through the same baseline discipline.
+
+## Limitations
+
+This guide was written on 2026-08-24 and describes preparation mechanics, not measured prices. We did not track price histories across past 11.11 events, and we do not claim any item, category, or seller will be cheaper on November 11. Campaign formats, voucher systems, shipping subsidies, and event dates change without notice, and platforms may restructure their events in any year. Confirm the live campaign page, listing, voucher terms, and final checkout total for your own account before buying. SulitScan does not control any marketplace, seller, courier, or price.
+
+## Affiliate disclosure
+
+SulitScan may earn a commission when you click an eligible partner link and complete a purchase, at no extra cost to you. That relationship does not change the advice: a prepared cart with recorded baselines beats any midnight reflex, and skipping an item that fails its comparison is a win. See our full [Affiliate Disclosure](/affiliate-disclosure).
+    `.trim(),
+    category: "Shopping Tips",
+    author: "SulitScan Team",
+    publishedAt: "2026-08-24",
+    lastReviewed: "2026-08-24",
+    readTime: 9,
+    tags: ["11-11-sale", "sale-planning", "cart-checklist", "shopee", "philippines"],
+    recommendationIntent: {
+      topics: ["sale-planning", "checkout-checklist", "shopee-shopping"],
+      platforms: ["Shopee PH"],
+      deals: { tags: ["shopee"] },
+    },
+    coverGradient: "from-rose-500 to-red-600",
+    coverImage: "/images/guides/11-11-sale-philippines-cart-building-checklist.jpg",
+    coverImageAlt:
+      "Shopping cart being filled with neatly arranged item cards beside a line-only checklist, blank price tags, and a clock without numbers",
+    faqs: [
+      {
+        question: "When should I start preparing for the 11.11 sale in the Philippines?",
+        answer:
+          "Start in October, several weeks ahead. Build a shortlist of exact listings and variations, record baseline prices with dates, and watch whether reference prices drift upward as the event approaches. In the final week, claim vouchers as they release and rehearse your real cart to the payment page so you know the true delivered total before event day.",
+      },
+      {
+        question: "Is 11.11 the biggest sale of the year in the Philippines?",
+        answer:
+          "It is among the most heavily marketed, alongside 12.12, but marketing scale is not price evidence for your specific item. Some items are cheaper at quieter events or on ordinary days once a seller voucher appears. The only reliable test is comparing the 11.11 delivered total against a baseline you recorded before the campaign.",
+      },
+      {
+        question: "How do I avoid overspending during 11.11?",
+        answer:
+          "Decide everything before the countdown: sort your cart into need, want, and temptation tiers, write a walk-away number for each, and set a total budget as a delivered amount including shipping. On the day, open the cart directly instead of browsing, apply vouchers one at a time, and remove anything that fails its written limit.",
       },
     ],
   },
