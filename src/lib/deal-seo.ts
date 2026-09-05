@@ -90,6 +90,10 @@ export function isDealIndexable(deal: Deal, freshness: DealFreshness = getDealFr
   return typeof deal.description === "string" && deal.description.trim().length > 0
 }
 
+export function shouldIncludeDealProductSchema(freshness: DealFreshness): boolean {
+  return freshness.status !== "expired"
+}
+
 export function buildDealSeoTitle(deal: Deal): string {
   if (deal.seoTitle) {
     return deal.seoTitle.endsWith(SITE_SUFFIX) ? deal.seoTitle : `${deal.seoTitle}${SITE_SUFFIX}`

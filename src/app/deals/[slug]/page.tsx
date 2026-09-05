@@ -9,7 +9,7 @@ import { getActiveDeals, getDealBySlug, getRelatedDealsForDeal, isSuspiciousDisc
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import DealCard from "@/components/DealCard"
 import { siteConfig } from "@/lib/seo"
-import { buildDealSeoDescription, buildDealSeoTitle, isDealIndexable } from "@/lib/deal-seo"
+import { buildDealSeoDescription, buildDealSeoTitle, isDealIndexable, shouldIncludeDealProductSchema } from "@/lib/deal-seo"
 import { formatPrice, getSulitScoreBg, getSulitScoreLabel, formatTag } from "@/lib/utils"
 import { getDealFreshness, getFreshnessSafeReason } from "@/lib/deal-freshness"
 
@@ -207,14 +207,16 @@ export default async function DealDetailPage({
           { name: deal.title, url: `${siteConfig.url}/deals/${slug}` },
         ]}
       />
-      <ProductJsonLd
-        name={deal.title}
-        description={buildDealSeoDescription(deal)}
-        url={`${siteConfig.url}/deals/${slug}`}
-        imageUrl={deal.imageUrl}
-        price={deal.salePrice}
-        platform={deal.platform}
-      />
+      {shouldIncludeDealProductSchema(freshness) && (
+        <ProductJsonLd
+          name={deal.title}
+          description={buildDealSeoDescription(deal)}
+          url={`${siteConfig.url}/deals/${slug}`}
+          imageUrl={deal.imageUrl}
+          price={deal.salePrice}
+          platform={deal.platform}
+        />
+      )}
 
       {/* Mobile sticky CTA: keeps the partner-store action above the fold on
           phones, where the product image otherwise pushes it 2+ screens down. */}

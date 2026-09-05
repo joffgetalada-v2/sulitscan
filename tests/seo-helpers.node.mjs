@@ -362,3 +362,13 @@ test("expired deal metadata stays crawlable to links but is excluded from indexi
     "noindex must force-exclude even described deals"
   )
 })
+
+test("deal Product schema excludes expired offers while retaining current and reference offers", () => {
+  const shouldIncludeDealProductSchema = requireFunction(seoModule, "shouldIncludeDealProductSchema")
+  const detailSource = readFileSync(resolve("src/app/deals/[slug]/page.tsx"), "utf8")
+
+  assert.equal(shouldIncludeDealProductSchema({ status: "current" }), true)
+  assert.equal(shouldIncludeDealProductSchema({ status: "reference" }), true)
+  assert.equal(shouldIncludeDealProductSchema({ status: "expired" }), false)
+  assert.match(detailSource, /shouldIncludeDealProductSchema\(freshness\)\s*&&\s*\(\s*<ProductJsonLd/)
+})

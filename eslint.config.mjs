@@ -12,6 +12,7 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    ".worktrees/**",
     // Legacy scripts folder (not part of Next.js app)
     "scripts/**",
   ]),
