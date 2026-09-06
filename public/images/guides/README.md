@@ -140,3 +140,29 @@ previously fell back to the default gradient/blog cover.
 The Sephora banner was regenerated after first review because the lipstick silhouette read as a
 signboard against the checklist card and the perfume cap geometry was malformed; the accepted
 version separates the objects and simplifies the cap. All eight were inspected at original detail.
+
+## September buyer-guide banners generated 2026-09-05
+
+| Filename | Dimensions / format | Alt text | Final JPEG SHA-256 |
+|---|---|---|---|
+| `shopee-mall-vs-preferred-seller-philippines.jpg` | 1600×900 progressive JPEG | Marketplace seller comparison with two abstract profile cards, storefront and trust badges, magnifying glass, parcel, and checklist | `d1dad09c2aa71b9760860c83e624d87c555b8d6259bd2f74e79a07d028600c83` |
+| `portable-fan-buying-guide-philippines.jpg` | 1600×900 progressive JPEG | Portable fan buying guide with handheld, desktop, and clip-on fans beside a charging cable, ruler, and battery gauge | `c225b99923aaff9df9d581944414d9951dc3f815c05fa1336b22caa972f9bb78` |
+| `insulated-tumbler-buying-guide-philippines.jpg` | 1600×900 progressive JPEG | Insulated tumbler buying guide with three lid styles, cup-holder ring, measuring tape, removable parts, cleaning brush, and leak-check droplet | `8b7d172713bb612769be67156c13aa18d8eb1e213c345e66b93615d00bd4f573` |
+| `wireless-earbuds-buying-guide-philippines.jpg` | 1600×900 progressive JPEG | Wireless earbuds buying guide comparing unbranded earbud shapes, charging cases, fit, microphone, compatibility, battery, and warranty symbols | `e43a6cd8700fd240bc28836ee095e1661824b0e48eff103b3b84d837f826dc88` |
+| `online-foundation-shade-match-philippines.jpg` | 1600×900 progressive JPEG | Online foundation shade matching guide with inclusive swatches, unbranded bottle, abstract virtual try-on screen, daylight symbol, and mirror | `ecfbe43821896ada3755aa5a76c26d09a57c6e5647aaac4ee61f4b56313601db` |
+
+Each banner was generated in a separate fresh call with OpenAI's built-in image generator, then
+accepted only after full-resolution visual review and verification as a distinct 1600×900 sRGB
+progressive JPEG. The shared prompt requested a wide, crop-safe flat editorial illustration on a
+warm neutral background, balanced forest-green, navy, coral, and amber accents, clean object
+geometry, soft paper-like shading, and generous clear space. Every prompt prohibited readable or
+pseudo-readable text, letters, numbers, currency, prices, logos, trademarks, marketplace UI,
+watermarks, QR or barcodes, and official certification marks.
+
+The concise per-guide prompt set added: (1) neutral seller cards, storefront, trust symbols,
+magnifier, parcel, and checklist; (2) handheld, desktop, and clip-on fans with charging cable,
+ruler, and battery gauge; (3) varied tumblers and lids with cup-holder ring, measuring tape,
+removable parts, brush, and droplet; (4) two unbranded earbud shapes and cases with fit,
+microphone, compatibility, battery, water-resistance, and warranty symbols; and (5) an inclusive
+shade fan, unbranded foundation bottle, abstract virtual try-on screen, daylight symbol, and mirror.
+All five final hashes are pinned in the September release contract.

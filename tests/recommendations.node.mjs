@@ -619,8 +619,10 @@ const saleSafetyGuideCases = [
 ]
 
 test("sale-season safety guides use the exact ordered registry and substantive structure", () => {
+  const firstGuideIndex = postsModule.posts.findIndex((post) => post.slug === saleSafetyGuideCases[0].slug)
+  assert.notEqual(firstGuideIndex, -1, "sale-season safety registry block must exist")
   assert.deepEqual(
-    postsModule.posts.slice(-saleSafetyGuideCases.length).map((post) => post.slug),
+    postsModule.posts.slice(firstGuideIndex, firstGuideIndex + saleSafetyGuideCases.length).map((post) => post.slug),
     saleSafetyGuideCases.map((guideCase) => guideCase.slug)
   )
 
@@ -839,10 +841,10 @@ test("August buyer guides declare the exact cover registry contract", () => {
 })
 
 test("August buyer guides use the exact ordered registry contract and substantive structure", () => {
+  const firstGuideIndex = postsModule.posts.findIndex((post) => post.slug === augustBuyerGuideCases[0].slug)
+  assert.notEqual(firstGuideIndex, -1, "August buyer-guide registry block must exist")
   assert.deepEqual(
-    postsModule.posts
-      .slice(-(augustBuyerGuideCases.length + saleSafetyGuideCases.length), -saleSafetyGuideCases.length)
-      .map((post) => post.slug),
+    postsModule.posts.slice(firstGuideIndex, firstGuideIndex + augustBuyerGuideCases.length).map((post) => post.slug),
     augustBuyerGuideCases.map((guideCase) => guideCase.slug)
   )
 
@@ -1096,6 +1098,30 @@ function readJpegDimensions(buffer) {
   }
 
   assert.fail("asset must contain readable JPEG dimensions")
+}
+
+function isProgressiveJpeg(buffer) {
+  if (buffer[0] !== 0xff || buffer[1] !== 0xd8) return false
+
+  let offset = 2
+  while (offset + 3 < buffer.length) {
+    if (buffer[offset] !== 0xff) {
+      offset += 1
+      continue
+    }
+
+    const marker = buffer[offset + 1]
+    offset += 2
+    if (marker === 0xc2) return true
+    if (marker === 0xc0 || marker === 0xda || marker === 0xd9) return false
+    if (marker === 0xd8) continue
+
+    const segmentLength = buffer.readUInt16BE(offset)
+    if (segmentLength < 2) return false
+    offset += segmentLength
+  }
+
+  return false
 }
 
 test("AdSense-readiness buyer guides are substantial, sourced, distinct, and correctly cross-linked", () => {
@@ -1452,4 +1478,264 @@ test("canonical Shopee seller guide keeps Shopee-specific guides and deals", () 
   assert.equal(relatedDeals.length, 3)
   assert.ok(relatedDeals.every((deal) => deal.platform === "Shopee PH"))
   assert.ok(relatedDeals.every((deal) => deal.tags.includes("shopee")))
+})
+
+const septemberGrowthGuideCases = [
+  {
+    id: "post-055",
+    slug: "shopee-mall-vs-preferred-seller-philippines",
+    title: "Shopee Mall vs Preferred Seller Philippines: Badge Guide",
+    category: "Platform Guides",
+    readTime: 11,
+    tags: ["shopee", "shopee-mall", "preferred-seller", "seller-checking", "authenticity", "philippines"],
+    coverImage: "/images/guides/shopee-mall-vs-preferred-seller-philippines.jpg",
+    coverImageAlt:
+      "Marketplace seller comparison with two abstract profile cards, storefront and trust badges, magnifying glass, parcel, and checklist",
+    coverImageSha256: "d1dad09c2aa71b9760860c83e624d87c555b8d6259bd2f74e79a07d028600c83",
+    topics: ["seller-checking", "shopee-shopping", "marketplace-badges"],
+    platforms: ["Shopee PH"],
+    deals: { tags: ["shopee"] },
+    directAnswerPattern: /Preferred.*performance|Mall.*authenticity/i,
+    requiredSources: [
+      "https://help.shopee.ph/portal/4/article/130672",
+      "https://help.shopee.ph/portal/4/article/77281-Shopee-Mall-Terms-of-Service",
+      "https://help.shopee.ph/portal/4/article/148331-What-is-Shopee-Mall-3x-Money-Back-Guarantee",
+      "https://help.shopee.ph/portal/4/article/77279-Refunds-and-Return-Policy",
+    ],
+    requiredLinks: [
+      "/stores/shopee-ph",
+      "/blog/how-to-check-shopee-seller-legit-philippines",
+      "/blog/online-product-review-checklist-philippines",
+      "/blog/shopee-return-refund-guide-philippines",
+      "/deals",
+    ],
+  },
+  {
+    id: "post-056",
+    slug: "portable-fan-buying-guide-philippines",
+    title: "Portable Fan Buying Guide Philippines: USB, Battery, Safety",
+    category: "Tech Guides",
+    readTime: 12,
+    tags: ["portable-fan", "usb-fan", "fan-buying", "electrical-safety", "under-500", "philippines"],
+    coverImage: "/images/guides/portable-fan-buying-guide-philippines.jpg",
+    coverImageAlt:
+      "Portable fan buying guide with handheld, desktop, and clip-on fans beside a charging cable, ruler, and battery gauge",
+    coverImageSha256: "c225b99923aaff9df9d581944414d9951dc3f815c05fa1336b22caa972f9bb78",
+    topics: ["tech-accessories", "electrical-safety", "fan-buying"],
+    platforms: ["Temu"],
+    deals: { categories: ["Electronics"], tags: ["fan", "portable", "usb"] },
+    directAnswerPattern: /choose.*format|best portable fan.*depends/i,
+    requiredSources: [
+      "https://bps.dti.gov.ph/component/content/article?Itemid=111&id=11",
+      "https://bps.dti.gov.ph/product-certification/ps-and-icc-marks",
+      "https://legacy.doe.gov.ph/pelp/related-laws-issuances-and-implementing-guidelines-06192024?q=pelp%2Fpelp-faqs",
+    ],
+    requiredLinks: [
+      "/categories/tech-deals",
+      "/categories/under-500",
+      "/stores/temu",
+      "/blog/online-electrical-appliance-safety-ps-icc-philippines",
+      "/blog/online-product-review-checklist-philippines",
+      "/deals/usb-desktop-fan-air-cooler-temu",
+      "/deals/mini-bladeless-waist-fan-temu",
+    ],
+  },
+  {
+    id: "post-057",
+    slug: "insulated-tumbler-buying-guide-philippines",
+    title: "Insulated Tumbler Buying Guide Philippines: Size, Lid, Care",
+    category: "Home Guides",
+    readTime: 11,
+    tags: ["insulated-tumbler", "drinkware", "kitchen", "product-checklist", "under-500", "philippines"],
+    coverImage: "/images/guides/insulated-tumbler-buying-guide-philippines.jpg",
+    coverImageAlt:
+      "Insulated tumbler buying guide with three lid styles, cup-holder ring, measuring tape, removable parts, cleaning brush, and leak-check droplet",
+    coverImageSha256: "8b7d172713bb612769be67156c13aa18d8eb1e213c345e66b93615d00bd4f573",
+    topics: ["home-buying", "product-review", "tumbler-buying"],
+    platforms: ["Temu", "Shopee PH"],
+    deals: { categories: ["Home"], tags: ["tumbler", "drinkware"] },
+    directAnswerPattern: /choose.*capacity|best insulated tumbler.*fits/i,
+    requiredSources: [
+      "https://www.fda.gov.ph/wp-content/uploads/2022/04/FDA-Citizens-Charter-CSL-31-March-2022-1.pdf",
+      "https://www.stanley1913.com/products/quencher-protour-flipstraw-tumbler?bvstate=pg%3A167%2Fct%3Ar",
+      "https://www.hydroflask.com/eu/hydroflask-12-oz-insulated-food-jar?colour=Surf",
+    ],
+    requiredLinks: [
+      "/categories/home-finds",
+      "/categories/under-500",
+      "/stores/shopee-ph",
+      "/stores/temu",
+      "/blog/online-product-review-checklist-philippines",
+      "/blog/how-to-spot-fake-discounts",
+      "/deals/40oz-vacuum-insulated-tumbler-temu",
+      "/deals/tumbler-hot-and-cold-thermos-double-wall-vacuum-insu-634012",
+    ],
+  },
+  {
+    id: "post-058",
+    slug: "wireless-earbuds-buying-guide-philippines",
+    title: "Wireless Earbuds Buying Guide Philippines: Fit, Calls, Battery",
+    category: "Tech Guides",
+    readTime: 12,
+    tags: ["wireless-earbuds", "bluetooth", "audio", "safe-listening", "under-500", "philippines"],
+    coverImage: "/images/guides/wireless-earbuds-buying-guide-philippines.jpg",
+    coverImageAlt:
+      "Wireless earbuds buying guide comparing unbranded earbud shapes, charging cases, fit, microphone, compatibility, battery, and warranty symbols",
+    coverImageSha256: "e43a6cd8700fd240bc28836ee095e1661824b0e48eff103b3b84d837f826dc88",
+    topics: ["tech-accessories", "product-review", "earbuds-buying"],
+    platforms: ["Temu"],
+    deals: { categories: ["Electronics"], tags: ["earbuds", "wireless"] },
+    directAnswerPattern: /choose.*fit|best wireless earbuds.*fit/i,
+    requiredSources: [
+      "https://region7.ntc.gov.ph/faqs/",
+      "https://ntc.gov.ph/wp-content/uploads/2025/TYPE_APPROVED/RCE_1986_SEP_2025.pdf",
+      "https://www.who.int/news-room/questions-and-answers/item/deafness-and-hearing-loss-safe-listening",
+      "https://www.who.int/publications/i/item/9789241515276",
+    ],
+    requiredLinks: [
+      "/categories/tech-deals",
+      "/categories/under-500",
+      "/stores/temu",
+      "/blog/best-phone-accessories-under-500-philippines",
+      "/blog/online-product-review-checklist-philippines",
+      "/blog/online-electrical-appliance-safety-ps-icc-philippines",
+      "/deals/acer-wireless-earbuds-temu",
+    ],
+  },
+  {
+    id: "post-059",
+    slug: "online-foundation-shade-match-philippines",
+    title: "Foundation Shade Match Online Philippines: A Practical Guide",
+    category: "Beauty Guides",
+    readTime: 12,
+    tags: ["foundation", "shade-match", "makeup", "undertone", "sephora", "philippines"],
+    coverImage: "/images/guides/online-foundation-shade-match-philippines.jpg",
+    coverImageAlt:
+      "Online foundation shade matching guide with inclusive swatches, unbranded bottle, abstract virtual try-on screen, daylight symbol, and mirror",
+    coverImageSha256: "ecfbe43821896ada3755aa5a76c26d09a57c6e5647aaac4ee61f4b56313601db",
+    topics: ["cosmetic-authenticity", "sephora-shopping", "makeup-buying"],
+    platforms: ["Sephora PH"],
+    deals: { categories: ["Beauty", "Skincare"], tags: ["makeup", "face", "concealer", "powder"] },
+    directAnswerPattern: /shortlist.*depth.*undertone|match.*depth.*undertone/i,
+    requiredSources: [
+      "https://www.sephora.ph/pages/perfect-shade-for-you",
+      "https://www.sephora.ph/pages/virtual-artist",
+      "https://www.fda.gov.ph/wp-content/uploads/2021/03/Cosmetic-e-Notification-v.2.0-User-Manual-for-Applicants.pdf",
+      "https://verification.fda.gov.ph",
+      "https://www.fda.gov.ph/fda-advisory-no-2026-0321-the-food-and-drug-administration-fda-warns-all-healthcare-professionals-and-the-general-public-not-to-purchase-and-use-the-unauthorized-cosmetic-product/",
+    ],
+    requiredLinks: [
+      "/categories/beauty",
+      "/stores/sephora-ph",
+      "/blog/sephora-ph-beauty-guide",
+      "/blog/how-to-check-skincare-makeup-legit-philippines",
+      "/blog/online-product-review-checklist-philippines",
+      "/deals?q=makeup",
+    ],
+  },
+]
+
+test("September growth guides use the exact ordered registry and editorial contract", () => {
+  assert.deepEqual(
+    postsModule.posts.slice(-septemberGrowthGuideCases.length).map((post) => post.slug),
+    septemberGrowthGuideCases.map((guideCase) => guideCase.slug)
+  )
+
+  const bodies = []
+  const excerpts = []
+  const gradients = []
+
+  for (const guideCase of septemberGrowthGuideCases) {
+    const post = postsModule.getPostBySlug(guideCase.slug)
+    assert.ok(post, `${guideCase.slug} fixture must exist`)
+    assert.equal(post.id, guideCase.id)
+    assert.equal(post.title, guideCase.title)
+    assert.equal(post.category, guideCase.category)
+    assert.equal(post.publishedAt, "2026-09-05")
+    assert.equal(post.lastReviewed, "2026-09-05")
+    assert.equal(post.readTime, guideCase.readTime)
+    assert.deepEqual(post.tags, guideCase.tags)
+    assert.equal(new Set(post.tags).size, 6, `${guideCase.slug} must use six unique tags`)
+    assert.equal(post.coverImage, guideCase.coverImage)
+    assert.equal(post.coverImageAlt, guideCase.coverImageAlt)
+    assert.deepEqual(post.recommendationIntent?.topics, guideCase.topics)
+    assert.deepEqual(post.recommendationIntent?.platforms, guideCase.platforms)
+    assert.deepEqual(post.recommendationIntent?.deals, guideCase.deals)
+    assert.equal(post.importTaxContext, undefined)
+    assert.equal(post.faqs?.length, 3, `${guideCase.slug} must provide exactly three FAQs`)
+    assert.equal(new Set(post.faqs.map((faq) => faq.question.trim().toLowerCase())).size, 3)
+    assert.ok(post.faqs.every((faq) => faq.question.trim() && faq.answer.trim()))
+    assert.ok(post.excerpt.length > 80 && post.excerpt.length <= 160)
+    assert.ok(post.content.split(/\s+/).length >= 1000, `${guideCase.slug} must contain at least 1,000 words`)
+    assert.ok((post.content.match(/^## /gm) ?? []).length >= 8, `${guideCase.slug} needs eight H2 sections`)
+
+    const firstParagraph = post.content.split(/^## /m)[0].trim().split(/\n\s*\n/)[0]
+    assert.ok(firstParagraph.length >= 80, `${guideCase.slug} must open with a substantive direct answer`)
+    assert.match(firstParagraph, guideCase.directAnswerPattern)
+    assert.match(post.content, /^## How we assessed this guide$/im)
+    assert.match(post.content, /^## Limitations and live-policy check$/im)
+    assert.match(post.content, /^## Affiliate disclosure$/im)
+    assert.match(post.content, /^## .*(?:worked|decision|pre-check).*$/im)
+    assert.match(post.content, /^## .*checklist$/im)
+    assert.doesNotMatch(`${post.content} ${post.excerpt}`, /https?:\/\/(?:www\.)?(?:importtaxph|applyreadycv)\.com/i)
+
+    for (const source of guideCase.requiredSources) {
+      assert.ok(post.content.includes(`](${source})`), `${guideCase.slug} must cite ${source}`)
+    }
+    for (const link of guideCase.requiredLinks) {
+      assert.ok(post.content.includes(link), `${guideCase.slug} must link to ${link}`)
+    }
+
+    bodies.push(post.content)
+    excerpts.push(post.excerpt)
+    gradients.push(post.coverGradient)
+  }
+
+  assert.equal(new Set(bodies).size, septemberGrowthGuideCases.length, "September guide bodies must be distinct")
+  assert.equal(new Set(excerpts).size, septemberGrowthGuideCases.length, "September guide excerpts must be distinct")
+  assert.equal(new Set(gradients).size, septemberGrowthGuideCases.length, "September guide gradients must be distinct")
+})
+
+test("September growth guides use the five accepted distinct progressive JPEG covers", () => {
+  const coverPaths = []
+  const hashes = []
+
+  for (const guideCase of septemberGrowthGuideCases) {
+    const assetPath = resolve("public", guideCase.coverImage.replace(/^\/+/, ""))
+    assert.ok(existsSync(assetPath), `${guideCase.coverImage} must exist under public/`)
+    const asset = readFileSync(assetPath)
+    assert.deepEqual(readJpegDimensions(asset), { width: 1600, height: 900 })
+    assert.ok(isProgressiveJpeg(asset), `${guideCase.coverImage} must be progressive JPEG`)
+    const hash = createHash("sha256").update(asset).digest("hex")
+    assert.equal(hash, guideCase.coverImageSha256, `${guideCase.coverImage} must match its accepted SHA-256`)
+    coverPaths.push(guideCase.coverImage)
+    hashes.push(hash)
+  }
+
+  assert.equal(new Set(coverPaths).size, septemberGrowthGuideCases.length)
+  assert.equal(new Set(hashes).size, septemberGrowthGuideCases.length)
+})
+
+test("September guide deal recommendations stay truthful and catalog-eligible", () => {
+  const activeIds = new Set(dealsModule.getActiveDeals().map((deal) => deal.id))
+
+  for (const guideCase of septemberGrowthGuideCases) {
+    const post = postsModule.getPostBySlug(guideCase.slug)
+    assert.ok(post, `${guideCase.slug} fixture must exist`)
+    const relatedDeals = recommendationsModule.getRelatedDealsForPost(post, 3)
+
+    assert.ok(relatedDeals.length > 0 && relatedDeals.length <= 3)
+    assert.equal(new Set(relatedDeals.map((deal) => deal.id)).size, relatedDeals.length)
+    assert.ok(relatedDeals.every((deal) => activeIds.has(deal.id)))
+    assert.ok(relatedDeals.every((deal) => !dealsModule.isSuspiciousDiscount(deal)))
+    assert.ok(relatedDeals.every((deal) => guideCase.platforms.includes(deal.platform)))
+    if (guideCase.deals.categories) {
+      assert.ok(relatedDeals.every((deal) => guideCase.deals.categories.includes(deal.category)))
+    }
+    assert.ok(relatedDeals.every((deal) => deal.tags.some((tag) => guideCase.deals.tags.includes(tag.toLowerCase()))))
+
+    if (guideCase.slug === "online-foundation-shade-match-philippines") {
+      assert.ok(relatedDeals.every((deal) => !/foundation/i.test(`${deal.title} ${deal.slug}`)))
+    }
+  }
 })

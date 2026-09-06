@@ -17,6 +17,20 @@ Twelve article ideas mapped to Philippine sale events, each with a primary keywo
 | 11 | Jan 5 | New year | New Year Declutter: Storage & Organization Finds That Earn Their Space | home organization philippines | /categories/home-finds, organizer deals |
 | 12 | Jan 25 | 2.2 + Chinese New Year | 2.2 Sale and CNY Deals Philippines: What Resets in February | 2.2 sale philippines | /sales-calendar, /deals |
 
+## September 5 evergreen buyer-guide cluster
+
+These five source-backed articles were published together on September 5, 2026. They cover
+high-intent product and marketplace decisions without inventing price, availability, or hands-on
+testing claims.
+
+| Published | Article | Primary search intent | Core internal destinations |
+|---|---|---|---|
+| Sep 5, 2026 | `shopee-mall-vs-preferred-seller-philippines` | Shopee Mall vs Preferred Seller Philippines | /stores/shopee-ph, seller-checking guide, return/refund guide |
+| Sep 5, 2026 | `portable-fan-buying-guide-philippines` | portable fan buying guide Philippines | /categories/tech-deals, /stores/temu, electrical-safety guide |
+| Sep 5, 2026 | `insulated-tumbler-buying-guide-philippines` | insulated tumbler buying guide Philippines | /categories/home-finds, product-review guide, relevant tumbler pages |
+| Sep 5, 2026 | `wireless-earbuds-buying-guide-philippines` | wireless earbuds buying guide Philippines | /categories/tech-deals, phone-accessories guide, relevant earbuds page |
+| Sep 5, 2026 | `online-foundation-shade-match-philippines` | foundation shade match online Philippines | /categories/beauty, /stores/sephora-ph, cosmetic-legitimacy guide |
+
 ## Standing rules
 
 - **Lead time:** publish event guides 2–4 weeks before the event so Google indexes them in time; update the same URL each year instead of creating a new one (keep the slug year-free where possible).
