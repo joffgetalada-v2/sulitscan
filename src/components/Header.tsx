@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Menu, X, ShoppingBag, Sparkles } from "lucide-react"
 import { cn } from "@/lib/utils"
 import Logo from "@/components/Logo"
+import { getSeasonalPromotion } from "@/lib/seasonal-promotion"
 
 const navLinks = [
   { label: "Deals",      href: "/deals" },
@@ -17,14 +18,37 @@ const navLinks = [
   { label: "Contact",    href: "/contact" },
 ]
 
+type Announcement = {
+  href: string
+  copy: string
+  prefix?: string
+}
+
+const genericAnnouncement: Announcement = {
+  href: "/blog",
+  copy: "Browse what's fresh →",
+  prefix: "New shopping guides added weekly,",
+}
+
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled]   = useState(false)
+  const [announcement, setAnnouncement] = useState<Announcement>(genericAnnouncement)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
+    const promotion = getSeasonalPromotion()
+    const announcementFrame = promotion
+      ? window.requestAnimationFrame(() => setAnnouncement({
+          href: promotion.href,
+          copy: promotion.announcement,
+        }))
+      : undefined
     window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
+    return () => {
+      if (announcementFrame !== undefined) window.cancelAnimationFrame(announcementFrame)
+      window.removeEventListener("scroll", onScroll)
+    }
   }, [])
 
   return (
@@ -32,12 +56,12 @@ export default function Header() {
       {/* ── Announcement bar ── */}
       <div className="announcement-gradient py-2 px-4 text-center text-xs text-white font-medium">
         <Sparkles className="inline w-3 h-3 mr-1 opacity-80" aria-hidden="true" />
-        New shopping guides added weekly,{" "}
+        {announcement.prefix && <>{announcement.prefix}{" "}</>}
         <Link
-          href="/blog"
+          href={announcement.href}
           className="font-bold underline underline-offset-2 hover:opacity-80 transition-opacity"
         >
-          Browse what&apos;s fresh →
+          {announcement.copy}
         </Link>
       </div>
 

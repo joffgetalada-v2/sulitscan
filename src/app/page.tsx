@@ -11,9 +11,10 @@ import { ItemListJsonLd, FAQJsonLd } from "@/components/SeoJsonLd"
 import { homePartnerBanners } from "@/data/partner-banners"
 import { getFeaturedDeals, getActiveDeals, getDealsByCategory } from "@/data/deals"
 import { categories } from "@/data/categories"
-import { getRecentPosts } from "@/data/posts"
+import { getPostsNewestFirst } from "@/data/posts"
 import { siteConfig } from "@/lib/seo"
 import { getFreshnessSafeReason } from "@/lib/deal-freshness"
+import { getPromotedPosts } from "@/lib/seasonal-promotion"
 import {
   TrendingDown,
   Shield,
@@ -152,7 +153,7 @@ const faqItems = [
 export default function HomePage() {
   const featuredDeals  = getFeaturedDeals(6)
   const activeDeals    = getActiveDeals()
-  const recentPosts    = getRecentPosts(3)
+  const recentPosts    = getPromotedPosts(getPostsNewestFirst(), new Date(), 3)
   const liveCounts     = Object.fromEntries(
     categories.map((c) => [c.slug, getDealsByCategory(c.slug).length])
   )
