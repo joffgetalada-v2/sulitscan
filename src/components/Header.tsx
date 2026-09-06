@@ -37,13 +37,15 @@ export default function Header() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
-    const promotion = getSeasonalPromotion()
-    const announcementFrame = promotion
-      ? window.requestAnimationFrame(() => setAnnouncement({
+    const announcementFrame = window.requestAnimationFrame(() => {
+      const promotion = getSeasonalPromotion()
+      if (promotion) {
+        setAnnouncement({
           href: promotion.href,
           copy: promotion.announcement,
-        }))
-      : undefined
+        })
+      }
+    })
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => {
       if (announcementFrame !== undefined) window.cancelAnimationFrame(announcementFrame)

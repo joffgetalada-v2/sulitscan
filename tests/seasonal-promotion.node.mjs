@@ -294,3 +294,79 @@ test("the header starts generic, then shows the 9.9 announcement after mount", (
     globalThis.window = previousWindow
   }
 })
+
+test("the header evaluates the promotion when a held animation frame reaches the inclusive start", () => {
+  const previousWindow = globalThis.window
+  const RealDate = Date
+  const queuedFrames = []
+  let now = "2026-08-31T15:59:59.999Z"
+  globalThis.window = {
+    addEventListener() {},
+    cancelAnimationFrame() {},
+    removeEventListener() {},
+    requestAnimationFrame(callback) {
+      queuedFrames.push(callback)
+      return queuedFrames.length
+    },
+    scrollY: 0,
+  }
+  globalThis.Date = class extends RealDate {
+    constructor(...args) {
+      super(...(args.length ? args : [now]))
+    }
+  }
+  const header = createHeaderModule()
+
+  try {
+    header.render()
+    for (const effect of header.effects) effect()
+    assert.equal(queuedFrames.length, 1)
+
+    now = "2026-08-31T16:00:00.000Z"
+    queuedFrames[0]()
+    const mountedLink = getAnnouncementLink(header.render())
+    assert.equal(mountedLink.props.href, "/blog/shopee-9-9-sale-philippines-2026-checklist")
+    assert.equal(mountedLink.props.children, "9.9 checkout checklist: compare the final total →")
+  } finally {
+    globalThis.Date = RealDate
+    globalThis.window = previousWindow
+  }
+})
+
+test("the header evaluates the promotion when a held animation frame passes the inclusive end", () => {
+  const previousWindow = globalThis.window
+  const RealDate = Date
+  const queuedFrames = []
+  let now = "2026-09-10T15:59:59.999Z"
+  globalThis.window = {
+    addEventListener() {},
+    cancelAnimationFrame() {},
+    removeEventListener() {},
+    requestAnimationFrame(callback) {
+      queuedFrames.push(callback)
+      return queuedFrames.length
+    },
+    scrollY: 0,
+  }
+  globalThis.Date = class extends RealDate {
+    constructor(...args) {
+      super(...(args.length ? args : [now]))
+    }
+  }
+  const header = createHeaderModule()
+
+  try {
+    header.render()
+    for (const effect of header.effects) effect()
+    assert.equal(queuedFrames.length, 1)
+
+    now = "2026-09-10T16:00:00.000Z"
+    queuedFrames[0]()
+    const mountedLink = getAnnouncementLink(header.render())
+    assert.equal(mountedLink.props.href, "/blog")
+    assert.equal(mountedLink.props.children, "Browse what's fresh →")
+  } finally {
+    globalThis.Date = RealDate
+    globalThis.window = previousWindow
+  }
+})
