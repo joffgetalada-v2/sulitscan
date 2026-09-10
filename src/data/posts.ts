@@ -6875,7 +6875,7 @@ Suppose a buyer wants a fan for a small study desk and is comparing a clip-on mo
 4. Identify the fan type before applying DTI-BPS scope. Do not demand or dismiss PS/ICC evidence based only on the word portable.
 5. Prefer the model that fits securely and has clearer exact-model evidence. If both leave charging or mounting uncertain, do not order yet.
 
-For examples of the two formats, examine the listing evidence on SulitScan's [USB desktop fan page](/deals/usb-desktop-fan-air-cooler-temu) and [mini waist fan page](/deals/mini-bladeless-waist-fan-temu), then verify the current product page, seller information, and checkout before acting. Those pages are comparison starting points, not performance endorsements.
+As additional desktop and wearable format examples, examine the listing evidence on SulitScan's [USB desktop fan page](/deals/usb-desktop-fan-air-cooler-temu) and [mini waist fan page](/deals/mini-bladeless-waist-fan-temu), then verify the current product page, seller information, and checkout before acting. Neither page supplies clamp evidence for the clip-on scenario, and both are comparison starting points rather than performance endorsements.
 
 ## Portable fan checkout checklist
 
@@ -7188,11 +7188,11 @@ SulitScan may earn a commission when a reader follows an eligible partner link a
     excerpt:
       "Shortlist foundation by depth, undertone, finish, coverage, daylight references, exact shade variant, FDA notification record, and mismatch risk.",
     content: `
-Shortlist an online foundation by matching depth and undertone first, then finish, coverage, formula, and exact shade variant. Use daylight references and virtual tools to narrow choices, never to guarantee a match. Before ordering in the Philippines, verify the exact product and shade or variant, responsible company, current FDA notification record, seller, ingredients, and live hygiene-sensitive return terms.
+Shortlist an online foundation by matching depth and undertone first, then finish, coverage, formula, and exact shade variant. Use daylight references to narrow choices. Only use a virtual tool when the current tool explicitly supports the exact foundation product range and shade, and never treat its result as a guaranteed match. Before ordering in the Philippines, verify the exact product and shade or variant, responsible company, current FDA notification record, seller, ingredients, and live hygiene-sensitive return terms.
 
 ## How we assessed this guide
 
-On 2026-09-05, we reviewed Sephora Philippines' [foundation shade finder](https://www.sephora.ph/pages/perfect-shade-for-you), which organizes browsing around coverage and finish, and its [Virtual Artist](https://www.sephora.ph/pages/virtual-artist), which can help with try-on and comparison. We use these as shortlist tools. Camera processing, lighting, display calibration, application, and skin changes prevent a virtual image from proving a match.
+On 2026-09-05, we reviewed Sephora Philippines' [foundation shade finder](https://www.sephora.ph/pages/perfect-shade-for-you), which organizes browsing around coverage and finish, and its [Virtual Artist](https://www.sephora.ph/pages/virtual-artist), a general makeup try-on and comparison page. The cited Virtual Artist page does not establish foundation support. Treat it as a foundation shortlist tool only if its current interface explicitly lists the exact foundation product range and shade as supported. Camera processing, lighting, display calibration, application, and skin changes would still prevent a virtual image from proving a match.
 
 We also reviewed the Philippine FDA [Cosmetic e-Notification applicant manual](https://www.fda.gov.ph/wp-content/uploads/2021/03/Cosmetic-e-Notification-v.2.0-User-Manual-for-Applicants.pdf). Notification data can include product variants or shade names or numbers and responsible-company details. That makes exact variant matching important; “the brand has a record” is not enough.
 
@@ -7212,15 +7212,17 @@ Write a brief: current best-matching product and exact shade, where it matches o
 
 Start with the exact shade of a foundation or concealer that currently matches reasonably well. Use official cross-brand matching tools only as leads, then compare swatches from several reliable sources. Prefer images that show multiple adjacent shades, consistent application, and stated lighting or skin context.
 
-Daylight can reveal a mismatch that indoor lighting hides, but a daylight photo is still processed by a camera and screen. Compare official shade descriptions, swatches, and virtual outputs without assuming one is perfectly color-accurate. If sources disagree, keep two candidates rather than forcing certainty.
+Daylight can reveal a mismatch that indoor lighting hides, but a daylight photo is still processed by a camera and screen. Compare official shade descriptions and comparative swatches without assuming either is perfectly color-accurate. Add a virtual output only when the current tool explicitly supports the exact foundation range and shade. If sources disagree, keep two candidates rather than forcing certainty.
 
-The [Sephora PH beauty guide](/blog/sephora-ph-beauty-guide) explains store and checkout considerations. Browse Sephora's live [Philippines storefront](/stores/sephora-ph) for the current product page, shade selector, ingredients, and services; SulitScan does not claim that any particular foundation is currently available there.
+The [Sephora PH beauty guide](/blog/sephora-ph-beauty-guide) explains store and checkout considerations. [SulitScan's Sephora PH store guide](/stores/sephora-ph) adds platform-specific checks; continue to Sephora's current product page to review the live shade selection, ingredients, and services. SulitScan does not claim that any particular foundation is currently available there.
 
-## Use virtual try-on as a filter, not a promise
+## Use virtual try-on only when the exact range is supported
 
-Set up the tool with even light, a clean camera lens, minimal color cast, and any permissions you are comfortable granting. Compare neighboring shades rather than accepting the first automated result. Repeat under another ordinary lighting condition and note whether the recommendation changes.
+Only use virtual try-on for a foundation candidate when the current tool explicitly lists the exact foundation product range and shade as supported. If the exact range or shade is not supported, skip the camera tool and use official shade descriptions, comparative swatches, or an in-person or sample route instead.
 
-Virtual try-on can help visualize relative depth or undertone and reduce a large catalog to a shortlist. It cannot reproduce oxidation, texture, coverage build, interaction with skincare, wear, or the exact color rendered on your skin. Display warmth, exposure, white balance, filters, and camera tone mapping can all shift the result.
+When that support condition is met, set up the tool with even light, a clean camera lens, minimal color cast, and only permissions you are comfortable granting. Compare neighboring supported shades rather than accepting the first automated result. Repeat under another ordinary lighting condition and note whether the recommendation changes.
+
+Even for a supported foundation, virtual try-on can only help visualize relative depth or undertone and reduce a large catalog to a shortlist. It cannot reproduce oxidation, texture, coverage build, interaction with skincare, wear, or the exact color rendered on your skin. Display warmth, exposure, white balance, filters, and camera tone mapping can all shift the result.
 
 Do not upload more personal information than the tool requires. Review the current privacy and permission notice. A virtual match is a decision aid, not authentication, skin diagnosis, or a refund guarantee.
 
@@ -7246,7 +7248,7 @@ Suppose a buyer knows one close current shade but wants a different finish from 
 
 1. Record the known product, exact shade, depth, undertone, and where it matches best in ordinary daylight.
 2. Filter the new range by desired finish and coverage, then shortlist adjacent depth-and-undertone candidates using official descriptions and comparative swatches.
-3. Use virtual try-on to compare those candidates under controlled lighting, noting that the output cannot show oxidation, texture, or exact color.
+3. Only use virtual try-on when the current tool explicitly supports the exact foundation product range and shade. Otherwise, compare official shade descriptions and comparative swatches, or use an in-person or sample route. Even a supported output cannot show oxidation, texture, or exact color.
 4. Match the full product, responsible company, and shade or variant against the current FDA notification record and verify the seller and ingredients separately.
 5. Read live return restrictions and choose one candidate only when the remaining mismatch cost is acceptable; otherwise use an in-person or sample route.
 

@@ -1739,3 +1739,60 @@ test("September guide deal recommendations stay truthful and catalog-eligible", 
     }
   }
 })
+
+test("foundation guidance requires exact-range support before prescribing virtual try-on", () => {
+  const post = postsModule.getPostBySlug("online-foundation-shade-match-philippines")
+  assert.ok(post, "foundation guide fixture must exist")
+
+  const sections = post.content.split(/\n\n(?=## )/)
+  const introduction = sections[0]
+  const assessment = sections.find((section) => section.startsWith("## How we assessed this guide")) ?? ""
+  const virtualWorkflow = sections.find((section) => section.startsWith("## Use virtual try-on")) ?? ""
+  const workedDecision = sections.find((section) => section.startsWith("## Worked online shade-match decision")) ?? ""
+
+  assert.match(assessment, /Virtual Artist.*general makeup try-on/is)
+  assert.match(assessment, /does not establish.*foundation support/is)
+  for (const [label, block] of [
+    ["introduction", introduction],
+    ["virtual workflow", virtualWorkflow],
+    ["worked decision", workedDecision],
+  ]) {
+    assert.match(
+      block,
+      /only (?:use|when|if).*current tool.*explicitly (?:lists|supports).*exact foundation (?:product )?range.*shade/is,
+      `${label} must condition foundation try-on on explicit exact-range and shade support`
+    )
+  }
+  assert.match(
+    virtualWorkflow,
+    /if.*(?:not supported|does not support).*official shade descriptions.*comparative swatches.*(?:in-person|sample)/is
+  )
+  assert.match(
+    workedDecision,
+    /otherwise.*official shade descriptions.*comparative swatches.*(?:in-person|sample)/is
+  )
+
+  assert.match(post.content, /\[SulitScan's Sephora PH store guide\]\(\/stores\/sephora-ph\)/)
+  assert.match(post.content, /continue to Sephora's current product page.*shade.*ingredients/i)
+  assert.match(post.content, /SulitScan does not currently list a foundation-specific deal/i)
+  assert.match(post.content, /may earn a commission.*at no extra cost/is)
+  assert.match(post.content, /does not sell, test, certify, authenticate, or guarantee the products or outcomes/i)
+})
+
+test("portable-fan worked decision labels catalog links as additional non-clamp examples", () => {
+  const post = postsModule.getPostBySlug("portable-fan-buying-guide-philippines")
+  assert.ok(post, "portable-fan guide fixture must exist")
+
+  const workedDecision = post.content.split("## Worked portable-fan pre-check")[1]?.split("\n\n## ")[0] ?? ""
+  assert.match(workedDecision, /additional desktop and wearable format examples/i)
+  assert.match(workedDecision, /(?:neither|not).*clamp.*evidence/i)
+  assert.doesNotMatch(workedDecision, /examples of the two formats/i)
+})
+
+test("September SEO audit records the executable June-datafeed expiry boundary", () => {
+  const audit = readFileSync(resolve("docs/seo-audit-2026-09-05.md"), "utf8")
+
+  assert.match(audit, /June affiliate\s+datafeed records expire on September 29 at 00:00 UTC \(08:00 PHT\)/i)
+  assert.match(audit, /recheck.*before September 29/is)
+  assert.doesNotMatch(audit, /June affiliate datafeed records.*after September 29/i)
+})
