@@ -1365,9 +1365,10 @@ const saleSafetyGuides = [
     title: "Fake QR Code Payment Scams Philippines: Checks Before You Scan",
     coverAlt: "Shopper inspecting a non-scannable abstract QR pattern on a phone beside a shield and payment checklist",
     expectedRelatedSlugs: [
+      // Payment-safety coverage ranks first by its two shared editorial topics.
+      "safest-payment-methods-online-shopping-philippines",
       "fake-cod-parcel-scam-philippines",
       "dti-trustmark-bir-registration-seal-online-sellers",
-      "shopee-return-refund-guide-philippines",
     ],
   },
   {
