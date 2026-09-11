@@ -1354,9 +1354,10 @@ const saleSafetyGuides = [
     title: "Shopee 9.9 Sale Philippines 2026: Smart Checkout Checklist",
     coverAlt: "Filipino shopper planning a sale checkout with a blank phone cart, calendar, calculator, and price checklist",
     expectedRelatedSlugs: [
-      "how-to-stack-shopee-vouchers-philippines",
-      "shopee-return-refund-guide-philippines",
-      "best-gifts-under-500-philippines",
+      // Current campaign-window guides intentionally rank first by editorial relevance and freshness.
+      "11-11-sale-philippines-cart-building-checklist",
+      "10-10-sale-philippines-guide",
+      "shopee-9-9-vs-11-11-vs-12-12-which-sale-cheapest",
     ],
   },
   {
