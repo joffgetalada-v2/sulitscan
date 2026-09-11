@@ -4817,7 +4817,7 @@ SulitScan may earn a commission when you click an eligible partner link and comp
     ],
   },
   {
-    id: "post-045",
+    id: "post-050",
     slug: "shopee-9-9-home-kitchen-worth-buying-philippines",
     title: "Shopee 9.9 Home & Kitchen: Worth Buying vs Skipping",
     excerpt:
@@ -4905,7 +4905,7 @@ SulitScan may earn a commission when you click an eligible partner link and comp
     ],
   },
   {
-    id: "post-046",
+    id: "post-051",
     slug: "temu-9-9-season-delivery-time-philippines",
     title: "Temu During 9.9 Season: Will Your Order Arrive in Time?",
     excerpt:
@@ -4992,7 +4992,7 @@ SulitScan may earn a commission when you click an eligible partner link and comp
     ],
   },
   {
-    id: "post-047",
+    id: "post-052",
     slug: "10-10-sale-philippines-guide",
     title: "10.10 Sale Philippines: The Quiet Sale Nobody Plans For",
     excerpt:
@@ -5077,7 +5077,7 @@ SulitScan may earn a commission when you click an eligible partner link and comp
     ],
   },
   {
-    id: "post-048",
+    id: "post-053",
     slug: "payday-sale-philippines-strategy",
     title: "Payday Sale Strategy PH: 15th vs 30th, What Actually Drops",
     excerpt:
@@ -5161,7 +5161,7 @@ SulitScan may earn a commission when you click an eligible partner link and comp
     ],
   },
   {
-    id: "post-049",
+    id: "post-054",
     slug: "11-11-sale-philippines-cart-building-checklist",
     title: "11.11 Sale Philippines: Cart-Building Checklist",
     excerpt:

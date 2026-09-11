@@ -38,6 +38,18 @@ const recommendationsModule = loadTypeScriptModule("src/lib/blog-recommendations
 const currentPost = postsModule.getPostBySlug("how-to-check-shopee-seller-legit-philippines")
 assert.ok(currentPost, "canonical Shopee seller post fixture must exist")
 
+test("blog post IDs are globally unique", () => {
+  const seen = new Set()
+  const duplicateIds = []
+
+  for (const post of postsModule.posts) {
+    if (seen.has(post.id) && !duplicateIds.includes(post.id)) duplicateIds.push(post.id)
+    seen.add(post.id)
+  }
+
+  assert.deepEqual(duplicateIds, [], `duplicate blog post IDs: ${duplicateIds.join(", ")}`)
+})
+
 const broadDealPost = {
   ...currentPost,
   slug: "shopee-home-gift-under-500",
