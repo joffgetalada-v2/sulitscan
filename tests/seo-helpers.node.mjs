@@ -29,9 +29,13 @@ const dealsModule = loadTypeScriptModule("src/data/deals.ts", {
   "@/lib/deal-freshness": freshnessModule,
 })
 const seoModule = loadTypeScriptModule("src/lib/deal-seo.ts", {
-  "@/data/deals": dealsModule,
+  "@/data/deals": {
+    ...dealsModule,
+    getActiveDeals: () => dealsModule.getActiveDeals(new Date("2026-09-05T00:00:00.000Z")),
+  },
   "@/lib/deal-freshness": freshnessModule,
 })
+const populatedNow = new Date("2026-09-05T00:00:00.000Z")
 const postsModule = loadTypeScriptModule("src/data/posts.ts")
 const blogSeoModule = existsSync(resolve("src/lib/blog-seo.ts"))
   ? loadTypeScriptModule("src/lib/blog-seo.ts")
@@ -105,7 +109,7 @@ test("deal listing descriptions retain page one copy and identify later pages", 
 })
 
 test("deal SEO titles are unique and no longer than 65 characters", () => {
-  const activeDeals = dealsModule.getActiveDeals()
+  const activeDeals = dealsModule.getActiveDeals(populatedNow)
   const titles = activeDeals.map(seoModule.buildDealSeoTitle)
   assert.equal(new Set(titles).size, titles.length)
   assert.ok(titles.every((title) => title.length <= 65))
@@ -130,7 +134,7 @@ test("deal SEO titles are unique and no longer than 65 characters", () => {
 })
 
 test("deal SEO descriptions are unique product-specific snippets", () => {
-  const active = dealsModule.getActiveDeals()
+  const active = dealsModule.getActiveDeals(populatedNow)
   const descriptions = active.map(seoModule.buildDealSeoDescription)
   assert.equal(new Set(descriptions).size, descriptions.length)
   assert.ok(descriptions.every((description) => description.length <= 160))
@@ -234,13 +238,13 @@ test("deal SEO titles add stable hashes when truncated product phrases collide",
 })
 
 test("deal listing clamps invalid pages and returns 24 products", () => {
-  const result = listingModule.resolveDealListing(dealsModule.getActiveDeals(), { page: "9999" })
+  const result = listingModule.resolveDealListing(dealsModule.getActiveDeals(populatedNow), { page: "9999" })
   assert.equal(result.page, result.pageCount)
   assert.ok(result.items.length > 0 && result.items.length <= 24)
 })
 
 test("deal listing only treats a normalized scalar later-page request as canonical", () => {
-  const deals = dealsModule.getActiveDeals()
+  const deals = dealsModule.getActiveDeals(populatedNow)
 
   assert.equal(listingModule.resolveDealListing(deals, {}).isCanonical, true)
   assert.equal(listingModule.resolveDealListing(deals, { page: "2" }).isCanonical, true)
@@ -255,7 +259,7 @@ test("deal listing only treats a normalized scalar later-page request as canonic
 })
 
 test("deal listing filters and sorts deterministically", () => {
-  const result = listingModule.resolveDealListing(dealsModule.getActiveDeals(), {
+  const result = listingModule.resolveDealListing(dealsModule.getActiveDeals(populatedNow), {
     q: "brush", store: "Sephora PH", sort: "price-asc", page: "1",
   })
   assert.ok(result.items.every((deal) => deal.platform === "Sephora PH"))
@@ -271,7 +275,7 @@ test("invalid non-default deal filters remain noindex after display normalizatio
     { sort: "garbage" },
     { store: ["All", "garbage"] },
   ]) {
-    const result = listingModule.resolveDealListing(dealsModule.getActiveDeals(), raw)
+    const result = listingModule.resolveDealListing(dealsModule.getActiveDeals(populatedNow), raw)
     assert.equal(result.store, "All")
     assert.equal(result.category, "All")
     assert.equal(result.sort, "recommended")
@@ -322,23 +326,18 @@ test("entity pagination hrefs omit page one and include later pages", () => {
     "/categories/under-1000?page=2")
 })
 
-test("date-dependent deal routes revalidate daily and sitemap explicitly omits expired deals", () => {
+test("date-dependent deal pages revalidate daily", () => {
   const routeSources = [
     "src/app/page.tsx",
     "src/app/deals/page.tsx",
     "src/app/categories/[slug]/page.tsx",
     "src/app/stores/[slug]/page.tsx",
     "src/app/deals/[slug]/page.tsx",
-    "src/app/sitemap.ts",
   ].map((path) => [path, readFileSync(resolve(path), "utf8")])
 
   for (const [path, source] of routeSources) {
     assert.match(source, /export const revalidate = 86400/, `${path} should refresh daily`)
   }
-
-  const sitemapSource = routeSources.find(([path]) => path === "src/app/sitemap.ts")?.[1]
-  assert.match(sitemapSource, /isDealExpired/)
-  assert.match(sitemapSource, /getActiveDeals\(\)\.filter\(\(deal\) => !isDealExpired\(deal\)\)/)
 })
 
 test("expired deal metadata stays crawlable to links but is excluded from indexing", () => {

@@ -28,6 +28,26 @@ const freshness = loadTypeScriptModule("src/lib/deal-freshness.ts")
 const dealsModule = loadTypeScriptModule("src/data/deals.ts", {
   "@/lib/deal-freshness": freshness,
 })
+const populatedNow = new Date("2026-09-05T00:00:00.000Z")
+const expiredNow = new Date("2026-10-03T00:00:00.000Z")
+
+test("catalog selectors share an injected clock without reviving expired public records", () => {
+  const publicDeals = dealsModule.deals.filter(dealsModule.isPublicDeal)
+  assert.equal(publicDeals.length, 169)
+  assert.equal(dealsModule.getActiveDeals(populatedNow).length, 169)
+  assert.ok(dealsModule.getFeaturedDeals(6, populatedNow).length > 0)
+  assert.ok(dealsModule.getRelatedDealsForDeal(publicDeals[0], 3, populatedNow).length > 0)
+  assert.ok(dealsModule.getActiveCategories(populatedNow).length > 1)
+  assert.ok(dealsModule.getDealsByCategory("under-500", populatedNow).length > 0)
+  assert.ok(dealsModule.getDealsByPlatform("Temu", populatedNow).length > 0)
+  assert.ok(publicDeals.every((deal) => freshness.isDealExpired(deal, expiredNow)))
+  assert.deepEqual(dealsModule.getActiveDeals(expiredNow), [])
+  assert.deepEqual(dealsModule.getFeaturedDeals(6, expiredNow), [])
+  assert.deepEqual(dealsModule.getRelatedDealsForDeal(publicDeals[0], 3, expiredNow), [])
+  assert.deepEqual(dealsModule.getActiveCategories(expiredNow), ["All"])
+  assert.deepEqual(dealsModule.getDealsByCategory("under-500", expiredNow), [])
+  assert.deepEqual(dealsModule.getDealsByPlatform("Temu", expiredNow), [])
+})
 
 test("exact checked dates transition from current through reference to expired at UTC day boundaries", () => {
   const label = "Checked June 27, 2026"
@@ -91,7 +111,7 @@ test("the parser distinguishes exact and month-only catalog labels", () => {
 })
 
 test("expired public deals leave active lists but remain available by direct slug", () => {
-  const activeFixture = dealsModule.getActiveDeals()[0]
+  const activeFixture = dealsModule.getActiveDeals(populatedNow)[0]
   const expiredFixture = {
     ...activeFixture,
     id: "freshness-test-expired-public-deal",
@@ -101,7 +121,7 @@ test("expired public deals leave active lists but remain available by direct slu
 
   dealsModule.deals.push(expiredFixture)
   try {
-    assert.ok(!dealsModule.getActiveDeals().some((deal) => deal.slug === expiredFixture.slug))
+    assert.ok(!dealsModule.getActiveDeals(populatedNow).some((deal) => deal.slug === expiredFixture.slug))
     assert.equal(dealsModule.getDealBySlug(expiredFixture.slug), expiredFixture)
   } finally {
     dealsModule.deals.pop()

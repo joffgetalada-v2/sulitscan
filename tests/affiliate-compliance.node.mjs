@@ -34,7 +34,7 @@ const storesModule = loadTypeScriptModule("src/data/stores.ts")
 test("only publicly active deals are exposed by slug", () => {
   assert.equal(dealsModule.getDealBySlug("summer-dress-shein"), undefined)
   assert.equal(dealsModule.getDealBySlug("xiaomi-smart-band-9-shopee"), undefined)
-  assert.ok(dealsModule.getDealBySlug(dealsModule.getActiveDeals()[0].slug))
+  assert.ok(dealsModule.getDealBySlug(dealsModule.getActiveDeals(new Date("2026-09-05T00:00:00.000Z"))[0].slug))
 })
 
 test("only active partner offers are exposed to public pages", () => {

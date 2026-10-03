@@ -31,9 +31,13 @@ const dealsModule = loadTypeScriptModule("src/data/deals.ts", {
   "@/lib/deal-freshness": freshnessModule,
 })
 const recommendationsModule = loadTypeScriptModule("src/lib/blog-recommendations.ts", {
-  "@/data/deals": dealsModule,
+  "@/data/deals": {
+    ...dealsModule,
+    getActiveDeals: () => dealsModule.getActiveDeals(new Date("2026-09-05T00:00:00.000Z")),
+  },
   "@/data/posts": postsModule,
 })
+const populatedNow = new Date("2026-09-05T00:00:00.000Z")
 
 const currentPost = postsModule.getPostBySlug("how-to-check-shopee-seller-legit-philippines")
 assert.ok(currentPost, "canonical Shopee seller post fixture must exist")
@@ -91,7 +95,7 @@ test("post recommendations are unique and deterministic", () => {
 })
 
 test("deal recommendations are active, non-suspicious, unique, and deterministic", () => {
-  const activeDeals = dealsModule.getActiveDeals()
+  const activeDeals = dealsModule.getActiveDeals(populatedNow)
   const activeIds = new Set(activeDeals.map((deal) => deal.id))
   const first = recommendationsModule.getRelatedDealsForPost(broadDealPost, 3)
   const second = recommendationsModule.getRelatedDealsForPost(broadDealPost, 3)
@@ -109,8 +113,8 @@ test("deal-detail recommendations stay in-category and use deterministic relevan
   const current = dealsModule.getDealBySlug("tanle-silicone-foldable-water-bottle-is-leak-proof-a-702052")
   assert.ok(current, "public Home deal fixture must exist")
 
-  const first = dealsModule.getRelatedDealsForDeal(current, 3)
-  const second = dealsModule.getRelatedDealsForDeal(current, 3)
+  const first = dealsModule.getRelatedDealsForDeal(current, 3, populatedNow)
+  const second = dealsModule.getRelatedDealsForDeal(current, 3, populatedNow)
 
   assert.deepEqual(
     first.map((deal) => deal.slug),
@@ -139,7 +143,7 @@ test("deal-detail recommendations normalize count to an integer from zero throug
     [1.9, 1],
     [99, 3],
   ]) {
-    assert.equal(dealsModule.getRelatedDealsForDeal(current, count).length, expected)
+    assert.equal(dealsModule.getRelatedDealsForDeal(current, count, populatedNow).length, expected)
   }
 })
 
@@ -817,7 +821,7 @@ test("established guides link into the sale-season safety cluster", () => {
 })
 
 test("sale-season safety guide deal recommendations match assigned tags and platforms", () => {
-  const activeDeals = dealsModule.getActiveDeals()
+  const activeDeals = dealsModule.getActiveDeals(populatedNow)
   const activeIds = new Set(activeDeals.map((deal) => deal.id))
 
   for (const guideCase of saleSafetyGuideCases) {
@@ -1013,7 +1017,7 @@ test("checkout-price guidance preserves Temu's separate conditional adjustment r
 })
 
 test("August guide deal recommendations match assigned editorial eligibility", () => {
-  const activeIds = new Set(dealsModule.getActiveDeals().map((deal) => deal.id))
+  const activeIds = new Set(dealsModule.getActiveDeals(populatedNow).map((deal) => deal.id))
 
   for (const guideCase of augustBuyerGuideCases) {
     const post = postsModule.getPostBySlug(guideCase.slug)
@@ -1301,7 +1305,7 @@ test("weekly search-led guides use the required registry metadata and editorial 
 })
 
 test("weekly guide deal recommendations remain deterministic and editorially eligible", () => {
-  const activeIds = new Set(dealsModule.getActiveDeals().map((deal) => deal.id))
+  const activeIds = new Set(dealsModule.getActiveDeals(populatedNow).map((deal) => deal.id))
 
   for (const guideCase of weeklyGuideCases) {
     const post = postsModule.getPostBySlug(guideCase.slug)
@@ -1463,7 +1467,7 @@ for (const catalogCase of finalCatalogCases) {
 
     const relatedDeals = recommendationsModule.getRelatedDealsForPost(post, 3)
     assert.ok(relatedDeals.length > 0 && relatedDeals.length <= 3)
-    const activeDealIds = new Set(dealsModule.getActiveDeals().map((deal) => deal.id))
+    const activeDealIds = new Set(dealsModule.getActiveDeals(populatedNow).map((deal) => deal.id))
     assert.equal(new Set(relatedDeals.map((deal) => deal.id)).size, relatedDeals.length)
     assert.ok(relatedDeals.every((deal) => activeDealIds.has(deal.id)))
     assert.ok(relatedDeals.every((deal) => !dealsModule.isSuspiciousDiscount(deal)))
@@ -1729,7 +1733,7 @@ test("September growth guides use the five accepted distinct progressive JPEG co
 })
 
 test("September guide deal recommendations stay truthful and catalog-eligible", () => {
-  const activeIds = new Set(dealsModule.getActiveDeals().map((deal) => deal.id))
+  const activeIds = new Set(dealsModule.getActiveDeals(populatedNow).map((deal) => deal.id))
 
   for (const guideCase of septemberGrowthGuideCases) {
     const post = postsModule.getPostBySlug(guideCase.slug)

@@ -3810,15 +3810,15 @@ export function compareDealsForDefault(a: Deal, b: Deal): number {
 }
 
 // All active deals (active platform and has image), in the recommended default order.
-export function getActiveDeals(): Deal[] {
-  return deals.filter((deal) => isPublicDeal(deal) && !isDealExpired(deal)).sort(compareDealsForDefault)
+export function getActiveDeals(now: Date = new Date()): Deal[] {
+  return deals.filter((deal) => isPublicDeal(deal) && !isDealExpired(deal, now)).sort(compareDealsForDefault)
 }
 
 // Curated homepage picks: strong SulitScore and a sensible (non-suspicious) discount,
 // ordered by the same recommended logic so featured leads with safe, practical items
 // rather than the biggest discounts or higher-uncertainty electronics.
-export function getFeaturedDeals(count = 6): Deal[] {
-  const active = getActiveDeals()
+export function getFeaturedDeals(count = 6, now: Date = new Date()): Deal[] {
+  const active = getActiveDeals(now)
   const curated = active
     .filter(d => !isSuspiciousDiscount(d) && d.sulitScore >= 8)
     .sort(compareDealsForDefault)
@@ -3826,14 +3826,14 @@ export function getFeaturedDeals(count = 6): Deal[] {
   return pool.slice(0, count)
 }
 
-export function getRelatedDealsForDeal(current: Deal, count: number): Deal[] {
+export function getRelatedDealsForDeal(current: Deal, count: number, now: Date = new Date()): Deal[] {
   if (!Number.isFinite(count) || count <= 0) return []
 
   const limit = Math.min(Math.floor(count), 3)
   const currentTags = new Set(current.tags)
   const sharedTagCount = (deal: Deal) => deal.tags.filter((tag) => currentTags.has(tag)).length
 
-  return getActiveDeals()
+  return getActiveDeals(now)
     .filter(
       (deal) =>
         deal.id !== current.id &&
@@ -3856,8 +3856,8 @@ export function getRelatedDealsForDeal(current: Deal, count: number): Deal[] {
 }
 
 // All category labels present in active deals (for filter tabs)
-export function getActiveCategories(): string[] {
-  const cats = new Set(getActiveDeals().map(d => d.category))
+export function getActiveCategories(now: Date = new Date()): string[] {
+  const cats = new Set(getActiveDeals(now).map(d => d.category))
   return ["All", ...Array.from(cats).sort()]
 }
 
@@ -3871,8 +3871,8 @@ const CATEGORY_SLUG_MAP: Record<string, string[]> = {
   "digital-tools": ["Digital Tools"],
 }
 
-export function getDealsByCategory(categorySlug: string): Deal[] {
-  const active = getActiveDeals()
+export function getDealsByCategory(categorySlug: string, now: Date = new Date()): Deal[] {
+  const active = getActiveDeals(now)
   if (categorySlug === "under-500") {
     return active.filter(d => d.salePrice < 500)
   }
@@ -3889,6 +3889,6 @@ export function getDealsByCategory(categorySlug: string): Deal[] {
   return active.filter(d => d.category.toLowerCase() === categorySlug.toLowerCase())
 }
 
-export function getDealsByPlatform(platform: string): Deal[] {
-  return getActiveDeals().filter(d => d.platform === platform)
+export function getDealsByPlatform(platform: string, now: Date = new Date()): Deal[] {
+  return getActiveDeals(now).filter(d => d.platform === platform)
 }
