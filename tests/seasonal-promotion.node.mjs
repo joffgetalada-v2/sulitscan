@@ -6,8 +6,7 @@ import ts from "typescript"
 
 function loadTypeScriptModule(relativePath, dependencies = {}) {
   const filename = resolve(relativePath)
-  const source = readFileSync(filename, "utf8")
-  const { outputText } = ts.transpileModule(source, {
+  const { outputText } = ts.transpileModule(readFileSync(filename, "utf8"), {
     compilerOptions: {
       module: ts.ModuleKind.CommonJS,
       target: ts.ScriptTarget.ES2022,
@@ -24,117 +23,153 @@ function loadTypeScriptModule(relativePath, dependencies = {}) {
   return moduleRecord.exports
 }
 
-const seasonalPromotion = loadTypeScriptModule("src/lib/seasonal-promotion.ts")
-
-function requireFunction(exportName) {
-  assert.equal(typeof seasonalPromotion[exportName], "function", `${exportName} should be exported`)
-  return seasonalPromotion[exportName]
-}
-
-const promotionCases = [
-  ["the instant before the 9.9 window", "2026-08-31T15:59:59.999Z", undefined],
-  ["the inclusive start of the 9.9 window", "2026-08-31T16:00:00.000Z", {
-    slug: "shopee-9-9-sale-philippines-2026-checklist",
-    href: "/blog/shopee-9-9-sale-philippines-2026-checklist",
-    announcement: "9.9 checkout checklist: compare the final total →",
-  }],
-  ["an in-window 9.9 instant", "2026-09-05T04:30:00.000Z", {
-    slug: "shopee-9-9-sale-philippines-2026-checklist",
-    href: "/blog/shopee-9-9-sale-philippines-2026-checklist",
-    announcement: "9.9 checkout checklist: compare the final total →",
-  }],
-  ["the inclusive end of the 9.9 window", "2026-09-10T15:59:59.999Z", {
-    slug: "shopee-9-9-sale-philippines-2026-checklist",
-    href: "/blog/shopee-9-9-sale-philippines-2026-checklist",
-    announcement: "9.9 checkout checklist: compare the final total →",
-  }],
-  ["the instant after the 9.9 window", "2026-09-10T16:00:00.000Z", undefined],
+const { getSeasonalPromotion, getPromotedPosts } = loadTypeScriptModule("src/lib/seasonal-promotion.ts")
+const campaigns = [
+  {
+    name: "10.10",
+    before: "2026-10-02T15:59:59.999Z",
+    start: "2026-10-02T16:00:00.000Z",
+    inside: "2026-10-03T00:00:00.000Z",
+    end: "2026-10-10T15:59:59.999Z",
+    after: "2026-10-10T16:00:00.000Z",
+    promotion: {
+      slug: "10-10-sale-philippines-guide",
+      href: "/blog/10-10-sale-philippines-guide",
+      announcement: "10.10 checkout guide: compare the final total →",
+    },
+  },
+  {
+    name: "11.11",
+    before: "2026-10-24T15:59:59.999Z",
+    start: "2026-10-24T16:00:00.000Z",
+    inside: "2026-11-01T04:30:00.000Z",
+    end: "2026-11-11T15:59:59.999Z",
+    after: "2026-11-11T16:00:00.000Z",
+    promotion: {
+      slug: "11-11-sale-philippines-cart-building-checklist",
+      href: "/blog/11-11-sale-philippines-cart-building-checklist",
+      announcement: "11.11 cart checklist: set your baseline first →",
+    },
+  },
 ]
 
-for (const [description, instant, expected] of promotionCases) {
-  test(`getSeasonalPromotion returns the expected campaign for ${description}`, () => {
-    const getSeasonalPromotion = requireFunction("getSeasonalPromotion")
+const orderedPosts = [
+  { id: "newest", slug: "newest-guide" },
+  { id: "october", slug: "10-10-sale-philippines-guide" },
+  { id: "second", slug: "second-newest-guide" },
+  { id: "november", slug: "11-11-sale-philippines-cart-building-checklist" },
+  { id: "older", slug: "older-guide" },
+]
+const slugs = (posts) => posts.map((post) => post.slug)
 
-    assert.deepEqual(getSeasonalPromotion(new Date(instant)), expected)
+test("the first configured campaign wins when date parsing supplies overlapping windows", () => {
+  const RealDate = Date
+  // Keep the production selector real; supply overlapping configuration bounds
+  // at module initialization without adding a public test-only campaign API.
+  globalThis.Date = class extends RealDate {
+    static parse(value) {
+      return RealDate.parse(value === "2026-10-24T16:00:00.000Z"
+        ? "2026-10-02T16:00:00.000Z" : value)
+    }
+  }
+  try {
+    const overlapping = loadTypeScriptModule("src/lib/seasonal-promotion.ts")
+    assert.deepEqual(overlapping.getSeasonalPromotion(new RealDate("2026-10-03T00:00:00.000Z")),
+      campaigns[0].promotion)
+  } finally {
+    globalThis.Date = RealDate
+  }
+})
+
+for (const campaign of campaigns) {
+  for (const [label, instant, expected] of [
+    ["instant before", campaign.before, undefined],
+    ["inclusive start", campaign.start, campaign.promotion],
+    ["in-window instant", campaign.inside, campaign.promotion],
+    ["inclusive end", campaign.end, campaign.promotion],
+    ["instant after", campaign.after, undefined],
+  ]) {
+    test(`${campaign.name}: ${label} selects the exact campaign`, () => {
+      assert.deepEqual(getSeasonalPromotion(new Date(instant)), expected)
+    })
+  }
+
+  test(`${campaign.name}: campaign returns are distinct and immutable`, () => {
+    const first = getSeasonalPromotion(new Date(campaign.inside))
+    const second = getSeasonalPromotion(new Date(campaign.inside))
+    assert.deepEqual(first, campaign.promotion)
+    assert.notEqual(first, second)
+    assert.ok(Object.isFrozen(first))
+    assert.throws(() => { first.href = "/changed" }, TypeError)
+    assert.deepEqual(getSeasonalPromotion(new Date(campaign.inside)), campaign.promotion)
+  })
+
+  test(`${campaign.name}: promotes its guide while preserving remaining order`, () => {
+    assert.deepEqual(slugs(getPromotedPosts(orderedPosts, new Date(campaign.inside))), campaign.name === "10.10"
+      ? ["10-10-sale-philippines-guide", "newest-guide", "second-newest-guide"]
+      : ["11-11-sale-philippines-cart-building-checklist", "newest-guide", "10-10-sale-philippines-guide"])
+  })
+
+  test(`${campaign.name}: missing guide preserves the ordinary list`, () => {
+    const missing = orderedPosts.filter((post) => post.slug !== campaign.promotion.slug)
+    assert.deepEqual(getPromotedPosts(missing, new Date(campaign.inside), 99), missing)
   })
 }
 
-test("getSeasonalPromotion returns a distinct immutable campaign copy", () => {
-  const getSeasonalPromotion = requireFunction("getSeasonalPromotion")
-  const first = getSeasonalPromotion(new Date("2026-09-05T04:30:00.000Z"))
-  const second = getSeasonalPromotion(new Date("2026-09-05T04:30:00.000Z"))
+for (const [label, instant] of [
+  ["expired 9.9 campaign", "2026-09-05T04:30:00.000Z"],
+  ["gap between campaigns", "2026-10-15T00:00:00.000Z"],
+  ["invalid date", "invalid"],
+]) {
+  test(`${label}: no promotion and ordinary newest-first ordering`, () => {
+    const now = new Date(instant)
+    assert.equal(getSeasonalPromotion(now), undefined)
+    assert.deepEqual(getPromotedPosts(orderedPosts, now, 3), orderedPosts.slice(0, 3))
+  })
+}
 
-  assert.notEqual(first, second)
-  assert.ok(Object.isFrozen(first))
+test("post returns deduplicate by slug before counting, keeping the first record", () => {
+  const duplicated = [orderedPosts[0], orderedPosts[0], orderedPosts[1],
+    { id: "duplicate", slug: orderedPosts[1].slug }, ...orderedPosts.slice(2)]
+  const snapshot = structuredClone(duplicated)
+  for (const instant of [campaigns[0].inside, campaigns[1].inside, "2026-10-15T00:00:00.000Z"]) {
+    const result = getPromotedPosts(duplicated, new Date(instant), 99)
+    assert.equal(result.length, 5)
+    assert.equal(new Set(slugs(result)).size, 5)
+    assert.equal(result.find((post) => post.slug === orderedPosts[1].slug), orderedPosts[1])
+    assert.equal(getPromotedPosts(duplicated, new Date(instant), 3).length, 3)
+  }
+  const missing = duplicated.filter((post) => post.slug !== campaigns[1].promotion.slug)
+  assert.deepEqual(slugs(getPromotedPosts(missing, new Date(campaigns[1].inside), 99)),
+    ["newest-guide", "10-10-sale-philippines-guide", "second-newest-guide", "older-guide"])
+  assert.deepEqual(duplicated, snapshot)
 })
 
-const orderedPosts = [
-  { slug: "newest-guide" },
-  { slug: "shopee-9-9-sale-philippines-2026-checklist" },
-  { slug: "second-newest-guide" },
-  { slug: "older-guide" },
-]
-
-test("getPromotedPosts puts the 9.9 guide first without duplicating it", () => {
-  const getPromotedPosts = requireFunction("getPromotedPosts")
-
-  assert.deepEqual(
-    getPromotedPosts(orderedPosts, new Date("2026-09-05T04:30:00.000Z"), 3).map((post) => post.slug),
-    ["shopee-9-9-sale-philippines-2026-checklist", "newest-guide", "second-newest-guide"]
-  )
+test("post returns are distinct arrays and never mutate a frozen source", () => {
+  const source = Object.freeze(orderedPosts.map((post) => Object.freeze({ ...post })))
+  for (const instant of [campaigns[0].inside, "2026-10-15T00:00:00.000Z", "invalid"]) {
+    const first = getPromotedPosts(source, new Date(instant), 99)
+    const second = getPromotedPosts(source, new Date(instant), 99)
+    assert.notEqual(first, source)
+    assert.notEqual(first, second)
+    first.pop()
+    assert.equal(second.length, 5)
+    assert.deepEqual(source, orderedPosts)
+  }
 })
 
-test("getPromotedPosts preserves newest-first ordering outside the 9.9 window", () => {
-  const getPromotedPosts = requireFunction("getPromotedPosts")
-
-  assert.deepEqual(
-    getPromotedPosts(orderedPosts, new Date("2026-09-10T16:00:00.000Z"), 3).map((post) => post.slug),
-    ["newest-guide", "shopee-9-9-sale-philippines-2026-checklist", "second-newest-guide"]
-  )
-})
-
-test("getPromotedPosts keeps the normal list when the promoted guide is missing", () => {
-  const getPromotedPosts = requireFunction("getPromotedPosts")
-  const postsWithoutPromotion = orderedPosts.filter(
-    (post) => post.slug !== "shopee-9-9-sale-philippines-2026-checklist"
-  )
-
-  assert.deepEqual(
-    getPromotedPosts(postsWithoutPromotion, new Date("2026-09-05T04:30:00.000Z"), 3).map((post) => post.slug),
-    ["newest-guide", "second-newest-guide", "older-guide"]
-  )
-})
-
-test("getPromotedPosts clamps requested counts from zero through the available list", () => {
-  const getPromotedPosts = requireFunction("getPromotedPosts")
-  const now = new Date("2026-09-05T04:30:00.000Z")
-
-  assert.deepEqual(getPromotedPosts(orderedPosts, now, 0), [])
-  assert.deepEqual(getPromotedPosts(orderedPosts, now, 1).map((post) => post.slug), [
-    "shopee-9-9-sale-philippines-2026-checklist",
-  ])
-  assert.deepEqual(getPromotedPosts(orderedPosts, now, 2).map((post) => post.slug), [
-    "shopee-9-9-sale-philippines-2026-checklist",
-    "newest-guide",
-  ])
-  assert.deepEqual(getPromotedPosts(orderedPosts, now, 3).map((post) => post.slug), [
-    "shopee-9-9-sale-philippines-2026-checklist",
-    "newest-guide",
-    "second-newest-guide",
-  ])
-  assert.deepEqual(getPromotedPosts(orderedPosts, now, 99).map((post) => post.slug), [
-    "shopee-9-9-sale-philippines-2026-checklist",
-    "newest-guide",
-    "second-newest-guide",
-    "older-guide",
-  ])
-  assert.deepEqual(getPromotedPosts(orderedPosts, now, Number.NaN), [])
-  assert.deepEqual(getPromotedPosts(orderedPosts, now, Number.POSITIVE_INFINITY), [])
-  assert.deepEqual(getPromotedPosts(orderedPosts, now, -1), [])
-  assert.deepEqual(getPromotedPosts(orderedPosts, now, 2.9).map((post) => post.slug), [
-    "shopee-9-9-sale-philippines-2026-checklist",
-    "newest-guide",
-  ])
+test("post counts default, clamp, floor, and reject nonfinite values deterministically", () => {
+  const now = new Date(campaigns[0].inside)
+  for (const count of [0, -1, Number.NaN, Number.POSITIVE_INFINITY, Number.NEGATIVE_INFINITY, 0.9]) {
+    assert.deepEqual(getPromotedPosts(orderedPosts, now, count), [])
+  }
+  assert.deepEqual(slugs(getPromotedPosts(orderedPosts, now)),
+    ["10-10-sale-philippines-guide", "newest-guide", "second-newest-guide"])
+  assert.deepEqual(slugs(getPromotedPosts(orderedPosts, now, 1)), ["10-10-sale-philippines-guide"])
+  assert.deepEqual(slugs(getPromotedPosts(orderedPosts, now, 2.9)),
+    ["10-10-sale-philippines-guide", "newest-guide"])
+  assert.equal(getPromotedPosts(orderedPosts, now, 99).length, 5)
+  assert.deepEqual(getPromotedPosts([], now, 99), [])
 })
 
 function createElement(type, props, key) {
@@ -156,18 +191,7 @@ const Link = () => null
 const BlogCard = () => null
 const component = () => null
 const icons = new Proxy({}, { get: () => component })
-const jsxRuntime = {
-  Fragment: Symbol.for("react.fragment"),
-  jsx: createElement,
-  jsxs: createElement,
-}
-const homepagePosts = [
-  { id: "newest", slug: "newest-guide" },
-  { id: "promotion", slug: "shopee-9-9-sale-philippines-2026-checklist" },
-  { id: "second", slug: "second-newest-guide" },
-  { id: "older", slug: "older-guide" },
-]
-
+const jsxRuntime = { Fragment: Symbol.for("react.fragment"), jsx: createElement, jsxs: createElement }
 const pageModule = loadTypeScriptModule("src/app/page.tsx", {
   "react/jsx-runtime": jsxRuntime,
   "next/link": { default: Link },
@@ -184,41 +208,47 @@ const pageModule = loadTypeScriptModule("src/app/page.tsx", {
   "@/components/newsletter/NewsletterSignup": { default: component },
   "@/components/SeoJsonLd": { ItemListJsonLd: component, FAQJsonLd: component },
   "@/data/partner-banners": { homePartnerBanners: [] },
-  "@/data/deals": {
-    getFeaturedDeals: () => [],
-    getActiveDeals: () => [],
-    getDealsByCategory: () => [],
-  },
+  "@/data/deals": { getFeaturedDeals: () => [], getActiveDeals: () => [], getDealsByCategory: () => [] },
   "@/data/categories": { categories: [] },
-  "@/data/posts": {
-    getRecentPosts: () => homepagePosts.slice(0, 3),
-    getPostsNewestFirst: () => homepagePosts,
-  },
-  "@/lib/seasonal-promotion": seasonalPromotion,
+  "@/data/posts": { getPostsNewestFirst: () => orderedPosts },
+  "@/lib/seasonal-promotion": { getSeasonalPromotion, getPromotedPosts },
   "@/lib/seo": { siteConfig: { url: "https://sulitscan.example" } },
   "@/lib/deal-freshness": { getFreshnessSafeReason: () => "" },
   "lucide-react": icons,
 })
 
-test("the homepage gives the live 9.9 guide the first card", () => {
+test("homepage renders at request time so campaign boundaries cannot serve stale ISR order", () => {
+  assert.equal(pageModule.dynamic, "force-dynamic")
+  assert.equal(pageModule.revalidate, undefined)
+})
+
+function withClock(instant, run) {
   const RealDate = Date
   globalThis.Date = class extends RealDate {
     constructor(...args) {
-      super(...(args.length ? args : ["2026-09-05T04:30:00.000Z"]))
+      super(...(args.length ? args : [typeof instant === "function" ? instant() : instant]))
     }
   }
+  try { return run() } finally { globalThis.Date = RealDate }
+}
 
-  try {
-    const tree = pageModule.default()
-    const cards = findElements(tree, (element) => element.type === BlogCard)
-    assert.deepEqual(cards.map((card) => card.props.post.slug), [
-      "shopee-9-9-sale-philippines-2026-checklist",
-      "newest-guide",
-      "second-newest-guide",
-    ])
-  } finally {
-    globalThis.Date = RealDate
-  }
+for (const campaign of campaigns) {
+  test(`homepage gives the live ${campaign.name} guide the first card`, () => {
+    withClock(campaign.inside, () => {
+      const cards = findElements(pageModule.default(), (element) => element.type === BlogCard)
+      assert.deepEqual(cards.map((card) => card.props.post.slug), campaign.name === "10.10"
+        ? ["10-10-sale-philippines-guide", "newest-guide", "second-newest-guide"]
+        : ["11-11-sale-philippines-cart-building-checklist", "newest-guide", "10-10-sale-philippines-guide"])
+    })
+  })
+}
+
+test("homepage retains ordinary guide ordering between campaign windows", () => {
+  withClock("2026-10-15T00:00:00.000Z", () => {
+    const cards = findElements(pageModule.default(), (element) => element.type === BlogCard)
+    assert.deepEqual(cards.map((card) => card.props.post.slug),
+      ["newest-guide", "10-10-sale-philippines-guide", "second-newest-guide"])
+  })
 })
 
 function createHeaderModule() {
@@ -233,9 +263,7 @@ function createHeaderModule() {
         state[index] = typeof nextValue === "function" ? nextValue(state[index]) : nextValue
       }]
     },
-    useEffect(effect) {
-      effects.push(effect)
-    },
+    useEffect(effect) { effects.push(effect) },
   }
   const headerModule = loadTypeScriptModule("src/components/Header.tsx", {
     "react/jsx-runtime": jsxRuntime,
@@ -244,133 +272,74 @@ function createHeaderModule() {
     "lucide-react": icons,
     "@/lib/utils": { cn: (...classes) => classes.filter(Boolean).join(" ") },
     "@/components/Logo": { default: component },
-    "@/lib/seasonal-promotion": seasonalPromotion,
+    "@/lib/seasonal-promotion": { getSeasonalPromotion, getPromotedPosts },
   })
-
-  return {
-    effects,
-    render() {
-      stateIndex = 0
-      return headerModule.default()
-    },
-  }
+  return { effects, render() { stateIndex = 0; return headerModule.default() } }
 }
 
 function getAnnouncementLink(tree) {
-  const [link] = findElements(
-    tree,
-    (element) => element.type === Link && element.props.className?.includes("font-bold underline")
-  )
-  return link
+  return findElements(tree, (element) => element.type === Link &&
+    element.props.className?.includes("font-bold underline"))[0]
 }
 
-test("the header starts generic, then shows the 9.9 announcement after mount", () => {
+function withHeaderWindow(run) {
   const previousWindow = globalThis.window
-  const RealDate = Date
+  const frames = []
+  const cancelled = []
   globalThis.window = {
-    addEventListener() {},
-    cancelAnimationFrame() {},
-    removeEventListener() {},
-    requestAnimationFrame(callback) {
-      callback()
-      return 1
-    },
-    scrollY: 0,
+    addEventListener() {}, removeEventListener() {}, scrollY: 0,
+    cancelAnimationFrame(id) { cancelled.push(id) },
+    requestAnimationFrame(callback) { frames.push(callback); return frames.length },
   }
-  globalThis.Date = class extends RealDate {
-    constructor(...args) {
-      super(...(args.length ? args : ["2026-09-05T04:30:00.000Z"]))
-    }
-  }
-  const header = createHeaderModule()
+  try { return run(frames, cancelled) } finally { globalThis.window = previousWindow }
+}
 
-  try {
-    const initialLink = getAnnouncementLink(header.render())
-    assert.equal(initialLink.props.href, "/blog")
-    assert.equal(initialLink.props.children, "Browse what's fresh →")
+function assertAnnouncement(tree, promotion) {
+  const link = getAnnouncementLink(tree)
+  assert.equal(link.props.href, promotion?.href ?? "/blog")
+  assert.equal(link.props.children, promotion?.announcement ?? "Browse what's fresh →")
+}
 
-    for (const effect of header.effects) effect()
-    const mountedLink = getAnnouncementLink(header.render())
-    assert.equal(mountedLink.props.href, "/blog/shopee-9-9-sale-philippines-2026-checklist")
-    assert.equal(mountedLink.props.children, "9.9 checkout checklist: compare the final total →")
-  } finally {
-    globalThis.Date = RealDate
-    globalThis.window = previousWindow
-  }
-})
+for (const campaign of campaigns) {
+  test(`header starts generic, then shows the exact ${campaign.name} destination and copy`, () => {
+    withClock(campaign.inside, () => withHeaderWindow((frames, cancelled) => {
+      const header = createHeaderModule()
+      assertAnnouncement(header.render(), undefined)
+      const cleanup = header.effects.map((effect) => effect())
+      assertAnnouncement(header.render(), undefined)
+      assert.equal(frames.length, 1)
+      frames[0]()
+      assertAnnouncement(header.render(), campaign.promotion)
+      cleanup.forEach((effect) => effect())
+      assert.deepEqual(cancelled, [1])
+    }))
+  })
 
-test("the header evaluates the promotion when a held animation frame reaches the inclusive start", () => {
-  const previousWindow = globalThis.window
-  const RealDate = Date
-  const queuedFrames = []
-  let now = "2026-08-31T15:59:59.999Z"
-  globalThis.window = {
-    addEventListener() {},
-    cancelAnimationFrame() {},
-    removeEventListener() {},
-    requestAnimationFrame(callback) {
-      queuedFrames.push(callback)
-      return queuedFrames.length
-    },
-    scrollY: 0,
+  for (const [label, initial, next, expected] of [
+    ["inclusive start", campaign.before, campaign.start, campaign.promotion],
+    ["instant after inclusive end", campaign.end, campaign.after, undefined],
+  ]) {
+    test(`header evaluates ${campaign.name} at the held frame's ${label}`, () => {
+      let now = initial
+      withClock(() => now, () => withHeaderWindow((frames) => {
+        const header = createHeaderModule()
+        assertAnnouncement(header.render(), undefined)
+        header.effects.forEach((effect) => effect())
+        assert.equal(frames.length, 1)
+        now = next
+        frames[0]()
+        assertAnnouncement(header.render(), expected)
+      }))
+    })
   }
-  globalThis.Date = class extends RealDate {
-    constructor(...args) {
-      super(...(args.length ? args : [now]))
-    }
-  }
-  const header = createHeaderModule()
+}
 
-  try {
-    header.render()
-    for (const effect of header.effects) effect()
-    assert.equal(queuedFrames.length, 1)
-
-    now = "2026-08-31T16:00:00.000Z"
-    queuedFrames[0]()
-    const mountedLink = getAnnouncementLink(header.render())
-    assert.equal(mountedLink.props.href, "/blog/shopee-9-9-sale-philippines-2026-checklist")
-    assert.equal(mountedLink.props.children, "9.9 checkout checklist: compare the final total →")
-  } finally {
-    globalThis.Date = RealDate
-    globalThis.window = previousWindow
-  }
-})
-
-test("the header evaluates the promotion when a held animation frame passes the inclusive end", () => {
-  const previousWindow = globalThis.window
-  const RealDate = Date
-  const queuedFrames = []
-  let now = "2026-09-10T15:59:59.999Z"
-  globalThis.window = {
-    addEventListener() {},
-    cancelAnimationFrame() {},
-    removeEventListener() {},
-    requestAnimationFrame(callback) {
-      queuedFrames.push(callback)
-      return queuedFrames.length
-    },
-    scrollY: 0,
-  }
-  globalThis.Date = class extends RealDate {
-    constructor(...args) {
-      super(...(args.length ? args : [now]))
-    }
-  }
-  const header = createHeaderModule()
-
-  try {
-    header.render()
-    for (const effect of header.effects) effect()
-    assert.equal(queuedFrames.length, 1)
-
-    now = "2026-09-10T16:00:00.000Z"
-    queuedFrames[0]()
-    const mountedLink = getAnnouncementLink(header.render())
-    assert.equal(mountedLink.props.href, "/blog")
-    assert.equal(mountedLink.props.children, "Browse what's fresh →")
-  } finally {
-    globalThis.Date = RealDate
-    globalThis.window = previousWindow
-  }
+test("header remains generic after mount between campaign windows", () => {
+  withClock("2026-10-15T00:00:00.000Z", () => withHeaderWindow((frames) => {
+    const header = createHeaderModule()
+    assertAnnouncement(header.render(), undefined)
+    header.effects.forEach((effect) => effect())
+    frames[0]()
+    assertAnnouncement(header.render(), undefined)
+  }))
 })

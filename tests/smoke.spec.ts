@@ -3,6 +3,7 @@ import { getActiveDeals, getDealBySlug, getDealsByCategory, getDealsByPlatform }
 import { getPostBySlug } from "../src/data/posts"
 import { getRelatedDealsForPost } from "../src/lib/blog-recommendations"
 import { getDealScannerSlides } from "../src/lib/deal-scanner"
+import { getSeasonalPromotion } from "../src/lib/seasonal-promotion"
 import { getDealFreshness } from "../src/lib/deal-freshness"
 import { isDealIndexable } from "../src/lib/deal-seo"
 import { DEALS_PAGE_SIZE, resolveDealListing } from "../src/lib/deal-listing"
@@ -288,13 +289,28 @@ test("homepage empty scanner remains motion-free and bounded on mobile", async (
   )).toBe(true)
 })
 
-test("header guide announcement links to the blog", async ({ page }) => {
-  await page.goto("/", { waitUntil: "domcontentloaded" })
+for (const [label, now] of [
+  ["current clock", inventoryNow],
+  ["10.10 window", new Date("2026-10-03T00:00:00.000Z")],
+  ["11.11 window", new Date("2026-11-01T00:00:00.000Z")],
+  ["between campaigns", new Date("2026-10-15T00:00:00.000Z")],
+] as const) {
+  test(`header guide announcement links to the blog at ${label}`, async ({ page }) => {
+    const promotion = getSeasonalPromotion(now)
+    // Fix browser Date only; animation frames still run normally after mount.
+    await page.clock.setFixedTime(now)
+    await page.setViewportSize({ width: 390, height: 844 })
+    await page.goto("/", { waitUntil: "domcontentloaded" })
+    // A real stateful interaction establishes hydration before checking the
+    // mounted announcement, rather than accepting the generic prerender.
+    await page.getByRole("button", { name: "Open menu" }).click()
+    await expect(page.getByRole("navigation", { name: "Mobile navigation" })).toBeVisible()
 
-  await expect(
-    page.getByRole("banner").getByRole("link", { name: /Browse what's fresh/i })
-  ).toHaveAttribute("href", "/blog")
-})
+    await expect(page.getByRole("banner").getByRole("link", {
+      name: promotion?.announcement ?? "Browse what's fresh →", exact: true,
+    })).toHaveAttribute("href", promotion?.href ?? "/blog")
+  })
+}
 
 test("homepage trust signals promise no automatic redirects", async ({ page }) => {
   await page.goto("/", { waitUntil: "domcontentloaded" })

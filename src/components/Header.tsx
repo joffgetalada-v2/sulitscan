@@ -33,18 +33,19 @@ const genericAnnouncement: Announcement = {
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled]   = useState(false)
+  // Keep server HTML and the first client render identical across campaign boundaries.
   const [announcement, setAnnouncement] = useState<Announcement>(genericAnnouncement)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12)
     const announcementFrame = window.requestAnimationFrame(() => {
       const promotion = getSeasonalPromotion()
-      if (promotion) {
-        setAnnouncement({
+      setAnnouncement(promotion
+        ? {
           href: promotion.href,
           copy: promotion.announcement,
-        })
-      }
+        }
+        : genericAnnouncement)
     })
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => {

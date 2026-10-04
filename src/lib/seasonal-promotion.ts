@@ -4,20 +4,34 @@ export interface SeasonalPromotion {
   announcement: string
 }
 
-const campaignStart = Date.parse("2026-08-31T16:00:00.000Z")
-const campaignEnd = Date.parse("2026-09-10T15:59:59.999Z")
-
-const campaign: Readonly<SeasonalPromotion> = Object.freeze({
-  slug: "shopee-9-9-sale-philippines-2026-checklist",
-  href: "/blog/shopee-9-9-sale-philippines-2026-checklist",
-  announcement: "9.9 checkout checklist: compare the final total →",
-})
+const campaigns = [
+  {
+    start: Date.parse("2026-10-02T16:00:00.000Z"),
+    end: Date.parse("2026-10-10T15:59:59.999Z"),
+    promotion: Object.freeze({
+      slug: "10-10-sale-philippines-guide",
+      href: "/blog/10-10-sale-philippines-guide",
+      announcement: "10.10 checkout guide: compare the final total →",
+    }),
+  },
+  {
+    start: Date.parse("2026-10-24T16:00:00.000Z"),
+    end: Date.parse("2026-11-11T15:59:59.999Z"),
+    promotion: Object.freeze({
+      slug: "11-11-sale-philippines-cart-building-checklist",
+      href: "/blog/11-11-sale-philippines-cart-building-checklist",
+      announcement: "11.11 cart checklist: set your baseline first →",
+    }),
+  },
+] as const
 
 export function getSeasonalPromotion(now: Date = new Date()): SeasonalPromotion | undefined {
   const timestamp = now.getTime()
-  if (timestamp < campaignStart || timestamp > campaignEnd) return undefined
+  if (!Number.isFinite(timestamp)) return undefined
 
-  return Object.freeze({ ...campaign })
+  // Ordered selection makes the first matching campaign win if windows overlap.
+  const campaign = campaigns.find(({ start, end }) => timestamp >= start && timestamp <= end)
+  return campaign ? Object.freeze({ ...campaign.promotion }) : undefined
 }
 
 function normalizeCount(count: number | undefined): number {
@@ -34,15 +48,21 @@ export function getPromotedPosts<T extends { slug: string }>(
   const normalizedCount = normalizeCount(count)
   if (normalizedCount === 0) return []
 
+  const seen = new Set<string>()
+  const uniquePosts = orderedPosts.filter((post) => {
+    if (seen.has(post.slug)) return false
+    seen.add(post.slug)
+    return true
+  })
   const promotion = getSeasonalPromotion(now)
   const promotedPost = promotion
-    ? orderedPosts.find((post) => post.slug === promotion.slug)
+    ? uniquePosts.find((post) => post.slug === promotion.slug)
     : undefined
 
-  if (!promotion || !promotedPost) return orderedPosts.slice(0, normalizedCount)
+  if (!promotion || !promotedPost) return uniquePosts.slice(0, normalizedCount)
 
   return [
     promotedPost,
-    ...orderedPosts.filter((post) => post.slug !== promotion.slug),
+    ...uniquePosts.filter((post) => post.slug !== promotion.slug),
   ].slice(0, normalizedCount)
 }

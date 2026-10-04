@@ -33,7 +33,8 @@ import {
   Calculator,
 } from "lucide-react"
 
-export const revalidate = 86400
+// Campaign ordering and catalog freshness must use the clock of each request.
+export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
   title: { absolute: "SulitScan PH | Curated Online Deals and Shopping Guides for Filipino Shoppers" },
@@ -155,7 +156,7 @@ const faqItems = [
 export default function HomePage() {
   const featuredDeals  = getFeaturedDeals(6)
   const activeDeals    = getActiveDeals()
-  const recentPosts    = getPromotedPosts(getPostsNewestFirst(), new Date(), 3)
+  const promotedPosts = getPromotedPosts(getPostsNewestFirst(), new Date(), 3)
   const liveCounts     = Object.fromEntries(
     categories.map((c) => [c.slug, getDealsByCategory(c.slug).length])
   )
@@ -605,7 +606,7 @@ export default function HomePage() {
             </Link>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-            {recentPosts.map((post) => (
+            {promotedPosts.map((post) => (
               <BlogCard key={post.id} post={post} />
             ))}
           </div>

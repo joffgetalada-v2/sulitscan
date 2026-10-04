@@ -326,9 +326,8 @@ test("entity pagination hrefs omit page one and include later pages", () => {
     "/categories/under-1000?page=2")
 })
 
-test("date-dependent deal pages revalidate daily", () => {
+test("other date-dependent deal pages retain daily revalidation", () => {
   const routeSources = [
-    "src/app/page.tsx",
     "src/app/deals/page.tsx",
     "src/app/categories/[slug]/page.tsx",
     "src/app/stores/[slug]/page.tsx",
