@@ -6,6 +6,7 @@ import { ShoppingBag, ArrowRight, CheckCircle } from "lucide-react"
 import DealScannerVisual from "@/components/DealScannerVisual"
 import { stores } from "@/data/stores"
 import { categories } from "@/data/categories"
+import type { DealScannerSlide } from "@/lib/deal-scanner"
 
 const trustItems = [
   "No checkout. No automatic redirects.",
@@ -13,7 +14,7 @@ const trustItems = [
   "Curated manually for Filipino shoppers.",
 ]
 
-export default function Hero({ activeDealCount }: { activeDealCount: number }) {
+export default function Hero({ activeDealCount, scannerSlides }: { activeDealCount: number; scannerSlides: DealScannerSlide[] }) {
   const stats = [
     { value: String(stores.length), label: "Partner Stores", color: "text-green-600" },
     { value: String(activeDealCount), label: "Active Listings", color: "text-slate-900" },
@@ -96,11 +97,11 @@ export default function Hero({ activeDealCount }: { activeDealCount: number }) {
               className="flex flex-wrap gap-3 mb-10"
             >
               <Link
-                href="/deals"
+                href={activeDealCount > 0 ? "/deals" : "/blog"}
                 className="inline-flex items-center gap-2.5 px-7 py-3.5 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold text-base rounded-2xl transition-all shadow-lg shadow-green-500/25 hover:shadow-xl hover:shadow-green-500/35 hover:-translate-y-0.5 active:translate-y-0 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
               >
                 <ShoppingBag className="w-5 h-5 shrink-0" aria-hidden="true" />
-                Browse Deals
+                {activeDealCount > 0 ? "Browse Deals" : "Browse Guides"}
               </Link>
               <Link
                 href="/about"
@@ -136,7 +137,7 @@ export default function Hero({ activeDealCount }: { activeDealCount: number }) {
             transition={{ duration: 0.7, delay: 0.28, ease: "easeOut" }}
             className="relative"
           >
-            <DealScannerVisual />
+            <DealScannerVisual slides={scannerSlides} />
           </motion.div>
         </div>
 

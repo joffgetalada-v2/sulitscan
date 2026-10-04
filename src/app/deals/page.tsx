@@ -98,8 +98,9 @@ export default async function DealsPage({ searchParams }: DealsPageProps) {
                 Temu, Shopee PH &amp; Sephora PH Deals
               </h1>
               <p className="text-slate-500 text-sm max-w-xl">
-                {formatDealCount(activeDeals.length)} from Temu, Shopee PH, and Sephora PH. Search by product, filter by store or category,
-                and sort by discount, SulitScore, or price.
+                {activeDeals.length > 0
+                  ? `${formatDealCount(activeDeals.length)} from Temu, Shopee PH, and Sephora PH. Search by product, filter by store or category, and sort by discount, SulitScore, or price.`
+                  : "Verified listings are being refreshed. Explore buyer guides, compare checkout totals, or review partner store information below."}
               </p>
             </div>
           </div>

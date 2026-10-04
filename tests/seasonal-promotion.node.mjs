@@ -172,6 +172,10 @@ const pageModule = loadTypeScriptModule("src/app/page.tsx", {
   "react/jsx-runtime": jsxRuntime,
   "next/link": { default: Link },
   "@/components/Hero": { default: component },
+  "@/components/CatalogRefreshNotice": { default: component },
+  "@/lib/deal-scanner": loadTypeScriptModule("src/lib/deal-scanner.ts", {
+    "@/lib/deal-freshness": loadTypeScriptModule("src/lib/deal-freshness.ts"),
+  }),
   "@/components/DealCard": { default: component },
   "@/components/CategoryCard": { default: component },
   "@/components/BlogCard": { default: BlogCard },

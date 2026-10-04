@@ -17,6 +17,8 @@ import {
 import { siteConfig } from "@/lib/seo"
 import { clampMeta } from "@/lib/utils"
 import EntityDeals from "@/components/EntityDeals"
+import CatalogRefreshNotice from "@/components/CatalogRefreshNotice"
+import { getPostBySlug } from "@/data/posts"
 import ImportTaxCallout from "@/components/ImportTaxCallout"
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import { getFreshnessSafeReason } from "@/lib/deal-freshness"
@@ -302,12 +304,17 @@ export default async function StoreDetailPage({
                   ? `${storeDeals.length} curated deal${storeDeals.length !== 1 ? "s" : ""} from ${store.name}${listing.page > 1 ? ` — Page ${listing.page}` : ""}`
                   : `Deals from ${store.name}`}
               </h2>
-              <EntityDeals
+              {storeDeals.length > 0 ? <EntityDeals
                 listing={listing}
                 basePath={`/stores/${slug}`}
                 gridClassName="grid grid-cols-1 sm:grid-cols-2 gap-5"
                 priceNote={`Prices from affiliate datafeed, confirm current price on ${store.name} before buying.`}
-              />
+              /> : <CatalogRefreshNotice
+                heading={`${store.name} listings are being refreshed`}
+                context={`No verified ${store.name} product listings are currently within our freshness window. Review the buyer guide or use the disclosed store-level affiliate link to check live terms.`}
+                guides={store.relatedGuideSlug && getPostBySlug(store.relatedGuideSlug)
+                  ? [{ slug: store.relatedGuideSlug, title: `${store.name} buyer guide` }] : []}
+              />}
             </section>
 
             {/* FAQs */}
@@ -427,7 +434,9 @@ export default async function StoreDetailPage({
                   </li>
                 )}
                 <li>
-                  <Link href="/deals" className="text-xs text-green-600 hover:underline">Browse all deals →</Link>
+                  <Link href={storeDeals.length > 0 ? "/deals" : "/tools/checkout-comparison"} className="text-xs text-green-600 hover:underline">
+                    {storeDeals.length > 0 ? "Browse all deals →" : "Compare checkout totals →"}
+                  </Link>
                 </li>
                 <li>
                   <Link href="/categories" className="text-xs text-green-600 hover:underline">Shop by category →</Link>

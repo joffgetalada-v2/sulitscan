@@ -1,4 +1,44 @@
 import { test, expect, type Page } from "@playwright/test"
+import { getActiveDeals, getDealBySlug, getDealsByCategory, getDealsByPlatform } from "../src/data/deals"
+import { getPostBySlug } from "../src/data/posts"
+import { getRelatedDealsForPost } from "../src/lib/blog-recommendations"
+import { getDealScannerSlides } from "../src/lib/deal-scanner"
+import { getDealFreshness } from "../src/lib/deal-freshness"
+import { isDealIndexable } from "../src/lib/deal-seo"
+import { DEALS_PAGE_SIZE, resolveDealListing } from "../src/lib/deal-listing"
+import { ENTITY_DEALS_PAGE_SIZE } from "../src/lib/entity-deal-listing"
+import { formatPrice } from "../src/lib/utils"
+
+// Inspect genuine inventory at one clock instant; never edit freshness dates to
+// make a browser scenario applicable. Frozen historical rendering is tested in Node.
+const inventoryNow = new Date()
+const activeDeals = getActiveDeals(inventoryNow)
+const scannerSlides = getDealScannerSlides(activeDeals, 6, inventoryNow)
+const allDealsListing = resolveDealListing(activeDeals, {})
+function entityDeals(path: string) {
+  if (path.startsWith("/categories/")) return getDealsByCategory(path.split("/").at(-1)!, inventoryNow)
+  return getDealsByPlatform("Temu", inventoryNow)
+}
+
+async function expectRelatedDealRendering(page: Page, slug: string) {
+  const post = getPostBySlug(slug)
+  expect(post).toBeDefined()
+  const expected = getRelatedDealsForPost(post!)
+  const region = page.getByRole("region", { name: "Related deals to check" })
+  if (expected.length === 0) {
+    await expect(region).toHaveCount(0)
+    await expect(page.getByRole("heading", { name: "Related deals to check", exact: true })).toHaveCount(0)
+    return
+  }
+  await expect(region).toBeVisible()
+  await expect(region.getByRole("heading", { name: "Related deals to check", exact: true })).toBeVisible()
+  const cards = region.locator("article")
+  await expect(cards).toHaveCount(expected.length)
+  for (const [index, deal] of expected.entries()) {
+    await expect(cards.nth(index).getByRole("heading", { name: deal.title, exact: true })).toBeVisible()
+    await expect(cards.nth(index).locator(`a[href="/deals/${deal.slug}"]`).first()).toHaveAttribute("href", `/deals/${deal.slug}`)
+  }
+}
 
 async function installAnalyticsCapture(page: Page) {
   await page.evaluate(() => {
@@ -27,7 +67,7 @@ async function newsletterEvents(page: Page) {
 async function getAllDealsPageCount(page: Page) {
   await page.goto("/deals", { waitUntil: "domcontentloaded" })
   const pageCount = Number((await page.locator("p").filter({ hasText: /^Page \d+ of \d+$/ }).textContent())?.match(/of (\d+)/)?.[1])
-  expect(pageCount).toBeGreaterThan(1)
+  expect(pageCount).toBeGreaterThanOrEqual(1)
   return pageCount
 }
 
@@ -46,6 +86,36 @@ const routes = [
   { path: "/cookie-policy",        title: "Cookie" },
   { path: "/editorial-policy",     title: "Editorial" },
 ]
+
+test("empty catalog offers guides, checkout comparison, and partner store paths", async ({ page }) => {
+  test.skip(activeDeals.length > 0, "Requires an empty verified catalog")
+  test.slow()
+  for (const route of ["/", "/deals"]) {
+    await page.goto(route, { waitUntil: "domcontentloaded" })
+    const notice = page.getByRole("region", { name: "Verified listings are being refreshed" })
+    await expect(notice).toBeVisible()
+    for (const href of ["/blog", "/tools/checkout-comparison", "/stores/temu", "/stores/shopee-ph", "/stores/sephora-ph"]) {
+      const link = notice.locator(`a[href="${href}"]`)
+      await expect(link).toBeVisible()
+      await link.click()
+      await expect(page.getByRole("heading", { level: 1 })).toBeVisible()
+      await page.goto(route, { waitUntil: "domcontentloaded" })
+    }
+    await expect(page.getByRole("main")).not.toContainText("0+ curated deal notes")
+    await expect(page.getByRole("link", { name: "Clear all filters", exact: true })).toHaveCount(0)
+  }
+  await page.goto("/deals?q=tripod")
+  await expect(page.getByText("No deals match your current filters.")).toBeVisible()
+  await expect(page.getByRole("link", { name: "Clear all filters", exact: true })).toHaveAttribute("href", "/deals")
+  for (const route of ["/categories/home-finds", "/stores/temu"]) {
+    await page.goto(route)
+    const notice = page.getByRole("region", { name: /listings are being refreshed/i })
+    await expect(notice).toBeVisible()
+    await expect(notice.locator('a[href^="/blog/"]').first()).toBeVisible()
+    await expect(notice.locator('a[href="/tools/checkout-comparison"]')).toBeVisible()
+    await expect(notice.locator('a[href="/deals"]')).toHaveCount(0)
+  }
+})
 
 test("sales calendar exposes indexable metadata, buyer guidance, image, and structured data", async ({ page }) => {
   test.slow()
@@ -181,132 +251,41 @@ test("homepage describes reference listings and buyer checks without live-price 
   await expect(main).not.toContainText("Maximum Reference Age")
 })
 
-test("homepage deal preview applies reference-price treatment to the first June fixture", async ({ page }) => {
+test("homepage empty scanner offers a price-free checklist and guide destinations", async ({ page }) => {
+  test.skip(scannerSlides.length > 0, "Requires no eligible scanner slides")
   await page.goto("/", { waitUntil: "domcontentloaded" })
-
-  const preview = page.getByRole("region", { name: "Deal preview" })
-  await expect(preview.getByRole("heading", {
-    name: "Foldable Silicone Water Bottle (Leak-Proof, Reusable)",
-    exact: true,
-  })).toBeVisible()
-  await expect(preview).toContainText("Reference price")
-  await expect(preview).toContainText("₱107")
-  await expect(preview).not.toContainText("₱289")
-  await expect(preview).not.toContainText(/63%/)
-  await expect(preview).not.toContainText(/Save|Saved/)
-  await expect(preview).not.toContainText("Live")
+  const preview = page.getByRole("region", { name: "Buyer checklist" })
+  await expect(preview).toContainText("Before you buy")
+  await expect(preview).not.toContainText(/₱|%|Saved|OFF/)
+  await expect(preview.getByRole("button")).toHaveCount(0)
+  await expect(preview.getByRole("link", { name: "Read buyer guides →" })).toHaveAttribute("href", "/blog")
+  await expect(preview.getByRole("link", { name: "Compare checkout totals →" })).toHaveAttribute("href", "/tools/checkout-comparison")
 })
 
-test("homepage scanner opens the active internal deal detail page", async ({ page }) => {
+test("homepage empty scanner keeps its focused guide link stable", async ({ page }) => {
+  test.skip(scannerSlides.length > 0, "Requires no eligible scanner slides")
   await page.goto("/", { waitUntil: "domcontentloaded" })
-
-  const preview = page.getByRole("region", { name: "Deal preview" })
-  await expect(preview.getByRole("link", { name: "View Deal Details" })).toHaveAttribute(
-    "href",
-    "/deals/tanle-silicone-foldable-water-bottle-is-leak-proof-a-702052"
-  )
-})
-
-test("homepage scanner explains that its detail page contains the partner link", async ({ page }) => {
-  await page.goto("/", { waitUntil: "domcontentloaded" })
-
-  const preview = page.getByRole("region", { name: "Deal preview" })
-  await expect(preview).toContainText(
-    "Review the deal details first. The detail page contains the clearly disclosed partner link."
-  )
-})
-
-test("homepage scanner keeps its focused deal link stable past auto-rotation", async ({ page }) => {
-  test.slow()
-  await page.goto("/", { waitUntil: "domcontentloaded" })
-
-  const preview = page.getByRole("region", { name: "Deal preview" })
-  const detailLink = preview.getByRole("link", { name: "View Deal Details" })
-  const initialHref = await detailLink.getAttribute("href")
-  expect(initialHref).toMatch(/^\/deals\/[a-z0-9-]+$/)
-  await expect.poll(
-    () => detailLink.getAttribute("href"),
-    { timeout: 6000 }
-  ).not.toBe(initialHref)
-
-  const focusedHref = await detailLink.getAttribute("href")
-  const focusedNode = await detailLink.elementHandle()
-  expect(focusedNode).not.toBeNull()
-  await detailLink.focus()
-  await expect(detailLink).toBeFocused()
-  await expect(preview).toHaveAttribute("data-decorative-motion", "off")
+  const preview = page.getByRole("region", { name: "Buyer checklist" })
+  const guide = preview.getByRole("link", { name: "Read buyer guides →" })
+  await guide.focus()
   await page.waitForTimeout(4500)
-
-  expect(await focusedNode!.evaluate((element) => document.activeElement === element)).toBe(true)
-  await expect(detailLink).toBeFocused()
-  await expect(detailLink).toHaveAttribute("href", focusedHref as string)
+  await expect(guide).toBeFocused()
+  await expect(guide).toHaveAttribute("href", "/blog")
 })
 
-test("homepage scanner keeps an explicit pause after focus leaves", async ({ page }) => {
-  test.slow()
-  await page.goto("/", { waitUntil: "domcontentloaded" })
-
-  const preview = page.getByRole("region", { name: "Deal preview" })
-  const detailLink = preview.getByRole("link", { name: "View Deal Details" })
-  await preview.getByRole("button", { name: "Pause deal preview" }).click()
-  const pausedHref = await detailLink.getAttribute("href")
-
-  await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur())
-  await page.waitForTimeout(4500)
-
-  await expect(preview.getByRole("button", { name: "Play deal preview" })).toBeVisible()
-  await expect(detailLink).toHaveAttribute("href", pausedHref as string)
-
-  await preview.getByRole("button", { name: "Play deal preview" }).click()
-  await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur())
-  await page.mouse.move(0, 0)
-  await expect.poll(
-    () => detailLink.getAttribute("href"),
-    { timeout: 6000 }
-  ).not.toBe(pausedHref)
-})
-
-test("homepage scanner pauses while hovered and resumes after the pointer leaves", async ({ page }) => {
-  test.slow()
-  await page.goto("/", { waitUntil: "domcontentloaded" })
-
-  const preview = page.getByRole("region", { name: "Deal preview" })
-  const detailLink = preview.getByRole("link", { name: "View Deal Details" })
-  await preview.hover()
-  await expect(preview).toHaveAttribute("data-decorative-motion", "off")
-  const hoveredHref = await detailLink.getAttribute("href")
-  await page.waitForTimeout(4500)
-  await expect(detailLink).toHaveAttribute("href", hoveredHref as string)
-
-  await page.mouse.move(0, 0)
-  await expect(preview).toHaveAttribute("data-decorative-motion", "on")
-  await expect.poll(
-    () => detailLink.getAttribute("href"),
-    { timeout: 6000 }
-  ).not.toBe(hoveredHref)
-})
-
-test("homepage scanner defaults to paused with reduced motion", async ({ page }) => {
-  test.slow()
+test("homepage empty scanner remains motion-free and bounded on mobile", async ({ page }) => {
+  test.skip(scannerSlides.length > 0, "Requires no eligible scanner slides")
   await page.setViewportSize({ width: 390, height: 844 })
   await page.emulateMedia({ reducedMotion: "reduce" })
   await page.goto("/", { waitUntil: "domcontentloaded" })
-
-  const preview = page.getByRole("region", { name: "Deal preview" })
-  const detailLink = preview.getByRole("link", { name: "View Deal Details" })
-  const initialHref = await detailLink.getAttribute("href")
-  await expect(preview.getByRole("button", { name: "Play deal preview" })).toBeVisible()
-  await page.waitForTimeout(4500)
-
-  await expect(detailLink).toHaveAttribute("href", initialHref as string)
+  const preview = page.getByRole("region", { name: "Buyer checklist" })
   await expect(preview).toHaveAttribute("data-decorative-motion", "off")
   await expect.poll(() => preview.locator("[data-scanner-card]").evaluate(
     (card) => card.scrollWidth <= card.clientWidth
   )).toBe(true)
-  const firstSlideControl = preview.getByRole("button", { name: "Show slide 1" })
-  const controlBox = await firstSlideControl.boundingBox()
-  expect(controlBox?.width).toBeGreaterThanOrEqual(24)
-  expect(controlBox?.height).toBeGreaterThanOrEqual(24)
+  await expect.poll(() => page.evaluate(
+    () => document.documentElement.scrollWidth <= window.innerWidth
+  )).toBe(true)
 })
 
 test("header guide announcement links to the blog", async ({ page }) => {
@@ -331,7 +310,8 @@ test("homepage hero reports the server-computed active listing count", async ({ 
   await page.goto("/", { waitUntil: "domcontentloaded" })
 
   const hero = page.getByRole("region", { name: /Check deals before you click buy/i })
-  await expect(hero.getByText("169", { exact: true })).toBeVisible()
+  const activeListingStat = hero.getByText("Active Listings", { exact: true }).locator("..")
+  await expect(activeListingStat.getByText(String(activeDeals.length), { exact: true })).toBeVisible()
   await expect(hero.getByText("Active Listings", { exact: true })).toBeVisible()
   await expect(hero).not.toContainText("100+")
 })
@@ -560,7 +540,11 @@ test("checkout comparison is discoverable from site navigation and the homepage"
   await page.goto("/")
   await expect(page.getByRole("banner").getByRole("link", { name: "Compare Prices" })).toBeVisible()
   await expect(page.getByRole("contentinfo").getByRole("link", { name: "Checkout Comparison" })).toBeVisible()
-  await expect(page.getByRole("main").getByRole("link", { name: "Compare checkout totals" })).toBeVisible()
+  const comparisonLinks = page.getByRole("main").getByRole("link", { name: /Compare checkout totals/i })
+  await expect(comparisonLinks.first()).toBeVisible()
+  for (const link of await comparisonLinks.all()) {
+    await expect(link).toHaveAttribute("href", "/tools/checkout-comparison")
+  }
 })
 
 test("checkout comparison is included in the sitemap and relevant guides", async ({ page, request }) => {
@@ -602,281 +586,81 @@ for (const slug of ["summer-dress-shein", "xiaomi-smart-band-9-shopee"]) {
   })
 }
 
-test("affiliate links have correct rel attributes", async ({ page }) => {
-  await page.goto("/deals")
+test("store affiliate links retain complete sponsored and security attributes", async ({ page }) => {
+  await page.goto("/stores/temu")
   const affiliateLinks = page.locator('a[rel*="sponsored"]')
-  const count = await affiliateLinks.count()
-  expect(count).toBeGreaterThan(0)
-  for (let i = 0; i < Math.min(count, 3); i++) {
-    const rel = await affiliateLinks.nth(i).getAttribute("rel")
-    expect(rel).toContain("noopener")
-    expect(rel).toContain("noreferrer")
+  expect(await affiliateLinks.count()).toBeGreaterThan(0)
+  for (const link of await affiliateLinks.all()) {
+    await expect(link).toHaveAttribute("rel", "sponsored nofollow noopener noreferrer")
+    await expect(link).toHaveAttribute("target", "_blank")
   }
 })
 
-test("optimized deal images load the first listing eagerly and defer the second", async ({ page }) => {
-  await page.goto("/deals", { waitUntil: "domcontentloaded" })
-
-  const images = page.locator('main article a[aria-hidden="true"] img')
-  expect(await images.count()).toBeGreaterThanOrEqual(2)
-
-  const firstImage = images.nth(0)
-  const secondImage = images.nth(1)
-
-  await expect(firstImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
-  await expect(firstImage).toHaveAttribute("loading", "eager")
-  await expect(firstImage).toHaveAttribute("fetchpriority", "high")
-  await expect(secondImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
-  await expect(secondImage).toHaveAttribute("loading", "lazy")
-  await expect(secondImage).not.toHaveAttribute("fetchpriority", "high")
-
-  await expect
-    .poll(() => firstImage.evaluate((image) => {
-      const renderedImage = image as HTMLImageElement
-      return renderedImage.complete && renderedImage.naturalWidth > 0
-    }))
-    .toBe(true)
-  await expect
-    .poll(() => secondImage.evaluate((image) => {
-      const renderedImage = image as HTMLImageElement
-      return renderedImage.complete && renderedImage.naturalWidth > 0
-    }))
-    .toBe(true)
+test("empty catalog does not render stale product cards or product affiliate links", async ({ page }) => {
+  test.skip(activeDeals.length > 0, "Requires an empty verified catalog")
+  for (const route of ["/deals", "/categories/under-1000", "/stores/temu"]) {
+    await page.goto(route, { waitUntil: "domcontentloaded" })
+    await expect(page.locator("main article")).toHaveCount(0)
+    await expect(page.getByRole("region", { name: /listings are being refreshed/i })).toBeVisible()
+  }
+  await page.goto("/deals")
+  await expect(page.locator('main a[rel*="sponsored"]')).toHaveCount(0)
 })
 
-for (const { entityPath, dealsSectionId } of [
-  { entityPath: "/categories/under-1000", dealsSectionId: "deals-section-heading" },
-  { entityPath: "/stores/temu", dealsSectionId: "store-deals-heading" },
-]) {
-  test(`${entityPath} optimizes entity deal images and tracks their public position`, async ({ page }) => {
-    test.slow()
-    await page.addInitScript(() => {
-      ;(window as typeof window & { __events: unknown[] }).__events = []
-      window.va = (type, payload) => {
-        ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
-      }
-    })
-    await page.goto(entityPath, { waitUntil: "domcontentloaded" })
-    await installAnalyticsCapture(page)
-
-    const cards = page.locator(`section[aria-labelledby="${dealsSectionId}"] article`)
-    expect(await cards.count()).toBeGreaterThanOrEqual(2)
-    const firstImage = cards.nth(0).locator('a[aria-hidden="true"] img')
-    const secondImage = cards.nth(1).locator('a[aria-hidden="true"] img')
-
-    await expect(firstImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
-    await expect(firstImage).toHaveAttribute("loading", "eager")
-    await expect(firstImage).toHaveAttribute("fetchpriority", "high")
-    await expect(secondImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
-    await expect(secondImage).toHaveAttribute("loading", "lazy")
-    await expect(secondImage).not.toHaveAttribute("fetchpriority", "high")
-
-    for (const image of [firstImage, secondImage]) {
-      await expect
-        .poll(() => image.evaluate((element) => {
-          const renderedImage = element as HTMLImageElement
-          return renderedImage.complete && renderedImage.naturalWidth > 0
-        }))
-        .toBe(true)
-    }
-
-    const secondCard = cards.nth(1)
-    const detailHref = await secondCard.locator('a[href^="/deals/"]').first().getAttribute("href")
-    const offerId = detailHref?.split("/").pop()
-    expect(offerId).toBeTruthy()
-    const affiliateLink = secondCard.locator('a[rel*="sponsored"]')
-    await affiliateLink.evaluate((element) =>
-      element.addEventListener("click", (event) => event.preventDefault())
-    )
-    await affiliateLink.click()
-
-    const events = await page.evaluate(() =>
-      (window as typeof window & {
-        __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
-      }).__events
-    )
-    const event = events.find((candidate) =>
-      candidate.type === "event" && candidate.payload.name === "affiliate_click"
-    )
-    expect(event?.payload.data).toMatchObject({
-      offerId,
-      placement: "deal-card",
-      position: 2,
-      source: entityPath.split("/").pop(),
-    })
-    expect(Object.keys(event?.payload.data ?? {}).sort()).toEqual([
-      "offerId",
-      "placement",
-      "platform",
-      "position",
-      "source",
-    ])
-    for (const privateProperty of ["href", "url", "query", "title", "email"]) {
-      expect(event?.payload.data).not.toHaveProperty(privateProperty)
-    }
-  })
-}
-
-test("homepage scanner image is optimized, bounded, loaded, and server discoverable", async ({
-  page,
-  request,
-}) => {
+test("empty scanner checklist is server discoverable without a stale product image", async ({ page, request }) => {
+  test.skip(scannerSlides.length > 0, "Requires no eligible scanner slides")
   const response = await request.get("/")
   expect(response.status()).toBe(200)
   const html = await response.text()
-  const scannerRegion = html.match(
-    /<section[^>]*aria-label="Deal preview"[^>]*>[\s\S]*?<\/section>/
-  )?.[0]
-  expect(scannerRegion).toBeDefined()
-  const serverImage = scannerRegion?.match(/<img[^>]+>/)?.[0]
-  expect(serverImage).toContain('sizes="(max-width: 480px) calc(100vw - 2rem), 448px"')
-  const scannerAsset = serverImage?.match(/\/_next\/image\?url=([^&"]+)/)?.[1]
-  expect(scannerAsset).toBeTruthy()
-  const scannerPreload = html.match(/<link[^>]+rel="preload"[^>]+as="image"[^>]+>/g)?.find(
-    (link) => link.includes(scannerAsset as string)
-  )
-  expect(scannerPreload).toContain(
-    'imageSizes="(max-width: 480px) calc(100vw - 2rem), 448px"'
-  )
-
-  await page.goto("/", { waitUntil: "domcontentloaded" })
-  const scannerImage = page.locator('section[aria-labelledby="hero-heading"] img').first()
-  await expect(scannerImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
-  await expect(scannerImage).toHaveAttribute(
-    "sizes",
-    "(max-width: 480px) calc(100vw - 2rem), 448px"
-  )
-  await expect
-    .poll(() => scannerImage.evaluate((element) => {
-      const renderedImage = element as HTMLImageElement
-      return renderedImage.complete && renderedImage.naturalWidth > 0
-    }))
-    .toBe(true)
+  const scannerRegion = html.match(/<section[^>]*aria-label="Buyer checklist"[^>]*>[\s\S]*?<\/section>/)?.[0]
+  expect(scannerRegion).toContain("Before you buy")
+  expect(scannerRegion).toContain('href="/blog"')
+  expect(scannerRegion).not.toContain("<img")
+  await page.goto("/")
+  await expect(page.getByRole("region", { name: "Buyer checklist" })).toBeVisible()
 })
 
-test("deal card emits an affiliate_click event", async ({ page }) => {
-  await page.addInitScript(() => {
-    ;(window as typeof window & { __events: unknown[] }).__events = []
-    window.va = (type, payload) => {
-      ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
-    }
-  })
-  await page.goto("/deals")
+test("store affiliate click reports public context without private data", async ({ page }) => {
+  await page.goto("/stores/temu")
   await installAnalyticsCapture(page)
-  const affiliateLink = page.locator('a[rel*="sponsored"]').first()
-  const detailHref = await affiliateLink
-    .locator("xpath=ancestor::article")
-    .locator('a[href^="/deals/"]')
-    .first()
-    .getAttribute("href")
-  const offerId = detailHref?.split("/").pop()
-  expect(offerId).toBeTruthy()
-  const popupPromise = page.waitForEvent("popup")
-  await affiliateLink.click()
-  const popup = await popupPromise
-  await popup.close()
-  const events = await page.evaluate(() =>
-    (window as typeof window & {
-      __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
-    }).__events
-  )
-  const event = events.find((candidate) =>
-    candidate.type === "event" && candidate.payload.name === "affiliate_click"
-  )
+  const link = page.locator('a[rel*="sponsored"]').first()
+  await link.evaluate((element) => element.addEventListener("click", (event) => event.preventDefault()))
+  await link.click()
+  const events = await page.evaluate(() => (window as typeof window & {
+    __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
+  }).__events)
+  const event = events.find((candidate) => candidate.type === "event" && candidate.payload.name === "affiliate_click")
   expect(event).toBeDefined()
-  expect(Object.keys(event?.payload.data ?? {}).sort()).toEqual(["offerId", "placement", "platform", "position", "source"])
-  expect(event?.payload.data).toMatchObject({
-    offerId,
-    placement: "deal-card",
-    position: 1,
-    source: "deals",
-  })
+  expect(event?.payload.data?.platform).toBe("Temu")
   for (const privateProperty of ["href", "url", "query", "title", "email"]) {
     expect(event?.payload.data).not.toHaveProperty(privateProperty)
   }
 })
 
-test("deal detail links its store and category while tracking only its public offer ID", async ({ page }) => {
-  const offerId = "tanle-silicone-foldable-water-bottle-is-leak-proof-a-702052"
-  await page.goto(`/deals/${offerId}`)
-  await installAnalyticsCapture(page)
-
-  await expect(page.getByRole("link", { name: "Shopee PH", exact: true })).toHaveAttribute(
-    "href",
-    "/stores/shopee-ph"
-  )
-  await expect(page.getByRole("link", { name: "Home", exact: true })).toHaveAttribute(
-    "href",
-    "/categories/home-finds"
-  )
-
-  const primaryAffiliateLink = page.getByRole("link", {
-    name: "Check the current price on Shopee PH (affiliate link, opens in new tab)",
-    exact: true,
-  })
-  await primaryAffiliateLink.evaluate((element) =>
-    element.addEventListener("click", (event) => event.preventDefault())
-  )
-  await primaryAffiliateLink.click()
-
-  const events = await page.evaluate(() =>
-    (window as typeof window & {
-      __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
-    }).__events
-  )
-  const event = events.find((candidate) =>
-    candidate.type === "event" && candidate.payload.name === "affiliate_click"
-  )
-  expect(event?.payload.data).toEqual({
-    offerId,
-    placement: "deal-detail-primary",
-    platform: "Shopee PH",
-    source: offerId,
-  })
-  expect(Object.keys(event?.payload.data ?? {}).sort()).toEqual([
-    "offerId",
-    "placement",
-    "platform",
-    "source",
-  ])
+test("expired deal detail remains reachable but excludes old prices and indexing", async ({ page }) => {
+  const fixture = getDealBySlug("tanle-silicone-foldable-water-bottle-is-leak-proof-a-702052")
+  test.skip(!fixture || getDealFreshness(fixture.lastChecked, inventoryNow).status !== "expired", "Requires the public water-bottle fixture to be expired")
+  const response = await page.goto("/deals/tanle-silicone-foldable-water-bottle-is-leak-proof-a-702052")
+  expect(response?.status()).toBe(200)
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
+  await expect(page.getByRole("region", { name: "Price information" })).not.toContainText(/₱|%|Saved/)
 })
 
-test("reference prices retire stale discount claims while retaining the Temu affiliate link", async ({ page }) => {
-  const slug = "jockmail-padded-boxer-briefs-temu"
-  const title = "JOCKMAIL Men's Padded Boxer Briefs – Breathable Mesh Hip Support"
-
+test("expired Temu product no longer exposes old prices or structured offers", async ({ page }) => {
+  const fixture = getDealBySlug("jockmail-padded-boxer-briefs-temu")
+  test.skip(!fixture || getDealFreshness(fixture.lastChecked, inventoryNow).status !== "expired", "Requires an expired public Temu fixture")
+  const search = resolveDealListing(activeDeals, { q: "jockmail" })
   await page.goto("/deals?q=jockmail", { waitUntil: "domcontentloaded" })
-  const card = page.locator("article").filter({
-    has: page.getByRole("heading", { name: title, exact: true }),
-  })
-  await expect(card).toContainText("Reference price")
-  await expect(card).toContainText("₱147")
-  await expect(card).not.toContainText("₱299")
-  await expect(card).not.toContainText(/51%/)
-  await expect(card).not.toContainText("Save")
-
-  const itemLists = (await page.locator('script[type="application/ld+json"]').allTextContents())
-    .map((value) => JSON.parse(value))
-    .filter((value) => value["@type"] === "ItemList")
-  expect(itemLists.flatMap((itemList) => itemList.itemListElement.map((item: { description?: string }) => item.description)))
-    .not.toContain(expect.stringMatching(/(?:₱147|51%|\b(?:price|discount|save|cost)\b)/i))
-
-  await page.goto(`/deals/${slug}`, { waitUntil: "domcontentloaded" })
-  const priceInformation = page.getByRole("region", { name: "Price information" })
-  await expect(priceInformation).toContainText("Reference price")
-  await expect(priceInformation).toContainText("₱147")
-  await expect(priceInformation).not.toContainText("₱299")
-  await expect(page.getByRole("main")).not.toContainText(/At ₱147/i)
-  await expect(priceInformation).not.toContainText("Save")
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
-    "href",
-    `https://sulitscan.com/deals/${slug}`
-  )
-  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /index, follow/i)
-  await expect(page.getByRole("link", {
-    name: "Check the current price on Temu (affiliate link, opens in new tab)",
-    exact: true,
-  })).toHaveAttribute("rel", /sponsored/)
+  await expect(page.locator("main article")).toHaveCount(search.items.length)
+  await expect(page.locator("main article").filter({ has: page.getByRole("heading", { name: fixture!.title, exact: true }) })).toHaveCount(0)
+  if (search.total === 0) await expect(page.getByText("No deals match your current filters.")).toBeVisible()
+  const response = await page.goto("/deals/jockmail-padded-boxer-briefs-temu", { waitUntil: "domcontentloaded" })
+  expect(response?.status()).toBe(200)
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
+  await expect(page.getByRole("region", { name: "Price information" })).not.toContainText(/₱|\d+%|Saved/)
+  const products = (await page.locator('script[type="application/ld+json"]').allTextContents())
+    .map((value) => JSON.parse(value)).filter((value) => value["@type"] === "Product")
+  for (const product of products) expect(product).not.toHaveProperty("offers")
 })
 
 test("homepage partner banner emits an affiliate_click event with its public offer ID", async ({ page }) => {
@@ -1032,7 +816,7 @@ test("analytics failure does not block affiliate navigation", async ({ page }) =
       if (type === "event") throw new Error("analytics unavailable")
     }
   })
-  await page.goto("/deals")
+  await page.goto("/stores/temu")
   const popupPromise = page.waitForEvent("popup")
   await page.locator('a[rel*="sponsored"]').first().click()
   const popup = await popupPromise
@@ -1077,8 +861,9 @@ test("sitemap contains reviewed canonical guides and excludes the retired guide"
     /<loc>https:\/\/sulitscan\.com\/blog\/how-to-check-shopee-seller-legit-philippines<\/loc>\s*<lastmod>2026-07-12/
   )
   expect(xml).not.toContain("/blog/how-to-check-if-shopee-seller-is-legit")
-  expect(xml).toContain("/categories/under-1000?page=2")
-  expect(xml).toContain("/stores/temu?page=2")
+  for (const path of ["/categories/under-1000", "/stores/temu"]) {
+    expect(xml.includes(`<loc>https://sulitscan.com${path}</loc>`)).toBe(entityDeals(path).length > 0)
+  }
   expect(xml).not.toContain("?page=1")
 })
 
@@ -1108,17 +893,14 @@ test("Shopee seller guide renders the exact ordered related guides", async ({ pa
   }
 })
 
-test("deals page exposes crawlable server pagination", async ({ page }) => {
+test("empty deals pagination normalizes to the first page and is noindex", async ({ page }) => {
+  test.skip(activeDeals.length > 0, "Requires an empty verified catalog")
   await page.goto("/deals?page=2")
-  await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
-  await expect(page.getByRole("link", { name: "Previous page" })).toHaveAttribute("href", "/deals")
-  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://sulitscan.com/deals?page=2")
-  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /index, follow/i)
-  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", /Deals.*Page 2/i)
-  await expect(page.locator('meta[property="og:url"]')).toHaveAttribute("content", "https://sulitscan.com/deals?page=2")
-  await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute("content", /Deals.*Page 2/i)
-  await expect(page.locator('meta[name="twitter:description"]')).toHaveAttribute("content", /curated online deals/i)
-  expect(await page.locator("main article").count()).toBeLessThanOrEqual(24)
+  await expect(page.getByText("Page 1 of 1", { exact: true })).toBeVisible()
+  await expect(page.getByRole("navigation", { name: "Deals pagination" })).toHaveCount(0)
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://sulitscan.com/deals")
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
+  await expect(page.locator("main article")).toHaveCount(0)
 })
 
 test("out-of-range deal pages retain their normalized canonical but are noindex", async ({ page }) => {
@@ -1152,7 +934,9 @@ test("filtered deals are noindex and preserve URL state", async ({ page }) => {
   await page.goto("/deals?q=brush&store=Sephora+PH")
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
   await expect(page.locator('input[name="q"]')).toHaveValue("brush")
-  await expect(page.locator('select[name="store"]')).toHaveValue("Sephora PH")
+  await expect(page.locator('select[name="store"]')).toHaveValue(
+    resolveDealListing(activeDeals, { q: "brush", store: "Sephora PH" }).store
+  )
 })
 
 test("filtered and noncanonical later deal URLs keep the page-one description", async ({ page }) => {
@@ -1176,85 +960,22 @@ test("invalid deal filters normalize visibly but remain noindex", async ({ page 
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://sulitscan.com/deals")
 })
 
-test.describe("entity deal pagination", () => {
-  test.describe.configure({ mode: "serial" })
-
+test.describe("empty entity pagination", () => {
   for (const entityPath of ["/categories/under-1000", "/stores/temu"]) {
-    test(`${entityPath} exposes crawlable deal pagination`, async ({ page }) => {
-      test.slow()
-      await page.goto(entityPath, { waitUntil: "domcontentloaded" })
-      const firstPageDeals = await page.locator("main article h3").allTextContents()
-      await expect(page.getByRole("link", { name: "Next page" })).toHaveAttribute(
-        "href",
-        `${entityPath}?page=2`
-      )
-
-      const response = await page.goto(`${entityPath}?page=2`, {
-        waitUntil: "domcontentloaded",
+    for (const query of ["", "?page=2", "?page=garbage", "?page=2&page=3"]) {
+      test(`${entityPath}${query} exposes a canonical refresh path without placeholder pagination`, async ({ page }) => {
+        test.skip(entityDeals(entityPath).length > 0, "Requires this entity's verified inventory to be empty")
+        const response = await page.goto(`${entityPath}${query}`, { waitUntil: "domcontentloaded" })
+        expect(response?.status()).toBe(200)
+        await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", `https://sulitscan.com${entityPath}`)
+        await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
+        await expect(page.locator("main article")).toHaveCount(0)
+        await expect(page.getByRole("navigation", { name: "Deals pagination" })).toHaveCount(0)
+        await expect(page.getByRole("region", { name: /listings are being refreshed/i })).toBeVisible()
       })
-      expect(response?.status()).toBe(200)
-      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
-        "href",
-        `https://sulitscan.com${entityPath}?page=2`
-      )
-      const secondPageDeals = await page.locator("main article h3").allTextContents()
-      expect(secondPageDeals).not.toEqual(firstPageDeals)
-    })
-
-    test(`${entityPath} noindexes an invalid page request`, async ({ page }) => {
-      test.slow()
-      await page.goto(`${entityPath}?page=garbage`, { waitUntil: "domcontentloaded" })
-      await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
-      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
-        "href",
-        `https://sulitscan.com${entityPath}`
-      )
-    })
-  }
-
-  test("later category and store pages keep deal results while omitting page-one-only content", async ({ page }) => {
-    test.slow()
-
-    await page.goto("/categories/under-500", { waitUntil: "domcontentloaded" })
-    const categoryPageOneDescription = await page.locator('meta[name="description"]').getAttribute("content")
-
-    await page.goto("/categories/under-500?page=2", { waitUntil: "domcontentloaded" })
-    await expect(page.locator('main article')).not.toHaveCount(0)
-    await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
-    expect((await page.locator('script[type="application/ld+json"]').allTextContents())
-      .some((schema) => schema.includes('"@type":"FAQPage"'))).toBe(false)
-    await expect(page.getByRole("heading", { name: /Top picks in/i })).toHaveCount(0)
-    await expect(page.getByRole("heading", { name: /deals in the Philippines/i })).toHaveCount(0)
-    const categoryPageTwoDescription = await page.locator('meta[name="description"]').getAttribute("content")
-    expect(categoryPageTwoDescription).toContain("Page 2")
-    expect(categoryPageTwoDescription).not.toBe(categoryPageOneDescription)
-
-    await page.goto("/stores/temu", { waitUntil: "domcontentloaded" })
-    const storePageOneDescription = await page.locator('meta[name="description"]').getAttribute("content")
-
-    await page.goto("/stores/temu?page=2", { waitUntil: "domcontentloaded" })
-    await expect(page.locator('main article')).not.toHaveCount(0)
-    await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
-    expect((await page.locator('script[type="application/ld+json"]').allTextContents())
-      .some((schema) => schema.includes('"@type":"FAQPage"'))).toBe(false)
-    await expect(page.getByRole("heading", { name: /Frequently asked questions about Temu/i })).toHaveCount(0)
-    const storePageTwoDescription = await page.locator('meta[name="description"]').getAttribute("content")
-    expect(storePageTwoDescription).toContain("Page 2")
-    expect(storePageTwoDescription).not.toBe(storePageOneDescription)
-  })
-
-  test("duplicate entity page parameters remain noindex after display normalization", async ({ page }) => {
-    test.slow()
-
-    for (const entityPath of ["/categories/under-500", "/stores/temu"]) {
-      await page.goto(`${entityPath}?page=2&page=3`, { waitUntil: "domcontentloaded" })
-
-      await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
-      await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
     }
-  })
+  }
 })
-
 
 test("article uses article-specific Twitter metadata and dateModified", async ({ page }) => {
   await page.goto("/blog/best-shopee-finds-under-500-philippines")
@@ -1291,12 +1012,12 @@ const growthPosts = [
 ]
 
 for (const { slug, faqQuestion } of growthPosts) {
-  test(`${slug} renders a unique cover, FAQs, related deals, and disclosure`, async ({ page }) => {
+  test(`${slug} renders a unique cover, FAQs, disclosure, and eligible recommendations`, async ({ page }) => {
     await page.goto(`/blog/${slug}`)
     await expect(page.locator(`img[src*="${slug}"]`).first()).toBeVisible()
     await expect(page.getByRole("heading", { name: "Frequently asked questions", exact: true })).toBeVisible()
     await expect(page.locator("summary").filter({ hasText: faqQuestion })).toBeVisible()
-    await expect(page.getByRole("heading", { name: "Related deals to check" })).toBeVisible()
+    await expectRelatedDealRendering(page, slug)
     await expect(page.locator("main").getByText("Affiliate Disclosure:", { exact: false })).toBeVisible()
   })
 }
@@ -1429,8 +1150,7 @@ test.describe("evidence-led guide routes", () => {
       await expect(page.getByRole("heading", { name: "How we assessed this guide", exact: true })).toBeVisible()
       await expect(page.getByRole("heading", { name: "Frequently asked questions", exact: true })).toBeVisible()
 
-      const relatedDeals = page.getByRole("region", { name: "Related deals to check" })
-      await expect(relatedDeals.locator("article").first()).toBeVisible()
+      await expectRelatedDealRendering(page, slug)
       await expect(page.locator("main").getByText("Affiliate Disclosure:", { exact: false })).toBeVisible()
       await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
         "href",
@@ -1726,4 +1446,547 @@ test("cookware guide keeps one contextual ImportTaxPH link without a duplicate c
       await expect(callout).toHaveCount(0)
     }
   }
+})
+
+test.describe("active catalog scanner regressions", () => {
+  // Keep the original nonempty-inventory assertions; expired records must never
+  // be revived just to exercise browser tests. Empty-state coverage runs above.
+  test.skip(scannerSlides.length === 0, "Requires at least one eligible scanner slide")
+
+test("homepage deal preview applies the first verified slide's freshness treatment", async ({ page }) => {
+  const first = scannerSlides[0]
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const preview = page.getByRole("region", { name: "Deal preview" })
+  await expect(preview.getByRole("heading", {
+    name: first.title,
+    exact: true,
+  })).toBeVisible()
+  const price = preview.locator('[aria-live="polite"]')
+  await expect(price).toContainText(formatPrice(first.salePrice))
+  if (first.freshnessStatus === "reference") {
+    await expect(price).toContainText("Reference price")
+    if (first.originalPrice !== first.salePrice) await expect(price).not.toContainText(formatPrice(first.originalPrice))
+    await expect(price).not.toContainText(/\d+%|Save|Saved/)
+    await expect(preview.getByText("Discount", { exact: true })).toHaveCount(0)
+    await expect(preview.getByText(/^−\d+% OFF$/)).toHaveCount(0)
+    await expect(preview.getByText(/^₱[\d,]+ Saved$/)).toHaveCount(0)
+  } else {
+    await expect(price).toContainText(formatPrice(first.originalPrice))
+    await expect(preview).toContainText(`${first.discount}%`)
+    await expect(price).toContainText(`Save ${formatPrice(first.originalPrice - first.salePrice)}`)
+  }
+  await expect(preview.getByText("Live", { exact: true })).toHaveCount(0)
+})
+
+test("homepage scanner opens the active internal deal detail page", async ({ page }) => {
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const preview = page.getByRole("region", { name: "Deal preview" })
+  await expect(preview.getByRole("link", { name: "View Deal Details" })).toHaveAttribute(
+    "href",
+    `/deals/${scannerSlides[0].slug}`
+  )
+})
+
+test("homepage scanner explains that its detail page contains the partner link", async ({ page }) => {
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const preview = page.getByRole("region", { name: "Deal preview" })
+  await expect(preview).toContainText(
+    "Review the deal details first. The detail page contains the clearly disclosed partner link."
+  )
+})
+
+test("homepage scanner keeps its focused deal link stable past auto-rotation", async ({ page }) => {
+  test.skip(scannerSlides.length < 2, "Requires at least two distinct-category scanner slides for rotation")
+  test.slow()
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const preview = page.getByRole("region", { name: "Deal preview" })
+  const detailLink = preview.getByRole("link", { name: "View Deal Details" })
+  const initialHref = await detailLink.getAttribute("href")
+  expect(initialHref).toMatch(/^\/deals\/[a-z0-9-]+$/)
+  await expect.poll(
+    () => detailLink.getAttribute("href"),
+    { timeout: 6000 }
+  ).not.toBe(initialHref)
+
+  const focusedHref = await detailLink.getAttribute("href")
+  const focusedNode = await detailLink.elementHandle()
+  expect(focusedNode).not.toBeNull()
+  await detailLink.focus()
+  await expect(detailLink).toBeFocused()
+  await expect(preview).toHaveAttribute("data-decorative-motion", "off")
+  await page.waitForTimeout(4500)
+
+  expect(await focusedNode!.evaluate((element) => document.activeElement === element)).toBe(true)
+  await expect(detailLink).toBeFocused()
+  await expect(detailLink).toHaveAttribute("href", focusedHref as string)
+})
+
+test("homepage scanner keeps an explicit pause after focus leaves", async ({ page }) => {
+  test.skip(scannerSlides.length < 2, "Requires at least two distinct-category scanner slides for rotation")
+  test.slow()
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const preview = page.getByRole("region", { name: "Deal preview" })
+  const detailLink = preview.getByRole("link", { name: "View Deal Details" })
+  await preview.getByRole("button", { name: "Pause deal preview" }).click()
+  const pausedHref = await detailLink.getAttribute("href")
+
+  await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur())
+  await page.waitForTimeout(4500)
+
+  await expect(preview.getByRole("button", { name: "Play deal preview" })).toBeVisible()
+  await expect(detailLink).toHaveAttribute("href", pausedHref as string)
+
+  await preview.getByRole("button", { name: "Play deal preview" }).click()
+  await page.evaluate(() => (document.activeElement as HTMLElement | null)?.blur())
+  await page.mouse.move(0, 0)
+  await expect.poll(
+    () => detailLink.getAttribute("href"),
+    { timeout: 6000 }
+  ).not.toBe(pausedHref)
+})
+
+test("homepage scanner pauses while hovered and resumes after the pointer leaves", async ({ page }) => {
+  test.skip(scannerSlides.length < 2, "Requires at least two distinct-category scanner slides for rotation")
+  test.slow()
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const preview = page.getByRole("region", { name: "Deal preview" })
+  const detailLink = preview.getByRole("link", { name: "View Deal Details" })
+  await preview.hover()
+  await expect(preview).toHaveAttribute("data-decorative-motion", "off")
+  const hoveredHref = await detailLink.getAttribute("href")
+  await page.waitForTimeout(4500)
+  await expect(detailLink).toHaveAttribute("href", hoveredHref as string)
+
+  await page.mouse.move(0, 0)
+  await expect(preview).toHaveAttribute("data-decorative-motion", "on")
+  await expect.poll(
+    () => detailLink.getAttribute("href"),
+    { timeout: 6000 }
+  ).not.toBe(hoveredHref)
+})
+
+test("homepage scanner defaults to paused with reduced motion", async ({ page }) => {
+  test.slow()
+  await page.setViewportSize({ width: 390, height: 844 })
+  await page.emulateMedia({ reducedMotion: "reduce" })
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+
+  const preview = page.getByRole("region", { name: "Deal preview" })
+  const detailLink = preview.getByRole("link", { name: "View Deal Details" })
+  const initialHref = await detailLink.getAttribute("href")
+  await expect(preview.getByRole("button", { name: "Play deal preview" })).toBeVisible()
+  await page.waitForTimeout(4500)
+
+  await expect(detailLink).toHaveAttribute("href", initialHref as string)
+  await expect(preview).toHaveAttribute("data-decorative-motion", "off")
+  await expect.poll(() => preview.locator("[data-scanner-card]").evaluate(
+    (card) => card.scrollWidth <= card.clientWidth
+  )).toBe(true)
+  const firstSlideControl = preview.getByRole("button", { name: "Show slide 1" })
+  const controlBox = await firstSlideControl.boundingBox()
+  expect(controlBox?.width).toBeGreaterThanOrEqual(24)
+  expect(controlBox?.height).toBeGreaterThanOrEqual(24)
+})
+})
+
+test.describe("active catalog product-card regressions", () => {
+  // Keep the original nonempty-inventory assertions; expired records must never
+  // be revived just to exercise browser tests. Empty-state coverage runs above.
+  test.skip(activeDeals.length === 0, "Requires verified product inventory")
+
+test("affiliate links have correct rel attributes", async ({ page }) => {
+  await page.goto("/deals")
+  const affiliateLinks = page.locator('a[rel*="sponsored"]')
+  const count = await affiliateLinks.count()
+  expect(count).toBeGreaterThan(0)
+  for (let i = 0; i < Math.min(count, 3); i++) {
+    const rel = await affiliateLinks.nth(i).getAttribute("rel")
+    expect(rel).toContain("noopener")
+    expect(rel).toContain("noreferrer")
+  }
+})
+
+test("optimized deal images load the first listing eagerly and defer the second", async ({ page }) => {
+  test.skip(allDealsListing.items.length < 2 || !allDealsListing.items.slice(0, 2).every((deal) => deal.imageUrl), "Requires two imaged products at the start of the listing")
+  await page.goto("/deals", { waitUntil: "domcontentloaded" })
+
+  const images = page.locator('main article a[aria-hidden="true"] img')
+  expect(await images.count()).toBeGreaterThanOrEqual(2)
+
+  const firstImage = images.nth(0)
+  const secondImage = images.nth(1)
+
+  await expect(firstImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
+  await expect(firstImage).toHaveAttribute("loading", "eager")
+  await expect(firstImage).toHaveAttribute("fetchpriority", "high")
+  await expect(secondImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
+  await expect(secondImage).toHaveAttribute("loading", "lazy")
+  await expect(secondImage).not.toHaveAttribute("fetchpriority", "high")
+
+  await expect
+    .poll(() => firstImage.evaluate((image) => {
+      const renderedImage = image as HTMLImageElement
+      return renderedImage.complete && renderedImage.naturalWidth > 0
+    }))
+    .toBe(true)
+  await expect
+    .poll(() => secondImage.evaluate((image) => {
+      const renderedImage = image as HTMLImageElement
+      return renderedImage.complete && renderedImage.naturalWidth > 0
+    }))
+    .toBe(true)
+})
+
+for (const { entityPath, dealsSectionId } of [
+  { entityPath: "/categories/under-1000", dealsSectionId: "deals-section-heading" },
+  { entityPath: "/stores/temu", dealsSectionId: "store-deals-heading" },
+]) {
+  test(`${entityPath} optimizes entity deal images and tracks their public position`, async ({ page }) => {
+    test.skip(entityDeals(entityPath).length < 2 || !entityDeals(entityPath).slice(0, 2).every((deal) => deal.imageUrl), "Requires two imaged products in this entity")
+    test.slow()
+    await page.addInitScript(() => {
+      ;(window as typeof window & { __events: unknown[] }).__events = []
+      window.va = (type, payload) => {
+        ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
+      }
+    })
+    await page.goto(entityPath, { waitUntil: "domcontentloaded" })
+    await installAnalyticsCapture(page)
+
+    const cards = page.locator(`section[aria-labelledby="${dealsSectionId}"] article`)
+    expect(await cards.count()).toBeGreaterThanOrEqual(2)
+    const firstImage = cards.nth(0).locator('a[aria-hidden="true"] img')
+    const secondImage = cards.nth(1).locator('a[aria-hidden="true"] img')
+
+    await expect(firstImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
+    await expect(firstImage).toHaveAttribute("loading", "eager")
+    await expect(firstImage).toHaveAttribute("fetchpriority", "high")
+    await expect(secondImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
+    await expect(secondImage).toHaveAttribute("loading", "lazy")
+    await expect(secondImage).not.toHaveAttribute("fetchpriority", "high")
+
+    for (const image of [firstImage, secondImage]) {
+      await expect
+        .poll(() => image.evaluate((element) => {
+          const renderedImage = element as HTMLImageElement
+          return renderedImage.complete && renderedImage.naturalWidth > 0
+        }))
+        .toBe(true)
+    }
+
+    const secondCard = cards.nth(1)
+    const detailHref = await secondCard.locator('a[href^="/deals/"]').first().getAttribute("href")
+    const offerId = detailHref?.split("/").pop()
+    expect(offerId).toBeTruthy()
+    const affiliateLink = secondCard.locator('a[rel*="sponsored"]')
+    await affiliateLink.evaluate((element) =>
+      element.addEventListener("click", (event) => event.preventDefault())
+    )
+    await affiliateLink.click()
+
+    const events = await page.evaluate(() =>
+      (window as typeof window & {
+        __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
+      }).__events
+    )
+    const event = events.find((candidate) =>
+      candidate.type === "event" && candidate.payload.name === "affiliate_click"
+    )
+    expect(event?.payload.data).toMatchObject({
+      offerId,
+      placement: "deal-card",
+      position: 2,
+      source: entityPath.split("/").pop(),
+    })
+    expect(Object.keys(event?.payload.data ?? {}).sort()).toEqual([
+      "offerId",
+      "placement",
+      "platform",
+      "position",
+      "source",
+    ])
+    for (const privateProperty of ["href", "url", "query", "title", "email"]) {
+      expect(event?.payload.data).not.toHaveProperty(privateProperty)
+    }
+  })
+}
+
+test("homepage scanner image is optimized, bounded, loaded, and server discoverable", async ({
+  page,
+  request,
+}) => {
+  test.skip(!scannerSlides[0]?.imageUrl, "Requires an imaged first scanner slide")
+  const response = await request.get("/")
+  expect(response.status()).toBe(200)
+  const html = await response.text()
+  const scannerRegion = html.match(
+    /<section[^>]*aria-label="Deal preview"[^>]*>[\s\S]*?<\/section>/
+  )?.[0]
+  expect(scannerRegion).toBeDefined()
+  const serverImage = scannerRegion?.match(/<img[^>]+>/)?.[0]
+  expect(serverImage).toContain('sizes="(max-width: 480px) calc(100vw - 2rem), 448px"')
+  const scannerAsset = serverImage?.match(/\/_next\/image\?url=([^&"]+)/)?.[1]
+  expect(scannerAsset).toBeTruthy()
+  const scannerPreload = html.match(/<link[^>]+rel="preload"[^>]+as="image"[^>]+>/g)?.find(
+    (link) => link.includes(scannerAsset as string)
+  )
+  expect(scannerPreload).toContain(
+    'imageSizes="(max-width: 480px) calc(100vw - 2rem), 448px"'
+  )
+
+  await page.goto("/", { waitUntil: "domcontentloaded" })
+  const scannerImage = page.locator('section[aria-labelledby="hero-heading"] img').first()
+  await expect(scannerImage).toHaveAttribute("src", /^\/_next\/image\?url=/)
+  await expect(scannerImage).toHaveAttribute(
+    "sizes",
+    "(max-width: 480px) calc(100vw - 2rem), 448px"
+  )
+  await expect
+    .poll(() => scannerImage.evaluate((element) => {
+      const renderedImage = element as HTMLImageElement
+      return renderedImage.complete && renderedImage.naturalWidth > 0
+    }))
+    .toBe(true)
+})
+
+test("deal card emits an affiliate_click event", async ({ page }) => {
+  await page.addInitScript(() => {
+    ;(window as typeof window & { __events: unknown[] }).__events = []
+    window.va = (type, payload) => {
+      ;(window as typeof window & { __events: unknown[] }).__events.push({ type, payload })
+    }
+  })
+  await page.goto("/deals")
+  await installAnalyticsCapture(page)
+  const affiliateLink = page.locator('a[rel*="sponsored"]').first()
+  const detailHref = await affiliateLink
+    .locator("xpath=ancestor::article")
+    .locator('a[href^="/deals/"]')
+    .first()
+    .getAttribute("href")
+  const offerId = detailHref?.split("/").pop()
+  expect(offerId).toBeTruthy()
+  const popupPromise = page.waitForEvent("popup")
+  await affiliateLink.click()
+  const popup = await popupPromise
+  await popup.close()
+  const events = await page.evaluate(() =>
+    (window as typeof window & {
+      __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
+    }).__events
+  )
+  const event = events.find((candidate) =>
+    candidate.type === "event" && candidate.payload.name === "affiliate_click"
+  )
+  expect(event).toBeDefined()
+  expect(Object.keys(event?.payload.data ?? {}).sort()).toEqual(["offerId", "placement", "platform", "position", "source"])
+  expect(event?.payload.data).toMatchObject({
+    offerId,
+    placement: "deal-card",
+    position: 1,
+    source: "deals",
+  })
+  for (const privateProperty of ["href", "url", "query", "title", "email"]) {
+    expect(event?.payload.data).not.toHaveProperty(privateProperty)
+  }
+})
+
+test("deal detail links its store and category while tracking only its public offer ID", async ({ page }) => {
+  const deal = activeDeals.find((record) => record.platform === "Shopee PH" && record.category === "Home")
+  test.skip(!deal, "Requires an active Shopee PH Home product for these store/category assertions")
+  const offerId = deal!.slug
+  await page.goto(`/deals/${offerId}`)
+  await installAnalyticsCapture(page)
+
+  await expect(page.getByRole("link", { name: "Shopee PH", exact: true })).toHaveAttribute(
+    "href",
+    "/stores/shopee-ph"
+  )
+  await expect(page.getByRole("link", { name: "Home", exact: true })).toHaveAttribute(
+    "href",
+    "/categories/home-finds"
+  )
+
+  const primaryAffiliateLink = page.getByRole("link", {
+    name: "Check the current price on Shopee PH (affiliate link, opens in new tab)",
+    exact: true,
+  })
+  await primaryAffiliateLink.evaluate((element) =>
+    element.addEventListener("click", (event) => event.preventDefault())
+  )
+  await primaryAffiliateLink.click()
+
+  const events = await page.evaluate(() =>
+    (window as typeof window & {
+      __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
+    }).__events
+  )
+  const event = events.find((candidate) =>
+    candidate.type === "event" && candidate.payload.name === "affiliate_click"
+  )
+  expect(event?.payload.data).toEqual({
+    offerId,
+    placement: "deal-detail-primary",
+    platform: "Shopee PH",
+    source: offerId,
+  })
+  expect(Object.keys(event?.payload.data ?? {}).sort()).toEqual([
+    "offerId",
+    "placement",
+    "platform",
+    "source",
+  ])
+})
+
+test("reference prices retire stale discount claims while retaining the Temu affiliate link", async ({ page }) => {
+  const deal = activeDeals.find((record) => record.platform === "Temu"
+    && getDealFreshness(record.lastChecked, inventoryNow).status === "reference"
+    && record.originalPrice > record.salePrice
+    && isDealIndexable(record, getDealFreshness(record.lastChecked, inventoryNow)))
+  test.skip(!deal, "Requires an indexable Temu reference product with distinct original/sale prices")
+  const { slug, title } = deal!
+  const sale = formatPrice(deal!.salePrice)
+  const original = formatPrice(deal!.originalPrice)
+
+  await page.goto(`/deals?q=${encodeURIComponent(title)}`, { waitUntil: "domcontentloaded" })
+  const card = page.locator("article").filter({
+    has: page.getByRole("heading", { name: title, exact: true }),
+  })
+  const cardPrice = card.locator('[aria-live="polite"]')
+  await expect(cardPrice).toContainText("Reference price")
+  await expect(cardPrice).toContainText(sale)
+  await expect(cardPrice).not.toContainText(original)
+  await expect(cardPrice).not.toContainText(/\d+%|Save|Saved/)
+  await expect(card.getByText(/^\d+% OFF$/)).toHaveCount(0)
+
+  const itemLists = (await page.locator('script[type="application/ld+json"]').allTextContents())
+    .map((value) => JSON.parse(value))
+    .filter((value) => value["@type"] === "ItemList")
+  expect(itemLists.flatMap((itemList) => itemList.itemListElement.map((item: { description?: string }) => item.description)))
+    .not.toContain(expect.stringMatching(/(?:₱\d|\d+%|\b(?:price|discount|save|cost)\b)/i))
+
+  await page.goto(`/deals/${slug}`, { waitUntil: "domcontentloaded" })
+  const priceInformation = page.getByRole("region", { name: "Price information" })
+  await expect(priceInformation).toContainText("Reference price")
+  await expect(priceInformation).toContainText(sale)
+  await expect(priceInformation).not.toContainText(original)
+  await expect(page.getByRole("main")).not.toContainText(`At ${sale}`)
+  await expect(priceInformation).not.toContainText("Save")
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+    "href",
+    `https://sulitscan.com/deals/${slug}`
+  )
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /index, follow/i)
+  await expect(page.getByRole("link", {
+    name: "Check the current price on Temu (affiliate link, opens in new tab)",
+    exact: true,
+  })).toHaveAttribute("rel", /sponsored/)
+})
+})
+
+test.describe("active catalog pagination regressions", () => {
+  // Pagination scenarios require enough products for that specific entity;
+  // invalid request normalization remains applicable even without inventory.
+
+test("deals page exposes crawlable server pagination", async ({ page }) => {
+  test.skip(activeDeals.length <= DEALS_PAGE_SIZE, "Requires a populated second all-deals page")
+  await page.goto("/deals?page=2")
+  await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
+  await expect(page.getByRole("link", { name: "Previous page" })).toHaveAttribute("href", "/deals")
+  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://sulitscan.com/deals?page=2")
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /index, follow/i)
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", /Deals.*Page 2/i)
+  await expect(page.locator('meta[property="og:url"]')).toHaveAttribute("content", "https://sulitscan.com/deals?page=2")
+  await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute("content", /Deals.*Page 2/i)
+  await expect(page.locator('meta[name="twitter:description"]')).toHaveAttribute("content", /curated online deals/i)
+  expect(await page.locator("main article").count()).toBeLessThanOrEqual(24)
+})
+
+test.describe("entity deal pagination", () => {
+  test.describe.configure({ mode: "serial" })
+
+  for (const entityPath of ["/categories/under-1000", "/stores/temu"]) {
+    test(`${entityPath} exposes crawlable deal pagination`, async ({ page }) => {
+      test.skip(entityDeals(entityPath).length <= ENTITY_DEALS_PAGE_SIZE, "Requires a populated second page for this entity")
+      test.slow()
+      await page.goto(entityPath, { waitUntil: "domcontentloaded" })
+      const firstPageDeals = await page.locator("main article h3").allTextContents()
+      await expect(page.getByRole("link", { name: "Next page" })).toHaveAttribute(
+        "href",
+        `${entityPath}?page=2`
+      )
+
+      const response = await page.goto(`${entityPath}?page=2`, {
+        waitUntil: "domcontentloaded",
+      })
+      expect(response?.status()).toBe(200)
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        "href",
+        `https://sulitscan.com${entityPath}?page=2`
+      )
+      const secondPageDeals = await page.locator("main article h3").allTextContents()
+      expect(secondPageDeals).not.toEqual(firstPageDeals)
+    })
+
+    test(`${entityPath} noindexes an invalid page request`, async ({ page }) => {
+      test.slow()
+      await page.goto(`${entityPath}?page=garbage`, { waitUntil: "domcontentloaded" })
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
+      await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+        "href",
+        `https://sulitscan.com${entityPath}`
+      )
+    })
+  }
+
+  test("later category and store pages keep deal results while omitting page-one-only content", async ({ page }) => {
+    test.skip(["/categories/under-500", "/stores/temu"].some((path) => entityDeals(path).length <= ENTITY_DEALS_PAGE_SIZE), "Requires populated second pages for both tested entities")
+    test.slow()
+
+    await page.goto("/categories/under-500", { waitUntil: "domcontentloaded" })
+    const categoryPageOneDescription = await page.locator('meta[name="description"]').getAttribute("content")
+
+    await page.goto("/categories/under-500?page=2", { waitUntil: "domcontentloaded" })
+    await expect(page.locator('main article')).not.toHaveCount(0)
+    await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
+    expect((await page.locator('script[type="application/ld+json"]').allTextContents())
+      .some((schema) => schema.includes('"@type":"FAQPage"'))).toBe(false)
+    await expect(page.getByRole("heading", { name: /Top picks in/i })).toHaveCount(0)
+    await expect(page.getByRole("heading", { name: /deals in the Philippines/i })).toHaveCount(0)
+    const categoryPageTwoDescription = await page.locator('meta[name="description"]').getAttribute("content")
+    expect(categoryPageTwoDescription).toContain("Page 2")
+    expect(categoryPageTwoDescription).not.toBe(categoryPageOneDescription)
+
+    await page.goto("/stores/temu", { waitUntil: "domcontentloaded" })
+    const storePageOneDescription = await page.locator('meta[name="description"]').getAttribute("content")
+
+    await page.goto("/stores/temu?page=2", { waitUntil: "domcontentloaded" })
+    await expect(page.locator('main article')).not.toHaveCount(0)
+    await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
+    expect((await page.locator('script[type="application/ld+json"]').allTextContents())
+      .some((schema) => schema.includes('"@type":"FAQPage"'))).toBe(false)
+    await expect(page.getByRole("heading", { name: /Frequently asked questions about Temu/i })).toHaveCount(0)
+    const storePageTwoDescription = await page.locator('meta[name="description"]').getAttribute("content")
+    expect(storePageTwoDescription).toContain("Page 2")
+    expect(storePageTwoDescription).not.toBe(storePageOneDescription)
+  })
+
+  test("duplicate entity page parameters remain noindex after display normalization", async ({ page }) => {
+    test.skip(["/categories/under-500", "/stores/temu"].some((path) => entityDeals(path).length <= ENTITY_DEALS_PAGE_SIZE), "Requires populated second pages for both tested entities")
+    test.slow()
+
+    for (const entityPath of ["/categories/under-500", "/stores/temu"]) {
+      await page.goto(`${entityPath}?page=2&page=3`, { waitUntil: "domcontentloaded" })
+
+      await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
+      await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
+    }
+  })
+})
 })

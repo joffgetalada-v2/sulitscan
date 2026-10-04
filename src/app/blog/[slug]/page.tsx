@@ -16,6 +16,8 @@ import NewsletterSignup from "@/components/newsletter/NewsletterSignup"
 import AdSenseArticleScript from "@/components/AdSenseArticleScript"
 import ArticleTrustPanel from "@/components/ArticleTrustPanel"
 
+export const revalidate = 86400
+
 function slugifyHeading(text: string): string {
   return text.toLowerCase().replace(/[^\w\s-]/g, "").replace(/\s+/g, "-").replace(/--+/g, "-").trim()
 }

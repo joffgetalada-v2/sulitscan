@@ -1,6 +1,8 @@
 ﻿import type { Metadata } from "next"
 import Link from "next/link"
 import Hero from "@/components/Hero"
+import CatalogRefreshNotice from "@/components/CatalogRefreshNotice"
+import { getDealScannerSlides } from "@/lib/deal-scanner"
 import DealCard from "@/components/DealCard"
 import CategoryCard from "@/components/CategoryCard"
 import BlogCard from "@/components/BlogCard"
@@ -171,7 +173,7 @@ export default function HomePage() {
       <FAQJsonLd items={faqItems} />
 
       {/* ─── Hero ─── */}
-      <Hero activeDealCount={activeDeals.length} />
+      <Hero activeDealCount={activeDeals.length} scannerSlides={getDealScannerSlides(activeDeals)} />
 
       {/* ─── Affiliate Disclosure strip ─── */}
       <div className="bg-amber-50 border-b border-amber-200 py-3 px-4 text-center">
@@ -317,25 +319,25 @@ export default function HomePage() {
               </p>
             </div>
             <Link
-              href="/deals"
+              href={activeDeals.length > 0 ? "/deals" : "/blog"}
               className="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-green-600 hover:text-green-700 transition-colors"
             >
-              See all {activeDeals.length} deals{" "}
+              {activeDeals.length > 0 ? `See all ${activeDeals.length} deals` : "Browse buyer guides"}{" "}
               <ArrowRight className="w-4 h-4" aria-hidden="true" />
             </Link>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {activeDeals.length === 0 ? <CatalogRefreshNotice /> : <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {featuredDeals.map((deal) => (
               <DealCard key={deal.id} deal={deal} />
             ))}
-          </div>
+          </div>}
           <div className="text-center mt-10 sm:hidden">
             <Link
-              href="/deals"
+              href={activeDeals.length > 0 ? "/deals" : "/blog"}
               className="inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-700 font-semibold rounded-full border border-slate-200 hover:border-green-200 hover:text-green-700 transition-all shadow-sm"
             >
               <ShoppingBag className="w-4 h-4" aria-hidden="true" />
-              See All {activeDeals.length} Deals
+              {activeDeals.length > 0 ? `See All ${activeDeals.length} Deals` : "Browse Buyer Guides"}
             </Link>
           </div>
         </div>
@@ -686,16 +688,18 @@ export default function HomePage() {
             <span className="gradient-text">sulit</span> deal today.
           </h2>
           <p className="text-slate-400 mb-10 leading-relaxed text-base sm:text-lg">
-            Browse {activeDeals.length}+ curated deal notes from Temu, Shopee PH, and Sephora PH.
+            {activeDeals.length > 0
+              ? `Browse ${activeDeals.length} curated deal notes from Temu, Shopee PH, and Sephora PH.`
+              : "Explore buyer guides and compare checkout totals while verified listings are being refreshed."}
             No auto-redirect. No fake urgency. Affiliate links clearly disclosed.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link
-              href="/deals"
+              href={activeDeals.length > 0 ? "/deals" : "/tools/checkout-comparison"}
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-400 hover:to-emerald-400 text-white font-bold text-base rounded-2xl transition-all shadow-lg shadow-green-500/25 hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-2 focus:ring-offset-slate-900"
             >
               <ShoppingBag className="w-5 h-5" aria-hidden="true" />
-              Browse All Deals
+              {activeDeals.length > 0 ? "Browse All Deals" : "Compare Checkout Totals"}
             </Link>
             <Link
               href="/blog"

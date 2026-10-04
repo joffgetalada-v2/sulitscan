@@ -5,8 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion, AnimatePresence } from "framer-motion"
 import { ArrowRight, CheckCircle, Pause, Play, Tag, Zap, Shield, TrendingDown } from "lucide-react"
-import { getActiveDeals } from "@/data/deals"
-import { getDealFreshness } from "@/lib/deal-freshness"
+import type { DealScannerSlide } from "@/lib/deal-scanner"
 import { formatPrice } from "@/lib/utils"
 
 const reducedMotionQuery = "(prefers-reduced-motion: reduce)"
@@ -25,21 +24,7 @@ function getReducedMotionServerSnapshot() {
   return false
 }
 
-function getSlides() {
-  const deals = getActiveDeals()
-  const seen = new Set<string>()
-  const top: typeof deals = []
-  for (const deal of deals) {
-    if (!seen.has(deal.category)) {
-      seen.add(deal.category)
-      top.push(deal)
-    }
-  }
-  return top
-}
-
-export default function DealScannerVisual() {
-  const slides = getSlides()
+export default function DealScannerVisual({ slides }: { slides: DealScannerSlide[] }) {
   const [current, setCurrent] = useState(0)
   const [playbackOverride, setPlaybackOverride] = useState<"auto" | "paused" | "playing">("auto")
   const [focusPaused, setFocusPaused] = useState(false)
@@ -68,16 +53,32 @@ export default function DealScannerVisual() {
     return () => clearInterval(timer)
   }, [advance, rotationPaused, slides.length])
 
-  const deal = slides[current]
-  if (!deal) return null
+  const deal = slides[current % slides.length]
+  if (!deal) return (
+    <section aria-label="Buyer checklist" data-decorative-motion="off" className="relative w-full max-w-md mx-auto">
+      <div data-scanner-card className="rounded-2xl border border-green-100 bg-white p-6 shadow-xl">
+        <p className="text-xs font-semibold uppercase tracking-wide text-green-700">SulitScan buyer checklist</p>
+        <h2 className="mt-3 text-2xl font-black text-slate-900">Before you buy</h2>
+        <p className="mt-3 text-sm text-slate-600">Verified listings are being refreshed. Start with a guide, not an old price.</p>
+        <ol className="mt-5 list-decimal space-y-3 pl-5 text-sm text-slate-600">
+          <li>Check product fit, specifications, and seller evidence.</li>
+          <li>Compare the final checkout total, including shipping and vouchers.</li>
+          <li>Read the live delivery and return terms before paying.</li>
+        </ol>
+        <div className="mt-6 flex flex-wrap gap-3 text-sm font-semibold text-green-800">
+          <Link href="/blog" className="hover:underline">Read buyer guides →</Link>
+          <Link href="/tools/checkout-comparison" className="hover:underline">Compare checkout totals →</Link>
+        </div>
+      </div>
+    </section>
+  )
 
-  const freshness = getDealFreshness(deal.lastChecked)
-  const isCurrent = freshness.status === "current"
+  const isCurrent = deal.freshnessStatus === "current"
   const saved = deal.originalPrice - deal.salePrice
   const scoreLabel = deal.sulitScore >= 9 ? "Excellent" : deal.sulitScore >= 7 ? "Good Deal" : "Fair"
   const freshnessLabel = isCurrent
     ? "Recently checked"
-    : freshness.status === "reference"
+    : deal.freshnessStatus === "reference"
       ? "Reference listing"
       : "Price check needed"
 
@@ -244,7 +245,7 @@ export default function DealScannerVisual() {
                       Save {formatPrice(saved)}
                     </span>
                   </>
-                ) : freshness.status === "reference" ? (
+                ) : deal.freshnessStatus === "reference" ? (
                   <>
                     <span className="text-xs font-semibold text-amber-700">Reference price</span>
                     <span className="text-2xl font-black text-slate-900">{formatPrice(deal.salePrice)}</span>

@@ -6,6 +6,8 @@ import { categories, getCategoryBySlug } from "@/data/categories"
 import { getDealsByCategory, isSuspiciousDiscount } from "@/data/deals"
 import { categoryContent } from "@/data/category-content"
 import EntityDeals from "@/components/EntityDeals"
+import CatalogRefreshNotice from "@/components/CatalogRefreshNotice"
+import { getPostBySlug } from "@/data/posts"
 import TopPicks from "@/components/TopPicks"
 import TrustBar from "@/components/TrustBar"
 import {
@@ -304,19 +306,14 @@ export default async function CategoryPage({
             />
           </section>
         ) : (
-          <div className="text-center py-16">
-            <p className="text-3xl mb-4" aria-hidden="true">🔍</p>
-            <p className="text-slate-600 font-semibold mb-2">No deals found in this category yet.</p>
-            <p className="text-slate-400 text-sm mb-6">
-              We&apos;re adding new deals regularly. Check back soon, or browse all deals.
-            </p>
-            <Link
-              href="/deals"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-green-600 text-white font-semibold text-sm rounded-xl hover:bg-green-700 transition-colors"
-            >
-              Browse All Deals
-            </Link>
-          </div>
+          <CatalogRefreshNotice
+            heading={`${category.name} listings are being refreshed`}
+            context={`No verified ${category.name.toLowerCase()} listings are currently within our freshness window. These guides can help you assess a live store listing.`}
+            guides={(content?.relatedBlogSlugs ?? []).flatMap((guideSlug) => {
+              const post = getPostBySlug(guideSlug)
+              return post ? [{ slug: post.slug, title: post.title }] : []
+            })}
+          />
         )}
 
         {/* FAQ section */}

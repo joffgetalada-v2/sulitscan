@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Search } from "lucide-react"
 import DealCard from "./DealCard"
+import CatalogRefreshNotice from "./CatalogRefreshNotice"
 import {
   buildDealsHref,
   type DealListingResult,
@@ -76,9 +77,9 @@ export default function DealsGrid({ listing, categories, stores }: DealsGridProp
           <button type="submit" className="inline-flex items-center justify-center px-4 py-2.5 bg-green-600 hover:bg-green-700 text-white text-sm font-semibold rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
             Apply filters
           </button>
-          <Link href="/deals" className="text-sm font-medium text-slate-500 hover:text-green-700 hover:underline">
+          {listing.isFiltered && <Link href="/deals" className="text-sm font-medium text-slate-500 hover:text-green-700 hover:underline">
             Clear filters
-          </Link>
+          </Link>}
         </div>
       </form>
 
@@ -122,12 +123,12 @@ export default function DealsGrid({ listing, categories, stores }: DealsGridProp
             {formatDealCount(listing.total)} match these filters. Prices are from affiliate datafeeds, confirm on the partner store before buying.
           </p>
         </>
-      ) : (
+      ) : listing.isFiltered ? (
         <div className="text-center py-16">
           <p className="text-slate-400 text-sm mb-3">No deals match your current filters.</p>
           <Link href="/deals" className="text-xs text-green-600 hover:underline font-medium">Clear all filters</Link>
         </div>
-      )}
+      ) : <CatalogRefreshNotice />}
     </>
   )
 }
