@@ -76,7 +76,6 @@ export default function ContactForm({ initialSubject = "", initialMessage = "" }
       onSubmit={handleSubmit}
       className="space-y-5 bg-white border border-slate-100 rounded-2xl p-6 shadow-sm"
       aria-label="Contact form"
-      noValidate
     >
       <h2 className="text-lg font-bold text-slate-900">Send a message</h2>
       <p className="text-xs text-slate-500">
@@ -130,6 +129,7 @@ export default function ContactForm({ initialSubject = "", initialMessage = "" }
         <select
           id="subject"
           name="subject"
+          required
           defaultValue={initialSubject}
           disabled={status === "submitting"}
           className="w-full px-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-400 focus:border-transparent bg-white disabled:opacity-50 disabled:cursor-not-allowed"
