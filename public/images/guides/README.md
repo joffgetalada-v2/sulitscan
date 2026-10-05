@@ -166,3 +166,21 @@ removable parts, brush, and droplet; (4) two unbranded earbud shapes and cases w
 microphone, compatibility, battery, water-resistance, and warranty symbols; and (5) an inclusive
 shade fan, unbranded foundation bottle, abstract virtual try-on screen, daylight symbol, and mirror.
 All five final hashes are pinned in the September release contract.
+
+## October buyer-guide collection (release dated 2026-10-03)
+
+Five separate, unreferenced images were generated with OpenAI's built-in image generator during
+release preparation. The controller converted the accepted outputs to 1600×900 sRGB progressive
+JPEGs and visually inspected each final at original detail before passing them to the content
+implementation. This batch uses a coherent photorealistic editorial style, distinct palettes and compositions,
+and no remote hotlinked artwork. Prompts prohibited readable text, logos, trademarks, prices,
+product claims, watermarks, certification marks, and malformed key objects. All five final files
+were accepted by visual review and their exact hashes are pinned in the registry contract tests.
+
+| Filename | Prompt summary | Dimensions / format | Exact alt text | Final JPEG SHA-256 |
+|---|---|---|---|---|
+| `food-storage-containers-buying-guide-philippines.jpg` | Unbranded glass, plastic, and stainless containers with lids, dividers, and a refrigerator shelf | 1600×900 sRGB progressive JPEG | Food storage container comparison with glass, plastic, and stainless containers beside portion dividers, lids, and a refrigerator shelf | `27762fff77374437d9a1cb05e8a26ca08b7b6730b9a2d37a800b83c64b6d1843` |
+| `sephora-ph-minis-vs-full-size-value-sets.jpg` | Unbranded miniature and full-size skincare bottles, pouch, unnumbered ruler, and usage tokens | 1600×900 sRGB progressive JPEG | Beauty value set comparison with miniature and full-size unbranded skincare bottles beside a pouch, ruler, and cost-per-use symbols | `84c144a273b30478c4125c9d30acb309440d608eec871cc052f561a126d9f541` |
+| `mattress-protector-buying-guide-philippines.jpg` | Cutaway mattress, fitted protector, unnumbered depth ticks, water beads, and laundry props | 1600×900 sRGB progressive JPEG | Mattress protector buying guide with a cutaway mattress, fitted protector, depth measurement, water droplets, and washing symbols | `1154f0082aa11b81697cbc17cdab248f5d5d3a173806d7ffb5861fc2d0260b4e` |
+| `phone-tripod-buying-guide-philippines.jpg` | Phone clamp, tabletop and full-height tripods, stable feet, and an abstract video frame | 1600×900 sRGB progressive JPEG | Phone tripod buying guide with smartphone clamp, tabletop and full-height tripods, stability feet, and a video-call frame | `7826938aacbcbab58ccb05467103d17406b82d82e27e0af7c04eb2ae42103c7a` |
+| `christmas-lights-buying-guide-philippines.jpg` | Plug-in, solar, and battery lights under a patio eave with nonofficial checklist symbols | 1600×900 sRGB progressive JPEG | Christmas lights buying guide with plug-in string lights, solar panel, battery pack, outdoor shelter, and safety checklist symbols | `fbef09d117737b3a3174b5eed5f8f3649f076498bc98d8015c54012a4b6b9df2` |

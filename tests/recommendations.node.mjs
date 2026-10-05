@@ -1653,7 +1653,7 @@ const septemberGrowthGuideCases = [
 
 test("September growth guides use the exact ordered registry and editorial contract", () => {
   assert.deepEqual(
-    postsModule.posts.slice(-septemberGrowthGuideCases.length).map((post) => post.slug),
+    postsModule.posts.filter((post) => septemberGrowthGuideCases.some((entry) => entry.id === post.id)).map((post) => post.slug),
     septemberGrowthGuideCases.map((guideCase) => guideCase.slug)
   )
 
@@ -1811,4 +1811,281 @@ test("September SEO audit records the executable June-datafeed expiry boundary",
   assert.match(audit, /June affiliate\s+datafeed records expire on September 29 at 00:00 UTC \(08:00 PHT\)/i)
   assert.match(audit, /recheck.*before September 29/is)
   assert.doesNotMatch(audit, /June affiliate datafeed records.*after September 29/i)
+})
+const octoberGrowthGuideCases = [
+  {
+    "id": "post-060",
+    "slug": "food-storage-containers-buying-guide-philippines",
+    "title": "Food Storage Containers Philippines: Glass, Plastic or Stainless?",
+    "category": "Home Guides",
+    "readTime": 12,
+    "tags": [
+      "food-storage",
+      "meal-prep",
+      "kitchen",
+      "container-materials",
+      "landed-cost",
+      "philippines"
+    ],
+    "alt": "Food storage container comparison with glass, plastic, and stainless containers beside portion dividers, lids, and a refrigerator shelf",
+    "hash": "27762fff77374437d9a1cb05e8a26ca08b7b6730b9a2d37a800b83c64b6d1843",
+    "topics": [
+      "home-buying",
+      "food-storage",
+      "product-review"
+    ],
+    "platforms": [
+      "Temu",
+      "Shopee PH"
+    ],
+    "sources": [
+      "https://www.fda.gov/radiation-emitting-products/resources-you-radiation-emitting-products/microwave-ovens",
+      "https://www.fsis.usda.gov/food-safety/safe-food-handling-and-preparation/food-safety-basics/leftovers-and-food-safety"
+    ],
+    "links": [
+      "/categories/home-finds",
+      "/stores/temu",
+      "/tools/checkout-comparison"
+    ],
+    "answer": "Choose food storage containers"
+  },
+  {
+    "id": "post-061",
+    "slug": "sephora-ph-minis-vs-full-size-value-sets",
+    "title": "Sephora PH Minis vs Full Size: Are Beauty Sets Worth It?",
+    "category": "Beauty Guides",
+    "readTime": 11,
+    "tags": [
+      "sephora",
+      "beauty-sets",
+      "mini-skincare",
+      "cost-per-use",
+      "shelf-life",
+      "philippines"
+    ],
+    "alt": "Beauty value set comparison with miniature and full-size unbranded skincare bottles beside a pouch, ruler, and cost-per-use symbols",
+    "hash": "84c144a273b30478c4125c9d30acb309440d608eec871cc052f561a126d9f541",
+    "topics": [
+      "sephora-shopping",
+      "beauty-buying",
+      "beauty-value"
+    ],
+    "platforms": [
+      "Sephora PH"
+    ],
+    "sources": [
+      "https://www.sephora.ph/categories/skincare/skincare-sets",
+      "https://www.fda.gov/cosmetics/cosmetics-labeling/shelf-life-and-expiration-dating-cosmetics"
+    ],
+    "links": [
+      "/stores/sephora-ph",
+      "/categories/beauty",
+      "/tools/checkout-comparison"
+    ],
+    "answer": "Beauty sets are worth"
+  },
+  {
+    "id": "post-062",
+    "slug": "mattress-protector-buying-guide-philippines",
+    "title": "Mattress Protector Buying Guide PH: Size, Depth and Water Resistance",
+    "category": "Home Guides",
+    "readTime": 11,
+    "tags": [
+      "mattress-protector",
+      "bed-size",
+      "mattress-depth",
+      "wash-care",
+      "water-resistance",
+      "philippines"
+    ],
+    "alt": "Mattress protector buying guide with a cutaway mattress, fitted protector, depth measurement, water droplets, and washing symbols",
+    "hash": "1154f0082aa11b81697cbc17cdab248f5d5d3a173806d7ffb5861fc2d0260b4e",
+    "topics": [
+      "home-buying",
+      "bedding-buying",
+      "product-review"
+    ],
+    "platforms": [
+      "Shopee PH",
+      "Temu"
+    ],
+    "sources": [
+      "https://uratex.com.ph/products/premium-touch-mattress-protector",
+      "https://www.ikea.com/ph/en/p/grusnarv-waterproof-mattress-protector-10522136/"
+    ],
+    "links": [
+      "/categories/home-finds",
+      "/stores/shopee-ph",
+      "/blog/online-furniture-measurement-guide-philippines"
+    ],
+    "answer": "Choose a mattress protector"
+  },
+  {
+    "id": "post-063",
+    "slug": "phone-tripod-buying-guide-philippines",
+    "title": "Phone Tripod Buying Guide Philippines: Fit, Stability and Video Calls",
+    "category": "Tech Guides",
+    "readTime": 11,
+    "tags": [
+      "phone-tripod",
+      "smartphone-clamp",
+      "video-calls",
+      "desk-setup",
+      "device-compatibility",
+      "philippines"
+    ],
+    "alt": "Phone tripod buying guide with smartphone clamp, tabletop and full-height tripods, stability feet, and a video-call frame",
+    "hash": "7826938aacbcbab58ccb05467103d17406b82d82e27e0af7c04eb2ae42103c7a",
+    "topics": [
+      "tech-accessories",
+      "phone-tripod",
+      "product-review"
+    ],
+    "platforms": [
+      "Shopee PH",
+      "Temu"
+    ],
+    "sources": [
+      "https://www.manfrotto.com/global-uk/pixi-clamp-for-smartphone-with-multiple-attachments-mcpixi/",
+      "https://support.apple.com/en-ph/102546"
+    ],
+    "links": [
+      "/categories/tech-deals",
+      "/stores/shopee-ph",
+      "/blog/best-phone-accessories-under-500-philippines"
+    ],
+    "answer": "Choose a phone tripod"
+  },
+  {
+    "id": "post-064",
+    "slug": "christmas-lights-buying-guide-philippines",
+    "title": "Christmas Lights Buying Guide PH: Plug-In, Solar or Battery?",
+    "category": "Home Guides",
+    "readTime": 12,
+    "tags": [
+      "christmas-lights",
+      "holiday-decor",
+      "electrical-safety",
+      "solar-lights",
+      "battery-lights",
+      "philippines"
+    ],
+    "alt": "Christmas lights buying guide with plug-in string lights, solar panel, battery pack, outdoor shelter, and safety checklist symbols",
+    "hash": "fbef09d117737b3a3174b5eed5f8f3649f076498bc98d8015c54012a4b6b9df2",
+    "topics": [
+      "home-buying",
+      "electrical-safety",
+      "seasonal-shopping"
+    ],
+    "platforms": [
+      "Shopee PH",
+      "Temu"
+    ],
+    "sources": [
+      "https://bps.dti.gov.ph/product-certification/list-of-products-under-mandatory-certification",
+      "https://bps.dti.gov.ph/component/content/article?Itemid=111&id=60",
+      "https://bps.dti.gov.ph/press-releases/28-2021/290-dti-bps-releases-list-of-certified-christmas-lights",
+      "https://www.ikea.com/ph/en/p/getkal-led-lighting-chain-battery-operated-outdoor-40609294/"
+    ],
+    "links": [
+      "/categories/home-finds",
+      "/stores/shopee-ph",
+      "/blog/online-electrical-appliance-safety-ps-icc-philippines"
+    ],
+    "answer": "Choose Christmas lights"
+  }
+]
+
+test("October collection preserves ordered publishing, discovery, source and editorial contracts", () => {
+  const collection = postsModule.posts.filter((post) => /^post-06[0-4]$/.test(post.id))
+  assert.deepEqual(collection.map((post) => post.id), octoberGrowthGuideCases.map((entry) => entry.id))
+  for (const entry of octoberGrowthGuideCases) {
+    const post = postsModule.getPostBySlug(entry.slug)
+    assert.ok(post, entry.id + " must exist")
+    for (const key of ["id", "title", "category", "readTime", "tags"]) assert.deepEqual(post[key], entry[key])
+    assert.equal(post.publishedAt, "2026-10-03")
+    assert.equal(post.lastReviewed, "2026-10-03")
+    assert.equal(new Set(post.tags).size, 6)
+    assert.equal(post.coverImage, "/images/guides/" + entry.slug + ".jpg")
+    assert.equal(post.coverImageAlt, entry.alt)
+    assert.deepEqual(post.recommendationIntent, { topics: entry.topics, platforms: entry.platforms })
+    assert.equal(post.importTaxContext, undefined, "inline sister link must not duplicate a callout")
+    assert.equal(post.faqs?.length, 3)
+    assert.equal(new Set(post.faqs.map((faq) => faq.question)).size, 3)
+    assert.ok(post.faqs.every((faq) => faq.question.length > 10 && faq.answer.length > 30))
+    assert.ok(post.excerpt.length > 80 && post.excerpt.length <= 160)
+    assert.ok(post.content.trim().split(/\s+/).length >= 1000, entry.id + " needs substantial decision support")
+    assert.ok(post.content.trim().split("\n\n")[0].startsWith(entry.answer))
+    for (const heading of ["How we assessed this guide", "Limitations and live-policy check", "Affiliate disclosure"]) {
+      assert.ok(post.content.includes("## " + heading + "\n"))
+    }
+    assert.ok((post.content.match(/^## /gm) ?? []).length >= 8)
+    assert.match(post.content, /^## .*decision.*$/im)
+    assert.match(post.content, /^## .*checklist$/im)
+    assert.match(post.content, /desk research/i)
+    assert.match(post.content, /may earn a commission.*at no extra cost/is)
+    assert.match(post.content, /affiliate relationships do not influence/i)
+    assert.doesNotMatch(post.content, /we (?:tested|used|bought|measured)|FDA-approved|(?:offers?|provides?|ensures?) (?:a )?guaranteed (?:discount|fit|safety|performance)/i)
+    assert.doesNotMatch(post.content, /\]\(\/deals\//, "no expired product-level recommendations")
+    assert.match(post.content, /not.*(?:active matching product|availability claim)/i)
+    const internal = [...post.content.matchAll(/\]\((\/[^)]+)\)/g)].map((match) => match[1])
+    assert.ok(new Set(internal).size >= 3)
+    for (const link of [...entry.sources, ...entry.links]) assert.ok(post.content.includes("](" + link + ")"), entry.id + " missing " + link)
+    const sisters = [...post.content.matchAll(/https:\/\/(?:www\.)?(?:importtaxph|applyreadycv)\.com\//g)].map((match) => match[0])
+    assert.deepEqual(sisters, entry.id === "post-060" ? ["https://www.importtaxph.com/"] : entry.id === "post-063" ? ["https://applyreadycv.com/"] : [])
+  }
+  assert.equal(new Set(collection.map((post) => post.excerpt)).size, 5)
+  assert.equal(new Set(collection.map((post) => post.coverGradient)).size, 5)
+  // Detect copy/paste bodies even when only headings or a few words differ.
+  const shingles = collection.map((post) => {
+    const words = post.content.toLowerCase().split(/\s+/)
+    return new Set(words.slice(0, -7).map((_, i) => words.slice(i, i + 8).join(" ")))
+  })
+  for (let i = 0; i < shingles.length; i++) for (let j = i + 1; j < shingles.length; j++) {
+    const shared = [...shingles[i]].filter((phrase) => shingles[j].has(phrase)).length
+    assert.ok(shared / Math.min(shingles[i].size, shingles[j].size) < 0.2, "articles must be substantially distinct")
+  }
+})
+
+test("October media resolves to unique accepted 1600x900 progressive JPEGs with documented provenance", () => {
+  const hashes = []
+  const readme = readFileSync(resolve("public/images/guides/README.md"), "utf8")
+  const octoberProvenance = readme.split("## October buyer-guide collection")[1]
+  assert.ok(octoberProvenance, "October provenance section must exist")
+  assert.match(octoberProvenance, /photorealistic editorial style/)
+  assert.doesNotMatch(octoberProvenance, /flat editorial style/)
+  for (const entry of octoberGrowthGuideCases) {
+    const asset = readFileSync(resolve("public/images/guides", entry.slug + ".jpg"))
+    assert.deepEqual(readJpegDimensions(asset), { width: 1600, height: 900 })
+    assert.ok(isProgressiveJpeg(asset))
+    const hash = createHash("sha256").update(asset).digest("hex")
+    assert.equal(hash, entry.hash)
+    hashes.push(hash)
+    assert.ok(readme.includes(entry.slug + ".jpg"))
+    assert.ok(readme.includes(entry.alt))
+    assert.ok(readme.includes(hash))
+  }
+  assert.equal(new Set(hashes).size, 5)
+})
+
+test("October foreign guidance, model claims and regulatory exclusions remain qualified", () => {
+  const get = (id) => {
+    const post = postsModule.posts.find((post) => post.id === id)
+    assert.ok(post, id + " must exist")
+    return post.content
+  }
+  assert.match(get("post-060"), /United States.*FDA/is)
+  assert.match(get("post-060"), /United States.*USDA/is)
+  assert.match(get("post-060"), /not Philippine certification/i)
+  assert.match(get("post-060"), /landed.cost/i)
+  assert.match(get("post-061"), /Mini.*Value Set/is)
+  assert.match(get("post-061"), /United States.*FDA/is)
+  assert.match(get("post-062"), /Premium Touch.*water.repellent/is)
+  assert.match(get("post-062"), /GRUSNARV.*105.221.36/is)
+  assert.match(get("post-063"), /MCPIXI.*60.*104/is)
+  assert.match(get("post-063"), /application materials.*online interview/is)
+  assert.match(get("post-064"), /2021.*historical/is)
+  assert.match(get("post-064"), /exclusions do not mean.*safe/is)
+  assert.match(get("post-064"), /D\.C\..*power.supply adapter/is)
+  assert.match(get("post-064"), /not covered: lighting integral to Christmas trees, lanterns, or decorations/i)
 })

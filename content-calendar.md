@@ -1,6 +1,6 @@
 # Content Calendar — SulitScan PH (Aug 2026 – Feb 2027)
 
-Twelve article ideas mapped to Philippine sale events, each with a primary keyword, the publish window (guides need 2–4 weeks of lead time to index before the event), and the internal pages to link. Follow the same structure as existing guides: honest, mechanism-focused, FAQ schema, 3+ internal links, ending CTA to /deals.
+Twelve article ideas mapped to Philippine sale events, each with a primary keyword, the publish window (crawl and index timing varies; inclusion is not guaranteed), and the internal pages to link. Follow the same structure as existing guides: honest, mechanism-focused, FAQ schema, 3+ internal links, and a helpful onward action appropriate to current inventory, such as a relevant category, store, tool, or guide.
 
 | # | Publish by | Event / hook | Working title | Primary keyword | Link to |
 |---|---|---|---|---|---|
@@ -31,10 +31,45 @@ testing claims.
 | Sep 5, 2026 | `wireless-earbuds-buying-guide-philippines` | wireless earbuds buying guide Philippines | /categories/tech-deals, phone-accessories guide, relevant earbuds page |
 | Sep 5, 2026 | `online-foundation-shade-match-philippines` | foundation shade match online Philippines | /categories/beauty, /stores/sephora-ph, cosmetic-legitimacy guide |
 
+## October 3 buyer-guide collection
+
+The October release adds five distinct source-backed decision guides (64 guides total), each with
+three visible FAQs, six tags, contextual internal links, and an original local 1600×900 banner.
+Publication and review dates remain October 3, the release's editorial date; links were also
+rechecked during release preparation. These are research guides, not hands-on tests or stock claims.
+
+| Published | Article | Primary decision intent | Core internal destinations |
+|---|---|---|---|
+| Oct 3, 2026 | `food-storage-containers-buying-guide-philippines` | Glass, plastic, or stainless containers for a real storage workflow | /categories/home-finds, /stores/temu, /tools/checkout-comparison |
+| Oct 3, 2026 | `sephora-ph-minis-vs-full-size-value-sets` | Usable set contents versus minis or a repeat full-size purchase | /stores/sephora-ph, /categories/beauty, cosmetic legitimacy guide |
+| Oct 3, 2026 | `mattress-protector-buying-guide-philippines` | Measured size and depth, attachment, liquid-protection wording, and wash care | /categories/home-finds, /stores/shopee-ph, furniture measurement guide |
+| Oct 3, 2026 | `phone-tripod-buying-guide-philippines` | Phone-and-case fit, working height, stability, and video-call compatibility | /categories/tech-deals, /stores/shopee-ph, phone-accessories guide |
+| Oct 3, 2026 | `christmas-lights-buying-guide-philippines` | Power source, installation conditions, and exact DTI-BPS scope | /categories/home-finds, /stores/shopee-ph, electrical-safety guide |
+
+## Next research queue and quality gate
+
+Aim for **five high-quality, source-backed guides per week only when quality holds**. Publish fewer
+when current official evidence, a genuinely distinct decision, useful internal links, or editorial
+review cannot be completed. Do not fill a quota with thin or repeated articles. These are research
+hypotheses, not claimed keyword volumes; reorder them using Search Console queries, impressions,
+existing landing pages, and reader questions when the owner supplies access.
+
+| Research candidate | Evidence needed before scheduling | Avoid overlap by focusing on |
+|---|---|---|
+| Refresh the existing 11.11 cart checklist | Current official campaign terms and actual checkout mechanics | Updating the same URL; no duplicate annual checklist |
+| Christmas delivery planning | Current platform and carrier delivery guidance for Philippine destinations | Arrival uncertainty and contingency planning, not invented cutoff dates |
+| Replacement parts for home organisers | Official dimensions and replacement-lid/part availability | Keeping a useful item working rather than another generic storage roundup |
+| Skincare gift-set contents checklist | Live complete set descriptions, quantities, and current sealed-item policies | Recipient and packaging checks; link to the new unit-value guide |
+| Video-call audio setup | Exact device/app support documents and connection limits | Audio compatibility, not a second tripod buying guide |
+
+Before publication, check source URLs and supported propositions, exact variants, three useful
+internal links, image provenance, visible/schema FAQ agreement, mobile rendering, and live-policy
+limitations. A guide may link to stores and tools even when there are no active verified deals.
+
 ## Standing rules
 
-- **Lead time:** publish event guides 2–4 weeks before the event so Google indexes them in time; update the same URL each year instead of creating a new one (keep the slug year-free where possible).
-- **After each event:** add a short "what we saw" note to the guide (voucher patterns, shipping delays) — genuine experience content strengthens E-E-A-T.
-- **Every article:** one primary keyword, FAQ block (auto-emits FAQ schema via `faqs` field), ≥3 internal links to deals/categories/stores, ending CTA to browse deals, honest limitations section.
+- **Lead time:** aim to publish event guides 2–4 weeks before the event to allow discovery time; indexing is not guaranteed. Update the same URL each year instead of creating a new one (keep the slug year-free where possible).
+- **After each event:** add a dated evidence note only for observations actually recorded. Do not invent firsthand experience, voucher patterns, or shipping outcomes.
+- **Every article:** one clear search intent, FAQ block (auto-emits FAQ schema via `faqs` field), ≥3 contextual internal links, a useful next step appropriate to current inventory, and honest limitations.
 - **Refresh cadence:** revisit the top 5 trafficked guides monthly; update `lastReviewed` only when actually re-reviewed.
-- **Deal tie-in:** when writing a guide, check whether the 3 related deals it surfaces (via `recommendationIntent`) have unique descriptions; write them if not, so guide readers land on indexable pages.
+- **Deal tie-in:** recommend only independently verified, active, editorially eligible records. A recommendation intent need not supply product matches; never refresh verification dates or imply current stock merely to populate three cards.
