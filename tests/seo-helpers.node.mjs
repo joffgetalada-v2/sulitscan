@@ -3,6 +3,7 @@ import { existsSync, readFileSync } from "node:fs"
 import { dirname, resolve } from "node:path"
 import test from "node:test"
 import ts from "typescript"
+import * as jsxRuntime from "react/jsx-runtime"
 
 function loadTypeScriptModule(relativePath, dependencies = {}) {
   const filename = resolve(relativePath)
@@ -11,6 +12,7 @@ function loadTypeScriptModule(relativePath, dependencies = {}) {
     compilerOptions: {
       module: ts.ModuleKind.CommonJS,
       target: ts.ScriptTarget.ES2022,
+      jsx: ts.JsxEmit.ReactJSX,
     },
     fileName: filename,
   })
@@ -57,6 +59,36 @@ function requireFunction(moduleRecord, exportName) {
   )
   return moduleRecord[exportName]
 }
+
+test("blog metadata keeps the absolute listing canonical and indexes only requests without raw filters", async () => {
+  const pageModule = loadTypeScriptModule("src/app/blog/page.tsx", {
+    "react/jsx-runtime": jsxRuntime,
+    "next/image": {},
+    "next/link": {},
+    "@/components/BlogCard": {},
+    "@/components/SeoJsonLd": {},
+    "@/components/newsletter/NewsletterSignup": {},
+    "@/data/posts": postsModule,
+    "@/lib/seo": { siteConfig: { url: "https://sulitscan.com" } },
+    "@/lib/blog-listing": existsSync(resolve("src/lib/blog-listing.ts"))
+      ? loadTypeScriptModule("src/lib/blog-listing.ts") : {},
+    "lucide-react": {},
+  })
+  const generateMetadata = requireFunction(pageModule, "generateMetadata")
+  for (const [raw, index] of [
+    [{}, true], [{ unrelated: "tracking" }, true],
+    [{ q: "tripod" }, false], [{ q: "" }, false], [{ q: "   " }, false],
+    [{ category: "Home Guides" }, false], [{ category: "All" }, false],
+    [{ category: "" }, false], [{ category: "invalid" }, false],
+    [{ q: ["", "tripod"] }, false], [{ category: ["All", "invalid"] }, false],
+    [{ q: [] }, false], [{ category: [] }, false],
+  ]) {
+    const metadata = await generateMetadata({ searchParams: Promise.resolve(raw) })
+    assert.equal(metadata.alternates.canonical, "https://sulitscan.com/blog")
+    assert.deepEqual(metadata.robots, { index, follow: true }, JSON.stringify(raw))
+    assert.equal(metadata.openGraph.url, "https://sulitscan.com/blog")
+  }
+})
 
 test("blog SEO titles are unique, branded, and no longer than 65 characters", () => {
   const buildBlogSeoTitle = requireFunction(blogSeoModule, "buildBlogSeoTitle")

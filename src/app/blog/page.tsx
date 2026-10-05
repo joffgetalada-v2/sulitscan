@@ -1,26 +1,38 @@
 import type { Metadata } from "next"
 import Image from "next/image"
+import Link from "next/link"
 import BlogCard from "@/components/BlogCard"
 import { BreadcrumbJsonLd, ItemListJsonLd } from "@/components/SeoJsonLd"
 import { getPostsNewestFirst } from "@/data/posts"
 import { siteConfig } from "@/lib/seo"
+import { buildBlogHref, resolveBlogListing, type BlogSearchParams } from "@/lib/blog-listing"
 import { BookOpen } from "lucide-react"
 import NewsletterSignup from "@/components/newsletter/NewsletterSignup"
 
-export const metadata: Metadata = {
-  title: "Smart Shopping Guides Philippines",
-  description:
-    "Shopping guides for Filipino buyers, Temu, Shopee PH, and Sephora PH buying advice, how to spot fake discounts, voucher strategies, and smart online shopping habits.",
-  alternates: { canonical: `${siteConfig.url}/blog` },
-  openGraph: {
-    title: "Smart Shopping Guides Philippines | SulitScan PH",
-    description: "Practical shopping guides covering Temu, Shopee PH, Sephora PH, deal-checking, and smarter buying habits for Filipino shoppers.",
-    url: `${siteConfig.url}/blog`,
-  },
+interface BlogPageProps {
+  searchParams: Promise<BlogSearchParams>
 }
 
-export default function BlogPage() {
+export async function generateMetadata({ searchParams }: BlogPageProps): Promise<Metadata> {
+  const raw = await searchParams
+  const hasRawFilters = Object.hasOwn(raw, "q") || Object.hasOwn(raw, "category")
+  return {
+    title: "Smart Shopping Guides Philippines",
+    description:
+      "Shopping guides for Filipino buyers, Temu, Shopee PH, and Sephora PH buying advice, how to spot fake discounts, voucher strategies, and smart online shopping habits.",
+    alternates: { canonical: `${siteConfig.url}/blog` },
+    robots: { index: !hasRawFilters, follow: true },
+    openGraph: {
+      title: "Smart Shopping Guides Philippines | SulitScan PH",
+      description: "Practical shopping guides covering Temu, Shopee PH, Sephora PH, deal-checking, and smarter buying habits for Filipino shoppers.",
+      url: `${siteConfig.url}/blog`,
+    },
+  }
+}
+
+export default async function BlogPage({ searchParams }: BlogPageProps) {
   const orderedPosts = getPostsNewestFirst()
+  const listing = resolveBlogListing(orderedPosts, await searchParams)
 
   return (
     <>
@@ -32,7 +44,7 @@ export default function BlogPage() {
       />
       <ItemListJsonLd
         name="Smart Shopping Guides Philippines – SulitScan PH"
-        items={orderedPosts.map((p) => ({
+        items={listing.items.map((p) => ({
           name: p.title,
           url: `${siteConfig.url}/blog/${p.slug}`,
           description: p.excerpt,
@@ -74,11 +86,45 @@ export default function BlogPage() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {orderedPosts.map((post) => (
-            <BlogCard key={post.id} post={post} />
+        <form action="/blog" method="get" aria-label="Find shopping guides" className="mb-6 flex flex-col sm:flex-row sm:items-end gap-4">
+          <div className="flex-1 min-w-0">
+            <label htmlFor="guide-search" className="block mb-2 text-sm font-semibold text-slate-700">Search guides</label>
+            <input id="guide-search" name="q" type="search" maxLength={80} defaultValue={listing.q} placeholder="Search topics, stores, or buying tips" className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-600" />
+          </div>
+          <div>
+            <label htmlFor="guide-category" className="block mb-2 text-sm font-semibold text-slate-700">Guide category</label>
+            <select id="guide-category" name="category" defaultValue={listing.category} className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-600">
+              {listing.categories.map((category) => <option key={category} value={category}>{category}</option>)}
+            </select>
+          </div>
+          <button type="submit" className="rounded-xl bg-green-700 px-5 py-3 text-sm font-semibold text-white hover:bg-green-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700">Find guides</button>
+        </form>
+
+        <nav aria-label="Guide categories" className="mb-6 flex flex-wrap gap-2">
+          {listing.categories.map((category) => (
+            <Link key={category} href={buildBlogHref({ q: listing.q, category })} aria-current={category === listing.category ? "page" : undefined} className={`rounded-full border px-4 py-2 text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-700 ${category === listing.category ? "border-green-700 bg-green-700 text-white" : "border-slate-200 text-slate-600 hover:border-green-600 hover:text-green-700"}`}>
+              {category}
+            </Link>
           ))}
+        </nav>
+
+        <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+          <p role="status" className="text-sm text-slate-600">{listing.total} {listing.total === 1 ? "guide" : "guides"} found</p>
+          {(listing.isFiltered || listing.noResults) && <Link href="/blog" className="text-sm font-semibold text-green-700 underline underline-offset-4">Reset guide filters</Link>}
         </div>
+
+        {listing.noResults ? (
+          <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8 text-center">
+            <h2 className="text-lg font-bold text-slate-900">No guides match your search.</h2>
+            <p className="mt-2 text-sm text-slate-600">Try another topic or choose a different category.</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {listing.items.map((post) => (
+              <BlogCard key={post.id} post={post} />
+            ))}
+          </div>
+        )}
 
         {/* Newsletter CTA */}
         <div className="mt-12 max-w-lg mx-auto text-center">

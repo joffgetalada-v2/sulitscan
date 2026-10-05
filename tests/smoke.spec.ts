@@ -1,6 +1,6 @@
 import { test, expect, type Page } from "@playwright/test"
 import { getActiveDeals, getDealBySlug, getDealsByCategory, getDealsByPlatform } from "../src/data/deals"
-import { getPostBySlug } from "../src/data/posts"
+import { getPostBySlug, getPostsNewestFirst } from "../src/data/posts"
 import { getRelatedDealsForPost } from "../src/lib/blog-recommendations"
 import { getDealScannerSlides } from "../src/lib/deal-scanner"
 import { getSeasonalPromotion } from "../src/lib/seasonal-promotion"
@@ -881,6 +881,83 @@ test("sitemap contains reviewed canonical guides and excludes the retired guide"
     expect(xml.includes(`<loc>https://sulitscan.com${path}</loc>`)).toBe(entityDeals(path).length > 0)
   }
   expect(xml).not.toContain("?page=1")
+})
+
+test("blog explorer submits an accessible native GET form and renders only matching cards and schema", async ({ page }) => {
+  await page.goto("/blog")
+  const form = page.getByRole("form", { name: "Find shopping guides" })
+  await expect(form).toHaveAttribute("method", "get")
+  await expect(form).toHaveAttribute("action", "/blog")
+  await form.getByRole("searchbox", { name: "Search guides" }).fill("  SePhOrA  ")
+  await form.getByRole("combobox", { name: "Guide category" }).selectOption("Beauty Guides")
+  await form.getByRole("button", { name: "Find guides", exact: true }).click()
+  await expect(page).toHaveURL(/\/blog\?q=.*&category=Beauty\+Guides$/)
+  await expect(form.getByRole("searchbox", { name: "Search guides" })).toHaveValue("SePhOrA")
+  await expect(form.getByRole("combobox", { name: "Guide category" })).toHaveValue("Beauty Guides")
+  const expected = getPostsNewestFirst().filter((post) => post.category === "Beauty Guides"
+    && `${post.title} ${post.excerpt} ${post.category} ${post.tags.join(" ")}`.toLowerCase().includes("sephora"))
+  expect(expected.length).toBeGreaterThan(0)
+  const cards = page.getByRole("link", { name: /^Read: / })
+  await expect(cards).toHaveCount(expected.length)
+  expect(await cards.evaluateAll((links) => links.map((link) => link.getAttribute("href"))))
+    .toEqual(expected.map((post) => `/blog/${post.slug}`))
+  await expect(page.getByRole("status")).toHaveText(`${expected.length} ${expected.length === 1 ? "guide" : "guides"} found`)
+  const itemList = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) =>
+    scripts.map((script) => JSON.parse(script.textContent ?? "{}")).find((schema) => schema["@type"] === "ItemList"))
+  expect(itemList.itemListElement.map((item: { url: string }) => item.url))
+    .toEqual(expected.map((post) => `https://sulitscan.com/blog/${post.slug}`))
+})
+
+test("blog explorer category links preserve the query and no-results view resets", async ({ page }) => {
+  await page.goto("/blog?q=sephora")
+  const categories = page.getByRole("navigation", { name: "Guide categories" })
+  await expect(categories.getByRole("link", { name: "Beauty Guides", exact: true }))
+    .toHaveAttribute("href", "/blog?q=sephora&category=Beauty+Guides")
+  await categories.getByRole("link", { name: "Beauty Guides", exact: true }).click()
+  await expect(categories.getByRole("link", { name: "Beauty Guides", exact: true })).toHaveAttribute("aria-current", "page")
+  await expect(categories.getByRole("link", { name: "All", exact: true })).toHaveAttribute("href", "/blog?q=sephora")
+  await page.goto("/blog?q=zzzz-no-guide-matches&category=Beauty+Guides")
+  await expect(page.getByRole("status")).toHaveText("0 guides found")
+  await expect(page.getByText("No guides match your search.")).toBeVisible()
+  await expect(page.getByRole("link", { name: /^Read: / })).toHaveCount(0)
+  const itemList = await page.locator('script[type="application/ld+json"]').evaluateAll((scripts) =>
+    scripts.map((script) => JSON.parse(script.textContent ?? "{}")).find((schema) => schema["@type"] === "ItemList"))
+  expect(itemList.itemListElement).toEqual([])
+  await page.getByRole("link", { name: "Reset guide filters", exact: true }).click()
+  await expect(page).toHaveURL(/\/blog$/)
+  await expect(page.getByRole("link", { name: /^Read: / })).toHaveCount(getPostsNewestFirst().length)
+})
+
+test("blog explorer metadata noindexes every raw filter and normalizes repeated invalid values", async ({ page }) => {
+  test.slow()
+  for (const query of ["", "?q=", "?category=", "?category=All", "?category=invalid", "?q=&q=sephora&category=invalid&category=Beauty+Guides"]) {
+    await page.goto(`/blog${query}`)
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://sulitscan.com/blog")
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", query ? "noindex, follow" : "index, follow")
+    await expect(page.getByRole("searchbox", { name: "Search guides" })).toHaveValue("")
+    await expect(page.getByRole("combobox", { name: "Guide category" })).toHaveValue("All")
+    await expect(page.getByRole("link", { name: /^Read: / })).toHaveCount(getPostsNewestFirst().length)
+  }
+})
+
+test("blog explorer search and category controls work without client JavaScript on mobile", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } })
+  const page = await context.newPage()
+  try {
+    await page.goto("/blog")
+    await page.getByRole("searchbox", { name: "Search guides" }).fill("sephora")
+    await page.getByRole("button", { name: "Find guides", exact: true }).click()
+    await expect(page).toHaveURL(/\/blog\?q=sephora&category=All$/)
+    await page.getByRole("navigation", { name: "Guide categories" })
+      .getByRole("link", { name: "Beauty Guides", exact: true }).click()
+    await expect(page.getByRole("combobox", { name: "Guide category" })).toHaveValue("Beauty Guides")
+    await expect(page.getByRole("link", { name: /^Read: / }).first()).toBeVisible()
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390)
+    await page.getByRole("link", { name: "Reset guide filters", exact: true }).click()
+    await expect(page).toHaveURL(/\/blog$/)
+  } finally {
+    await context.close()
+  }
 })
 
 test("blog index lists guides newest first", async ({ page }) => {
