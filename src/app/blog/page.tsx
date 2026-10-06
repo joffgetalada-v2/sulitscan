@@ -86,7 +86,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <form action="/blog" method="get" aria-label="Find shopping guides" className="mb-6 flex flex-col sm:flex-row sm:items-end gap-4">
+        <form key={buildBlogHref({ q: listing.q, category: listing.category })} action="/blog" method="get" aria-label="Find shopping guides" className="mb-6 flex flex-col sm:flex-row sm:items-end gap-4">
           <div className="flex-1 min-w-0">
             <label htmlFor="guide-search" className="block mb-2 text-sm font-semibold text-slate-700">Search guides</label>
             <input id="guide-search" name="q" type="search" maxLength={80} defaultValue={listing.q} placeholder="Search topics, stores, or buying tips" className="w-full rounded-xl border border-slate-300 bg-white px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-green-600" />

@@ -915,6 +915,7 @@ test("blog explorer category links preserve the query and no-results view resets
     .toHaveAttribute("href", "/blog?q=sephora&category=Beauty+Guides")
   await categories.getByRole("link", { name: "Beauty Guides", exact: true }).click()
   await expect(categories.getByRole("link", { name: "Beauty Guides", exact: true })).toHaveAttribute("aria-current", "page")
+  await expect(page.getByRole("combobox", { name: "Guide category" })).toHaveValue("Beauty Guides")
   await expect(categories.getByRole("link", { name: "All", exact: true })).toHaveAttribute("href", "/blog?q=sephora")
   await page.goto("/blog?q=zzzz-no-guide-matches&category=Beauty+Guides")
   await expect(page.getByRole("status")).toHaveText("0 guides found")
@@ -925,6 +926,8 @@ test("blog explorer category links preserve the query and no-results view resets
   expect(itemList.itemListElement).toEqual([])
   await page.getByRole("link", { name: "Reset guide filters", exact: true }).click()
   await expect(page).toHaveURL(/\/blog$/)
+  await expect(page.getByRole("searchbox", { name: "Search guides" })).toHaveValue("")
+  await expect(page.getByRole("combobox", { name: "Guide category" })).toHaveValue("All")
   await expect(page.getByRole("link", { name: /^Read: / })).toHaveCount(getPostsNewestFirst().length)
 })
 
