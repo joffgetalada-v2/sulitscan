@@ -145,14 +145,14 @@ for (const [subject, recipient, label] of [
   ["feedback", "hello@sulitscan.com", "General Feedback"],
   ["other", "hello@sulitscan.com", "Other"],
 ]) {
-  test(`route preserves ${subject} destination and returns success when error is null`, async () => {
+  test(`route preserves ${subject} destination without BCC and returns success when error is null`, async () => {
     const harness = routeHarness()
     const response = await harness.post({ ...valid, subject })
     assert.equal(response.status, 200)
     assert.deepEqual(await response.json(), { success: true })
     assert.equal(harness.deliveries.length, 1)
     assert.deepEqual(harness.deliveries[0].to, [recipient])
-    assert.deepEqual(harness.deliveries[0].bcc, ["joff.getalada@dovrmedia.com"])
+    assert.equal(Object.hasOwn(harness.deliveries[0], "bcc"), false, "contact delivery must not include any BCC field")
     assert.equal(harness.deliveries[0].from, "SulitScan PH <hello@e.sulitscan.com>")
     assert.equal(harness.deliveries[0].replyTo, "reader@example.com")
     assert.equal(harness.deliveries[0].subject, `[SulitScan Contact] ${label}, Reader`)

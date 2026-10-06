@@ -12,8 +12,7 @@ const TOPIC_LABELS: Record<string, string> = {
 }
 
 // Per-topic routing. Deal-related topics go to deals@, partnerships to
-// partners@, everything else to hello@. The monitored ops inbox is BCC'd on
-// every message during soft launch so nothing is lost if an alias isn't live.
+// partners@, everything else to hello@.
 const TOPIC_ROUTING: Record<string, string> = {
   "deal-suggestion":  "deals@sulitscan.com",
   "outdated-price":   "deals@sulitscan.com",
@@ -23,7 +22,6 @@ const TOPIC_ROUTING: Record<string, string> = {
   "other":            "hello@sulitscan.com",
 }
 const DEFAULT_RECIPIENT = "hello@sulitscan.com"
-const OPS_INBOX = "joff.getalada@dovrmedia.com"
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => null)
@@ -41,7 +39,6 @@ export async function POST(req: NextRequest) {
     const result = await resend.emails.send({
       from:    "SulitScan PH <hello@e.sulitscan.com>",
       to:      [recipient],
-      bcc:     [OPS_INBOX],
       replyTo: email,
       subject: `[SulitScan Contact] ${sanitizeSubjectFragment(topicLabel)}, ${sanitizeSubjectFragment(name)}`,
       html: `
