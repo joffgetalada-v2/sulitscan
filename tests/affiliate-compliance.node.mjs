@@ -48,11 +48,23 @@ test("active stores use the approved tracked affiliate destinations", () => {
   assert.deepEqual(
     Object.fromEntries(storesModule.stores.map((store) => [store.name, store.affiliateLink])),
     {
-      Temu: "https://temu.to/k/ge7hcjmmrb4",
       "Shopee PH": "https://invl.me/clnkccq",
       "Sephora PH": "https://invl.me/clnkccv",
     }
   )
+})
+
+test("terminated Temu affiliate inventory is fully retired", () => {
+  assert.equal(dealsModule.deals.some((deal) => deal.platform === "Temu"), false)
+  assert.equal(storesModule.stores.some((store) => store.name === "Temu" || store.slug === "temu"), false)
+
+  const deployableSource = [
+    "src/data/deals.ts",
+    "src/data/stores.ts",
+    "src/app/affiliate-disclosure/page.tsx",
+  ].map((path) => readFileSync(resolve(path), "utf8")).join("\n")
+
+  assert.doesNotMatch(deployableSource, /temu\.to\//i)
 })
 
 test("blocked SHEIN creative is not published as a public asset", () => {
@@ -101,8 +113,7 @@ test("public partner UI contains active coverage instead of unfinished store pro
   const publicPartnerUi = `${storesPage}\n${affiliateDisclosure}\n${footer}`
 
   assert.doesNotMatch(publicPartnerUi, /Coming Soon/i)
-  assert.doesNotMatch(publicPartnerUi, /Lazada|AliExpress/i)
-  assert.match(publicPartnerUi, /Temu/)
+  assert.doesNotMatch(publicPartnerUi, /Lazada|AliExpress|Temu/i)
   assert.match(publicPartnerUi, /Shopee PH/)
   assert.match(publicPartnerUi, /Sephora PH/)
 })

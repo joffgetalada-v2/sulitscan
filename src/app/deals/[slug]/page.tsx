@@ -17,7 +17,6 @@ export const revalidate = 86400
 
 function getBuyerChecklist(deal: { platform: string; category: string }): string[] {
   const cat = deal.category.toLowerCase()
-  const isTemu = deal.platform === "Temu"
   const isSephora = deal.platform === "Sephora PH"
   const isShopee = deal.platform === "Shopee PH"
   const isBeauty = ["beauty", "skincare", "makeup", "fragrance", "haircare", "hair care"].some((c) => cat.includes(c))
@@ -55,7 +54,7 @@ function getBuyerChecklist(deal: { platform: string; category: string }): string
   if (isFashion) {
     return [
       ...base,
-      isTemu ? "Check the size guide in centimeters, Temu clothing and shoes often run smaller than labeled." : "Confirm your size and variant are available.",
+      "Check the size guide in centimeters and confirm your size and variant are available.",
       "Read buyer reviews for fit, material, and quality, look for photos from reviewers.",
       "Confirm return and exchange terms before ordering.",
       "Check dimensions, material, and construction in product photos.",
@@ -69,7 +68,7 @@ function getBuyerChecklist(deal: { platform: string; category: string }): string
       "Confirm voltage, charging specs, and plug type work in the Philippines.",
       "Read buyer reviews for battery life, durability, and real-world performance.",
       "Confirm what accessories are included in the package.",
-      isTemu ? "Check the estimated delivery date, Temu ships internationally (7–20 business days to PH)." : "Confirm shipping cost and delivery estimate.",
+      "Confirm shipping cost and delivery estimate.",
     ]
   }
 
@@ -79,16 +78,16 @@ function getBuyerChecklist(deal: { platform: string; category: string }): string
       "Check exact dimensions, confirm the item fits your space before ordering.",
       "Read buyer reviews with photos for material quality and build.",
       "Confirm whether tools or assembly are required.",
-      isTemu ? "Check the estimated delivery date, Temu ships internationally (7–20 business days to PH)." : "Confirm shipping cost and delivery estimate.",
+      "Confirm shipping cost and delivery estimate.",
       "Check return policy if the item arrives damaged or doesn't fit.",
     ]
   }
 
   return [
     ...base,
-    isTemu ? "Check the size guide if ordering clothing or shoes, Temu sizing often runs smaller than stated." : "Confirm shade, size, or variant availability on Sephora PH.",
+    "Confirm shade, size, or variant availability on the partner store.",
     "Read buyer reviews on the partner store for real-world quality and fit.",
-    isTemu ? "Check the estimated delivery date, Temu ships internationally (7–20 business days to PH)." : "Confirm shipping cost, free standard shipping on Sephora PH orders ₱1,500+.",
+    "Confirm shipping cost and delivery estimate before buying.",
     "Check if the product dimensions, materials, or specs match your needs.",
     "Read the return and refund policy before completing your purchase.",
   ]
@@ -96,7 +95,6 @@ function getBuyerChecklist(deal: { platform: string; category: string }): string
 
 function getStorePath(platform: string): string {
   const storePaths: Record<string, string> = {
-    Temu: "/stores/temu",
     "Shopee PH": "/stores/shopee-ph",
     "Sephora PH": "/stores/sephora-ph",
   }

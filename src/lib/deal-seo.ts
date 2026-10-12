@@ -4,7 +4,7 @@ import { getDealFreshness, type DealFreshness } from "@/lib/deal-freshness"
 const SITE_SUFFIX = " | SulitScan PH"
 const TITLE_LIMIT = 65
 const DESCRIPTION_LIMIT = 160
-const DEALS_PAGE_DESCRIPTION = "Browse curated online deals from Temu, Shopee PH, and Sephora PH with buyer notes on every listing."
+const DEALS_PAGE_DESCRIPTION = "Browse curated online deals from Shopee PH and Sephora PH with buyer notes on every listing."
 
 function truncateAtWordBoundary(text: string, limit: number): string {
   const normalized = text.replace(/\s+/g, " ").trim()

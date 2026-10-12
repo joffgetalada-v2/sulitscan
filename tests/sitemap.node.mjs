@@ -67,7 +67,7 @@ test("historical sitemap emits active editorial deals and only populated canonic
   const urls = new Set(entries.map((entry) => entry.url))
   assert.equal(urls.size, entries.length)
   const active = deals.getActiveDeals(now)
-  assert.equal(active.length, 169)
+  assert.equal(active.length, 74)
   let editorialCount = 0
   for (const deal of deals.deals) {
     const expected = deals.isPublicDeal(deal) && !freshness.isDealExpired(deal, now)

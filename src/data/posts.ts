@@ -692,7 +692,7 @@ Some platforms offer optional purchase protection add-ons. For high-value items,
 
 ## Related on SulitScan
 
-Browse [deals under ₱1,000](/categories/under-1000) or check our [Temu store guide](/stores/temu) and [Sephora PH store guide](/stores/sephora-ph) for more platform-specific buying tips. For products with written coverage, save the claim evidence in our [online purchase warranty guide](/blog/online-purchase-warranty-guide-philippines).
+Browse [deals under ₱1,000](/categories/under-1000) or check our independent [Temu shopping guide](/blog/temu-shopping-guide-philippines) and [Sephora PH store guide](/stores/sephora-ph) for more platform-specific buying tips. For products with written coverage, save the claim evidence in our [online purchase warranty guide](/blog/online-purchase-warranty-guide-philippines).
 
 ## Affiliate Disclosure
 
@@ -1031,7 +1031,7 @@ For low-value items, Temu sometimes issues a refund without requiring you to shi
 
 ## Related on SulitScan
 
-New to Temu? Read our full [Temu shopping guide for the Philippines](/blog/temu-shopping-guide-philippines) and our [voucher, shipping, and return checklist](/blog/voucher-shipping-return-checklist). Browse [Temu deals](/stores/temu) and [Under ₱500 finds](/categories/under-500).
+New to Temu? Read our independent [Temu shopping guide for the Philippines](/blog/temu-shopping-guide-philippines) and our [voucher, shipping, and return checklist](/blog/voucher-shipping-return-checklist). SulitScan no longer publishes Temu affiliate listings; browse current [Under ₱500 finds](/categories/under-500) from active partners instead.
 
 ## Affiliate Disclosure
 
@@ -1708,7 +1708,7 @@ Before buying on Temu:
 - **Read buyer reviews and look for photos** from real purchases, not just listing images.
 - **Confirm the return window** if quality matters for your specific order.
 
-For a full Temu buying guide, see our [Temu shopping guide for Filipino buyers](/blog/temu-shopping-guide-philippines) and our [Temu Philippines shipping guide](/blog/temu-philippines-shipping-guide). Browse Temu deals at the [Temu store page](/stores/temu).
+For independent Temu buyer information, see our [Temu shopping guide for Filipino buyers](/blog/temu-shopping-guide-philippines) and our [Temu Philippines shipping guide](/blog/temu-philippines-shipping-guide). SulitScan no longer publishes Temu affiliate product listings.
 
 ## Shipping, vouchers, returns, and final price
 
@@ -1738,7 +1738,7 @@ Our [Philippine import tax guide for online shoppers](/blog/philippine-import-ta
 
 ## Related categories and stores on SulitScan
 
-Browse [tech deals](/categories/tech-deals), [home finds](/categories/home-finds), and [items under 500](/categories/under-500) on SulitScan. See the [Shopee PH store page](/stores/shopee-ph) and the [Temu store page](/stores/temu) for buyer notes, shipping information, and vetted deals with SulitScore ratings.
+Browse [tech deals](/categories/tech-deals), [home finds](/categories/home-finds), and [items under 500](/categories/under-500) on SulitScan. See the [Shopee PH store page](/stores/shopee-ph) for current partner listings and the independent [Temu shopping guide](/blog/temu-shopping-guide-philippines) for non-affiliate buyer notes.
 
 ## Affiliate disclosure
 
@@ -1958,7 +1958,7 @@ Useful reviews mention dimensions, plastic thickness, assembly, odor, adhesive s
 
 ## Shopee vs Temu final cost
 
-Compare the same usable size and material, not only two products with similar photos. On [Shopee PH](/stores/shopee-ph), a local listing may have a different shipping fee, dispatch point, voucher, or return route from another seller. On [Temu](/stores/temu), an item may be part of a cross-border basket with different delivery and return conditions.
+Compare the same usable size and material, not only two products with similar photos. On [Shopee PH](/stores/shopee-ph), a local listing may have a different shipping fee, dispatch point, voucher, or return route from another seller. For Temu purchases, use the independent [Temu shopping guide](/blog/temu-shopping-guide-philippines) to account for cross-border delivery and return conditions; SulitScan does not publish Temu affiliate listings.
 
 Use this calculation for both carts: item price plus shipping and any fees, minus only the vouchers that actually apply. Divide bundle prices by the number of pieces you will really use. A ten-piece set is not better value if six pieces do not fit. Recheck the total immediately before payment because prices, vouchers, stock, and seller terms can change.
 
@@ -1983,7 +1983,7 @@ Use this calculation for both carts: item price plus shipping and any fees, minu
 
 ## Related SulitScan guides
 
-Use the [home finds](/categories/home-finds) page for organizers and everyday household items, then narrow the budget with [items under 500](/categories/under-500). The [Shopee PH store guide](/stores/shopee-ph) and [Temu store guide](/stores/temu) explain the platform-specific checks to make before opening a partner listing.
+Use the [home finds](/categories/home-finds) page for organizers and everyday household items, then narrow the budget with [items under 500](/categories/under-500). The [Shopee PH store guide](/stores/shopee-ph) covers current partner listings, while the independent [Temu shopping guide](/blog/temu-shopping-guide-philippines) remains available for buyer education.
 
 ## Affiliate disclosure
 
@@ -2590,7 +2590,7 @@ For lids, verify the material, fit, knob or handle attachment, vent design if pr
 
 ## Overseas orders: total cost and possible import charges
 
-When ordering through [Temu](/stores/temu) or another overseas seller, compare the complete checkout total, dispatch origin, delivery estimate, parcel tracking, and return route. A low item price may sit beside shipping, platform fees, or charges that appear only after the basket is assembled. [Shopee PH](/stores/shopee-ph) also mixes seller and fulfillment arrangements, so confirm whether the selected listing ships locally or across borders.
+When ordering from Temu or another overseas seller, compare the complete checkout total, dispatch origin, delivery estimate, parcel tracking, and return route. SulitScan's independent [Temu shopping guide](/blog/temu-shopping-guide-philippines) is educational only and no longer contains Temu affiliate listings. A low item price may sit beside shipping, platform fees, or charges that appear only after the basket is assembled. [Shopee PH](/stores/shopee-ph) also mixes seller and fulfillment arrangements, so confirm whether the selected listing ships locally or across borders.
 
 The Philippine Bureau of Customs publishes [official importation guidance](https://customs.gov.ph/guidelines-on-importation/) covering duties, taxes, exemptions, and entry rules. The treatment of an order can depend on its value, goods, shipment, and current regulations, so confirm official guidance for the actual order instead of relying on a product-page estimate.
 
@@ -2711,7 +2711,7 @@ Start with the exact selected color, size, and seller. Compare the title, variat
 
 Use recent buyer photos to check proportions, opening width, pocket layout, color range, packaging, and common defects. Read lower and middle ratings as well as high ratings, and note whether the seller resolved wrong-item or damaged-item reports. Reviews document other transactions; they do not authenticate a brand, prove a material claim, or guarantee the condition of your order.
 
-The [Shopee PH store guide](/stores/shopee-ph) and [Temu store guide](/stores/temu) explain platform-specific seller, variation, delivery, and return checks.
+The [Shopee PH store guide](/stores/shopee-ph) covers current partner listings, while the independent [Temu shopping guide](/blog/temu-shopping-guide-philippines) explains general seller, variation, delivery, and return checks without promoting Temu products.
 
 ## Returns, color, and material expectations
 
@@ -2847,7 +2847,7 @@ Identify the lock type and follow its current setup instructions. Check whether 
 
 Read who provides support, which country or seller handles a claim, what parts and defects are covered, the evidence required, and who pays return shipping. A warranty badge without accessible terms is not enough. Photograph the parcel and test zippers, wheels, handles, and the lock indoors before removing labels or taking the case outside if the return policy allows that inspection.
 
-Compare the seller and fulfillment details through [Temu](/stores/temu) or [Shopee PH](/stores/shopee-ph). The [bags under ₱500 guide](/blog/bags-under-500-philippines-buying-guide) adds a use-case method for backpacks, totes, and personal items.
+Compare seller and fulfillment details using the independent [Temu shopping guide](/blog/temu-shopping-guide-philippines) or current [Shopee PH listings](/stores/shopee-ph). The [bags under ₱500 guide](/blog/bags-under-500-philippines-buying-guide) adds a use-case method for backpacks, totes, and personal items.
 
 ## Packing organizers are optional
 
@@ -4248,7 +4248,7 @@ SulitScan may earn a commission when you click an eligible partner link and comp
     content: `
 A Temu vs Shopee Philippines comparison is less about which app is cheaper and more about which retail model fits the item you need right now. Temu is a cross-border marketplace that ships most orders to the Philippines from overseas warehouses, while Shopee PH is dominated by local and nearby regional sellers with shorter delivery routes. Neither platform wins every purchase, and the only numbers worth trusting are the delivered totals and terms shown live in each app at checkout.
 
-This guide compares the two platforms by mechanism: catalogs, pricing behavior, shipping, returns, and buyer protection. We deliberately avoid quoting specific fees, voucher values, thresholds, or promo dates, because those change frequently and differ by account, address, and cart. Track curated offers for both platforms on our [Temu store page](/stores/temu) and [Shopee PH store page](/stores/shopee-ph), and treat the live listing and checkout as the only authoritative source for any number.
+This guide compares the two platforms by mechanism: catalogs, pricing behavior, shipping, returns, and buyer protection. We deliberately avoid quoting specific fees, voucher values, thresholds, or promo dates, because those change frequently and differ by account, address, and cart. SulitScan no longer publishes Temu affiliate listings; use our [Shopee PH store page](/stores/shopee-ph) for current partner listings, and treat each live listing and checkout as the only authoritative source for any number.
 
 ## What each catalog is built for
 
@@ -4939,7 +4939,7 @@ Temu has historically offered compensation mechanics when parcels miss the state
 
 Cross-border shipping has a floor measured in weeks, not days. If your need-by date is inside that floor, no amount of planning fixes it, and a locally stocked alternative is the honest answer even at a higher price. This is also true for anything you cannot afford to receive in a wrong size or variant, because a cross-border replacement cycle adds weeks on top. For event-critical items, buy local; use Temu for the flexible rest.
 
-The reverse also holds. If your purchase has no deadline at all, sale-season congestion barely matters to you, and early September is as good a time as any, especially if a Temu promotion happens to run alongside the local campaigns. Browse the [Temu deals we have checked](/stores/temu) if you want a shortlist that has been through a manual review.
+The reverse also holds. If your purchase has no deadline at all, sale-season congestion barely matters to you. SulitScan no longer publishes Temu affiliate product listings, so verify any Temu promotion and product directly before ordering.
 
 ## A quick pre-order checklist for September orders
 
@@ -6875,7 +6875,7 @@ Suppose a buyer wants a fan for a small study desk and is comparing a clip-on mo
 4. Identify the fan type before applying DTI-BPS scope. Do not demand or dismiss PS/ICC evidence based only on the word portable.
 5. Prefer the model that fits securely and has clearer exact-model evidence. If both leave charging or mounting uncertain, do not order yet.
 
-As additional desktop and wearable format examples, examine the listing evidence on SulitScan's [USB desktop fan page](/deals/usb-desktop-fan-air-cooler-temu) and [mini waist fan page](/deals/mini-bladeless-waist-fan-temu), then verify the current product page, seller information, and checkout before acting. Neither page supplies clamp evidence for the clip-on scenario, and both are comparison starting points rather than performance endorsements.
+For additional desktop and wearable format examples, browse the current [tech deals category](/categories/tech-deals), then verify the exact product page, seller information, and checkout before acting. A category placement does not supply clamp evidence for a clip-on scenario and is not a performance endorsement.
 
 ## Portable fan checkout checklist
 
@@ -6890,7 +6890,7 @@ As additional desktop and wearable format examples, examine the listing evidence
 9. Read recent exact-variation reports and warranty terms.
 10. Recheck the live listing, delivery, return condition, and final checkout.
 
-Browse the [Temu store guide](/stores/temu) for platform checks, but do not infer that a linked fan is currently available or suitable until the live page confirms the exact variation and terms.
+Use the independent [Temu shopping guide](/blog/temu-shopping-guide-philippines) for general platform checks. SulitScan no longer publishes Temu affiliate listings, so verify the exact variation and terms directly on any product you independently find.
 
 ## Limitations and live-policy check
 
@@ -6958,7 +6958,7 @@ Nominal capacity is only useful when the container fits the place and routine. M
 
 Think about fill weight as well as empty weight. A large tumbler may be inconvenient when full, hard to grip, or top-heavy in a shallow holder. A handle can help but may block adjacent cup holders or bag pockets. For a commute, a shorter sealed bottle may be a better format than an open-straw tumbler even when both hold a similar amount.
 
-Use [home finds](/categories/home-finds), [under-500 browsing](/categories/under-500), [Shopee PH](/stores/shopee-ph), or [Temu](/stores/temu) to discover shapes. These routes do not establish current stock or fit; measure and verify the live exact model before ordering.
+Use [home finds](/categories/home-finds), [under-500 browsing](/categories/under-500), or [Shopee PH](/stores/shopee-ph) to discover shapes. These routes do not establish current stock or fit; measure and verify the live exact model before ordering.
 
 ## Treat the lid as a use-case decision
 
@@ -6994,7 +6994,7 @@ Suppose a buyer wants one tumbler for a car commute and a work desk, and is comp
 4. Require exact-model support for material, dishwasher, leak, and retention claims. Mark any ambiguous specification unknown rather than borrowing evidence.
 5. Select the container that clears fit, spill, and cleaning requirements. If neither has a lid appropriate for transport, use a different format.
 
-SulitScan pages for a [40oz insulated tumbler](/deals/40oz-vacuum-insulated-tumbler-temu) and a [double-wall tumbler](/deals/tumbler-hot-and-cold-thermos-double-wall-vacuum-insu-634012) can serve as comparison prompts. Recheck the live product page, dimensions, selected variation, seller, instructions, and checkout; the links are not a guarantee of availability or performance.
+SulitScan's current [home finds](/categories/home-finds) can serve as comparison prompts. Recheck the live product page, dimensions, selected variation, seller, instructions, and checkout; category placement is not a guarantee of availability or performance.
 
 ## Insulated tumbler checkout checklist
 
@@ -7121,7 +7121,7 @@ Suppose a buyer needs earbuds for Android calls and a Windows laptop, with commu
 4. Match the exact make and model to a current NTC record; do not accept a nearby family name.
 5. Compare warranty route, case size, charging input, hygiene-sensitive return terms, and safe-listening controls. Reject the option if a non-negotiable remains unknown.
 
-The SulitScan [Acer wireless earbuds page](/deals/acer-wireless-earbuds-temu) is a starting point for examining listing fields, not a claim that the item is available, fits, or performs a certain way. Verify the current exact product and seller page before ordering.
+SulitScan's [tech deals category](/categories/tech-deals) is a starting point for examining listing fields, not a claim that any item is available, fits, or performs a certain way. Verify the current exact product and seller page before ordering.
 
 ## Wireless earbuds checkout checklist
 
@@ -7136,7 +7136,7 @@ The SulitScan [Acer wireless earbuds page](/deals/acer-wireless-earbuds-temu) is
 9. Read hygiene-sensitive return conditions before opening or wearing.
 10. Plan lower-volume listening, monitoring, and regular breaks.
 
-Browse [tech deals](/categories/tech-deals), [under-500 options](/categories/under-500), or the [Temu store guide](/stores/temu) to compare listing structures. Recheck live availability, variation, documentation, and checkout without treating category placement as endorsement.
+Browse [tech deals](/categories/tech-deals), [under-500 options](/categories/under-500), or the independent [Temu shopping guide](/blog/temu-shopping-guide-philippines) to compare listing structures. Recheck live availability, variation, documentation, and checkout without treating category placement as endorsement.
 
 ## Limitations and live-policy check
 
@@ -7387,7 +7387,7 @@ If the light set contains mostly tiny tubs, it may not solve the lunch problem. 
 7. Preserve the selected variant, instructions, and seller information.
 8. Inspect the delivered item before food use and follow the live issue-reporting process.
 
-Our [home guides category](/categories/home-finds) and [Temu store guide](/stores/temu) are browsing and checkout resources, not an active matching product claim. Use them to continue research, then verify the chosen retailer's current details.
+Our [home guides category](/categories/home-finds) and independent [Temu shopping guide](/blog/temu-shopping-guide-philippines) are research and checkout resources, not an active matching product or availability claim. SulitScan no longer publishes Temu affiliate listings; verify the chosen retailer's current details independently.
 
 ## Limitations and live-policy check
 

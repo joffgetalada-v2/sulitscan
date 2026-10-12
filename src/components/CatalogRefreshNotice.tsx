@@ -30,7 +30,6 @@ export default function CatalogRefreshNotice({
         <Link href="/tools/checkout-comparison" className="rounded-xl border border-green-200 bg-white px-4 py-3 text-sm font-semibold text-green-800 hover:bg-green-100">Compare a checkout total</Link>
       </div>
       <nav aria-label="Partner store information" className="mt-5 flex flex-wrap gap-x-5 gap-y-3 text-sm font-semibold text-green-800">
-        <Link href="/stores/temu" className="hover:underline">Temu store guide →</Link>
         <Link href="/stores/shopee-ph" className="hover:underline">Shopee PH store guide →</Link>
         <Link href="/stores/sephora-ph" className="hover:underline">Sephora PH store guide →</Link>
       </nav>

@@ -32,9 +32,6 @@ const nextConfig: NextConfig = {
     // Capping at 1920 covers desktop + retina without the 2048/3840 variants.
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     remotePatterns: [
-      // Temu product images
-      { protocol: "https", hostname: "aimg.kwcdn.com" },
-      { protocol: "https", hostname: "img.kwcdn.com" },
       // Lookfantastic / CultBeauty CDN
       { protocol: "https", hostname: "static.thcdn.com" },
       // Sunday Riley

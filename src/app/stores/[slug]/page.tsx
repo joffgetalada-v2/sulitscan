@@ -19,7 +19,6 @@ import { clampMeta } from "@/lib/utils"
 import EntityDeals from "@/components/EntityDeals"
 import CatalogRefreshNotice from "@/components/CatalogRefreshNotice"
 import { getPostBySlug } from "@/data/posts"
-import ImportTaxCallout from "@/components/ImportTaxCallout"
 import { ExternalAffiliateLink } from "@/components/ExternalAffiliateLink"
 import { getFreshnessSafeReason } from "@/lib/deal-freshness"
 
@@ -290,11 +289,6 @@ export default async function StoreDetailPage({
                   </ul>
                 </div>
               </div>
-            )}
-
-            {/* Overseas import-tax callout (Temu ships internationally) */}
-            {isFirstPage && slug === "temu" && (
-              <ImportTaxCallout sourceSlug="store-temu" platform="temu" placement="store-main" />
             )}
 
             {/* Deals */}

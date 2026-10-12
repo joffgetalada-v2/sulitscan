@@ -8,7 +8,7 @@ import { ShieldCheck, Heart, BookOpen, ShoppingBag, CheckCircle, XCircle } from 
 export const metadata: Metadata = {
   title: { absolute: "About SulitScan PH | Smarter Deal Discovery for Filipino Shoppers" },
   description:
-    "Learn about SulitScan PH, a curated deals discovery site helping Filipino shoppers find genuinely sulit online deals from Temu, Shopee PH, and Sephora PH.",
+    "Learn about SulitScan PH, a curated deals discovery site helping Filipino shoppers find genuinely sulit online deals from Shopee PH and Sephora PH.",
   alternates: { canonical: `${siteConfig.url}/about` },
 }
 

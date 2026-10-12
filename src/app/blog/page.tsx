@@ -19,12 +19,12 @@ export async function generateMetadata({ searchParams }: BlogPageProps): Promise
   return {
     title: "Smart Shopping Guides Philippines",
     description:
-      "Shopping guides for Filipino buyers, Temu, Shopee PH, and Sephora PH buying advice, how to spot fake discounts, voucher strategies, and smart online shopping habits.",
+      "Shopping guides for Filipino buyers covering marketplace safety, Shopee PH and Sephora PH buying advice, fake-discount checks, vouchers, and smart online shopping habits.",
     alternates: { canonical: `${siteConfig.url}/blog` },
     robots: { index: !hasRawFilters, follow: true },
     openGraph: {
       title: "Smart Shopping Guides Philippines | SulitScan PH",
-      description: "Practical shopping guides covering Temu, Shopee PH, Sephora PH, deal-checking, and smarter buying habits for Filipino shoppers.",
+      description: "Practical shopping guides covering marketplace safety, Shopee PH, Sephora PH, deal-checking, and smarter buying habits for Filipino shoppers.",
       url: `${siteConfig.url}/blog`,
     },
   }
@@ -78,7 +78,7 @@ export default async function BlogPage({ searchParams }: BlogPageProps) {
                 Smart shopping guides for Filipino shoppers
               </h1>
               <p className="text-slate-500 text-sm">
-                {orderedPosts.length} guides · Temu, Shopee PH, and Sephora PH tips, deal-checking, and smart shopping habits.
+                {orderedPosts.length} guides · Marketplace safety, Shopee PH and Sephora PH tips, deal-checking, and smart shopping habits.
               </p>
             </div>
           </div>

@@ -61,7 +61,7 @@ const faqItems = [
   },
 ]
 
-const partnerStores = stores.filter((store) => ["temu", "shopee-ph", "sephora-ph"].includes(store.slug))
+const partnerStores = stores.filter((store) => ["shopee-ph", "sephora-ph"].includes(store.slug))
 
 export default function SalesCalendarPage() {
   return (

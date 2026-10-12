@@ -18,14 +18,14 @@ function publicImg(rel: string): string | undefined {
 }
 
 export const metadata: Metadata = {
-  title: "Temu, Shopee PH, and Sephora PH Partner Stores Philippines",
+  title: "Shopee PH and Sephora PH Partner Stores Philippines",
   description:
-    "SulitScan features curated deals from partner stores: Temu and Shopee PH for budget and marketplace finds, and Sephora PH for beauty and skincare. Affiliate links clearly disclosed.",
+    "SulitScan features curated deals from partner stores: Shopee PH for budget marketplace finds and Sephora PH for beauty and skincare. Affiliate links clearly disclosed.",
   alternates: { canonical: `${siteConfig.url}/stores` },
   openGraph: {
     title: "Partner Stores | SulitScan PH",
     description:
-      "SulitScan currently features selected deals from Temu, Shopee PH, and Sephora PH. Affiliate links clearly disclosed.",
+      "SulitScan currently features selected deals from Shopee PH and Sephora PH. Affiliate links clearly disclosed.",
     url: `${siteConfig.url}/stores`,
   },
 }
@@ -63,7 +63,7 @@ export default function StoresPage() {
                 Where we find deals
               </h1>
               <p className="text-slate-500 text-sm max-w-xl">
-                SulitScan currently features selected deals from <strong>3 partner stores</strong>: Temu, Shopee PH, and Sephora PH.
+                SulitScan currently features selected deals from <strong>2 partner stores</strong>: Shopee PH and Sephora PH.
                 We add new partners only after reviewing their offers and buyer-check information.
               </p>
             </div>

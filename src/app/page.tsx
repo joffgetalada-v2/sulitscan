@@ -39,7 +39,7 @@ export const dynamic = "force-dynamic"
 export const metadata: Metadata = {
   title: { absolute: "SulitScan PH | Curated Online Deals and Shopping Guides for Filipino Shoppers" },
   description:
-    "SulitScan PH helps Filipino shoppers find curated online deals with honest buyer notes, fake-discount checks, and smart shopping guides for Temu, Shopee PH, and Sephora PH.",
+    "SulitScan PH helps Filipino shoppers find curated online deals with honest buyer notes, fake-discount checks, and smart shopping guides for Shopee PH and Sephora PH.",
   alternates: { canonical: siteConfig.url },
   openGraph: {
     title: "SulitScan PH | Curated Online Deals and Shopping Guides for Filipino Shoppers",
@@ -64,7 +64,7 @@ const intelligenceCards = [
     bg: "bg-blue-50",
     border: "border-blue-100",
     title: "Store Trust Note",
-    body: "We add context on the partner store: Temu and Shopee PH for budget finds, Sephora PH for beauty and skincare notes.",
+    body: "We add context on the partner store: Shopee PH for budget marketplace finds, Sephora PH for beauty and skincare notes.",
   },
   {
     icon: Tag,
@@ -89,7 +89,7 @@ const howItWorks = [
     step: "01",
     icon: Search,
     title: "We review listings",
-    body: "We review and curate affiliate-datafeed listings from Temu, Shopee PH, and Sephora PH as reference listings worth checking.",
+    body: "We review and curate affiliate-datafeed listings from Shopee PH and Sephora PH as reference listings worth checking.",
   },
   {
     step: "02",
@@ -129,12 +129,12 @@ const faqItems = [
   {
     question: "Which stores does SulitScan currently cover?",
     answer:
-      "Right now, SulitScan features selected deals from Temu, Shopee PH, and Sephora PH. We may add more reviewed partner stores later.",
+      "Right now, SulitScan features selected deals from Shopee PH and Sephora PH. We may add more reviewed partner stores later.",
   },
   {
     question: "Are the prices on SulitScan live and accurate?",
     answer:
-      "Prices are sourced from affiliate datafeeds and may not reflect the current price on the partner store. Always confirm on Temu, Shopee PH, or Sephora PH before completing your purchase.",
+      "Prices are sourced from affiliate datafeeds and may not reflect the current price on the partner store. Always confirm on Shopee PH or Sephora PH before completing your purchase.",
   },
   {
     question: "What is the SulitScan Score?",
@@ -258,7 +258,7 @@ export default function HomePage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {[
-              { value: "3",      label: "Partner Stores",   note: "Temu, Shopee PH, Sephora PH" },
+              { value: "2",      label: "Partner Stores",   note: "Shopee PH, Sephora PH" },
               { value: String(activeDeals.length), label: "Active/Reference Listings", note: "Confirm live store price" },
               { value: "90 days", label: "After Source Date/Period", note: "Then retired automatically" },
               { value: "100%",   label: "Free for shoppers", note: "No premium plan" },
@@ -316,7 +316,7 @@ export default function HomePage() {
                 Deals worth checking
               </h2>
               <p className="mt-2 text-slate-500 text-sm">
-                Deal notes from Temu, Shopee PH, and Sephora PH affiliate datafeeds. Confirm price on the partner store before buying.
+                Deal notes from Shopee PH and Sephora PH affiliate datafeeds. Confirm price on the partner store before buying.
               </p>
             </div>
             <Link
@@ -530,17 +530,10 @@ export default function HomePage() {
             id="stores-heading"
             tag="Partner Stores"
             title="Our partner stores"
-            subtitle="SulitScan currently features selected deals from Temu, Shopee PH, and Sephora PH. More reviewed partners may be added later."
+            subtitle="SulitScan currently features selected deals from Shopee PH and Sephora PH. More reviewed partners may be added later."
           />
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 max-w-2xl mx-auto">
             {[
-              {
-                href: "/stores/temu",
-                gradient: "from-orange-400 to-orange-600",
-                name: "Temu",
-                desc: "Budget finds: home, fashion, gadgets, and decor.",
-                badge: "Budget",
-              },
               {
                 href: "/stores/shopee-ph",
                 gradient: "from-orange-500 to-red-500",
@@ -595,7 +588,7 @@ export default function HomePage() {
                 Read before you buy
               </h2>
               <p className="mt-2 text-slate-500 text-sm">
-                Practical shopping guides for Filipino buyers, covering Temu, Shopee PH, Sephora PH, and smarter buying habits.
+                Practical shopping guides for Filipino buyers, covering marketplace safety, Shopee PH, Sephora PH, and smarter buying habits.
               </p>
             </div>
             <Link
@@ -690,7 +683,7 @@ export default function HomePage() {
           </h2>
           <p className="text-slate-400 mb-10 leading-relaxed text-base sm:text-lg">
             {activeDeals.length > 0
-              ? `Browse ${activeDeals.length} curated deal notes from Temu, Shopee PH, and Sephora PH.`
+              ? `Browse ${activeDeals.length} curated deal notes from Shopee PH and Sephora PH.`
               : "Explore buyer guides and compare checkout totals while verified listings are being refreshed."}
             No auto-redirect. No fake urgency. Affiliate links clearly disclosed.
           </p>

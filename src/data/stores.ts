@@ -34,34 +34,6 @@
 
 export const stores: Store[] = [
   {
-    id: "store-temu",
-    slug: "temu",
-    name: "Temu",
-    tagline: "Budget finds for everyday shopping",
-    description:
-      "Temu is a global marketplace offering a wide range of products at very low prices, from home decor and gadgets to fashion and beauty basics. Best for non-critical purchases where you're comfortable with some quality variability.",
-    country: "Global",
-    categories: ["Home", "Fashion", "Electronics", "Beauty", "Outdoor"],
-    shipsToPhilippines: true,
-    freeShippingMinimum: null,
-    trustLevel: "medium",
-    gradient: "from-orange-400 to-orange-600",
-    bannerImage: "/banners/stores/temu.jpg",
-    affiliateLink: "https://temu.to/k/ge7hcjmmrb4",
-    relatedGuideSlug: "best-temu-finds-under-500-philippines",
-    isDemo: false,
-    buyerNotes: [
-      "Always read product reviews before buying, since quality can vary between sellers.",
-      "Check the size guide carefully; sizing can run smaller than expected.",
-      "Shipping to the Philippines typically takes 7–20 days.",
-      "Temu's refund and return process is generally straightforward for defective items.",
-      "Best for low-stakes purchases: decor, clothing basics, organizers, phone accessories.",
-      "For electronics or items above ₱1,000, consider local platforms for faster recourse.",
-    ],
-    shippingNote: "Shipping to the Philippines typically takes 7–20 business days from the order date. Free shipping is usually included for most orders. Check the estimated delivery date at checkout.",
-    returnNote: "Temu generally allows returns for defective or misrepresented items within a set window. Always take photos of the item upon arrival to support a return claim.",
-  },
-  {
     id: "store-sephora",
     slug: "sephora-ph",
     name: "Sephora PH",

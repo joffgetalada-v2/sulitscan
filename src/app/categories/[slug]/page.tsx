@@ -50,7 +50,7 @@ export async function generateMetadata({
       )
     : clampMeta(
         content?.intro ??
-          `${category.description} Browse ${category.name.toLowerCase()} deals from Temu, Shopee PH, and Sephora PH on SulitScan PH.`
+          `${category.description} Browse ${category.name.toLowerCase()} deals from Shopee PH and Sephora PH on SulitScan PH.`
       )
   const canonical = `${siteConfig.url}${buildEntityPageHref(`/categories/${slug}`, listing.page)}`
   return {
@@ -273,10 +273,6 @@ export default async function CategoryPage({
               <div className="bg-white rounded-2xl border border-slate-100 p-5">
                 <h3 className="text-xs font-bold text-slate-700 uppercase tracking-wide mb-3">Active stores</h3>
                 <div className="space-y-2">
-                  <Link href="/stores/temu" className="flex items-center gap-2 text-xs text-slate-600 hover:text-green-700 transition-colors">
-                    <span className="w-5 h-5 rounded-md bg-orange-100 flex items-center justify-center text-[10px] font-bold text-orange-600" aria-hidden="true">T</span>
-                    Temu, budget finds
-                  </Link>
                   <Link href="/stores/shopee-ph" className="flex items-center gap-2 text-xs text-slate-600 hover:text-green-700 transition-colors">
                     <span className="w-5 h-5 rounded-md bg-orange-500 flex items-center justify-center text-[10px] font-bold text-white" aria-hidden="true">S</span>
                     Shopee PH, marketplace finds

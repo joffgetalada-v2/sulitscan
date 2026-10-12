@@ -78,7 +78,7 @@ test("empty unfiltered deals offer refresh paths with no meaningless reset actio
     categories: ["All"], stores: ["All"] })
   assert.match(html, /listings are being refreshed/i)
   assert.doesNotMatch(html, /Clear (?:all )?filters|No deals match/)
-  for (const path of ["/blog", "/tools/checkout-comparison", "/stores/temu", "/stores/shopee-ph", "/stores/sephora-ph"]) {
+  for (const path of ["/blog", "/tools/checkout-comparison", "/stores/shopee-ph", "/stores/sephora-ph"]) {
     assert.ok(html.includes(`href="${path}"`), path)
   }
 })

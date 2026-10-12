@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   ...defaultMetadata,
   title: {
-    default: "SulitScan PH | Temu, Shopee, and Sephora PH Deals for Filipino Shoppers",
+    default: "SulitScan PH | Shopee and Sephora PH Deals for Filipino Shoppers",
     template: "%s | SulitScan PH",
   },
   icons: {

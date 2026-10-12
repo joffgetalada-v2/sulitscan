@@ -24,7 +24,7 @@ const footerLinks = {
   ],
 }
 
-const activePlatforms = ["Temu", "Shopee PH", "Sephora PH"]
+const activePlatforms = ["Shopee PH", "Sephora PH"]
 
 export default function Footer() {
   return (

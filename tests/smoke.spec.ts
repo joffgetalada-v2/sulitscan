@@ -18,7 +18,7 @@ const scannerSlides = getDealScannerSlides(activeDeals, 6, inventoryNow)
 const allDealsListing = resolveDealListing(activeDeals, {})
 function entityDeals(path: string) {
   if (path.startsWith("/categories/")) return getDealsByCategory(path.split("/").at(-1)!, inventoryNow)
-  return getDealsByPlatform("Temu", inventoryNow)
+  return getDealsByPlatform("Shopee PH", inventoryNow)
 }
 
 async function expectRelatedDealRendering(page: Page, slug: string) {
@@ -95,7 +95,7 @@ test("empty catalog offers guides, checkout comparison, and partner store paths"
     await page.goto(route, { waitUntil: "domcontentloaded" })
     const notice = page.getByRole("region", { name: "Verified listings are being refreshed" })
     await expect(notice).toBeVisible()
-    for (const href of ["/blog", "/tools/checkout-comparison", "/stores/temu", "/stores/shopee-ph", "/stores/sephora-ph"]) {
+    for (const href of ["/blog", "/tools/checkout-comparison", "/stores/shopee-ph", "/stores/sephora-ph"]) {
       const link = notice.locator(`a[href="${href}"]`)
       await expect(link).toBeVisible()
       await link.click()
@@ -108,7 +108,7 @@ test("empty catalog offers guides, checkout comparison, and partner store paths"
   await page.goto("/deals?q=tripod")
   await expect(page.getByText("No deals match your current filters.")).toBeVisible()
   await expect(page.getByRole("link", { name: "Clear all filters", exact: true })).toHaveAttribute("href", "/deals")
-  for (const route of ["/categories/home-finds", "/stores/temu"]) {
+  for (const route of ["/categories/home-finds", "/stores/shopee-ph"]) {
     await page.goto(route)
     const notice = page.getByRole("region", { name: /listings are being refreshed/i })
     await expect(notice).toBeVisible()
@@ -188,7 +188,6 @@ test("sales calendar partner CTAs use approved affiliate destinations and privac
   await page.waitForTimeout(1500)
 
   const partners = [
-    { name: "Temu", href: "https://temu.to/k/ge7hcjmmrb4", offerId: "temu" },
     { name: "Shopee PH", href: "https://invl.me/clnkccq", offerId: "shopee-ph" },
     { name: "Sephora PH", href: "https://invl.me/clnkccv", offerId: "sephora-ph" },
   ]
@@ -212,12 +211,12 @@ test("sales calendar partner CTAs use approved affiliate destinations and privac
       __events: Array<{ type: string; payload: { name?: string; data?: Record<string, unknown> } }>
     }).__events.filter((event) => event.type === "event" && event.payload.name === "affiliate_click")
   )
-  expect(affiliateEvents).toHaveLength(3)
+  expect(affiliateEvents).toHaveLength(2)
   for (const event of affiliateEvents) {
     expect(event.payload.data).toMatchObject({ placement: "sales-calendar-store", source: "sales-calendar" })
     expect(Object.keys(event.payload.data ?? {}).sort()).toEqual(["offerId", "placement", "platform", "source"])
   }
-  expect(affiliateEvents.map((event) => event.payload.data?.offerId).sort()).toEqual(["sephora-ph", "shopee-ph", "temu"])
+  expect(affiliateEvents.map((event) => event.payload.data?.offerId).sort()).toEqual(["sephora-ph", "shopee-ph"])
 })
 
 test("sales calendar is discoverable from navigation, homepage, and sitemap", async ({ page, request }) => {
@@ -603,7 +602,7 @@ for (const slug of ["summer-dress-shein", "xiaomi-smart-band-9-shopee"]) {
 }
 
 test("store affiliate links retain complete sponsored and security attributes", async ({ page }) => {
-  await page.goto("/stores/temu")
+  await page.goto("/stores/shopee-ph")
   const affiliateLinks = page.locator('a[rel*="sponsored"]')
   expect(await affiliateLinks.count()).toBeGreaterThan(0)
   for (const link of await affiliateLinks.all()) {
@@ -614,7 +613,7 @@ test("store affiliate links retain complete sponsored and security attributes", 
 
 test("empty catalog does not render stale product cards or product affiliate links", async ({ page }) => {
   test.skip(activeDeals.length > 0, "Requires an empty verified catalog")
-  for (const route of ["/deals", "/categories/under-1000", "/stores/temu"]) {
+  for (const route of ["/deals", "/categories/under-1000", "/stores/shopee-ph"]) {
     await page.goto(route, { waitUntil: "domcontentloaded" })
     await expect(page.locator("main article")).toHaveCount(0)
     await expect(page.getByRole("region", { name: /listings are being refreshed/i })).toBeVisible()
@@ -637,7 +636,7 @@ test("empty scanner checklist is server discoverable without a stale product ima
 })
 
 test("store affiliate click reports public context without private data", async ({ page }) => {
-  await page.goto("/stores/temu")
+  await page.goto("/stores/shopee-ph")
   await installAnalyticsCapture(page)
   const link = page.locator('a[rel*="sponsored"]').first()
   await link.evaluate((element) => element.addEventListener("click", (event) => event.preventDefault()))
@@ -647,7 +646,7 @@ test("store affiliate click reports public context without private data", async 
   }).__events)
   const event = events.find((candidate) => candidate.type === "event" && candidate.payload.name === "affiliate_click")
   expect(event).toBeDefined()
-  expect(event?.payload.data?.platform).toBe("Temu")
+  expect(event?.payload.data?.platform).toBe("Shopee PH")
   for (const privateProperty of ["href", "url", "query", "title", "email"]) {
     expect(event?.payload.data).not.toHaveProperty(privateProperty)
   }
@@ -662,21 +661,9 @@ test("expired deal detail remains reachable but excludes old prices and indexing
   await expect(page.getByRole("region", { name: "Price information" })).not.toContainText(/₱|%|Saved/)
 })
 
-test("expired Temu product no longer exposes old prices or structured offers", async ({ page }) => {
-  const fixture = getDealBySlug("jockmail-padded-boxer-briefs-temu")
-  test.skip(!fixture || getDealFreshness(fixture.lastChecked, inventoryNow).status !== "expired", "Requires an expired public Temu fixture")
-  const search = resolveDealListing(activeDeals, { q: "jockmail" })
-  await page.goto("/deals?q=jockmail", { waitUntil: "domcontentloaded" })
-  await expect(page.locator("main article")).toHaveCount(search.items.length)
-  await expect(page.locator("main article").filter({ has: page.getByRole("heading", { name: fixture!.title, exact: true }) })).toHaveCount(0)
-  if (search.total === 0) await expect(page.getByText("No deals match your current filters.")).toBeVisible()
-  const response = await page.goto("/deals/jockmail-padded-boxer-briefs-temu", { waitUntil: "domcontentloaded" })
-  expect(response?.status()).toBe(200)
-  await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex, follow/i)
-  await expect(page.getByRole("region", { name: "Price information" })).not.toContainText(/₱|\d+%|Saved/)
-  const products = (await page.locator('script[type="application/ld+json"]').allTextContents())
-    .map((value) => JSON.parse(value)).filter((value) => value["@type"] === "Product")
-  for (const product of products) expect(product).not.toHaveProperty("offers")
+test("retired Temu product and store routes return not found", async ({ page }) => {
+  expect((await page.goto("/deals/jockmail-padded-boxer-briefs-temu", { waitUntil: "domcontentloaded" }))?.status()).toBe(404)
+  expect((await page.goto("/stores/temu", { waitUntil: "domcontentloaded" }))?.status()).toBe(404)
 })
 
 test("homepage partner banner emits an affiliate_click event with its public offer ID", async ({ page }) => {
@@ -721,7 +708,7 @@ test("store-index affiliate link emits a private affiliate_click event", async (
   await page.goto("/stores")
   await installAnalyticsCapture(page)
   const popupPromise = page.waitForEvent("popup")
-  await page.getByRole("link", { name: /Visit Temu \(affiliate link/i }).click()
+  await page.getByRole("link", { name: /Visit Shopee PH \(affiliate link/i }).click()
   const popup = await popupPromise
   await popup.close()
   const events = await page.evaluate(() =>
@@ -733,7 +720,7 @@ test("store-index affiliate link emits a private affiliate_click event", async (
     candidate.type === "event" && candidate.payload.name === "affiliate_click"
   )
   expect(event?.payload.data).toEqual({
-    platform: "Temu",
+    platform: "Shopee PH",
     placement: "store-index",
     source: "stores",
   })
@@ -832,7 +819,7 @@ test("analytics failure does not block affiliate navigation", async ({ page }) =
       if (type === "event") throw new Error("analytics unavailable")
     }
   })
-  await page.goto("/stores/temu")
+  await page.goto("/stores/shopee-ph")
   const popupPromise = page.waitForEvent("popup")
   await page.locator('a[rel*="sponsored"]').first().click()
   const popup = await popupPromise
@@ -877,7 +864,7 @@ test("sitemap contains reviewed canonical guides and excludes the retired guide"
     /<loc>https:\/\/sulitscan\.com\/blog\/how-to-check-shopee-seller-legit-philippines<\/loc>\s*<lastmod>2026-07-12/
   )
   expect(xml).not.toContain("/blog/how-to-check-if-shopee-seller-is-legit")
-  for (const path of ["/categories/under-1000", "/stores/temu"]) {
+  for (const path of ["/categories/under-1000", "/stores/shopee-ph"]) {
     expect(xml.includes(`<loc>https://sulitscan.com${path}</loc>`)).toBe(entityDeals(path).length > 0)
   }
   expect(xml).not.toContain("?page=1")
@@ -1036,9 +1023,9 @@ test("filtered deals are noindex and preserve URL state", async ({ page }) => {
 })
 
 test("filtered and noncanonical later deal URLs keep the page-one description", async ({ page }) => {
-  const pageOneDescription = "Browse curated online deals from Temu, Shopee PH, and Sephora PH with buyer notes on every listing."
+  const pageOneDescription = "Browse curated online deals from Shopee PH and Sephora PH with buyer notes on every listing."
 
-  for (const path of ["/deals?store=Temu&page=2", "/deals?page=02"]) {
+  for (const path of ["/deals?store=Shopee+PH&page=2", "/deals?page=02"]) {
     await page.goto(path, { waitUntil: "domcontentloaded" })
     await expect(page.locator('meta[name="description"]')).toHaveAttribute(
       "content",
@@ -1057,7 +1044,7 @@ test("invalid deal filters normalize visibly but remain noindex", async ({ page 
 })
 
 test.describe("empty entity pagination", () => {
-  for (const entityPath of ["/categories/under-1000", "/stores/temu"]) {
+  for (const entityPath of ["/categories/under-1000", "/stores/shopee-ph"]) {
     for (const query of ["", "?page=2", "?page=garbage", "?page=2&page=3"]) {
       test(`${entityPath}${query} exposes a canonical refresh path without placeholder pagination`, async ({ page }) => {
         test.skip(entityDeals(entityPath).length > 0, "Requires this entity's verified inventory to be empty")
@@ -1741,7 +1728,7 @@ test("optimized deal images load the first listing eagerly and defer the second"
 
 for (const { entityPath, dealsSectionId } of [
   { entityPath: "/categories/under-1000", dealsSectionId: "deals-section-heading" },
-  { entityPath: "/stores/temu", dealsSectionId: "store-deals-heading" },
+  { entityPath: "/stores/shopee-ph", dealsSectionId: "store-deals-heading" },
 ]) {
   test(`${entityPath} optimizes entity deal images and tracks their public position`, async ({ page }) => {
     test.skip(entityDeals(entityPath).length < 2 || !entityDeals(entityPath).slice(0, 2).every((deal) => deal.imageUrl), "Requires two imaged products in this entity")
@@ -1940,12 +1927,12 @@ test("deal detail links its store and category while tracking only its public of
   ])
 })
 
-test("reference prices retire stale discount claims while retaining the Temu affiliate link", async ({ page }) => {
-  const deal = activeDeals.find((record) => record.platform === "Temu"
+test("reference prices retire stale discount claims while retaining the Shopee affiliate link", async ({ page }) => {
+  const deal = activeDeals.find((record) => record.platform === "Shopee PH"
     && getDealFreshness(record.lastChecked, inventoryNow).status === "reference"
     && record.originalPrice > record.salePrice
     && isDealIndexable(record, getDealFreshness(record.lastChecked, inventoryNow)))
-  test.skip(!deal, "Requires an indexable Temu reference product with distinct original/sale prices")
+  test.skip(!deal, "Requires an indexable Shopee PH reference product with distinct original/sale prices")
   const { slug, title } = deal!
   const sale = formatPrice(deal!.salePrice)
   const original = formatPrice(deal!.originalPrice)
@@ -1980,7 +1967,7 @@ test("reference prices retire stale discount claims while retaining the Temu aff
   )
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /index, follow/i)
   await expect(page.getByRole("link", {
-    name: "Check the current price on Temu (affiliate link, opens in new tab)",
+    name: "Check the current price on Shopee PH (affiliate link, opens in new tab)",
     exact: true,
   })).toHaveAttribute("rel", /sponsored/)
 })
@@ -2007,7 +1994,7 @@ test("deals page exposes crawlable server pagination", async ({ page }) => {
 test.describe("entity deal pagination", () => {
   test.describe.configure({ mode: "serial" })
 
-  for (const entityPath of ["/categories/under-1000", "/stores/temu"]) {
+  for (const entityPath of ["/categories/under-1000", "/stores/shopee-ph"]) {
     test(`${entityPath} exposes crawlable deal pagination`, async ({ page }) => {
       test.skip(entityDeals(entityPath).length <= ENTITY_DEALS_PAGE_SIZE, "Requires a populated second page for this entity")
       test.slow()
@@ -2042,7 +2029,7 @@ test.describe("entity deal pagination", () => {
   }
 
   test("later category and store pages keep deal results while omitting page-one-only content", async ({ page }) => {
-    test.skip(["/categories/under-500", "/stores/temu"].some((path) => entityDeals(path).length <= ENTITY_DEALS_PAGE_SIZE), "Requires populated second pages for both tested entities")
+    test.skip(["/categories/under-500", "/stores/shopee-ph"].some((path) => entityDeals(path).length <= ENTITY_DEALS_PAGE_SIZE), "Requires populated second pages for both tested entities")
     test.slow()
 
     await page.goto("/categories/under-500", { waitUntil: "domcontentloaded" })
@@ -2059,25 +2046,25 @@ test.describe("entity deal pagination", () => {
     expect(categoryPageTwoDescription).toContain("Page 2")
     expect(categoryPageTwoDescription).not.toBe(categoryPageOneDescription)
 
-    await page.goto("/stores/temu", { waitUntil: "domcontentloaded" })
+    await page.goto("/stores/shopee-ph", { waitUntil: "domcontentloaded" })
     const storePageOneDescription = await page.locator('meta[name="description"]').getAttribute("content")
 
-    await page.goto("/stores/temu?page=2", { waitUntil: "domcontentloaded" })
+    await page.goto("/stores/shopee-ph?page=2", { waitUntil: "domcontentloaded" })
     await expect(page.locator('main article')).not.toHaveCount(0)
     await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()
     expect((await page.locator('script[type="application/ld+json"]').allTextContents())
       .some((schema) => schema.includes('"@type":"FAQPage"'))).toBe(false)
-    await expect(page.getByRole("heading", { name: /Frequently asked questions about Temu/i })).toHaveCount(0)
+    await expect(page.getByRole("heading", { name: /Frequently asked questions about Shopee PH/i })).toHaveCount(0)
     const storePageTwoDescription = await page.locator('meta[name="description"]').getAttribute("content")
     expect(storePageTwoDescription).toContain("Page 2")
     expect(storePageTwoDescription).not.toBe(storePageOneDescription)
   })
 
   test("duplicate entity page parameters remain noindex after display normalization", async ({ page }) => {
-    test.skip(["/categories/under-500", "/stores/temu"].some((path) => entityDeals(path).length <= ENTITY_DEALS_PAGE_SIZE), "Requires populated second pages for both tested entities")
+    test.skip(["/categories/under-500", "/stores/shopee-ph"].some((path) => entityDeals(path).length <= ENTITY_DEALS_PAGE_SIZE), "Requires populated second pages for both tested entities")
     test.slow()
 
-    for (const entityPath of ["/categories/under-500", "/stores/temu"]) {
+    for (const entityPath of ["/categories/under-500", "/stores/shopee-ph"]) {
       await page.goto(`${entityPath}?page=2&page=3`, { waitUntil: "domcontentloaded" })
 
       await expect(page.getByText("Page 2 of", { exact: false })).toBeVisible()

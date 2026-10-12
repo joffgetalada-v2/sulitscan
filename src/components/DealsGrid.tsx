@@ -36,7 +36,7 @@ export default function DealsGrid({ listing, categories, stores }: DealsGridProp
           <strong>Affiliate datafeed prices:</strong> Product prices and discounts are sourced from
           affiliate datafeeds and may not reflect current prices on the partner store. Always confirm the
           final price, shipping fees, available vouchers, and return terms on{" "}
-          <strong>Temu</strong>, <strong>Shopee PH</strong>, or <strong>Sephora PH</strong> before buying.
+          <strong>Shopee PH</strong> or <strong>Sephora PH</strong> before buying.
         </p>
       </div>
 

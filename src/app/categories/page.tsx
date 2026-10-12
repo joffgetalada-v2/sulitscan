@@ -30,7 +30,7 @@ const categoryFaqs = [
   {
     question: "Are prices shown in categories the final prices?",
     answer:
-      "No. Prices shown on SulitScan are sourced from affiliate datafeeds and may not reflect the current price on the partner store. Sale prices, platform vouchers, and promotions change frequently. Always confirm the final price on Temu, Shopee PH, or Sephora PH before completing your purchase.",
+      "No. Prices shown on SulitScan are sourced from affiliate datafeeds and may not reflect the current price on the partner store. Sale prices, platform vouchers, and promotions change frequently. Always confirm the final price on Shopee PH or Sephora PH before completing your purchase.",
   },
   {
     question: "Which categories have the most deals right now?",
@@ -40,7 +40,7 @@ const categoryFaqs = [
   {
     question: "Can I filter deals by store within a category?",
     answer:
-      "Not directly on category pages, but the main deals page (/deals) has filters for store, category, and sort order. You can also browse store-specific deals on the Temu, Shopee PH, or Sephora PH store pages.",
+      "Not directly on category pages, but the main deals page (/deals) has filters for store, category, and sort order. You can also browse store-specific deals on the Shopee PH or Sephora PH store pages.",
   },
 ]
 
@@ -145,14 +145,13 @@ export default function CategoriesPage() {
             <p className="text-sm text-slate-600 leading-relaxed">
               <strong>Product categories</strong>{" "}(Beauty, Home Finds, Tech & Gadgets, Fashion, Gift Ideas)
               group deals by what you&apos;re shopping for. These pages include category-specific buyer guidance,
-              what to check before buying beauty products, how to read Temu sizing, what to look for in
+              what to check before buying beauty products, how to read marketplace sizing charts, what to look for in
               home finds, and more.
             </p>
             <p className="text-sm text-slate-600 leading-relaxed">
               Every deal on SulitScan includes a price disclaimer reminding you that prices are sourced
               from affiliate datafeeds and may not match the current price on the partner store. Confirm
-              the final price on <Link href="/stores/temu" className="text-green-600 hover:underline">Temu</Link>,{" "}
-              <Link href="/stores/shopee-ph" className="text-green-600 hover:underline">Shopee PH</Link>, or{" "}
+              the final price on <Link href="/stores/shopee-ph" className="text-green-600 hover:underline">Shopee PH</Link> or{" "}
               <Link href="/stores/sephora-ph" className="text-green-600 hover:underline">Sephora PH</Link> before buying.
             </p>
 
@@ -185,7 +184,7 @@ export default function CategoriesPage() {
                 <ul className="space-y-1.5" role="list">
                   {[
                     "Prices shown are from affiliate datafeeds, always confirm on the partner store",
-                    "Temu sizing can run smaller than labeled, check the CM size guide",
+                    "Marketplace sizing can differ by seller, check the CM size guide",
                     "Sephora PH sale prices change frequently, verify before buying",
                     "Report outdated prices using the link on any deal card",
                   ].map((tip, i) => (
@@ -204,12 +203,6 @@ export default function CategoriesPage() {
             <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-5">
               <h3 className="text-sm font-bold text-slate-900 mb-3">Active stores</h3>
               <ul className="space-y-2" role="list">
-                <li>
-                  <Link href="/stores/temu" className="text-sm text-green-600 hover:underline font-medium">
-                    Temu →
-                  </Link>
-                  <p className="text-xs text-slate-400 mt-0.5">Budget finds: home, fashion, accessories</p>
-                </li>
                 <li>
                   <Link href="/stores/shopee-ph" className="text-sm text-green-600 hover:underline font-medium">
                     Shopee PH →

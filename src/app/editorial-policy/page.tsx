@@ -18,7 +18,7 @@ const sections = [
     body: [
       "SulitScan PH publishes deal notes sourced from affiliate datafeeds and manual research. We do not accept payment to feature deals or promote specific products.",
       "Deals are selected based on discount percentage, SulitScore (a composite value rating), and relevance to Filipino shoppers. We prioritise deals with verifiable price history and clear buyer reminders.",
-      "Our deal catalog currently features three partner stores: Temu, Shopee PH, and Sephora PH. Separately, we may publish clearly labeled sponsored advertiser links listed in our Affiliate Disclosure. We remove advertiser offers when our access is not active.",
+      "Our deal catalog currently features two partner stores: Shopee PH and Sephora PH. Separately, we may publish clearly labeled sponsored advertiser links listed in our Affiliate Disclosure. We remove advertiser offers when our access is not active.",
     ],
   },
   {

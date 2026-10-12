@@ -85,7 +85,7 @@ export default function Hero({ activeDealCount, scannerSlides }: { activeDealCou
               className="text-lg sm:text-xl text-slate-500 leading-relaxed mb-9 max-w-lg"
             >
               Curated online deals and shopping guides for Filipino shoppers.
-              Currently covering selected Temu, Shopee PH, and Sephora PH deals.
+              Currently covering selected Shopee PH and Sephora PH deals.
               More stores may be added after review.
             </motion.p>
 

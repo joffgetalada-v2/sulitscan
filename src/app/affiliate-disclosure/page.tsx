@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 }
 
 const dealPartners = [
-  { name: "Temu", note: "" },
   { name: "Shopee PH", note: "via Shopee Affiliate Program" },
   { name: "Sephora PH", note: "via Involve Asia" },
 ]
@@ -40,7 +39,7 @@ export default function AffiliateDisclosurePage() {
               <h1 className="text-3xl font-black text-slate-900 tracking-tight mb-1">
                 Affiliate Disclosure
               </h1>
-              <p className="text-sm text-slate-400">Last updated: July 2026</p>
+              <p className="text-sm text-slate-400">Last updated: October 2026</p>
             </div>
           </div>
         </div>

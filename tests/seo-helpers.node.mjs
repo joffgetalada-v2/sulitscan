@@ -133,7 +133,7 @@ test("blog SEO title keeps the complete audience for the furniture guide", () =>
 
 test("deal listing descriptions retain page one copy and identify later pages", () => {
   const buildDealsPageDescription = requireFunction(seoModule, "buildDealsPageDescription")
-  const pageOne = "Browse curated online deals from Temu, Shopee PH, and Sephora PH with buyer notes on every listing."
+  const pageOne = "Browse curated online deals from Shopee PH and Sephora PH with buyer notes on every listing."
 
   assert.equal(buildDealsPageDescription(1), pageOne)
   assert.equal(buildDealsPageDescription(2), `Page 2: ${pageOne}`)
