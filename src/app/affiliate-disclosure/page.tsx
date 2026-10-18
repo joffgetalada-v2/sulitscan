@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 }
 
 const dealPartners = [
-  { name: "Shopee PH", note: "via Shopee Affiliate Program" },
+  { name: "Shopee PH", note: "via Involve Asia / Shopee Affiliate Program" },
   { name: "Sephora PH", note: "via Involve Asia" },
 ]
 

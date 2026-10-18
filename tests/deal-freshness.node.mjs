@@ -33,7 +33,7 @@ const expiredNow = new Date("2026-10-03T00:00:00.000Z")
 
 test("catalog selectors share an injected clock without reviving expired public records", () => {
   const publicDeals = dealsModule.deals.filter(dealsModule.isPublicDeal)
-  assert.equal(publicDeals.length, 74)
+  assert.equal(publicDeals.length, 92)
   assert.equal(dealsModule.getActiveDeals(populatedNow).length, 74)
   assert.ok(dealsModule.getFeaturedDeals(6, populatedNow).length > 0)
   assert.ok(dealsModule.getRelatedDealsForDeal(publicDeals[0], 3, populatedNow).length > 0)

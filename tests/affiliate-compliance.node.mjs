@@ -31,6 +31,27 @@ const dealsModule = loadTypeScriptModule("src/data/deals.ts", {
 })
 const storesModule = loadTypeScriptModule("src/data/stores.ts")
 
+const OCTOBER_SHOPEE_FEED_SLUGS = [
+  "babyflo-oatmeal-bath-500ml-shopee",
+  "ugreen-iphone-screen-protector-2-pack-shopee",
+  "shigetsu-mens-leather-sling-bag-shopee",
+  "ugreen-45w-20000mah-power-bank-shopee",
+  "tiny-buds-baby-cotton-buds-3-pack-shopee",
+  "play-doh-four-tub-color-set-shopee",
+  "energizer-maxi-aa-aaa-battery-charger-shopee",
+  "nakd-cameron-cotton-linen-top-shopee",
+  "bamboo-outdoor-roller-blinds-shopee",
+  "under-desk-cable-management-tray-shopee",
+  "nordic-wooden-picture-frame-shopee",
+  "retractable-ceiling-cleaning-brush-shopee",
+  "aquaflask-accessories-tote-bag-shopee",
+  "aquaflask-22oz-wide-mouth-bottle-shopee",
+  "bobson-mens-slim-straight-jeans-shopee",
+  "momcozy-white-noise-night-light-shopee",
+  "nonstick-springform-cake-pan-set-shopee",
+  "3d-tower-fan-tf10ss-shopee",
+]
+
 test("only publicly active deals are exposed by slug", () => {
   assert.equal(dealsModule.getDealBySlug("summer-dress-shein"), undefined)
   assert.equal(dealsModule.getDealBySlug("xiaomi-smart-band-9-shopee"), undefined)
@@ -52,6 +73,36 @@ test("active stores use the approved tracked affiliate destinations", () => {
       "Sephora PH": "https://invl.me/clnkccv",
     }
   )
+})
+
+test("October Shopee refresh publishes only reviewed, current feed records", () => {
+  const refreshed = OCTOBER_SHOPEE_FEED_SLUGS.map((slug) => dealsModule.getDealBySlug(slug))
+  assert.ok(refreshed.every(Boolean), "every reviewed Shopee feed slug must be public")
+
+  for (const deal of refreshed) {
+    assert.equal(deal.platform, "Shopee PH")
+    assert.equal(deal.lastChecked, "Checked October 12, 2026")
+    assert.equal(deal.isDemo, false)
+    assert.ok(deal.description?.trim(), `${deal.slug}: requires original buyer guidance`)
+    assert.match(deal.affiliateLink, /^https:\/\/invol\.co\/aff_m\?offer_id=103880&aff_id=1060158&source=feed&url=/)
+    assert.match(new URL(deal.affiliateLink).searchParams.get("url"), /^https:\/\/shope\.ee\/an_redir\?origin_link=/)
+    assert.match(deal.imageUrl, /^https:\/\/cf\.shopee\.ph\/file\//)
+    assert.match(deal.sourceSellerStatus, /^(Official|Preferred) shop$/)
+    assert.ok(deal.sourceItemRating >= 4.8, `${deal.slug}: item rating below the editorial floor`)
+    assert.ok(deal.sourceShopRating >= 4.8, `${deal.slug}: shop rating below the editorial floor`)
+    assert.ok(deal.sourceUnitsSold >= 10, `${deal.slug}: insufficient feed sales history`)
+    assert.ok(deal.sourceStock > 0, `${deal.slug}: feed stock must be positive`)
+  }
+
+  const activeShopee = dealsModule.getActiveDeals(new Date("2026-10-12T00:00:00.000Z"))
+    .filter((deal) => deal.platform === "Shopee PH")
+  assert.deepEqual(activeShopee.map((deal) => deal.slug).sort(), [...OCTOBER_SHOPEE_FEED_SLUGS].sort())
+  assert.equal(new Set(activeShopee.map((deal) => deal.sourceItemId)).size, OCTOBER_SHOPEE_FEED_SLUGS.length)
+})
+
+test("Shoplinks stays disabled until its eligibility list includes Philippine advertisers", () => {
+  const layout = readFileSync(resolve("src/app/layout.tsx"), "utf8")
+  assert.doesNotMatch(layout, /xhr\.invl\.co\/magic\/1060158\/auto\.js/i)
 })
 
 test("terminated Temu affiliate inventory is fully retired", () => {

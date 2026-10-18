@@ -56,16 +56,16 @@ SulitScan earns a small affiliate commission when you purchase through our Sepho
     slug: "shopee-ph",
     intro: `Shopee Philippines is a local online marketplace where many sellers list home, tech, fashion, beauty, and daily essentials. For Filipino shoppers, Shopee is a useful source of budget finds and practical everyday items, especially under a few hundred pesos. Because orders usually ship locally, delivery tends to be faster than overseas marketplaces, and vouchers or free-shipping promos can bring an already low price down further.
 
-The trade-off is that quality varies a lot from seller to seller. SulitScan features selected Shopee PH products with buyer notes, but prices come from an affiliate datafeed and can lag the live Shopee price. Always confirm the current price, the seller rating, the buyer reviews, and the final cost after vouchers and shipping on Shopee before completing your order.
+The trade-off is that quality varies a lot from seller to seller. SulitScan's current Shopee selection starts with Official or Preferred shops and applies minimum feed checks for item rating, shop rating, sales history, and positive stock. Each listing also includes independent buyer notes. These checks reduce obvious risk but are only a dated snapshot: prices, ratings, seller status, and stock can change, so confirm the live listing and final cost after vouchers and shipping before completing your order.
 
 SulitScan does not sell Shopee products and does not guarantee any seller. We point you to listings, and you buy directly from the seller on Shopee. SulitScan may earn a small affiliate commission when you buy through our links, at no extra cost to you.`,
     goodFor: [
       "Home and desk organizers, storage boxes, and small kitchen tools",
-      "Phone and tech accessories like stands, holders, cases, and cable organizers",
-      "Bags and everyday fashion: tote bags, sling bags, caps, and simple accessories",
-      "Travel pouches, toiletry bags, and packing organizers",
-      "Budget beauty tools such as brush sets and brush holders",
-      "Low-stakes, practical items under a few hundred pesos",
+      "Phone accessories and carefully reviewed charging products from official shops",
+      "Everyday fashion such as tops, jeans, tote bags, and sling bags",
+      "Drinkware and travel accessories from official brand stores",
+      "Kids' activities, household cleaning tools, and practical home items",
+      "Listings where current feed ratings, sales history, and seller status can be checked",
     ],
     beCareful: [
       "Suspiciously large discounts: a listed 80% or 90% off can reflect an inflated original price, so compare the final price with similar items",
@@ -81,7 +81,7 @@ SulitScan does not sell Shopee products and does not guarantee any seller. We po
       },
       {
         question: "Are Shopee prices always accurate on SulitScan?",
-        answer: "Not always. Prices come from an affiliate datafeed and can lag the live Shopee price. Vouchers and flash sales change fast, so always confirm the current price on Shopee before buying.",
+        answer: "Not always. Prices come through the Involve Asia Shopee affiliate datafeed and can lag the live Shopee price. Vouchers and flash sales change fast, so always confirm the current price on Shopee before buying.",
       },
       {
         question: "What should I check before buying from Shopee?",

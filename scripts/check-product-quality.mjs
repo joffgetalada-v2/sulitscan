@@ -30,10 +30,18 @@ const SUSPICIOUS_DISCOUNT = Number(src.match(/SUSPICIOUS_DISCOUNT\s*=\s*(\d+)/)?
 // Deal objects are single-level (tags use [] not {}), so brace-matching works.
 const region = src.slice(src.indexOf("= [", src.indexOf("export const deals")), src.indexOf("const ACTIVE_PLATFORMS"))
 const objs = (region.match(/\{[^{}]+\}/g) ?? []).filter((o) => /\bslug:\s*"/.test(o))
+const shopeeFeedTrackingUrl = src.match(/const SHOPEE_FEED_TRACKING_URL\s*=\s*\n?\s*"([^"]+)"/)?.[1] ?? ""
 
 const str = (b, k) => {
   const m = b.match(new RegExp(`\\b${k}:\\s*"([^"]*)"`))
-  return m ? m[1] : null
+  if (m) return m[1]
+
+  if (k === "affiliateLink") {
+    const feedLink = b.match(/\baffiliateLink:\s*buildShopeeFeedAffiliateLink\("([^"]+)"\)/)?.[1]
+    if (feedLink && shopeeFeedTrackingUrl) return `${shopeeFeedTrackingUrl}${encodeURIComponent(feedLink)}`
+  }
+
+  return null
 }
 const num = (b, k) => {
   const m = b.match(new RegExp(`\\b${k}:\\s*(-?\\d+(?:\\.\\d+)?)`))
