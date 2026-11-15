@@ -93,4 +93,3 @@
 - [ ] Run `npm run check` and retain the full result.
 - [ ] Review the complete diff against the spec and verify no unrelated untracked files were added.
 - [ ] Commit all scoped files, push `main`, and verify the deployed sitemap, `/ads.txt`, category metadata, and five new article routes.
-

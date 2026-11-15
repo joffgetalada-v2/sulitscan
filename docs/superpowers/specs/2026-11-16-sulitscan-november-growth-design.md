@@ -49,4 +49,3 @@ Do not add more ad code or enable serving. The owner must add the real `NEXT_PUB
 - Every new banner exists at 1600×900 and is referenced by exactly one guide.
 - The sitemap includes all five new canonical routes.
 - No tracked source change touches unrelated `output/` or `tmp/` files.
-
