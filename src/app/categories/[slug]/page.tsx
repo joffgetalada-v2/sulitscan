@@ -4,7 +4,7 @@ import Link from "next/link"
 import { BreadcrumbJsonLd, ItemListJsonLd, FAQJsonLd } from "@/components/SeoJsonLd"
 import { categories, getCategoryBySlug } from "@/data/categories"
 import { getDealsByCategory, isSuspiciousDiscount } from "@/data/deals"
-import { categoryContent } from "@/data/category-content"
+import { categoryContent, getCategoryMetaDescription } from "@/data/category-content"
 import EntityDeals from "@/components/EntityDeals"
 import CatalogRefreshNotice from "@/components/CatalogRefreshNotice"
 import { getPostBySlug } from "@/data/posts"
@@ -49,8 +49,10 @@ export async function generateMetadata({
         `curated listings with buyer notes on SulitScan PH.`
       )
     : clampMeta(
-        content?.intro ??
+        getCategoryMetaDescription(
+          slug,
           `${category.description} Browse ${category.name.toLowerCase()} deals from Shopee PH and Sephora PH on SulitScan PH.`
+        )
       )
   const canonical = `${siteConfig.url}${buildEntityPageHref(`/categories/${slug}`, listing.page)}`
   return {

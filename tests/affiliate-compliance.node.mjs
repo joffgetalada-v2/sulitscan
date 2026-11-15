@@ -30,6 +30,8 @@ const dealsModule = loadTypeScriptModule("src/data/deals.ts", {
   "@/lib/deal-freshness": freshnessModule,
 })
 const storesModule = loadTypeScriptModule("src/data/stores.ts")
+const categoriesModule = loadTypeScriptModule("src/data/categories.ts")
+const categoryContentModule = loadTypeScriptModule("src/data/category-content.ts")
 
 const OCTOBER_SHOPEE_FEED_SLUGS = [
   "babyflo-oatmeal-bath-500ml-shopee",
@@ -116,6 +118,39 @@ test("terminated Temu affiliate inventory is fully retired", () => {
   ].map((path) => readFileSync(resolve(path), "utf8")).join("\n")
 
   assert.doesNotMatch(deployableSource, /temu\.to\//i)
+})
+
+test("current category guidance excludes terminated merchants and exposes concise metadata", () => {
+  const featuredCategories = categoriesModule.categories.filter((category) => category.featured)
+  const descriptions = []
+
+  assert.doesNotMatch(
+    JSON.stringify(categoryContentModule.categoryContent),
+    /temu/i,
+    "indexable category guidance must not recommend a terminated merchant"
+  )
+
+  for (const category of featuredCategories) {
+    const content = categoryContentModule.categoryContent[category.slug]
+    assert.ok(content, `${category.slug}: featured categories require buyer guidance`)
+    assert.equal(typeof content.metaDescription, "string", `${category.slug}: metadata description is required`)
+    assert.ok(
+      content.metaDescription.length >= 110 && content.metaDescription.length <= 160,
+      `${category.slug}: metadata description must be 110-160 characters`
+    )
+    descriptions.push(content.metaDescription)
+  }
+
+  assert.equal(new Set(descriptions).size, descriptions.length, "category metadata descriptions must be unique")
+  assert.equal(
+    typeof categoryContentModule.getCategoryMetaDescription,
+    "function",
+    "category pages need one tested metadata-description resolver"
+  )
+  assert.equal(
+    categoryContentModule.getCategoryMetaDescription("missing-category", "Fallback category description."),
+    "Fallback category description."
+  )
 })
 
 test("blocked SHEIN creative is not published as a public asset", () => {

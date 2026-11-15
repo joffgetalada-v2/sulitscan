@@ -1,5 +1,6 @@
 export interface CategoryContent {
   slug: string
+  metaDescription: string
   intro: string
   bestFor: string[]
   whatToCheck: string[]
@@ -12,435 +13,413 @@ export interface CategoryContent {
 export const categoryContent: Record<string, CategoryContent> = {
   "under-500": {
     slug: "under-500",
+    metaDescription:
+      "Browse current deals under ₱500 from Shopee PH and Sephora PH, with checks for size, seller quality, final price, and return terms.",
     intro:
-      "Shopping on a budget in the Philippines doesn't mean settling for low quality. It means knowing which categories consistently deliver value under ₱500. From Temu home organizers to Shopee PH desk, bag, and travel finds, there are genuinely useful items in this price range. The key is knowing what to look for and what to avoid. This guide covers the best categories for under ₱500 deals, what to check before buying, and common traps that make a seemingly cheap purchase a poor one.",
+      "A useful item under ₱500 is not automatically a bargain. SulitScan's current selection focuses on low-cost Shopee PH home, travel, fashion, and tech accessories plus qualifying Sephora PH beauty items. Compare the delivered total, measurements, materials, seller record, and current return terms before deciding. A slightly higher-priced listing can be better value when it is the correct size, clearly documented, and sold by a stronger shop.",
     bestFor: [
-      "Temu home organizers, cable holders, and kitchen gadgets priced under ₱300",
-      "Beauty basics and travel-size skincare from Sephora PH under ₱500",
-      "Small accessories: phone cases, clips, chargers, and hooks from Temu",
-      "Stationery, desk organizers, and school supplies from Temu",
-      "First-time orders where you want to test a store with a low-stakes item",
+      "Small home organizers, storage accessories, and simple kitchen tools",
+      "Travel pouches, desk accessories, and other low-stakes items",
+      "Basic bags and accessories where exact sizing is easy to verify",
+      "Selected beauty minis, tools, or accessories from established retailers",
+      "Testing whether a product type solves a problem before buying a larger version",
     ],
     whatToCheck: [
-      "Read buyer reviews with photos, not just the star rating. Look for real images from Filipino buyers.",
-      "Check the size carefully. Many Temu items are smaller than they appear in product photos.",
-      "Confirm the material and finish. Items under ₱500 may use lighter plastics or thinner fabrics.",
-      "For beauty items under ₱500, check ingredient lists and expiry dates on Sephora PH before completing your order.",
-      "Check the estimated shipping time on Temu, international orders typically take 7–20 business days.",
-      "Look for vouchers: Temu and Sephora PH often have platform discount codes that can bring items below ₱500.",
+      "Read recent buyer reviews with photos for the exact variation you plan to order.",
+      "Confirm dimensions in centimeters and compare them with the intended space or item.",
+      "Add shipping and required accessories before comparing the final cost.",
+      "Check the live seller rating, stock status, delivery estimate, and return window.",
+      "For cosmetics, verify the ingredient list, shade or variant, seal, and seller identity.",
     ],
     commonMistakes: [
-      "Buying multiples at once on a first order, test with one item before committing to a bulk purchase.",
-      "Assuming the cheapest listing is the best value. Compare with similar items at ₱600–₱800 first.",
-      "Skipping the return policy check. Under ₱500 items are often not worth the return shipping hassle if they're wrong.",
-      "Ignoring the product dimensions listed in centimeters, many Temu buyers receive items much smaller than expected.",
+      "Buying several units before checking the quality of one delivered item.",
+      "Treating a crossed-out reference price as proof of a real discount.",
+      "Assuming listing photos show scale accurately instead of reading measurements.",
+      "Using a voucher as the reason to buy something that was not already needed.",
     ],
     faqs: [
       {
-        question: "Are Temu deals under ₱500 worth buying?",
+        question: "What usually gives the best value under ₱500?",
         answer:
-          "Many are, especially for home accessories, organizers, cable management, and basic fashion items. The key is reading buyer reviews with photos before buying. For items like food, health products, or electronics, we recommend spending a bit more for better quality assurance.",
+          "Simple items with easy-to-check dimensions and few failure points often make the strongest candidates: organizers, pouches, basic accessories, and manual tools. Electronics, safety equipment, and products making health claims need stricter checks than price alone.",
       },
       {
-        question: "Can I find Sephora PH deals under ₱500?",
+        question: "How can I tell if an under ₱500 deal is actually sulit?",
         answer:
-          "Yes, though the selection is limited. Travel-size skincare, single-use masks, and accessories occasionally fall under ₱500 on Sephora PH, especially during sale events. Always confirm the current price on sephora.ph before buying.",
+          "Compare the final delivered total, usable quantity, measurements, material, seller record, and current return terms. SulitScan's score is a research aid, not a guarantee, so confirm every live detail on the partner store.",
       },
       {
-        question: "How do I know if an under ₱500 deal is actually sulit?",
+        question: "Are SulitScan prices guaranteed?",
         answer:
-          "Check the SulitScore on each deal card. Scores of 7 and above indicate good value based on discount authenticity, store trust, buyer review signals, and shipping context. Scores below 6 suggest caution.",
-      },
-      {
-        question: "What categories give the best value under ₱500 on Temu?",
-        answer:
-          "Home organizers, phone accessories, cable management, kitchen tools, stationery, and basic fashion accessories tend to be consistent value picks at this price point. Avoid electronics and skincare claims at very low prices.",
-      },
-      {
-        question: "Does SulitScan guarantee these prices?",
-        answer:
-          "No. Prices displayed are sourced from affiliate datafeeds and may not match the current price on Temu or Sephora PH. Always confirm the final price on the partner store before completing your purchase.",
+          "No. Prices come from affiliate datafeeds and can differ from the live store. Confirm the selected variation, final cart total, shipping, vouchers, and seller terms before paying.",
       },
     ],
     relatedCategories: ["under-1000", "home-finds", "beauty"],
-    relatedBlogSlugs: ["best-shopee-finds-under-500-philippines", "temu-shopping-guide-philippines", "how-to-spot-fake-discounts"],
+    relatedBlogSlugs: [
+      "best-shopee-finds-under-500-philippines",
+      "how-to-spot-fake-discounts",
+      "online-product-review-checklist-philippines",
+    ],
   },
 
   "under-1000": {
     slug: "under-1000",
+    metaDescription:
+      "Compare deals under ₱1,000 from Shopee PH and Sephora PH using final cost, specifications, seller evidence, and current return terms.",
     intro:
-      "The ₱500 to ₱1,000 price range is often the sweet spot for online shopping in the Philippines. You get enough budget to cover quality basics, decent Temu fashion pieces, mid-range home tools, and entry-level beauty sets from Sephora PH, without spending too much on a first-time order. This guide covers which product types make the most sense at this price point, how to check value before buying, and what Filipino shoppers often overlook.",
+      "The under ₱1,000 range covers everything from simple accessories to small appliances, fashion basics, home tools, and beauty sets. That variety makes a single 'best buy' rule unreliable. Start with the job the item must do, then compare the exact model or variation, complete delivered cost, seller evidence, and support available if it arrives wrong. Spend the budget on documented fit and function rather than on the largest discount label.",
     bestFor: [
-      "Temu fashion basics, casual tops, leggings, bags, and sandals in this range tend to have better material quality",
-      "Sephora PH travel-size and starter kits for skincare under ₱1,000",
-      "Temu kitchen and home tools where size and function matter more than brand",
-      "Phone accessories and tech add-ons: power banks, earphone cases, mounts",
-      "Gift items where presentation and packaging matter, ₱1,000 is a practical gifting budget",
+      "Home and desk products with measurable dimensions and simple functions",
+      "Fashion basics when garment measurements and fabric composition are provided",
+      "Beauty minis, starter sets, and tools from identifiable retailers or official shops",
+      "Phone and computer accessories with exact connector and device compatibility",
+      "Practical gifts where presentation, delivery timing, and return terms are clear",
     ],
     whatToCheck: [
-      "For Temu clothing and shoes: always use the size chart in centimeters, not just S/M/L labels.",
-      "For Sephora PH: check if the item is a sample size or full size before comparing value.",
-      "Look for platform vouchers. Sephora PH loyalty members and Temu new users often qualify for extra discounts.",
-      "Compare the SulitScore. Under ₱1,000 deals with a score of 8+ represent strong value for the price.",
-      "Check return terms, Sephora PH generally accepts returns for unopened products within 30 days.",
+      "Compare the current checkout total rather than the headline price alone.",
+      "Verify the exact size, color, capacity, connector, or bundle selected in the cart.",
+      "Check whether required batteries, adapters, refills, or accessories are included.",
+      "Review recent feedback for the same variation and the shop's current status.",
+      "Save the listing and order details that describe what the seller agreed to provide.",
     ],
     commonMistakes: [
-      "Comparing Temu prices with SM, Shopee, or local retailers without accounting for shipping time and quality variability.",
-      "Buying beauty sets from Temu at ₱800 that make vague skincare claims, check ingredients first.",
-      "Ignoring the SulitScore. A ₱950 item with a score of 5 may be worse value than a ₱1,200 item scoring 9.",
-      "Not checking if the Temu item ships internationally (7–20 days) vs locally (3–5 days on Shopee).",
+      "Buying a larger bundle without calculating cost per usable unit.",
+      "Comparing different product sizes as if the sticker prices describe equal value.",
+      "Ignoring warranty details on small appliances and powered accessories.",
+      "Letting a voucher expiry replace a considered purchase decision.",
     ],
     faqs: [
       {
-        question: "What types of deals are best in the under ₱1,000 category?",
+        question: "What products are sensible to compare under ₱1,000?",
         answer:
-          "Fashion basics, home tools, skincare starter kits, and gift items tend to offer the best value in this range. Electronics at under ₱1,000 are possible but require more careful review of specifications and compatibility.",
+          "Home tools, desk accessories, bags, basic clothing, beauty minis, and straightforward tech accessories can be compared at this price. Use specifications appropriate to the category rather than assuming every item needs the same checklist.",
       },
       {
-        question: "How long does Temu shipping take to the Philippines?",
+        question: "Should I choose the listing with the biggest discount?",
         answer:
-          "Temu ships internationally to the Philippines, typically taking 7–20 business days from order confirmation. Check the estimated delivery date at checkout before completing your order.",
+          "Not automatically. Verify the reference price, exact variation, delivered cost, seller record, and evidence from recent buyers. A smaller honest discount on the right product can be better value.",
       },
       {
-        question: "Are Sephora PH items under ₱1,000 worth it?",
+        question: "Do the prices include shipping and vouchers?",
         answer:
-          "Yes, especially for travel kits, minis, and single-product essentials. Sephora PH also runs regular sale events where full-size items from selected brands fall under ₱1,000. Always confirm availability and current price on sephora.ph.",
-      },
-      {
-        question: "Can I return Temu items if they don't match expectations?",
-        answer:
-          "Temu has a return process for defective or misrepresented items. Keep photos of the item upon arrival and file a return within the window stated in the Temu app. For low-value items, the return shipping cost may not be worth it.",
-      },
-      {
-        question: "Are the prices on SulitScan live?",
-        answer:
-          "Prices shown are sourced from affiliate datafeeds and may not reflect the current price on Temu or Sephora PH. Always confirm the price on the partner store before completing your purchase.",
+          "Not necessarily. Affiliate datafeed prices can lag and do not always represent your final cart. Confirm shipping, voucher eligibility, quantity, and payment terms on the partner store.",
       },
     ],
     relatedCategories: ["under-500", "fashion", "home-finds"],
-    relatedBlogSlugs: ["temu-shopping-guide-philippines", "how-sulitscan-checks-deals"],
+    relatedBlogSlugs: [
+      "best-work-from-home-desk-accessories-under-1000-philippines",
+      "why-final-prices-change-at-checkout",
+      "voucher-shipping-return-checklist",
+    ],
   },
 
-  "beauty": {
+  beauty: {
     slug: "beauty",
+    metaDescription:
+      "Research beauty deals from Sephora PH and Shopee PH with checks for seller identity, ingredients, shade, product size, seals, and return limits.",
     intro:
-      "Beauty and skincare deals in the Philippines span a wide range, from Temu basics at very low prices to Sephora PH sales on premium brands like SK-II, Sunday Riley, and Mario Badescu. This guide helps Filipino shoppers navigate the difference, understand what to check before buying beauty products online, and avoid common purchasing mistakes that can waste money or irritate skin.",
+      "Beauty deals require more than a price comparison because authenticity, ingredients, shade, product size, and storage can affect whether a purchase is usable. SulitScan's current coverage includes Sephora PH and selected Shopee PH listings. Match the exact product and seller to reliable evidence, read the full ingredient and size information, and check current return restrictions before ordering. A low price does not resolve an unclear batch, seal, or seller identity.",
     bestFor: [
-      "Sephora PH sales on skincare essentials: toners, moisturizers, serums, and eye creams",
-      "Sephora PH makeup during seasonal sale events, foundations, blushes, and setting sprays",
-      "Temu beauty tools: makeup brushes, sponges, organizers, and LED mirrors",
-      "Sephora PH fragrance sampler sets and travel-size perfumes",
-      "Temu nail care and basic nail tools",
+      "Skincare and makeup from identifiable official or established retail channels",
+      "Travel sizes and minis when the volume is stated clearly",
+      "Makeup tools and organizers with dimensions and washable materials",
+      "Gift sets whose contents, sizes, shades, and packaging are documented",
+      "Replacements for products whose formula and shade already suit the buyer",
     ],
     whatToCheck: [
-      "Read the full ingredient list before buying skincare. Check for allergens, parabens, and fragrances if you have sensitive skin.",
-      "Confirm the shade, variant, or specific product is available on sephora.ph before placing your order.",
-      "For Sephora PH: check if the item is full-size or a travel/sample size, the ₱500 price difference matters.",
-      "Patch test any new skincare product on a small area of skin before full application.",
-      "For Temu beauty tools: check buyer photos for actual product color and size, photos can be misleading.",
-      "Confirm the return policy. Opened beauty products are generally non-returnable on Sephora PH.",
+      "Confirm the exact seller, product name, size, shade, and variant before checkout.",
+      "Read the complete ingredient list and follow product-specific warnings.",
+      "Compare price per milliliter or gram when sizes differ.",
+      "Check seal, batch, expiry, and packaging information when the product arrives.",
+      "Read the current return rule before opening a cosmetic or personal-care item.",
     ],
     commonMistakes: [
-      "Buying beauty products from Temu that make anti-aging or medical claims without checking the ingredients.",
-      "Not confirming shade availability, ordering a foundation on sale only to find your shade is out of stock.",
-      "Skipping patch tests on new skincare, especially actives like AHA, BHA, or retinol.",
-      "Comparing Temu skincare prices to Sephora PH prices without accounting for the significant quality and formulation difference.",
+      "Comparing a mini with a full-size product using only the total price.",
+      "Assuming a marketplace badge alone proves the identity of the delivered item.",
+      "Ordering a shade from a promotional photo without checking the exact variation.",
+      "Opening or using a product before documenting damage, leakage, or the wrong item.",
     ],
     faqs: [
       {
-        question: "Is it safe to buy skincare from Temu?",
+        question: "How should I verify an online beauty listing?",
         answer:
-          "It depends on the product. Basic beauty tools (brushes, sponges, organizers) from Temu are generally low-risk. For skincare with active ingredients, we recommend purchasing from Sephora PH or verified local retailers where ingredient lists and authenticity can be better confirmed.",
+          "Check the seller identity, exact product and size, ingredient list, selected shade, recent buyer evidence, and live retailer terms. On arrival, compare the delivered item with the saved order details before opening it.",
       },
       {
-        question: "How do I know if a Sephora PH beauty deal is genuine?",
+        question: "Are beauty minis always better value?",
         answer:
-          "Sephora PH is a well-established premium retailer. Sale prices are real, but always confirm the current price on sephora.ph before completing your order, as affiliate datafeed prices may lag behind live site pricing.",
+          "No. Minis can reduce commitment or suit travel, but may cost more per milliliter or gram. Compare the current delivered cost per unit and only buy a larger size when you expect to use it safely before expiry.",
       },
       {
-        question: "What beauty brands does Sephora PH carry?",
+        question: "Can an opened beauty product be returned?",
         answer:
-          "Sephora PH carries 300+ brands including SK-II, Sunday Riley, Tatcha, NARS, Charlotte Tilbury, Fenty Beauty, Huda Beauty, ZOEVA, Mario Badescu, and the Sephora Collection private label.",
-      },
-      {
-        question: "Does Sephora PH ship nationwide in the Philippines?",
-        answer:
-          "Yes. Sephora PH ships to most areas in the Philippines. Free shipping applies on orders above ₱1,500. Standard delivery typically takes 3–7 business days.",
-      },
-      {
-        question: "Can I return beauty products to Sephora PH?",
-        answer:
-          "Sephora PH accepts returns for unopened, unused products in original packaging within 30 days of purchase with proof of purchase. Opened products are generally non-returnable unless defective.",
+          "Eligibility depends on the retailer, reason, product, and current return window. Review the live policy before opening, and document a wrong, leaking, damaged, or unsealed delivery immediately.",
       },
     ],
-    relatedCategories: ["under-500", "gift-ideas"],
-    relatedBlogSlugs: ["sephora-ph-beauty-guide", "how-sulitscan-checks-deals"],
+    relatedCategories: ["under-500", "under-1000", "gift-ideas"],
+    relatedBlogSlugs: [
+      "sephora-ph-beauty-guide",
+      "how-to-check-skincare-makeup-legit-philippines",
+      "sephora-ph-minis-vs-full-size-value-sets",
+    ],
   },
 
   "home-finds": {
     slug: "home-finds",
+    metaDescription:
+      "Browse Shopee PH home finds with practical checks for dimensions, materials, load limits, electrical details, seller evidence, and final cost.",
     intro:
-      "Home finds on SulitScan cover a surprisingly wide range, from kitchen organizers and drawer dividers to outdoor tools and LED lighting. For Filipino shoppers setting up a home, renting an apartment, or looking for practical upgrades without mall markups, the Temu and Shopee PH home selections are worth exploring with the right expectations. This guide covers what works, what to avoid, and how to check dimensions and quality before buying.",
+      "Home finds can solve a real storage, cleaning, or setup problem, but styled photos rarely prove fit or durability. SulitScan's current home selection is sourced from Shopee PH. Measure the intended space, identify the load or task, and compare materials, assembly, required accessories, and seller evidence for the exact variation. For powered items, verify ratings, certification scope, warranty, and instructions before price enters the decision.",
     bestFor: [
-      "Kitchen organizers, rack systems, drawer dividers, and storage containers",
-      "Cable management: cord clips, velcro ties, cable boxes, and power strip holders",
-      "Small home tools: measuring tapes, hooks, wall anchors, and basic repair items",
-      "Bathroom accessories: soap dispensers, toothbrush holders, shower curtain rings",
-      "Outdoor and garden: plant pots, garden stakes, and small irrigation tools",
-      "Decorative items: throw pillow covers, candle holders, and wall art prints",
+      "Organizers and storage products with complete external and internal dimensions",
+      "Manual kitchen and cleaning tools with clear material information",
+      "Decor and frames when mounting method, weight, and scale are documented",
+      "Renter-friendly improvements that do not require unsafe modification",
+      "Small furniture accessories after measuring clearance and load requirements",
     ],
     whatToCheck: [
-      "Always check the product dimensions in centimeters. Many items are smaller or thinner than they appear.",
-      "Look for buyer photos in reviews, product photos are often taken in larger professional settings.",
-      "For furniture or assembled items, confirm the weight capacity and material specifications.",
-      "Check if the item requires tools or assembly, some listings show assembled photos but ship flat-pack.",
-      "Shipping to the Philippines from Temu takes 7–20 business days, plan accordingly for urgent needs.",
+      "Measure width, depth, height, openings, and clearance at the actual location.",
+      "Check material, load limit, assembly method, and included hardware.",
+      "Use buyer photos to evaluate scale and finish for the exact variant.",
+      "For electrical products, verify ratings, instructions, and applicable safety evidence.",
+      "Include installation supplies and shipping in the complete cost.",
     ],
     commonMistakes: [
-      "Ordering items without measuring your space first. A bookshelf or organizer that looks spacious online may not fit.",
-      "Buying cheap electronics like LED strips or chargers without checking Philippine voltage compatibility (220V).",
-      "Assuming ₱250 kitchen tools will match the quality of ₱600 items from local hardware stores, they often won't.",
-      "Not reading the material description. 'Stainless steel' in Temu listings sometimes refers to steel-finish plastic.",
+      "Measuring the empty space but not the path needed to install or open the item.",
+      "Treating water-resistant, rust-resistant, or heavy-duty as absolute guarantees.",
+      "Assuming screws, adapters, batteries, or mounting parts are included.",
+      "Choosing an electrical item from appearance or wattage without checking requirements.",
     ],
     faqs: [
       {
-        question: "Are Temu home finds reliable for everyday use?",
+        question: "What should I measure before buying a home organizer?",
         answer:
-          "Many are, especially for organizers, storage items, and non-critical accessories. For items that need to withstand regular use, kitchen knives, step ladders, power tools, we recommend buying locally where quality and after-sales support are clearer.",
+          "Measure the available width, depth, height, opening, and any door, drawer, cable, or ventilation clearance. Compare those measurements with the exact assembled product dimensions, not a styled photo.",
       },
       {
-        question: "What home categories offer the best value on Temu?",
+        question: "How should I assess a powered home item?",
         answer:
-          "Storage and organization items, cable management, bathroom accessories, and small decorative items tend to offer consistent value. Furniture is riskier due to assembly, quality variability, and the difficulty of returning large items.",
+          "Check the exact model's electrical rating, plug, instructions, warranty, seller identity, and any applicable Philippine safety requirements. Do not infer compatibility or certification from a generic listing image.",
       },
       {
-        question: "Can I return home items from Temu if they don't fit?",
+        question: "Does SulitScan inspect every home product?",
         answer:
-          "Temu accepts returns for defective or misrepresented items. However, if an item simply doesn't fit your space and the listing description was accurate, returns may not be approved. Always measure before ordering.",
-      },
-      {
-        question: "How do I check Philippine voltage compatibility for Temu electronics?",
-        answer:
-          "Look for 'Input: 100–240V' in the product specs. If it says '110V only', it needs a voltage converter for use in the Philippines (220V). When in doubt, avoid buying electronics from Temu without confirmed voltage specs.",
-      },
-      {
-        question: "Do home items from Temu come with warranties?",
-        answer:
-          "Most Temu items do not come with formal warranties. Temu's buyer protection covers defective items within their return window, but you should not expect manufacturer warranties on most home accessories.",
+          "No. SulitScan provides desk-researched buyer guidance and affiliate-datafeed listings. Confirm current details on the seller page and inspect the delivered item before installation or use.",
       },
     ],
-    relatedCategories: ["under-500", "under-1000", "tech-deals"],
-    relatedBlogSlugs: ["best-shopee-finds-under-500-philippines", "temu-shopping-guide-philippines"],
+    relatedCategories: ["under-500", "under-1000", "gift-ideas"],
+    relatedBlogSlugs: [
+      "first-apartment-essentials-under-1000-philippines",
+      "online-furniture-measurement-guide-philippines",
+      "food-storage-containers-buying-guide-philippines",
+    ],
   },
 
   "tech-deals": {
     slug: "tech-deals",
+    metaDescription:
+      "Compare Shopee PH tech deals using connector, device, power, safety, warranty, seller, and delivered-cost checks before checkout.",
     intro:
-      "Tech and gadget deals on Temu and Shopee PH can be genuinely useful, especially for accessories, cables, phone mounts, tripods, and basic tools. But electronics at very low prices require more careful checking than other categories. This guide covers the tech deals worth considering for Filipino buyers, how to verify specifications before ordering, and which tech items to avoid buying from budget marketplaces.",
+      "Tech accessories can look interchangeable while differing in connector, protocol, output, device support, and safety evidence. SulitScan's current tech selection comes from Shopee PH. Start with the device model and job to be done, then verify the exact specification, included components, seller identity, warranty, and current buyer evidence. A high claimed capacity or wattage is not useful when the listing cannot document compatibility and support.",
     bestFor: [
-      "Phone accessories: cases, screen protectors, holders, and selfie sticks",
-      "Cable and charging accessories: USB-C cables, multi-port hubs, short charging cables",
-      "Basic computer peripherals: mousepads, keyboard covers, laptop stands",
-      "Mini tools: digital thermometers, small flashlights, measuring tools",
-      "Cable management and desk organization: clips, velcro ties, and cable boxes",
+      "Stands, mounts, cases, and organizers with measurable fit requirements",
+      "Cables and adapters whose connectors and supported standards are stated",
+      "Accessories from identifiable official or preferred shops with current evidence",
+      "Replacement items that match an existing model number and specification",
+      "Simple peripherals after checking operating-system and device compatibility",
     ],
     whatToCheck: [
-      "Always confirm Philippine voltage compatibility (220V). Check for '100–240V' input in specs.",
-      "For USB cables and chargers: verify the charging standard (USB-A, USB-C, PD, etc.) matches your device.",
-      "Read buyer reviews specifically mentioning Philippine or Southeast Asian use.",
-      "Check the product's certifications if buying electrical items, CE marking and basic safety claims.",
-      "Confirm compatibility with your specific device model before ordering accessories.",
-      "For wireless products: check if Bluetooth or Wi-Fi versions are compatible with your existing devices.",
+      "Match the exact device, connector, protocol, dimensions, and required software.",
+      "For powered products, verify input, output, cable, protection, and safety evidence.",
+      "Check whether the selected bundle includes every component shown in the photo.",
+      "Read recent reviews for the exact model or variation, not only the shop average.",
+      "Confirm warranty coverage, claim contact, and current return window before paying.",
     ],
     commonMistakes: [
-      "Buying cheap Temu chargers for flagship phones. Uncertified chargers can damage phone batteries.",
-      "Ordering electronics without voltage confirmation. 110V-only items can be damaged or dangerous in the Philippines.",
-      "Assuming Temu gadgets have the same specs as branded versions. '10,000mAh power banks' may deliver significantly less real capacity.",
-      "Not checking return options for electronics, defective tech items need to be returned quickly.",
+      "Buying by connector shape while ignoring the charging or data standard.",
+      "Treating claimed capacity, power, or range as independently verified performance.",
+      "Assuming a familiar brand name in a title proves authorized inventory.",
+      "Using an unverified charger, battery, or adapter because the discount looks large.",
     ],
     faqs: [
       {
-        question: "Are Temu phone chargers safe to use in the Philippines?",
+        question: "How do I check whether a tech accessory is compatible?",
         answer:
-          "Only if they explicitly support 100–240V input. Check the product specs before buying. We recommend buying chargers from local stores or well-known brands for flagship phones. Temu chargers are generally fine for basic devices if voltage is confirmed.",
+          "Start with the exact device model and required function. Then match connector, protocol, dimensions, power requirements, operating system, and any app or firmware requirement for the selected variation.",
       },
       {
-        question: "What tech accessories give the best value on Temu?",
+        question: "Is a high wattage or capacity claim enough to choose a product?",
         answer:
-          "Phone cases, cable organizers, laptop stands, mousepads, and basic desk accessories tend to offer solid value. Avoid buying batteries, chargers with unverified specs, or gadgets with complex electronics from Temu.",
+          "No. Check how the claim is measured, whether the device and cable support it, which protections and certifications apply, and what warranty backs the exact model. Treat an unsupported headline number cautiously.",
       },
       {
-        question: "How do I check if a Temu tech item is compatible with my device?",
+        question: "Does SulitScan guarantee device compatibility?",
         answer:
-          "Look for the specific device model in the product title or description. For cables and hubs: check the connector type (USB-A, USB-C, Lightning). For wireless accessories: check Bluetooth version requirements.",
-      },
-      {
-        question: "Does Temu sell legit branded tech products?",
-        answer:
-          "Temu sells unbranded and third-party products, not official products from major tech brands. For Apple, Samsung, or other branded accessories, purchase from authorized retailers to ensure genuine products.",
-      },
-      {
-        question: "Can I return defective tech items from Temu?",
-        answer:
-          "Yes, Temu's buyer protection covers defective items. File a return claim with photos of the defect within the return window. Keep the original packaging until the return window closes.",
+          "No. Product revisions and device requirements change. Confirm the exact model and specification with the manufacturer or seller before buying and test within the current return window.",
       },
     ],
-    relatedCategories: ["under-1000", "home-finds"],
-    relatedBlogSlugs: ["best-shopee-finds-under-500-philippines", "temu-shopping-guide-philippines"],
+    relatedCategories: ["under-500", "under-1000", "home-finds"],
+    relatedBlogSlugs: [
+      "power-bank-buying-guide-philippines",
+      "phone-tripod-buying-guide-philippines",
+      "wireless-earbuds-buying-guide-philippines",
+    ],
   },
 
-  "fashion": {
+  fashion: {
     slug: "fashion",
+    metaDescription:
+      "Browse Shopee PH fashion deals with checks for garment measurements, fabric, variation, seller evidence, delivered cost, and return terms.",
     intro:
-      "The fashion category covers everything from casual basics to seasonal styles and everyday bags, all at very low prices from Temu and Shopee PH. For Filipino buyers shopping on a budget, this can be a reasonable option for everyday wear, home loungewear, or bags and accessories you want to try without overspending. The critical thing is understanding the sizing, material quality expectations, and return process before committing to a purchase.",
+      "Fashion value depends on fit, fabric, construction, and how often an item will be worn—not only on a low listing price. SulitScan's current fashion selection comes from Shopee PH. Compare the garment measurements for the exact variation with a similar item you already own, read the fabric composition and care instructions, and use recent buyer photos to judge drape, color, and finish. Confirm the current size-return process before ordering.",
     bestFor: [
-      "Basic everyday pieces: plain tees, casual shorts, leggings, and basic tops",
-      "Loungewear and sleepwear where fit tolerances are more forgiving",
-      "Seasonal accessories: sunglasses, bucket hats, bags, and sandals",
-      "Work basics that don't require precise fit: simple button-downs, neutral trousers",
-      "Activewear basics for light exercise or walks",
+      "Bags and accessories with clear dimensions and material descriptions",
+      "Casual basics when complete garment measurements are available",
+      "Simple pieces whose fit can be compared with an item already owned",
+      "Seasonal accessories where exact body fit is less critical",
+      "Known brands from identifiable official or preferred shops",
     ],
     whatToCheck: [
-      "Use the size chart in centimeters, not just S/M/L. Temu sizing frequently runs smaller than Philippine standards.",
-      "Read buyer reviews with photos from actual customers, not just the product listing images.",
-      "Check the fabric composition. 100% polyester at low prices may feel uncomfortable in Philippine heat.",
-      "Look at buyer photos showing the actual color, colors can appear different on screen vs in real life.",
-      "Confirm the return and refund policy for clothing items before ordering, especially for sizes.",
+      "Use garment measurements in centimeters instead of relying on S, M, or L labels.",
+      "Compare fabric composition, lining, stretch, closure, and care instructions.",
+      "Check the exact color and size selected in the cart before payment.",
+      "Use recent buyer photos to assess scale, opacity, stitching, and color.",
+      "Read the live return rule for fit, hygiene, tags, packaging, and deadlines.",
     ],
     commonMistakes: [
-      "Ordering your regular Philippine size without checking the Temu size chart in centimeters.",
-      "Expecting premium fabric quality at ₱200–₱400 prices. Material quality will be basic.",
-      "Buying formal or occasion wear from Temu, fit, material, and finish quality may not meet the occasion.",
-      "Bulk ordering the same item in multiple sizes hoping one fits. Shipping times from Temu make exchanges impractical.",
+      "Ordering a usual size without comparing the listing's garment measurements.",
+      "Using body measurements and garment measurements as if they are identical.",
+      "Assuming styled photos show fabric thickness, opacity, or true color.",
+      "Removing tags or packaging before checking fit and the delivered variation.",
     ],
     faqs: [
       {
-        question: "Does Temu clothing run small for Filipino buyers?",
+        question: "Should I order my usual online clothing size?",
         answer:
-          "Frequently yes. Temu sizing often follows a smaller Asian standard. Always check the measurement chart in centimeters for each listing and compare with your actual body measurements. A Temu 'L' is often equivalent to a Philippine 'S' or 'M'.",
+          "Not without checking. Compare the listing's garment measurements with a similar item that fits you, and account for the fabric's stretch and the fit you want. Letter sizes vary between listings.",
       },
       {
-        question: "What fashion items are safest to buy from Temu?",
+        question: "How can I judge fabric quality online?",
         answer:
-          "Items where exact fit matters less: hats, bags, basic socks, scarves, and accessories. For tops, bottoms, and shoes, always cross-check measurements. Avoid buying formal wear, fitted suits, or occasion dresses from Temu.",
+          "Read the composition and care details, inspect close buyer photos, and look for comments on weight, opacity, stretch, stitching, and feel. A promotional photo alone cannot establish those qualities.",
       },
       {
-        question: "How long does Temu clothing take to ship to the Philippines?",
+        question: "Can I return clothing that does not fit?",
         answer:
-          "Temu ships internationally. Delivery to the Philippines typically takes 7–20 business days from order date. Check the estimated delivery date shown at checkout before completing your order.",
-      },
-      {
-        question: "Can I return Temu clothing that doesn't fit?",
-        answer:
-          "Temu accepts returns for defective or misrepresented items. A simple size issue may or may not qualify for a return. The platform sometimes offers refunds without requiring the physical return of low-value items, check the return terms at the time of your order.",
-      },
-      {
-        question: "Are Temu bags and accessories worth buying?",
-        answer:
-          "Basic accessories like tote bags, canvas bags, sunglasses, and hats often represent good value from Temu, as they are less sensitive to sizing and material quality expectations. Read buyer reviews with photos before ordering.",
+          "That depends on the seller, platform, reason, condition, and current deadline. Read the live policy before ordering and keep tags, packaging, and order evidence until you have checked the item.",
       },
     ],
     relatedCategories: ["under-500", "under-1000", "gift-ideas"],
-    relatedBlogSlugs: ["best-shopee-finds-under-500-philippines", "temu-shopping-guide-philippines"],
+    relatedBlogSlugs: [
+      "online-shoe-size-guide-philippines",
+      "bags-under-500-philippines-buying-guide",
+      "online-product-review-checklist-philippines",
+    ],
   },
 
   "gift-ideas": {
     slug: "gift-ideas",
+    metaDescription:
+      "Compare gift ideas from Shopee PH and Sephora PH using recipient fit, delivery timing, presentation, seller evidence, and return terms.",
     intro:
-      "Finding gifts online in the Philippines is tricky. You need something that looks and feels presentable, ships on time, and won't disappoint when unwrapped. SulitScan's gift ideas category features only deals with a SulitScore of 8 and above, which means they've passed checks on discount authenticity, store reliability, and buyer review signals. This guide covers what makes a good online gift, how to choose safely, and practical tips for gifting from Temu, Shopee PH, and Sephora PH.",
+      "A good online gift must suit the recipient, arrive on time, and remain supportable if the parcel is wrong or damaged. SulitScan's current gift category draws from Shopee PH and Sephora PH listings that meet the category's score threshold. Treat that score as a shortlist, then verify the exact variation, presentation, delivery estimate, seller evidence, and return restrictions. For time-sensitive occasions, a documented local option may be better than a more dramatic discount.",
     bestFor: [
-      "Sephora PH beauty gift sets and skincare bundles, practical, well-packaged gifts for friends and family",
-      "Temu home accessories and organizers as practical gifts for new homeowners",
-      "Temu fashion accessories: bags, hats, scarves, and jewelry for casual gifting",
-      "Sephora PH fragrance minis and sample sets for beauty lovers",
-      "Temu stationery and desk accessories for students and professionals",
+      "Practical home, desk, or travel items matched to a known need",
+      "Beauty sets and minis when preferences, allergies, and product details are known",
+      "Bags and accessories with forgiving fit and clear measurements",
+      "Consumable or refillable items the recipient already uses",
+      "Gifts whose delivery estimate leaves time to inspect and rewrap them",
     ],
     whatToCheck: [
-      "Check the estimated delivery date, gifts need to arrive before the occasion.",
-      "For Sephora PH gifts: confirm the specific shade, variant, or scent is available before ordering.",
-      "For Temu gift items: check buyer photos to confirm packaging quality. Some items look better in listing photos.",
-      "Read return policies. Opened gift items are generally non-returnable on Sephora PH.",
-      "Confirm SulitScore is 8 or above before selecting as a gift, this category only shows our top-rated picks.",
+      "Confirm the recipient's preferences, size, allergies, device, or existing setup.",
+      "Check the exact variant, included items, packaging, and gift-ready condition.",
+      "Use the live delivery estimate and allow inspection time before the occasion.",
+      "Review return restrictions for cosmetics, personalized goods, and opened items.",
+      "Keep the order record and avoid exposing the recipient's personal data unnecessarily.",
     ],
     commonMistakes: [
-      "Ordering gifts with long international shipping times without checking the estimated delivery date.",
-      "Selecting Temu items based on listing photos without reading buyer reviews about real quality.",
-      "Gifting beauty products from Temu without checking the ingredient list, some products make unverified claims.",
-      "Not confirming if the recipient has any known allergies before gifting skincare or fragrance products.",
+      "Ordering too close to the event based on an ideal delivery estimate.",
+      "Choosing a bundle without checking the size or quantity of each component.",
+      "Buying skincare, fragrance, clothing, or tech without recipient-specific checks.",
+      "Discarding order or packaging evidence before the recipient inspects the item.",
     ],
     faqs: [
       {
-        question: "What are the best gift categories on Temu for Filipino recipients?",
+        question: "What makes an online gift lower risk?",
         answer:
-          "Practical accessories (bags, hats, organizers), home decor items, and desk accessories tend to be well-received. Avoid clothing as gifts unless you know the recipient's exact measurements, Temu sizing can surprise.",
+          "Choose something matched to a known need, with clear specifications, a reliable seller, enough delivery buffer, and a workable current return process. Avoid guessing on allergies, exact fit, shade, scent, or device compatibility.",
       },
       {
-        question: "Is Sephora PH a good option for beauty gifts in the Philippines?",
+        question: "How early should I order a holiday gift?",
         answer:
-          "Yes. Sephora PH gift sets and skincare bundles are well-packaged and make genuine gifts for beauty lovers. Confirm availability and current price on sephora.ph before ordering, prices on SulitScan are from affiliate datafeeds and may change.",
+          "Use the live estimated delivery date and add time to inspect, resolve problems, and wrap the item. Campaigns, weather, origin, seller preparation, and non-working days can change the estimate, so there is no universal safe cutoff.",
       },
       {
-        question: "How do I make sure a Temu gift arrives before the occasion?",
+        question: "Does a high SulitScore guarantee a good gift?",
         answer:
-          "Check the estimated delivery date at checkout before confirming your order. Temu ships to the Philippines in 7–20 business days. For time-sensitive gifts, order at least 3–4 weeks in advance or consider a local option.",
-      },
-      {
-        question: "What is a SulitScore and why does it matter for gift purchases?",
-        answer:
-          "The SulitScore (1–10) reflects deal quality based on discount authenticity, store reliability, buyer review signals, and shipping context. Gift ideas on SulitScan are filtered to scores of 8 and above, meaning they've passed stricter checks for value and reliability.",
-      },
-      {
-        question: "Can I suggest a gift idea for SulitScan to feature?",
-        answer:
-          "Yes. Use the contact form to suggest a deal you think would make a good gift. We review all suggestions and may add qualified deals to the gift ideas category after checking affiliate availability and buyer reminders.",
+          "No. It helps shortlist listings using available deal and risk signals, but it cannot know the recipient's needs or guarantee stock, delivery, condition, or suitability. Confirm the live details yourself.",
       },
     ],
     relatedCategories: ["beauty", "fashion", "under-1000"],
-    relatedBlogSlugs: ["sephora-ph-beauty-guide", "how-sulitscan-checks-deals"],
+    relatedBlogSlugs: [
+      "best-gifts-under-500-philippines",
+      "sephora-ph-minis-vs-full-size-value-sets",
+      "christmas-lights-buying-guide-philippines",
+    ],
   },
 
-  "travel": {
+  travel: {
     slug: "travel",
+    metaDescription:
+      "Browse Shopee PH travel organizers and pouches with checks for dimensions, material, zipper quality, delivered cost, and current return terms.",
     intro:
-      "Travel finds on SulitScan focus on the small, practical things that keep a trip organized: toiletry bags, packing pouches, and zippered organizers from Shopee PH. These are cheap, genuinely handy, and forgiving to buy because they do not depend on exact sizing. The goal of this category is simple, useful gear that stops a bag from turning into a black hole, not heavy-duty luggage. This guide covers what is worth buying, what to check before you order, and the mistakes to avoid.",
+      "Travel finds on SulitScan focus on small products that organize a trip: toiletry bags, packing pouches, and zippered organizers from Shopee PH. They are easier to compare than luggage, but the dimensions, material, zipper, seams, and water-resistance claim still matter. Choose for a specific packing job, confirm the exact variation, and compare the delivered cost with what you already own before adding another organizer.",
     bestFor: [
-      "Toiletry bags and hanging wash bags for trips",
-      "Packing pouches and zippered organizers for clothes and cables",
-      "Small quilted or aesthetic pouches for daily carry",
-      "Lightweight organizers that keep a bag tidy without adding bulk",
-      "Low-stakes, under a few hundred pesos travel accessories",
+      "Toiletry bags and hanging wash bags with usable internal dimensions",
+      "Packing pouches for separating clothes, cables, or small accessories",
+      "Compact daily-carry pouches with a clearly shown closure and lining",
+      "Lightweight organizers that solve a defined packing problem",
+      "Low-stakes accessories that can be inspected before the trip",
     ],
     whatToCheck: [
-      "Confirm the dimensions in centimeters. Pouches often look larger in listing photos than they are.",
-      "Check the material and water-resistance claims against buyer photos, not just the listing render.",
-      "Do not expect heavy-duty zippers at this price. Read reviews that mention the zipper and stitching.",
-      "Add up the final cost after vouchers and shipping before deciding.",
-      "Check the seller rating and return terms on Shopee before buying.",
+      "Confirm external and internal dimensions in centimeters.",
+      "Check material and water-resistance language against instructions and buyer photos.",
+      "Read recent feedback that specifically mentions zippers, seams, and lining.",
+      "Add shipping and compare the final cost with a pouch you already own.",
+      "Check seller status, delivery estimate, and return terms before a fixed trip date.",
     ],
     commonMistakes: [
-      "Buying on the styled listing photo alone. The buyer photos show what actually ships.",
-      "Assuming a cheap pouch is waterproof. Treat water-resistance claims as water-resistant, not waterproof.",
-      "Ignoring the dimensions and ending up with a pouch too small for the job.",
-      "Skipping the return terms on a low-value item where return shipping can cost more than the refund.",
+      "Buying from a styled photo without mapping the items that must fit inside.",
+      "Treating water-resistant as waterproof without supporting instructions.",
+      "Ignoring zipper and seam feedback because the item is inexpensive.",
+      "Ordering too close to a trip to inspect or replace a wrong item.",
     ],
     faqs: [
       {
-        question: "Are Shopee travel pouches worth buying?",
+        question: "Are low-cost travel pouches worth buying?",
         answer:
-          "For organizing a bag, usually yes. Toiletry bags, packing pouches, and zippered organizers are cheap and practical. Just keep expectations realistic on zipper quality and water-resistance, and read reviews with real buyer photos first.",
+          "They can be when they solve a defined organization problem and the measurements, material, zipper, and seams are documented. Compare the delivered cost with what you already have before buying.",
       },
       {
-        question: "What should I check before buying a travel pouch?",
+        question: "What should I check before buying a toiletry bag?",
         answer:
-          "Confirm the dimensions in centimeters, check the material against buyer photos, read reviews that mention the zipper and stitching, and add up the final price after vouchers and shipping. Prefer sellers with solid ratings.",
+          "Map the bottles and tools that must fit, verify internal dimensions, check lining and closure details, and review how the maker describes leaks or water resistance. Keep liquids in separate sealed containers.",
       },
       {
-        question: "Does SulitScan sell these travel items?",
+        question: "Does SulitScan sell travel items directly?",
         answer:
-          "No. SulitScan is a shopping guide. We point you to listings on Shopee, and you buy directly from the seller. Always confirm the current price, seller details, and return terms on Shopee before buying.",
+          "No. SulitScan is a shopping guide and may link to affiliate listings. You buy from the partner seller, so confirm the current price, seller, delivery estimate, and return terms there.",
       },
     ],
     relatedCategories: ["under-500", "home-finds", "fashion"],
-    relatedBlogSlugs: ["best-shopee-finds-under-500-philippines", "online-shopping-safety-tips-philippines"],
+    relatedBlogSlugs: [
+      "travel-packing-organizers-philippines-buying-guide",
+      "carry-on-luggage-philippines-buying-guide",
+      "online-shopping-safety-tips-philippines",
+    ],
   },
+}
+
+export function getCategoryMetaDescription(slug: string, fallback: string): string {
+  return categoryContent[slug]?.metaDescription ?? fallback
 }
