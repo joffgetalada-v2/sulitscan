@@ -625,7 +625,6 @@ const saleSafetyGuideCases = [
     ],
     topics: ["temu-checkout", "minimum-order", "checkout-value"],
     platforms: ["Temu"],
-    deals: { tags: ["temu"] },
     coverImage: "/images/guides/temu-minimum-order-philippines.jpg",
     coverImageAlt:
       "Shopper comparing an online cart minimum with a calculator and a short needs checklist",

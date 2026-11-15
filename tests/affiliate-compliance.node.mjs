@@ -32,6 +32,7 @@ const dealsModule = loadTypeScriptModule("src/data/deals.ts", {
 const storesModule = loadTypeScriptModule("src/data/stores.ts")
 const categoriesModule = loadTypeScriptModule("src/data/categories.ts")
 const categoryContentModule = loadTypeScriptModule("src/data/category-content.ts")
+const postsModule = loadTypeScriptModule("src/data/posts.ts")
 
 const OCTOBER_SHOPEE_FEED_SLUGS = [
   "babyflo-oatmeal-bath-500ml-shopee",
@@ -110,6 +111,32 @@ test("Shoplinks stays disabled until its eligibility list includes Philippine ad
 test("terminated Temu affiliate inventory is fully retired", () => {
   assert.equal(dealsModule.deals.some((deal) => deal.platform === "Temu"), false)
   assert.equal(storesModule.stores.some((store) => store.name === "Temu" || store.slug === "temu"), false)
+
+  const editorialProcess = postsModule.getPostBySlug("how-sulitscan-checks-deals")
+  const temuGuide = postsModule.getPostBySlug("temu-shopping-guide-philippines")
+  const temuBudgetGuide = postsModule.getPostBySlug("best-temu-finds-under-500-philippines")
+
+  assert.ok(editorialProcess, "the editorial-process guide must remain published")
+  assert.doesNotMatch(
+    editorialProcess.content,
+    /temu/i,
+    "the current editorial-process guide must not describe a terminated merchant"
+  )
+  assert.match(editorialProcess.content, /Shopee PH[\s\S]+Sephora PH/i)
+
+  for (const guide of [temuGuide, temuBudgetGuide]) {
+    assert.ok(guide, "independent Temu buyer guides must remain available")
+    assert.match(guide.content, /no longer publishes Temu affiliate (?:product )?listings/i)
+    assert.match(guide.content, /does not earn (?:a commission|commissions) from Temu purchases/i)
+  }
+
+  for (const post of postsModule.posts) {
+    assert.equal(
+      post.recommendationIntent?.deals?.tags?.some((tag) => tag.toLowerCase() === "temu") ?? false,
+      false,
+      `${post.slug}: retired Temu inventory must not be eligible for deal recommendations`
+    )
+  }
 
   const deployableSource = [
     "src/data/deals.ts",

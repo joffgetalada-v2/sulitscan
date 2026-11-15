@@ -48,7 +48,7 @@ export const posts: BlogPost[] = [
     excerpt:
       "Before any deal appears on SulitScan, we run it through a manual checklist. Here's exactly what we look at, and what we don't.",
     content: `
-SulitScan is not a live price aggregator. We manually curate selected deals from Temu and Sephora PH through affiliate partner programs. Before any deal goes live on the site, we go through a structured review process. Here's exactly what that looks like.
+SulitScan is not a live price aggregator. We manually curate selected deals from approved active partners, currently Shopee PH and Sephora PH. Before any deal goes live on the site, we go through a structured review process. Here's exactly what that looks like.
 
 ## What's in This Guide
 
@@ -61,7 +61,7 @@ SulitScan is not a live price aggregator. We manually curate selected deals from
 
 ## How We Find Deals
 
-We monitor Temu and Sephora PH through affiliate programs, specifically Temu's direct affiliate partner program and Involve Asia (for Sephora PH). Affiliate partners share product data, pricing, and deal information.
+We review current partner data and advertiser pages supplied through Involve Asia for Shopee PH and Sephora PH. Shopee product records also pass seller-status, rating, sales-history, and stock checks before we consider them for publication.
 
 We browse these feeds manually and select products that appear to offer genuine value to Filipino shoppers. We do not use bots, scrapers, or automated tools to bulk-import deal data.
 
@@ -75,19 +75,19 @@ Not every discount is genuine. A product listed at ₱999 "down from ₱3,500" i
 
 ### 2. Is this an appropriate product for the platform?
 
-For **Temu**, we focus on categories where the value is clear and the risk of disappointment is low: home organizers, kitchen tools, phone accessories, fashion basics, and decor. We are more cautious with electronics and branded products.
+For **Shopee PH**, we begin with current records from Official or Preferred shops, then assess whether the product type, seller evidence, variation details, and final delivered cost are suitable for a buyer guide. We are more cautious with electrical, safety-critical, and warranty-dependent products.
 
 For **Sephora PH**, products are listed from an authorized retailer. We still check that the product matches the category, that the price is consistent with Sephora PH's listed price, and that the deal makes sense for Filipino shoppers.
 
 ### 3. Can additional savings be applied?
 
-We note if platform vouchers, first-order discounts, or loyalty points can stack on top of the listed sale price. For Sephora PH, Beauty Rewards points are often applicable. For Temu, new-user and platform vouchers are frequently available.
+We note when a partner store shows vouchers, loyalty benefits, or other checkout savings, but we do not assume every reader has the same offer. The useful number is the final payable total shown in the buyer's own checkout.
 
 ### 4. What should the buyer check before purchasing?
 
 Every deal card on SulitScan includes buyer notes: sizing reminders, shipping speed, quality expectations, and return policy context. These are not generic disclaimers, we write them based on the specific product type.
 
-For clothing: we note sizing concerns (Temu often runs small). For skincare: we note patch test reminders and checking ingredient lists. For electronics: we flag compatibility and warranty questions.
+For clothing, we flag size-chart and measurement checks. For skincare, we note patch-test reminders and ingredient review. For electronics, we flag compatibility, electrical safety, and warranty questions.
 
 ### 5. What is the SulitScore?
 
@@ -114,7 +114,7 @@ A score of 9–10 means we consider the deal genuinely strong. A score of 6–7 
 
 Prices listed on SulitScan are sourced from affiliate datafeeds at the time we add or update a deal. They may not match the current price on the partner store. Platform vouchers and first-order discounts are not always reflected in the listed price.
 
-Always confirm the final price, available vouchers, and seller terms on Sephora PH or Temu before you buy. If the price has changed since we listed it, use the "Report outdated price" link on the deal page, we appreciate the heads up.
+Always confirm the final price, available vouchers, seller details, and current terms on Shopee PH or Sephora PH before you buy. If the price has changed since we listed it, use the "Report outdated price" link on the deal page; we appreciate the heads up.
 
 ## Before You Click Buy, Your Checklist
 
@@ -124,7 +124,7 @@ Always confirm the final price, available vouchers, and seller terms on Sephora 
 4. Have you read buyer reviews on the partner store?
 5. Do you understand the return policy for this product type?
 6. For skincare or beauty: have you checked the ingredient list?
-7. For Temu orders: is the delivery estimate acceptable for when you need it?
+7. If the purchase has a deadline, is the live delivery estimate early enough?
 
 SulitScan is a starting point, not the final word. You decide when to buy.
 
@@ -139,8 +139,8 @@ We update deals when we notice price changes through our affiliate feeds. But we
 **Q: Can I report a deal with a wrong price?**
 Yes. Every deal detail page has a "Report outdated price" link. Clicking it opens your email client with the deal pre-filled. We review all reports.
 
-**Q: Do you cover Shopee, Lazada, or AliExpress?**
-Shopee PH is an active SulitScan partner alongside Temu and Sephora PH. SulitScan does not currently publish Lazada or AliExpress affiliate deals; always check the store label and disclosure on each deal page before following an offer.
+**Q: Which stores does SulitScan currently cover?**
+Shopee PH and Sephora PH are the active stores shown in SulitScan's current deal catalog. Always check the store label, last-checked date, buyer notes, and disclosure on each deal page before following an offer.
 
 ## Affiliate Disclosure
 
@@ -149,7 +149,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     category: "About SulitScan",
     author: "SulitScan Team",
     publishedAt: "2026-06-01",
-    lastReviewed: "2026-06-08",
+    lastReviewed: "2026-11-16",
     readTime: 7,
     tags: ["how-it-works", "transparency", "sulitscan", "deal-checking"],
     recommendationIntent: { topics: ["sulitscan-editorial"] },
@@ -162,11 +162,13 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     slug: "temu-shopping-guide-philippines",
     title: "Temu Shopping Guide for Filipino Buyers: What to Know Before You Order",
     excerpt:
-      "Temu offers surprisingly low prices, but there are a few things Filipino shoppers should know before placing an order.",
+      "An independent checklist for checking Temu listings, checkout totals, delivery estimates, evidence, and live remedy terms from the Philippines.",
     content: `
-Temu has become popular in the Philippines for its very low prices on home decor, fashion, gadgets, and everyday basics. But low prices come with questions: What's the quality like? How long does shipping take? What happens if something goes wrong?
+Temu is a cross-border marketplace used by some shoppers in the Philippines for home, fashion, gadget, and everyday-product listings. Low displayed prices still leave important questions about the exact variation, quality evidence, delivery estimate, checkout total, and available remedy.
 
 This guide covers everything a Filipino buyer needs to know before placing a Temu order.
+
+**Affiliate-status note — November 16, 2026:** SulitScan no longer publishes Temu affiliate listings and does not earn commissions from Temu purchases. This is an independent buyer-education guide, not a current product recommendation. Temu's prices, promotions, shipping, payment options, and return terms can change by account and order, so verify every condition in the official live app or website before ordering.
 
 ## What's in This Guide
 
@@ -197,17 +199,17 @@ Temu is best for items where if it's slightly off from what you expected, you'd 
 
 ## Pricing Reality Check
 
-Temu's prices are genuinely low compared to local retail for many categories. But there are a few things to keep in mind:
+Temu's displayed prices can be lower than some local listings, but the comparison is only useful after you confirm the exact product and complete checkout total:
 
 The "original price" shown may be inflated. A product listed at ₱899 "down from ₱2,500" is worth checking. Search for the same or similar product on other platforms to get a sense of the real market price.
 
-Vouchers and first-order discounts are common. Check the Promotions tab before checkout. New Temu users typically receive significant first-order discounts that can reduce the total by 20–40%.
+Promotions can be account-specific and time-limited. Apply only an offer visible and eligible in your own cart, then compare the resulting payable total instead of planning around an advertised maximum discount.
 
-Shipping is often free. Most Temu orders to the Philippines include free standard shipping, but some lightweight or very low-priced items may have a small shipping fee. Check before confirming.
+Shipping charges, minimums, and eligibility can change. Treat the item price, shipping, and every displayed fee as separate lines until the final confirmation screen.
 
 ## Sizing for Filipino Shoppers
 
-This is important. Temu clothing sizes frequently run smaller than labeled, by one to two sizes. Filipino shoppers have consistently reported this in reviews.
+Marketplace size labels are not standardized. The same S, M, L, or numbered shoe size can represent different measurements across listings and sellers.
 
 Before buying clothing:
 
@@ -216,13 +218,11 @@ Before buying clothing:
 - Check buyer photos and reviews, look for reviewers who mention size fit
 - When in doubt, size up
 
-For footwear, the same applies. A labeled size 38 may fit closer to a local size 36–37. Always check the size chart in centimeters and buyer reviews before ordering shoes.
+For footwear, compare the seller's centimeter measurements and fitting notes with a pair that already fits. Do not convert from a familiar size label without checking the selected listing's chart.
 
 ## Shipping to the Philippines
 
-Standard shipping from Temu to the Philippines typically takes **7–20 business days** from the order date. This is international shipping, not local. If you need something by a specific date, plan accordingly.
-
-Express shipping is sometimes available and can shorten delivery to 5–10 business days, but it usually costs extra.
+Do not rely on an older site-wide delivery range. Use the order-specific estimate shown for your address, selected products, and shipping method at checkout. Cross-border processing, customs, handoff, weather, and local courier capacity can all change the actual arrival date.
 
 Temu provides tracking through their app and website. You'll receive notifications as your order moves through international logistics. The last-mile delivery in the Philippines is handled by local courier partners.
 
@@ -248,11 +248,11 @@ Temu's return and refund process is generally straightforward for:
 1. Take photos of the package before opening
 2. Take photos of the item after opening
 3. Check against the product description and your order details
-4. File any return within Temu's return window (typically 90 days from purchase)
+4. File any claim within the current deadline shown for that order and remedy
 
 If you need to return an item, do it through the Temu app. Keep packaging until you're satisfied with the order.
 
-For minor differences (slightly different color shade, texture slightly different from photos), Temu may offer a partial refund rather than a full return, check their policy for the specific product category.
+The remedies offered for a minor variation, damaged item, wrong item, or non-delivery can differ. Use the options and evidence instructions shown in the live order rather than assuming a refund type or return method.
 
 ## Safety and Quality Tips
 
@@ -264,11 +264,11 @@ For children's products, exercise extra caution and check for any safety certifi
 
 ## Voucher and Savings Tips
 
-- Check the Promotions tab on Temu before adding items to cart
-- First-time buyers usually get a new-user welcome discount, claim it before checkout
-- Look for "Buy X get Y" deals or bundle discounts on multi-quantity items
-- Temu periodically runs sale events (e.g., birthday sales, holiday sales), timing a purchase for a sale event can increase savings
-- Some GCash and credit card promos can stack with Temu's own discounts, check your bank or e-wallet for active promos
+- Use only offers shown as eligible in your own account and cart
+- Read the minimum-spend, item, payment, expiry, and quantity conditions before counting a discount
+- Compare the final payable total with a local or alternative listing for the same useful specification
+- Do not add an unneeded product merely to satisfy a promotion, bundle, or checkout threshold
+- Verify any bank or e-wallet offer in the issuer's current terms before choosing a payment method
 
 ## Before You Order on Temu, Checklist
 
@@ -283,40 +283,39 @@ For children's products, exercise extra caution and check for any safety certifi
 ## FAQ
 
 **Q: Is Temu safe to buy from?**
-Temu is a legitimate global marketplace. Many Filipino shoppers have ordered from it successfully. As with any marketplace, quality varies by product and seller. Low-stakes everyday items are generally safe bets. High-value or safety-critical items warrant more caution.
+Temu operates a global marketplace, but SulitScan does not certify a platform, seller, or listing as risk-free. Quality and remedies can vary by product and order. Use extra caution for high-value, electrical, safety-critical, children's, health, or warranty-dependent products.
 
 **Q: Why are Temu prices so low?**
-Most Temu products come directly from manufacturers in China, cutting out middlemen. Lower production costs and thin margins on volume result in low retail prices. Quality varies as a result.
+Several factors can affect a displayed marketplace price, including seller pricing, product variation, cross-border fulfillment, promotion eligibility, and reference-price presentation. Compare the same specification and the final checkout total rather than assuming one universal reason.
 
 **Q: Can I pay with GCash or local payment methods?**
-Temu accepts major credit cards and some e-wallet options. Check the payment options at checkout for what's currently available in the Philippines.
+Use only the payment methods currently offered in the official checkout for your account and address. Review the final currency, amount, and issuer terms before confirming.
 
 **Q: What if my Temu order never arrives?**
-If your order doesn't arrive within the estimated window, file a claim through the Temu app. Temu has a purchase protection policy for non-delivery. Keep all tracking information.
+If an order misses the live estimate, preserve the order confirmation and tracking history, then use the current support or claim route shown for that order. Eligibility and deadlines must come from the live policy and order page.
 
 **Q: Does SulitScan ship from Temu?**
-No. SulitScan is a deal discovery site. We link you to Temu and you complete the order directly there. We never handle payments or shipping.
+No. SulitScan is an independent shopping guide and does not sell, ship, or process Temu orders. SulitScan no longer publishes Temu affiliate listings. If you independently choose to order, transact only through Temu's official current channel.
 
 ## Related on SulitScan
 
-Browse [Temu deals](/deals) on SulitScan, or explore by category: [Home Finds](/categories/home-finds), [Tech Deals](/categories/tech-deals), [Fashion](/categories/fashion), [Under ₱500](/categories/under-500).
+Browse current active-partner listings in [Home Finds](/categories/home-finds), [Tech Deals](/categories/tech-deals), [Fashion](/categories/fashion), or [Under ₱500](/categories/under-500).
 
 Before relying on a post-purchase remedy, read the current [Temu returns, refunds, and price-adjustment workflow](/blog/temu-returns-refunds-price-adjustment-philippines). If checkout displays a cart minimum, use the [Temu minimum-order decision guide](/blog/temu-minimum-order-philippines) before adding anything you did not already need.
 
 ## Affiliate Disclosure
 
-SulitScan may earn a commission when you click a Temu affiliate link and complete a purchase. This does not affect your price.
+SulitScan no longer publishes Temu affiliate listings and does not earn commissions from Temu purchases. Separately marked links to active partner stores may earn SulitScan a commission at no extra cost to you. See the [Affiliate Disclosure](/affiliate-disclosure).
     `.trim(),
     category: "Platform Guides",
     author: "SulitScan Team",
     publishedAt: "2026-06-02",
-    lastReviewed: "2026-06-08",
+    lastReviewed: "2026-11-16",
     readTime: 9,
     tags: ["temu", "shopping-guide", "philippines", "tips", "buyer-guide"],
     recommendationIntent: {
       topics: ["temu-buying", "temu-checkout"],
       platforms: ["Temu"],
-      deals: { tags: ["temu"], maxPrice: 1000 },
     },
     importTaxContext: "temu",
     coverGradient: "from-orange-400 to-red-500",
@@ -851,11 +850,13 @@ SulitScan may earn a commission when you click partner links and complete a purc
   {
     id: "post-007",
     slug: "best-temu-finds-under-500-philippines",
-    title: "Best Temu Finds Philippines Under ₱500",
+    title: "Temu Finds Under ₱500 Philippines: A Buyer Checklist",
     excerpt:
-      "Under ₱500, some Temu products are genuinely useful and others are a waste of a delivery slot. Here are the categories that consistently deliver value, and what to check first.",
+      "A category-level checklist for evaluating Temu items under ₱500 without assuming that a low displayed price makes a product a good deal.",
     content: `
-Temu has become one of the most popular ways for Filipino shoppers to find low-cost home, fashion, and accessory items online. But "cheap" and "sulit" are not the same thing. Under ₱500, some Temu products are genuinely useful, and others are a waste of a delivery slot. This guide covers the categories that consistently deliver value under ₱500, what to check before ordering, and how to avoid the common traps.
+Temu is one place where Filipino shoppers may encounter low-cost home, fashion, and accessory listings. But "cheap" and "sulit" are not the same thing. This guide uses a ₱500 item-price cap to explain lower-risk product categories, what to check before ordering, and how to avoid common traps; it does not identify or endorse a current Temu product.
+
+**Affiliate-status note — November 16, 2026:** SulitScan no longer publishes Temu affiliate product listings and does not earn commissions from Temu purchases. Verify every current price, promotion, delivery estimate, seller detail, and remedy in the official live app or website.
 
 ## What's in this guide
 
@@ -868,7 +869,7 @@ Temu has become one of the most popular ways for Filipino shoppers to find low-c
 
 ## Why Under ₱500 Is a Smart Starting Budget
 
-If you are new to Temu, a first order under ₱500 is the lowest-risk way to test the platform. You get to see the real shipping time to the Philippines, the actual packaging, and the true material quality, without committing a large amount of money to a store you have not bought from before.
+If the live checkout accepts the cart, an item-price cap can limit how much money is exposed while you assess the exact listing, packaging, delivery, and material quality. It does not make a weak or unnecessary product safe, useful, or good value, and the complete payable total may exceed the item price.
 
 Most genuinely useful Temu finds in this range are small, practical items where "good enough" quality is perfectly acceptable: organizers, clips, basic accessories, and tools you will not be heartbroken about if they are a little flimsier than expected.
 
@@ -903,7 +904,7 @@ Before adding anything to your Temu cart, run through this quick checklist:
 - **Read reviews with photos.** Filipino and Southeast Asian buyer photos tell you far more than the listing images, which are often styled and oversized.
 - **Check dimensions in centimeters.** Many Temu items are smaller than they look. The product photo of an "organizer" might be the size of your palm.
 - **Confirm the material.** "Stainless steel" in some listings means steel-finish plastic. Read the specification, not just the title.
-- **Check the estimated delivery date.** Temu ships internationally to the Philippines, usually in 7–20 business days. If you need an item urgently, this is not the right channel.
+- **Check the order-specific delivery estimate.** Temu orders may involve cross-border fulfillment. If you need an item by a deadline, use the live estimate for your address and leave a buffer for processing or courier delays.
 - **Confirm the all-in price.** Add shipping (if any) and check whether a voucher applies before assuming the item is under ₱500 at checkout.
 
 For more on this, read our guide on [how to spot fake discounts](/blog/how-to-spot-fake-discounts).
@@ -918,7 +919,7 @@ Not everything under ₱500 is worth it. Be more careful with:
 
 ## How to Stack Vouchers to Stay Under ₱500
 
-Temu frequently offers new-user vouchers, first-order discounts, and platform-wide coupons. These can bring an item that lists slightly above ₱500 back under your budget. Before checkout:
+If your account shows a voucher or promotion, read its current eligibility, minimum-spend, item, payment, and expiry conditions before counting it. A discount does not make an unneeded item worthwhile. Before checkout:
 
 - Apply any available platform voucher or coupon code.
 - Check whether free or discounted shipping applies to your order total.
@@ -932,18 +933,17 @@ Browse current [Under ₱500 deals](/categories/under-500) or explore [Home Find
 
 ## Affiliate Disclosure
 
-SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. Prices are sourced from affiliate datafeeds and may differ from the current price on Temu, always confirm before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
+SulitScan no longer publishes Temu affiliate listings and does not earn commissions from Temu purchases. Separately marked links to active partner stores may earn SulitScan a commission at no extra cost to you. Always confirm current marketplace details before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
     `.trim(),
     category: "Platform Guides",
     author: "SulitScan Team",
     publishedAt: "2026-06-09",
-    lastReviewed: "2026-06-14",
+    lastReviewed: "2026-11-16",
     readTime: 9,
     tags: ["temu", "under-500", "home-finds", "shopping-guide", "philippines"],
     recommendationIntent: {
       topics: ["temu-buying", "home-organization"],
       platforms: ["Temu"],
-      deals: { categories: ["Home"], tags: ["storage", "organizer"], maxPrice: 500 },
     },
     importTaxContext: "temu",
     coverGradient: "from-orange-400 to-amber-500",
@@ -1670,7 +1670,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     content: `
 Shopee, Lazada, and Temu are the three online marketplaces Filipino shoppers compare most often. Each has a different structure, different seller types, and different things to check before you buy. This guide covers the key differences and what to look for on each platform.
 
-SulitScan currently lists affiliate deals from Shopee PH and Temu. Lazada is included here only for editorial comparison; SulitScan does not publish Lazada affiliate deals.
+SulitScan currently publishes affiliate listings from the active partners shown on its store pages, including Shopee PH and Sephora PH. Lazada and Temu are included here only for editorial comparison; SulitScan does not publish affiliate product listings for either marketplace.
 
 ## Quick comparison
 
@@ -1703,7 +1703,7 @@ Lazada is not an active SulitScan affiliate store. The same core principles stil
 Temu ships to the Philippines from international warehouses. Prices are often noticeably lower than local listings for many product categories, especially home items, casual fashion, and everyday accessories.
 
 Before buying on Temu:
-- **Expect longer delivery.** Standard Temu shipping to the Philippines typically takes 7 to 20 days depending on the item and the shipping option selected.
+- **Use the live delivery estimate.** Cross-border orders can take longer than locally fulfilled orders, but the order-specific checkout estimate is more useful than an older site-wide range.
 - **Check sizing carefully.** Temu clothing runs smaller than labeled. Read the measurements in centimeters, not just the size label.
 - **Read buyer reviews and look for photos** from real purchases, not just listing images.
 - **Confirm the return window** if quality matters for your specific order.
@@ -1742,12 +1742,12 @@ Browse [tech deals](/categories/tech-deals), [home finds](/categories/home-finds
 
 ## Affiliate disclosure
 
-SulitScan may earn a commission when you click a partner link and complete a purchase, at no extra cost to you. SulitScan does not currently list Lazada deals. Prices, seller terms, and platform policies change regularly, so always confirm on the partner store before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
+SulitScan may earn a commission when you click an active partner link and complete a purchase, at no extra cost to you. SulitScan does not publish Lazada or Temu affiliate product listings and does not earn commissions from purchases on those two marketplaces. Prices, seller terms, and policies change regularly, so confirm every live listing before buying. See our full [Affiliate Disclosure](/affiliate-disclosure).
     `.trim(),
     category: "Marketplace Guides",
     author: "SulitScan Team",
     publishedAt: "2026-07-05",
-    lastReviewed: "2026-07-05",
+    lastReviewed: "2026-11-16",
     readTime: 8,
     tags: ["shopee", "lazada", "temu", "marketplace-comparison", "philippines", "online-shopping"],
     recommendationIntent: {
@@ -1768,7 +1768,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
       {
         question: "Which one usually ships faster in the Philippines?",
         answer:
-          "Shopee and Lazada local sellers ship fastest because goods are already within the Philippines. Temu ships from international warehouses, which typically means 7 to 20 days for standard delivery.",
+          "Locally fulfilled Shopee and Lazada orders can arrive sooner than cross-border orders. Use the delivery estimate shown for the exact seller, products, address, and shipping method instead of relying on one platform-wide range.",
       },
       {
         question: "Should I use Temu for cheap items?",
@@ -1783,7 +1783,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
       {
         question: "Does SulitScan sell products directly?",
         answer:
-          "No. SulitScan is a shopping guide. We link to deals on partner stores including Shopee PH and Temu, and you buy directly from those platforms. We do not handle payments, orders, or returns.",
+          "No. SulitScan is a shopping guide. Current affiliate listings are clearly labeled and link to active partner stores such as Shopee PH and Sephora PH. Temu and Lazada appear here only for independent comparison. SulitScan does not handle payments, orders, or returns.",
       },
     ],
   },
@@ -1874,7 +1874,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
     category: "Tech Guides",
     author: "SulitScan Team",
     publishedAt: "2026-07-05",
-    lastReviewed: "2026-07-05",
+    lastReviewed: "2026-11-16",
     readTime: 8,
     tags: ["phone-accessories", "tech-deals", "under-500", "shopee", "temu", "philippines", "charger-safety"],
     recommendationIntent: {
@@ -1911,7 +1911,7 @@ SulitScan may earn a commission when you click a partner link and complete a pur
       {
         question: "Where can I browse SulitScan tech deals?",
         answer:
-          "Browse the tech deals category on SulitScan, or check the Shopee PH and Temu store pages for deals with buyer notes and SulitScore ratings.",
+          "Browse the tech deals category on SulitScan or open the Shopee PH store page for current listings with buyer notes and SulitScore ratings. SulitScan does not have a current Temu store page or Temu affiliate products.",
       },
     ],
   },
@@ -6650,7 +6650,7 @@ SulitScan cannot see the reader's account, determine why a message appears, chan
 
 ## Affiliate disclosure
 
-SulitScan may earn a commission when a reader follows an eligible partner link and completes a purchase, at no extra cost to the reader. Commission does not make an unnecessary item useful. This guide keeps stopping or waiting as legitimate outcomes and does not promise a saving, threshold, waiver, or checkout acceptance. See our full [Affiliate Disclosure](/affiliate-disclosure).
+SulitScan no longer publishes Temu affiliate listings and does not earn commissions from Temu purchases. Separately marked active-partner links may earn a commission at no extra cost to the reader. Commission does not make an unnecessary item useful. This guide keeps stopping or waiting as legitimate outcomes and does not promise a saving, threshold, waiver, or checkout acceptance. See our full [Affiliate Disclosure](/affiliate-disclosure).
     `.trim(),
     category: "Shopping Tips",
     author: "SulitScan Team",
@@ -6661,7 +6661,6 @@ SulitScan may earn a commission when a reader follows an eligible partner link a
     recommendationIntent: {
       topics: ["temu-checkout", "minimum-order", "checkout-value"],
       platforms: ["Temu"],
-      deals: { tags: ["temu"] },
     },
     importTaxContext: "temu",
     coverGradient: "from-indigo-500 to-violet-600",
