@@ -35,7 +35,7 @@ const categoryFaqs = [
   {
     question: "Which categories have the most deals right now?",
     answer:
-      "The Under ₱500 and Home Finds categories currently have the most deals, followed by Beauty and Fashion. All categories show a live deal count next to the category name. We update deals as new affiliate offers become available.",
+      "Deal availability changes as affiliate listings are refreshed. Each category card shows its current live deal count, so use those counts instead of an older ranking or article claim.",
   },
   {
     question: "Can I filter deals by store within a category?",
